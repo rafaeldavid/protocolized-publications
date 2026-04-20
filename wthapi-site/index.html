@@ -393,8 +393,9 @@
   .cf-backdrop.open { opacity: 1; pointer-events: auto; }
   @media (min-width: 701px) { .cf-backdrop { display: none !important; } }
 
-  /* Mobile drawer */
-  @media (max-width: 1200px) {
+  /* Narrow viewports: collapse left gutter inline. Threshold matches right-gutter sidenotes.
+     Math: main 38rem + left+right gutters 14rem + gaps 2rem + main padding ~= 1056px minimum. */
+  @media (max-width: 1100px) {
     aside.comment { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; padding: 0.5rem 0.85rem; border-right: 0; border-left: 2px solid var(--comment); border-radius: 0 3px 3px 0; text-align: left; }
     aside.comment .c-quote, aside.comment .c-meta { text-align: left; }
   }

@@ -407,12 +407,13 @@
   .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--fg); color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; transition: transform 220ms ease; z-index: 200; }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* ---- Mobile ---- */
-  @media (max-width: 1200px) {
+  /* ---- Narrow viewports: collapse gutters inline ---- */
+  /* Math: main-width 38rem + left+right gutters (14rem each) + gaps (2rem each)
+     + main padding (2rem each) ≈ 1056px minimum for left gutter, 1056px for
+     right. Using 1100px for both gives a small buffer. */
+  @media (max-width: 1100px) {
     aside.comment { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; padding: 0.5rem 0.85rem; border-right: 0; border-left: 2px solid var(--comment); border-radius: 0 3px 3px 0; text-align: left; }
     aside.comment .c-quote, aside.comment .c-meta { text-align: left; }
-  }
-  @media (max-width: 1100px) {
     aside.sn { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; }
   }
   @media (max-width: 700px) {
