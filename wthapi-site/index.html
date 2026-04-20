@@ -90,6 +90,12 @@
     --font-mono: 'Roboto Mono', ui-monospace, monospace;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+    /* Tokens for reader-comment system */
+    --comment: #3a6db0;
+    --comment-mid: #7ba0d0;
+    --comment-light: #eef3f9;
+    --demo-bg: #f5f9fd;
+    --mark-hover-bg: #dce7f2;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -310,6 +316,109 @@
     header.site .brand { display: none; }
     header.site button { padding: 0.45rem 0.6rem; font-size: 0.7rem; }
   }
+/* ==== Reader-comment system (ported from template-site) ==== */
+
+  /* ---- Left gutter: Reader Comments (blue) — ported from template-site ---- */
+  aside.comment {
+    float: left; clear: left;
+    width: var(--side-width);
+    margin: 0.2rem 1.3rem 0.9rem calc(-1 * (var(--side-width) + var(--gap)));
+    font-family: var(--font-sans); font-size: 0.75rem; line-height: 1.5; color: var(--fg-muted);
+    padding: 0.45rem 0.85rem 0.45rem 0;
+    border-right: 2px solid var(--comment);
+    background: var(--comment-light);
+    border-radius: 3px 0 0 3px;
+    position: relative;
+    text-align: right;
+  }
+  aside.comment .c-label {
+    display: block;
+    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+    color: var(--comment); text-transform: uppercase; letter-spacing: 0.09em;
+    margin-bottom: 0.35rem;
+  }
+  aside.comment .c-label .c-author { opacity: 0.7; font-weight: 500; margin-left: 0.4em; text-transform: none; letter-spacing: 0.02em; }
+  aside.comment .c-quote { display: block; font-size: 0.68rem; color: var(--fg); font-style: italic; margin-bottom: 0.35rem; opacity: 0.8; text-align: right; }
+  aside.comment .c-quote::before { content: "\201C"; }
+  aside.comment .c-quote::after  { content: "\201D"; }
+  aside.comment .c-body { text-align: left; }
+  aside.comment .c-meta { display: block; font-family: var(--font-mono); font-size: 0.6rem; color: var(--fg-muted); opacity: 0.7; margin-top: 0.3rem; text-align: right; }
+  aside.comment .c-del { position: absolute; top: 0.25rem; left: 0.3rem; border: 0; background: transparent; color: var(--fg-muted); font-size: 0.9rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; opacity: 0; transition: opacity 120ms; }
+  aside.comment:hover .c-del { opacity: 1; }
+  aside.comment .c-del:hover { color: var(--comment); }
+  mark.commented { background: var(--comment-light); border-bottom: 2px solid var(--comment-mid); padding: 0 0.05em; cursor: help; }
+  mark.commented:hover { background: var(--mark-hover-bg); }
+
+  /* Selection popup */
+  .sel-popup {
+    position: absolute; z-index: 100;
+    background: var(--fg); color: #fff;
+    border-radius: 4px; padding: 2px;
+    display: none; gap: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    font-family: var(--font-mono);
+  }
+  .sel-popup.open { display: flex; }
+  .sel-popup button { background: transparent; border: 0; color: #fff; cursor: pointer; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; padding: 0.4rem 0.7rem; border-radius: 3px; letter-spacing: 0.03em; }
+  .sel-popup button:hover { background: var(--accent); }
+  .sel-popup button.primary:hover { background: var(--comment); }
+  .sel-popup::after { content: ""; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--fg); }
+
+  /* Comment form (desktop floating) */
+  .comment-form {
+    position: absolute; z-index: 101;
+    background: #fff; border: 1px solid var(--comment-mid);
+    border-radius: 4px; padding: 0.75rem;
+    width: 18rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    display: none; flex-direction: column; gap: 0.5rem;
+  }
+  .comment-form.open { display: flex; }
+  .comment-form .cf-quote { font-size: 0.7rem; color: var(--fg-muted); font-style: italic; padding: 0.35rem 0.5rem; background: var(--comment-light); border-radius: 3px; max-height: 3.5rem; overflow: hidden; text-overflow: ellipsis; }
+  .comment-form textarea { font-family: var(--font-sans); font-size: 0.84rem; border: 1px solid var(--rule); border-radius: 3px; padding: 0.5rem; resize: vertical; min-height: 3.5rem; color: var(--fg); background: #fff; }
+  .comment-form textarea:focus { outline: none; border-color: var(--comment); box-shadow: 0 0 0 2px var(--comment-light); }
+  .comment-form .cf-actions { display: flex; gap: 0.4rem; justify-content: flex-end; }
+  .comment-form button { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.7rem; border-radius: 3px; cursor: pointer; letter-spacing: 0.03em; }
+  .comment-form button.primary { background: var(--comment); color: #fff; border: 0; }
+  .comment-form button.primary:hover { background: var(--fg); }
+  .comment-form button.ghost { background: #fff; color: var(--fg-muted); border: 1px solid var(--rule); }
+  .comment-form button.ghost:hover { color: var(--fg); border-color: var(--fg); }
+  .comment-form button.gh { background: #fff; color: var(--fg); border: 1px solid var(--accent-mid); }
+  .comment-form button.gh:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+  .comment-form .cf-visibility { font-size: 0.66rem; color: var(--fg-muted); font-style: italic; padding: 0.15rem 0.1rem; line-height: 1.4; }
+  .comment-form .cf-visibility strong { color: var(--fg); font-style: normal; font-weight: 600; }
+
+  /* Backdrop (mobile drawer click-dismiss) */
+  .cf-backdrop { position: fixed; inset: 0; background: rgba(26,26,46,0.4); backdrop-filter: blur(2px); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 220ms ease; }
+  .cf-backdrop.open { opacity: 1; pointer-events: auto; }
+  @media (min-width: 701px) { .cf-backdrop { display: none !important; } }
+
+  /* Mobile drawer */
+  @media (max-width: 1200px) {
+    aside.comment { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; padding: 0.5rem 0.85rem; border-right: 0; border-left: 2px solid var(--comment); border-radius: 0 3px 3px 0; text-align: left; }
+    aside.comment .c-quote, aside.comment .c-meta { text-align: left; }
+  }
+  @media (max-width: 700px) {
+    .comment-form {
+      position: fixed !important;
+      top: auto !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+      width: 100vw !important; max-width: 100vw !important;
+      border-radius: 14px 14px 0 0; border: 1px solid var(--rule); border-bottom: 0;
+      padding: 0.4rem 1rem calc(1rem + env(safe-area-inset-bottom, 0));
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+      display: flex !important; visibility: hidden;
+      transform: translateY(100%);
+      transition: transform 260ms cubic-bezier(.32,.72,0,1), visibility 0s linear 260ms;
+    }
+    .comment-form.open { visibility: visible; transform: translateY(0); transition: transform 260ms cubic-bezier(.32,.72,0,1), visibility 0s; }
+    .comment-form::before { content: ""; display: block; width: 40px; height: 4px; background: var(--rule); border-radius: 2px; margin: 0 auto 0.4rem; }
+    .comment-form textarea { min-height: 5.5rem; font-size: 0.95rem; }
+    .comment-form .cf-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.4rem; }
+    .comment-form .cf-actions button { min-height: 44px; padding: 0.65rem 0.6rem; font-size: 0.78rem; }
+    .comment-form .cf-visibility { font-size: 0.7rem; }
+  }
+
+  /* ==== End reader-comment system ==== */
 </style>
 </head>
 <body>
@@ -1369,5 +1478,431 @@ The decisions above apply to each of the following, but the specifics require th
 })();
 </script>
 
+<!-- ==== Reader-comment system (ported from template-site) ==== -->
+
+<!-- Selection popup (reader comment) -->
+<div class="sel-popup" id="sel-popup">
+  <button id="sel-comment" class="primary" title="Add a comment">💬 Comment</button>
+  <button id="sel-copy" title="Copy selection">⧉ Copy</button>
+</div>
+<!-- Backdrop + comment form -->
+<div class="cf-backdrop" id="cf-backdrop" aria-hidden="true"></div>
+<div class="comment-form" id="comment-form" role="dialog" aria-modal="true" aria-label="Add comment">
+  <div class="cf-quote" id="cf-quote"></div>
+  <textarea id="cf-text" placeholder="Your comment…" rows="3"></textarea>
+  <div class="cf-visibility">
+    <strong>Save</strong> keeps the comment in your browser (localStorage, private).
+    <strong>Submit as issue</strong> opens a prefilled GitHub issue (public).
+  </div>
+  <div class="cf-actions">
+    <button id="cf-cancel" class="ghost">Cancel</button>
+    <button id="cf-github" class="gh" title="Open a prefilled GitHub issue (public)">+ Issue ↗</button>
+    <button id="cf-save" class="primary">Save local (⌘↩)</button>
+  </div>
+</div>
+
+<script>
+(function () {
+"use strict";
+/**
+ * @typedef {Object} CommentRecord
+ * @property {string} cid
+ * @property {string} pid
+ * @property {string} quote
+ * @property {string} text
+ * @property {string} author
+ * @property {string} origin - "ui" | "api" | "demo"
+ * @property {number} ts
+ */
+const CONFIG = Object.freeze({
+  STORAGE_KEY: 'protocolized.wthapi.comments.v1',
+  MAX_QUOTE_IN_UI: 140,
+  MAX_QUOTE_IN_FORM: 180,
+  TOAST_MS: 1600,
+  VERSION: '1.0',
+  GH_REPO:   'rafaeldavid/protocolized-publications',
+  GH_LABELS: ['reader-comment'],
+  GH_TITLE_PREFIX: '[wthapi]',
+});
+const STORAGE_KEY = CONFIG.STORAGE_KEY;
+
+function loadAll() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
+function saveAll(list) { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+
+/* Reuse existing toast if present, else create one */
+let toastEl = document.getElementById('toast');
+if (!toastEl) {
+  toastEl = document.createElement('div');
+  toastEl.id = 'toast';
+  toastEl.className = 'toast';
+  toastEl.setAttribute('role', 'status');
+  toastEl.setAttribute('aria-live', 'polite');
+  document.body.appendChild(toastEl);
+}
+function showToast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  setTimeout(() => toastEl.classList.remove('show'), CONFIG.TOAST_MS);
+}
+
+/* Event bus */
+const _listeners = { 'comment:added': new Set(), 'comment:deleted': new Set(), 'comments:cleared': new Set() };
+function emit(event, payload) { if (!_listeners[event]) return; _listeners[event].forEach(fn => { try { fn(payload); } catch(e) { console.error(e); } }); }
+function on(event, fn) { if (!_listeners[event] || typeof fn !== 'function') return () => {}; _listeners[event].add(fn); return () => _listeners[event].delete(fn); }
+
+function makeRecord({ pid, quote, text, author, origin }) {
+  return {
+    cid: 'c' + Date.now().toString(36) + Math.floor(Math.random()*1000).toString(36),
+    pid, quote, text,
+    author: author || 'reader',
+    origin: origin || 'ui',
+    ts: Date.now(),
+  };
+}
+
+/* Selection + popup */
+const popup = document.getElementById('sel-popup');
+const article = document.querySelector('article') || document.querySelector('main');
+let lastSelection = null;
+
+function currentArticleSelection() {
+  const sel = window.getSelection();
+  if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return null;
+  const range = sel.getRangeAt(0);
+  if (!article || !article.contains(range.commonAncestorContainer)) return null;
+  const text = sel.toString().trim();
+  if (text.length < 2) return null;
+  return { sel, range, text };
+}
+function positionPopup(rect) {
+  const top  = window.scrollY + rect.top - popup.offsetHeight - 10;
+  const left = window.scrollX + rect.left + rect.width / 2 - popup.offsetWidth / 2;
+  popup.style.top  = Math.max(8, top) + 'px';
+  popup.style.left = Math.max(8, left) + 'px';
+}
+function hidePopup() { popup.classList.remove('open'); }
+
+document.addEventListener('mouseup', () => {
+  setTimeout(() => {
+    if (commentForm.classList.contains('open')) return;
+    const s = currentArticleSelection();
+    if (!s) { hidePopup(); return; }
+    lastSelection = s;
+    popup.classList.add('open');
+    positionPopup(s.range.getBoundingClientRect());
+  }, 10);
+});
+document.addEventListener('mousedown', e => {
+  if (popup.contains(e.target) || commentForm.contains(e.target) || backdrop.contains(e.target)) return;
+  hidePopup();
+});
+document.addEventListener('selectionchange', () => {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed) {
+    if (!commentForm.classList.contains('open')) hidePopup();
+  }
+});
+
+document.getElementById('sel-copy').addEventListener('click', async () => {
+  if (!lastSelection) return;
+  try { await navigator.clipboard.writeText(lastSelection.text); } catch(e) {}
+  showToast('Copied');
+  hidePopup();
+  window.getSelection().removeAllRanges();
+});
+
+const commentForm = document.getElementById('comment-form');
+const cfQuote = document.getElementById('cf-quote');
+const cfText  = document.getElementById('cf-text');
+const backdrop = document.getElementById('cf-backdrop');
+
+function openCommentForm() {
+  if (!lastSelection) return;
+  cfQuote.textContent = lastSelection.text.length > CONFIG.MAX_QUOTE_IN_FORM ? lastSelection.text.slice(0, CONFIG.MAX_QUOTE_IN_FORM) + '\u2026' : lastSelection.text;
+  cfText.value = '';
+  commentForm.classList.add('open');
+  backdrop.classList.add('open');
+  if (window.innerWidth > 700) {
+    const rect = lastSelection.range.getBoundingClientRect();
+    const formW = 18 * 16;
+    commentForm.style.top  = (window.scrollY + rect.bottom + 10) + 'px';
+    commentForm.style.left = Math.max(8, window.scrollX + rect.left + rect.width / 2 - formW / 2) + 'px';
+  }
+  hidePopup();
+  setTimeout(() => cfText.focus(), 30);
+}
+function closeCommentForm() {
+  commentForm.classList.remove('open');
+  backdrop.classList.remove('open');
+  lastSelection = null;
+  try { window.getSelection().removeAllRanges(); } catch(e) {}
+}
+function attemptCloseForm() {
+  if (!commentForm.classList.contains('open')) return true;
+  if (cfText.value.trim().length > 0) {
+    if (!confirm('Discard your unsaved comment?')) return false;
+  }
+  closeCommentForm();
+  return true;
+}
+
+document.getElementById('sel-comment').addEventListener('click', openCommentForm);
+document.getElementById('cf-cancel').addEventListener('click', attemptCloseForm);
+backdrop.addEventListener('click', attemptCloseForm);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && commentForm.classList.contains('open')) {
+    e.preventDefault(); attemptCloseForm();
+  }
+});
+document.addEventListener('mousedown', e => {
+  if (!commentForm.classList.contains('open')) return;
+  if (commentForm.contains(e.target) || backdrop.contains(e.target) || popup.contains(e.target)) return;
+  if (window.innerWidth > 700) attemptCloseForm();
+});
+
+document.getElementById('cf-save').addEventListener('click', () => {
+  if (!lastSelection) return;
+  const text = cfText.value.trim();
+  if (!text) { cfText.focus(); return; }
+  const pid = findAnchorPid(lastSelection.range);
+  if (!pid) { showToast('Could not anchor comment'); return; }
+  const record = makeRecord({ pid, quote: lastSelection.text, text, author: 'reader', origin: 'ui' });
+  const all = loadAll(); all.push(record); saveAll(all);
+  renderComment(record);
+  emit('comment:added', record);
+  closeCommentForm();
+  showToast('Comment saved');
+});
+cfText.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); document.getElementById('cf-save').click(); }
+  if (e.key === 'Escape') { e.preventDefault(); attemptCloseForm(); }
+});
+
+/* Anchor helpers */
+function findAnchorPid(range) {
+  let el = range.startContainer;
+  if (el.nodeType === Node.TEXT_NODE) el = el.parentElement;
+  while (el && el !== article) {
+    if (el.id) return el.id;
+    el = el.parentElement;
+  }
+  return null;
+}
+function findTextRange(container, needle) {
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => {
+      let p = n.parentNode;
+      while (p && p !== container) {
+        if (p.nodeName === 'MARK' && p.classList.contains('commented')) return NodeFilter.FILTER_REJECT;
+        p = p.parentNode;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = []; let flat = '';
+  while (walker.nextNode()) {
+    nodes.push({ node: walker.currentNode, start: flat.length });
+    flat += walker.currentNode.nodeValue;
+  }
+  const idx = flat.indexOf(needle);
+  if (idx === -1) return null;
+  const end = idx + needle.length;
+  const startInfo = nodes.find(n => n.start + n.node.nodeValue.length > idx);
+  const endInfo = nodes.slice().reverse().find(n => n.start < end);
+  if (!startInfo || !endInfo) return null;
+  const r = document.createRange();
+  r.setStart(startInfo.node, idx - startInfo.start);
+  r.setEnd(endInfo.node, end - endInfo.start);
+  return r;
+}
+
+function renderComment(record) {
+  const container = document.getElementById(record.pid);
+  if (!container) return false;
+  const existingMark = container.querySelector('mark.commented[data-cid="' + record.cid + '"]');
+  if (!existingMark) {
+    const range = findTextRange(container, record.quote);
+    if (range) {
+      try {
+        const mark = document.createElement('mark');
+        mark.className = 'commented';
+        mark.dataset.cid = record.cid;
+        range.surroundContents(mark);
+      } catch(e) {}
+    }
+  }
+  const aside = document.createElement('aside');
+  aside.className = 'comment';
+  aside.dataset.cid = record.cid;
+  aside.dataset.role = 'reader-note';
+  aside.dataset.authorClass = record.author === 'reader' ? 'reader' : 'agent';
+  const d = new Date(record.ts);
+  const dateStr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  const authorTag = record.author && record.author !== 'reader' ? '<span class="c-author">\u00b7 ' + escapeHtml(record.author) + '</span>' : '';
+  aside.innerHTML =
+    '<button class="c-del" title="Delete comment">\u00d7</button>' +
+    '<span class="c-label">Comment' + authorTag + '</span>' +
+    '<span class="c-quote">' + escapeHtml(record.quote.length > CONFIG.MAX_QUOTE_IN_UI ? record.quote.slice(0, CONFIG.MAX_QUOTE_IN_UI)+'\u2026' : record.quote) + '</span>' +
+    '<div class="c-body">' + escapeHtml(record.text).replace(/\n/g,'<br>') + '</div>' +
+    '<span class="c-meta">' + dateStr + '</span>';
+  container.insertBefore(aside, container.firstChild);
+  aside.querySelector('.c-del').addEventListener('click', (e) => {
+    e.stopPropagation();
+    deleteComment(record.cid);
+  });
+  return true;
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function deleteComment(cid) {
+  const before = loadAll();
+  const removed = before.find(r => r.cid === cid);
+  const list = before.filter(r => r.cid !== cid);
+  saveAll(list);
+  const aside = document.querySelector('aside.comment[data-cid="' + cid + '"]');
+  if (aside) aside.remove();
+  const mark = document.querySelector('mark.commented[data-cid="' + cid + '"]');
+  if (mark) {
+    const parent = mark.parentNode;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    parent.normalize();
+  }
+  if (removed) emit('comment:deleted', removed);
+}
+function renderAll() {
+  document.querySelectorAll('aside.comment[data-cid]').forEach(n => n.remove());
+  document.querySelectorAll('mark.commented[data-cid]').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m); p.normalize();
+  });
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  all.forEach(renderComment);
+}
+
+/* Markdown export + GitHub issue URL + document hash */
+function markdownSource() {
+  const el = document.getElementById('markdown-source');
+  return el ? el.textContent : '';
+}
+function exportMarkdown({ includeComments = true } = {}) {
+  let md = markdownSource();
+  if (!includeComments) return md;
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  if (all.length === 0) return md;
+  md += '\n\n---\n\n## Reader comments\n\n';
+  md += '*Exported from localStorage; not part of the original document.*\n\n';
+  for (const r of all) {
+    const d = new Date(r.ts);
+    const dateStr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    md += '### Comment on `#' + r.pid + '` \u2014 ' + (r.author || 'reader') + ' \u00b7 ' + dateStr + '\n\n';
+    md += '> ' + r.quote.replace(/\n/g, ' ') + '\n\n';
+    md += r.text + '\n\n';
+  }
+  return md;
+}
+function buildGitHubIssueURL({ pid, quote, text, author }) {
+  const pageUrl = location.origin + location.pathname;
+  const anchorUrl = pageUrl + '#' + (pid || '');
+  const quoteShort = quote.length > 80 ? quote.slice(0, 80) + '\u2026' : quote;
+  const title = CONFIG.GH_TITLE_PREFIX + ' ' + (pid || 'page') + ': ' + quoteShort;
+  const quotedQuote = quote.split('\n').map(l => '> ' + l).join('\n');
+  const whoStr = author ? ' _(author: ' + author + ')_' : '';
+  const bodyText = (text && text.trim()) ? text : '_(no comment body \u2014 please fill in before submitting)_';
+  const body =
+    '**Quote**\n' + quotedQuote + '\n\n' +
+    '**Source**\n' + anchorUrl + '\n\n' +
+    '**Comment**' + whoStr + '\n' + bodyText + '\n\n' +
+    '---\n*Submitted via the in-page comment form. Comment was not stored locally.*';
+  const params = new URLSearchParams({ title, body });
+  CONFIG.GH_LABELS.forEach(l => params.append('labels', l));
+  return 'https://github.com/' + CONFIG.GH_REPO + '/issues/new?' + params.toString();
+}
+document.getElementById('cf-github').addEventListener('click', () => {
+  if (!lastSelection) return;
+  const text = cfText.value.trim();
+  const pid  = findAnchorPid(lastSelection.range) || '';
+  const url  = buildGitHubIssueURL({ pid, quote: lastSelection.text, text, author: 'reader' });
+  window.open(url, '_blank', 'noopener');
+  closeCommentForm();
+  showToast('Opening GitHub\u2026');
+});
+async function docHash() {
+  const src = markdownSource();
+  const buf = new TextEncoder().encode(src);
+  const h   = await crypto.subtle.digest('SHA-256', buf);
+  const hex = Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return 'sha256:' + hex;
+}
+function exportAnnotations() {
+  const base = location.origin + location.pathname;
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  return {
+    "@context": "http://www.w3.org/ns/anno.jsonld",
+    "type": "AnnotationCollection",
+    "label": document.title, "total": all.length,
+    "first": { "type": "AnnotationPage", "items": all.map(r => ({
+      "@context": "http://www.w3.org/ns/anno.jsonld",
+      "type": "Annotation",
+      "id": base + "#annotation-" + r.cid,
+      "creator": { "type": "Person", "name": r.author },
+      "created": new Date(r.ts).toISOString(),
+      "motivation": "commenting",
+      "body": { "type": "TextualBody", "value": r.text, "format": "text/plain" },
+      "target": { "source": base + "#" + r.pid, "selector": { "type": "TextQuoteSelector", "exact": r.quote } },
+      "protocolized": { "origin": r.origin, "cid": r.cid }
+    }))}
+  };
+}
+
+/* Cross-tab sync */
+window.addEventListener('storage', e => { if (e.key === STORAGE_KEY) renderAll(); });
+
+/* Initial render */
+renderAll();
+
+/* Public API — identical shape to template-site for cross-site consistency */
+window.templateAPI = Object.freeze({
+  version: CONFIG.VERSION,
+  addComment(input) {
+    const pid    = typeof input?.pid    === 'string' ? input.pid.trim()    : '';
+    const quote  = typeof input?.quote  === 'string' ? input.quote         : '';
+    const text   = typeof input?.text   === 'string' ? input.text.trim()   : '';
+    const author = typeof input?.author === 'string' ? input.author.trim() : '';
+    if (!pid || !quote || !text) return null;
+    const container = document.getElementById(pid);
+    if (!container) return null;
+    if (container.textContent.indexOf(quote) === -1) return null;
+    const record = makeRecord({ pid, quote, text, author: author || 'agent', origin: 'api' });
+    const all = loadAll(); all.push(record); saveAll(all);
+    renderComment(record);
+    emit('comment:added', record);
+    return record.cid;
+  },
+  listComments() { return loadAll().slice(); },
+  deleteComment(cid) { deleteComment(cid); return true; },
+  clearComments() { const n = loadAll().length; saveAll([]); renderAll(); emit('comments:cleared', { count: n }); return true; },
+  markdownSource,
+  exportMarkdown,
+  exportAnnotations,
+  submitAsIssue(input, opts) {
+    const pid    = typeof input?.pid    === 'string' ? input.pid.trim()    : '';
+    const quote  = typeof input?.quote  === 'string' ? input.quote         : '';
+    const text   = typeof input?.text   === 'string' ? input.text.trim()   : '';
+    const author = typeof input?.author === 'string' ? input.author.trim() : '';
+    if (!pid || !quote) return null;
+    const url = buildGitHubIssueURL({ pid, quote, text, author });
+    if (!opts || opts.openInNewTab !== false) window.open(url, '_blank', 'noopener');
+    return url;
+  },
+  docHash,
+  on,
+  refresh() { renderAll(); },
+});
+})();
+</script>
+<!-- ==== End reader-comment system ==== -->
 </body>
 </html>
