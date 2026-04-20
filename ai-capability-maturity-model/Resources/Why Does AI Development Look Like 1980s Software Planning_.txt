@@ -1,0 +1,246 @@
+20/12/2025, 11:48
+
+Why Does AI Development Look Like 1980s Software Planning?
+
+Why Does AI Development Look Like 1980s
+Software Planning?
+Conway's Law and Coase theorem applied to AI
+
+SACHIN
+NOV 16, 2025
+
+8
+
+Share
+
+This is the fifth installment in a series on Archival Time, where I investigate the new cultural
+temporality introduced by LLMs.
+Previously, In Archival Time, I wrote about the carnivalesque nature of internet vs archival
+slice nature of LLMs. You can find the rest of the posts in this series here
+
+Most people who have worked in software development, or been even loosely
+associated with it, will have heard of agile development and its dreaded evil cousin,
+waterfall development. For the uninitiated, agile development encourages feedback at
+all stages of development, preferring efficiency and working code over thoroughness
+and exhaustive planning. It is where the contemporary obsession with customerfocused, iterative development largely comes from. Waterfall, by contrast, is focused
+on thorough documentation and a sequenced, feed-forward approach in which only
+the next stage may provide feedback to the stage before it. Software people love to
+describe Waterfall as a kind of Kafkaesque nightmare—slow, bloated, bureaucratic,
+and hostile to change. “Waterfall,” at this point in time, has become synonymous with
+bad software.
+In my classification of Archival Time vs. Carnival Time, Waterfall belongs to the
+Archival temporality. It freezes meaning and seals definitions through its insistence
+on thorough documentation and a linear progression—requirements precede design,
+design precedes implementation, and nothing should change once the document is
+stamped. Its rhythm is defined by closure, fixity, and orderly accumulation—what
+Bakhtin would call “the classical body rendered as process.” Agile, by contrast, is
+carnival temporality made organizational: iterative, regenerative, open-ended. Work
+moves in cycles of sprints; hierarchies flatten; the team becomes a shapeshifting
+organism responding to the chaos of a living environment. Waterfall aspires to the
+sealed archive; Agile is the internet’s meme cycle embodied in project management
+form.
+AI companies, both LLM labs and firms implementing AI inside large organizations
+such as Palantir, seem to be bringing back a waterfall style of software planning. I
+think this is happening because of two intertwined reasons:
+Organizations prefer communication structures that have the lowest transaction
+costs.
+The communication structure of organizations today tends to overfit the technical
+systems they are building. This dynamic is a signature of archival temporality.
+https://summerlightning.substack.com/p/why-does-ai-development-look-like
+
+1/5
+
+20/12/2025, 11:48
+
+Why Does AI Development Look Like 1980s Software Planning?
+
+Lower transaction costs of communication
+structures
+While agile and waterfall are often framed as planning methodologies, it is more
+accurate to understand them as distinct communication structures optimized for
+different transaction-cost environments. If you want to study planning itself, Lean vs.
+Fat offers the better cross-industry lens. But agile vs. waterfall is about the internal
+cost of coordination. Using Coase’s definition, transaction costs are the costs of
+coordinating, communicating, and enforcing agreements between people inside a firm.
+Agile became dominant because communication costs plummeted between roughly
+1980–2000 with high-speed internet, email, and chat. Agile’s ceremonies—standups,
+retrospectives, sprint planning—reflect this: they encourage cheap conversation over
+expensive documentation. Indeed, one of the core criticisms leveled against waterfall
+by the agile manifesto and related methodologies (spiral development, rapid
+development etc) is that documentation is expensive, time-consuming, and ultimately
+futile because the system is always changing and can never be fully captured in
+writing.
+Path dependence played a role as well. Once agile became the dominant ideology,
+countless tools and products were built that assumed agile as the default worldview.
+Scrum boards, derived originally from Toyota’s Kanban system, became the dominant
+visual metaphor for software work and were embedded into project-planning software
+like Jira and Trello.
+Waterfall, in turn, became willfully misunderstood because agile consultants and
+Scrum evangelists needed a villain to position themselves against. In Winston Royce’s
+original paper, Managing the Development of Large Software Systems, where waterfall has
+its origins, he actually critiques the naïve version of waterfall that pushes all feedback
+to the end, and then proposes extensive documentation and staged feedback as a fix
+for its failures. His approach made sense in a pre-internet world where teams worked
+mostly in silos, everyone was onsite, and the cost of additional meetings was as high—
+or higher—than the cost of additional documentation.
+Different technologies make different kinds of communication cheap, and
+organizations naturally reorganize around whatever structure minimizes internal
+transaction costs. During the Web 1.0 and 2.0 eras, email, chat, GitHub, CI/CD, and
+cloud environments made rapid back-and-forth communication incredibly cheap.
+Iteration accelerated, coordination became lightweight, and documentation remained
+expensive relative to conversation. Agile “won” because the technology of that time
+made its communication structure the lowest-cost way to coordinate.
+In the LLM era, the cost structure flips. LLMs make documentation, specifications,
+diagrams, and written artifacts essentially free—but they make ontological drift
+extremely expensive. When agents, tools, and auto-generated artifacts depend on
+stable definitions, changing the meaning of a term or schema midstream breaks
+everything. Organizations compensate by freezing definitions, front-loading clarity,
+and minimizing mid-cycle reinterpretation. This is a return to Waterfall—not because
+people suddenly prefer big plans but because the communication structure that
+
+https://summerlightning.substack.com/p/why-does-ai-development-look-like
+
+2/5
+
+20/12/2025, 11:48
+
+Why Does AI Development Look Like 1980s Software Planning?
+
+Waterfall requires (stable meanings, fixed interfaces, slow-changing schemas) now
+incurs the lowest transaction costs.
+Lets consider how this plays out in organizations developing or using AI. Blake Scholl
+recently described Boom’s use of AI in aircraft design. A system called mkBoom
+automates whole-aircraft analysis; engineers define a plane parametrically in a
+configuration file, press a button, and get a full mission simulation in minutes.
+Overnight, mkBoom can run higher-fidelity simulations. This dramatically speeds
+engineering, not merely because it saves time, but because it produces a Jevons-style
+rebound: when iteration becomes cheap, far more possibilities can be explored, and
+better designs emerge. But mkBoom works because the ontology and semantics of jet
+engineering is already highly fixed. Parameters like wing sweep, thrust curves, drag
+polars, and mission profiles are part of a stable, decades-old semantic framework. The
+meaning layer above the model barely changes. Rapid iteration is possible because
+semantic stability has been solved.
+Developing a brand-new product category would work differently. You must invent the
+ontology from scratch, continually redefining what counts as a feature, a parameter, a
+component, or a unit of work. Palantir is a perfect example. The company pioneered
+the role of the Forward Deployed Engineer (FDE), whose job was to embed inside
+client organizations, map their operational ontology, and reconcile it with Palantir’s
+own. The company even produced documentation describing ontology as the
+operational layer sitting atop integrated digital assets. Until 2016, Palantir employed
+more FDEs than software engineers. They were called “deltas,” likely not as a military
+metaphor but as a recognition that their job was to bridge the ontological delta between
+Palantir’s systems and the clients they served.
+Organizations developing AI models and workflows face the same problem that
+LLMs face: the model overfits the data it was trained on, and as the world shifts, it
+drifts. Any company that depends on a stable ontology is constantly struggling to
+maintain and evolve that ontology.
+
+Conway’s Law and Overfitting Communication Structures
+Sometimes I’ll read a theory and then it will rattle in my brain for several months,
+forcing me to overfit the theory awkwardly into whatever new information I
+encounter. Conway’s Law is one such theory. Melvin Conway, a computer engineer,
+coined it in his 1958 paper, How Do Committees Invent? The core thesis of the paper is
+that any organization that designs a system (defined more broadly here than just
+information systems) will inevitably produce a design whose structure is a copy of the
+organization’s communication structure.
+Conway’s original example was of a research organization that had eight people to
+write compilers for COBOL and FORTRAN. Five people were assigned to the COBOL
+job and three to the ALGOL job. The resulting COBOL compiler ran in five phases;
+the ALGOL compiler ran in three.
+Conway seems to have had a directional preference: the system mirrors the
+communication structure of the organization. But Amazon’s two-pizza team is a case
+where the opposite happened. The emphasis on microservices architecture at Amazon
+
+https://summerlightning.substack.com/p/why-does-ai-development-look-like
+
+3/5
+
+20/12/2025, 11:48
+
+Why Does AI Development Look Like 1980s Software Planning?
+
+led to two-pizza teams. In 2002, Jeff Bezos issued a mandate that every team in Amazon
+should expose an API, which would be the only means through which teams shared
+information with other teams. Amazon then reinforced this structure with incentives
+(team-owned SLAs, internal chargebacks, the PR/FAQ process) that treated each team
+as a mini-firm, and the resulting service-oriented architecture eventually externalized
+itself as AWS, effectively renting Amazon’s organizational structure to the world. The
+microservices structure is visible in the rule that a meeting group should always be
+small enough to be fed by two pizzas. Steve Yegge writes about the microservices
+initiative in his infamous platform rant:
+This effort was still underway when I left to join Google in mid-2005, but it was
+pretty far advanced. From the time Bezos issued his edict through the time I left,
+Amazon had transformed culturally into a company that thinks about everything in
+a services-first fashion. It is now fundamental to how they approach all designs,
+including internal designs for stuff that might never see the light of day externally.
+It is fun to take Conway’s Law and apply it to even larger and more complex systems,
+such as: do big box stores like Walmart and Ikea mirror the global container logistics
+systems that make them possible? The stores do aesthetically and functionally feel like
+a big port or the inside of a really, really large container. Someone mentioned that the
+organizational structure of Nvidia resembles how information flows in a
+semiconductor—I don’t know if this is true but seems plausible according Conway.
+When Conway was theorizing this, many computer systems were still in their nascent
+state. He was not working with overpowered computers and hypercomplex systems
+like we have today (this is true even if you don’t work in software). As shown in the
+Amazon example, I think that in contemporary organizations the communication
+structure of the organization overfits the technical system that they are developing.
+The overfitting happens—and is, in a sense, necessary—because contemporary
+technical systems are so complex, capital-intensive, and tightly coupled that
+organizations must reorganize themselves to reduce internal transaction costs in order
+to build and maintain them at all. Complex systems exert structural pressure on their
+creators: high-performance computing clusters, semiconductor pipelines,
+microservices architectures, AI training infrastructure, and containerized global
+logistics all have strong internal constraints and require extremely tight coordination,
+predictable interfaces, and stable contracts. If an organization’s communication
+structure doesn’t match the shape of the system being built, the mismatch produces
+failures and cost overruns; the only way to manage that complexity at scale may be to
+reorganize humans to mimic the topology of the machine.
+As Venkat notes, LLM training resembles waterfall development. Training is
+essentially the “planning phase,” a massive upfront commitment of resources where
+requirements are fixed, architectures are locked in, and the entire system’s behavior is
+determined before it ever touches the real world; inference is the “execution phase,”
+where the model runs as-is, with no ability to adapt or restructure itself except
+through slow, costly retraining. So as an extension, it makes sense why AI labs and
+adjacent organizations have to adopt a waterfall orientation.
+
+https://summerlightning.substack.com/p/why-does-ai-development-look-like
+
+4/5
+
+20/12/2025, 11:48
+
+Why Does AI Development Look Like 1980s Software Planning?
+
+This does not mean that the waterfall development model will continue to dominate
+AI build-outs. As I noted in Social Web to Royal Machines, systems that prefer an
+archival, stable legibility are always in the process of moving toward a more
+carnivalesque legibility, and vice versa. Proposals for models emphasizing minimal
+pre-training, heavy fine-tuning, continual learning, reinforcement learning, and rapid
+iteration map more cleanly to an Agile worldview than monolithic planning.
+***
+Thanks to Venkatesh Rao, Yak Collective and the Protocols for Business SIG for conversations
+that led to this essay. Join the SIGP4B calls if these topics seem of interest to you.
+
+Summer Lightning is a reader-supported
+publication. To receive new posts and support
+my work, consider becoming a free or paid
+subscriber.
+8 Likes
+
+Previous
+
+Next
+
+Discussion about this post
+Comments Restacks
+
+Write a comment...
+
+© 2025 Sachin Benny · Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://summerlightning.substack.com/p/why-does-ai-development-look-like
+
+5/5
+
+

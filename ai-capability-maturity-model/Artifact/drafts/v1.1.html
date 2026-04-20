@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Capability Maturity Model — Protocolized</title>
+  <meta name="description" content="A diagnostic tool for operations executives. Find out where your organization sits on the five-level AI capability maturity model — and what to do next.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f0f0f2;
+      --border:         #e5e5e7;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --danger:         #c0392b;
+      --danger-light:   #fdf0ef;
+      --success:        #27ae60;
+      --success-light:  #edf7f1;
+      --max:            920px;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 58px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Typography ───────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--font-mono); line-height: 1.25; }
+    h1 { font-size: 2.5rem; font-weight: 700; }
+    h2 { font-size: 1.75rem; font-weight: 700; }
+    h3 { font-size: 1.2rem; font-weight: 700; }
+    h4 { font-size: 1rem; font-weight: 700; }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Layout ───────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 60px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* ─── Nav ──────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,250,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .wordmark-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--accent-dark); }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    /* ─── Buttons ──────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1.5px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-light);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border);
+      font-size: 0.875rem;
+      padding: 10px 20px;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    /* ─── Cards ────────────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .card-surface {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    /* ─── Level pill ───────────────────────────────────────── */
+    .level-pill {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    /* ─── Section 1: Entry ─────────────────────────────────── */
+    #entry {
+      padding: 72px 0 60px;
+    }
+
+    #entry .label { margin-bottom: 20px; }
+
+    #entry h1 {
+      margin: 0 0 24px;
+      letter-spacing: -0.03em;
+      text-align: center;
+    }
+
+    #entry h1 span { color: var(--accent); }
+
+    .entry-title-sub {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin: 0 0 8px;
+      display: block;
+      text-align: center;
+    }
+
+    .entry-descriptor {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      margin: 0 0 40px;
+      display: block;
+      text-align: center;
+    }
+
+    .entry-intro {
+      margin: 0 0 36px;
+    }
+
+    .entry-intro p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .entry-intro p:last-child { margin-bottom: 0; }
+
+    .entry-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin: 0 auto 36px;
+    }
+
+    .entry-meta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    /* ─── Section 2: Context ───────────────────────────────── */
+    #context > .container > .label { margin-bottom: 12px; }
+    #context > .container > h2 { margin-bottom: 12px; }
+    .context-intro {
+      font-size: 0.95rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      margin: 0 0 40px;
+    }
+
+    /* Level cards */
+    .level-cards {
+      margin: 0 0 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .level-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+    }
+
+    .level-card.projected { opacity: 0.55; }
+
+    .level-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .arc-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-light);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .level-card-name {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .level-card-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding-left: 42px;
+    }
+
+    .projected-badge {
+      font-size: 0.65rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Model rationale */
+    .model-rationale {
+      margin: 0;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .model-rationale h2 { margin-bottom: 20px; }
+    .model-rationale p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    .source-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: 24px;
+    }
+
+    /* Level card dimension expand */
+    .level-dim-toggle {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0;
+      margin-top: 14px;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-align: left;
+    }
+
+    .level-dim-toggle:hover { color: var(--accent-dark); }
+
+    .level-card-tagline {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      padding-left: 42px;
+      margin-bottom: 10px;
+    }
+
+    .level-historical {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      margin: 12px 0 0 42px;
+    }
+
+    .level-historical-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .level-historical-tech {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .level-historical-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 3px;
+      display: block;
+    }
+
+    .level-dims {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .level-dims.open { display: block; }
+
+    .dim-item {
+      display: grid;
+      grid-template-columns: 130px 100px 1fr;
+      gap: 0 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .dim-item:last-child { border-bottom: none; }
+
+    .dim-name {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text);
+      padding-top: 2px;
+    }
+
+    .dim-value-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .dim-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .dim-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ─── Section 3: Case Studies ──────────────────────────── */
+    #cases .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .case-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-org { font-size: 1.05rem; margin-bottom: 4px; }
+    .case-sector { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px; }
+    .case-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; flex: 1; }
+    .case-mechanism {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+
+    .case-question {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    .drill-toggle {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0;
+      margin-top: 16px;
+      text-align: left;
+      text-decoration: underline;
+    }
+
+    .drill-toggle:hover { color: var(--accent-dark); }
+
+    .drill-content {
+      display: none;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .drill-content.open { display: block; }
+
+    /* ─── Section 4: Assessment ────────────────────────────── */
+    #assessment { background: var(--surface); }
+
+    #assessment h2 { margin-bottom: 8px; }
+    #assessment .section-sub {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    .step-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    .step-indicator span { color: var(--accent); }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .step-instruction {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    /* Recognition options */
+    .option-cards { display: flex; flex-direction: column; gap: 14px; }
+
+    .option-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .option-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .option-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .option-letter {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .option-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Scenario options */
+    .scenario-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .scenario-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.65;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .radio-options { display: flex; flex-direction: column; gap: 12px; }
+
+    .radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .radio-option:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .radio-option.selected {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .radio-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.15s ease;
+    }
+
+    .radio-option.selected .radio-dot {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .radio-text {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .step-actions {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-actions .btn { display: none; }
+    .step-actions .btn.visible { display: inline-block; }
+
+    .calculating {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      animation: pulse 1.2s infinite;
+    }
+
+    .calculating.visible { display: inline; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ─── Section 5: Output ────────────────────────────────── */
+    #output { display: none; }
+    #output.visible { display: block; }
+
+    .output-card {
+      background: #fff;
+      border: 1.5px solid var(--accent);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .output-header {
+      background: var(--accent-light);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 40px;
+    }
+
+    .output-level-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .output-level-name {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .output-tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .output-body { padding: 0 40px 40px; }
+
+    .output-section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .output-section:last-of-type { border-bottom: none; }
+
+    .output-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .output-description {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Failure modes in output */
+    .failure-modes { display: flex; flex-direction: column; gap: 14px; }
+
+    .failure-mode-item {
+      background: var(--danger-light);
+      border: 1px solid #f5c6c2;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .failure-mode-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--danger);
+      margin-bottom: 8px;
+    }
+
+    .failure-mode-desc {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Actions in output */
+    .action-items { display: flex; flex-direction: column; gap: 14px; }
+
+    .action-item {
+      background: var(--success-light);
+      border: 1px solid #b8e4cb;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .action-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 6px;
+    }
+
+    .action-desc {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .action-done {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .action-done strong { font-style: normal; color: var(--text); }
+
+    /* Level arc in output */
+    .output-arc {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px 0;
+    }
+
+    .arc-step {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .arc-step.current {
+      background: var(--accent);
+      border-color: var(--accent-dark);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .arc-arrow {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+    }
+
+    /* Drill-down for output */
+    .output-drilldown-toggle {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      color: var(--accent-dark);
+      cursor: pointer;
+      padding: 8px 0;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .output-drilldown-toggle:hover { color: var(--accent); }
+
+    .output-drilldown { display: none; }
+    .output-drilldown.open { display: block; }
+
+    .drilldown-section {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-top: 16px;
+    }
+
+    .drilldown-section h4 {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .tension-poles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tension-pole {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.85rem;
+    }
+
+    .tension-pole .pole-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .historical-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .historical-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .historical-text {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Output actions row */
+    .output-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 28px 40px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .retake-link {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .retake-link:hover { color: var(--accent-dark); }
+
+    /* ─── Section 6: Exit ──────────────────────────────────── */
+    #exit .exit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    #exit .card { display: flex; flex-direction: column; }
+    #exit .card h3 { margin-bottom: 10px; }
+    #exit .card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
+    #exit .card .btn { display: block; text-align: center; }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+
+    .footer-icon-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-icon-link:hover { color: var(--accent-dark); text-decoration: none; }
+
+    .footer-disclaimer {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 8px !important;
+    }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.4rem; }
+      .section { padding: 40px 0; }
+      #entry { padding: 48px 0 40px; }
+
+      #context .context-grid { grid-template-columns: 1fr; gap: 36px; }
+      #cases .cases-grid { grid-template-columns: 1fr; }
+      #exit .exit-grid { grid-template-columns: 1fr; }
+
+      .tension-poles { grid-template-columns: 1fr; }
+      .output-header { padding: 24px 24px; }
+      .output-body { padding: 0 24px 24px; }
+      .output-actions { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+      .retake-link { margin-left: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-hamburger { display: flex; align-items: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(250,250,250,0.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 8px 24px 16px;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { padding: 12px 0; border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a { font-size: 1rem; }
+      .nav { position: sticky; } /* ensure stacking context for dropdown */
+      .nav-inner { position: relative; }
+      .output-level-name { font-size: 1.5rem; }
+      .arc-step { font-size: 0.65rem; padding: 5px 10px; }
+    }
+
+    /* ─── Print ────────────────────────────────────────────── */
+    @media print {
+      .nav, #entry, #context, #cases, #assessment, #exit, .footer,
+      .output-actions, .output-drilldown-toggle, .output-drilldown { display: none !important; }
+
+      #output { display: block !important; }
+
+      .output-card { border: 1.5px solid #aaa; }
+      .output-header { background: #f5f5f5; -webkit-print-color-adjust: exact; }
+      .output-level-name { color: #333; }
+      .failure-mode-item { background: #f9f9f9; border-color: #ddd; }
+      .failure-mode-name { color: #c00; }
+      .action-item { background: #f9f9f9; border-color: #ddd; }
+      .action-name { color: #1a6b40; }
+      .arc-step.current { background: #555; color: #fff; -webkit-print-color-adjust: exact; }
+
+      .print-footer {
+        display: block !important;
+        font-size: 0.75rem;
+        color: #888;
+        text-align: center;
+        padding-top: 16px;
+        border-top: 1px solid #ddd;
+        margin-top: 16px;
+      }
+    }
+
+    .print-footer { display: none; }
+
+    /* ─── Essay Carousel ───────────────────────────────────── */
+    .essay-carousel-wrap {
+      position: relative;
+    }
+
+    .essay-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+      /* reveal partial next card to signal scrollability */
+      padding-right: 40px;
+    }
+
+    .essay-carousel::-webkit-scrollbar { display: none; }
+
+    .essay-card {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      background: #fff;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      border-radius: 2px;
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+
+    .essay-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .essay-card-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+
+    .essay-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .essay-card:hover .essay-card-img img {
+      transform: scale(1.03);
+    }
+
+    .essay-card-body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .essay-card-question {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--accent-dark);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .essay-card-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .essay-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .essay-card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, color 0.15s;
+      border-radius: 2px;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .carousel-hint {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      margin-left: 4px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ─── Nav ──────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="javascript:void(0)" onclick="navTo('entry')" class="wordmark">
+      Protocolized
+      <span class="wordmark-sub">Protocol Research and Development</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="javascript:void(0)" onclick="navTo('context')">Model</a></li>
+      <li><a href="javascript:void(0)" onclick="navTo('cases')">Case Studies</a></li>
+      <li><a href="javascript:void(0)" onclick="navTo('assessment')">Assessment</a></li>
+      <li><a href="https://protocolized.summerofprotocols.com/" target="_blank">Subscribe</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu" id="nav-hamburger">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="5.5" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+        <rect x="2" y="10.25" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+        <rect x="2" y="15" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── Section 1: Entry ─────────────────────────────────── -->
+<section id="entry">
+  <div class="container">
+    <h1>A Capability Maturity Model<br>for Generative AI Adoption</h1>
+    <p class="entry-title-sub">Building Operational Confidence for a Probabilistic Stack</p>
+    <p class="entry-descriptor">A Practical Guide for Deployment Managers</p>
+
+    <div class="entry-intro">
+      <p>You are deploying AI whether you planned to or not. Your employees are already using ChatGPT on their phones, Claude in their browsers, and GitHub Copilot in their IDEs. The question is how to transform that chaotic shadow adoption into a strategic capability that compounds over time.</p>
+
+      <p>This Capability Maturity Model maps that path. Five levels: from shadow adoption (Level 1: Shadow) through broadly sanctioned but ungoverned deployment (Level 2: Sanctioned), deliberately designed AI-native workflows (Level 3: Designed), AI as sector infrastructure (Level 4: Infrastructural), to the emerging state where AI becomes invisible civilizational coordination infrastructure (Level 5: Planetary).</p>
+
+      <p>The goal is to build capability systematically, learning from each level's characteristic challenges before taking on the next. Each transition requires a different kind of governance. The failure modes at each level are predictable in advance.</p>
+
+      <p>Most organizations are at Level 1 or early Level 2 — the default starting point for any organization navigating this transition. The assessment below identifies where your organization sits, which failure modes you are most exposed to, and what the next move looks like.</p>
+    </div>
+
+    <a href="javascript:void(0)" onclick="navTo('assessment')" class="btn btn-primary" style="display:block;width:fit-content;margin:0 auto">Take the assessment →</a>
+  </div>
+</section>
+
+<!-- ─── Section 2: Context ───────────────────────────────── -->
+<section id="context" class="section">
+  <div class="container">
+
+    <div class="label" style="margin-bottom:12px">The five levels</div>
+    <h2 style="margin-bottom:12px">From shadow adoption to planetary infrastructure</h2>
+    <p class="context-intro">Each level describes an organizational state with characteristic governance challenges and failure modes. Levels 1–3 are actionable today. Levels 4–5 are projected.</p>
+
+    <div class="level-cards">
+
+      <div class="level-card">
+        <div class="level-card-header">
+          <div class="arc-num">1</div>
+          <div class="level-card-name">Shadow</div>
+        </div>
+        <div class="level-card-tagline">AI is in use. The organization doesn't know how, by whom, or with what data.</div>
+        <div class="level-card-desc">AI tools are in active use through employee initiative, without organizational authorization or oversight. Individual workers use personal accounts for work tasks. No policy governs what data can be submitted to which services. Exposure is invisible until a data leak, regulatory inquiry, or quality failure makes it visible — typically 400+ days after the initial incident. The characteristic tension is between individual productivity gains and organizational risk that accumulates silently.</div>
+        <div class="level-historical">
+          <span class="level-historical-label">Historical parallel</span>
+          <span class="level-historical-tech">Spreadsheets in accounting — Lotus 1-2-3, mid-1980s</span>
+          <span class="level-historical-desc">Finance departments adopted spreadsheets through individual initiative before IT or management had any policy. Individual productivity gains were real; organizational risk from formula errors and uncontrolled data was invisible until it wasn't.</span>
+        </div>
+        <button class="level-dim-toggle" onclick="toggleLevelDims(this)">Show dimensions ↓</button>
+        <div class="level-dims">
+          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">absent</span><span class="dim-desc">No governance exists. No policies, no oversight, no organizational awareness of AI use patterns.</span></div>
+          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">personal</span><span class="dim-desc">Employees use personal accounts (ChatGPT, Claude, Copilot) for work tasks. No enterprise licensing, access controls, or data handling review.</span></div>
+          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">ignored</span><span class="dim-desc">AI outputs are used without review or verification. No distinction exists between AI-generated and human-generated work.</span></div>
+          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">ad hoc</span><span class="dim-desc">Each employee makes independent decisions about which tools to use and how. No shared standard or organizational visibility.</span></div>
+          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">none</span><span class="dim-desc">No mechanism exists to detect, record, or learn from AI errors. Failures disappear into the flow of work.</span></div>
+          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">none</span><span class="dim-desc">AI outputs are not verified before use in consequential contexts. No review step exists at any point in the workflow.</span></div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-card-header">
+          <div class="arc-num">2</div>
+          <div class="level-card-name">Sanctioned</div>
+        </div>
+        <div class="level-card-tagline">The organization has granted AI access. It hasn't designed what to do with it.</div>
+        <div class="level-card-desc">The organization has granted broad AI access and signaled strategic intent. Enterprise licenses are deployed; adoption rates climb. What is missing is the governing protocol: which tasks, with what review process, what quality standard, what escalation path when AI fails. High adoption rates and early productivity gains accumulate alongside governance failures that surface when they become external-facing — in customer complaints, court decisions, or regulatory findings. The characteristic tension is between maximizing adoption speed and building the review infrastructure that makes adoption durable.</div>
+        <div class="level-historical">
+          <span class="level-historical-label">Historical parallel</span>
+          <span class="level-historical-tech">Corporate email — Microsoft Exchange / Lotus Notes, early 1990s</span>
+          <span class="level-historical-desc">Email was mandated broadly before organizations had designed how to use it. The mandate produced adoption. The absence of workflow design produced attention overload, inbox as default coordination mechanism, and meeting culture as the override.</span>
+        </div>
+        <button class="level-dim-toggle" onclick="toggleLevelDims(this)">Show dimensions ↓</button>
+        <div class="level-dims">
+          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">reactive</span><span class="dim-desc">Governance responds to incidents. Policies exist but are triggered by failures, not designed around AI's probabilistic properties.</span></div>
+          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">sanctioned</span><span class="dim-desc">Enterprise AI licenses are in place and personal account use is discouraged. Tool selection has been reviewed, but workflows have not been redesigned around the tools.</span></div>
+          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">absorbed</span><span class="dim-desc">Errors are noticed and corrected informally when they surface. No systematic process exists for detecting AI failures before they reach end users.</span></div>
+          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">mandated</span><span class="dim-desc">AI use is mandated or encouraged organization-wide, but teams coordinate AI use independently with no shared workflow standard.</span></div>
+          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">reactive</span><span class="dim-desc">Failures trigger individual corrections but no systematic tracking, aggregate learning, or trend analysis across workflows.</span></div>
+          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">informal</span><span class="dim-desc">Some outputs are reviewed before use, but informally and inconsistently. No defined criteria, no named reviewer, no record of what was checked.</span></div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-card-header">
+          <div class="arc-num">3</div>
+          <div class="level-card-name">Designed</div>
+        </div>
+        <div class="level-card-tagline">AI workflows are designed, not improvised. The business model depends on them.</div>
+        <div class="level-card-desc">At least one core workflow has been deliberately designed around AI — with a named owner, quality metrics, and a defined escalation path for failures. Removing AI from that workflow would require rebuilding it. The governance question has shifted from controlling use to designing protocols that handle failure, versioning, and external dependencies without losing the speed advantage AI provides. Domain expertise is the limiting constraint: the knowledge required to specify what good AI output looks like in a specific context. The characteristic tension is between AI-accelerated internal velocity and external dependencies — regulatory timelines, supplier lead times, partner cycles — that move at human pace.</div>
+        <div class="level-historical">
+          <span class="level-historical-label">Historical parallel</span>
+          <span class="level-historical-tech">Git and CI/CD — 2008–2015</span>
+          <span class="level-historical-desc">Competitive position in software development came to depend on how well the deployment workflow was designed. Teams that designed CI/CD protocols well shipped faster and with fewer regressions. Domain expertise — knowing what to test and when — was the limiting constraint, not tool access.</span>
+        </div>
+        <button class="level-dim-toggle" onclick="toggleLevelDims(this)">Show dimensions ↓</button>
+        <div class="level-dims">
+          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">designed</span><span class="dim-desc">At least one workflow has a designed governance protocol: specific review criteria, named ownership, defined escalation paths. Governance is workflow-specific, not organization-wide.</span></div>
+          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">purpose-built</span><span class="dim-desc">The organization has built or customized AI tooling for its specific domain context — beyond off-the-shelf configuration. Internal tooling reflects the specific verification and coordination requirements of the workflows.</span></div>
+          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">governed</span><span class="dim-desc">AI outputs in governed workflows are reviewed against defined criteria by named reviewers. Outside governed workflows, handling remains informal.</span></div>
+          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">designed</span><span class="dim-desc">Coordination protocols are explicitly designed for AI-native workflows — handoffs, review cadences, and escalation paths are structured to handle the speed differential between AI production and human review.</span></div>
+          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">systematic</span><span class="dim-desc">Quality metrics track workflow performance on a defined cadence. Failures trigger protocol reviews, not just individual corrections.</span></div>
+          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">procedural</span><span class="dim-desc">Verification follows documented procedures in at least one workflow. Reviewers know what they're checking, why they're checking it, and what constitutes a failure.</span></div>
+        </div>
+      </div>
+
+      <div class="level-card projected">
+        <div class="level-card-header">
+          <div class="arc-num">4</div>
+          <div class="level-card-name">Infrastructural <span class="projected-badge">Projected</span></div>
+        </div>
+        <div class="level-card-tagline">AI is sector infrastructure. The question is no longer whether to use it but how to govern it collectively.</div>
+        <div class="level-card-desc">AI capability has become a baseline expectation across the sector. Individual organizational advantage has been competed away; the governance challenge is now collective. The questions are market-structural: how does the industry coordinate AI use, handle shared risks, establish interoperability standards, and prevent concentration of AI capability that produces anti-competitive outcomes. Individual organizational maturity is necessary but not sufficient at this level. The characteristic tension is between industry standardization — which enables coordination — and organizational differentiation through proprietary AI capability.</div>
+        <div class="level-historical">
+          <span class="level-historical-label">Historical parallel</span>
+          <span class="level-historical-tech">EDI in retail and manufacturing — late 1980s–1990s</span>
+          <span class="level-historical-desc">Walmart mandated Electronic Data Interchange for all suppliers. Early adopters had competitive advantage. Then every major retailer adopted it. Individual advantage disappeared; the floor for the whole sector rose. Not adopting EDI meant not participating in the market.</span>
+        </div>
+        <button class="level-dim-toggle" onclick="toggleLevelDims(this)">Show dimensions ↓</button>
+        <div class="level-dims">
+          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">systematized</span><span class="dim-desc">Governance protocols are systematized across the organization and aligned with sector-wide standards. The organization contributes to or formally complies with industry AI governance frameworks.</span></div>
+          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">native</span><span class="dim-desc">AI is native to the organization's core infrastructure — not deployed as a layer on top of existing systems but embedded in the systems themselves.</span></div>
+          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">systematized</span><span class="dim-desc">Cross-workflow quality standards exist and are tracked at the organizational level. Handling is consistent and measurable across all critical workflows.</span></div>
+          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">automated</span><span class="dim-desc">Coordination between AI workflows is automated where possible. Handoffs between workflows are governed by protocol without requiring manual intervention at each step.</span></div>
+          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">predictive</span><span class="dim-desc">Performance data from AI workflows predicts failure modes before they occur. Quality instrumentation is forward-looking, not just reactive.</span></div>
+          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">metriced</span><span class="dim-desc">Verification is tracked with quantitative metrics across all critical AI workflows. Error rates, correction rates, and escalation rates are monitored and reported on a defined cadence.</span></div>
+        </div>
+      </div>
+
+      <div class="level-card projected">
+        <div class="level-card-header">
+          <div class="arc-num">5</div>
+          <div class="level-card-name">Planetary <span class="projected-badge">Projected</span></div>
+        </div>
+        <div class="level-card-tagline">AI is invisible infrastructure for civilization-scale coordination. The governance challenge is legibility, not adoption.</div>
+        <div class="level-card-desc">AI governs critical civilizational coordination systems — supply chains, financial infrastructure, public health surveillance. The governance challenge is no longer adoption or protocol design but legibility: understanding what the systems are doing well enough to intervene when they fail. Individual organizational governance is a component of a problem no single actor controls. Historical precedent: the 2021 Maersk ransomware attack and the Ever Given Suez blockage as early examples of how infrastructure-level failures propagate across sectors before any actor can respond.</div>
+        <div class="level-historical">
+          <span class="level-historical-label">Historical parallel</span>
+          <span class="level-historical-tech">Internet protocols — TCP/IP, SMTP, BGP, 2000s–present</span>
+          <span class="level-historical-desc">The 2021 Facebook BGP misconfiguration took down Facebook, Instagram, and WhatsApp globally. The failure propagated before any single actor could respond. The internet's routing protocols are invisible until they fail — and when they fail, the failure is everywhere at once.</span>
+        </div>
+        <button class="level-dim-toggle" onclick="toggleLevelDims(this)">Show dimensions ↓</button>
+        <div class="level-dims">
+          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">infrastructure</span><span class="dim-desc">Governance is itself infrastructure — embedded in protocols operating at civilizational scale. No single organization controls or fully understands the full governance system.</span></div>
+          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">native</span><span class="dim-desc">AI tooling is indistinguishable from the infrastructure it governs. Tools are not deployed separately — they are the substrate of coordination across systems.</span></div>
+          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">generative</span><span class="dim-desc">AI protocols generate new coordination mechanisms in response to uncertainty faster than human review can operate. Human oversight functions at system design level, not individual output level.</span></div>
+          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">infrastructure</span><span class="dim-desc">Coordination between systems happens through AI protocols at machine speed, below the threshold of human attention in normal operation.</span></div>
+          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">generative</span><span class="dim-desc">The system modifies its own governing protocols in response to observed failures. Human intervention is required only for novel failure modes the self-correction mechanism cannot address.</span></div>
+          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">self-correcting</span><span class="dim-desc">Verification is self-correcting at the protocol level. Failures trigger automated protocol adjustments. Human oversight is required only for failure modes outside the system's known envelope.</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="model-rationale">
+      <div class="label" style="margin-bottom:14px">Why this model exists</div>
+      <h2>Protocols are the key to AI adoption success.</h2>
+      <p class="context-intro">Adoption maturity is defined by an organization's ability to govern uncertainty.</p>
+
+      <p>Most organizations apply enterprise-software governance logic to AI: policies, compliance controls, tooling checklists. That logic was designed for deterministic processes. AI systems are probabilistic. The mismatch produces the characteristic failures — shadow adoption, quality floor collapse, liability exposure, over-reliance.</p>
+
+      <p>The unit of maturity in this model is not process compliance. It is the organization's ability to govern uncertainty productively: to define which AI outputs require human verification, to enforce that oversight, and to learn from failures when they occur.</p>
+
+      <p>Levels 1–3 describe organizational states deployment teams can act on directly. Levels 4–5 describe what happens when AI governance shifts from the organizational to the industry and civilizational scale.</p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Section 3: Case Studies ──────────────────────────── -->
+<section id="cases" class="section">
+  <div class="container">
+    <div class="label" style="margin-bottom:8px">Evidence base</div>
+    <h2 style="margin-bottom:8px">Explore three case studies</h2>
+    <p class="context-intro" style="margin-bottom:36px">Read the diagnostic question at the bottom of each card — one of these patterns is probably yours.</p>
+
+    <div class="cases-grid">
+
+      <!-- Samsung -->
+      <div class="case-card">
+        <div class="level-pill">Level 1 — Shadow</div>
+        <h3 class="case-org"><a href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Samsung Electronics ↗</a></h3>
+        <div class="case-sector">Technology / Semiconductor</div>
+        <div class="case-body">
+          Three engineers submitted proprietary source code and meeting transcripts to personal ChatGPT accounts within one month in April 2023. No policy governed this. Samsung had no visibility into what data had left the organization until after the fact. The data could not be recalled.
+        </div>
+        <div class="case-mechanism">
+          When governance is absent, exposure is invisible until it isn't.
+        </div>
+        <div class="case-question">
+          Do you know which AI tools your employees are using today — and which organizational data they've submitted to those tools?
+        </div>
+        <button class="drill-toggle" onclick="toggleDrill(this)">What happened next ↓</button>
+        <div class="drill-content">
+          Samsung banned all external AI tools, built an internal LLM (Samsung Gauss), then selectively re-admitted external tools under a governed protocol over two years. The arc — incident → ban → internal alternative → governed re-admission — is the most documented Level 1 exit path available. The Samsung incident was not unusual in scale: contemporaneous Cyberhaven research found that in a 100,000-person company, confidential data was being shared with AI services hundreds of times per week. (Cyberhaven, Q1 2024.) Most organizations skip directly to re-admission without building the governing protocol in the middle. The ban without a governed alternative is as common a failure mode as the original leak.
+        </div>
+      </div>
+
+      <!-- Klarna -->
+      <div class="case-card">
+        <div class="level-pill">Level 2 — Sanctioned</div>
+        <h3 class="case-org"><a href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Klarna ↗</a></h3>
+        <div class="case-sector">Financial Technology</div>
+        <div class="case-body">
+          90% daily AI adoption in the first month. Two-thirds of customer service handled by AI. $40M in claimed profit improvement. Twelve months later, the CEO reversed course and began rehiring human agents, citing quality failures the absent governance layer could not address.
+        </div>
+        <div class="case-mechanism">
+          The mandate produced adoption. Adoption revealed quality failures. Quality failures required protocol. Designing protocol required slowing adoption. Leadership didn't want to slow adoption.
+        </div>
+        <div class="case-question">
+          When your AI produces a wrong answer in a customer-facing workflow, does a defined process exist for catching it — or does someone fix it when they notice?
+        </div>
+        <button class="drill-toggle" onclick="toggleDrill(this)">What happened next ↓</button>
+        <div class="drill-content">
+          The financial results and the quality failures coexisted for longer than they should have. Cost savings from AI-handled volume were immediate and measurable. Quality degradation was diffuse and slow to surface — it required customers to complain, complaints to accumulate, and leadership to connect the pattern. That lag is the Level 2 trap: the metrics that look good are leading, and the metrics that matter are trailing. By the time the reversal became necessary, Klarna had already built the customer expectation that human support was gone.
+        </div>
+      </div>
+
+      <!-- Boom -->
+      <div class="case-card">
+        <div class="level-pill">Level 3 — Designed</div>
+        <h3 class="case-org"><a href="https://boomsupersonic.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Boom Supersonic ↗</a></h3>
+        <div class="case-sector">Aerospace / Manufacturing</div>
+        <div class="case-body">
+          mkBoom automates full aircraft structural analysis from a parametric configuration file. The design methodology depends on it. Removing AI from Boom's core workflows would require rebuilding them — not substituting a human. A discovery (Boomless Cruise) found through cheap iteration would have taken months under previous methods. Zero safety incidents across the XB-1 program.
+        </div>
+        <div class="case-mechanism">
+          When AI is embedded in the competitive position, governance shifts from controlling use to designing protocols that handle failure, versioning, and external dependencies without losing the speed advantage.
+        </div>
+        <div class="case-question">
+          If your primary AI-assisted workflow stopped working tomorrow — would you pause it, or rebuild it?
+        </div>
+        <button class="drill-toggle" onclick="toggleDrill(this)">Why Level 3 and not higher ↓</button>
+        <div class="drill-content">
+          Boom is a late Level 3 case, not Level 4 or 5. Their business model depends on AI; the aerospace industry does not depend on Boom's approach. Level 3 is organizational competitive reliance. Level 4 is when the industry itself cannot function at standard productivity without AI. Boom is the clearest documented case of an organization that designed its governance protocol alongside its AI capability — rather than after a failure forced it.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: Assessment ─────────────────────────────── -->
+<section id="assessment" class="section">
+  <div class="container">
+    <div class="label" style="margin-bottom:8px">Self-assessment</div>
+    <h2 style="margin-bottom:8px">Where is your organization?</h2>
+    <p class="section-sub">Answer based on where your organization actually is today, not where you think it will be in six months.</p>
+
+    <!-- Step 1: Recognition -->
+    <div id="step1" class="step active">
+
+      <div class="option-cards">
+        <div class="option-card" onclick="selectOption(this, 'A')">
+          <div class="option-letter">Option A</div>
+          <div class="option-text">AI tools are in active use, but the organization has limited visibility into which tools, by which teams, on which account types. No formal data boundary policy governs what can be submitted to external AI services. When AI produces a wrong answer, the response is case-by-case — whoever notices it fixes it. There is no defined process.</div>
+        </div>
+
+        <div class="option-card" onclick="selectOption(this, 'B')">
+          <div class="option-letter">Option B</div>
+          <div class="option-text">Enterprise AI licenses have been rolled out broadly. AI use is encouraged or mandated. At least one team has started designing workflows around AI outputs. But governance is uneven: some workflows have review criteria, others don't. Quality failures in AI-assisted work are handled inconsistently across teams.</div>
+        </div>
+
+        <div class="option-card" onclick="selectOption(this, 'C')">
+          <div class="option-letter">Option C</div>
+          <div class="option-text">At least one core workflow has been deliberately designed around AI — with a named owner, a quality metric, and a defined escalation path when it fails. Removing AI from that workflow would require rebuilding it. The organization can describe its verification protocol for that workflow without consulting a policy document.</div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button id="step1-next" class="btn btn-primary" onclick="goToStep2()" style="display:none">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2A: Scenario for Option A -->
+    <div id="step2A" class="step">
+
+      <div class="scenario-label">The situation</div>
+      <div class="scenario-text">
+        A team lead reports that an AI tool produced an incorrect summary that went into a client deliverable. The error was caught by the client, not internally. What happens next in your organization?
+      </div>
+
+      <div class="radio-options">
+        <div class="radio-option" onclick="selectRadio(this, '1')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">There is no defined process — it gets handled ad hoc, noted informally, and people move on</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '2')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">It gets escalated, but who handles it and how depends on who's in the room</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '2-3')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A defined review protocol exists for that workflow; the failure triggers a specific response and a record is created</div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button id="step2A-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
+        <span class="calculating" id="calc-A">Placing your organization…</span>
+      </div>
+    </div>
+
+    <!-- Step 2B: Scenario for Option B -->
+    <div id="step2B" class="step">
+
+      <div class="scenario-label">The situation</div>
+      <div class="scenario-text">
+        Your organization mandated AI adoption six months ago. Leadership wants a governance status update. Which of these is closest to the honest answer?
+      </div>
+
+      <div class="radio-options">
+        <div class="radio-option" onclick="selectRadio(this, '2')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">We have a policy document. Enforcement is inconsistent — it depends on the team</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '2-3')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">One or two teams have designed their workflow around AI with real accountability. Most teams haven't</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '3')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">Multiple core workflows are designed, owned, and tracked. We have quality metrics for at least two of them</div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button id="step2B-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
+        <span class="calculating" id="calc-B">Placing your organization…</span>
+      </div>
+    </div>
+
+    <!-- Step 2C: Scenario for Option C -->
+    <div id="step2C" class="step">
+
+      <div class="scenario-label">The situation</div>
+      <div class="scenario-text">
+        The AI tool your primary workflow depends on releases a model update. Output characteristics shift subtly — the failure modes are different from the previous version. What happens in your organization?
+      </div>
+
+      <div class="radio-options">
+        <div class="radio-option" onclick="selectRadio(this, '2-3')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">The review protocol stays the same. Someone might notice the change over time — it hasn't come up as a process question</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '3')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">The team that owns the workflow evaluates the update before deploying. The protocol is reviewed and adjusted if needed</div>
+        </div>
+        <div class="radio-option" onclick="selectRadio(this, '3-4')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">Governance protocols are versioned with tooling changes. Multiple workflows are evaluated and updated on a defined schedule</div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button id="step2C-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
+        <span class="calculating" id="calc-C">Placing your organization…</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Section 5: Output ─────────────────────────────────── -->
+<section id="output" class="section">
+  <div class="container">
+    <div class="label" style="margin-bottom:20px">Your result</div>
+    <div id="output-card" class="output-card">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="print-footer">
+      Protocolized · Protocol Research and Development · protocolized.summerofprotocols.com · AI Capability Maturity Model v2.2 · 2026
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 6: Exit ───────────────────────────────────── -->
+<section id="exit" class="section">
+  <div class="container">
+    <div class="exit-grid">
+      <div class="card">
+        <div class="label" style="margin-bottom:10px">Go deeper</div>
+        <h3>Learn more about Protocols</h3>
+        <p>The Protocolized newsletter covers AI adoption, organizational governance, and protocol design — written for practitioners, not vendors.</p>
+        <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank" class="btn btn-primary">Subscribe ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="label" style="margin-bottom:10px">Working through this with your team?</div>
+        <h3>Talk through your placement</h3>
+        <p>If you're navigating Level 2 or 3 and want a structured conversation about governance protocol design, we're available for a working session.</p>
+        <!-- TODO: Replace with Formspree endpoint or Netlify Forms when backend is ready -->
+        <!-- TODO: Optionally write submissions to GitHub-hosted CSV via GitHub Actions workflow_dispatch -->
+        <a href="https://discord.com/invite/PGauyYyu6T" target="_blank" class="btn btn-secondary">Get in touch ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 7: From the Archive ──────────────────────── -->
+<section id="essays" class="section">
+  <div class="container">
+    <h2>From the Archive</h2>
+    <p class="context-intro">Essays from Protocolized on protocol thinking, AI adoption, and organizational design.</p>
+
+    <div class="essay-carousel-wrap">
+      <div class="essay-carousel" id="essay-carousel">
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/efebe610-d5e7-47c1-a736-368e2bab2cdf_1129x1129.png" alt="Have Your Factory Call My Factory" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What if the real AI productivity gains are happening in relationships your org has no visibility into?</div>
+            <div class="essay-card-title">Have Your Factory Call My Factory</div>
+            <div class="essay-card-desc">The visible AI story — chatbots, enterprise licenses — is the surface layer. Substantive gains are accumulating in bilateral "factory-to-factory" networks: individuals with bespoke agent pipelines quietly doing work your org's formal tools can't match. Domain knowledge, not technical skill, is the differentiator.</div>
+            <div class="essay-card-meta">Venkatesh Rao · March 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/finding-fault-lines-within-the-firm" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/5655c5e3-650d-43fe-9ff1-b6d850bb9b43_896x1120.png" alt="Finding Fault Lines within the Firm" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What does it mean when AI adoption creates friction instead of removing it?</div>
+            <div class="essay-card-title">Finding Fault Lines within the Firm</div>
+            <div class="essay-card-desc">AI acts as a protocol disturbance that makes invisible coordination systems visible through strain. When AI speeds up internal production without changing external constraints, temporal misalignment surfaces. The friction AI creates is a map of where your governance structure needs redesign.</div>
+            <div class="essay-card-meta">Rafa Fernández · January 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/mechanical-currents" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/2dcf52d4-128e-400a-bfed-48287385bc1a_1000x714.jpeg" alt="Mechanical Currents" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">Why are AI productivity estimates wildly unreliable across teams?</div>
+            <div class="essay-card-title">Mechanical Currents</div>
+            <div class="essay-card-desc">Three adoption challenges most organizations aren't naming correctly: AI as educational accelerant (not productivity multiplier), cheap content generation creating organizational noise that requires a strategic response, and uneven integration producing task estimation failures that create competitive exposure.</div>
+            <div class="essay-card-meta">Timber Stinson-Schroff · September 2025</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/constructing-the-evil-twin-of-ai" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/2923cd04-3c86-44e8-8e5e-8dea41aeef27_1000x1000.png" alt="Constructing the Evil Twin of AI" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">If AI is defined by fluid intelligence and proactive agency, what's its structural opposite — and why do you need it?</div>
+            <div class="essay-card-title">Constructing the Evil Twin of AI</div>
+            <div class="essay-card-desc">Protocols are AI's structural inverse: deliberately rigid, constrained in agency, resistant to fluidity. As AI systems grow more powerful and opaque, governance requires equivalently immovable structures. Effective AI governance doesn't fight intelligence with intelligence — it constrains it with mathematical inevitability.</div>
+            <div class="essay-card-meta">Venkatesh Rao · October 2025</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/theorizing-protocolization-i-new" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/616e982c-403e-4399-a9c1-6285182084dd_1024x547.png" alt="Theorizing Protocolization I: New Nature" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">How do protocols become invisible — and why is that the governance problem?</div>
+            <div class="essay-card-title">Theorizing Protocolization I: New Nature</div>
+            <div class="essay-card-desc">Protocols succeed by disappearing. When coordination infrastructure becomes invisible, it becomes unmanageable — conditions for systemic failure accumulate silently. This essay maps how AI, blockchains, and sensing networks are creating a planetary computational tangle that no existing governance framework can comprehend in full.</div>
+            <div class="essay-card-meta">Venkatesh Rao & Patrick Nast · January 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/from-destination-ai-to-intelligence" target="_blank" rel="noopener">
+          <div class="essay-card-img">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/6cd91ba2-b82e-43e3-9c1e-46db46106e1e_1129x1129.png" alt="From Destination AI to Intelligence Media" loading="lazy">
+          </div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What happens when AI stops being a tool you visit and becomes the medium everything runs through?</div>
+            <div class="essay-card-title">From Destination AI to Intelligence Media</div>
+            <div class="essay-card-desc">AI is transitioning from destination to infrastructure — "intelligence media" through which AI-generated content circulates as intermediate artifacts. The most important developments aren't in model capability but in circulation infrastructure, and governance posture needs to shift accordingly.</div>
+            <div class="essay-card-meta">Protocolized · February 2026</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollEssays(-1)" aria-label="Previous">←</button>
+        <button class="carousel-btn" onclick="scrollEssays(1)" aria-label="Next">→</button>
+        <span class="carousel-hint">scroll to explore</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-icons">
+      <a href="https://protocolized.summerofprotocols.com/" target="_blank" rel="noopener" class="footer-icon-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+        Protocolized on Substack
+      </a>
+      <a href="https://github.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model" target="_blank" rel="noopener" class="footer-icon-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        Source on GitHub
+      </a>
+    </div>
+    <p>Protocolized · Protocol Research and Development · AI Capability Maturity Model v2.2</p>
+    <p class="footer-disclaimer">Diagnostic tool only. No data collected or stored. Use it to orient, not to replace organizational judgment.</p>
+  </div>
+</footer>
+
+
+<script>
+/* ─── Nav ───────────────────────────────────────────────── */
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('nav-links').classList.remove('open');
+}
+function navTo(id) {
+  closeNav();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── State ─────────────────────────────────────────────── */
+let step1Choice = null;   // 'A' | 'B' | 'C'
+let step2Choice = null;   // '1' | '2' | '2-3' | '3' | '3-4'
+
+/* ─── Assessment data ────────────────────────────────────── */
+const RESULTS = {
+
+  '1': {
+    levelNum: 1,
+    levelName: 'Shadow',
+    tagline: 'AI is in use. The organization doesn\'t know how, by whom, or with what data.',
+    description: `Your organization is at the default starting position — not a failure, but a baseline every organization passes through. AI tools are in active use through employee initiative. No organizational decision has authorized them. Individual workers use personal accounts for work tasks. No policy governs this, no tooling controls it, and no one has a complete picture of what organizational data is being submitted to which systems.
+
+The absence of a governance protocol is itself invisible: organizations don't feel like they're at Level 1 because nothing has gone wrong yet. The typical organization is at Level 1 for 400+ days before a shadow AI incident surfaces. Shadow adoption is the observable signal that existing work protocols have been pushed beyond their design range. The protocol response (sanctioned access, data boundaries, reviewed terms) has not yet been adopted.`,
+    failureModes: [
+      {
+        name: 'Data leakage to third-party AI services',
+        description: 'Employees submit proprietary source code, meeting transcripts, patient data, client information, or trade secrets to consumer AI services via personal accounts. The data cannot be recalled. IP exposure is permanent. Samsung, April 2023: three engineers, three incidents, one month.'
+      },
+      {
+        name: 'Regulatory exposure without awareness',
+        description: 'Data submitted to external AI services creates HIPAA, GDPR, attorney-client privilege, or trade secret exposure that the organization cannot detect or quantify. Discovery typically occurs 400+ days after initial exposure — long after the data has been processed. Healthcare sector: 86% of organizations have reported shadow AI incidents; only 35% can track their own AI usage. (symplr, 2025)'
+      }
+    ],
+    actions: [
+      {
+        name: 'Conduct an AI tool inventory',
+        description: 'Identify which AI tools are in use, by which teams, on which account types (personal vs. enterprise). Visibility is the goal: which tools, which teams, which account types.',
+        doneWhen: 'IT can name all AI tools in active use and the account type for each.'
+      },
+      {
+        name: 'Sanction at least one AI tool with reviewed terms of service',
+        description: 'Designate one enterprise AI tool with legal review of data handling terms completed. Communicate it as the governed alternative to personal accounts.',
+        doneWhen: 'At least one AI tool has reviewed terms of service and has been communicated as the sanctioned option.'
+      },
+      {
+        name: 'Issue a minimum data boundary policy',
+        description: 'State what categories of data may not be submitted to external AI services. One page is sufficient. This is not a comprehensive AI governance framework — it is a data boundary statement.',
+        doneWhen: 'Policy exists, has been communicated, and names specific data categories.'
+      }
+    ],
+    tension: {
+      a: 'Individual productivity gain through unsanctioned AI use',
+      b: 'Organizational exposure from ungoverned data submission and unreviewed outputs'
+    },
+    periodTech: {
+      label: 'Historical parallel: Spreadsheets in accounting (mid-1980s)',
+      text: 'Individual accountants used Lotus 1-2-3 on personal computers for work that was officially done on mainframes. IT didn\'t know. Management didn\'t know. No policy existed. The individual gain was real; the organizational risk was invisible. Shadow adoption producing individual gains and organizational risk before any governance response — the Level 1 pattern.'
+    },
+    containerization: {
+      label: 'Containerization throughline: Pre-standard experimentation (1950s–60s)',
+      text: 'Malcom McLean shipped the first containers in 1956, but each company used proprietary box sizes. Ports experimented independently. A longshoreman at a given port didn\'t know whether arriving vessels\' boxes would fit available cranes. Individual companies saw efficiency gains; the system as a whole was ungoverned. The disruption event had arrived; the protocol response had not been adopted.'
+    },
+    arcSteps: ['1 — Shadow', '2 — Sanctioned', '3 — Designed', '4 — Infrastructural', '5 — Planetary'],
+    current: 0
+  },
+
+  '2': {
+    levelNum: 2,
+    levelName: 'Sanctioned',
+    tagline: 'The organization has granted AI access. It hasn\'t designed what to do with it.',
+    description: `Your organization has done the right thing: granted broad AI access and signaled strategic commitment. The failure mode at this level is executing the mandate without designing the governing protocol — which tasks, with what review process, what quality standard, what escalation path when AI fails.
+
+Two dynamics characterize Level 2. First, the Time to Mediocrity effect: AI produces functional output quickly in most domains, creating genuine early productivity gains while concealing the absence of expertise. Second, the financial indicator lag: strong financial metrics accumulate at the same time as governance failures, making the governance gap invisible until failures become external-facing. Level 2 organizations typically achieve high adoption rates and real early gains — then encounter a quality floor that the absent governance layer cannot address.`,
+    failureModes: [
+      {
+        name: 'Quality floor collapse',
+        description: 'AI replaces a human step that was simultaneously a production step and a quality-check step. Production volume increases; the quality check disappears. The gap is invisible in output volume metrics and visible in product quality or customer satisfaction. Failures surface when external parties (customers, courts, regulators) raise them — internal monitoring does not catch them first. Klarna reversed course after financial results were already strong.'
+      },
+      {
+        name: 'Mandate without criteria',
+        description: 'Leadership issues an AI competency requirement with no defined standard for compliance. Employees perform AI use to satisfy the mandate rather than integrating it meaningfully. The reported adoption rate is high; the governance maturity is unchanged. Shopify, April 2025: AI non-optional, no competency definition published for non-technical roles.'
+      },
+      {
+        name: 'Chatbot liability gap',
+        description: 'An AI system deployed in external-facing or legally consequential functions provides information that contradicts the organization\'s formal policy. External parties hold the organization responsible regardless of internal disclaimers. Air Canada: chatbot stated bereavement fares could be claimed retroactively; actual policy did not permit this; court ruled Air Canada liable.'
+      },
+      {
+        name: 'Policy/practice gap',
+        description: 'Practiced management allows contextual exceptions that written policy does not. When AI systems enforce written policy uniformly, the exceptions disappear. The organization discovers its formal policy was not its actual policy — and that employees, customers, and partners had been operating on the practiced version. AI removes the judgment layer that bridged the two.'
+      }
+    ],
+    actions: [
+      {
+        name: 'Design one AI-native workflow end-to-end',
+        description: 'Select a function where AI is already in use. Document the full workflow: what AI does, what the human reviews, what constitutes acceptable output, and what the escalation path is for failures. Build a working implementation with live data.',
+        doneWhen: 'One workflow is documented, repeatable, and has a named owner.'
+      },
+      {
+        name: 'Instrument quality for that workflow',
+        description: 'Define a metric that captures output quality, not just output volume. Track it. Assign ownership. The metric must be specific enough that a failure in the workflow produces a change in the number.',
+        doneWhen: 'A quality metric exists, is tracked on a defined cadence, and triggers a defined response when it falls below threshold.'
+      },
+      {
+        name: 'Build a minimum output review protocol',
+        description: 'For AI-generated outputs that go to external parties or govern consequential decisions: specify who reviews, what they check, and what constitutes an acceptable output. This is workflow-specific guidance — what to check and who is responsible.',
+        doneWhen: 'Reviewers in at least one workflow can state what they\'re checking and why.'
+      }
+    ],
+    tension: {
+      a: 'Maximizing AI adoption rate and reported productivity gains',
+      b: 'Building the review protocols that make those gains durable'
+    },
+    periodTech: {
+      label: 'Historical parallel: Corporate email (early 1990s)',
+      text: 'IT departments mandated Microsoft Exchange and Lotus Notes. Access was granted broadly. But no one designed a response protocol: how quickly should people respond? What goes in email versus voicemail? The mandate produced adoption; the absence of workflow design produced attention overload and communication chaos. The new persistent problem — inbox volume unmanageable — is the direct consequence of solving the old one.'
+    },
+    containerization: {
+      label: 'Containerization throughline: ISO standardization mandated, infrastructure not yet built (1965–75)',
+      text: 'ISO adopted 20ft and 40ft container standards in 1965–1968. Governments and major shipping companies mandated container adoption on key routes. But ports were not redesigned fast enough; rail and trucking infrastructure lagged. Containers arrived at ports that couldn\'t efficiently process them. The financial case was strong; the coordination failures were accumulating. The mandate had been issued; the intermodal coordination protocol had not yet been built.'
+    },
+    arcSteps: ['1 — Shadow', '2 — Sanctioned', '3 — Designed', '4 — Infrastructural', '5 — Planetary'],
+    current: 1
+  },
+
+  '2-3': {
+    levelNum: '2–3',
+    levelName: 'Sanctioned → Designed',
+    tagline: 'You have the foundations of Level 3. Consistency and measurement are missing.',
+    description: `Your organization is at the transition between Level 2 and Level 3. At least one workflow is designed — you have demonstrated that AI-native workflow design is possible in your context. What's missing is consistency across workflows and a quality measurement system that makes the governance protocol durable and repeatable across the organization.
+
+This is a common and productive stuck point. The risk is that the designed workflows become isolated examples while the rest of the organization continues operating at Level 2. The Level 2 failure modes — quality floor collapse, mandate without criteria — remain live risks in the undesigned workflows.`,
+    failureModes: [
+      {
+        name: 'Quality floor collapse (in undesigned workflows)',
+        description: 'The designed workflows are protected; the undesigned ones are not. Quality floor collapse is most likely to surface in the workflows that haven\'t received the same design attention — which are often the ones that handle higher volume or lower-visibility tasks.'
+      },
+      {
+        name: 'Mandate without criteria',
+        description: 'Leadership issues an AI competency requirement with no defined standard for compliance. Employees perform AI use to satisfy the mandate rather than integrating it meaningfully. The designed workflows exist as exceptions; the rest of the organization is still operating on compliance theater.'
+      },
+      {
+        name: 'Custom implementation accumulation',
+        description: 'Early designed workflows become custom solutions that never abstract into reusable patterns. The organization carries Level 3 complexity without Level 3 scope: each new workflow requires a new custom build, and standardization becomes politically difficult because every team owns its own implementation.'
+      }
+    ],
+    actions: [
+      {
+        name: 'Extend the designed workflow to one more function',
+        description: 'Take the workflow design approach that worked in the first function and apply it to the next highest-stakes AI workflow. Document the pattern, not just the implementation — so it can be replicated without requiring the same level of effort each time.',
+        doneWhen: 'Two workflows are documented, owned, and tracked with quality metrics.'
+      },
+      {
+        name: 'Instrument quality for the designed workflows',
+        description: 'Define a metric that captures output quality, not just output volume. Track it. The metric must be specific enough that a failure in the workflow produces a change in the number.',
+        doneWhen: 'Quality metrics exist for at least two workflows, tracked on a defined cadence, with a defined response when they fall below threshold.'
+      }
+    ],
+    tension: {
+      a: 'Maximizing AI adoption rate and reported productivity gains',
+      b: 'Building the review protocols that make those gains durable'
+    },
+    periodTech: {
+      label: 'Historical parallel: Corporate email → early Git adoption (transition period)',
+      text: 'Organizations that had mastered email workflows were beginning to design version control practices around their software — some teams had rigorous branching strategies while others were still using email attachments to share code. The designed practices existed but hadn\'t spread consistently across the organization.'
+    },
+    containerization: {
+      label: 'Containerization throughline: Early intermodal design, uneven adoption (late 1970s)',
+      text: 'Leading shipping firms like Maersk were designing end-to-end intermodal protocols — ship to rail to truck — while many others were still running containers on routes without the full intermodal infrastructure. The competitive advantage of the designed approach was visible; the sector hadn\'t standardized yet.'
+    },
+    arcSteps: ['1 — Shadow', '2 — Sanctioned', '2–3 Boundary', '3 — Designed', '4 — Infrastructural', '5 — Planetary'],
+    current: 2
+  },
+
+  '3': {
+    levelNum: 3,
+    levelName: 'Designed',
+    tagline: 'AI workflows are designed, not improvised. The business model depends on them.',
+    description: `Your organization has crossed from AI adoption into AI dependency: your competitive position relies on designed AI workflows. AI governs core operations. Workflows are built around AI rather than retrofitted to include it.
+
+The governance question has shifted: you are designing protocols that handle failure, versioning, and external dependencies without losing the speed advantage AI provides. Domain expertise is the limiting constraint — the knowledge required to specify what good output looks like in your specific context. Two operators with domain knowledge can run sophisticated AI production pipelines if they can articulate the coordination protocol clearly.`,
+    failureModes: [
+      {
+        name: 'Temporal divergence breakdown',
+        description: 'AI accelerates internal production faster than external dependencies can absorb. Review queues fill faster than reviewers can process them. The bottleneck has moved from production to coordination. Slacker Index: measure total lead time divided by actual AI working time. A ratio above 5:1 identifies downstream coordination as the bottleneck. Uber: 11% of pull requests opened by agents; code review became the primary bottleneck, requiring purpose-built tooling. (Venkatesh Rao / Protocolized, 2026)'
+      },
+      {
+        name: 'Ontological drift',
+        description: 'Mid-project redefinition of the concepts, categories, or ontologies that AI systems depend on becomes extremely expensive. AI systems encode prior definitions into outputs, training data, and prompt structures. Changing a definition requires auditing and revising everything downstream. Organizations attempt agile-style iteration on definitions that should have been frozen.'
+      },
+      {
+        name: 'Governance brittleness under versioning',
+        description: 'AI model updates or tool switches silently alter output characteristics that the governance protocol was calibrated for. A review process designed for one model\'s failure modes may not catch the same failures in the next model\'s outputs. The governance protocol is not versioned along with the tools it governs.'
+      },
+      {
+        name: 'Custom implementation accumulation',
+        description: 'Internal AI capability builds custom solutions that solve specific problems but never abstract into reusable platform features. The organization carries Level 3 complexity without the organizational platform to support it: each new use case requires a new custom build, and standardization becomes politically impossible because every team owns its own implementation.'
+      }
+    ],
+    actions: [
+      {
+        name: 'Measure and address temporal divergence',
+        description: 'Calculate the Slacker Index for your primary AI workflow: total lead time ÷ AI working time. Where the ratio exceeds 5:1, identify the downstream coordination bottleneck (review queue, approval chain, handoff delay) and redesign the coordination protocol.',
+        doneWhen: 'Slacker Index below 5:1 for primary workflow; bottleneck owner named.'
+      },
+      {
+        name: 'Define and freeze the domain ontology before deployment',
+        description: 'Name the concepts, categories, and definitions that AI systems will depend on. Establish a change process — not preventing change, but making changes deliberate and triggering downstream audits when they occur.',
+        doneWhen: 'Core domain concepts used by AI systems are documented and have a defined change process.'
+      },
+      {
+        name: 'Build a platform feedback loop',
+        description: 'When custom AI work is built for a specific use case, evaluate whether it can be abstracted into a reusable platform feature. If not, document why not. This prevents custom implementation accumulation.',
+        doneWhen: 'A review process exists for new AI implementations that includes a platform abstraction evaluation.'
+      }
+    ],
+    tension: {
+      a: 'AI-native internal velocity: iteration speed, design exploration, competitive differentiation',
+      b: 'External coordination dependencies — regulatory timelines, supplier lead times, partner cycles — that move at human pace'
+    },
+    periodTech: {
+      label: 'Historical parallel: Git and CI/CD in software development (2008–2015)',
+      text: 'Software teams deliberately redesigned their workflows around distributed version control. CI/CD pipelines formalized code review, automated testing, and deployment. A company\'s competitive output depended on how well its git workflow was designed — removing git from a software team\'s core workflow would require rebuilding it, not substituting a human. Domain expertise became the limiting constraint, not the tool\'s capabilities. The Uber case is the AI-era instance of exactly this pattern.'
+    },
+    containerization: {
+      label: 'Containerization throughline: Intermodal system designed end-to-end (1975–1990)',
+      text: 'The full intermodal protocol — ship to port to rail to truck — was deliberately designed as an integrated system. Maersk and Sea-Land built competitive moats around containerized logistics; their business models depended on the system working end-to-end. Vertical integration collapsed the Slacker Index. The competitive position depended on the precision logistics protocol, not the container as a standalone tool.'
+    },
+    arcSteps: ['1 — Shadow', '2 — Sanctioned', '3 — Designed', '4 — Infrastructural', '5 — Planetary'],
+    current: 2
+  },
+
+  '3-4': {
+    levelNum: '3–4',
+    levelName: 'Designed → Infrastructural',
+    tagline: 'Your organization is at the leading edge. The next challenge is sector-level, not organizational.',
+    description: `Your organization is at the boundary between Level 3 and Level 4. Multiple core AI workflows are designed, governed, and versioned. Your practices are mature enough that industry peers reference them as a benchmark. The organizational-level governance challenges are substantially addressed.
+
+Level 4 emerges when the aggregate of Level 3 organizations reaches density sufficient to recalibrate the sector's productivity baseline. No single organization drives this transition. The governance questions at Level 4 are market-structural: how does the industry coordinate AI use, handle shared risks, establish standards, and prevent concentration of AI capability in ways that produce anti-competitive outcomes. Individual organizational maturity is necessary but not sufficient at Level 4.`,
+    failureModes: [
+      {
+        name: 'AI capability concentration',
+        description: 'Early AI leaders accumulate proprietary data, model advantage, and talent that create structural moats. Late-adopting organizations cannot compete at AI-standard productivity. The industry stratifies into a small tier of AI-native leaders and a permanently disadvantaged tier — unless sector-wide governance prevents moat-building.'
+      },
+      {
+        name: 'Commoditization pressure',
+        description: 'AI capability becomes table stakes, eliminating the competitive moat built by early adopters. The organization has invested significantly in building Level 3 practices; the return on that investment compresses as Level 3 becomes the baseline expectation. Competitive advantage shifts to the next abstraction: model training quality, proprietary datasets, agentic workflow design.'
+      },
+      {
+        name: 'Custom implementation accumulation',
+        description: 'Internal AI has built custom solutions that solve specific problems but have not abstracted into reusable platform features. At the boundary of Level 4, this becomes a liability: the organization cannot contribute to or benefit from sector-wide standards because its implementations are too proprietary.'
+      }
+    ],
+    actions: [
+      {
+        name: 'Crystallize domain knowledge into explicit specifications',
+        description: 'Document what good output looks like, what constitutes an acceptable AI error in your domain, and who has the domain expertise to judge. Domain knowledge is the limiting constraint at Level 3 — not AI capability. These specifications become the input to sector-level governance standards.',
+        doneWhen: 'Quality criteria for primary AI workflows are documented and attributable to named domain experts.'
+      },
+      {
+        name: 'Build a platform abstraction layer',
+        description: 'Evaluate which custom AI implementations can be abstracted into reusable organizational platform features. This positions the organization to contribute to or comply with sector standards without requiring a full rebuild.',
+        doneWhen: 'An internal AI platform exists that new implementations can draw on rather than building from scratch.'
+      }
+    ],
+    tension: {
+      a: 'Industry standardization of AI protocols — enabling coordination, interoperability, and regulatory clarity',
+      b: 'Organizational differentiation through proprietary AI capability — resisting standardization to preserve competitive moats'
+    },
+    periodTech: {
+      label: 'Historical parallel: Early EDI adoption / Git at scale (late Level 3)',
+      text: 'Organizations at the leading edge of distributed version control or EDI adoption were technically mature but operating ahead of sector standards. Their practices were referenced by peers but not yet codified. The transition to Level 4 required waiting for the sector to catch up — or actively working to set the standard.'
+    },
+    containerization: {
+      label: 'Containerization throughline: Leading firms, pre-universal adoption (late 1980s)',
+      text: 'Maersk and Sea-Land had mature intermodal operations; the full global shipping sector had not yet standardized. The competitive moat was real but visible to the sector, and sector-wide standardization — driven by port authority requirements and trade volume — was already underway. Being at the leading edge meant preparing for the moment when the advantage would be competed away.'
+    },
+    arcSteps: ['1 — Shadow', '2 — Sanctioned', '3 — Designed', '3–4 Boundary', '4 — Infrastructural', '5 — Planetary'],
+    current: 3
+  }
+};
+
+/* ─── Assessment logic ───────────────────────────────────── */
+function selectOption(el, choice) {
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  step1Choice = choice;
+  document.getElementById('step1-next').style.display = 'inline-block';
+}
+
+function goToStep2() {
+  document.getElementById('step1').classList.remove('active');
+  const stepId = 'step2' + step1Choice;
+  document.getElementById(stepId).classList.add('active');
+  document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+}
+
+function selectRadio(el, value) {
+  const parent = el.closest('.radio-options');
+  parent.querySelectorAll('.radio-option').forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+  step2Choice = value;
+
+  // Show submit button for the active step
+  const activeStep = document.querySelector('.step.active');
+  activeStep.querySelector('.btn').style.display = 'inline-block';
+}
+
+function submitAssessment() {
+  // Determine final placement
+  let placement;
+  if (step1Choice === 'A') {
+    placement = step2Choice;  // '1', '2', or re-routes to 2-3 via B scenario, but we keep it direct
+    if (step2Choice === '2-3') placement = '2-3';
+  } else if (step1Choice === 'B') {
+    placement = step2Choice;  // '2', '2-3', '3'
+  } else {
+    placement = step2Choice;  // '2-3', '3', '3-4'
+  }
+
+  // Show calculating state
+  const activeStep = document.querySelector('.step.active');
+  activeStep.querySelector('.btn').style.display = 'none';
+  const calcId = 'calc-' + step1Choice;
+  document.getElementById(calcId).classList.add('visible');
+
+  setTimeout(() => {
+    renderOutput(placement);
+  }, 900);
+}
+
+/* ─── Output rendering ───────────────────────────────────── */
+function renderOutput(placement) {
+  const r = RESULTS[placement];
+  if (!r) return;
+
+  const card = document.getElementById('output-card');
+
+  // Build failure modes HTML
+  const fmHtml = r.failureModes.map(fm => `
+    <div class="failure-mode-item">
+      <div class="failure-mode-name">${fm.name}</div>
+      <div class="failure-mode-desc">${fm.description}</div>
+    </div>
+  `).join('');
+
+  // Build actions HTML
+  const actHtml = r.actions.map(a => `
+    <div class="action-item">
+      <div class="action-name">${a.name}</div>
+      <div class="action-desc">${a.description}</div>
+      <div class="action-done"><strong>Done when:</strong> ${a.doneWhen}</div>
+    </div>
+  `).join('');
+
+  // Build arc HTML
+  const arcHtml = r.arcSteps.map((step, i) =>
+    `<span class="arc-step ${i === r.current ? 'current' : ''}">${step}</span>${i < r.arcSteps.length - 1 ? '<span class="arc-arrow">→</span>' : ''}`
+  ).join('');
+
+  // Build email body for mailto
+  const emailBody = buildEmailBody(r);
+  const emailSubject = encodeURIComponent(`AI Maturity Assessment — Level ${r.levelNum}: ${r.levelName}`);
+  const emailHref = `mailto:?subject=${emailSubject}&body=${encodeURIComponent(emailBody)}`;
+
+  card.innerHTML = `
+    <div class="output-header">
+      <div class="output-level-label">Level ${r.levelNum}</div>
+      <div class="output-level-name">${r.levelName}</div>
+      <div class="output-tagline">${r.tagline}</div>
+    </div>
+
+    <div class="output-body">
+      <div class="output-section">
+        <div class="output-section-label">Where you are</div>
+        <div class="output-description">${r.description.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')}</div>
+      </div>
+
+      <div class="output-section">
+        <div class="output-section-label">Failure modes at this level</div>
+        <div class="failure-modes">${fmHtml}</div>
+      </div>
+
+      <div class="output-section">
+        <div class="output-section-label">Actions to take</div>
+        <div class="action-items">${actHtml}</div>
+      </div>
+
+      <div class="output-section">
+        <div class="output-section-label">Your position in the model</div>
+        <div class="output-arc">${arcHtml}</div>
+      </div>
+
+      <div class="output-section">
+        <button class="output-drilldown-toggle" onclick="toggleDrillOutput(this)">
+          Show characteristic tension + historical parallels ↓
+        </button>
+        <div class="output-drilldown">
+          <div class="drilldown-section">
+            <h4>Characteristic tension</h4>
+            <div class="tension-poles">
+              <div class="tension-pole">
+                <div class="pole-label">Pull A</div>
+                ${r.tension.a}
+              </div>
+              <div class="tension-pole">
+                <div class="pole-label">Pull B</div>
+                ${r.tension.b}
+              </div>
+            </div>
+          </div>
+
+          <div class="drilldown-section">
+            <h4>Historical parallels</h4>
+            <div class="historical-item">
+              <div class="historical-label">${r.periodTech.label}</div>
+              <div class="historical-text">${r.periodTech.text}</div>
+            </div>
+            <div class="historical-item">
+              <div class="historical-label">${r.containerization.label}</div>
+              <div class="historical-text">${r.containerization.text}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="output-actions">
+      <button class="btn btn-primary" onclick="window.print()">Print this result</button>
+      <a href="${emailHref}" class="btn btn-secondary">Email this to myself</a>
+      <span class="retake-link" onclick="retakeAssessment()">Retake the assessment</span>
+    </div>
+  `;
+
+  document.getElementById('output').classList.add('visible');
+  setTimeout(() => {
+    document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+function buildEmailBody(r) {
+  let body = `AI CAPABILITY MATURITY MODEL — Your Assessment Result\nProtocolized · Protocol Research and Development\n\n`;
+  body += `LEVEL ${r.levelNum}: ${r.levelName.toUpperCase()}\n`;
+  body += `${r.tagline}\n\n`;
+  body += `WHERE YOU ARE\n${r.description}\n\n`;
+  body += `FAILURE MODES AT THIS LEVEL\n`;
+  r.failureModes.forEach(fm => {
+    body += `\n• ${fm.name}\n  ${fm.description}\n`;
+  });
+  body += `\nACTIONS TO TAKE\n`;
+  r.actions.forEach(a => {
+    body += `\n• ${a.name}\n  ${a.description}\n  Done when: ${a.doneWhen}\n`;
+  });
+  body += `\n\n────────────────────────────────\nProtocolized · protocolized.summerofprotocols.com\nAI Capability Maturity Model v2.2 · Based on 35 sources\nSource: github.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model\n`;
+  return body;
+}
+
+/* ─── Utility ────────────────────────────────────────────── */
+function toggleLevelDims(btn) {
+  const dims = btn.nextElementSibling;
+  const isOpen = dims.classList.contains('open');
+  dims.classList.toggle('open');
+  btn.textContent = isOpen ? 'Show dimensions ↓' : 'Hide dimensions ↑';
+}
+
+function toggleDrill(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+  btn.textContent = content.classList.contains('open')
+    ? btn.textContent.replace('↓', '↑')
+    : btn.textContent.replace('↑', '↓');
+}
+
+function toggleDrillOutput(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+  btn.textContent = content.classList.contains('open')
+    ? 'Hide tension + historical parallels ↑'
+    : 'Show characteristic tension + historical parallels ↓';
+}
+
+function retakeAssessment() {
+  step1Choice = null;
+  step2Choice = null;
+
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.radio-option').forEach(r => r.classList.remove('selected'));
+  document.querySelectorAll('[id^="step2"]').forEach(s => {
+    const btn = s.querySelector('.btn');
+    if (btn) btn.style.display = 'none';
+    const calc = s.querySelector('.calculating');
+    if (calc) calc.classList.remove('visible');
+  });
+  document.getElementById('step1-next').style.display = 'none';
+  document.getElementById('step1').classList.add('active');
+  document.getElementById('output').classList.remove('visible');
+  document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── Essay Carousel ────────────────────────────────────── */
+function scrollEssays(dir) {
+  const carousel = document.getElementById('essay-carousel');
+  carousel.scrollBy({ left: dir * 300, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

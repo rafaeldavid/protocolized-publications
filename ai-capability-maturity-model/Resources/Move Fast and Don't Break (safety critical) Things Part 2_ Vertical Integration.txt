@@ -1,0 +1,208 @@
+20/12/2025, 12:05
+
+Move Fast and Don't Break (safety critical) Things Part 2: Vertical Integration
+
+Vertical Integration: Move Fast and Don't Break
+(safety critical) Things Part 2
+Vertical integration is the key strategy for reducing iteration cycle time
+BLAKE SCHOLL
+SEP 14, 2025
+
+76
+
+3
+
+9
+
+Share
+
+Part 2 in a series about how Boom develops amazing hardware quickly and efficiently (See Part
+1)
+Every hardware company has two clocks running at once: the calendar, and the Slacker
+Index. The calendar is obvious—it’s how long your project takes. But the Slacker Index
+is more insidious: it measures how much time your engineers spend not engineering
+and building, because they’re waiting. Waiting for parts. Waiting for suppliers.
+Waiting for test windows. A high Slacker Index means brilliant people are stuck in
+analysis and meetings, terrified of mistakes because the cost of rework is measured in
+months. A low Slacker Index means fast iteration, risk-taking, and breakthroughs.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+The formal definition is simple: Slacker Index = total lead time ÷ actual working
+time. If it takes 10 hours to machine a part but 10 months to receive it, your Slacker
+Index is off the charts. Put another way: twelve months to get a part that takes twelve hours
+to make.
+The most powerful way to crush your Slacker Index is vertical integration—owning
+the tools, supply chains, and test infrastructure yourself. It doesn’t just shave months
+off a schedule. It changes the physics of what’s possible. Problems that would be
+existential with a year-long lead time become solvable with a 24-hour iteration cycle.
+To show you what this looks like in practice, here are two stories from Boom: one
+painful, one liberating.
+
+Story 1: XB-1 and the Damned Damper Actuator
+
+https://bscholl.substack.com/p/slacker-index-why-vertical-integration
+
+1/5
+
+20/12/2025, 12:05
+
+Move Fast and Don't Break (safety critical) Things Part 2: Vertical Integration
+
+XB-1 was originally equipped with two-axis digital stability augmentation. The
+primary flight control system was manual, with cables and push-rods sending pilot
+input to hydraulically powered actuators that actually moved the flight control surface.
+But on the pitch and yaw axes, we also had digital stability augmentation: in series
+with pilot input was a small actuator that would give the pilot a digital assist to make
+the airplane easier to fly. This put XB-1 right where it should be—with the reliability
+and simplicity of a mechanical system but with an opportunity for the team to start
+learning digital flight controls, without needing to do a full fly-by-wire development.
+After XB-1 flight 1, we decided to put stability augmentation on the roll axis as well.
+The airplane had flown exactly as predicted, but in turbulent weather with a real pilot
+in the cockpit, the subjective pilot feel wasn’t great. We wanted to do better.
+We already had a few spare actuators in inventory and had planned for this
+contingency in the airplane design, so this shouldn’t have been a huge project. It
+ended up taking just three months—probably about the fastest anyone has ever built
+and flown a human-rated digital stability augmentation system. Yet, for reasons I’ll
+explain, we should have been able to do it in about half that time.
+The actuators we were using were semi-custom units from a traditional aerospace
+BigCo. Each one was physically small, but cost $60,000 apiece. Worse than the
+exorbitant cost was their fragility and their lead time: the vendor quoted a 52-week
+(one year!) lead for additional units.
+During development testing, it was easy to break them. We fried one actuator after
+sending it an errant command. Another failed due to a race condition on power-up.
+Suddenly we were down to just one spare.
+If that last spare broke, XB-1 would be grounded for a year. At $60k per actuator, the
+parts were expensive—but the XB-1 program itself burned about $60k per day in
+salaries, facilities, and overhead. A one-year delay would have bankrupted the
+company. So the last actuator was treated like fine china. “Why is it taking us two
+
+https://bscholl.substack.com/p/slacker-index-why-vertical-integration
+
+2/5
+
+20/12/2025, 12:05
+
+Move Fast and Don't Break (safety critical) Things Part 2: Vertical Integration
+
+weeks to review a test plan?” I asked the team in frustration. Their answer: “Because if
+we get this wrong, we kill the company.” They were right.
+
+The team ultimately succeeded—we never broke the last actuator, and we finished the
+race to supersonic flight. But damper-gate cost us six weeks—far more expensive than
+building “zillions” of spares in the first place.
+The lesson: lead time is evil. A 52-week delay didn’t just threaten one component—it
+cascaded through the program, forcing everyone to slow down and overanalyze.
+
+Story 2: Symphony and the 3D-Printed Turbine Blade
+
+When we started building the first Symphony engine prototype, we initially quoted
+parts out of the traditional aerospace supply chain. One of the critical parts was the
+high-pressure turbine (HPT) airfoils. For the first engine, the plan was to 3D-print
+them from nickel superalloy, avoiding the time and expense of hard tooling.
+
+https://bscholl.substack.com/p/slacker-index-why-vertical-integration
+
+3/5
+
+20/12/2025, 12:05
+
+Move Fast and Don't Break (safety critical) Things Part 2: Vertical Integration
+
+The best quote we could find: $1M for a single engine’s worth of blades. Pricey, but
+survivable. The real gut punch: lead time of six months. For hundreds of thousands
+more, the vendor said they might be able to shave off a month or two.
+So I asked: how long does it actually take to print one blade? About 24 hours. How
+much is a 3D printer? Around $2M. How long to get one? I braced for the answer to be
+“years.” Instead: “Actually, they’re in inventory—we can get one in a couple weeks.”
+So for the cost of two sets of blades, we could own the machine outright—and produce
+parts in 24 hours instead of six months. We ordered the machine immediately. Today,
+we’re already several design iterations deep—further ahead than the traditional supply
+chain would have gotten us by delivering the first box of blades.
+Slow supply chains force slow engineering. If we had stayed with the vendor, our
+designers would have been paralyzed. A mistake would mean waiting half a year to try
+again. But with a printer on the floor, the team can iterate daily. They can take risks,
+test fast, fail fast, and learn.
+Vertical integration collapsed our iteration cycle from months to days—and with it,
+engineering costs dropped too. Hardware development started to look more like agile
+software development.
+
+Optimizing Slacker Index is Key to Enabling Iterative
+Development
+The Slacker Index is the ratio between total waiting time and building time. It exposes
+how broken traditional hardware development cycles really are.
+Slacker index matters because it shows where the biggest opportunities are to reduce
+delay. During development, iteration is everything—and reducing the time required
+for a single iteration allows more iterations to be done faster—reducing the time, cost,
+and risk of development.
+Vertical integration—owning your supply chain, tools, and test capabilities—is the
+most powerful way to crush your Slacker Index. It doesn’t just save calendar time. It
+changes the physics of what’s possible. Fast iteration turns scary problems into solvable
+ones.
+Lead time isn’t just inconvenient. It’s existential.
+Stay tuned for Part 3 in this series, where I’ll share our radical roadmap for how a tiny team is
+developing the first custom civil supersonic rapidly.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+76 Likes ∙ 9 Restacks
+
+https://bscholl.substack.com/p/slacker-index-why-vertical-integration
+
+4/5
+
+20/12/2025, 12:05
+
+Move Fast and Don't Break (safety critical) Things Part 2: Vertical Integration
+
+Discussion about this post
+Comments Restacks
+
+Write a comment...
+
+Tanj Poratbo 14 Sept
+
+The Slacker index is severe in silicon chips. Getting a non-trivial chip from idea to product in 2 years
+is considered epic fast, with 3 or even 4 years being normal. This produces a moat and inertia effect
+where even if you can see a better design for something like LLM inference today, you may abandon
+the effort before even starting on the grounds that you have no idea if the chip will be useful 3 years
+from now.
+Yet, hardware is generally much less complex than software. A complex hardware algorithm may be
+expressed in a few thousand lines of Verilog, with a C++ equivalent being hundreds. This compares
+to software projects routinely hundreds of thousands of lines or even millions, a scale which may
+take a small team a year. Hardware ideas, in principle, should be implemented in just months, not
+years.
+Imagine what a Boom attitude could do for silicon chips.
+LIKE (2)
+
+REPLY
+
+SHARE
+
+Pete Griffiths Pete Griffiths 15 Sept
+
+This is a lesson BYB appears to have taken to heart
+LIKE
+
+REPLY
+
+SHARE
+
+1 more comment...
+
+© 2025 Blake Scholl · Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://bscholl.substack.com/p/slacker-index-why-vertical-integration
+
+5/5
+
+

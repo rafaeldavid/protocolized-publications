@@ -1,0 +1,178 @@
+02/11/2025, 20:07
+
+The Hottest Job in Tech - by Evan Armstrong - The Leverage
+
+The Hottest Job in Tech
+All that’s old is new again
+EVAN ARMSTRONG
+AUG 05, 2025 ∙ PAID
+
+29
+
+1
+
+2
+
+Share
+
+Time is a flat circle and so is hiring in Silicon Valley. The latest example is a “forward
+deployed engineer” (FDE) for AI companies. These employees are bundled in with a
+software contract to help a new customer actually use the product they just bought. In
+practice, it means they code some stuff, but more importantly, they get the customer to
+actually use what was coded.
+It’s hard to overstate how popular this role is right now. OpenAI will send you one if
+you are spending $10 million a year with them. I talked with multiple recruiters at VC
+funds who help their portfolio companies hire talent, and they all expressed the same
+sentiment. “The majority of the AI companies I work with are hiring for this role,”
+Dwane Hamilton of Greylock told me.
+The temptation is to dismiss this job. After all, isn’t an FDE a consultant with a
+yassified title? I mean…yes. But that doesn’t mean it isn’t valuable! Consultants exist
+for a reason. A technically competent outsider helps a company by giving permission
+to quickly cut through bureaucracy.
+What’s actually interesting about the rise of this role is what it indicates about the
+market structure. That these titles are newly popular—and weren’t popular in the last
+decade—shows that something has changed to make them necessary and profitable. So
+today, I would argue that these roles matter for two reasons:
+1. Platform shifts
+2. New pricing models
+
+Why now?
+When HR platform Workday ($WDAY) IPO’d in 2012, much of the analyst chatter was
+about its high services component. At the point of its debut, 35% of the company’s
+revenue came from sending engineers onsite to help customers move their HR data to
+https://www.gettheleverage.com/p/the-hottest-job-in-tech?triedRedirect=true
+
+1/5
+
+02/11/2025, 20:07
+
+The Hottest Job in Tech - by Evan Armstrong - The Leverage
+
+the cloud. Investors hated this. Putting engineers up at the local Marriott Courtyard is
+expensive, low margin, and slow. However, it has ended up being crucial to the longterm success of the company. Once the data was migrated to the cloud, they didn’t
+need the professional services anymore.
+
+Simultaneously, customers became more accustomed to cloud technology, allowing
+their SaaS revenue to skyrocket:
+
+When Workday first started in March of 2005, the cloud was a novel idea. At the time,
+all data was kept on servers owned and operated by the company using them. Moving
+to the cloud fundamentally changed how these companies operated. Cloud-first
+companies can move faster and construct different workflows than those tied to old
+technology in which computing needs would have to be predicted months and even
+years in advance. Workday’s professional services helped generations of companies
+transition to the cloud.
+
+https://www.gettheleverage.com/p/the-hottest-job-in-tech?triedRedirect=true
+
+2/5
+
+02/11/2025, 20:07
+
+The Hottest Job in Tech - by Evan Armstrong - The Leverage
+
+The largest reason that the FDE has happened today is because AI will end up being a
+bigger and more important platform shift than the cloud was. The biggest changes are
+not even technological, they are operational. A full integration of AI requires
+reimagining your staffing, your workflows, and your management team. With so many
+people already afraid of losing their job to AI, FDEs can also play the role of bad cop.
+They give the CEO a tool by which to force their company to change.
+Most importantly, AI companies need to hire FDEs because otherwise their customers
+are likely to purchase and then never use their products.
+Even when a company isn’t using the title of FDE, I have seen in-house technical skills
+sprinkled on every part of the sales process. At Clay, a GTM AI software company,
+cofounder Varun Anand told me about the “Go To Market Engineers.” These are AIpilled individuals who are still, at their core, sales staff, but are “coming from a more
+technical, product-minded person. It means a lot more trust, way more effective, and
+less combative.” While not FDE in title, I think Clay’s version qualifies in spirit. They
+may not be doing implementation like an FDE, but they are customizing their pitch
+based on an understanding of the potential client’s tech stack. While only “20% of their
+actual work is technical, that technical background really helps with the other 80%.”
+Perhaps the simplest way to summarize an FDE-adjacent role is this: a person who has
+the technical skills and organizational permission to allow companies to totally
+remake themselves. They are popular today because AI is such a dramatic change in
+operations and technology that customers struggle to implement it themselves.
+For paying subscribers, we’ll review:
+What pricing model justifies adding FDEs?
+What ACV should it be justified with?
+Who are the startups leading the way with this job today?
+
+Operational details
+Alright, prepare yourself. We’re gonna do some napkin math.
+A senior FDE typically pulls in a $200‑$300K salary. For example, Anthropic listed its
+hires at $250‑$375K, while ServiceNow tops out at $303K. As a rule of thumb, you
+typically want to keep services ≤ 25 % of Year‑1 contract value to preserve gross
+margin. The remaining contract value should go to the actual software and product
+costs, other employees and overhead, and actual profit. If you put those together, there
+is an implied average contract value floor of a million bucks. ($250K FDE cost ÷ 25%
+buffer). Alternatively, you would be looking for a $250‑300K ACV on a three‑year SaaS
+contract.
+That is roughly 10x the $26K median average contract value for private SaaS, so only
+the upper decile of deals can justify an embedded engineer. That said, the optimist
+may win out here. Those SaaS averages come from the seat-based pricing era of the
+last decade! You could potentially bill much more if you believe in the growth of
+usage-based pricing as exemplified by companies like Databricks and Snowflake. In a
+recent interview, the Chief Revenue Officer of Databricks disclosed they would give
+
+https://www.gettheleverage.com/p/the-hottest-job-in-tech?triedRedirect=true
+
+3/5
+
+02/11/2025, 20:07
+
+The Hottest Job in Tech - by Evan Armstrong - The Leverage
+
+out their equivalent of an FDE for a 100K contract because the company had 1) enough
+funding to justify the burn and 2) outcome-based pricing—they just believe they’ll be
+offering enough in value that the costs will balance out.
+What’s fascinating is that the “person who helps us use AI” is increasingly nontechnical. At Runway, a video clip generation company, they send “creatives” in to help
+the ad agencies and movie studios reimagine their workflows. Cristóbal Valenzuela,
+CEO of Runway described it as follows in a recent interview, "Most of what you can do
+with Runway is non-traditional. It kind of breaks the mold on how you've done content
+before."
+Essentially, the rate at which FDEs are deployed depends on the confidence you have
+in rapidly growing spend. There is an argument to be made that companies should be
+having FDEs bundled with 100K contracts under the assumption that market share
+tomorrow is far, far greater than margins today. As in all things software today it
+comes down to your belief on the power of AI models to take over large portions of
+existing knowledge worker’s tasks. If it becomes a meaningful percentage, and the AI
+tool provider can capture a large enough portion of that value, high powered sales and
+implementation staff are a wise investment.
+
+Recommend The Leverage to your readers
+
+Read the future first: Clear-eyed analysis of tech market shifts. Beauty, craft, and moderately
+funny jokes included at no extra charge.
+Recommend
+29 Likes ∙ 2 Restacks
+
+Discussion about this post
+Comments Restacks
+
+Write a comment...
+
+Wayne D. 6 Aug
+
+As we said years ago about software of any delivery model, make it “stick” don’t let it become
+“shelfware”. FDE’s are the realization of that observation.
+LIKE
+
+REPLY
+
+https://www.gettheleverage.com/p/the-hottest-job-in-tech?triedRedirect=true
+
+SHARE
+
+4/5
+
+02/11/2025, 20:07
+
+The Hottest Job in Tech - by Evan Armstrong - The Leverage
+
+© 2025 Evan Armstrong ∙ Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://www.gettheleverage.com/p/the-hottest-job-in-tech?triedRedirect=true
+
+5/5
+
+

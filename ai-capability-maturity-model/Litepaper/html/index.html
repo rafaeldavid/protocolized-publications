@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Capability Maturity Model — Protocolized</title>
+  <meta name="description" content="A protocol framework for governing AI adoption. Five levels from shadow use to planetary infrastructure — each with a governing protocol, blind spot, and predictable failure mode.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f0f0f2;
+      --border:         #e5e5e7;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --max:            920px;
+      --prose:          920px;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+      --white:          #fff;
+      --hero-bg:        #0a081c;
+      --table-alt-row:  #fafafe;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Typography ───────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--font-mono); line-height: 1.25; }
+    h1 { font-size: 2.4rem; font-weight: 700; }
+    h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin: 32px 0 12px; }
+    h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    p  { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+    a  { color: var(--accent-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: 600; }
+    em { font-style: italic; }
+
+    sup a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-dark);
+      text-decoration: none;
+      padding: 0 1px;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 24px 0;
+      padding: 14px 20px;
+      background: var(--accent-light);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* ─── Layout ───────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .prose     { max-width: var(--prose); margin-left: auto; margin-right: auto; }
+    .section   { padding: 64px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* ─── Nav ──────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,250,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-primary { padding: 10px 0; }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--accent-dark); }
+    .nav-links a.nav-active { color: var(--accent-dark); font-weight: 600; }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .nav-secondary {
+      border-top: 1px solid var(--border);
+      padding: 5px 0;
+    }
+
+    .nav-secondary-links {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-secondary-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    .nav-secondary-links a:hover { opacity: 1; color: var(--accent-dark); }
+
+    @media (max-width: 680px) {
+      .nav-hamburger { display: flex; align-items: center; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 24px 16px;
+        z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a { font-size: 1rem; }
+      .nav-primary { position: relative; }
+      .nav-secondary { display: none; }
+      #hero { padding: 72px 0 56px; }
+      .btn-secondary { margin-left: 0; margin-top: 12px; }
+    }
+
+    /* ─── Hero ─────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 80px;
+      background-color: var(--hero-bg);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      background:
+        url('https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/finding-fault-lines.jpg') center 30% / cover no-repeat;
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 8, 28, 0.6);
+      z-index: 1;
+    }
+
+    #hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    #hero .label {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    #hero h1 {
+      text-align: center;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    #hero h1 span { color: var(--accent); }
+
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      text-align: center;
+      display: block;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-link {
+      font-size: 0.8rem;
+      color: rgba(168,136,191,0.9);
+      text-decoration: none;
+      border: 1px solid rgba(168,136,191,0.35);
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      transition: all 0.15s ease;
+    }
+
+    .hero-link:hover {
+      background: rgba(168,136,191,0.12);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── CTA Block ────────────────────────────────────────── */
+    .cta-block {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 32px;
+      text-align: center;
+      max-width: var(--prose);
+      margin: 0 auto;
+    }
+
+    .cta-block .label { margin-bottom: 10px; text-align: center; }
+
+    .cta-block h3 {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .cta-block p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1.5px solid var(--accent);
+      margin-left: 10px;
+    }
+    .btn-secondary:hover { background: var(--accent-light); text-decoration: none; }
+
+    /* ─── Summary ──────────────────────────────────────────── */
+    #summary { background: var(--white); }
+
+    .summary-bullets {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .summary-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+
+    .summary-bullet-marker {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      min-width: 68px;
+      text-align: center;
+    }
+
+    /* ─── Body sections ─────────────────────────────────────── */
+    .body-section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ─── Level blocks ──────────────────────────────────────── */
+    .level-block {
+      max-width: var(--prose);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .level-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .level-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .level-num {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .level-title-group { flex: 1; }
+
+    .level-name {
+      font-family: var(--font-mono);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .level-tagline {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .level-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .level-field {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0;
+    }
+
+    .level-field + .level-field {
+      border-top: 1px solid var(--border);
+    }
+
+    .level-field-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      background: var(--surface);
+      display: flex;
+      align-items: flex-start;
+      border-right: 1px solid var(--border);
+    }
+
+    .level-field-body {
+      padding: 14px 18px;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      background: var(--white);
+    }
+
+    .level-field-body p { margin-bottom: 0; }
+
+    .level-cases { margin: 24px 0; }
+
+    .case-block {
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 2px solid var(--border);
+    }
+
+    .case-block:last-child { margin-bottom: 0; }
+
+    .case-block p {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .historical-parallel {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 20px 0;
+    }
+
+    .historical-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .historical-parallel p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ─── Tables ────────────────────────────────────────────── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--surface);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.55;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) td { background: var(--table-alt-row); }
+
+    /* ─── Definition list ───────────────────────────────────── */
+    .def-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .def-item {}
+
+    .def-term {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 4px;
+    }
+
+    .def-body {
+      font-size: 0.93rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ─── Step list (S6) ────────────────────────────────────── */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin: 28px 0;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-body { flex: 1; }
+    .step-body h4 { margin-bottom: 6px; }
+    .step-body p { font-size: 0.93rem; line-height: 1.65; }
+
+    /* ─── Not-list ──────────────────────────────────────────── */
+    .not-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .not-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .not-list li::before {
+      content: '—';
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+    }
+
+    /* ─── Callout ───────────────────────────────────────────── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .callout p { margin-bottom: 0.6rem; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* ─── Footnotes ─────────────────────────────────────────── */
+    #notes { background: var(--surface); }
+
+    .fn-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .fn-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      font-size: 0.83rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .fn-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      text-align: right;
+      padding-top: 1px;
+    }
+
+    .fn-back {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 4px;
+    }
+
+    /* ─── Bibliography ──────────────────────────────────────── */
+    #bibliography { background: var(--white); }
+
+    .bib-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bib-list li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      text-indent: -20px;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-links a:hover { color: var(--accent-dark); }
+
+    /* ─── Transition req box ────────────────────────────────── */
+    .transition-req {
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      background: var(--accent-light);
+      margin-top: 24px;
+    }
+
+    .transition-req-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .transition-req p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 0;
+    }
+
+    /* ─── Section 3 intro callout ───────────────────────────── */
+    .levels-intro {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    /* ─── S4 protocol row ───────────────────────────────────── */
+    .protocol-block {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .protocol-block:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .protocol-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 2px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .protocol-title {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .protocol-body {
+      font-size: 0.93rem;
+      line-height: 1.67;
+    }
+
+    /* ─── Diagnostic table highlight ───────────────────────── */
+    .diagnostic-table thead th:first-child,
+    .diagnostic-table tbody td:first-child {
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+
+    .diagnostic-table tbody td:last-child {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      white-space: nowrap;
+    }
+
+    /* ─── Utility classes ───────────────────────────────────── */
+    .body-p   { font-size: 0.93rem; line-height: 1.7; }
+    .intro-p  { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; }
+    .section-alt { background: var(--surface); }
+    .callout-bottom { margin-bottom: 24px; }
+    .callout-top    { margin-top: 24px; }
+    .callout-outro  { margin-top: 28px; }
+    .table-lead     { margin-bottom: 40px; }
+    .step-table     { margin-top: 12px; }
+    .not-list-top   { margin-top: 12px; }
+    .pace-para      { margin-top: 20px; }
+    .footer-sub     { font-size: 0.68rem; opacity: 0.7; }
+
+    /* Prose width constraint for body section headings and labels */
+    .body-section .section-num,
+    .body-section h2 { max-width: var(--prose); margin-left: auto; margin-right: auto; }
+
+    /* Section heading spacing overrides */
+    #notes h2,
+    #bibliography h2 { max-width: none; margin-bottom: 28px; }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 720px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.35rem; }
+      .level-field { grid-template-columns: 1fr; }
+      .level-field-label { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    @media (max-width: 500px) {
+      .hero-links { flex-direction: column; gap: 16px; }
+      .level-header { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Nav ─────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-primary">
+    <div class="nav-inner">
+      <a class="wordmark" href="https://protocolized.dev/">Protocolized</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="https://protocolized.dev/ai-maturity-model/">Maturity Model</a></li>
+        <li><a href="https://protocolized.dev/litepaper-ai-protocols/" class="nav-active">Litepaper</a></li>
+        <li><a href="https://protocolized.dev/blog-the-missing-layer/">Blog</a></li>
+        <li><a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank">Subscribe</a></li>
+      </ul>
+      <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <rect x="2" y="5.5" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect x="2" y="10.25" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect x="2" y="15" width="18" height="1.5" rx="0.75" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav-secondary">
+    <ul class="nav-secondary-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#s1">The Problem</a></li>
+      <li><a href="#theory">Theory</a></li>
+      <li><a href="#levels">Levels</a></li>
+      <li><a href="#emerging">Protocols</a></li>
+      <li><a href="#landscape">Landscape</a></li>
+      <li><a href="#how-to-use">How to Use</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── Hero ─────────────────────────────────────────────────── -->
+<header id="hero">
+  <div class="container">
+    <span class="label">Litepaper · March 2026</span>
+    <h1>The AI Capability<br><span>Maturity Model</span></h1>
+    <span class="hero-subtitle">A protocol framework for governing AI adoption</span>
+    <div class="hero-links">
+      <a class="hero-link" href="https://protocolized.dev/ai-maturity-model/">→ Interactive diagnostic</a>
+      <a class="hero-link" href="https://protocolized.dev/blog-the-missing-layer/">→ Blog post</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─── Summary ──────────────────────────────────────────────── -->
+<section id="summary" class="section">
+  <div class="container">
+    <div class="prose">
+    <span class="label">Executive Summary</span>
+    <ul class="summary-bullets">
+      <li>
+        <span class="summary-bullet-marker">Finding</span>
+        <span>88% of organizations use AI in at least one function; only 39% report any earnings impact, and only ~6% qualify as high performers.<sup><a href="#fn1" id="ref1">1</a></sup> Existing AI maturity models measure adoption rates, tooling coverage, and responsible-AI dimension scores — none measures whether an organization has designed the coordination layer between AI outputs and human judgment.</span>
+      </li>
+      <li>
+        <span class="summary-bullet-marker">Unit</span>
+        <span>This model defines maturity as the precision of the governing protocol: how precisely specified is the handoff between AI output and organizational accountability?</span>
+      </li>
+      <li>
+        <span class="summary-bullet-marker">Levels</span>
+        <span>Five levels: <strong>Shadow</strong> (no protocol), <strong>Sanctioned</strong> (access governed), <strong>Designed</strong> (workflows governed), <strong>Infrastructural</strong> (sector-governed), <strong>Planetary</strong> (civilization-scale). Each level has a governing protocol, a blind spot, and a predictable failure mode derived from what that protocol cannot see.</span>
+      </li>
+      <li>
+        <span class="summary-bullet-marker">Trade</span>
+        <span>Protocols trade one class of problem for another. Each level transition is a deliberate trade: accepting a new, more governable problem in place of the previous, less governable one.</span>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 1 ─────────────────────────────────────────────── -->
+<section id="s1" class="body-section">
+  <div class="container">
+    <span class="section-num">Section 1</span>
+    <h2>The problem with how organizations measure AI maturity</h2>
+
+    <div class="prose">
+      <p>Existing AI maturity models measure the wrong thing. The Microsoft Responsible AI Maturity Model<sup><a href="#fn2" id="ref2">2</a></sup> evaluates 24 dimensions of responsible AI practice — governance culture, tooling, cross-disciplinary expertise. Accenture's Art of AI Maturity<sup><a href="#fn3" id="ref3">3</a></sup> classifies firms as Experimenters, Innovators, or Achievers based on performance outcomes. BCG's AI Maturity Matrix<sup><a href="#fn4" id="ref4">4</a></sup> places economies on a national readiness grid. These instruments are valuable. None measures whether an organization has designed the coordination layer that makes AI output reliable in production.</p>
+
+      <p>The Microsoft model is the most analytically rigorous of the three. It explicitly warns that "a level 5 in tooling does not have the same impact as level 5 in culture and leadership. Therefore, a particular high level is not meaningful when abstracted away from the context of its dimension and interdependency with other dimensions."<sup><a href="#fn5" id="ref5">5</a></sup> This is accurate — and it identifies the model's own limitation. Dimensional scores cannot be aggregated into a governance diagnosis because the dimensions are not independent. The model has no mechanism for identifying which dimension, in which function, at which moment, is the binding constraint on the organization's ability to govern AI output in production. That identification requires a different unit of analysis.</p>
+
+      <p>The Accenture Experimenter/Achiever split captures a real performance gap: 12% of firms are Achievers; 63% are Experimenters; Achievers are 3.5 times more likely to see AI-influenced revenue exceed 30% of total revenue.<sup><a href="#fn6" id="ref6">6</a></sup> This is a performance outcome measure, not a governance design diagnosis. It reports where firms are; it does not explain why the majority are stuck, which function is the binding constraint, or what design change would move them forward.</p>
+
+      <p>BCG operates at the national level — useful for policy, not diagnostic at the organizational level where deployment decisions are made.</p>
+
+      <p>This is why organizations can score well on existing frameworks while the failure modes those frameworks were designed to prevent keep happening. By mid-2025, attorneys had been sanctioned in 550 publicly reported cases involving AI-hallucinated citations, with 712 judicial decisions worldwide and an $86,000 single fine, the largest on record.<sup><a href="#fn7" id="ref7">7</a></sup> Most law firms had AI governance boards, usage policies, and approved tool lists by 2024. Those are Level 2 interventions: access and usage governed. The sanctions are a Level 1 failure: no verification protocol between AI output and professional accountability. A firm can have a detailed AI policy and still have no protocol governing what happens when the AI is wrong.</p>
+
+      <p>The original CMM,<sup><a href="#fn8" id="ref8">8</a></sup> developed at Carnegie Mellon's Software Engineering Institute in 1986, measured software process repeatability — the ability to produce the same outcome reliably from a defined process. Level 1 (Initial) was characterized by individual heroics: success depended on who worked on the project, not on the process. Level 5 (Optimizing) was characterized by continuous process improvement grounded in quantitative feedback. That was the right unit for deterministic software. Repeatability is achievable for deterministic systems; it is not achievable for probabilistic AI. You cannot make a large language model produce the same output every time from the same input. The governance question shifts from "how do we get the same output reliably?" to "how do we govern the range of outputs we will get?" That requires a different measurement unit: the precision of the coordination protocol between AI output and human judgment.</p>
+
+      <p>McKinsey's 2025 State of AI survey confirms the gap.<sup><a href="#fn9" id="ref9">9</a></sup> 88% of organizations use AI in at least one function. Only 39% report any EBIT impact. Only ~6% qualify as high performers. The differentiators are protocol design decisions, not tools: high performers are 2.8 times more likely to have redesigned workflows around AI, 65% have human-in-the-loop validation versus 23% of others, and senior leadership owns AI governance at 48% of high performers versus 16% of others. McKinsey's own conclusion: "Meaningful enterprise-wide bottom-line impact from the use of AI continues to be rare."</p>
+
+      <p>Recent research on AI adoption at work identifies a consistent symptom: AI intensifies individual work — expanding task scope, increasing multitasking, extending beyond normal hours. This intensification is the observable signal of a governance gap, not a tool problem. Individuals are discovering new coordination patterns faster than organizations can standardize them. The experience of overload is what a missing protocol layer feels like from inside.</p>
+
+      <p>The conventional response to this gap is a control problem: how do we manage what employees do with AI? Acceptable use policies, data boundaries, approved tool lists. That framing addresses the wrong question entirely. It asks how to prevent misuse rather than how to specify the coordination rules that make AI output reliable in production. The right framing is protocol design: specifying the rules governing coordination behavior between agents (human and artificial) at the handoff points where AI output enters organizational accountability.</p>
+
+      <p>The timing mismatch compounds the governance problem. Individuals with domain expertise are already discovering new protocols and working patterns through daily AI use — bilateral collaborations, shared context pipelines, bespoke workflow designs. Organizational standardization lags behind by design: the protocols worth formalizing are the ones that have already proved their value through individual experimentation. The model describes how organizations close that gap progressively across five levels.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 2 ─────────────────────────────────────────────── -->
+<section id="theory" class="body-section">
+  <div class="container">
+    <span class="section-num">Section 2</span>
+    <h2>Why governing uncertainty is the right unit of AI maturity</h2>
+
+    <div class="prose">
+      <h3>AI governance is a different problem than software governance</h3>
+
+      <p>AI systems are <strong>probabilistic and non-deterministic</strong>. The same input can produce different outputs; the failure distribution cannot be fully characterized in advance. This is a structural property of how large language models and generative AI systems work. Organizational governance must be designed around the assumption that some fraction, increasingly small, will be wrong, in ways that cannot be fully predicted.</p>
+
+      <p>This property distinguishes AI governance from every prior enterprise software governance problem. Deterministic software has bugs, but its failure modes are in principle enumerable. AI's are not — the distribution shifts with model version, input domain, context length, and deployment configuration. Risk management can estimate the rate. Enumeration is not the right tool for the job. The governing response to AI uncertainty is protocol design for what happens when an output is wrong — before the wrong output has been identified.</p>
+
+      <h3>Protocol governance scales; policy and compliance do not</h3>
+
+      <p>Policy, compliance, and protocol each address different coordination problems and fail differently.</p>
+
+      <p>A <strong>policy</strong> requires central enforcement. "No employee shall use AI for customer-facing communications without manager approval" is a policy. It specifies a prohibition or requirement but depends on central authority (the manager, the legal team, the IT department) to monitor and enforce it. Policy scales poorly: as AI use becomes pervasive and simultaneous across thousands of interactions, central enforcement becomes the bottleneck. Policy-based AI governance produces the Samsung pattern: a clear prohibition, no mechanism to detect violations, and discovery 400+ days after the fact.</p>
+
+      <p><strong>Compliance</strong> is adherence to external requirements — regulatory standards, audit frameworks, contractual obligations. Compliance governance asks "are we meeting the standard?" It is backward-looking: the standard was defined before the deployment; the audit evaluates the deployment against it. Compliance frameworks cannot anticipate the specific failure modes of novel AI deployments; they can only codify what has been identified and standardized. The EU AI Act, NIST AI RMF, and ABA Formal Opinion 512 are compliance frameworks. They are necessary and not sufficient for governing AI in production.</p>
+
+      <p>A <strong>protocol</strong> specifies in advance how actors behave at a handoff point, without requiring shared goals or central enforcement. The pull request protocol in software development is an example: it specifies how code moves from a developer's branch to the shared codebase (branch → commit → review → approve/reject → merge), without requiring a manager to review every commit. The protocol governs the handoff; the engineers operate within it autonomously. Venkatesh Rao defines protocol as "a stratum of codified behavior that allows for the construction or emergence of complex coordinated behaviors at adjacent loci."<sup><a href="#fn10" id="ref10">10</a></sup> Protocols scale because they do not require central authority at every handoff. Alfred North Whitehead observed that "civilization advances by extending the number of important operations which we can perform without thinking of them."<sup><a href="#fn11" id="ref11">11</a></sup> Protocols are that mechanism: they convert governance from a discretionary act requiring oversight into an automatic one requiring only design.</p>
+
+      <p>AI governance requires this property. The AI system and the human reviewer do not share goals: the AI system is optimizing for output generation; the human reviewer is optimizing for output quality. No central authority can monitor every AI interaction at organizational scale — at 84% developer adoption with 11% of PRs opened by agents (Uber's March 2026 figures), the volume already exceeds any reviewer's span of attention. A protocol is the coordination mechanism that scales to those conditions.</p>
+
+      <h3>Ontological drift: the mechanism of ungoverned AI production</h3>
+
+      <p>The absence of a governing protocol creates a specific failure mechanism in AI-enabled organizations: <strong>ontological drift</strong>. In traditional software development, the cost of documentation and specification is high; the cost of changing a term's meaning midstream is low (you update the docs). The LLM era inverts this: "LLMs make documentation, specifications, diagrams, and written artifacts essentially free — but they make ontological drift extremely expensive. When agents, tools, and auto-generated artifacts depend on stable definitions, changing the meaning of a term or schema midstream breaks everything."<sup><a href="#fn12" id="ref12">12</a></sup></p>
+
+      <p>The implication is structural. AI-enabled organizations must front-load precision. Definitions must be stable before deployment begins. The protocol layer — the specification of what a term means, what output format a handoff requires, what "verified" means for a given function — cannot be negotiated in production. Sachin Benny observes: "Organizations compensate by freezing definitions, front-loading clarity, and minimizing mid-cycle reinterpretation. This is a return to Waterfall — not because people suddenly prefer big plans but because the communication structure that Waterfall requires (stable meanings, fixed interfaces, slow-changing schemas) now incurs the lowest transaction costs."<sup><a href="#fn13" id="ref13">13</a></sup> This is a rational response to the cost structure of probabilistic systems: you cannot fix the ontology in production, so you must fix it before production.</p>
+
+      <p>The governing protocol is the mechanism through which ontology is stabilized. Without it, organizations encounter ontological drift at scale — and that drift is the Level 2 failure mode.</p>
+
+      <h3>From smooth space to striated space</h3>
+
+      <p>Rao's framing from "Constructing the Evil Twin of AI" captures the maturity arc: "protocols turn smooth behavior spaces (such as open, unbuilt terrain) into striated behavior spaces (such as a system of roads)."<sup><a href="#fn14" id="ref14">14</a></sup> Without governing protocols, AI operates in smooth space — producing any output, accessing any data, making any claim. Smooth space has no defined lanes, which means it has no meaningful metrics.</p>
+
+      <p>Protocol design converts smooth space into striated space: defined lanes, handoff points, escalation triggers, feedback loops. Maturity is the progressive striation of AI behavior across an organization's functions. Each maturity level represents a specific degree of striation — and the failure mode at each level is what happens at the boundary of the striated zone, where the organization's governing protocols end and smooth space begins.</p>
+
+      <h3>Protocols trade problems; they do not eliminate them</h3>
+
+      <p>Protocols do not eliminate problems. They trade one class of problem for another. The "Table: Learning to See Business Protocols" documents this pattern across physical and institutional contexts: every protocol that solves the coordination problem of one system creates the coordination problem of the next.<sup><a href="#fn15" id="ref15">15</a></sup> The ISO shipping container solved the coordination problem of incompatible cargo handling — and created the coordination problem of containerized port congestion, global supply chain fragility, and a shared attack surface that NotPetya found useful in 2017. The protocol was the right trade. But the trade is real, and the new problem is predictable in structure even if not in timing.</p>
+
+      <p>The same pattern drives each level of this model. Level 2 (Sanctioned access) solves the problem of invisible AI use — and creates the problem of unverified AI output at scale. Level 3 (Designed workflows) solves the output quality problem — and creates the problem of temporal divergence between AI-accelerated functions and the human review infrastructure around them. Level 4 (Infrastructural) solves the intra-organizational bottleneck — and creates the problem of sector-level fragility when infrastructure fails. The model is a map of predictable trades, not a set of aspirational targets.</p>
+
+      <h3>Five terms this model depends on</h3>
+
+      <p>These terms carry specific meanings throughout this paper. Where they diverge from common usage, the divergence is intentional.</p>
+
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">Protocol</div>
+          <div class="def-body">A coordination mechanism that specifies in advance how actors behave at a handoff point, without requiring shared goals or central enforcement. Distinct from <em>policy</em> (requires central enforcement to function) and <em>process</em> (describes sequence, not coordination across actors with different goals).</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Governance</div>
+          <div class="def-body">The set of protocols through which an organization decides which AI outputs to accept, verify, or reject. Distinct from <em>compliance</em> (adherence to external standards) and <em>oversight</em> (monitoring after the fact, not designing the handoff).</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Uncertainty</div>
+          <div class="def-body">The irreducible non-determinism of AI outputs — same input, different output, failure distribution not fully characterizable in advance. Distinct from <em>risk</em> (calculable probability) and <em>error</em> (implies a definable correct answer). Governing uncertainty requires protocol design; governing risk requires probability management.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Maturity</div>
+          <div class="def-body">The precision with which an organization's governing protocols specify the boundary between AI autonomy and human judgment. A property of coordination design, not of tools, adoption rate, or compliance coverage.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Bottleneck</div>
+          <div class="def-body">The function where the gap between AI exposure and protocol precision is largest and highest-stakes. The bottleneck constrains the organization's effective governance level regardless of how mature other functions are. Identifying the bottleneck is the primary diagnostic task.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 3 ─────────────────────────────────────────────── -->
+<section id="levels" class="body-section">
+  <div class="container">
+    <span class="section-num">Section 3</span>
+    <h2>The five levels</h2>
+
+    <div class="levels-intro prose">
+      <p>Organizations do not occupy a single level uniformly. A Shopify engineering team may operate at Level 3 for code generation while its HR function has no verification protocol for AI-assisted candidate screening. For planning purposes, track departmental profiles separately. For risk assessment, the effective maturity level is the <strong>bottleneck</strong>: the highest-stakes, highest-AI-exposure function where protocol precision is lowest.</p>
+      <p>The "Finding Fault Lines within the Firm" memo observes: "In geology, fault lines are not identified by close surface inspection. They are discovered when accumulated stress forces the underlying structure to express itself. Our discussions highlighted how protocols behave similarly. Persistent problems and persistent [performance gaps] point less to local error or exceptional talent than to the protocols through which pressure concentrates and trade-offs are stabilized."<sup><a href="#fn16" id="ref16">16</a></sup> The bottleneck function is the fault line. It is not always visible until a liability event or a competitor's advantage reveals it.</p>
+      <p>Each level is described around four elements: the governing protocol that exists at that level, the blind spot that protocol creates, the failure mode that follows from the blind spot, and the transition requirement — the specific design change needed to move forward.</p>
+    </div>
+
+    <!-- Level 1 -->
+    <div class="level-block" id="level-1">
+      <div class="level-header">
+        <div class="level-num">1</div>
+        <div class="level-title-group">
+          <div class="level-name">Shadow</div>
+          <div class="level-tagline">AI is being used. No protocol governs the outputs.</div>
+        </div>
+      </div>
+
+      <div class="level-fields">
+        <div class="level-field">
+          <div class="level-field-label">Governing Protocol</div>
+          <div class="level-field-body"><p>None. AI tools are used through personal accounts, outside IT visibility, without organizational awareness. No coordination mechanism specifies what data can be used as input, what outputs require review, or who is accountable for outputs used in consequential decisions.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Blind Spot</div>
+          <div class="level-field-body"><p>The organization cannot see what AI is doing with its data, what outputs are entering decisions, or where liability is accumulating. The exposure is invisible not because it is small but because no instrument is positioned to measure it.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Failure Mode</div>
+          <div class="level-field-body"><p><strong>Unaccountable AI access.</strong> AI systems operate with organizational data and produce outputs used in organizational decisions with no protocol specifying accountability for either. When the failure surfaces — a data leak, a sanctioned professional, a customer misled by a chatbot — the organization has no protocol to invoke and no record to audit. The absence of any handoff structure between the tool's output and organizational accountability is the failure; the tool itself is not.</p></div>
+        </div>
+      </div>
+
+      <div class="level-cases">
+        <p>Level 1 is universal. Reco.ai (2025) reports 71% of enterprise employees use unauthorized AI tools; the average discovery lag exceeds 400 days.<sup><a href="#fn17" id="ref17">17</a></sup> Cyberhaven found that 73.8% of employee ChatGPT use occurs on personal accounts, with corporate data input to AI growing 485% year-over-year in Q1 2024.<sup><a href="#fn18" id="ref18">18</a></sup> Gartner (2025) reports 69% of organizations have confirmed or suspected prohibited GenAI use. IBM Security documents that 97% of organizations experiencing AI-related security incidents lacked proper AI access controls.<sup><a href="#fn19" id="ref19">19</a></sup> These are baselines, not outliers.</p>
+
+        <div class="case-block">
+          <p><em>Samsung.</em> In April 2023, three semiconductor engineers independently submitted proprietary materials to personal ChatGPT accounts within one month: source code from a semiconductor database maintenance tool; source code for identifying defective equipment; and a full internal meeting transcript.<sup><a href="#fn20" id="ref20">20</a></sup> No protocol governed the boundary between personal AI tools and confidential IP. The engineers were solving real problems with available tools — the behavior was predictable, not deviant. Samsung's response — banning all GenAI tools enterprise-wide, then building an internal alternative (Samsung Gauss) — is the expensive, slow exit from Level 1: reactive, visible only after the exposure, carrying permanent IP loss. The Cyberhaven data establishes that Samsung was representative: 3.1% of enterprise ChatGPT users submit confidential company data on any given day.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Healthcare.</em> Shadow AI in healthcare is not an incident pattern — it is the sector baseline. 86% of healthcare organizations had shadow AI incidents by 2025 (symplr survey); 17% of clinical workers admit using unauthorized AI for clinical tasks.<sup><a href="#fn21" id="ref21">21</a></sup> The Office for Civil Rights clarified in 2024 that sending protected health information to any AI service without a signed Business Associate Agreement is a reportable HIPAA breach, regardless of employee intent. This clarification is the forcing mechanism for the Level 1-to-2 transition in healthcare: it makes the existing contractual instrument (the BAA) the governance layer for AI vendor relationships, converting invisible exposure into a defined compliance obligation. The BAA was designed for data processing vendors; its extension to AI services is an example of an existing protocol adapted rather than a new one invented.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Legal professions.</em> Attorneys used personal AI accounts for case law research and brief drafting without firm authorization or verification protocols. ABA Formal Opinion 512 (July 2024) now requires lawyers to maintain "reasonable understanding" of AI capabilities and verify all AI-generated output before submission.<sup><a href="#fn22" id="ref22">22</a></sup> Courts have escalated: 550+ publicly reported hallucination cases; 712 judicial decisions worldwide; an $86,000 fine in <em>ByoPlanet v. Johansson</em>. The legal profession's pattern repeats across jurisdictions and practice areas. This is the output of a professional sector that reached Level 2 intent (AI use is recognized as legitimate) without Level 2 execution (a verification protocol between AI output and professional accountability).</p>
+        </div>
+
+        <p>Shadow adoption is universal. Every organization with employees has it. The Level 1-to-2 transition does not eliminate shadow use — it makes the problem visible by granting sanctioned access under defined conditions.</p>
+      </div>
+
+      <div class="historical-parallel">
+        <span class="historical-label">Historical parallel</span>
+        <p><strong>Late 1990s:</strong> Employees used personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous. Shadow email created IP, legal, and compliance exposure that resolved through IT-provisioned corporate email with governance. Shadow AI is structurally identical. The resolution is likely the same type of transition at a higher scale and pace.</p>
+      </div>
+
+      <div class="transition-req">
+        <span class="transition-req-label">Transition Requirement → Level 2</span>
+        <p>Issue a formal AI access policy. Grant sanctioned access to approved tools under defined conditions. This converts invisible exposure into visible adoption — a prerequisite for governance, not governance itself.</p>
+      </div>
+    </div>
+
+    <!-- Level 2 -->
+    <div class="level-block" id="level-2">
+      <div class="level-header">
+        <div class="level-num">2</div>
+        <div class="level-title-group">
+          <div class="level-name">Sanctioned</div>
+          <div class="level-tagline">AI access has been granted. The outputs have not been governed.</div>
+        </div>
+      </div>
+
+      <div class="level-fields">
+        <div class="level-field">
+          <div class="level-field-label">Governing Protocol</div>
+          <div class="level-field-body"><p>Access scope. The organization has issued an AI access policy — approved tools, usage guidelines, in some cases a mandate. The protocol governs who can use which AI tools under what conditions. It does not govern what AI produces or how outputs are verified before consequential use.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Blind Spot</div>
+          <div class="level-field-body"><p>The organization can see that AI is being used. It cannot see whether what AI produces is reliable enough for the purposes it is being put to. The governing protocol has no visibility into the handoff between AI output and decision. That handoff is ungoverned.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Failure Mode</div>
+          <div class="level-field-body"><p><strong>Access-without-output-governance.</strong> The protocol solves the adoption problem and does not design the coordination mechanism between output and judgment. As AI becomes more pervasive — outputs entering customer communications, financial models, clinical notes, contracts, and legal submissions — the quality of those outputs is determined by individual judgment rather than by protocol. When that judgment fails, the organization is accountable for an output it has no mechanism to review systematically, verify reliably, or audit after the fact.</p></div>
+        </div>
+      </div>
+
+      <div class="level-cases">
+        <p class="body-p">The cognitive burden of Level 2 is not only organizational — it is individual. In a pre-AI workflow, collaboration meant passing discrete artifacts: documents, specifications, pull requests. The artifact defined the scope of the contribution and contained the interaction. When someone shares AI-generated work, they are not sharing an artifact. They are sharing a context: a whole decision space, a set of assumptions baked into the output, an implicit workflow. The person receiving it must engage with that entire context, not just review a document. The artifact boundary that previously contained the scope of interaction has dissolved. Governing Level 2 output means governing this expanded context — not just checking whether the document is correct, but whether the assumptions embedded in it are sound.</p>
+
+        <p class="body-p">This is the structural pressure that forces the Level 2-to-3 transition. Access governance cannot resolve it — you cannot write a policy that specifies how to evaluate an embedded decision space. Only workflow-level protocols can: by defining in advance what a complete, acceptable handoff looks like and what the receiving party must verify before accepting it.</p>
+
+        <div class="case-block">
+          <p><em>Klarna.</em> Klarna's AI deployment between 2023 and 2025 is the clearest longitudinal record of Level 2 failure at enterprise scale.<sup><a href="#fn23" id="ref23">23</a></sup> By May 2024, 90% of Klarna employees were using AI tools daily — the highest publicly reported enterprise adoption rate. The company claimed that its AI customer service agent, deployed to the equivalent of 700 agents, produced a $40M profit improvement in its first year. These numbers were real. What followed was also real: CEO Sebastian Siemiatkowski publicly reversed the AI-only customer service position, citing outputs that were "generic, repetitive, insufficiently nuanced." Klarna began rehiring human customer service staff in 2025. The tool worked; the output governance protocol was absent. The access mandate created the adoption; the absent quality protocol created the ceiling.</p>
+          <p>The Klarna case is frequently misread as evidence that AI customer service does not work. It is evidence that sanctioned access without output governance produces a predictable failure arc: high initial adoption metrics, quality degradation invisible in those metrics, and a reversal that comes as a surprise because no protocol was generating leading indicators of the quality problem.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Duolingo.</em> Duolingo replaced native-speaker language content contractors with AI in 2024.<sup><a href="#fn24" id="ref24">24</a></sup> Those contractors were also the quality-assurance protocol — they caught cultural nuance gaps that automated volume metrics do not surface. Removing them without replacing the protocol created a quality deficit invisible in content production volume. User backlash drove daily active user growth to "the lower end of projections" in Q2 2025 earnings. The governance failure was the organizational failure to recognize that the contractors were doing protocol work, not just production work. When a quality-assurance protocol is removed to cut costs, the quality cost is deferred until users notice.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Air Canada.</em> Air Canada's customer-service chatbot asserted a bereavement fare refund policy that did not exist.<sup><a href="#fn25" id="ref25">25</a></sup> Air Canada argued before the BC Civil Resolution Tribunal that the chatbot was a "separate legal entity" bearing no relationship to the airline's obligations. The Tribunal rejected this: "It is unclear why Air Canada believes that it is not responsible for the information provided by its agent. Air Canada cannot absolve itself of responsibility by submitting that the information was provided by a separate computer program."<sup><a href="#fn26" id="ref26">26</a></sup> Damages: $812.02. Legal precedent: organizations are liable for all outputs their AI systems produce on company-operated channels. The chatbot's incorrect output is a risk management problem; the governance failure was the absent escalation protocol — no path from uncertain chatbot output to human review before the commitment was made, and no mechanism for the chatbot to signal its own uncertainty.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Shopify.</em> Shopify illustrates Level 2 at its most productive, and also its ceiling. CEO Tobias Lütke's April 2025 memo made AI use non-optional: "Frankly, I don't think it's feasible to opt out of learning the skill of applying AI."<sup><a href="#fn27" id="ref27">27</a></sup> Teams must demonstrate AI cannot do a task before requesting headcount. Revenue grew 30% year-over-year for full year 2025; operating expenses fell from 45% to 35% of revenue. The mandate is producing real efficiency gains. The governance gap persists: no published standard for what AI proficiency requires in non-technical roles, no systematic verification protocol for customer-facing content generated by AI, no documented escalation path for AI outputs that cannot be verified by the employee producing them.</p>
+        </div>
+      </div>
+
+      <p class="body-p">The Level 2-to-3 transition requires redesigning the governing protocol from access-scope to output-scope. In practice, this design work cannot be done from a central governance function alone — it requires someone who understands both the AI system's capabilities and the specific workflow it is entering. Evan Armstrong identified the Forward Deployed Engineer (FDE) as the emerging role that enables this transition: "The largest reason that the FDE has happened today is because AI will end up being a bigger and more important platform shift than the cloud was. The biggest changes are not even technological, they are operational."<sup><a href="#fn28" id="ref28">28</a></sup></p>
+
+      <p class="body-p">The FDE embeds in the business function and designs the workflow protocol from inside: identifying where AI output requires verification, what verification looks like for that specific task, and what feedback loops should govern the protocol's refinement. Mark Scianna describes the core method: "Build the gravel road: Discover and construct the minimum viable path to the outcome that moves the needle/solves the user's pain point. Fast, a bit ugly, but true — and this will expose patterns (reusable primitives, inputs/outputs, workflows, feature sets, knobs) you may later pave into the platform."<sup><a href="#fn29" id="ref29">29</a></sup> The gravel road is the first output-scope governing protocol for a function — provisional and function-specific, designed to generate feedback about what the right protocol should become. OpenAI now deploys FDEs exclusively to customers spending $10M+ per year, at $200–300K salary, with an effective floor of $1M+ contract value.<sup><a href="#fn30" id="ref30">30</a></sup> This is the market price for doing the Level 2-to-3 design reactively through professional services rather than building the organizational capability directly.</p>
+
+      <p class="body-p">The question is why this protocol design cannot be done centrally. The answer is that the conditions under which Level 3 protocols emerge are the same conditions Weick identified in crisis improvisation: you cannot design an escape fire from headquarters.</p>
+
+      <p class="body-p">On August 5, 1949, sixteen smokejumpers parachuted into Mann Gulch, Montana, to fight what they believed was a routine fire. Within minutes, the fire exploded and cut off their escape route. Foreman Wag Dodge did something no one had ever done: he stopped running, lit a fire in the grass ahead of him, and lay down in the ashes as the main fire swept over him. Thirteen of his crew, who rejected his shouted orders and kept running uphill, did not survive. Their failure was not physical — they were young, fit, fast. It was a failure of sensemaking: Dodge's commands were so alien to anything in their experience that they could not process them as rational.</p>
+
+      <p class="body-p">Karl Weick, analyzing the disaster in his 1993 paper, identifies Dodge as a bricoleur — someone who creates order out of whatever materials happen to be at hand, through intimate, embodied familiarity with their environment. Weick's point is that improvisation under crisis is what bricoleurs do every day, at higher intensity. They remain creative under pressure because working with chaotic conditions is their normal mode of operation.</p>
+
+      <p class="body-p">Domain experts building nascent AI protocols for themselves and their collaborators are the Enterprise's bricoleurs. They give organizations the grounded, tested protocols worth formalizing — not because they were assigned to design governance, but because they were embedded in the domain deeply enough to know what good looks like and improvise toward it.</p>
+
+      <div class="historical-parallel">
+        <span class="historical-label">Historical parallel</span>
+        <p><strong>Early 2000s:</strong> Organizations provisioned corporate email without retention or e-discovery protocols. The forcing function was litigation: <em>Zubulake v. UBS Warburg</em> (2003) established that organizations were liable for email they could not produce in discovery. The AI liability cases — Air Canada, legal hallucination sanctions — are playing the same structural role.</p>
+      </div>
+
+      <div class="transition-req">
+        <span class="transition-req-label">Transition Requirement → Level 3</span>
+        <p>Redesign the governing protocol from access-scope to output-scope. For the bottleneck function: define which AI outputs require human verification before use, by whom, by what method, and what happens when verification fails. Build the gravel road — specific to one function, provisional, and designed to generate feedback about what the protocol should become.</p>
+      </div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="level-block" id="level-3">
+      <div class="level-header">
+        <div class="level-num">3</div>
+        <div class="level-title-group">
+          <div class="level-name">Designed</div>
+          <div class="level-tagline">AI is embedded in specific workflows with defined verification protocols.</div>
+        </div>
+      </div>
+
+      <div class="level-fields">
+        <div class="level-field">
+          <div class="level-field-label">Governing Protocol</div>
+          <div class="level-field-body"><p>Workflow scope. The organization has designed specific workflows where AI operates within defined protocols: input preparation standards, output verification checkpoints, escalation triggers, and feedback loops. AI is embedded in how particular work is done, not merely authorized as a tool. The protocol specifies the boundary between AI autonomy and human judgment within those workflows.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Blind Spot</div>
+          <div class="level-field-body"><p>Workflow-level protocols govern internal operations. They cannot coordinate across functions, with external partners, or with regulators operating at different speeds. The organization's AI-accelerated clock runs faster than its coordination environment.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Failure Mode</div>
+          <div class="level-field-body"><p><strong>Temporal divergence.</strong> AI accelerates some workflows while external dependencies — client review cycles, regulatory response, cross-functional handoffs, downstream quality checks — remain at human pace. The governing protocol is well-designed internally; it cannot govern the coordination points that cross the workflow boundary. Output volume grows faster than review capacity. Functions redesigned around AI operate at a different tempo than those that have not been. The organization's AI efficiency creates misalignment with the rest of its operating environment.</p></div>
+        </div>
+      </div>
+
+      <div class="level-cases">
+        <p class="body-p">At the individual level, temporal divergence manifests as orientation debt: the gap between the pace at which AI produces usable work and the pace at which a person can verify that it is any good. Orientation debt is the felt experience of contexts multiplying faster than a reviewer can evaluate them. It is the Level 3 failure mode experienced from inside rather than measured from above.</p>
+
+        <p class="body-p">In factory-to-factory pipelines, orientation debt is the load each party bears when evaluating the other factory's output: not laboriously checking every line, but reading the shape of what arrived and sensing whether it meets the requirements for the next stage.</p>
+
+        <div class="case-block">
+          <p><em>Uber.</em> Uber's engineering organization is the most thoroughly documented Level 3 case.<sup><a href="#fn31" id="ref31">31</a></sup> By March 2026: 84% of developers are active agentic coding users; 65–72% of code is AI-generated inside IDE tools; 11% of PRs are opened by agents. Designed workflows exist for dead code cleanup, codebase migrations, and bug fixes, each with defined scope and review requirements. CTO Dario Khosrowshahi: "AI is enabling people to become superhumans in terms of their productivity and the impact that we can realize for our end users."<sup><a href="#fn32" id="ref32">32</a></sup></p>
+          <p>The temporal divergence failure mode appeared as the model predicts. AI-generated PR volume outpaced code review capacity. The pipeline generated output faster than the review protocol could absorb it. Uber's response was protocol design: Code Inbox (smart assignment of AI-generated PRs based on code ownership, with explicit service-level obligations for review time) and U Review (AI-assisted code review that reduces human review burden). Code Inbox and U Review are protocol infrastructure for the new bottleneck — not tools for improving code quality, but handoff structures that govern the AI-to-human review boundary. The four-layer agentic platform architecture Uber has built — (1) internal AI platform built on Michelangelo, (2) internal Uber context (source code, docs, Slack, JIRA), (3) industry agents (Claude Code, Copilot, Codex, Cursor), (4) specialized agents (Minion, Autocover, U Review) — is a protocol architecture: each layer specifies the interface through which the next layer operates.<sup><a href="#fn33" id="ref33">33</a></sup></p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Boom Supersonic.</em> Boom Supersonic is a late Level 3 case in a domain where the stakes of protocol failure exceed code review queues.<sup><a href="#fn34" id="ref34">34</a></sup> Boom's structural analysis software (mkBoom) runs automatically from parametric aircraft configurations — the design methodology depends on it. AI-enabled iteration is the design process. Removing it would require rebuilding the methodology from scratch.</p>
+          <p>Blake Scholl describes the effect through Jevons's Law applied to engineering: "the real magic isn't the time savings — it's sort of a Jevon's Law of engineering: when engineering iteration is quick and cheap, many more designs can be evaluated and a much better design can be discovered."<sup><a href="#fn35" id="ref35">35</a></sup> Boomless Cruise — a key product capability — emerged through that iteration. It was not in the original design objectives; it was discovered because the iteration cycle was fast enough to find it.</p>
+          <p>The quantitative case is the Slacker Index: total lead time divided by actual working time. Scholl's turbine blade example: a turbine blade costing $1M per engine to produce has a six-month lead time, of which perhaps days are actual working time. The Slacker Index is enormous. A $2M 3D printer reduces lead time to 24 hours and enables daily iteration. "It doesn't just shave months off a schedule. It changes the physics of what's possible. Problems that would be existential with a year-long lead time become solvable with a 24-hour iteration cycle."<sup><a href="#fn36" id="ref36">36</a></sup> Boom's AI-enabled design process has compressed aerospace engineering's Slacker Index in the same way. The competitive moat is the designed workflow that the tool makes possible, and the protocol governance that makes the workflow reliable enough to bet a safety-critical program on.</p>
+          <p>Boom is late Level 3, not Level 4, because the aerospace industry does not yet depend on Boom's design approach. Boom's business model depends on its AI-enabled protocols; the aerospace industry's production economics are not reorganized around AI iteration at Boom's pace. That distinction — organizational competitive reliance versus sector infrastructure — marks the Level 3/Level 4 boundary.</p>
+        </div>
+
+        <p class="body-p">Benny's ontological drift thesis is most visible at Level 3. Organizations that have designed AI into workflows face a specific fragility: the protocol depends on stable definitions. "When agents, tools, and auto-generated artifacts depend on stable definitions, changing the meaning of a term or schema midstream breaks everything."<sup><a href="#fn37" id="ref37">37</a></sup> At Level 3, workflow redesign — the work of the FDE and the platform team — must be completed before the workflow goes to production. Definitional changes in production are expensive because the AI-generated artifact trail depends on stable ontology. Organizations that design well at Level 3 treat mid-cycle redefinition as a protocol violation, not a normal iteration step.</p>
+
+        <p class="body-p">The Waterfall inversion that ontological drift produces — Level 3 organizations front-loading clarity and freezing definitions to reduce coordination costs — is not a regression. It is the correct response to operating at the boundary of a striated zone: the protocol must be stable enough to govern the handoff before the handoff can scale.</p>
+
+        <p class="body-p">Domain expertise is the binding constraint at Level 3. Domain expertise functions as higher-level perception: the ability to read the shape of what AI has produced without inspecting every line. A domain expert can evaluate whether the logic holds, whether the framing fits the problem, whether something critical is missing — not by checking each detail but by pattern-matching at a level of abstraction the AI cannot supply and a non-expert cannot apply. This is why domain expertise is the binding constraint at Level 3, not tool access or processing speed: it is the mechanism by which output volume can be governed without a proportional increase in review labor.</p>
+
+        <p class="body-p">This is why factory-to-factory coordination — domain experts orchestrating bilateral AI pipelines — produces disproportionate value at Level 3. The factory metaphor is apt: each party provides domain expertise at their end of the handoff; AI provides execution on both sides. The intermediate artifacts that pass between them are not documents to be read but production states to be evaluated by someone who knows what the next stage requires.</p>
+
+        <p class="body-p">This inverts the public narrative about AI value. The spectacle is autonomous agents producing outputs. The actual value accumulates in a quieter pattern:</p>
+
+        <p class="body-p">The practical implication: in well-designed Level 3 workflows, neither the human nor the AI writes code or content in the traditional sense. The human provides domain knowledge, judgment, and output verification. The AI provides commodity technical execution. What was previously scarce — execution capacity — becomes abundant. What was previously ambient — domain knowledge — becomes the scarce resource that determines quality and governs risk.</p>
+      </div>
+
+      <div class="historical-parallel">
+        <span class="historical-label">Historical parallel</span>
+        <p><strong>2005–2015:</strong> Git solved the problem of multiple developers editing the same codebase simultaneously. The pull request protocol converted individual development into coordinated production. AI-generated code volume recreates the same coordination problem at a higher rate; Code Inbox is Git-style coordination applied to the AI-human review boundary.</p>
+      </div>
+
+      <div class="transition-req">
+        <span class="transition-req-label">Transition Requirement → Level 4</span>
+        <p>Extend workflow-level protocols into cross-function and cross-boundary coordination. Build infrastructure for the bottlenecks the designed workflows create — output volume management, review SLOs, external coordination standards. The transition from Level 3 to Level 4 requires governing the coordination system those workflows generate, not refining individual workflow governance further.</p>
+      </div>
+    </div>
+
+    <!-- Level 4 -->
+    <div class="level-block" id="level-4">
+      <div class="level-header">
+        <div class="level-num">4</div>
+        <div class="level-title-group">
+          <div class="level-name">Infrastructural</div>
+          <div class="level-tagline">AI protocols are sector infrastructure. The governance problem has moved to the inter-organizational level.</div>
+        </div>
+      </div>
+
+      <div class="level-fields">
+        <div class="level-field">
+          <div class="level-field-label">Governing Protocol</div>
+          <div class="level-field-body"><p>Sector scope. AI protocols have become standard infrastructure within a sector — the coordination mechanisms are shared, standardized, and expected. Individual organizations no longer design their own AI handoff protocols from scratch; they implement and extend sector standards. The governance problem has shifted from internal workflow design to inter-organizational coordination and sector-level risk.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Blind Spot</div>
+          <div class="level-field-body"><p>The organization's AI governance is sound internally but depends on external infrastructure it does not control. The sector's shared AI protocols create dependencies whose failure produces consequences that no single organization's governance was designed to prevent.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Failure Mode</div>
+          <div class="level-field-body"><p><strong>Infrastructure dependency without sector-level governance.</strong> When AI becomes sector infrastructure, a single organization's protocol maturity cannot guarantee its own outcomes. Financial clearing, healthcare referrals, and supply chain coordination all run through shared AI protocols when they become standard infrastructure. A failure in that shared protocol reaches entangled organizations, often regardless of internal governance controls.</p></div>
+        </div>
+      </div>
+
+      <div class="level-cases">
+        <div class="case-block">
+          <p><em>Uber approaching Level 4.</em> Uber's four-layer platform architecture is Level 4 infrastructure within Uber — proprietary sector infrastructure for the organization's AI-enabled engineering. AI costs have grown 6x since 2024; the organization has stopped relying on off-the-shelf tooling and designs the protocols through which AI operates at organizational scale.<sup><a href="#fn38" id="ref38">38</a></sup> Full Level 4 would require this infrastructure to become a sector standard: the point at which a software engineering organization without equivalent AI governance operates at a structural productivity deficit relative to the sector floor. That point has not yet arrived; the trajectory from Uber's current state suggests it is within a three-to-five year horizon for enterprise software engineering.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>Financial services as the near-term transition sector.</em> AI-assisted trading, credit decisions, and fraud detection are approaching sector-standard capability in financial services. When a model failure produces correlated credit decisions across multiple institutions simultaneously, no single institution's internal AI governance protocol can contain the propagation. The governance question shifts from "what does our AI do?" to "what does the sector's shared AI infrastructure do, and who governs it?" The NIST AI RMF's four functions — Govern, Map, Measure, Manage — map directly to L3+ protocol design requirements, and OCC guidance is beginning to incorporate them for banking sector AI.<sup><a href="#fn39" id="ref39">39</a></sup></p>
+        </div>
+      </div>
+
+      <p class="body-p">The shift from destination intelligence to intelligence media marks the threshold at which factory-to-factory coordination becomes the dominant form of AI value creation. In destination intelligence, people go to AI tools to produce outputs. In intelligence media, intermediate artifacts circulate between people's bespoke AI setups the way industrial intermediates flow between factories — each factory taking inputs, transforming them, and passing outputs forward with specifications for the next stage. Venkatesh Rao calls this the F2F pattern ("factory-to-factory"). The handoff between factories is not a finished document; it is an intermediate production state, a set of revised requirements, a specification that the receiving factory must resolve before it can proceed. This coordination pattern requires protocols to govern it: scope declarations, output format specifications, and escalation triggers for when factory outputs do not meet the receiving factory's requirements.</p>
+
+      <p class="body-p">The Level 3-to-4 transition requires a new class of coordination document: the agent handoff contract. Rao's "Have Your Factory Call My Factory" describes the structural problem these contracts must solve. Two AI-enabled factories coordinating on a shared project operate autonomously — each with its own agent stack, its own workflow protocols, its own ontology — but must coordinate at defined handoff points. "The handoff point between us is a shared Dropbox folder plus a 'manuscript transmittal' server she's set up for metadata."<sup><a href="#fn40" id="ref40">40</a></sup> The shared folder and the transmittal document are the precursor form of what agent handoff contracts must formalize as AI coordination scales.</p>
+
+      <p class="body-p">The components crystallizing in enterprise AI: (1) <strong>scope declaration</strong> — what the agent can and cannot do unilaterally, which decisions require human judgment, which data it can access without additional authorization; (2) <strong>output format specification</strong> — what a complete, acceptable handoff looks like, what metadata must accompany the output, what the receiving agent or human needs to process it; (3) <strong>escalation trigger</strong> — the specific conditions under which the agent must pause autonomous operation and request human judgment before proceeding. The escalation trigger is the hardest component to specify because it requires the organization to enumerate — in advance — the conditions under which AI judgment is insufficient. That enumeration is governance work requiring domain knowledge, risk modeling, and deliberate design.</p>
+
+      <div class="historical-parallel">
+        <span class="historical-label">Historical parallel</span>
+        <p><strong>1970s–1990s:</strong> Electronic Data Interchange standardized how organizations exchanged business documents across company boundaries. Before EDI, each pair of trading partners negotiated its own data format for purchase orders, invoices, and shipping notices. EDI converted bespoke bilateral coordination into sector infrastructure that made just-in-time supply chains possible. Agent handoff contracts are the AI-era equivalent.</p>
+      </div>
+
+      <div class="transition-req">
+        <span class="transition-req-label">Transition Requirement → Level 5</span>
+        <p>Participate in sector-level protocol design, not only internal governance. Engage regulatory frameworks as protocol design inputs. Build governance that accounts for external AI dependencies the organization does not control, and engage in the standards processes that will define those dependencies.</p>
+      </div>
+    </div>
+
+    <!-- Level 5 -->
+    <div class="level-block" id="level-5">
+      <div class="level-header">
+        <div class="level-num">5</div>
+        <div class="level-title-group">
+          <div class="level-name">Planetary</div>
+          <div class="level-tagline">AI protocols are civilization infrastructure. No single organization is in charge.</div>
+        </div>
+      </div>
+
+      <div class="level-fields">
+        <div class="level-field">
+          <div class="level-field-label">Governing Protocol</div>
+          <div class="level-field-body"><p>Planetary scope. AI protocols are embedded in critical systems as deeply as TCP/IP, the electrical grid, or the ISO container standard. No single organization manages them; they are maintained through collective mechanisms — standards bodies, regulatory frameworks, market dynamics, international treaty. The protocols have become part of the operations that Alfred North Whitehead described: those we perform without thinking of them.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Blind Spot</div>
+          <div class="level-field-body"><p>Protocols that become invisible lose the organizational memory needed to govern them. The people who designed the protocol have moved on. The organizations that depend on it lack the literacy to recognize when it is failing. The governance mechanisms were designed for a smaller version of the infrastructure.</p></div>
+        </div>
+        <div class="level-field">
+          <div class="level-field-label">Failure Mode</div>
+          <div class="level-field-body"><p><strong>Protocol invisibility without reflexive governance.</strong> Infrastructure so successful that the governance mechanisms designed around it lag the scale and stakes they govern. Failures can be hard to attribute, isolate, or fix — because the governance mechanisms often become as invisible as the infrastructure they govern. As Stinson-Schroff observes, systemic infrastructure typically fails through slow degradation rather than dramatic collapse: "mechanical currents" — incremental pressures that accumulate in complex systems until the structure expresses itself.<sup><a href="#fn41" id="ref41">41</a></sup></p></div>
+        </div>
+      </div>
+
+      <div class="level-cases">
+        <div class="case-block">
+          <p><em>The containerization analogue.</em> The ISO shipping container, standardized in 1968, reorganized global trade within two decades.<sup><a href="#fn42" id="ref42">42</a></sup> Port infrastructure was rebuilt; trucking and rail networks were redesigned; just-in-time supply chains became possible. By the 2000s, containerization was invisible — the default assumption of all global logistics planning. The Maersk ransomware attack of 2017 is the canonical Level 5 failure mode: containerization and internet protocols had converged into a single attack surface. NotPetya spread from Ukrainian accounting software through Maersk's global logistics network, halting operations at ports on six continents, causing $300M in losses in ten days. Two invisible infrastructures — physical container logistics and internet protocols — created a failure mode that neither protocol was individually designed to prevent. The governance gap was not in either protocol; it was in the absence of any governance mechanism for their intersection.</p>
+        </div>
+
+        <div class="case-block">
+          <p><em>TCP/IP as the Level 5 template.</em> TCP/IP became so successful it became the invisible default assumption of all digital coordination. The governance mechanisms — IETF, ICANN, the Border Gateway Protocol's routing trust model — were designed before the internet became critical infrastructure. They are now inadequate to the scale and stakes they govern. BGP hijacking attacks, DNS poisoning campaigns, and systematic routing manipulation now occur routinely as failures of governance mechanisms not designed for adversarial infrastructure at planetary scale. AI protocols are on the same trajectory, at a shorter time horizon, in an environment already adversarial.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Section 4 ─────────────────────────────────────────────── -->
+<section id="emerging" class="body-section section-alt">
+  <div class="container">
+    <span class="section-num">Section 4</span>
+    <h2>Emerging protocols: the transition infrastructure</h2>
+
+    <div class="prose">
+      <p class="intro-p">A specific class of coordination mechanisms is emerging to govern enterprise AI use. These are protocols — they govern behavior at handoff points without requiring shared goals or central enforcement — and each maps to a specific level transition.</p>
+    </div>
+
+    <div class="prose">
+    <div class="table-wrap table-lead">
+      <table>
+        <thead>
+          <tr>
+            <th>Protocol</th>
+            <th>Level Transition</th>
+            <th>What It Governs</th>
+            <th>Sector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BAA extension to AI vendors</td>
+            <td>L1 → L2</td>
+            <td>Contractual accountability for AI vendor data handling</td>
+            <td>Healthcare</td>
+          </tr>
+          <tr>
+            <td>Output verification obligation (ABA Formal Opinion 512)</td>
+            <td>L1 → L2</td>
+            <td>Mandatory human verification step before professional use</td>
+            <td>Legal</td>
+          </tr>
+          <tr>
+            <td>Risk-tiered deployment classification (EU AI Act)</td>
+            <td>L2 → L3</td>
+            <td>Pre-deployment classification with defined governance requirements per tier</td>
+            <td>Cross-sector (EU)</td>
+          </tr>
+          <tr>
+            <td>PR/output SLOs and smart routing (Code Inbox pattern)</td>
+            <td>L3 → L4</td>
+            <td>Volume and routing of AI-generated outputs through human review</td>
+            <td>Software engineering</td>
+          </tr>
+          <tr>
+            <td>Agent handoff contracts</td>
+            <td>L4 → L5</td>
+            <td>Scope, output format, escalation triggers between AI agent systems</td>
+            <td>Emerging</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="prose">
+      <div class="protocol-block">
+        <span class="protocol-tag">L1 → L2 · Healthcare</span>
+        <div class="protocol-title">Business Associate Agreements extended to AI vendors</div>
+        <p class="protocol-body">The Business Associate Agreement is a contractual instrument already established in HIPAA compliance. It specifies what a vendor can and cannot do with protected health information: retention limits, audit rights, breach notification obligations, permitted uses. The HHS Office for Civil Rights' 2024 clarification extended this instrument to AI vendors: any AI service that processes PHI must have a signed BAA, or transmitting data to it constitutes a reportable breach. The contractual infrastructure already exists; the governance question reduces to whether the instrument is in place. The BAA converts the Level 1 problem (invisible data flows to AI vendors) into a Level 2 condition (vendor data handling is contractually governed). It does not solve output governance; it creates the legal foundation for the next protocol layer.</p>
+      </div>
+
+      <div class="protocol-block">
+        <span class="protocol-tag">L1 → L2 · Legal</span>
+        <div class="protocol-title">Output verification obligation (ABA Formal Opinion 512)</div>
+        <p class="protocol-body">ABA Formal Opinion 512 (July 2024) requires lawyers to have "reasonable understanding" of AI capabilities and to verify all AI-generated output before submission. This is a protocol because it specifies the handoff structure (lawyer-reviews-AI-output) and makes that structure mandatory through professional licensing rather than firm policy. The enforcer is the bar association and the courts, not the firm's IT department. Courts have escalated sanctions because the verification step failed at the handoff point. The obligation attaches to the professional regardless of what the firm's AI access policy says. This is the structural property of a protocol: it governs the handoff without depending on the organization's own governance for enforcement.</p>
+      </div>
+
+      <div class="protocol-block">
+        <span class="protocol-tag">L2 → L3 · Cross-sector (EU)</span>
+        <div class="protocol-title">Risk-tiered deployment classification (EU AI Act)</div>
+        <p class="protocol-body">The EU AI Act (Regulation 2024/1689) establishes mandatory pre-deployment classification of AI systems into risk tiers, with specific governance requirements for each tier.<sup><a href="#fn43" id="ref43">43</a></sup> High-risk AI systems — hiring and HR management software, credit scoring systems, biometric identification, critical infrastructure, and systems affecting access to education — must have documented human oversight protocols, conformity assessments, and technical documentation before deployment. The classification is mandatory: an organization cannot deploy a high-risk system with access-only governance and claim compliance. The classification step precedes deployment and triggers specific governance obligations. For organizations with EU employees or customers in high-risk function categories, August 2026 is a mandatory Level 2-to-3 transition deadline. Fines for non-compliance reach €35M or 7% of global annual turnover.</p>
+      </div>
+
+      <div class="protocol-block">
+        <span class="protocol-tag">L3 → L4 · Software Engineering</span>
+        <div class="protocol-title">PR/output SLOs and smart routing (Code Inbox pattern)</div>
+        <p class="protocol-body">The Code Inbox and U Review pattern Uber has built is the first well-documented instance of a Level 3-to-4 transition protocol in software engineering. As AI-generated PR volume grows, the human review queue becomes ungovernable through individual judgment alone. The protocol has three components: (1) intake classification — distinguishing AI-generated from human-authored commits and PRs, enabling routing decisions on that basis; (2) smart routing — ownership-based assignment of AI-generated work to reviewers with relevant context, without a human coordinator making each assignment; (3) service-level obligations — time-bounded review commitments that make review a governed process with measurable performance rather than a discretionary activity. Code Inbox governs the handoff structure through which PRs reach reviewers and establishes accountability for the review step. It does not review PRs. The protocol scales because it governs the handoff without requiring central oversight of each individual review.</p>
+      </div>
+
+      <div class="protocol-block">
+        <span class="protocol-tag">L4 → L5 · Emerging</span>
+        <div class="protocol-title">Agent handoff contracts</div>
+        <p class="protocol-body">Agent handoff contracts are still in formation as a protocol pattern. The earliest instances are informal: Rao's shared Dropbox folder and transmittal document, Uber's Code Inbox intake classification, the structured output formats that AI coding tools have begun to standardize. The protocol is crystallizing around the three components described in Level 4: scope declaration, output format specification, and escalation trigger. The escalation trigger is the hardest component to specify because it requires enumerating — in advance — the conditions under which AI judgment is insufficient. Organizations that build this capability before agent coordination at scale becomes standard will be positioned to participate in the sector-level protocol design that Level 4 requires.</p>
+      </div>
+
+      <p>Each of these five protocols converts a previously discretionary human judgment into a designed coordination mechanism. ABA 512 converts "the lawyer decides whether to verify" into a mandatory protocol step. Code Inbox converts "engineers decide which PRs to review first" into a classified, routed, SLO-governed workflow. In each case, the protocol scales because coordination is built into the structure rather than delegated to a person.</p>
+
+      <p>Git is the reference point. Git did not improve code quality. It created the handoff structure — branch, commit, pull request, merge — that allowed code quality to be governed at scale across distributed teams with no central coordinator managing each integration. These emerging protocols are doing the same for AI: creating the handoff structures that allow AI output quality to be governed at scale. Organizations building to them now are building governance that will be sector-standard within years. Organizations that wait for full standardization will implement them under regulatory or liability pressure, at higher cost and lower control.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 5 ─────────────────────────────────────────────── -->
+<section id="landscape" class="body-section">
+  <div class="container">
+    <span class="section-num">Section 5</span>
+    <h2>Where organizations are now — and what the distribution predicts</h2>
+
+    <div class="prose">
+      <p>Most organizations are at Level 1 or Level 2. The 2024–2026 survey data is consistent enough that the distribution can be described with reasonable confidence.</p>
+
+      <p>McKinsey (2025): 88% adoption, but 66% have not yet begun scaling AI across the enterprise.<sup><a href="#fn44" id="ref44">44</a></sup> Only 39% report any EBIT impact; 22% say they are scaling agents anywhere; no more than 10% of any single function uses agents at scale. Menlo Ventures (2025): 63% of enterprise AI deployments are still prompt design, RAG, or fixed workflows — not true agents.<sup><a href="#fn45" id="ref45">45</a></sup> Reco.ai: 71% of enterprise employees use unauthorized AI tools, indicating that Level 1 conditions co-exist beneath whatever Level 2 access mandates have been issued.<sup><a href="#fn46" id="ref46">46</a></sup> IBM survey: only 39% of CEOs report adequate AI governance; 61% report pushing adoption faster than governance readiness.</p>
+
+      <p>These figures are concentrated at Level 1 and early Level 2: access policies exist (or are being developed); output governance protocols do not. The Klarna, Shopify, and Duolingo cases represent Level 2 at enterprise scale — the mandate has been issued; the output governance design has not followed.</p>
+
+      <p>A cohort of approximately 6–15% of organizations has designed AI into specific workflows with explicit governance. McKinsey's high performers (6%) have redesigned workflows and have human-in-the-loop validation at 65% versus 23% for others. Accenture's Achievers (12%) have CEO sponsorship, industrialized tooling, and are 3.5 times more likely than Experimenters to see AI-influenced revenue exceed 30% of total revenues.<sup><a href="#fn47" id="ref47">47</a></sup> OpenAI's data shows frontier organizations sending 6 times more messages per seat than median enterprises, with API reasoning token consumption growing 320x from November 2024.<sup><a href="#fn48" id="ref48">48</a></sup> The differentiator is protocol design at the workflow level.</p>
+
+      <p>The model predicts the distribution will become more bimodal. Level 3 organizations compound: AI-designed workflows generate data that improves the protocol, which improves the workflow, which generates more data. Benny's cost-structure analysis makes this concrete — organizations that have front-loaded precision into stable definitions and designed workflow protocols now incur the lowest transaction costs for continuing AI integration. Their AI infrastructure accrues. Level 2 organizations plateau: access mandates without output governance do not generate the feedback needed to improve. The gap between Achievers and Experimenters is a protocol design gap that will widen without deliberate intervention. McKinsey's conclusion — "meaningful enterprise-wide bottom-line impact from the use of AI continues to be rare" — is, under this analysis, a prediction as much as an observation.</p>
+
+      <p>In practice, most Level 2-to-3 transitions are driven by organic discovery rather than compliance deadlines: domain experts build better workflows, demonstrate competitive advantage, and create internal pressure to standardize. Regulatory instruments accelerate transitions that organizational incentives have already begun.</p>
+
+      <p>Three regulatory instruments are creating forced transitions in specific sectors. The EU AI Act's August 2026 compliance deadline makes Level 2-to-3 mandatory for high-risk deployments under EU scope. NIST AI RMF 1.0 (2023) — Govern, Map, Measure, Manage — maps directly to L3+ protocol design requirements and is being incorporated into OCC and HHS sector guidance.<sup><a href="#fn49" id="ref49">49</a></sup><sup><a href="#fn50" id="ref50">50</a></sup> The HHS/OCR HIPAA overhaul proposes eliminating the "required vs. addressable" distinction and mandating annual security audits and encryption, pushing healthcare organizations toward formalized governance beyond access-only protocols. These forcing functions will reach approximately 20–30% of enterprise AI deployments in the US and EU. The remaining 70–80% will design the transition voluntarily or reactively.</p>
+
+      <p>The Air Canada chatbot case is the model for reactive transition at Level 2. $812 in direct damages and a legal precedent now cited across enterprise AI governance discussions. The reaction — updating AI governance policies, adding escalation paths for customer-service AI, reviewing chatbot output protocols — costs more and produces less than designing the protocol before deployment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 6 ─────────────────────────────────────────────── -->
+<section id="how-to-use" class="body-section section-alt">
+  <div class="container">
+    <span class="section-num">Section 6</span>
+    <h2>How to use this model</h2>
+
+    <div class="prose">
+      <p>The model's primary value is predictive. Placing your organization on the model tells you which failure is applicable to you — and what design change should be considered.</p>
+
+      <p>The diagnostic question <strong>"When your AI system produces a wrong answer here, what happens next — and who is accountable?"</strong> is the operative instrument. Apply it function by function. The answers map directly to levels. The bottleneck — the function with the lowest answer and the highest consequences — is the organization's effective governance level for risk purposes.</p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Map AI exposure by function</h4>
+            <p>List every function where AI produces outputs that affect decisions: customer communications, code, financial analysis, legal review, HR decisions, clinical recommendations, contracts, regulatory submissions. This is the inventory the model operates on.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Apply the governing uncertainty test to each function</h4>
+            <div class="table-wrap step-table">
+              <table class="diagnostic-table">
+                <thead>
+                  <tr>
+                    <th>Answer to "what happens when AI is wrong here?"</th>
+                    <th>Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>"We'd probably not notice" / "It hasn't happened yet"</td>
+                    <td>Level 1</td>
+                  </tr>
+                  <tr>
+                    <td>"Someone notices and flags it after the fact"</td>
+                    <td>Level 2</td>
+                  </tr>
+                  <tr>
+                    <td>"There is a review process before the output is used"</td>
+                    <td>Level 3</td>
+                  </tr>
+                  <tr>
+                    <td>"We have error metrics, escalation paths, and the protocol updates when the error rate changes"</td>
+                    <td>Level 4</td>
+                  </tr>
+                  <tr>
+                    <td>"The protocol is infrastructure — we monitor the infrastructure, not individual outputs"</td>
+                    <td>Level 5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Identify the bottleneck</h4>
+            <p>The function with the lowest answer and the highest consequences is the bottleneck. A Level 3 engineering organization with a Level 1 HR function has a Level 1 liability ceiling in any employment-related AI dispute. A Level 3 financial analysis team with a Level 2 customer communications function has a Level 2 regulatory exposure in any customer-facing AI liability case. The bottleneck does not average up. It sets the floor.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Identify the transition requirement</h4>
+            <p>Use the level descriptions to identify the specific protocol design change the bottleneck function requires.</p>
+            <ul class="not-list not-list-top">
+              <li><span><strong>L1 → L2:</strong> Issue a formal access policy. Grant sanctioned access to approved tools under defined conditions. Make the exposure visible.</span></li>
+              <li><span><strong>L2 → L3:</strong> Redesign the governing protocol from access-scope to output-scope. Define verification requirements before consequential use. Build the gravel road for the bottleneck function.</span></li>
+              <li><span><strong>L3 → L4:</strong> Extend workflow-level protocols into cross-function and cross-boundary coordination. Build infrastructure for the downstream bottlenecks the designed workflows create.</span></li>
+              <li><span><strong>L4 → L5:</strong> Participate in sector-level protocol design and standards processes. Build governance that accounts for external AI dependencies the organization does not control.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>Each transition requires accepting a new class of problem in place of the previous one. The Level 1-to-2 transition converts invisible exposure into visible compliance risk. The Level 2-to-3 transition converts adoption with an unknown quality floor into workflow governance with visible quality metrics and new bottlenecks at workflow boundaries. The Level 3-to-4 transition converts intra-organizational governance into inter-organizational coordination problems. Each new problem is more governable than the one it replaces — visible, bounded, and addressable through protocol design rather than through reactive incident response.</p>
+
+      <h3>What this model does not tell you</h3>
+
+      <ul class="not-list">
+        <li>Which specific AI tools to use or avoid</li>
+        <li>What will happen to AI capabilities in 12–24 months</li>
+        <li>Whether any specific AI output is correct</li>
+        <li>How to satisfy any specific regulatory requirement — consult sector-specific guidance</li>
+        <li>What level your organization should be at by a specific date — there is no universal pace</li>
+      </ul>
+
+      <p class="pace-para">Pace is not the variable. The failure mode at each level is the gap between AI exposure and protocol design. A Level 1 organization actively designing its exit is in better shape than a Level 3 organization that has stopped evolving its protocols.</p>
+
+      <div class="callout callout-outro">
+        <p><em>For the interactive self-assessment and level-specific diagnostic output, see <a href="https://protocolized.dev/ai-maturity-model/">protocolized.dev/ai-maturity-model/</a></em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="cta-block">
+      <span class="label">Protocols for Business</span>
+      <h3>Take the assessment</h3>
+      <p>The interactive diagnostic places your organization on the model and returns a level-specific failure mode and next action.</p>
+      <a href="https://protocolized.dev/ai-maturity-model/" class="btn btn-primary">Interactive diagnostic ↗</a>
+      <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank" class="btn btn-secondary">Subscribe ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Notes ─────────────────────────────────────────────────── -->
+<section id="notes" class="section">
+  <div class="container">
+    <span class="label">Footnotes</span>
+    <h2>Notes</h2>
+
+    <div class="prose">
+    <ol class="fn-list">
+      <li id="fn1"><span class="fn-num">1</span><span>Alex Singla, Alexander Sukharevsky, Bryce Hall, Laraina Yee, Michael Chui, and Tara Balakrishnan, "The State of AI in 2025: Agents, Innovation, and Transformation," McKinsey &amp; Company, November 2025. Survey: 1,993 respondents, 105 nations, June–July 2025. <a class="fn-back" href="#ref1">↩</a></span></li>
+      <li id="fn2"><span class="fn-num">2</span><span>Mihaela Vorvoreanu, Amy Heger, Samir Passi, et al. (Microsoft AETHER Committee), "Microsoft Responsible AI Maturity Model," Microsoft Research, May 2023. <a class="fn-back" href="#ref2">↩</a></span></li>
+      <li id="fn3"><span class="fn-num">3</span><span>Accenture, "The Art of AI Maturity," Accenture Research, 2024. <a class="fn-back" href="#ref3">↩</a></span></li>
+      <li id="fn4"><span class="fn-num">4</span><span>Boston Consulting Group, "BCG AI Maturity Matrix," November 2024. <a class="fn-back" href="#ref4">↩</a></span></li>
+      <li id="fn5"><span class="fn-num">5</span><span>Vorvoreanu et al., "Microsoft Responsible AI Maturity Model," p. 8. <a class="fn-back" href="#ref5">↩</a></span></li>
+      <li id="fn6"><span class="fn-num">6</span><span>Accenture, "Art of AI Maturity." Direct quote: "they're 3.5 times more likely than Experimenters to see their AI-influenced revenue surpass 30% of their total revenues." <a class="fn-back" href="#ref6">↩</a></span></li>
+      <li id="fn7"><span class="fn-num">7</span><span>VinciWorks; ABA Law Practice Magazine; court records (<em>Mata v. Avianca</em>, 2023; <em>ByoPlanet v. Johansson</em>, 2025). 550+ publicly reported hallucination cases; 712 judicial decisions worldwide; $86,000 fine in ByoPlanet. <a class="fn-back" href="#ref7">↩</a></span></li>
+      <li id="fn8"><span class="fn-num">8</span><span>Watts S. Humphrey, <em>Managing the Software Process</em> (Reading, MA: Addison-Wesley Longman, 1989). CMM commissioned by the US Department of Defense (1986). CMMI (2002) superseded the original; currently maintained by ISACA. <a class="fn-back" href="#ref8">↩</a></span></li>
+      <li id="fn9"><span class="fn-num">9</span><span>Singla et al., "The State of AI in 2025." Direct quotes: "Meaningful enterprise-wide bottom-line impact from the use of AI continues to be rare"; "High performers are nearly three times as likely as others are to say their organizations have fundamentally redesigned individual workflows in their deployment of AI." <a class="fn-back" href="#ref9">↩</a></span></li>
+      <li id="fn10"><span class="fn-num">10</span><span>Menlo Ventures, "2025 State of Generative AI in the Enterprise," November 2025. Enterprise GenAI market: $37B (2025). <a class="fn-back" href="#ref10">↩</a></span></li>
+      <li id="fn11"><span class="fn-num">11</span><span>Venkatesh Rao, "Introduction to the Protocol Reader," Summer of Protocols, 2023, citing Danny Ryan. <a class="fn-back" href="#ref11">↩</a></span></li>
+      <li id="fn12"><span class="fn-num">12</span><span>Alfred North Whitehead, cited in Rao, "Introduction to the Protocol Reader." <a class="fn-back" href="#ref12">↩</a></span></li>
+      <li id="fn13"><span class="fn-num">13</span><span>Sachin Benny, "Why Does AI Development Look Like 1980s Software Planning?" <em>Summer Lightning</em>, November 16, 2025. <a class="fn-back" href="#ref13">↩</a></span></li>
+      <li id="fn14"><span class="fn-num">14</span><span>Ibid. <a class="fn-back" href="#ref14">↩</a></span></li>
+      <li id="fn15"><span class="fn-num">15</span><span>Venkatesh Rao, "Constructing the Evil Twin of AI," <em>Protocolized</em>, 2025. <a class="fn-back" href="#ref15">↩</a></span></li>
+      <li id="fn16"><span class="fn-num">16</span><span>Protocolized, "Table: Learning to See Business Protocols," <em>Protocolized</em>, 2026. <a class="fn-back" href="#ref16">↩</a></span></li>
+      <li id="fn17"><span class="fn-num">17</span><span>Protocols for Business Special Interest Group, Protocolized, "Finding Fault Lines within the Firm," <em>Protocolized</em>, 2026. <a class="fn-back" href="#ref17">↩</a></span></li>
+      <li id="fn18"><span class="fn-num">18</span><span>Reco.ai (2025), as cited in shadow AI prevalence roundup. <a class="fn-back" href="#ref18">↩</a></span></li>
+      <li id="fn19"><span class="fn-num">19</span><span>Cyberhaven Q1 2024 data, as cited in shadow AI prevalence roundup. <a class="fn-back" href="#ref19">↩</a></span></li>
+      <li id="fn20"><span class="fn-num">20</span><span>IBM Security, "Cost of a Data Breach Report 2025," 2025. Shadow AI incidents cost $4.63M on average — $670K above baseline. 97% statistic from same report. <a class="fn-back" href="#ref20">↩</a></span></li>
+      <li id="fn21"><span class="fn-num">21</span><span>Gizmodo / Bloomberg reporting on Samsung ChatGPT data leak, April–May 2023. Cyberhaven estimated 3.1% of enterprise ChatGPT users had submitted confidential company data at time of reporting. <a class="fn-back" href="#ref21">↩</a></span></li>
+      <li id="fn22"><span class="fn-num">22</span><span>symplr, "2025 Enterprise Healthcare IT Survey," 2025. Average healthcare breach cost: $7.42M, 279 days to resolve (IBM 2025). <a class="fn-back" href="#ref22">↩</a></span></li>
+      <li id="fn23"><span class="fn-num">23</span><span>ABA Formal Opinion 512, July 2024. <a class="fn-back" href="#ref23">↩</a></span></li>
+      <li id="fn24"><span class="fn-num">24</span><span>Fast Company; Fortune; TechCrunch. Klarna AI deployment and reversal reporting, 2023–2025. Headcount: ~5,527 (2022) → ~3,100 (IPO, September 2025). <a class="fn-back" href="#ref24">↩</a></span></li>
+      <li id="fn25"><span class="fn-num">25</span><span>TechCrunch; Fortune. Duolingo AI-first reporting, 2024–2025. <a class="fn-back" href="#ref25">↩</a></span></li>
+      <li id="fn26"><span class="fn-num">26</span><span><em>Moffatt v. Air Canada</em>, 2024 BCCRT 149 (British Columbia Civil Resolution Tribunal, February 14, 2024). <a class="fn-back" href="#ref26">↩</a></span></li>
+      <li id="fn27"><span class="fn-num">27</span><span><em>Moffatt v. Air Canada</em>, 2024 BCCRT 149, para. 29. Confirmed verbatim in Protocols for Business Special Interest Group, Protocolized, "Finding Fault Lines within the Firm," <em>Protocolized</em>, 2026. <a class="fn-back" href="#ref27">↩</a></span></li>
+      <li id="fn28"><span class="fn-num">28</span><span>CNBC; Digital Commerce 360. Shopify AI mandate reporting, April 2025. Tobias Lütke quote confirmed verbatim. <a class="fn-back" href="#ref28">↩</a></span></li>
+      <li id="fn29"><span class="fn-num">29</span><span>Evan Armstrong, "The Hottest Job in Tech," <em>The Leverage</em>, August 5, 2025. <a class="fn-back" href="#ref29">↩</a></span></li>
+      <li id="fn30"><span class="fn-num">30</span><span>Mark Scianna, "How to Build Your Forward Deployed Engineering Team," <em>Per Aspera</em>, September 17, 2025. Gravel road quote confirmed verbatim. <a class="fn-back" href="#ref30">↩</a></span></li>
+      <li id="fn31"><span class="fn-num">31</span><span>Armstrong, "The Hottest Job in Tech." FDE cost and contract floor confirmed. Workday 2012 IPO: 35% of revenue from on-site professional services — prior analog for services-heavy platform transitions. <a class="fn-back" href="#ref31">↩</a></span></li>
+      <li id="fn32"><span class="fn-num">32</span><span>Anshu Chada and Ty Smith, "Uber: Leading Engineering through an Agentic Shift," The Pragmatic Summit, March 10, 2026; Gergely Orosz, "How Uber Uses AI for Development: Inside Look," <em>The Pragmatic Engineer</em>, March 10–11, 2026. <a class="fn-back" href="#ref32">↩</a></span></li>
+      <li id="fn33"><span class="fn-num">33</span><span>Chada and Smith, "Uber: Leading Engineering through an Agentic Shift." <a class="fn-back" href="#ref33">↩</a></span></li>
+      <li id="fn34"><span class="fn-num">34</span><span>Orosz, "How Uber Uses AI for Development." Four-layer architecture confirmed verbatim. <a class="fn-back" href="#ref34">↩</a></span></li>
+      <li id="fn35"><span class="fn-num">35</span><span>Blake Scholl, "Move Fast and Don't Break (Safety Critical) Things," <em>Boom Supersonic</em>, August 10, 2025. XB-1 built by ~50 engineers at ~$190M; zero safety incidents across the program. <a class="fn-back" href="#ref35">↩</a></span></li>
+      <li id="fn36"><span class="fn-num">36</span><span>Ibid. Jevons's Law quote confirmed verbatim. <a class="fn-back" href="#ref36">↩</a></span></li>
+      <li id="fn37"><span class="fn-num">37</span><span>Blake Scholl, "Move Fast and Don't Break (Safety Critical) Things Part 2: Vertical Integration," <em>Boom Supersonic</em>, September 14, 2025. Slacker Index and turbine blade example confirmed. "Changes the physics" quote confirmed verbatim. <a class="fn-back" href="#ref37">↩</a></span></li>
+      <li id="fn38"><span class="fn-num">38</span><span>Benny, "Why Does AI Development Look Like 1980s Software Planning?" <a class="fn-back" href="#ref38">↩</a></span></li>
+      <li id="fn39"><span class="fn-num">39</span><span>Orosz, "How Uber Uses AI for Development." AI costs 6x since 2024. <a class="fn-back" href="#ref39">↩</a></span></li>
+      <li id="fn40"><span class="fn-num">40</span><span>National Institute of Standards and Technology, <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>, NIST AI 100-1, January 26, 2023. NIST AI 600-1 (Generative AI profile, 2024) is the GenAI-specific supplement. <a class="fn-back" href="#ref40">↩</a></span></li>
+      <li id="fn41"><span class="fn-num">41</span><span>Venkatesh Rao, "Have Your Factory Call My Factory," <em>Protocolized</em>, March 2026. Quote confirmed verbatim. <a class="fn-back" href="#ref41">↩</a></span></li>
+      <li id="fn42"><span class="fn-num">42</span><span>Timber Stinson-Schroff, "Mechanical Currents," <em>Protocolized</em>, 2025. <a class="fn-back" href="#ref42">↩</a></span></li>
+      <li id="fn43"><span class="fn-num">43</span><span>Protocolized, "Table: Learning to See Business Protocols." <a class="fn-back" href="#ref43">↩</a></span></li>
+      <li id="fn44"><span class="fn-num">44</span><span>European Parliament and Council of the European Union, Regulation (EU) 2024/1689 (AI Act), <em>Official Journal of the European Union</em>, July 12, 2024. Compliance for most obligations: August 2, 2026. <a class="fn-back" href="#ref44">↩</a></span></li>
+      <li id="fn45"><span class="fn-num">45</span><span>Singla et al., "The State of AI in 2025." <a class="fn-back" href="#ref45">↩</a></span></li>
+      <li id="fn46"><span class="fn-num">46</span><span>Menlo Ventures, "2025 State of Generative AI in the Enterprise." <a class="fn-back" href="#ref46">↩</a></span></li>
+      <li id="fn47"><span class="fn-num">47</span><span>Reco.ai (2025), as cited in shadow AI prevalence roundup. <a class="fn-back" href="#ref47">↩</a></span></li>
+      <li id="fn48"><span class="fn-num">48</span><span>Accenture, "Art of AI Maturity." <a class="fn-back" href="#ref48">↩</a></span></li>
+      <li id="fn49"><span class="fn-num">49</span><span>OpenAI, "State of Enterprise AI 2025." API reasoning token consumption: 320x growth. <a class="fn-back" href="#ref49">↩</a></span></li>
+      <li id="fn50"><span class="fn-num">50</span><span>National Institute of Standards and Technology, <em>AI RMF 1.0</em>. Referenced in OCC AI Risk Management guidance (2024) and HHS sector guidance. <a class="fn-back" href="#ref50">↩</a></span></li>
+    </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Bibliography ───────────────────────────────────────────── -->
+<section id="bibliography" class="section">
+  <div class="container">
+    <span class="label">Works Cited</span>
+    <h2>Bibliography</h2>
+
+    <div class="prose">
+    <ul class="bib-list">
+      <li>Accenture. "The Art of AI Maturity." Accenture Research, 2024.</li>
+      <li>Armstrong, Evan. "The Hottest Job in Tech." <em>The Leverage</em>, August 5, 2025.</li>
+      <li>Benny, Sachin. "Why Does AI Development Look Like 1980s Software Planning?" <em>Summer Lightning</em>, November 16, 2025.</li>
+      <li>Boston Consulting Group. "BCG AI Maturity Matrix." November 2024.</li>
+      <li>Chada, Anshu, and Ty Smith. "Uber: Leading Engineering through an Agentic Shift." Talk at The Pragmatic Summit, published by <em>The Pragmatic Engineer</em>, March 10, 2026.</li>
+      <li>European Parliament and Council of the European Union. Regulation (EU) 2024/1689 (AI Act). <em>Official Journal of the European Union</em>, July 12, 2024.</li>
+      <li>Humphrey, Watts S. <em>Managing the Software Process</em>. Reading, MA: Addison-Wesley Longman, 1989.</li>
+      <li>Menlo Ventures. "2025 State of Generative AI in the Enterprise." November 2025.</li>
+      <li>Microsoft AETHER Committee (Vorvoreanu, Mihaela, Amy Heger, Samir Passi, et al.). "Microsoft Responsible AI Maturity Model." Microsoft Research, May 2023.</li>
+      <li><em>Moffatt v. Air Canada</em>, 2024 BCCRT 149 (British Columbia Civil Resolution Tribunal, February 14, 2024).</li>
+      <li>National Institute of Standards and Technology. <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>. NIST AI 100-1. January 26, 2023.</li>
+      <li>OpenAI. "State of Enterprise AI 2025." 2025.</li>
+      <li>Orosz, Gergely. "How Uber Uses AI for Development: Inside Look." <em>The Pragmatic Engineer</em>, March 10–11, 2026.</li>
+      <li>Protocols for Business Special Interest Group, Protocolized. "Finding Fault Lines within the Firm." <em>Protocolized</em>, 2026.</li>
+      <li>Ranganathan, Aruna, and Xingqi Maggie Ye. "AI Doesn't Reduce Work — It Intensifies It." <em>Harvard Business Review</em>, February 2026.</li>
+      <li>Rao, Venkatesh. "Introduction to the Protocol Reader." Summer of Protocols, 2023.</li>
+      <li>Rao, Venkatesh. "Constructing the Evil Twin of AI." <em>Protocolized</em>, 2025.</li>
+      <li>Rao, Venkatesh. "Have Your Factory Call My Factory." <em>Protocolized</em>, March 2026.</li>
+      <li>Rao, Venkatesh, and Patrick Nast. "Theorizing Protocolization I: New Nature." <em>Protocolized</em>, 2026.</li>
+      <li>Scianna, Mark. "How to Build Your Forward Deployed Engineering Team." <em>Per Aspera</em>, September 17, 2025.</li>
+      <li>Scholl, Blake. "Move Fast and Don't Break (Safety Critical) Things." <em>Boom Supersonic</em>, August 10, 2025.</li>
+      <li>Scholl, Blake. "Move Fast and Don't Break (Safety Critical) Things Part 2: Vertical Integration." <em>Boom Supersonic</em>, September 14, 2025.</li>
+      <li>Singla, Alex, Alexander Sukharevsky, Bryce Hall, Laraina Yee, Michael Chui, and Tara Balakrishnan. "The State of AI in 2025: Agents, Innovation, and Transformation." McKinsey &amp; Company, November 2025.</li>
+      <li>Stinson-Schroff, Timber. "Mechanical Currents." <em>Protocolized</em>, 2025.</li>
+      <li>Protocolized. "Table: Learning to See Business Protocols." <em>Protocolized</em>, 2026.</li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span>© 2026 Protocolized</span><br>
+      <span class="footer-sub">Protocols for Business Practice &nbsp;·&nbsp; Version 5 (doomer tone pass)</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://protocolized.dev/">protocolized.dev</a>
+      <a href="https://protocolized.dev/ai-maturity-model/">Interactive tool</a>
+      <a href="#hero">↑ Top</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

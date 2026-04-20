@@ -1,0 +1,8 @@
+# Large PDFs — tracked by reference in source-catalog.md, not committed
+Resources/*.pdf
+Resources/*.jpeg
+Resources/*.jpg
+Resources/*.png
+.DS_Store
+**/.DS_Store
+.herenow/

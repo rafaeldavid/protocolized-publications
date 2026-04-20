@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A Self-Documenting Report Template — Exercise</title>
+<meta name="description" content="Subpage stub demonstrating the breadcrumb pattern for multi-page Protocolized reports. Same header chrome (Sections overlay · Copy · Download) as the parent." />
+<meta name="theme-color" content="#7d5a96" />
+<link rel="canonical" href="https://npc.here.now/template/exercise/" />
+<link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23fafafa"/><rect x="9" y="9" width="6" height="46" fill="%237d5a96"/><rect x="9" y="9" width="6" height="14" fill="%23d67339"/><text x="24" y="46" font-family="ui-monospace,monospace" font-size="34" font-weight="700" fill="%231a1a2e">§</text></svg>' type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #f0f0f2;
+    --surface-2: #f6f5f7;
+    --fg: #1a1a2e;
+    --fg-muted: #6b6b7b;
+    --rule: #e5e5e7;
+    --accent: #7d5a96;
+    --accent-mid: #a888bf;
+    --accent-light: #f3eef7;
+    --secondary: #d67339;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-sans); line-height: 1.7; font-size: 16.5px; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
+  a:hover { color: var(--secondary); border-bottom-color: var(--secondary); }
+
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250,250,250,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.8rem 2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  header.site .brand { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--fg-muted); text-transform: uppercase; font-weight: 400; }
+  header.site .brand a { color: inherit; border: 0; }
+  header.site .brand a:hover { color: var(--accent); }
+  header.site .brand b { color: var(--fg); font-weight: 700; }
+  nav.breadcrumb { display: flex; align-items: center; gap: 0; font-family: var(--font-mono); font-size: 0.8rem; }
+  nav.breadcrumb a { color: var(--fg-muted); padding: 0.35rem 0.75rem; border: 0; border-radius: 3px; }
+  nav.breadcrumb a:hover { color: var(--fg); background: var(--surface); }
+  nav.breadcrumb a.active { color: var(--accent); font-weight: 700; background: var(--accent-light); }
+  nav.breadcrumb .sep { color: var(--rule); }
+  header.site .actions { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; position: relative; }
+  header.site .mobile-only { display: none; }
+  .mobile-menu-panel {
+    position: absolute; top: calc(100% + 0.5rem); right: 0;
+    background: #fff; border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.35rem; display: flex; flex-direction: column; gap: 2px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    z-index: 30; min-width: 11rem;
+  }
+  .mobile-menu-panel[hidden] { display: none; }
+  .mobile-menu-panel .mmi {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
+    color: var(--fg); background: transparent; border: 0; cursor: pointer;
+    padding: 0.55rem 0.7rem; border-radius: 3px; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+  }
+  .mobile-menu-panel .mmi:hover { background: var(--accent-light); color: var(--accent); }
+  .mobile-menu-panel .mmi .sh { opacity: 0.55; font-size: 0.7rem; }
+  header.site button {
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500;
+    background: var(--fg); color: #fff; border: 0; cursor: pointer;
+    padding: 0.55rem 0.95rem; border-radius: 3px; letter-spacing: 0.03em;
+  }
+  header.site button:hover { background: var(--accent); }
+  header.site button.ghost { background: transparent; color: var(--fg-muted); border: 1px solid var(--rule); }
+  header.site button.ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+  header.site button .sh { opacity: 0.6; margin-left: 0.45rem; font-size: 0.7rem; }
+
+  /* Sections overlay */
+  .overlay { position: fixed; inset: 0; background: rgba(26,26,46,0.5); backdrop-filter: blur(4px); z-index: 50; display: none; align-items: flex-start; justify-content: center; padding-top: 12vh; }
+  .overlay.open { display: flex; }
+  .overlay .panel-box { background: #fff; border: 1px solid var(--rule); border-radius: 6px; width: min(560px, 92vw); max-height: 70vh; overflow-y: auto; padding: 1.5rem 1.8rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .overlay h4 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-muted); margin: 0 0 0.8rem; font-weight: 700; }
+  .overlay ol { margin: 0; padding-left: 1.3rem; font-size: 0.92rem; line-height: 1.6; }
+  .overlay ol a { color: var(--fg); border: 0; display: block; padding: 0.2rem 0; }
+  .overlay ol a:hover { color: var(--accent); }
+
+  main { max-width: 38rem; margin: 0 auto; padding: 0 2rem 6rem; }
+  .title-block { max-width: 38rem; margin: 3rem auto 2rem; padding: 0 2rem; }
+  .kicker { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 0.6rem; }
+  .title-block h1 { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; margin: 0 0 0.9rem; line-height: 1.2; letter-spacing: -0.01em; color: var(--fg); }
+  .title-block .subtitle { font-size: 1.02rem; color: var(--fg-muted); margin: 0; }
+
+  article h2 { font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); margin: 3rem 0 0.7rem; padding-top: 1.8rem; border-top: 1px solid var(--rule); clear: both; scroll-margin-top: 5rem; }
+  article h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 1.5rem; }
+  article p { margin: 0 0 1.1rem; }
+  article code { font-family: var(--font-mono); background: var(--surface); padding: 0.05em 0.35em; border-radius: 3px; font-size: 0.88em; }
+
+  .placeholder {
+    background: #fff; border: 1px dashed var(--accent-mid); border-radius: 6px;
+    padding: 2rem; margin: 1.5rem 0;
+    font-family: var(--font-mono); font-size: 0.88rem; color: var(--fg-muted); line-height: 1.6;
+  }
+  .placeholder strong { color: var(--fg); }
+
+  footer { max-width: 38rem; margin: 3rem auto 2rem; padding: 1.5rem 2rem; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 0.82rem; color: var(--fg-muted); text-align: center; }
+  footer a { color: var(--fg); border-bottom: 1px solid var(--rule); }
+
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--fg); color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; transition: transform 220ms ease; z-index: 200; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 700px) {
+    header.site { padding: 0.6rem 0.9rem; gap: 0.55rem; flex-wrap: nowrap; }
+    header.site .brand { font-size: 0.68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    header.site .actions { gap: 0.4rem; flex-shrink: 0; }
+    header.site button { padding: 0.5rem 0.7rem; font-size: 0.72rem; min-height: 40px; }
+    header.site button .sh { display: none; }
+    header.site .actions > button:not(.mobile-only) { display: none; }
+    header.site .mobile-only { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; padding: 0.5rem 0.6rem; }
+    nav.breadcrumb { font-size: 0.72rem; flex-shrink: 0; }
+    nav.breadcrumb a { padding: 0.3rem 0.5rem; }
+    main, .title-block, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    header.site .brand { display: none; }
+    .mobile-menu-panel { right: -0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="brand">
+    <a href="https://protocolized.summerofprotocols.com/t/studies" target="_blank" rel="noopener">Protocolized</a>
+    · <b>Template</b>
+  </div>
+  <nav class="breadcrumb" aria-label="Page navigation">
+    <a href="/template/">Report</a>
+    <span class="sep">·</span>
+    <a href="/template/exercise/" class="active">Exercise</a>
+  </nav>
+  <div class="actions">
+    <button id="open-toc" class="ghost" title="Jump to a section (⌘K)">☰ Sections <span class="sh">⌘K</span></button>
+    <button id="copy-md" class="ghost" title="Copy markdown to clipboard (⌘⇧C)">⧉ Copy</button>
+    <button id="download-md" title="Download markdown (⌘D)">↓ Download <span class="sh">⌘D</span></button>
+    <button id="mobile-menu" class="mobile-only ghost" title="Menu" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-menu-panel">⋯</button>
+    <div class="mobile-menu-panel" id="mobile-menu-panel" role="menu" hidden>
+      <button class="mmi" data-for="open-toc" role="menuitem">☰ Sections<span class="sh">⌘K</span></button>
+      <button class="mmi" data-for="copy-md" role="menuitem">⧉ Copy markdown<span class="sh">⌘⇧C</span></button>
+      <button class="mmi" data-for="download-md" role="menuitem">↓ Download markdown<span class="sh">⌘D</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="toc-overlay" role="dialog" aria-modal="true" aria-label="Section navigation">
+  <div class="panel-box">
+    <h4>Jump to a section</h4>
+    <ol>
+      <li><a href="#purpose">Subpage purpose</a></li>
+      <li><a href="#chrome">Chrome consistency</a></li>
+      <li><a href="#swap">What to swap</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="title-block">
+  <div class="kicker">Subpage Template</div>
+  <h1>Exercise</h1>
+  <p class="subtitle">Stub page demonstrating the breadcrumb + matching-chrome pattern for multi-page Protocolized reports. Replace the article body with the interactive or supplementary component that accompanies the main report.</p>
+</div>
+
+<main>
+<article>
+
+<h2 id="purpose">Subpage purpose</h2>
+
+<p id="p-purpose-1">Subpages exist when a report has a companion component — an interactive exercise, a calculator, an embedded tool, a dataset viewer — that deserves its own URL but shares an audience with the main report. See <a href="https://npc.here.now/ai-org/exercise/" target="_blank" rel="noopener"><code>/ai-org/exercise/</code></a> for a full-weight example (a drag-drop org-chart canvas).</p>
+
+<h2 id="chrome">Chrome consistency</h2>
+
+<p id="p-chrome-1">The header, breadcrumb, and keyboard shortcuts match the parent report at <a href="/template/"><code>/template/</code></a>. The only differences:</p>
+
+<ul>
+<li id="p-chrome-2">The breadcrumb's <code>active</code> class moves to <strong>Exercise</strong>.</li>
+<li id="p-chrome-3">The sections overlay lists this subpage's own section ids.</li>
+<li id="p-chrome-4">The markdown source describes this subpage, not the parent.</li>
+</ul>
+
+<p id="p-chrome-5">The <code>☰ Sections</code>, <code>⧉ Copy</code>, and <code>↓ Download</code> actions all work the same way as on the parent. Readers and agents move between pages with no cognitive overhead.</p>
+
+<h2 id="swap">What to swap</h2>
+
+<div class="placeholder">
+<p><strong>Replace this block</strong> with your actual component.</p>
+<p>Canvas, iframe, custom form, data viz, calculator — the chrome stays; the body changes. Keep anchorable blocks labelled with ids so any future comment-system integration can target them.</p>
+</div>
+
+</article>
+</main>
+
+<footer>
+<a href="https://protocolized.summerofprotocols.com/t/studies" target="_blank" rel="noopener">Protocolized</a> · Subpage stub · <a href="/template/">← back to Report</a>
+</footer>
+
+<div class="toast" id="toast">Done</div>
+
+<script id="markdown-source" type="text/x-markdown"># Exercise (subpage stub)
+
+*Protocolized · Template · 2026-04-20 · [npc.here.now/template/exercise](https://npc.here.now/template/exercise/)*
+
+Subpage stub demonstrating the breadcrumb + matching-chrome pattern for multi-page Protocolized reports. Parent: [/template/](https://npc.here.now/template/).
+
+## Subpage purpose
+
+Subpages exist when a report has a companion component — an interactive exercise, a calculator, an embedded tool, a dataset viewer — that deserves its own URL but shares an audience with the main report. See [/ai-org/exercise/](https://npc.here.now/ai-org/exercise/) for a full-weight example (a drag-drop org-chart canvas).
+
+## Chrome consistency
+
+The header, breadcrumb, and keyboard shortcuts match the parent report at [/template/](https://npc.here.now/template/). The only differences:
+
+- The breadcrumb's `active` class moves to **Exercise**.
+- The sections overlay lists this subpage's own section ids.
+- The markdown source describes this subpage, not the parent.
+
+The `☰ Sections`, `⧉ Copy`, and `↓ Download` actions all work the same way as on the parent. Readers and agents move between pages with no cognitive overhead.
+
+## What to swap
+
+Replace the placeholder block with your actual component — canvas, iframe, custom form, data viz, calculator. The chrome stays; the body changes.
+
+## Shortcuts
+
+| Shortcut                | Action                                    |
+| ----------------------- | ----------------------------------------- |
+| `⌘K` / `Ctrl K`         | Open the sections overlay                 |
+| `⌘D` / `Ctrl D`         | Download this subpage's markdown          |
+| `⌘⇧C` / `Ctrl ⇧ C`       | Copy this subpage's markdown to clipboard |
+| `Esc`                   | Close any open panel                      |
+</script>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+function markdownSource() {
+  const el = document.getElementById('markdown-source');
+  return el ? el.textContent : '';
+}
+
+document.getElementById('copy-md').addEventListener('click', async () => {
+  const md = markdownSource();
+  try { await navigator.clipboard.writeText(md); showToast('Markdown copied'); }
+  catch(e) { showToast('Copy failed'); }
+});
+
+document.getElementById('download-md').addEventListener('click', () => {
+  const md = markdownSource();
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const d = new Date();
+  const datestr = d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  a.href = url; a.download = `template-exercise-${datestr}.md`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded');
+});
+
+/* Mobile overflow menu */
+const mobileBtn = document.getElementById('mobile-menu');
+const mobilePanel = document.getElementById('mobile-menu-panel');
+function closeMobileMenu() {
+  mobilePanel.hidden = true;
+  mobileBtn.setAttribute('aria-expanded', 'false');
+}
+mobileBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = mobilePanel.hidden;
+  mobilePanel.hidden = !open;
+  mobileBtn.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('click', e => {
+  if (mobilePanel.hidden) return;
+  if (!mobilePanel.contains(e.target) && e.target !== mobileBtn) closeMobileMenu();
+});
+document.querySelectorAll('.mobile-menu-panel .mmi').forEach(mi => {
+  mi.addEventListener('click', () => {
+    closeMobileMenu();
+    const target = document.getElementById(mi.dataset.for);
+    if (target) target.click();
+  });
+});
+
+const overlay = document.getElementById('toc-overlay');
+document.getElementById('open-toc').addEventListener('click', () => overlay.classList.add('open'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); overlay.classList.toggle('open'); }
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'd') { e.preventDefault(); document.getElementById('download-md').click(); }
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'c') { e.preventDefault(); document.getElementById('copy-md').click(); }
+  if (e.key === 'Escape') overlay.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

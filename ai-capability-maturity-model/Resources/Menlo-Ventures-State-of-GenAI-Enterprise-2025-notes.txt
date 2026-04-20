@@ -1,0 +1,64 @@
+Menlo Ventures: 2025 State of Generative AI in the Enterprise
+Source: https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/
+Published: 2025 (survey conducted November 7-25, 2025)
+Methodology: ~500 U.S. enterprise AI decision-makers + bottoms-up ecosystem analysis
+Note: Excludes chips, traditional cloud inference, and AI features embedded in legacy software
+
+--- KEY FINDINGS ---
+
+MARKET SIZE & GROWTH
+- Enterprise GenAI market: $37B in 2025 (up from $11.5B in 2024) — 3.2x YoY increase
+- "Fastest-scaling software category in history"
+- 6% of global SaaS market within 3 years of ChatGPT's launch
+
+SPENDING DISTRIBUTION
+- Application layer: $19B (51%)
+  - Departmental AI: $7.3B (coding dominates at $4B)
+  - Vertical AI: $3.5B (healthcare leads at $1.5B)
+  - Horizontal AI: $8.4B (copilots at 86% share)
+- Infrastructure layer: $18B (49%)
+  - Foundation model APIs: $12.5B
+  - Model training infrastructure: $4B
+  - AI infrastructure (storage/orchestration): $1.5B
+
+BUILD VS. BUY SHIFT
+- 2024: 47% build / 53% buy
+- 2025: 24% build / 76% buy (dramatic reversal)
+
+CONVERSION RATES
+- AI buyers convert at 47% vs. SaaS 25%
+
+PRODUCT-LED GROWTH
+- PLG = 27% of AI application spend (~4x traditional software rate of 7%)
+- Including shadow adoption: ~40% of total application spending
+
+STARTUP VS. INCUMBENT
+- Startups captured 63% of application revenue (up from 36% last year)
+- Incumbents hold 56% of infrastructure spending
+
+FOUNDATION MODEL MARKET SHARE (enterprise LLM usage)
+- Anthropic: 40% (up from 24%)
+- OpenAI: 27% (down from 50% in 2023)
+- Google: 21% (up from 7%)
+- Open-source: 11% (down from 19%)
+- Anthropic: ~54% coding market share, up from 42% six months prior (Claude Code)
+
+DEPARTMENTAL AI ADOPTION
+- Coding: $4B (55% of departmental AI) — "first true killer use case"
+- IT operations: $700M
+- Marketing: $660M
+- Customer success: $630M
+- Design: $510M
+- HR: $370M
+- 50% of developers use AI coding tools daily; teams report 15%+ velocity gains
+
+ARCHITECTURAL MATURITY
+- 16% of enterprise deployments qualify as true agents (27% of startups)
+- Dominant approaches: prompt design, RAG, fixed-sequence/routing workflows
+- Fine-tuning, tool calling, RL remain niche
+
+2026 PREDICTIONS
+1. AI will exceed human performance in practical programming tasks
+2. Jevons's paradox: net AI spending rises despite falling inference costs
+3. Explainability and governance move mainstream
+4. Models shift to edge (on-device deployment)

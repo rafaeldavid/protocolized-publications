@@ -1,0 +1,175 @@
+02/11/2025, 20:06
+
+WTF is a forward-deployed engineer?
+
+WTF is a forward-deployed engineer?
+Other than fancy words for a technical implementation consultant.
+THOMAS OTTER
+APR 21, 2025
+
+9
+
+1
+
+2
+
+Share
+
+I applaud getting engineers close to customers. It can lead to wonderful things.
+
+substack put the subscribe button here.
+rafaeldf2@gmail.com
+
+Subscribe
+
+This has been a thing in the software industry since the very first projects (early
+chunks of SAP R/1 was built at ICI and John Deere in Mannheim). At times
+engineering does end up getting too far removed from the real customer, especially as
+the product scales.
+Also brilliant technical consultants can make discoveries that lead to new features or
+fixes that massively improve a product for 10,000s of customers. In enterprise software,
+they are often the difference between project success and failure.
+But I’m a bit perplexed by the term forward deployed engineers (the term has been
+around for a few years, but it recently has got a lot more attention). It has a bit of a
+military ring to it, and I think Palantir coined the phrase.
+Palantir describes it this way
+"A Forward Deployed Software Engineer (FDSE), or “Delta,” is a software engineer
+who embeds directly with our customers to configure Palantir’s existing software
+platforms to solve their toughest problems. While a traditional software engineer,
+
+https://thomasotter.substack.com/p/wtf-is-a-forward-deployed-engineer?triedRedirect=true
+
+1/4
+
+02/11/2025, 20:06
+
+WTF is a forward-deployed engineer?
+
+or “Dev,” focuses on creating a single capability that can be used for many
+customers, FDSEs focus on enabling many capabilities for a single customer. "
+Here’s a start up looking for a forward deployed engineer.
+You will be inside large companies building relationships (should enjoy talking to
+people and making magic happen), managing the operational rollouts (need to be
+organized and operationally excellent), and will most importantly be working in the
+product to build automations.
+This blog post explains in more detail what a Forward Deployed Engineer does.
+A Forward Deployed Engineer (FDE) is a versatile software engineer who works
+closely with customers to bridge the gap between enterprise software products and
+their specific implementation needs. FDEs collaborate with engineering teams,
+provide technical support, partner with product teams, assist in revenue growth
+activities, and lead customer success efforts. With a mix of technical skills, an
+entrepreneurial mindset, and product intuition, FDEs play a crucial role in ensuring
+successful product deployment and customer satisfaction.
+
+Why does this matter?
+I don’t really care about what companies call jobs in order to make them more
+attractive for hiring purposes, or to position them to the customer. If the FDE title
+attracts excellent technical people with strong people skills, cool.
+I’m seeing the term forward-deployed engineer more and more in the context of AI
+deployments, in job descriptions for instance. Making AI work at an enterprise
+customer isn’t always as straightforward as it says on the tin. Data comes in awkward
+shapes and sizes, and integrations can be complex. For many vendors, the use cases
+aren’t clear. It’s not that different from the early days of ERP. Pioneering stuff; I get
+that.
+The person may well have similar skills to the engineers building the “product.”
+Sometimes the technical challenges at one customer are greater than those facing the
+rest of the customer base. It is a hard job.
+(I used the Palantir example for the definition of the job, I’ve not looked at how they
+account for the job and associated revenues and costs in their financials).
+Where is does matter is where you put the costs and revenue in the financials. If you
+invoice this work to the customer it is consulting, if you don’t it is customer success,
+support or presales. But it isn’t really R&D, it’s COGS. The costs for forward-deployed
+engineer go under services, and so do the revenues.
+If you call it Annual Recurring Revenue (ARR), you are deluding yourself and your
+investors. If you have a significant number of FDEs compared with product facing
+engineers, you start to look like an AI consultancy, not a product company.
+Back in my days at SAP, the CFO was fanatical about time tracking when engineers
+worked on specific customers, at the time I thought he was being pedantic, but now, as
+
+https://thomasotter.substack.com/p/wtf-is-a-forward-deployed-engineer?triedRedirect=true
+
+2/4
+
+02/11/2025, 20:06
+
+WTF is a forward-deployed engineer?
+
+an investor I understand what he was looking for. Support isn’t R&D, no matter how
+technical it gets.
+I’m not discounting that building something for one customer may well have positive
+externalities for other customers, and it may find its way into the product at some
+point. If it does, then account for it then. Getting early customers live is gold, but it is
+alluvial, not a continuous seam, riffing on the mining metaphor.
+I’ve another caveat. When your strongest technical resources are project facing, at first
+you will be really successful. But over time, you will find it very difficult to build
+standard product. After a few years you will realize that you have dozens of projects
+but not much standard product. When you try to standardize your biggest opponents
+will be your own technical consultants. It will be messy, you will have an internal civil
+war. And your customers that have had years of bespoke service will bristle when you
+try to standardize them.
+One of the things I do when investing is look at what you are hiring for. By all means
+hire FDEs, just when we look at your financials, let’s see them in the right box.
+As usual, I’ll end with a tune. This is an old friend.
+
+The Specials - A Message To You Rudy (Official Music Video)
+
+Thanks for reading Work in Progress by
+Thomas Otter ! Subscribe for free to receive
+new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+9 Likes ∙ 2 Restacks
+
+Discussion about this post
+Comments Restacks
+
+https://thomasotter.substack.com/p/wtf-is-a-forward-deployed-engineer?triedRedirect=true
+
+3/4
+
+02/11/2025, 20:06
+
+WTF is a forward-deployed engineer?
+
+Write a comment...
+
+Meg Bear Meg Bear 21 Apr
+
+It's a little creepy how often you and I are looking at the same ideas from different angles - I have
+this (and several other "how the business of software is changing") topics in my "blogs to write" file
+- [not the one that broke the apple notes app and I lost last month - the new one I've started in
+google docs (!)] -- A few thoughts
+1. This blog https://nabeelqu.substack.com/p/reflections-on-palantir does a good job talking about
+the way that Palantir managed both the accounting and the product v. implementation thinking - I
+found it interesting with a bold highlight on the security piece from my POV
+2. Like you I had the same connection with the initial builds of SAP following this model
+3. In the world where innovation opportunity exceeds the standard plot of "I built something that I
+wanted when I had X job" because the entire jobs you need to innovate for don't exist today, I think
+FDE has a lot of legs as a path to *taking the tech expertise and curiosity to the customer problem*.
+Possibly I am fond of this because this was how I learned - not by being a customer per se but from
+being very curious about understanding and empathizing with the customer need
+3a. To your point though most are TERRIBLE at sorting out how to bring innovation back from the
+customer to the product or platform - this will become more obvious as time progresses and I
+suspect even Palantir has a lot of misses here.
+4. Which then doubles down on the "AI/tech enabled services" opportunity - which gets me to
+wonder if we are just trying to build the 21st century EDS business (NB: If you haven't read On the
+Wings of Eagles and you are anywhere around the business of Payroll software you really should
+https://a.co/d/986SwJy)
+4a. Side tangent after reading the book - watch the movie Argo and consider the Scott Galloway
+friendship question "would they hide me" - https://www.youtube.com/watch?v=Whz0dEVpNUM
+LIKE
+
+REPLY
+
+SHARE
+
+© 2025 Thomas Otter ∙ Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://thomasotter.substack.com/p/wtf-is-a-forward-deployed-engineer?triedRedirect=true
+
+4/4
+
+

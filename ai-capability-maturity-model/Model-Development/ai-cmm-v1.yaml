@@ -1,0 +1,839 @@
+# AI Capability Maturity Model — DSL Specification
+# Version: 1.0
+# Date: 2026-03-15
+# Author: Protocolized (Protocols for Business Group)
+# Evaluated against: Model-Development/evaluation-criteria.md
+#
+# Central argument:
+#   Organizations fail at AI adoption not because they chose the wrong tools but because
+#   they lack protocols governing how humans and AI systems interact. Capability maturity
+#   is a measure of how precisely an organization governs that uncertainty.
+#
+# Unit of maturity: governance of uncertainty
+#   "Governing uncertainty" means: knowing which AI outputs require human verification,
+#   having a defined process for that verification, and having a feedback mechanism
+#   when verification fails. An organization that cannot describe this process for any
+#   AI output is at Level 1 or 2.
+#
+# Heterogeneity stance: bottleneck
+#   A real organization occupies different levels across departments. This model assesses
+#   the bottleneck: the highest-value, highest-stakes function where governance is weakest.
+#   The bottleneck level is the organization's effective level for risk purposes.
+#   Departmental profiles should be tracked separately for investment planning.
+
+---
+
+schema:
+  name: "ai-cmm"
+  version: "1.0"
+  protocol_dimension_values:
+    governance:        [absent, reactive, mandated, designed, systematized, infrastructure]
+    tooling:           [personal, sanctioned, standardized, purpose-built, native]
+    uncertainty_handling: [ignored, absorbed, reviewed, governed, systematized, generative]
+    coordination:      [ad_hoc, mandated, designed, automated, infrastructure]
+    feedback_loops:    [none, reactive, systematic, predictive, generative]
+    verification:      [none, informal, procedural, metriced, self-correcting]
+  case_anchor_position_values: [early, middle, late, transitional]
+  claim_status_values:         [documented, synthesis, projected]
+
+
+model:
+  name: "AI Capability Maturity Model"
+  version: "1.0"
+  publisher: "Protocolized / Protocols for Business Group"
+  date: "2026-03-15"
+  prior_version: "../AI Adoption Capability Model Project/AI_Capability_Maturity_Model_v4.docx"
+  evaluation_doc: "evaluation-criteria.md"
+
+  central_argument: >
+    Most organizations are not failing at AI adoption because they chose the wrong tools.
+    They are failing because they are applying enterprise-software governance logic to a
+    probabilistic, non-deterministic stack. A capability maturity model for AI adoption is
+    different from previous CMMs because the unit of maturity is not process compliance —
+    it is the organization's ability to govern uncertainty productively.
+
+  protocol_lens: >
+    AI tools are coordination mechanisms between humans and probabilistic systems.
+    The friction patterns (shadow adoption, quality risk, trust collapse, over-reliance)
+    are protocol failures — breakdowns in the rules governing how humans and AI systems
+    interact. Levels 1–3 describe organizational protocol states. Levels 4–5 describe
+    market and civilizational protocol states: the same logic of protocol maturity applied
+    at progressively larger scales.
+
+  heterogeneity_stance:
+    type: bottleneck
+    definition: >
+      The organization's effective maturity level is the level of its highest-value,
+      highest-stakes function where governance is weakest. This is where the most
+      consequential failures will occur. Departmental profiles should be tracked
+      separately for planning purposes, but the bottleneck level governs risk exposure.
+
+  scope_boundaries:
+    in_scope:
+      - "Protocol coherence between humans and AI systems"
+      - "Governance of AI output uncertainty"
+      - "Organizational, market, and civilizational AI coordination patterns"
+    out_of_scope:
+      - "Technology stack selection or vendor recommendations"
+      - "AI model performance benchmarking"
+      - "Industry-specific regulatory compliance checklists"
+      - "Prediction of AI capability trajectories"
+    explicit_limitations: >
+      This model does not account for: industry-specific regulatory regimes,
+      organization size (a 10-person company and a 100,000-person company can both
+      be at Level 2), or the speed of AI capability improvement. Placement on the model
+      describes governance maturity, not competitive position.
+
+  empirical_anchors:
+    level_distribution:
+      source: "Menlo Ventures 2025 State of GenAI in the Enterprise"
+      catalog_entry: 17
+      finding: "Only 16% of enterprise deployments qualify as true agents (Level 3+)"
+      implication: "Approximately 84% of organizations are at Level 1 or 2"
+    executive_gap:
+      source: "IBM CEO Survey 2024"
+      catalog_entry: 34
+      finding: "61% of CEOs pushing AI adoption faster than employees are comfortable; only 39% report adequate governance"
+    adoption_baseline:
+      source: "Reco.ai State of Shadow AI 2025"
+      catalog_entry: 34
+      finding: "71% of enterprise employees use unauthorized AI tools; average discovery lag is 400+ days"
+
+
+# ─────────────────────────────────────────────
+# LEVEL DEFINITIONS
+# ─────────────────────────────────────────────
+
+levels:
+
+  - id: 1
+    name: "Shadow"
+    tagline: "AI is in use. The organization does not know how, by whom, or with what data."
+    unit_of_analysis: "Individual employee"
+
+    description: >
+      AI tools have entered the organization through employee initiative, not organizational
+      decision. Individual workers use personal accounts on ChatGPT, Claude, Copilot, and
+      similar tools for work tasks. No policy governs this use. No tooling controls it.
+      No one has a complete picture of what organizational data is being submitted to which
+      systems. This is not a failure state — it is the baseline. Every organization passes
+      through Level 1. The failure condition is remaining here while AI exposure grows.
+
+    observable_indicators:
+      - "Employees use personal ChatGPT, Claude, or Copilot accounts for work tasks"
+      - "No organizational AI use policy exists or is not consistently communicated"
+      - "IT has no inventory of AI tools in use across the organization"
+      - "No training or guidance on appropriate AI use has been provided"
+      - "Security or legal has not reviewed AI tool data handling terms"
+      - "AI-generated outputs are not distinguished from human-generated outputs in deliverables"
+
+    characteristic_tension:
+      description: >
+        Employees find genuine productivity value in AI tools and are reluctant to stop
+        using them. The organization has legitimate liability concerns but lacks the
+        visibility to govern specific risks — so any governance response is either
+        ineffective (a policy no one follows) or disproportionate (a blanket ban).
+      pole_a: "Individual productivity gain through unsanctioned AI use"
+      pole_b: "Organizational exposure from ungoverned data submission and output quality"
+
+    failure_modes:
+      - id: "FM1-1"
+        name: "Data leakage to third-party AI services"
+        description: >
+          Employees submit proprietary source code, confidential meeting contents,
+          patient data, client information, or trade secrets to consumer AI services
+          via personal accounts. The data cannot be recalled.
+        trigger: "Any employee with access to confidential data and a personal AI account"
+        documented_instance: "Samsung Electronics, April 2023"
+        catalog_entry: 28
+        status: documented
+
+      - id: "FM1-2"
+        name: "Permanent IP and regulatory exposure"
+        description: >
+          Data submitted to external AI services becomes part of training pipelines
+          or is accessible to the service provider. Regulatory exposure (HIPAA, GDPR,
+          attorney-client privilege) accrues without organizational awareness.
+          Discovery typically occurs 400+ days after initial exposure.
+        trigger: "Sustained shadow adoption without data governance controls"
+        documented_instance: "Healthcare sector shadow AI; legal profession ChatGPT use"
+        catalog_entry: 30
+        status: documented
+
+    progression_requirements:
+      - >
+        Conduct an AI tool inventory: identify which AI tools are being used, by which
+        teams, and for what purposes. This does not require banning anything — it requires
+        knowing what is in use.
+      - >
+        Designate at least one sanctioned AI tool with organizational terms of service
+        reviewed, and communicate its acceptable use to employees. This creates a governed
+        alternative to shadow accounts.
+      - >
+        Issue a minimum viable AI use policy: not a comprehensive framework, but a
+        statement of what data may not be submitted to external AI services. One page
+        is sufficient.
+
+    unlock_condition: >
+      The organization knows what AI tools are in use, has reviewed data handling terms
+      for at least one sanctioned tool, and has communicated a minimum use policy.
+      Shadow use persists but the organization has visibility into it.
+
+    protocol_dimensions:
+      governance:           absent
+      tooling:              personal
+      uncertainty_handling: ignored
+      coordination:         ad_hoc
+      feedback_loops:       none
+      verification:         none
+
+    case_anchors:
+      - name: "Samsung Electronics — ChatGPT data leak"
+        sector: "Technology / Semiconductor"
+        position: middle
+        description: "Three engineers submitted proprietary source code and meeting transcripts to personal ChatGPT accounts within one month. IP exposure is unrecoverable."
+        catalog_entry: 28
+        status: documented
+
+      - name: "Healthcare sector — shadow AI and HIPAA"
+        sector: "Healthcare"
+        position: middle
+        description: "86% of healthcare IT executives report shadow AI incidents. 17% of healthcare workers admit unauthorized AI tool use. Only 35% of organizations can track their own AI usage."
+        catalog_entry: 30
+        status: documented
+
+      - name: "Legal profession — AI hallucination sanctions"
+        sector: "Legal / Professional Services"
+        position: late
+        description: "Attorneys used personal ChatGPT accounts to generate case citations without verification. 550+ sanctioned incidents tracked; 2–3 new cases per day by fall 2025."
+        catalog_entry: 29
+        status: documented
+
+
+  - id: 2
+    name: "Sanctioned"
+    tagline: "The organization has granted AI access. It has not designed what to do with it."
+    unit_of_analysis: "Organization"
+
+    description: >
+      Leadership has decided that AI adoption is strategically necessary and has moved
+      to provide broad access — licensing enterprise AI tools for most or all employees,
+      issuing mandates around AI use, or replacing human functions with AI at scale.
+      The move is correct in direction. The failure mode is executing the access grant
+      without designing the governing protocol: which tasks, with what review process,
+      with what quality standard, with what escalation path when AI fails.
+      Level 2 organizations typically achieve high adoption rates and genuine early
+      productivity gains, then encounter a quality floor that the absent governance
+      layer cannot address.
+
+    observable_indicators:
+      - "Enterprise AI tool licenses exist (ChatGPT Enterprise, Microsoft Copilot, Google Workspace AI)"
+      - "AI use is encouraged or mandated in at least some contexts"
+      - "No consistent training program exists for reviewing AI-generated outputs"
+      - "No defined process exists for what to do when AI produces an incorrect or harmful output"
+      - "Productivity gains are claimed but measured informally or anecdotally"
+      - "Different teams use AI differently with no shared standard"
+      - "Quality failures are handled reactively (case-by-case) rather than by protocol"
+
+    characteristic_tension:
+      description: >
+        The mandate produces adoption. Adoption reveals quality failures. Quality failures
+        require human review. Human review at scale requires a protocol. Designing the
+        protocol requires slowing down adoption. Leadership does not want to slow adoption.
+        The organization is caught between the adoption rate it is reporting and the
+        governance infrastructure it has not built.
+      pole_a: "Maximizing AI adoption rate and claimed productivity gains"
+      pole_b: "Building the review protocols that make those gains durable"
+
+    failure_modes:
+      - id: "FM2-1"
+        name: "Quality floor collapse"
+        description: >
+          AI replaces a human step that was simultaneously a production step and a
+          quality-check step. The production volume increases; the quality check disappears.
+          The gap is invisible in output volume metrics and visible in product quality or
+          customer satisfaction. Often discovered when external parties (customers, courts,
+          regulators) raise the quality failure rather than internal monitoring.
+        trigger: >
+          Replacing a human role that served a dual production/verification function with
+          AI output without redesigning the verification step.
+        documented_instance: "Klarna customer service AI (empathy / nuance failure); Duolingo native-speaker contractor replacement (linguistic quality failure)"
+        catalog_entry: 31
+        status: documented
+
+      - id: "FM2-2"
+        name: "Mandate without protocol"
+        description: >
+          Leadership issues an AI competency requirement with no defined criteria for
+          compliance. Employees must "demonstrate AI use" or "prove AI cannot do their
+          job" but no standard defines what demonstration or proof means. This creates
+          compliance theater: employees perform AI use to satisfy the mandate rather than
+          integrating AI into workflows meaningfully. The organization's reported adoption
+          rate is high; its actual governance maturity is unchanged.
+        trigger: >
+          Top-down AI mandate with performance consequences but without defined competency
+          standards or workflow-level guidance.
+        documented_instance: "Shopify April 2025 memo: 'non-optional' AI with no defined competency criteria for non-technical roles"
+        catalog_entry: 32
+        status: documented
+
+      - id: "FM2-3"
+        name: "Chatbot liability gap"
+        description: >
+          An AI system deployed for customer-facing or legally consequential functions
+          provides incorrect information. The organization's formal policy contradicts
+          what the AI said. External parties (customers, courts, regulators) hold the
+          organization responsible for the AI's output regardless of internal disclaimers.
+        trigger: >
+          Deploying AI in high-stakes external-facing contexts without a review protocol
+          for outputs that contradict or extend formal policy.
+        documented_instance: "Air Canada chatbot told a customer he could claim bereavement fare retroactively; actual policy did not permit this; BC Civil Resolution Tribunal ruled Air Canada liable"
+        catalog_entry: 29
+        status: documented
+
+    progression_requirements:
+      - >
+        Define at least one AI-native workflow: select a function where AI is in use,
+        design the full workflow including what AI does, what the human reviews, what
+        constitutes acceptable output, and what the escalation path is for failures.
+        Document it. Make it repeatable.
+      - >
+        Build a minimum training program for reviewing AI-generated outputs: not an
+        AI literacy course, but specific guidance on what to check in the outputs your
+        organization is actually producing with AI.
+      - >
+        Instrument quality: define a metric for at least one AI-assisted function that
+        captures output quality, not just output volume. Track it. Assign ownership.
+
+    unlock_condition: >
+      At least one AI workflow is documented end-to-end (human + AI steps, verification
+      criteria, escalation path). A quality metric exists for it. Failure in that workflow
+      triggers a defined response, not an ad hoc one.
+
+    protocol_dimensions:
+      governance:           reactive
+      tooling:              sanctioned
+      uncertainty_handling: absorbed
+      coordination:         mandated
+      feedback_loops:       reactive
+      verification:         informal
+
+    case_anchors:
+      - name: "Klarna — AI-for-all mandate and reversal"
+        sector: "Financial Technology"
+        position: late
+        description: >
+          90% daily AI adoption across ~7,000 employees. Customer service AI handled
+          two-thirds of chats in first month. CEO reversed course May 2025 after quality
+          failures; rehiring human agents. $40M claimed profit improvement; brand damage
+          not yet quantified. IPO completed September 2025.
+        catalog_entry: 31
+        status: documented
+
+      - name: "Shopify — AI non-optional memo"
+        sector: "E-commerce Platform"
+        position: middle
+        description: >
+          April 2025 mandate: AI use non-optional, headcount requests require proof AI
+          cannot do the task. No competency definition published for non-technical roles.
+          FY2025: 30% revenue growth, opex fell to 35% of revenue. Headcount flat at ~8,000.
+        catalog_entry: 32
+        status: documented
+
+      - name: "Duolingo — AI-first contractor replacement"
+        sector: "EdTech"
+        position: late
+        description: >
+          10% contractor cut January 2024; AI-first mandate April 2025. CEO admitted
+          memo lacked context. FY2025: $1.04B revenue, 39% growth, $414M net income.
+          Stock down ~50% from peak. Gross margin declined 40bp on rising AI costs.
+          Language quality concerns raised by educators but not formally measured.
+        catalog_entry: 33
+        status: documented
+
+
+  - id: 3
+    name: "Governed"
+    tagline: "AI is embedded in how the organization competes. The business model depends on it."
+    unit_of_analysis: "Business model / competitive position"
+
+    description: >
+      AI is no longer a productivity tool in a governed workflow — it is a core capability
+      that the organization's competitive position depends on. Workflows are designed around
+      AI, not retrofitted to include it. The organization has moved past "which AI tasks
+      can we automate" to "which parts of our competitive model only work with AI."
+      The governance question at Level 3 is not how to control AI use but how to design
+      AI-native protocols that can handle failure, versioning, and external dependencies
+      without losing the speed advantage that AI provides.
+      Early Level 3: AI is reflexively used across core functions; workflow design is
+      intentional, not improvised. Late Level 3: the business model cannot revert to
+      non-AI operation without significant competitive loss.
+
+    observable_indicators:
+      - "AI is embedded in the core product or core production process, not just support functions"
+      - "Removing AI from key workflows would require rebuilding them, not just substituting a human"
+      - "The organization has built internal AI tooling or adapted commercial tools for its specific context"
+      - "AI workflow design is owned by someone with explicit accountability for it"
+      - "The organization tracks AI-related costs as a first-class operating expense"
+      - "Quality failures in AI workflows trigger protocol reviews, not just individual corrections"
+      - "The organization can describe its AI governance protocol in specific, written terms"
+      - "There is a defined process for AI workflow changes, including testing and rollback"
+
+    characteristic_tension:
+      description: >
+        The organization has built speed and competitive advantage on AI-native workflows.
+        External dependencies — regulatory timelines, supplier lead times, customer adoption
+        curves, partner integration cycles — remain on human-paced schedules. AI accelerates
+        internal velocity while the external environment moves at its own speed. The tension
+        is between the organization's internal production rate and its ability to absorb,
+        coordinate, and derive value from that rate in a slower external environment.
+        (Per Mechanical Currents: "temporal divergence" — some clocks accelerate while
+        others do not.)
+      pole_a: "AI-native internal velocity and competitive differentiation"
+      pole_b: "External coordination dependencies that cannot accelerate at the same rate"
+
+    failure_modes:
+      - id: "FM3-1"
+        name: "Temporal divergence breakdown"
+        description: >
+          AI accelerates internal production faster than the organization can coordinate
+          with external actors (regulators, suppliers, partners, customers). Review queues
+          fill faster than reviewers can process them. Handoffs fail. Decisions that used
+          to be made in days are now bottlenecks because the upstream step is instant.
+          The Slacker Index (total lead time ÷ working time) explodes even as individual
+          AI tasks complete quickly.
+        trigger: >
+          AI deployment in production workflows without corresponding redesign of
+          downstream coordination protocols (review, handoff, approval, integration).
+        documented_instance: "Uber code review bottleneck: 11% of PRs opened by agents, review queue became primary bottleneck requiring purpose-built tooling (Code Inbox, U Review)"
+        catalog_entry: 1
+        status: documented
+
+      - id: "FM3-2"
+        name: "Ontological drift"
+        description: >
+          Mid-project redefinition of the concepts, categories, or ontologies that AI
+          systems depend on becomes extremely expensive. Because AI systems have encoded
+          prior definitions into their outputs, training data, or prompt structures,
+          changing a definition requires auditing and revising everything downstream.
+          Organizations attempt agile-style iteration on definitions that should have
+          been frozen, or freeze definitions that needed to remain flexible.
+        trigger: >
+          AI deployment in contexts where core domain ontologies are still being
+          negotiated or are subject to change — new product development, regulatory
+          evolution, organizational restructuring.
+        catalog_entry: 3
+        status: documented
+        notes: "Per Sachin Benny: LLMs make ontological drift extremely expensive; this is the structural reason AI development tends toward waterfall planning."
+
+      - id: "FM3-3"
+        name: "Governance brittleness under versioning"
+        description: >
+          AI model updates, prompt changes, or tool switches silently alter output
+          characteristics that the governance protocol was calibrated for. A review
+          process designed for GPT-4 output may not catch the same failure modes in
+          Claude 3.7 or GPT-5 output. The governance protocol is not versioned along
+          with the tools it governs.
+        trigger: >
+          AI tool updates without corresponding review and update of governance protocols
+          that depend on the old tool's behavior.
+        status: synthesis
+
+    progression_requirements:
+      - >
+        Define an explicit AI protocol stack: document which AI tools govern which
+        workflows, what the governance rules are for each, and how changes to the tools
+        trigger reviews of the governance rules.
+      - >
+        Address temporal divergence in at least one workflow: identify where AI-accelerated
+        upstream steps are creating bottlenecks downstream, and redesign the downstream
+        coordination protocol (not the AI step) to handle the new volume.
+      - >
+        Build a feedback mechanism for protocol failures: when an AI workflow produces
+        a quality failure, there must be a defined path from the failure to a protocol
+        review. Not a correction — a review of whether the protocol itself needs to change.
+
+    unlock_condition: >
+      The organization can describe, in writing, the protocol governing its primary
+      AI-dependent workflow — including the AI's role, the human verification step,
+      the quality criteria, the failure escalation path, and the process for updating
+      the protocol when the tools change. Industry peers begin to benchmark against
+      this organization's AI practices.
+
+    protocol_dimensions:
+      governance:           designed
+      tooling:              purpose-built
+      uncertainty_handling: governed
+      coordination:         designed
+      feedback_loops:       systematic
+      verification:         procedural
+
+    case_anchors:
+      - name: "Boom Supersonic — mkBoom and AI-native design (late Level 3)"
+        sector: "Aerospace / Manufacturing"
+        position: late
+        description: >
+          mkBoom automates full aircraft analysis from a parametric config file. The design
+          methodology depends on AI; removing it would require rebuilding the development
+          process. Jevons's Law: cheap iteration enables design exploration previously
+          unaffordable (Boomless Cruise discovered through iteration, not planned).
+          Slacker Index case studies: turbine blade lead time reduced from 6 months to 24
+          hours via vertical integration. Zero safety incidents across XB-1 program.
+          Business model dependent on AI; not yet industry-standard practice.
+        catalog_entry: 7
+        status: documented
+
+      - name: "Uber — agentic shift (transitional 3→4)"
+        sector: "Technology / Mobility"
+        position: transitional
+        description: >
+          84% developer agentic AI adoption; 65–72% of IDE code AI-generated; Claude Code
+          usage doubled in 3 months (32%→63%). AI costs up 6x since 2024. Code review
+          became primary bottleneck; Uber built purpose-built tooling (Code Inbox, U Review,
+          Shepherd, Minion). AI is embedded in the engineering business model. Moving toward
+          Level 4 as internal platform matures.
+        catalog_entry: 1
+        status: documented
+
+      - name: "Venkatesh Rao / Jenna Dixon — factory-to-factory publishing pipeline"
+        sector: "Publishing / Media"
+        position: early
+        description: >
+          Two non-technical operators running Claude Code factories coordinated via explicit
+          F2F protocol (shared Dropbox, manuscript transmittal server). Dozens of books in
+          production simultaneously. Domain knowledge identified as the limiting constraint,
+          not AI capability. Demonstrates business model dependency at small scale.
+        catalog_entry: 27
+        status: documented
+
+
+  - id: 4
+    name: "Industry Reliance"
+    tagline: "AI is infrastructure for the sector. Competitive differentiation is no longer whether to use AI but how."
+    unit_of_analysis: "Industry / Market"
+
+    description: >
+      AI has crossed the threshold from organizational competitive advantage to industry
+      infrastructure. The majority of organizations in the sector depend on AI for core
+      operations; the sector's productivity baseline has been recalibrated upward to
+      assume AI capability. A new entrant who does not deploy AI at Level 3 cannot
+      compete at industry-standard costs or speed. The governance question at Level 4
+      is no longer organizational — it is market-structural: how does the industry
+      coordinate AI use, handle shared risks, establish standards, and prevent the
+      concentration of AI capability in ways that produce anti-competitive outcomes?
+      At Level 4, individual organizational maturity is necessary but not sufficient.
+      The market's governing protocols — standards bodies, regulatory frameworks,
+      shared infrastructure, interoperability agreements — determine whether AI
+      capability compounds or concentrates.
+
+    observable_indicators:
+      - "AI capability is referenced in industry analyst reports as a baseline assumption, not a differentiator"
+      - "New market entrants are expected to deploy AI in core functions from day one"
+      - "Industry compensation and staffing benchmarks have adjusted to reflect AI-augmented productivity"
+      - "Sector regulators have issued AI-specific guidance or framework requirements"
+      - "Trade associations or standards bodies are developing AI governance standards for the sector"
+      - "At least one major sector player has published AI governance practices that others benchmark against"
+      - "AI failures at one organization produce sector-wide scrutiny (not just organizational scandal)"
+
+    characteristic_tension:
+      description: >
+        The sector benefits from AI standardization (shared protocols, interoperability,
+        regulatory clarity). Individual organizations benefit from AI differentiation
+        (proprietary models, unique datasets, bespoke workflows). These two forces are
+        in tension: standardization commoditizes what was a competitive advantage;
+        differentiation resists the standardization that would produce industry-level
+        coordination benefits. Incumbents with early AI advantage resist standardization;
+        new entrants and regulators push for it.
+      pole_a: "Industry standardization of AI protocols, enabling coordination and regulatory clarity"
+      pole_b: "Organizational differentiation through proprietary AI capability, resisting standardization"
+
+    failure_modes:
+      - id: "FM4-1"
+        name: "AI capability concentration"
+        description: >
+          Early AI leaders accumulate proprietary data, model advantage, and talent in
+          ways that create structural moats. Late-adopting organizations cannot compete
+          at AI-standard productivity. The industry stratifies: a small tier of AI-native
+          leaders and a large tier of permanently disadvantaged followers. The market's
+          AI infrastructure is controlled by a small number of vendors with aftermarket
+          pricing power.
+        trigger: >
+          Absence of interoperability standards, open infrastructure, or regulatory
+          requirements that prevent AI capability from becoming a permanent structural
+          moat.
+        catalog_entry: 12
+        status: synthesis
+        notes: >
+          Per Blake Scholl (entry 12): aftermarket profits create structural disincentives
+          to produce better products. AI vendors with proprietary model advantage have
+          structural interest in keeping adoption complex.
+
+      - id: "FM4-2"
+        name: "Sector-wide governance failure"
+        description: >
+          A governance protocol failure at one organization — a major AI-related data
+          breach, a systematic output quality failure, a discriminatory AI system —
+          triggers regulatory response that applies to the whole sector, regardless of
+          other organizations' governance maturity. The sector is held responsible
+          collectively for the practices of its least-governed members.
+        trigger: >
+          High-visibility AI governance failure at a sector leader, in the absence of
+          established sector-wide governance standards that the failed organization
+          could be measured against.
+        status: synthesis
+
+    progression_requirements:
+      - >
+        Sector-level AI governance standards emerge: either through a standards body,
+        regulatory framework, or voluntary industry compact that establishes minimum
+        protocol requirements for AI deployment in the sector.
+      - >
+        AI infrastructure becomes shared or interoperable at key points: training data
+        provenance, model evaluation benchmarks, or workflow handoff protocols are
+        standardized enough that organizations can exchange AI-assisted work products.
+      - >
+        The sector's regulatory framework explicitly addresses AI governance, creating
+        a compliance baseline that all organizations must meet and above which
+        differentiation occurs.
+
+    unlock_condition: >
+      AI capability is no longer a competitive differentiator in the sector — it is a
+      license-to-operate requirement. Competition has moved to higher-order AI capability:
+      model training, proprietary datasets, agentic workflow design, or the protocols
+      governing AI at the next level of abstraction.
+
+    protocol_dimensions:
+      governance:           systematized
+      tooling:              native
+      uncertainty_handling: systematized
+      coordination:         automated
+      feedback_loops:       predictive
+      verification:         metriced
+
+    case_anchors:
+      - name: "No confirmed sector-level case as of March 2026"
+        sector: "Multiple"
+        position: early
+        description: >
+          No sector has fully crossed the Level 4 threshold. Candidate leading indicators:
+          Bloomberg Terminal infrastructure (financial data), AWS/Azure/GCP as cloud
+          infrastructure (technology sector), AI-assisted drug discovery as emerging
+          standard in pharmaceutical R&D. The legal profession's 80% AmLaw 100 governance
+          board adoption (late 2025) is a transition signal. Healthcare HIPAA overhaul
+          proposal (January 2026) is a regulatory forcing function.
+        status: projected
+
+      - name: "Legal profession — 80% AmLaw 100 governance boards (late 2025)"
+        sector: "Legal"
+        position: early
+        description: >
+          By late 2025, 80% of AmLaw 100 firms had established formal AI governance boards.
+          ABA Formal Opinion 512 (July 2024) established minimum competency requirements.
+          The profession is in transition from Level 2 (sanctioned use without governance)
+          toward Level 4 (sector-level governance standards). The hallucination sanction
+          cascade accelerated this transition.
+        catalog_entry: 29
+        status: documented
+
+
+  - id: 5
+    name: "Planetary Embedding"
+    tagline: "AI is invisible infrastructure for civilization-scale coordination systems."
+    unit_of_analysis: "Civilization / Planetary systems"
+
+    description: >
+      AI protocols have been metabolized into the infrastructure governing coordination
+      at civilizational scale: energy grids, financial markets, healthcare systems,
+      climate monitoring, supply chain logistics, environmental governance. These are
+      not AI deployments that organizations chose — they are protocols that operate
+      whether or not any individual organization adopted AI. The governance question
+      at Level 5 is not organizational or sectoral — it is civilizational: who governs
+      the governing protocols? What happens when the invisible infrastructure fails?
+      How does the protocol layer itself remain governable when it has become too
+      embedded to audit?
+      Level 5 corresponds to what Venkatesh Rao calls "New Nature" — a planetary
+      condition increasingly governed by laws of the artificial, engineered to be
+      nearly as immutable as natural law. The primary risk at Level 5 is not a failure
+      of AI capability but a failure of protocol legibility: the infrastructure works
+      so well that the literacy required to govern it atrophies, until failure reveals
+      that no one knows how to intervene.
+      No civilization has reached Level 5 as of 2026. This level is described as a
+      forward projection grounded in the observed trajectory of protocol evolution.
+
+    observable_indicators:
+      - "AI systems govern real-time allocation of critical infrastructure resources (grid, water, logistics)"
+      - "Financial market microstructure depends on AI protocols that operate faster than human oversight can follow"
+      - "Climate and environmental monitoring systems use AI to detect, model, and respond to conditions in real time"
+      - "Healthcare diagnostic and treatment pathways are governed by AI protocols at scale, not just assisted by AI tools"
+      - "Public administration and policy modeling depends on AI-generated analysis as primary input"
+      - "The protocols governing AI infrastructure are not fully legible to any single organization or regulator"
+
+    characteristic_tension:
+      description: >
+        Planetary AI infrastructure achieves coordination efficiency that would be
+        impossible through human-paced processes. The same invisibility that makes
+        the infrastructure work — it operates below the threshold of human attention —
+        makes it ungovernable through traditional oversight mechanisms. Governance
+        requires legibility; efficiency requires invisibility. The protocols that
+        produce coordination at planetary scale do so precisely because they are not
+        subject to human intervention at each step.
+        Per Theorizing Protocolization I: "Over-protocolization — when a protocol
+        becomes so invisible it erases its own raison d'être." At Level 5, success
+        erases the literacy needed to sustain it.
+      pole_a: "Coordination efficiency through invisible, automated, planetary-scale AI protocols"
+      pole_b: "Governance legibility: the ability for human actors to audit, intervene in, and redesign the protocols that govern civilization"
+
+    failure_modes:
+      - id: "FM5-1"
+        name: "Protocol opacity cascades"
+        description: >
+          Invisible AI infrastructure fails in a way that is not attributable to any
+          single organization, model, or decision. The failure propagates through
+          interdependent systems (grid → logistics → healthcare → finance) faster than
+          human oversight can respond. No single actor has the authority or the
+          information to intervene. Post-hoc analysis cannot reconstruct the causal
+          chain because the protocols that failed were not documented at the level of
+          detail required.
+        trigger: >
+          Civilizational dependency on AI protocols whose failure modes have not been
+          modeled, whose interdependencies are not mapped, and whose governance
+          requires cross-jurisdictional coordination that does not exist.
+        status: projected
+        notes: "Analogous to Maersk ransomware attack (2017): containerization + internet infrastructure converged in ways no single framework could theorize or govern."
+
+      - id: "FM5-2"
+        name: "Literacy collapse"
+        description: >
+          The generation of practitioners who understand how the underlying AI protocols
+          work retires or moves on. The protocols continue to function but no one
+          understands them well enough to modify them safely when conditions change.
+          Governance becomes ritual — forms are completed, audits are conducted, but
+          no one can intervene in the actual protocol layer because the knowledge
+          required to do so no longer exists.
+        trigger: >
+          Success of AI infrastructure protocols in making themselves invisible, without
+          corresponding investment in maintaining the human literacy required to govern them.
+        status: projected
+        notes: >
+          Per Theorizing Protocolization I: vaccination protocols' success created
+          vaccine denialism by making their own logic invisible. Nuclear non-proliferation
+          protocols retreated into background invisibility. AI infrastructure faces the
+          same dynamic at civilizational scale.
+
+    progression_requirements:
+      - status: not_applicable
+        notes: >
+          Level 5 is the current theoretical endpoint of the model. There is no
+          defined "Level 6." Progression within Level 5 is the development of
+          governance mechanisms adequate to the protocol opacity challenge:
+          legibility infrastructure, cross-jurisdictional governance frameworks,
+          and protocol literacy maintenance programs.
+
+    unlock_condition: null
+    notes: "Level 5 is an endpoint, not a waypoint."
+
+    protocol_dimensions:
+      governance:           infrastructure
+      tooling:              native
+      uncertainty_handling: generative
+      coordination:         infrastructure
+      feedback_loops:       generative
+      verification:         self-correcting
+
+    case_anchors:
+      - name: "No confirmed planetary-scale case as of March 2026"
+        sector: "Multiple"
+        position: early
+        description: >
+          No AI deployment has reached planetary-scale protocol status as of March 2026.
+          Candidate leading indicators: algorithmic trading at financial market microstructure
+          (approaching Level 5 within financial systems); power grid AI optimization in
+          advanced economies (Metro de Madrid energy optimization, US utility AI monitoring);
+          AI-assisted climate modeling at NOAA and equivalent national agencies.
+          The Theorizing Protocolization I paper provides the theoretical frame;
+          empirical cases remain at Level 4 boundary.
+        status: projected
+        catalog_entry: 21
+
+
+# ─────────────────────────────────────────────
+# TRANSITION CONDITIONS
+# ─────────────────────────────────────────────
+
+transitions:
+
+  - from: 1
+    to: 2
+    description: >
+      The organization moves from individual-driven shadow adoption to
+      deliberate organizational access grant. The key change is visibility:
+      leadership acknowledges AI is in use and makes a decision about it,
+      rather than discovering it reactively.
+    common_catalysts:
+      - "A shadow AI incident (data leak, quality failure, legal exposure) creates organizational urgency"
+      - "Competitor adoption becomes visible and creates executive pressure"
+      - "A specific AI-assisted success in one team generates demand for broader access"
+      - "Vendor or consultant engagement creates organizational awareness and a purchase decision"
+    common_blockers:
+      - "Security or legal teams issue a blanket ban rather than a governance protocol, preventing managed adoption"
+      - "The incident that would catalyze action has not yet occurred and the organization has not conducted a proactive AI inventory"
+      - "Executive leadership has delegated AI to IT without giving IT the authority to make organizational decisions about it"
+
+  - from: 2
+    to: 3
+    description: >
+      The organization moves from broad access without workflow design to
+      AI being embedded in core competitive function. The key change is not
+      adoption rate but design intentionality: at Level 3, AI workflows are
+      designed, not improvised, and the organization's competitive position
+      depends on them.
+    common_catalysts:
+      - "A quality failure at Level 2 forces workflow redesign (Klarna customer service reversal)"
+      - "A competitor demonstrates AI-native capability that produces qualitatively different outputs"
+      - "An internal AI champion builds a designed workflow that becomes a model for others"
+      - "A Forward Deployed Engineer or equivalent embeds with the team and designs the workflow protocol"
+    common_blockers:
+      - "Level 2 financial metrics are positive (adoption rate, claimed productivity) making the governance gap invisible"
+      - "The mandate framing ('AI is non-optional') creates compliance pressure that substitutes for genuine integration"
+      - "Organization cannot define what 'designed' means for a workflow, so improvisation persists"
+      - "AI costs are not tracked as first-class operating expenses, making the economic case for Level 3 investment unclear"
+
+  - from: 3
+    to: 4
+    description: >
+      The unit of analysis shifts from organizational to industrial. The key change
+      is that AI capability moves from competitive differentiator to sector
+      infrastructure. This transition is not driven by any single organization's
+      maturity decision — it is driven by the aggregate of Level 3 organizations
+      reaching density sufficient to recalibrate the sector's productivity baseline.
+    common_catalysts:
+      - "Regulatory framework establishes sector-wide AI governance requirements (HIPAA overhaul, EU AI Act sector rules)"
+      - "A high-visibility governance failure produces sector-wide regulatory response"
+      - "Standards body publishes interoperability or governance standards that sector adopts"
+      - "Labor market repricing: sector compensation benchmarks adjust to reflect AI-augmented productivity as baseline"
+    common_blockers:
+      - "Incumbents with AI advantage resist standardization to preserve proprietary moats"
+      - "Regulatory frameworks lag behind sector adoption, leaving governance standards undefined"
+      - "No sector actor has sufficient legitimacy and motivation to convene standards development"
+
+  - from: 4
+    to: 5
+    description: >
+      The unit of analysis shifts from industrial to civilizational. AI protocols
+      are metabolized into infrastructure governing coordination at scales that
+      transcend any single sector. The transition is not a decision made by any
+      actor — it is an emergent property of sufficiently dense Level 4 sectors
+      converging on shared protocols.
+    common_catalysts:
+      - "Multiple Level 4 sectors share AI infrastructure that becomes cross-sector protocol"
+      - "Climate or crisis response requires AI-coordinated action across sectors at real-time speed"
+      - "Financial system AI protocols extend into adjacent systems (insurance, supply chain, grid)"
+    common_blockers:
+      - "Cross-jurisdictional governance failures prevent protocol standardization at civilizational scale"
+      - "Concentration of AI infrastructure in a small number of private actors prevents neutral protocol governance"
+      - "No governance mechanism exists with the legitimacy and authority to govern civilizational-scale AI protocols"
+    notes: >
+      The Level 4 → 5 transition has no confirmed precedent. The Maersk ransomware
+      attack (2017) is an analogue: containerization + internet infrastructure converged
+      into a single attack surface that no governance framework could address. That was
+      a failure mode at the boundary of a Level 4 → 5 transition, not a successful one.

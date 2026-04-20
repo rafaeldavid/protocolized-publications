@@ -1,0 +1,211 @@
+15/03/2026, 08:22
+
+The airplane that unlocked the supersonic age
+
+The airplane that unlocked the supersonic
+age
+Reflecting on XB-1's legacy one year later
+BLAKE SCHOLL
+JAN 28, 2026
+
+23
+
+2
+
+Share
+
+I. Righting a historic wrong and unlocking the supersonic age
+
+From the Wright Bros first flight to the dawn of the jet age, humanity always strived to
+fly faster and higher, and every major generation of airplane exceeded the performance
+of those that came before it. The jet age didn’t just mean faster flights—it meant
+human connection across distance.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+The Anglo-French Concorde was supposed to usher in the supersonic age—but it was
+stillborn. Stratospheric operating costs and issues with sonic boom restricted
+supersonic flight to the well-heeled and only on a handful of routes. Supersonic flight
+was banned in the US in 1973. A tragic accident in 2001 cemented Concorde’s failure,
+and the so-called supersonic age passed without really starting. Five decades passed
+without a new civil supersonic airplane taking to the skies.
+When Boom was founded in 2014, there remained two principal obstacles to
+supersonic travel: economics and sonic boom. The XB-1 was conceived to demonstrate
+three key things:
+A small, privately funded team could build a supersonic jet with a small budget
+outside of a major OEM
+Performance gains with modern tech could enable a more efficient & affordable
+supersonic airliner
+Sonic boom could be overcome, enabling supersonic flight on dramatically more
+routes
+
+https://bscholl.substack.com/p/the-airplane-that-unlocked-the-supersonic
+
+1/5
+
+15/03/2026, 08:22
+
+The airplane that unlocked the supersonic age
+
+XB-1 achieved its goals—proving the issues holding back Concorde have been overcome.
+While it was never designed to carry passengers, XB-1’s “actual use” included
+providing the proof that resulted in legalizing supersonic flight. On June 6th, 2025,
+President Trump signed an Executive Order overturning the prohibition on supersonic
+flight in the US—just 115 days after XB-1’s boomless flight . This unlocks a new
+supersonic age—including Boom’s Overture airliner and proposed business aircraft
+from other makers.
+
+II. The efficiency to unlock economical supersonic flight
+XB-1 demonstrated multiple innovations for supersonic efficiency, enabling longer
+range and lower fares.
+Augmented Reality Vision System: Whereas Concorde famously had a “droop
+nose” for runway visibility, XB-1 used a first-of-its-kind digital vision system for
+takeoff and landing. This approach reduced supersonic drag by 5% and eliminated
+~2% of empty weight compared to a mechanical moving nose.
+Improved software-defined aerodynamics and area-ruled fuselage: Whereas
+Concorde had a constant cross section fuselage, XB-1 has a carbon-composite
+“area ruled” (coke-bottled) fuselage that reduced transonic and supersonic drag.
+XB-1 is the first civil supersonic aircraft with these features.
+XB-1 met or exceeded all of its predicted performance targets—including lift to drag
+ratio, propulsive efficiency, and empty weight—validating its tools and models and
+thereby Boom’s performance predictions for Overture.
+
+III. A small committed team can achieve mighty things
+Traditionally, supersonic aircraft have been built only by major corporations with
+billions in public funding. XB-1 demonstrated that a small team with limited private
+funding can achieve supersonic flight.
+
+https://bscholl.substack.com/p/the-airplane-that-unlocked-the-supersonic
+
+2/5
+
+15/03/2026, 08:22
+
+The airplane that unlocked the supersonic age
+
+XB-1 was built by a team of just 50 committed men and women—including engineers,
+technicians, and pilots—and a budget of $190M. Both represent ~order of magnitude
+improvements in program performance. After XB-1’s final flight, the team that built
+XB-1 signed their work.
+XB-1 represents nearly an order of magnitude cost improvement over traditional
+development programs.
+
+III. Silencing the boom—a practical and reliable solution
+for quiet supersonic
+Concerns about sonic boom limited Concorde to supersonic flight over water only—
+and the blanket prohibition on supersonic flight in the US since 1973. Other proposed
+supersonic aircraft (such as X-59) have boom attenuation through exotic aircraft
+shaping, at the expense of structural and aerodynamic efficiency—and therefore at the
+expense of affordability to the flying public.
+XB-1 demonstrated Mach cutoff, a solution to sonic boom that works reliably at
+speeds up to Mach 1.3, without compromise to efficiency. XB-1 demonstrated this on
+six supersonic runs at speeds up to Mach 1.18.
+“Boomless Cruise” leverages the natural refractive power of the atmosphere to direct
+the sonic boom away from the ground. Meaning, the aircraft still produces a sonic
+boom, but it is inaudible on the ground. In brief, the speed of sound varies with
+temperature, and therefore is lower at altitude where it is cold and higher at ground
+where it is warm. Therefore, all sound waves naturally bend upward as they propagate
+through the atmosphere. Boomless Cruise uses weather data and a computer model to
+predict the maximum “quiet” speed for any given day’s weather.
+
+Mach Cutoff was not invented by Boom—the physics have been known for decades
+but never demonstrated reliably in practice. Using ground-based microphone arrays,
+the XB-1 team confirmed that the sonic boom refracted and dissipated without
+reaching the ground. Concorde lacked the weather data, computing power, and
+transonic efficiency to make boomless cruise practical.
+
+https://bscholl.substack.com/p/the-airplane-that-unlocked-the-supersonic
+
+3/5
+
+15/03/2026, 08:22
+
+The airplane that unlocked the supersonic age
+
+XB-1 demonstrated all the components for practical boomless supersonic flight:
+reliable digital models to calculate max quiet speeds and the transonic/high-altitude
+performance to fly the required flight profiles.
+
+IV. Speed without compromise: a safety-first supersonic
+airplane & culture
+While there was never an accident directly related to supersonic flight, features of
+Concorde’s design contributed to its one fatal accident: Concorde’s high runway
+operating speeds (over 200kt) meant an encounter with runway debris proved
+catastrophic. This was exacerbated by poor engine out / gear extended climb
+performance.
+XB-1 demonstrated solutions to both these safety problems: with a design that
+balances low-speed and high-speed performance, XB-1 has significantly lower energy
+on the runway than Concorde, with rotation speed of 155kts and approach speeds of
+175kts. Additionally, XB-1 achieved a strong margin of safety climb performance with
+an engine out and landing gear extended.
+Importantly, XB-1 is the first small supersonic aircraft not to have an ejection seat.
+Paradoxically, this led to a significantly safer airplane. Ejections—particularly at
+supersonic speeds—frequently lead to serous injury or death and are not a safety
+solution for passengers. As a result, Boom committed to building XB-1 with a high
+safety bar and no ejection seat. This opened the path to myriad technical and program
+decisions increasing safety, such as redundant air data and extensive wind tunnel and
+ground testing.
+The XB-1 program was conducted with zero mishaps and zero OSHA reportable
+incidents.
+These accomplishments are underpinned by a safety-first program philosophy and
+culture. Near-misses were treated as if they were real incidents and learnings fed into
+improved operating procedures. XB-1 operated with a defined risk-acceptance bar and
+a culture where risks were tested openly against this bar and accepted or mitigated as
+appropriate. The notion of conscious risk-acceptance created a culture where risks
+could be discussed and debated openly. Boom maintained a backup anonymous safety
+reporting system—but it was rarely used once the safety culture was well-established.
+The program was rehearsal-rich and test-rich, with hundreds of simulator hours—
+many with a full control room—27 full-aircraft ground tests, and 15 high-speed taxi
+tests in the final flight configuration. Each event was treated with the same
+preparation as a flight, with dedicated briefs and telemetry rehearsals that trained the
+team to recognize hazards in real time, including over 20,000 hours of data review and
+nearly 80 briefing sessions. This diligent campaign exemplified a safety-first culture
+where innovation and discipline were mutually reinforcing.
+
+V. XB-1’s legacy: the airplane that unlocked the
+supersonic age
+In 2025, XB-1 became the first civil supersonic jet manufactured in America and the
+first in history to be developed independently of government. It was the first civil
+https://bscholl.substack.com/p/the-airplane-that-unlocked-the-supersonic
+
+4/5
+
+15/03/2026, 08:22
+
+The airplane that unlocked the supersonic age
+
+supersonic aircraft to take to the skies in over half a century. Most important, XB-1 led
+directly to the legalization of supersonic flight in the US.
+XB-1 has earned its place in history as the airplane that unlocked a supersonic age.
+But more than that, XB-1 has played an important symbolic and inspirational role in
+the rebirth of American leadership in aviation. When Boom was founded in 2014, there
+were scant aviation startups—and none that were working on new airliner technology.
+XB-1 is a testament to the American entrepreneurial spirit and has already inspired
+many to launch ambitious new development programs, including multiple new airliner
+startups.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+23 Likes ∙ 2 Restacks
+
+Discussion about this post
+Comments Restacks
+
+Write a comment...
+
+© 2026 Blake Scholl · Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://bscholl.substack.com/p/the-airplane-that-unlocked-the-supersonic
+
+5/5
+
+

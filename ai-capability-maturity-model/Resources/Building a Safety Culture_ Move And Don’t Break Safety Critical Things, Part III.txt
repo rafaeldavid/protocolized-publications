@@ -1,0 +1,222 @@
+15/03/2026, 08:22
+
+Building a Safety Culture: Move And Don’t Break Safety Critical Things, Part III
+
+Building a Safety Culture: Move And Don’t
+Break (Safety-Critical) Things, Part III
+
+Safety is the top priority, but that doesn't mean mitigating every risk—safety means taking
+only contextually-appropriate risk
+BLAKE SCHOLL
+OCT 06, 2025
+
+25
+
+5
+
+4
+
+Share
+
+Part three in a series about how Boom builds safety-critical hardware quickly and efficiently.
+See Part 1 (Software) and Part 2 (Vertical Integration).
+It was Saturday, March 16th, 2024. The XB-1 team and I were deep in the Mojave
+Desert, in the final stages of preparing our supersonic demonstrator for its first flight.
+
+First flight is a crucible moment for any airplane. Years of design and analysis all
+converge in one instant—when the wheels leave the ground, and reality tests every
+decision we’ve made. For XB-1, it was even more intense: this was the first airplane
+built by a brand-new company. That first takeoff would instantly tell us if we’d
+overlooked something critical.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+The pressure was enormous. Investors, the media, fans… everyone wanted to see us fly.
+Some of the financial pressure I couldn’t safely share with the broader team, but
+everyone could feel it.
+
+https://bscholl.substack.com/p/building-a-safety-culture-move-and
+
+1/5
+
+15/03/2026, 08:22
+
+Building a Safety Culture: Move And Don’t Break Safety Critical Things, Part III
+
+That morning at our daily stand-up, I reminded everyone that while we were close to
+the finish line, safety came first.
+“If you find a problem with the airplane,” I said, “I need to know about it. I might say a
+four-letter word—but then I’ll say thank you. And I’ll ask: what do you need to fix it?”
+That day XB-1 completed its final high-speed taxi test. The weather for the next
+morning looked perfect. The entire team could sense what was coming.
+Then, that afternoon, one of our young engineers—Grace—walked into my office.
+“Blake,” she said, “we’ve got a problem. The drag chute isn’t working consistently. I
+think we need to fix it before we fly.”
+I might indeed have muttered a four letter word—but I also thanked her. Over the next
+several days, the whole team rallied behind Grace. We tore down the drag-chute
+system, found the root cause, fixed it, and reassembled. XB-1 flew safely eight days
+later, on March 22nd, 2024.
+The drag chute wasn’t strictly necessary—it’s an emergency brake. It turned out we
+never actually needed it anywhere in the flight test campaign. But it was there for a
+reason—the chance that we might need it. That Saturday, had I shrugged and said, “fly
+anyway,” it would have been catastrophic in a different way. We’d have set the
+precedent that when pressure mounts, the safety bar can move. And that destroys a
+safety culture faster than any mishap ever could.
+Grace did the hardest thing you can do in an aviation startup: she brought bad news at
+the worst possible time. And with her courage, she made us all safer and stronger.
+We celebrated her in front of the company. Because at its core, safety culture is defined
+by how leaders respond when someone brings bad news. Most people instinctively avoid
+disappointing leadership. So when someone has the courage to raise a red flag, the
+only right answer is gratitude—and immediate action.
+
+Safety Culture: Easy to Break, Hard to Build
+I’m immensely proud of the safety culture we’ve built at Boom.
+A generation ago, Boeing led the world in aviation safety. Today, although air travel
+remains the safest mode of transport by far, we’ve seen tragic and entirely preventable
+lapses that remind us safety culture is broken more easily than built.
+I’ve come to believe that safety culture comes down to two key elements: one
+behavioral, one philosophical.
+1. How leadership responds when employees surface problems.
+Every employee must know they’ll be thanked—not punished—for raising an
+issue.
+2. How we accept risk.
+“Safety” doesn’t mean the absence of risk or attempting to eliminate all
+conceivable risks. It means being open and deliberate about the risk we accept.
+
+Should Safety Be the Top Priority?
+https://bscholl.substack.com/p/building-a-safety-culture-move-and
+
+2/5
+
+15/03/2026, 08:22
+
+Building a Safety Culture: Move And Don’t Break Safety Critical Things, Part III
+
+Early on, I wrestled with this question. Declaring that safety is the top priority sounds
+good—but if interpreted literally, I worried it would be paralyzing. If the safest option
+is always “don’t fly,” we’d never build anything new.
+Innovation, especially in aerospace, requires taking risks. But the goal isn’t to
+eliminate all risk—it’s to decide what kind and level of risk is acceptable—and then
+take only those risks.
+That led me to a more nuanced view: Safety is best understood as taking contextuallyappropriate risk. Putting safety first means taking risk seriously—identifying risks
+consciously, quantifying them whenever possible, and implementing whatever
+mitigations are necessary to meet a defined safety bar.
+Consider this: In the U.S., auto accidents kill the equivalent of two fully loaded 737s
+every 48 hours. Yet we accept driving as “safe” because it’s necessary, and for now
+there’s no lower-risk alternative for daily life. By contrast, the original 737 MAX,
+despite being statistically much safer than driving, was appropriately judged unsafe—
+because its design flaws were avoidable, and safer alternatives existed.
+Safety isn’t an out-of-context absolute: It involves benefit relative to risk, judged in the
+context of practical alternatives. Something is “safe” when its benefits justify its risks,
+and no less-risky alternative is practically available. This framing changes everything
+—and actually increases safety.
+
+Defining a Risk Posture
+At Boom, we formalize this idea. Safety means defining a risk posture—then
+consciously and transparently taking only those risks consistent with it. We define a
+risk posture for every major effort—and then consciously assess and prioritize risks
+relative to our standard.
+For example:
+XB-1: Our experimental jet, flown by a world-class test pilot, was designed with a
+
+⁻⁵
+
+maximum acceptable catastrophic-failure risk of 1 in 100,000 flight hours (10 ).
+That’s appropriate for an R&D program exploring new technology.
+
+Overture: Our commercial airliner, which will carry passengers, targets a risk of
+
+⁻⁹
+
+no worse than 1 in 1,000,000,000 (10 )—the same as any other airliner. While speed
+is immensely important, we don’t think a doubling speed justifies increased
+passenger risk—and so we aim to meet or exceed the safety bar achieved by every
+other airliner.
+This is the key: Safety doesn’t mean no risk—it means no unexamined risk. It’s about
+being intentional and data-driven in what we accept, and transparent about why.
+
+The Pillars of Safety at Boom
+After years of iteration, we’ve built several core practices into our DNA:
+1. Safety means conscious risk-acceptance, judged relative to a contextuallyappropriate risk posture.
+https://bscholl.substack.com/p/building-a-safety-culture-move-and
+
+3/5
+
+15/03/2026, 08:22
+
+Building a Safety Culture: Move And Don’t Break Safety Critical Things, Part III
+
+We talk openly about risk and ensure it’s consistent with our posture. “Safety
+first” means “be intentional,” not “never take risk.” Our test pilots take a very
+different level of risk than our passengers will.
+2. Radical transparency.
+We encourage everyone to surface safety concerns. We also maintain an
+anonymous reporting system as a backup—used rarely now, because trust runs
+deep.
+3. Continuous learning and open sharing.
+We discuss safety at every all-hands, share lessons learned, and treat near-misses
+as seriously as incidents.
+4. Celebrating the right behaviors.
+We publicly recognize employees who raise issues, like Grace—because surfacing
+problems is a sign of strength, not weakness.
+5. Go/no-go decisions are made independently by the team involved.
+I was never in the room for an XB-1 go/no-go decision. We trust the team to make
+the right decision without senior leadership putting their thumb on the scale.
+
+Thanks for reading! Subscribe for free to
+receive new posts and support my work.
+rafaeldf2@gmail.com
+
+Subscribe
+
+25 Likes ∙ 4 Restacks
+
+Discussion about this post
+Comments Restacks
+
+Write a comment...
+Jackson 6 Oct Edited
+I like your definition of safety first being the ability to control risk and to anticipate that specific risk.
+It makes so much more sense than “don’t fly.” It reminds me of the difference between
+perfectionism and excellence: one is attainable, the other is impossible to work with.
+LIKE
+
+REPLY
+
+SHARE
+
+macias 6 Oct
+"Yet we accept driving as “safe” because it’s necessary". False statement. First of all "we accept it",
+because majority accepts it, and since we are living in the system of rape-democracy (it just take to
+vote over anything, as long as the majority wants something). And majority accepts it not because it
+is "necessary", but because they assume they will not be killed, so comfort prevails. I didn't ask but
+I would be VERY surprised if the parent who killed his/her own child with a SUV calmed down
+arguing the car traffic is "necessary", so, well, tough luck.
+LIKE
+
+REPLY
+
+https://bscholl.substack.com/p/building-a-safety-culture-move-and
+
+SHARE
+
+4/5
+
+15/03/2026, 08:22
+
+Building a Safety Culture: Move And Don’t Break Safety Critical Things, Part III
+
+3 more comments...
+
+© 2026 Blake Scholl · Privacy ∙ Terms ∙ Collection notice
+Substack is the home for great culture
+
+https://bscholl.substack.com/p/building-a-safety-culture-move-and
+
+5/5
+
+

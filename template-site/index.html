@@ -1,0 +1,1480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Protocolized Report Template</title>
+<meta name="description" content="Reusable, self-contained Protocolized report template. Right-gutter Considerations · left-gutter reader Comments (local + LLM-programmable) · sections overlay · markdown export with comment roundtrip · breadcrumb subpages." />
+<meta name="author" content="Protocolized / Protocols for Business Group" />
+<meta name="theme-color" content="#7d5a96" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Protocolized" />
+<meta property="og:title" content="Protocolized Report Template" />
+<meta property="og:description" content="Self-contained report template. Considerations (right) · Comments (left, local + LLM-programmable) · markdown export with comment roundtrip." />
+<meta property="og:url" content="https://npc.here.now/template/" />
+<meta property="og:image" content="https://npc.here.now/template/og.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Canonical -->
+<link rel="canonical" href="https://npc.here.now/template/" />
+
+<!-- Agent discovery: machine-readable entry points for LLM agents -->
+<meta name="agent-api" content="window.templateAPI; version=1.0" />
+<meta name="llm-markdown" content="./index.md" />
+<link rel="alternate" type="text/markdown" href="./index.md" title="Markdown source (sibling file)" />
+
+<!-- Schema.org Article describing this document -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "A Self-Documenting Report Template",
+  "description": "Meta-documentation for a Protocolized report surface designed to serve both human readers and LLM agents as first-class consumer classes.",
+  "datePublished": "2026-04-20",
+  "author": { "@type": "Organization", "name": "Protocolized / Protocols for Business Group", "url": "https://protocolized.summerofprotocols.com/" },
+  "publisher": { "@type": "Organization", "name": "Protocolized" },
+  "url": "https://npc.here.now/template/",
+  "encoding": [
+    { "@type": "MediaObject", "encodingFormat": "text/html", "contentUrl": "https://npc.here.now/template/" },
+    { "@type": "MediaObject", "encodingFormat": "text/markdown", "contentUrl": "https://npc.here.now/template/index.md" }
+  ]
+}
+</script>
+
+<!-- Self-contained favicon (inline SVG, same spirit as ai-org) -->
+<link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23fafafa"/><rect x="9" y="9" width="6" height="46" fill="%237d5a96"/><rect x="9" y="9" width="6" height="14" fill="%23d67339"/><text x="24" y="46" font-family="ui-monospace,monospace" font-size="34" font-weight="700" fill="%231a1a2e">§</text></svg>' type="image/svg+xml" />
+<link rel="apple-touch-icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23fafafa"/><rect x="9" y="9" width="6" height="46" fill="%237d5a96"/><rect x="9" y="9" width="6" height="14" fill="%23d67339"/><text x="24" y="46" font-family="ui-monospace,monospace" font-size="34" font-weight="700" fill="%231a1a2e">§</text></svg>' />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ---- Palette: neutrals ---- */
+    --bg: #fafafa;
+    --surface: #f0f0f2;
+    --surface-2: #f6f5f7;
+    --fg: #1a1a2e;
+    --fg-muted: #6b6b7b;
+    --rule: #e5e5e7;
+    /* ---- Palette: semantic ---- */
+    --accent: #7d5a96;           /* purple — primary brand + numbered refs */
+    --accent-mid: #a888bf;
+    --accent-light: #f3eef7;
+    --secondary: #d67339;        /* orange — author Considerations */
+    --secondary-light: #fdf1e8;
+    --comment: #3a6db0;          /* blue — reader Comments */
+    --comment-mid: #7ba0d0;
+    --comment-light: #eef3f9;
+    /* ---- Derived tokens ---- */
+    --demo-bg: #f5f9fd;           /* slightly cooler than --comment-light for demo callouts */
+    --mark-hover-bg: #dce7f2;
+    --overlay-scrim: rgba(26,26,46,0.5);
+    --shadow-sm: 0 1px 3px rgba(26,26,46,0.08);
+    --shadow-md: 0 6px 18px rgba(0,0,0,0.15);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.3);
+    /* ---- Focus ring ---- */
+    --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+
+    /* ---- Typography ---- */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* ---- Layout ---- */
+    --main-width: 38rem;
+    --side-width: 14rem;
+    --gap: 2rem;
+    --header-height: 3rem;        /* approximate; anchors use scroll-margin-top = --header-height + 2rem */
+  }
+
+  /* Honour user motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
+  /* Consistent focus ring across all interactive elements (keyboard-only) */
+  :focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 3px; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-sans); line-height: 1.7; font-size: 16.5px; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); transition: color 120ms, border-color 120ms; }
+  a:hover { color: var(--secondary); border-bottom-color: var(--secondary); }
+  /* Gwern-style external link marker */
+  article a[href^="http"]:not([href*="npc.here.now"]):not([href*="protocolized.summerofprotocols.com"])::after {
+    content: "↗"; font-size: 0.78em; vertical-align: 0.08em; margin-left: 0.18em; color: var(--accent-mid); font-weight: 400;
+  }
+  article a[href^="http"]:not([href*="npc.here.now"]):not([href*="protocolized.summerofprotocols.com"]):hover::after { color: var(--secondary); }
+
+  /* ---- Scroll progress bar ---- */
+  .progress-bar { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: transparent; z-index: 40; pointer-events: none; }
+  .progress-bar .fill { height: 100%; width: 0%; background: var(--accent); transition: width 80ms linear; }
+
+  /* ---- Header ---- */
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250,250,250,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.8rem 2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  header.site .brand { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--fg-muted); text-transform: uppercase; font-weight: 400; }
+  header.site .brand a { color: inherit; border: 0; }
+  header.site .brand a:hover { color: var(--accent); }
+  header.site .brand b { color: var(--fg); font-weight: 700; }
+  nav.breadcrumb { display: flex; align-items: center; gap: 0; font-family: var(--font-mono); font-size: 0.8rem; }
+  nav.breadcrumb a { color: var(--fg-muted); padding: 0.35rem 0.75rem; border: 0; border-radius: 3px; text-decoration: none; }
+  nav.breadcrumb a:hover { color: var(--fg); background: var(--surface); }
+  nav.breadcrumb a.active { color: var(--accent); font-weight: 700; background: var(--accent-light); }
+  nav.breadcrumb .sep { color: var(--rule); }
+  header.site .actions { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; position: relative; }
+  header.site .mobile-only { display: none; }
+  .mobile-menu-panel {
+    position: absolute; top: calc(100% + 0.5rem); right: 0;
+    background: #fff; border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.35rem; display: flex; flex-direction: column; gap: 2px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    z-index: 30; min-width: 11rem;
+  }
+  .mobile-menu-panel[hidden] { display: none; }
+  .mobile-menu-panel .mmi {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
+    color: var(--fg); background: transparent; border: 0; cursor: pointer;
+    padding: 0.55rem 0.7rem; border-radius: 3px; text-align: left;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+  }
+  .mobile-menu-panel .mmi:hover { background: var(--accent-light); color: var(--accent); }
+  .mobile-menu-panel .mmi .sh { opacity: 0.55; font-size: 0.7rem; }
+  header.site button {
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500;
+    background: var(--fg); color: #fff; border: 0; cursor: pointer;
+    padding: 0.55rem 0.95rem; border-radius: 3px; letter-spacing: 0.03em;
+  }
+  header.site button:hover { background: var(--accent); }
+  header.site button.ghost { background: transparent; color: var(--fg-muted); border: 1px solid var(--rule); }
+  header.site button.ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+  header.site button .sh { opacity: 0.6; margin-left: 0.45rem; font-size: 0.7rem; }
+
+  /* ---- Section indicator ---- */
+  .section-indicator {
+    position: fixed; top: 4.2rem; right: 2rem; z-index: 15;
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--fg-muted); padding: 0.42rem 0.8rem;
+    background: rgba(250,250,250,0.92); border: 1px solid var(--rule); border-radius: 999px;
+    opacity: 0; transform: translateY(-4px); transition: opacity 180ms ease, transform 180ms ease; backdrop-filter: blur(8px);
+    pointer-events: none;
+  }
+  .section-indicator.show { opacity: 1; transform: translateY(0); }
+  .section-indicator b { color: var(--accent); margin-right: 0.35em; }
+
+  /* ---- Sections overlay (⌘K) ---- */
+  .overlay { position: fixed; inset: 0; background: var(--overlay-scrim); backdrop-filter: blur(4px); z-index: 50; display: none; align-items: flex-start; justify-content: center; padding-top: 12vh; }
+  .overlay.open { display: flex; }
+  .overlay .panel-box { background: #fff; border: 1px solid var(--rule); border-radius: 6px; width: min(560px, 92vw); max-height: 70vh; overflow-y: auto; padding: 1.5rem 1.8rem; box-shadow: var(--shadow-lg); }
+  .overlay h4 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-muted); margin: 0 0 0.8rem; font-weight: 700; }
+  .overlay ol { margin: 0; padding-left: 1.3rem; font-size: 0.92rem; line-height: 1.6; }
+  .overlay ol a { color: var(--fg); border: 0; display: block; padding: 0.2rem 0; }
+  .overlay ol a:hover { color: var(--accent); }
+
+  /* ---- Banner ---- */
+  .banner-img { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 0; }
+  .banner-img svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+
+  /* ---- Title block ---- */
+  .title-block { max-width: var(--main-width); margin: 2.5rem auto 2rem; padding: 0 2rem; }
+  .kicker { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); font-weight: 700; margin-bottom: 0.6rem; }
+  .title-block h1 { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; margin: 0 0 0.9rem; line-height: 1.2; letter-spacing: -0.01em; color: var(--fg); }
+  .title-block .subtitle { font-size: 1.05rem; color: var(--fg-muted); margin: 0; }
+  .title-block .meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--fg-muted); margin-top: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ---- Article ---- */
+  main { max-width: var(--main-width); margin: 0 auto; padding: 0 2rem 3rem; }
+  article h2 {
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--accent); margin: 4rem 0 0.7rem; padding-top: 2.2rem; border-top: 1px solid var(--rule);
+    clear: both;
+    scroll-margin-top: 5rem;
+  }
+  article h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 2rem; }
+  article h3 {
+    font-family: var(--font-mono); font-weight: 700; font-size: 1.2rem; line-height: 1.35; letter-spacing: -0.005em;
+    margin: 2rem 0 1.1rem; color: var(--fg); clear: both;
+    scroll-margin-top: 5rem;
+  }
+  article p { margin: 0 0 1.1rem; }
+  article ul, article ol { padding-left: 1.4rem; margin: 0.5rem 0 1.1rem; }
+  article li { margin-bottom: 0.3rem; }
+  article blockquote { border-left: 3px solid var(--accent-mid); margin: 1.5rem 0; background: var(--accent-light); padding: 0.9rem 1.2rem; border-radius: 0 4px 4px 0; font-size: 0.98rem; }
+  article blockquote p { margin: 0.3rem 0; }
+  article code { font-family: var(--font-mono); background: var(--surface); padding: 0.05em 0.35em; border-radius: 3px; font-size: 0.88em; }
+  article pre { font-family: var(--font-mono); background: #0a081c; color: #e8e6f0; padding: 1rem 1.25rem; border-radius: 4px; overflow-x: auto; line-height: 1.5; font-size: 0.82em; }
+  article pre code { background: transparent; padding: 0; color: inherit; }
+  article table { border-collapse: collapse; margin: 1.4rem 0 1.8rem; font-size: 0.88rem; width: 100%; background: #fff; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  article table th, article table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.5; }
+  article table tr:last-child td { border-bottom: 0; }
+  article table th { font-family: var(--font-mono); font-weight: 700; color: var(--fg); background: var(--surface); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  article figure { margin: 1.6rem 0; }
+  article figure svg, article figure img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }
+  article figcaption { font-size: 0.78rem; color: var(--fg-muted); margin-top: 0.5rem; text-align: center; font-style: italic; }
+
+  /* ---- Right gutter: Considerations (orange) ---- */
+  aside.sn {
+    float: right; clear: right;
+    width: var(--side-width);
+    margin: 0.2rem calc(-1 * (var(--side-width) + var(--gap))) 0.9rem 1.3rem;
+    font-family: var(--font-sans); font-size: 0.75rem; line-height: 1.5; color: var(--fg-muted);
+    padding: 0.45rem 0 0.45rem 0.85rem;
+    border-left: 2px solid var(--secondary);
+    background: var(--secondary-light);
+    border-radius: 0 3px 3px 0;
+  }
+  aside.sn .sn-label {
+    display: block;
+    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+    color: var(--secondary); text-transform: uppercase; letter-spacing: 0.09em;
+    margin-bottom: 0.35rem;
+  }
+  aside.sn em { color: var(--fg); font-style: italic; font-weight: 600; }
+
+  /* Numbered reference sidenote (purple) — third right-gutter variant, matching wthapi / Tufte CSS style */
+  aside.sn.ref {
+    border-left-color: var(--accent-mid);
+    background: transparent;
+    padding: 0 0 0 0.9rem;
+    color: var(--fg-muted);
+  }
+  aside.sn.ref .sn-num {
+    display: inline-block; font-weight: 700; color: var(--accent);
+    margin-right: 0.4em; font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono); font-size: 0.85em;
+  }
+  aside.sn.ref em { font-weight: 500; font-style: italic; color: var(--fg); }
+  aside.sn.ref a { color: var(--fg); border-bottom: 1px solid var(--rule); }
+  aside.sn.ref a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .ref-marker {
+    color: var(--accent); font-size: 0.72em; font-weight: 700;
+    padding: 0 0.12em; vertical-align: super; line-height: 0;
+    cursor: pointer; font-family: var(--font-mono);
+  }
+  .ref-marker:hover { color: var(--secondary); }
+
+  /* ---- Left gutter: Reader Comments (blue) ---- */
+  aside.comment {
+    float: left; clear: left;
+    width: var(--side-width);
+    margin: 0.2rem 1.3rem 0.9rem calc(-1 * (var(--side-width) + var(--gap)));
+    font-family: var(--font-sans); font-size: 0.75rem; line-height: 1.5; color: var(--fg-muted);
+    padding: 0.45rem 0.85rem 0.45rem 0;
+    border-right: 2px solid var(--comment);
+    background: var(--comment-light);
+    border-radius: 3px 0 0 3px;
+    position: relative;
+    text-align: right;
+  }
+  aside.comment .c-label {
+    display: block;
+    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+    color: var(--comment); text-transform: uppercase; letter-spacing: 0.09em;
+    margin-bottom: 0.35rem;
+  }
+  aside.comment .c-label .c-author { opacity: 0.7; font-weight: 500; margin-left: 0.4em; text-transform: none; letter-spacing: 0.02em; }
+  aside.comment .c-quote {
+    display: block;
+    font-size: 0.68rem; color: var(--fg); font-style: italic;
+    margin-bottom: 0.35rem; opacity: 0.8;
+    text-align: right;
+  }
+  aside.comment .c-quote::before { content: "“"; }
+  aside.comment .c-quote::after { content: "”"; }
+  aside.comment .c-body { text-align: left; }
+  aside.comment .c-meta { display: block; font-family: var(--font-mono); font-size: 0.6rem; color: var(--fg-muted); opacity: 0.7; margin-top: 0.3rem; text-align: right; }
+  aside.comment .c-del { position: absolute; top: 0.25rem; left: 0.3rem; border: 0; background: transparent; color: var(--fg-muted); font-size: 0.9rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; opacity: 0; transition: opacity 120ms; }
+  aside.comment:hover .c-del { opacity: 1; }
+  aside.comment .c-del:hover { color: var(--comment); }
+  /* Demo comment: hardcoded in HTML, non-deletable, visually marked as a sample */
+  aside.comment.demo { border-right-style: dashed; background: var(--demo-bg); }
+  aside.comment.demo .c-del { display: none; }
+
+  mark.commented { background: var(--comment-light); border-bottom: 2px solid var(--comment-mid); padding: 0 0.05em; cursor: help; }
+  mark.commented:hover { background: var(--mark-hover-bg); }
+  mark.commented.demo { border-bottom-style: dashed; }
+
+  /* ---- Selection popup ---- */
+  .sel-popup {
+    position: absolute; z-index: 100;
+    background: var(--fg); color: #fff;
+    border-radius: 4px; padding: 2px;
+    display: none; gap: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    font-family: var(--font-mono);
+  }
+  .sel-popup.open { display: flex; }
+  .sel-popup button { background: transparent; border: 0; color: #fff; cursor: pointer; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; padding: 0.4rem 0.7rem; border-radius: 3px; letter-spacing: 0.03em; }
+  .sel-popup button:hover { background: var(--accent); }
+  .sel-popup button.primary:hover { background: var(--comment); }
+  .sel-popup::after { content: ""; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--fg); }
+
+  /* ---- Comment form ---- */
+  .comment-form {
+    position: absolute; z-index: 101;
+    background: #fff; border: 1px solid var(--comment-mid);
+    border-radius: 4px; padding: 0.75rem;
+    width: 18rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    display: none; flex-direction: column; gap: 0.5rem;
+  }
+  .comment-form.open { display: flex; }
+  .comment-form .cf-quote { font-size: 0.7rem; color: var(--fg-muted); font-style: italic; padding: 0.35rem 0.5rem; background: var(--comment-light); border-radius: 3px; max-height: 3.5rem; overflow: hidden; text-overflow: ellipsis; }
+  .comment-form textarea { font-family: var(--font-sans); font-size: 0.84rem; border: 1px solid var(--rule); border-radius: 3px; padding: 0.5rem; resize: vertical; min-height: 3.5rem; color: var(--fg); background: #fff; }
+  .comment-form textarea:focus { outline: none; border-color: var(--comment); box-shadow: 0 0 0 2px var(--comment-light); }
+  .comment-form .cf-actions { display: flex; gap: 0.4rem; justify-content: flex-end; }
+  .comment-form button { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.7rem; border-radius: 3px; cursor: pointer; letter-spacing: 0.03em; }
+  .comment-form button.primary { background: var(--comment); color: #fff; border: 0; }
+  .comment-form button.primary:hover { background: var(--fg); }
+  .comment-form button.ghost { background: #fff; color: var(--fg-muted); border: 1px solid var(--rule); }
+  .comment-form button.ghost:hover { color: var(--fg); border-color: var(--fg); }
+
+  /* ---- Howto block ---- */
+  .howto {
+    max-width: var(--main-width); margin: 3rem auto 0; padding: 1.5rem 2rem;
+    background: var(--surface-2); border: 1px solid var(--rule); border-radius: 4px;
+    font-size: 0.84rem; line-height: 1.6;
+  }
+  .howto h3 { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 0.8rem; font-weight: 700; }
+  .howto code { font-family: var(--font-mono); background: #fff; padding: 0.05em 0.35em; border-radius: 3px; font-size: 0.9em; border: 1px solid var(--rule); }
+  .howto pre { font-family: var(--font-mono); background: #0a081c; color: #e8e6f0; padding: 0.9rem 1.1rem; border-radius: 4px; overflow-x: auto; font-size: 0.78rem; line-height: 1.5; margin: 0.6rem 0; }
+  .howto pre code { background: transparent; border: 0; padding: 0; color: inherit; }
+  .howto ul { padding-left: 1.3rem; margin: 0.4rem 0; }
+
+  /* ---- Footer ---- */
+  footer { max-width: var(--main-width); margin: 2rem auto; padding: 1.5rem 2rem; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 0.82rem; color: var(--fg-muted); text-align: center; }
+  footer a { color: var(--fg); border-bottom: 1px solid var(--rule); }
+  footer button.clear-comments { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; color: var(--comment); background: transparent; border: 1px solid var(--comment-mid); padding: 0.35rem 0.7rem; border-radius: 3px; cursor: pointer; margin-left: 0.6rem; }
+  footer button.clear-comments:hover { background: var(--comment-light); }
+
+  /* ---- Toast ---- */
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--fg); color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; transition: transform 220ms ease; z-index: 200; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 1200px) {
+    aside.comment { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; padding: 0.5rem 0.85rem; border-right: 0; border-left: 2px solid var(--comment); border-radius: 0 3px 3px 0; text-align: left; }
+    aside.comment .c-quote, aside.comment .c-meta { text-align: left; }
+  }
+  @media (max-width: 1100px) {
+    aside.sn { float: none; clear: none; width: auto; max-width: 100%; margin: 0.6rem 0; }
+  }
+  @media (max-width: 700px) {
+    header.site { padding: 0.6rem 0.9rem; gap: 0.55rem; flex-wrap: nowrap; }
+    header.site .brand { font-size: 0.68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    header.site .actions { gap: 0.4rem; flex-shrink: 0; }
+    header.site button { padding: 0.5rem 0.7rem; font-size: 0.72rem; min-height: 40px; }
+    header.site button .sh { display: none; }
+    /* Collapse three action buttons into a single overflow menu on mobile */
+    header.site .actions > button:not(.mobile-only) { display: none; }
+    header.site .mobile-only { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; padding: 0.5rem 0.6rem; }
+    nav.breadcrumb { font-size: 0.72rem; flex-shrink: 0; }
+    nav.breadcrumb a { padding: 0.3rem 0.5rem; }
+    .title-block, main, footer, .howto { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .banner-img { padding: 1rem 1rem 0; }
+    .title-block h1 { font-size: 1.5rem; }
+    article h3 { font-size: 1.1rem; }
+    .comment-form { width: calc(100vw - 2rem); max-width: 18rem; }
+    .section-indicator { display: none; }
+  }
+  @media (max-width: 480px) {
+    header.site { padding: 0.55rem 0.75rem; }
+    header.site .brand { display: none; }
+    .mobile-menu-panel { right: -0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="fill" id="progress-fill"></div></div>
+
+<header class="site">
+  <div class="brand">
+    <a href="https://protocolized.summerofprotocols.com/t/studies" target="_blank" rel="noopener">Protocolized</a>
+    · <b>Template</b>
+  </div>
+  <nav class="breadcrumb" aria-label="Page navigation">
+    <a href="/template/" class="active">Report</a>
+    <span class="sep">·</span>
+    <a href="/template/exercise/">Exercise</a>
+  </nav>
+  <div class="actions">
+    <button id="open-toc" class="ghost" title="Jump to a section (⌘K)">☰ Sections <span class="sh">⌘K</span></button>
+    <button id="copy-md" class="ghost" title="Copy markdown, including your comments (⌘⇧C)">⧉ Copy</button>
+    <button id="download-md" title="Download markdown, including your comments (⌘D)">↓ Download <span class="sh">⌘D</span></button>
+    <button id="mobile-menu" class="mobile-only ghost" title="Menu" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-menu-panel">⋯</button>
+    <div class="mobile-menu-panel" id="mobile-menu-panel" role="menu" hidden>
+      <button class="mmi" data-for="open-toc" role="menuitem">☰ Sections<span class="sh">⌘K</span></button>
+      <button class="mmi" data-for="copy-md" role="menuitem">⧉ Copy markdown<span class="sh">⌘⇧C</span></button>
+      <button class="mmi" data-for="download-md" role="menuitem">↓ Download markdown<span class="sh">⌘D</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="section-indicator" id="section-indicator" aria-hidden="true"><b id="section-num">§1</b><span id="section-name">Introduction</span></div>
+
+<!-- Sections overlay -->
+<div class="overlay" id="toc-overlay" role="dialog" aria-modal="true" aria-label="Section navigation">
+  <div class="panel-box">
+    <h4>Jump to a section</h4>
+    <ol>
+      <li><a href="#why">Why this template exists</a></li>
+      <li><a href="#differs">How it differs from a standard web page</a></li>
+      <li><a href="#affordances">Affordances: paired gutters and a canonical source</a></li>
+      <li><a href="#reader-flow">Reader flow</a></li>
+      <li><a href="#api">The agent API</a></li>
+      <li><a href="#is-not">What this template is not</a></li>
+      <li><a href="#backlog">Improvement backlog</a></li>
+      <li><a href="#forking">Forking and reuse</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- Banner (inline SVG, self-contained) -->
+<div class="banner-img" aria-hidden="true">
+  <svg viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7d5a96"/>
+        <stop offset="0.6" stop-color="#5d3f73"/>
+        <stop offset="1" stop-color="#2a1f3a"/>
+      </linearGradient>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="280" fill="url(#bg)"/>
+    <rect width="1200" height="280" fill="url(#grid)"/>
+    <circle cx="200" cy="140" r="60" fill="rgba(214,115,57,0.12)"/>
+    <circle cx="240" cy="140" r="60" fill="rgba(168,136,191,0.18)"/>
+    <circle cx="1000" cy="140" r="40" fill="rgba(214,115,57,0.18)"/>
+    <rect x="80" y="40" width="4" height="200" fill="#d67339"/>
+    <rect x="80" y="40" width="4" height="60" fill="#fafafa"/>
+    <text x="110" y="100" font-family="Roboto Mono, monospace" font-size="13" fill="rgba(255,255,255,0.75)" letter-spacing="4">PROTOCOLIZED · META-DOCUMENTATION</text>
+    <text x="110" y="165" font-family="Roboto Mono, monospace" font-size="48" font-weight="700" fill="#fafafa" letter-spacing="-1">A Self-Documenting</text>
+    <text x="110" y="220" font-family="Roboto Mono, monospace" font-size="48" font-weight="700" fill="#fafafa" letter-spacing="-1">Report Template</text>
+  </svg>
+</div>
+
+<div class="title-block">
+  <div class="kicker">Protocolized · Meta-documentation</div>
+  <h1>A Self-Documenting Report Template</h1>
+  <p class="subtitle">Meta-documentation for a Protocolized report surface designed to serve both human readers and LLM agents as first-class consumer classes. The document you are reading demonstrates each of its own affordances; the body is literally an explanation of the page you're on.</p>
+  <p class="meta">Template · Updated 2026-04-20</p>
+</div>
+
+<main>
+<article>
+
+<h2 id="why">Why this template exists</h2>
+
+<p id="p-why-1">Documents on the web evolved against a single consumer class: a human reader at a pointer device. Navigation, typography, breakpoints, and analytics all assume that one reader.</p>
+
+<p id="p-why-2">A second consumer class now reads the same documents: <strong>LLM agents acting on behalf of humans</strong>. Agents read differently. They want canonical text, stable structure, and programmatic hooks. They annotate as they read. They compose notes from the document with actions taken elsewhere.</p>
+
+<div class="sn-wrap">
+<aside class="sn" data-role="consideration" data-author-class="author"><span class="sn-label">Considerations</span><em>Consumer classes.</em> The distinction is developed in the APIs paper's <a href="https://npc.here.now/wthapi/#q7" target="_blank" rel="noopener">Q7 — "What makes an agent a distinct consumer class?"</a>. Agents read faster, in parallel, at machine speed, with different patience envelopes than humans. A document that ignores the distinction serves the agent poorly.</aside>
+<p id="p-why-3">A document built only for the human reader leaves the agent degraded: it scrapes text via brittle DOM extraction, guesses at structure, and cannot leave a trace of what it noticed. A document built only for the agent loses the human's preferred reading experience. Most public documents today sit in the first camp.</p>
+</div>
+
+<p id="p-why-4">This template is a scaffold for documents that serve both consumer classes without subordinating either. It is intentionally modest — a single HTML file, a handful of patterns — not a framework.</p>
+
+<h2 id="differs">How it differs from a standard web page</h2>
+
+<p id="p-differs-1">Most public reports, working papers, and blog posts default to a backend CMS, an analytics beacon, a publisher-hosted comment system, and visual chrome sized for a laptop screen. Each default makes sense in isolation; together they produce a page that is <em>readable</em> by agents only as a side-effect of being readable by humans.</p>
+
+<p id="p-differs-2">This template makes the opposite defaults.</p>
+
+<table id="tbl-diff">
+<thead><tr><th>Default</th><th>Standard web page</th><th>This template</th></tr></thead>
+<tbody>
+<tr><td>Canonical text</td><td>Rendered from CMS; scraped from DOM</td><td>Embedded as markdown in the HTML</td></tr>
+<tr><td>Reader commentary</td><td>Publisher database or disabled</td><td>Reader's localStorage only</td></tr>
+<tr><td>Tracking</td><td>Analytics beacon</td><td>None</td></tr>
+<tr><td>Author commentary</td><td>Inline footnotes</td><td>Right-gutter Considerations</td></tr>
+<tr><td>External links</td><td>Indistinguishable on the page</td><td>Marked visibly (↗)</td></tr>
+<tr><td>Agent access</td><td>DOM scrape, no contract</td><td><code>window.templateAPI</code> + embedded MD</td></tr>
+<tr><td>Persistence control</td><td>Publisher-controlled</td><td>Reader-controlled (clear, export)</td></tr>
+<tr><td>Packaging</td><td>Distributed over CDN / SSR</td><td>Single HTML file (+ web fonts)</td></tr>
+</tbody>
+</table>
+
+<p id="p-differs-3">The shape sits narrower than a CMS and wider than a static article.</p>
+
+<h2 id="affordances">Affordances: paired gutters and a canonical source</h2>
+
+<p id="p-aff-1">The page exposes three visible text channels and two non-visual ones.</p>
+
+<figure id="fig-channels">
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6b7b"/>
+    </marker>
+  </defs>
+  <rect width="700" height="260" fill="#fff"/>
+  <rect x="40"  y="60" width="140" height="140" rx="4" fill="#eef3f9" stroke="#3a6db0" stroke-width="1.5"/>
+  <rect x="260" y="60" width="180" height="140" rx="4" fill="#f6f5f7" stroke="#a888bf" stroke-width="1.5"/>
+  <rect x="520" y="60" width="140" height="140" rx="4" fill="#fdf1e8" stroke="#d67339" stroke-width="1.5"/>
+  <text x="110" y="40" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#3a6db0" letter-spacing="2">LEFT GUTTER</text>
+  <text x="110" y="92" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="13" font-weight="700" fill="#1a1a2e">Comments</text>
+  <text x="110" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">Reader / agent</text>
+  <text x="110" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">localStorage only</text>
+  <text x="110" y="170" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="9" fill="#3a6db0" letter-spacing="2">BLUE</text>
+  <text x="350" y="40" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#7d5a96" letter-spacing="2">MAIN COLUMN</text>
+  <text x="350" y="92" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="13" font-weight="700" fill="#1a1a2e">Document</text>
+  <text x="350" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">Canonical text</text>
+  <text x="350" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">HTML + embedded MD</text>
+  <text x="350" y="170" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="9" fill="#7d5a96" letter-spacing="2">PURPLE</text>
+  <text x="590" y="40" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#d67339" letter-spacing="2">RIGHT GUTTER</text>
+  <text x="590" y="92" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="13" font-weight="700" fill="#1a1a2e">Considerations</text>
+  <text x="590" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">Author</text>
+  <text x="590" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b6b7b">baked into HTML</text>
+  <text x="590" y="170" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="9" fill="#d67339" letter-spacing="2">ORANGE</text>
+  <line x1="260" y1="130" x2="185" y2="130" stroke="#6b6b7b" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <line x1="440" y1="130" x2="515" y2="130" stroke="#6b6b7b" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <text x="350" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6b6b7b" font-style="italic">Two annotation channels · two authors · two persistence models</text>
+</svg>
+<figcaption>Figure 1. The three visible text channels. Main column carries the canonical document (purple). Right gutter (orange) holds author Considerations, baked into the publish. Left gutter (blue) holds reader and agent Comments, stored in localStorage only.</figcaption>
+</figure>
+
+<p id="p-aff-2">The visible channels:</p>
+
+<ol>
+<li id="p-aff-3"><strong>Main column</strong> — the document itself.</li>
+<li id="p-aff-4"><aside class="sn ref" data-role="reference" data-author-class="author" data-ref-num="1"><span class="sn-num">1</span>The numbered reference sidenote follows the <a href="https://edwardtufte.github.io/tufte-css/" target="_blank" rel="noopener">Tufte CSS</a> / <a href="https://gwern.net/sidenote" target="_blank" rel="noopener">Gwern</a> convention: a superscript number in body text pointing to a floating note in the right margin. Distinct from the orange <em>Considerations</em> aside (prose commentary, labelled); reference sidenotes are for citations and brief amplifications. See the <a href="https://npc.here.now/wthapi/" target="_blank" rel="noopener">APIs paper</a> for extensive use of both variants on one page.</aside><strong>Right gutter</strong> — <em>Considerations</em>, in orange. Author-written commentary, baked into the publish, immutable to the reader. A second variant lives in the same gutter: numbered reference sidenotes in purple, matching the Tufte/Gwern pattern.<span class="ref-marker">¹</span></li>
+<li id="p-aff-5"><strong>Left gutter</strong> — <em>Comments</em>, in blue. Reader- or agent-written annotations, stored in the reader's localStorage only. Never transmitted. A mirror of Considerations.</li>
+</ol>
+
+<p id="p-aff-6">The non-visual channels:</p>
+
+<ol start="4">
+<li id="p-aff-7"><strong>Embedded markdown source</strong> — at the bottom of the document body lives <code>&lt;script id="markdown-source" type="text/x-markdown"&gt;</code>, carrying the full document as markdown. An agent can read this one element and has the canonical text without walking the DOM.</li>
+<li id="p-aff-8"><strong>Programmatic comment API</strong> — <code>window.templateAPI</code> exposes the comment operations. See the agent-API section below.</li>
+</ol>
+
+<h3 id="reader-flow">Reader flow</h3>
+
+<p id="p-rf-1">Highlight any passage in the main column. A small dark popup appears near the selection offering <em>Comment</em> or <em>Copy</em>.</p>
+
+<ul>
+<li id="p-rf-2"><strong>Copy</strong> places the selection text on the clipboard.</li>
+<li id="p-rf-3"><aside class="comment demo" data-role="reader-note" data-author-class="template" data-origin="demo"><span class="c-label">Comment<span class="c-author">· demo</span></span><span class="c-quote">renders in the left gutter</span><div class="c-body">Example Comment hardcoded in the HTML so every reader sees it. Real Comments (yours or posted by agents via <code>window.templateAPI</code>) render identically but live in your browser's localStorage, and carry a hover-× for deletion.</div><span class="c-meta">2026-04-20</span></aside><strong>Comment</strong> opens a compact floating form below the selection. Type a note, press <code>⌘↩</code> to save. The annotation <mark class="commented demo">renders in the left gutter</mark>, anchored to the nearest identified element, and the selected text is wrapped in a <code>&lt;mark&gt;</code>. Hover a comment to reveal the <code>×</code> for deletion.</li>
+</ul>
+
+<p id="p-rf-4">Keyboard shortcuts:</p>
+
+<table id="tbl-keys">
+<thead><tr><th>Shortcut</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><code>⌘K</code> / <code>Ctrl K</code></td><td>Open the sections overlay</td></tr>
+<tr><td><code>⌘D</code> / <code>Ctrl D</code></td><td>Download markdown (body + your comments)</td></tr>
+<tr><td><code>⌘⇧C</code> / <code>Ctrl ⇧ C</code></td><td>Copy markdown to clipboard (same content as download)</td></tr>
+<tr><td><code>⌘↩</code> inside a comment form</td><td>Save comment</td></tr>
+<tr><td><code>Esc</code></td><td>Close any open panel</td></tr>
+</tbody>
+</table>
+
+<h2 id="api">The agent API</h2>
+
+<p id="p-api-1">Agents running in the reader's browser — devtools consoles, extension-based assistants, Claude Desktop with browser use — interact without any auth, backend, or network call. The page exposes a single global:</p>
+
+<pre><code>// Add a comment anchored to a paragraph id.
+// quote must occur verbatim in the paragraph's textContent.
+window.templateAPI.addComment({
+  pid: "p-why-3",
+  quote: "brittle DOM extraction",
+  text: "Agent observation — the template addresses this via the embedded markdown source.",
+  author: "claude"
+});
+
+// Other operations
+window.templateAPI.listComments();
+window.templateAPI.deleteComment(cid);
+window.templateAPI.clearComments();
+window.templateAPI.markdownSource();                       // raw body, no comments
+window.templateAPI.exportMarkdown({ includeComments: true });
+window.templateAPI.refresh();                              // re-render from localStorage</code></pre>
+
+<div class="sn-wrap">
+<aside class="sn" data-role="consideration" data-author-class="author"><span class="sn-label">Considerations</span><em>Skills vs MCP vs this.</em> This page is not an MCP server nor a Skill (as discussed in the APIs paper <a href="https://npc.here.now/wthapi/#q8" target="_blank" rel="noopener">Q8</a>). It is a document surface that happens to expose a JS API to any agent loaded in the same browser. The agent reaches it by reading the DOM, not by calling over a protocol.</aside>
+<p id="p-api-2">Author attribution: pass <code>author</code> and the comment's label reads <code>Comment · claude</code>. Default is <code>reader</code> with no suffix.</p>
+</div>
+
+<p id="p-api-3">Markdown roundtrip: <code>exportMarkdown</code> returns the embedded source plus a <code>## Reader comments</code> section. Every comment becomes a block carrying its paragraph id, quote, author, date, and body. An agent can take the blob into a separate context window and resume working on the annotated document without re-reading the page.</p>
+
+<h2 id="is-not">What this template is not</h2>
+
+<ul>
+<li id="p-not-1"><strong>Not a CMS.</strong> The canonical text sits in the HTML. There is no backend writing it.</li>
+<li id="p-not-2"><strong>Not a hosted comment system.</strong> Comments never leave the reader's browser. Two readers of the same URL see two independent comment sets.</li>
+<li id="p-not-3"><strong>Not a knowledge base.</strong> There is no search, no cross-reference, no version history beyond the publish timestamp.</li>
+<li id="p-not-4"><strong>Not an agent harness.</strong> Agents can read and annotate; they cannot execute actions against external systems from this page. For that you would add tools, an MCP server, or a CLI (see the APIs paper <a href="https://npc.here.now/wthapi/#q8" target="_blank" rel="noopener">Q8</a>).</li>
+<li id="p-not-5"><strong>Not tracked.</strong> No analytics, no beacons, no third-party scripts beyond the font CDN.</li>
+</ul>
+
+<h2 id="backlog">Improvement backlog</h2>
+
+<p id="p-back-intro">The current implementation ships all capabilities that are achievable inside a single static HTML file. Items below that require external components (a server, a build step, an MCP endpoint, a shared site manifest) are documented here as open backlog for anyone forking the template to implement.</p>
+
+<h3 id="backlog-done">Shipped (in-page, no external components)</h3>
+
+<ul>
+<li id="p-back-done-1"><strong>Agent discovery metadata.</strong> <code>&lt;meta name="agent-api"&gt;</code>, <code>&lt;link rel="alternate" type="text/markdown"&gt;</code>, and a Schema.org <code>Article</code> JSON-LD block in <code>&lt;head&gt;</code>. Agents scanning the first KB of markup find the API entry point, the markdown source location, and a structured document descriptor without walking the DOM.</li>
+
+<li id="p-back-done-2"><strong>Sibling markdown file.</strong> The same source embedded in <code>&lt;script id="markdown-source"&gt;</code> is also served as <a href="./index.md"><code>/template/index.md</code></a>. Agents can <code>fetch("./index.md")</code> and get plain markdown in one request.</li>
+
+<li id="p-back-done-3"><strong>W3C Web Annotation export.</strong> <code>templateAPI.exportAnnotations()</code> returns the reader's Comments as a JSON-LD <a href="https://www.w3.org/TR/annotation-model/" target="_blank" rel="noopener">Web Annotation Data Model</a> collection, interoperable with Hypothes.is, note-taking apps, and other annotation-aware consumers.</li>
+
+<li id="p-back-done-4"><strong>Machine-readable API schema.</strong> <code>templateAPI.schema()</code> returns a JSON Schema describing every method's input and output — including the <code>CommentRecord</code> shape. Also exposed as a static <code>&lt;script type="application/json" id="template-api-schema"&gt;</code> block for zero-JS consumers.</li>
+
+<li id="p-back-done-5"><strong>Machine labels on annotations.</strong> Each aside in the document carries <code>data-role</code> (<code>consideration</code> · <code>reference</code> · <code>reader-note</code>) and <code>data-author-class</code> (<code>author</code> · <code>reader</code> · <code>agent</code> · <code>template</code>). An agent can query "all citations" or "all author commentary" via CSS selectors, no NLP needed.</li>
+
+<li id="p-back-done-6"><strong>Immutable <code>origin</code> field.</strong> Every stored <code>CommentRecord</code> carries <code>origin: "ui" | "api" | "demo"</code>, stamped by the runtime (not by the caller). An agent cannot spoof its way into appearing as a human UI action.</li>
+
+<li id="p-back-done-7"><strong>Event bus.</strong> <code>templateAPI.on(event, callback)</code> supports <code>comment:added</code>, <code>comment:deleted</code>, <code>comments:cleared</code>. Returns an unsubscribe function. Another agent (or an extension) can observe without polling.</li>
+
+<li id="p-back-done-8"><strong>Cross-tab sync.</strong> Comments added in one tab appear in other tabs of the same origin on their next render, via the <code>storage</code> event. No polling, no websocket.</li>
+
+<li id="p-back-done-9"><strong>Document hash.</strong> <code>templateAPI.docHash()</code> returns a SHA-256 digest of the embedded markdown source, computed at runtime. Agents can cache this hash across sessions and detect if the underlying document has changed.</li>
+
+<li id="p-back-done-10"><strong>Accessibility baseline.</strong> <code>prefers-reduced-motion</code> honoured; <code>:focus-visible</code> rings on all interactive elements; toast is a live region (<code>role="status" aria-live="polite"</code>).</li>
+</ul>
+
+<h3 id="backlog-open">Open (requires external components)</h3>
+
+<p id="p-back-open-intro">These items would close genuine gaps in the agent-first design but can't be implemented inside a single static HTML file. A forker wanting a production-grade agent surface should consider them.</p>
+
+<ol>
+<li id="p-back-open-1"><strong>Origin-level <code>/llms.txt</code> manifest</strong> at <code>npc.here.now/llms.txt</code>, enumerating every published document with its URL, title, topic tags, and agent-API version. See <a href="https://llmstxt.org/" target="_blank" rel="noopener">llmstxt.org</a> for the emerging convention. Requires write access to the origin root, not just a per-document subpath.</li>
+
+<li id="p-back-open-2"><strong>Site manifest at <code>.well-known/protocolized.json</code></strong> — same substance as <code>/llms.txt</code> but JSON-LD, listing all documents with their canonical URLs, markdown-source URLs, and API schemas. Enables cross-document aggregation by agents ("find every Protocolized report on MCP and list the agent-authored Comments across them").</li>
+
+<li id="p-back-open-3"><strong>MCP server wrapping the same capability.</strong> Expose <code>read_document</code>, <code>list_annotations</code>, <code>add_annotation</code> as MCP tools; the browser-resident <code>window.templateAPI</code> becomes a local specialisation of the same protocol. Required to make the template a genuine worked example of its own §What-this-is-not framing (which references the APIs paper's <a href="https://npc.here.now/wthapi/#q8" target="_blank" rel="noopener">Q8</a>). Could be a Cloudflare Worker, a Vercel function, or a self-hosted Python/Node process.</li>
+
+<li id="p-back-open-4"><strong>Build step to eliminate MD/HTML drift.</strong> The embedded markdown source and the <code>&lt;article&gt;</code> body are maintained by hand today; the critique calls out the drift risk. A ~50-line build script (markdown-it or similar) taking a canonical <code>.md</code> file and emitting the HTML body + embedded source would fix this. Tradeoff: introduces a toolchain the template currently avoids.</li>
+
+<li id="p-back-open-5"><strong><code>?mode=agent</code> stripped-chrome variant.</strong> Serve a minimal HTML shell (no banner, no title block, no comment form, no sections overlay) when <code>?mode=agent</code> is present, cutting page weight by ~80%. Requires server-side routing; static hosting alone can't dispatch on query strings. Alternative: accept the cost and point agents at <code>index.md</code>.</li>
+
+<li id="p-back-open-6"><strong>TextQuoteSelector with <code>prefix</code> and <code>suffix</code> context.</strong> Current anchoring finds the first occurrence of <code>quote</code> in the target paragraph. If text drifts (edit → re-publish), the anchor silently fails. Adopting <a href="https://www.w3.org/TR/annotation-model/#text-quote-selector" target="_blank" rel="noopener">W3C's full TextQuoteSelector</a> with surrounding context would let comments re-anchor through modest edits. Doable in-page but adds complexity; left as a v2 improvement.</li>
+
+<li id="p-back-open-7"><strong>Agent-as-co-author flow.</strong> The current roles are author (writes Considerations), reader (reads), agent (annotates). A deeper mode: agent writes a summary of the document, human approves/edits, the summary becomes a new Consideration. Requires new UI (summary-draft slot, approve/reject interactions) and a storage model for pending author-edits. Significant design scope.</li>
+
+<li id="p-back-open-8"><strong>Signed agent identity.</strong> <code>origin</code> is stamped by the runtime and cannot be spoofed — but <code>author</code> is a free-text string. A malicious agent could still claim <code>author: "claude"</code> or impersonate a specific user. A session-key signing scheme where the runtime verifies a signature before accepting the comment would close this. Out of scope for a reading surface; relevant if the template is used in trust-sensitive contexts.</li>
+</ol>
+
+<h3 id="backlog-how">How to contribute an improvement</h3>
+
+<p id="p-back-how-1">Fork the source from <code>/Users/rafa/Documents/protocols/P4BSIG/template-site/</code> (or grab the page directly via <code>fetch</code> — it's one self-contained HTML file). Pick an item from the open list, implement, republish via <code>publish.sh</code>. If the improvement is reusable, consider upstreaming by opening a discussion on the <a href="https://protocolized.summerofprotocols.com/t/studies" target="_blank" rel="noopener">Protocolized forum</a>.</p>
+
+<h2 id="forking">Forking and reuse</h2>
+
+<p id="p-fork-1">The entire template is one HTML file per page. Styles, scripts, banner, favicon, and markdown source are all inline or embedded. To repurpose for a new report:</p>
+
+<ul>
+<li id="p-fork-2">Replace the <code>&lt;article&gt;</code> body and the <code>&lt;script id="markdown-source"&gt;</code> contents. Keep them in sync — the embedded source is the canonical text that agents read.</li>
+<li id="p-fork-3">Give every anchorable block an id (semantic preferred: <code>id="intro"</code>, <code>id="tactical"</code>) so comments can target it reliably.</li>
+<li id="p-fork-4">Update the banner SVG text, title block, breadcrumb links, and sections overlay.</li>
+<li id="p-fork-5">Change <code>STORAGE_KEY</code> if you want a separate comment set per report.</li>
+<li id="p-fork-6">For multi-page reports, copy <code>/template/exercise/</code> as a subpage stub and flip the breadcrumb's <code>active</code> class per page.</li>
+</ul>
+
+<p id="p-fork-7">Source lives at <code>/Users/rafa/Documents/protocols/P4BSIG/template-site/</code>. Publish via the <a href="https://here.now/" target="_blank" rel="noopener">here.now</a> skill with <code>publish.sh</code>.</p>
+
+</article>
+</main>
+
+
+<footer>
+<span><a href="https://protocolized.summerofprotocols.com/t/studies" target="_blank" rel="noopener">Protocolized</a> · Report template · <a href="https://npc.here.now/template/">npc.here.now/template</a></span>
+<button class="clear-comments" id="clear-comments">Clear my comments</button>
+</footer>
+
+<!-- Selection popup -->
+<div class="sel-popup" id="sel-popup">
+  <button id="sel-comment" class="primary" title="Add a comment">💬 Comment</button>
+  <button id="sel-copy" title="Copy selection">⧉ Copy</button>
+</div>
+
+<!-- Comment form -->
+<div class="comment-form" id="comment-form">
+  <div class="cf-quote" id="cf-quote"></div>
+  <textarea id="cf-text" placeholder="Your comment (local only)…" rows="3"></textarea>
+  <div class="cf-actions">
+    <button id="cf-cancel" class="ghost">Cancel</button>
+    <button id="cf-save" class="primary">Save (⌘↩)</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Done</div>
+
+<!-- ==== Embedded markdown source (single source of truth for copy/download) ==== -->
+<script id="markdown-source" type="text/x-markdown"># A Self-Documenting Report Template
+
+*Protocolized · Meta-documentation · 2026-04-20 · [npc.here.now/template](https://npc.here.now/template/)*
+
+*Meta-documentation for a report surface designed to serve both human readers and LLM agents as first-class consumer classes. The document is a self-description: every affordance it names is exercised on the page itself.*
+
+---
+
+## Why this template exists
+
+{#p-why-1} Documents on the web evolved against a single consumer class: a human reader at a pointer device. Navigation, typography, breakpoints, and analytics all assume that one reader.
+
+{#p-why-2} A second consumer class now reads the same documents: **LLM agents acting on behalf of humans**. Agents read differently. They want canonical text, stable structure, and programmatic hooks. They annotate as they read. They compose notes from the document with actions taken elsewhere.
+
+> *Consideration:* Consumer classes. The distinction is developed in the APIs paper's [Q7 — "What makes an agent a distinct consumer class?"](https://npc.here.now/wthapi/#q7). Agents read faster, in parallel, at machine speed, with different patience envelopes than humans.
+
+{#p-why-3} A document built only for the human reader leaves the agent degraded: it scrapes text via brittle DOM extraction, guesses at structure, and cannot leave a trace of what it noticed. A document built only for the agent loses the human's preferred reading experience. Most public documents today sit in the first camp.
+
+{#p-why-4} This template is a scaffold for documents that serve both consumer classes without subordinating either. It is intentionally modest — a single HTML file, a handful of patterns — not a framework.
+
+## How it differs from a standard web page
+
+{#p-differs-1} Most public reports, working papers, and blog posts default to a backend CMS, an analytics beacon, a publisher-hosted comment system, and visual chrome sized for a laptop screen. Each default makes sense in isolation; together they produce a page that is *readable* by agents only as a side-effect of being readable by humans.
+
+{#p-differs-2} This template makes the opposite defaults.
+
+| Default             | Standard web page                 | This template                             |
+| ------------------- | --------------------------------- | ----------------------------------------- |
+| Canonical text      | Rendered from CMS; scraped from DOM | Embedded as markdown in the HTML        |
+| Reader commentary   | Publisher database or disabled    | Reader's localStorage only               |
+| Tracking            | Analytics beacon                  | None                                      |
+| Author commentary   | Inline footnotes                  | Right-gutter Considerations              |
+| External links      | Indistinguishable on the page     | Marked visibly (↗)                        |
+| Agent access        | DOM scrape, no contract           | `window.templateAPI` + embedded MD        |
+| Persistence control | Publisher-controlled              | Reader-controlled (clear, export)         |
+| Packaging           | Distributed over CDN / SSR        | Single HTML file (+ web fonts)            |
+
+{#p-differs-3} The shape sits narrower than a CMS and wider than a static article.
+
+## Affordances: paired gutters and a canonical source
+
+{#p-aff-1} The page exposes three visible text channels and two non-visual ones.
+
+[Figure 1. Three visible text channels. Main column carries the canonical document (purple). Right gutter (orange) holds author Considerations, baked into the publish. Left gutter (blue) holds reader and agent Comments, stored in localStorage only.]
+
+{#p-aff-2} The visible channels:
+
+1. {#p-aff-3} **Main column** — the document itself.
+2. {#p-aff-4} **Right gutter** — *Considerations*, orange. Author-written commentary, baked into the publish, immutable to the reader.
+2b. {#p-aff-4-ref} A second right-gutter variant: **numbered reference sidenotes** in purple, matching the [Tufte CSS](https://edwardtufte.github.io/tufte-css/) / [Gwern](https://gwern.net/sidenote) convention — a superscript number in body text pointing to a floating note in the right margin. Distinct from Considerations (prose commentary, orange); reference sidenotes are for citations and brief amplifications. See the [APIs paper](https://npc.here.now/wthapi/) for extensive use of both.
+
+3. {#p-aff-5} **Left gutter** — *Comments*, blue. Reader- or agent-written annotations, stored in the reader's localStorage only. Never transmitted. A mirror of Considerations.
+
+{#p-aff-6} The non-visual channels:
+
+4. {#p-aff-7} **Embedded markdown source** — at the bottom of the document body lives `<script id="markdown-source" type="text/x-markdown">`, carrying the full document as markdown. An agent reads this one element and has the canonical text without walking the DOM.
+5. {#p-aff-8} **Programmatic comment API** — `window.templateAPI` exposes the comment operations. See the agent-API section below.
+
+### Reader flow
+
+{#p-rf-1} Highlight any passage in the main column. A small dark popup appears near the selection offering *Comment* or *Copy*.
+
+- {#p-rf-2} **Copy** places the selection text on the clipboard.
+- {#p-rf-3} **Comment** opens a compact floating form below the selection. Type a note, press `⌘↩` to save. The annotation renders in the left gutter, anchored to the nearest identified element, and the selected text is wrapped in a `<mark>`. Hover a comment to reveal the `×` for deletion. *A hardcoded demo Comment is rendered in the HTML alongside this bullet (dashed blue border, labelled `Comment · demo`), so every reader sees an example even before creating one.*
+
+{#p-rf-4} Keyboard shortcuts:
+
+| Shortcut                 | Action                                                 |
+| ------------------------ | ------------------------------------------------------ |
+| `⌘K` / `Ctrl K`          | Open the sections overlay                              |
+| `⌘D` / `Ctrl D`          | Download markdown (body + your comments)               |
+| `⌘⇧C` / `Ctrl ⇧ C`        | Copy markdown to clipboard (same content as download)  |
+| `⌘↩` inside a comment form | Save comment                                          |
+| `Esc`                    | Close any open panel                                   |
+
+## The agent API
+
+{#p-api-1} Agents running in the reader's browser — devtools consoles, extension-based assistants, Claude Desktop with browser use — interact without any auth, backend, or network call. The page exposes a single global:
+
+```js
+// Add a comment anchored to a paragraph id.
+// quote must occur verbatim in the paragraph's textContent.
+window.templateAPI.addComment({
+  pid: "p-why-3",
+  quote: "brittle DOM extraction",
+  text: "Agent observation — the template addresses this via the embedded markdown source.",
+  author: "claude"
+});
+
+// Other operations
+window.templateAPI.listComments();
+window.templateAPI.deleteComment(cid);
+window.templateAPI.clearComments();
+window.templateAPI.markdownSource();                       // raw body, no comments
+window.templateAPI.exportMarkdown({ includeComments: true });
+window.templateAPI.exportAnnotations();                    // W3C Web Annotation JSON-LD
+window.templateAPI.schema();                               // machine-readable API schema
+await window.templateAPI.docHash();                        // "sha256:<hex>" of embedded MD
+window.templateAPI.on('comment:added', r => console.log('agent observer:', r));
+window.templateAPI.refresh();                              // re-render from localStorage
+```
+
+Every stored record carries an immutable `origin` field stamped by the runtime: `"ui"` (saved via the selection popup), `"api"` (added via `templateAPI.addComment`), or `"demo"` (the template's first-visit seed). Callers cannot spoof `origin`. The `author` field is free-text and remains caller-controlled.
+
+Discovery: the page advertises its agent surface via `<meta name="agent-api">`, `<link rel="alternate" type="text/markdown" href="./index.md">`, and a Schema.org Article JSON-LD block in `<head>`. A sibling `index.md` file serves the markdown source directly — agents can `fetch("./index.md")` without parsing HTML. A static `<script type="application/json" id="template-api-schema">` block is appended at runtime for zero-JS consumers.
+
+Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `templateAPI.on(event, callback)` — returns an unsubscribe function. Cross-tab sync: comments added in one tab re-render in other tabs of the same origin via the `storage` event.
+
+> *Consideration:* Skills vs MCP vs this. This page is not an MCP server nor a Skill (as discussed in the APIs paper [Q8](https://npc.here.now/wthapi/#q8)). It is a document surface that happens to expose a JS API to any agent loaded in the same browser. The agent reaches it by reading the DOM, not by calling over a protocol.
+
+{#p-api-2} Author attribution: pass `author` and the comment's label reads `Comment · claude`. Default is `reader` with no suffix.
+
+{#p-api-3} Markdown roundtrip: `exportMarkdown` returns the embedded source plus a `## Reader comments` section. Every comment becomes a block carrying its paragraph id, quote, author, date, and body. An agent can take the blob into a separate context window and resume working on the annotated document without re-reading the page.
+
+## What this template is not
+
+- {#p-not-1} **Not a CMS.** The canonical text sits in the HTML. There is no backend writing it.
+- {#p-not-2} **Not a hosted comment system.** Comments never leave the reader's browser. Two readers of the same URL see two independent comment sets.
+- {#p-not-3} **Not a knowledge base.** There is no search, no cross-reference, no version history beyond the publish timestamp.
+- {#p-not-4} **Not an agent harness.** Agents can read and annotate; they cannot execute actions against external systems from this page. For that you would add tools, an MCP server, or a CLI (see the APIs paper [Q8](https://npc.here.now/wthapi/#q8)).
+- {#p-not-5} **Not tracked.** No analytics, no beacons, no third-party scripts beyond the font CDN.
+
+## Improvement backlog
+
+{#p-back-intro} The current implementation ships all capabilities achievable inside a single static HTML file. Items requiring external components (server, build step, MCP endpoint, shared manifest) are documented below as open backlog for anyone forking the template to implement.
+
+### Shipped (in-page, no external components)
+
+- {#p-back-done-1} **Agent discovery metadata.** `<meta name="agent-api">`, `<link rel="alternate" type="text/markdown">`, Schema.org `Article` JSON-LD in `<head>`.
+- {#p-back-done-2} **Sibling markdown file.** Same source served as [`./index.md`](./index.md); agents `fetch()` plain markdown in one request.
+- {#p-back-done-3} **W3C Web Annotation export.** `templateAPI.exportAnnotations()` returns Comments as JSON-LD conforming to the [Web Annotation Data Model](https://www.w3.org/TR/annotation-model/).
+- {#p-back-done-4} **Machine-readable API schema.** `templateAPI.schema()` returns a JSON Schema; also appended as `<script type="application/json" id="template-api-schema">`.
+- {#p-back-done-5} **Machine labels on annotations.** Every aside carries `data-role` (`consideration` · `reference` · `reader-note`) and `data-author-class` (`author` · `reader` · `agent` · `template`).
+- {#p-back-done-6} **Immutable `origin` field.** Every `CommentRecord` carries `origin: "ui" | "api" | "demo"`, stamped by the runtime, not by the caller.
+- {#p-back-done-7} **Event bus.** `templateAPI.on(event, callback)` supports `comment:added`, `comment:deleted`, `comments:cleared`; returns an unsubscribe function.
+- {#p-back-done-8} **Cross-tab sync.** Comments added in one tab appear in other tabs on next render via the `storage` event.
+- {#p-back-done-9} **Document hash.** `templateAPI.docHash()` returns a SHA-256 of the embedded markdown source.
+- {#p-back-done-10} **Accessibility baseline.** `prefers-reduced-motion`, `:focus-visible`, toast as `role="status" aria-live="polite"`.
+
+### Open (requires external components)
+
+1. {#p-back-open-1} **Origin-level `/llms.txt` manifest** at `npc.here.now/llms.txt`, enumerating every published document. See [llmstxt.org](https://llmstxt.org/). Requires origin-root write access.
+2. {#p-back-open-2} **Site manifest at `.well-known/protocolized.json`** — JSON-LD listing every document with its markdown source URL and API schema. Enables cross-document aggregation.
+3. {#p-back-open-3} **MCP server wrapping the same capability.** Tools: `read_document`, `list_annotations`, `add_annotation`. Browser-resident `window.templateAPI` becomes a local specialisation of the same protocol. Required to make the template a worked example of its own Q8 framing from the [APIs paper](https://npc.here.now/wthapi/#q8).
+4. {#p-back-open-4} **Build step to eliminate MD/HTML drift.** The embedded markdown and article body are maintained by hand; a markdown-it build script would fix this. Introduces a toolchain the template currently avoids.
+5. {#p-back-open-5} **`?mode=agent` stripped-chrome variant.** Minimal shell (no banner, no form, no overlay) for agent fetches. Requires server-side routing; static hosting can't dispatch on query strings.
+6. {#p-back-open-6} **TextQuoteSelector with `prefix` and `suffix`.** Current anchoring finds first verbatim occurrence; adopting [full W3C TextQuoteSelector](https://www.w3.org/TR/annotation-model/#text-quote-selector) would let comments re-anchor through modest edits.
+7. {#p-back-open-7} **Agent-as-co-author flow.** Agent writes a summary, human approves/edits, summary becomes a new Consideration. New UI and storage scope.
+8. {#p-back-open-8} **Signed agent identity.** `origin` is spoof-proof but `author` is free-text. Session-key signing would close impersonation risk in trust-sensitive contexts.
+
+### How to contribute
+
+Fork the source from `/Users/rafa/Documents/protocols/P4BSIG/template-site/` (or `fetch` the page — one self-contained HTML file). Implement an item from the open list, republish via `publish.sh`. Consider upstreaming reusable improvements on the [Protocolized forum](https://protocolized.summerofprotocols.com/t/studies).
+
+## Forking and reuse
+
+{#p-fork-1} The entire template is one HTML file per page. Styles, scripts, banner, favicon, and markdown source are all inline or embedded. To repurpose for a new report:
+
+- {#p-fork-2} Replace the `<article>` body and the `<script id="markdown-source">` contents. Keep them in sync — the embedded source is the canonical text that agents read.
+- {#p-fork-3} Give every anchorable block an id (semantic preferred: `id="intro"`, `id="tactical"`) so comments can target it reliably.
+- {#p-fork-4} Update the banner SVG text, title block, breadcrumb links, and sections overlay.
+- {#p-fork-5} Change `STORAGE_KEY` if you want a separate comment set per report.
+- {#p-fork-6} For multi-page reports, copy `/template/exercise/` as a subpage stub and flip the breadcrumb's `active` class per page.
+
+{#p-fork-7} Source lives at `/Users/rafa/Documents/protocols/P4BSIG/template-site/`. Publish via the [here.now](https://here.now/) skill with `publish.sh`.
+</script>
+
+<script>
+(function () {
+"use strict";
+/**
+ * Self-contained client-side runtime for the Protocolized report template.
+ * No external deps. Comments live in localStorage only.
+ * Exposes window.templateAPI for programmatic (LLM) access.
+ *
+ * @typedef {Object} CommentRecord
+ * @property {string} cid       - stable id, shape: "c<base36-timestamp><rand>"
+ * @property {string} pid       - id of the DOM element the comment anchors to
+ * @property {string} quote     - verbatim selection from pid's textContent
+ * @property {string} text      - the comment body (plain text; newlines render as <br>)
+ * @property {string} author    - "reader" (default) or any short label, e.g. "claude", "template"
+ * @property {number} ts        - epoch ms
+ */
+
+/** @const */ const CONFIG = Object.freeze({
+  STORAGE_KEY: 'protocolized.template.comments.v1',
+  SEED_KEY:    'protocolized.template.seed.v1',
+  MAX_QUOTE_IN_UI: 140,
+  MAX_QUOTE_IN_FORM: 180,
+  TOAST_MS: 1600,
+  VERSION: '1.0',
+});
+
+const STORAGE_KEY = CONFIG.STORAGE_KEY;
+const SEED_KEY    = CONFIG.SEED_KEY;
+
+/* ---- Storage ---- */
+function loadAll() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; }
+}
+function saveAll(list) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+/* ---- Toast ---- */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+/* ---- Selection / popup ---- */
+const popup = document.getElementById('sel-popup');
+const article = document.querySelector('article');
+let lastSelection = null;
+
+function currentArticleSelection() {
+  const sel = window.getSelection();
+  if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return null;
+  const range = sel.getRangeAt(0);
+  if (!article.contains(range.commonAncestorContainer)) return null;
+  const text = sel.toString().trim();
+  if (text.length < 2) return null;
+  return { sel, range, text };
+}
+function positionPopup(rect) {
+  const top  = window.scrollY + rect.top - popup.offsetHeight - 10;
+  const left = window.scrollX + rect.left + rect.width / 2 - popup.offsetWidth / 2;
+  popup.style.top  = Math.max(8, top) + 'px';
+  popup.style.left = Math.max(8, left) + 'px';
+}
+function hidePopup() { popup.classList.remove('open'); }
+
+document.addEventListener('mouseup', () => {
+  setTimeout(() => {
+    if (commentForm.classList.contains('open')) return;
+    const s = currentArticleSelection();
+    if (!s) { hidePopup(); return; }
+    lastSelection = s;
+    popup.classList.add('open');
+    positionPopup(s.range.getBoundingClientRect());
+  }, 10);
+});
+document.addEventListener('mousedown', (e) => {
+  if (popup.contains(e.target) || commentForm.contains(e.target)) return;
+  hidePopup();
+});
+document.addEventListener('selectionchange', () => {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed) {
+    if (!commentForm.classList.contains('open')) hidePopup();
+  }
+});
+
+/* ---- Popup actions ---- */
+document.getElementById('sel-copy').addEventListener('click', async () => {
+  if (!lastSelection) return;
+  try { await navigator.clipboard.writeText(lastSelection.text); } catch(e) {}
+  showToast('Copied');
+  hidePopup();
+  window.getSelection().removeAllRanges();
+});
+
+const commentForm = document.getElementById('comment-form');
+const cfQuote     = document.getElementById('cf-quote');
+const cfText      = document.getElementById('cf-text');
+
+document.getElementById('sel-comment').addEventListener('click', () => {
+  if (!lastSelection) return;
+  cfQuote.textContent = lastSelection.text.length > 180 ? lastSelection.text.slice(0,180)+'…' : lastSelection.text;
+  cfText.value = '';
+  commentForm.classList.add('open');
+  const rect = lastSelection.range.getBoundingClientRect();
+  const formW = 18 * 16;
+  commentForm.style.top  = (window.scrollY + rect.bottom + 10) + 'px';
+  commentForm.style.left = Math.max(8, window.scrollX + rect.left + rect.width / 2 - formW / 2) + 'px';
+  hidePopup();
+  setTimeout(() => cfText.focus(), 30);
+});
+document.getElementById('cf-cancel').addEventListener('click', () => {
+  commentForm.classList.remove('open');
+  lastSelection = null;
+  window.getSelection().removeAllRanges();
+});
+document.getElementById('cf-save').addEventListener('click', () => {
+  if (!lastSelection) return;
+  const text = cfText.value.trim();
+  if (!text) { cfText.focus(); return; }
+  const pid = findAnchorPid(lastSelection.range);
+  if (!pid) { showToast('Could not anchor comment'); return; }
+  const record = makeRecord({ pid, quote: lastSelection.text, text, author: 'reader', origin: 'ui' });
+  const all = loadAll();
+  all.push(record);
+  saveAll(all);
+  renderComment(record);
+  emit('comment:added', record);
+  commentForm.classList.remove('open');
+  lastSelection = null;
+  window.getSelection().removeAllRanges();
+  showToast('Comment saved');
+});
+cfText.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); document.getElementById('cf-save').click(); }
+  if (e.key === 'Escape') { e.preventDefault(); document.getElementById('cf-cancel').click(); }
+});
+
+/* ---- Anchor helpers ---- */
+function findAnchorPid(range) {
+  let el = range.startContainer;
+  if (el.nodeType === Node.TEXT_NODE) el = el.parentElement;
+  while (el && el !== article) {
+    if (el.id) return el.id;
+    el = el.parentElement;
+  }
+  return null;
+}
+function findTextRange(container, needle) {
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => {
+      let p = n.parentNode;
+      while (p && p !== container) {
+        if (p.nodeName === 'MARK' && p.classList.contains('commented')) return NodeFilter.FILTER_REJECT;
+        p = p.parentNode;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  let flat = '';
+  while (walker.nextNode()) {
+    nodes.push({ node: walker.currentNode, start: flat.length });
+    flat += walker.currentNode.nodeValue;
+  }
+  const idx = flat.indexOf(needle);
+  if (idx === -1) return null;
+  const end = idx + needle.length;
+  const startInfo = nodes.find(n => n.start + n.node.nodeValue.length > idx);
+  const endInfo = nodes.slice().reverse().find(n => n.start < end);
+  if (!startInfo || !endInfo) return null;
+  const range = document.createRange();
+  range.setStart(startInfo.node, idx - startInfo.start);
+  range.setEnd(endInfo.node, end - endInfo.start);
+  return range;
+}
+
+/* ---- Event bus (minimal) ---- */
+const _listeners = { 'comment:added': new Set(), 'comment:deleted': new Set(), 'comments:cleared': new Set() };
+function emit(event, payload) {
+  if (!_listeners[event]) return;
+  _listeners[event].forEach(fn => { try { fn(payload); } catch(e) { console.error(e); } });
+}
+function on(event, fn) {
+  if (!_listeners[event] || typeof fn !== 'function') return () => {};
+  _listeners[event].add(fn);
+  return () => _listeners[event].delete(fn);
+}
+
+/* ---- Record / render ---- */
+/**
+ * @param {{pid:string, quote:string, text:string, author?:string, origin?:string}} input
+ * @returns {CommentRecord}
+ */
+function makeRecord({ pid, quote, text, author, origin }) {
+  return {
+    cid: 'c' + Date.now().toString(36) + Math.floor(Math.random()*1000).toString(36),
+    pid,
+    quote,
+    text,
+    author: author || 'reader',
+    origin: origin || 'ui',
+    ts: Date.now(),
+  };
+}
+
+function renderComment(record) {
+  const container = document.getElementById(record.pid);
+  if (!container) return false;
+
+  const existingMark = container.querySelector(`mark.commented[data-cid="${record.cid}"]`);
+  if (!existingMark) {
+    const range = findTextRange(container, record.quote);
+    if (range) {
+      try {
+        const mark = document.createElement('mark');
+        mark.className = 'commented';
+        mark.dataset.cid = record.cid;
+        range.surroundContents(mark);
+      } catch(e) { /* selection crossed element boundary; leave unwrapped */ }
+    }
+  }
+
+  const aside = document.createElement('aside');
+  aside.className = 'comment';
+  aside.dataset.cid = record.cid;
+  const d = new Date(record.ts);
+  const dateStr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  const authorTag = record.author && record.author !== 'reader' ? `<span class="c-author">· ${escapeHtml(record.author)}</span>` : '';
+  aside.innerHTML =
+    '<button class="c-del" title="Delete comment">×</button>' +
+    `<span class="c-label">Comment${authorTag}</span>` +
+    '<span class="c-quote">' + escapeHtml(record.quote.length > 140 ? record.quote.slice(0,140)+'…' : record.quote) + '</span>' +
+    '<div class="c-body">' + escapeHtml(record.text).replace(/\n/g,'<br>') + '</div>' +
+    '<span class="c-meta">' + dateStr + '</span>';
+  container.insertBefore(aside, container.firstChild);
+  aside.querySelector('.c-del').addEventListener('click', (e) => {
+    e.stopPropagation();
+    deleteComment(record.cid);
+  });
+  return true;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function deleteComment(cid) {
+  const before = loadAll();
+  const removed = before.find(r => r.cid === cid);
+  const list = before.filter(r => r.cid !== cid);
+  saveAll(list);
+  const aside = document.querySelector(`aside.comment[data-cid="${cid}"]`);
+  if (aside) aside.remove();
+  const mark = document.querySelector(`mark.commented[data-cid="${cid}"]`);
+  if (mark) {
+    const parent = mark.parentNode;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    parent.normalize();
+  }
+  if (removed) emit('comment:deleted', removed);
+}
+
+function renderAll() {
+  // Only strip dynamic (localStorage-backed) asides / marks; leave hardcoded demos intact
+  document.querySelectorAll('aside.comment[data-cid]').forEach(n => n.remove());
+  document.querySelectorAll('mark.commented[data-cid]').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m);
+    p.normalize();
+  });
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  all.forEach(renderComment);
+}
+
+/* ---- Markdown export (source + comments) ---- */
+function markdownSource() {
+  const el = document.getElementById('markdown-source');
+  return el ? el.textContent : '';
+}
+
+function exportMarkdown({ includeComments = true } = {}) {
+  let md = markdownSource();
+  if (!includeComments) return md;
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  if (all.length === 0) return md;
+  md += '\n\n---\n\n## Reader comments\n\n';
+  md += '*Exported from localStorage; not part of the original document.*\n\n';
+  for (const r of all) {
+    const d = new Date(r.ts);
+    const dateStr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    const author = r.author || 'reader';
+    const quote = r.quote.replace(/\n/g, ' ');
+    md += `### Comment on \`#${r.pid}\` — ${author} · ${dateStr}\n\n`;
+    md += `> ${quote}\n\n`;
+    md += `${r.text}\n\n`;
+  }
+  return md;
+}
+
+/* ---- Buttons: Copy MD / Download MD / Clear / Open TOC ---- */
+document.getElementById('copy-md').addEventListener('click', async () => {
+  const md = exportMarkdown({ includeComments: true });
+  try { await navigator.clipboard.writeText(md); showToast('Markdown copied'); }
+  catch(e) { showToast('Copy failed'); }
+});
+
+document.getElementById('download-md').addEventListener('click', () => {
+  const md = exportMarkdown({ includeComments: true });
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const d = new Date();
+  const datestr = d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  a.href = url; a.download = `template-${datestr}.md`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded');
+});
+
+document.getElementById('clear-comments').addEventListener('click', () => {
+  const all = loadAll();
+  if (all.length === 0) { showToast('No comments to clear'); return; }
+  if (!confirm(`Delete all ${all.length} comment(s)? This cannot be undone.`)) return;
+  saveAll([]);
+  renderAll();
+  emit('comments:cleared', { count: all.length });
+  showToast('Cleared');
+});
+
+/* Cross-tab sync: when another tab updates the comment store, re-render here */
+window.addEventListener('storage', e => {
+  if (e.key === STORAGE_KEY) renderAll();
+});
+
+/* ---- Mobile overflow menu ---- */
+const mobileBtn = document.getElementById('mobile-menu');
+const mobilePanel = document.getElementById('mobile-menu-panel');
+function closeMobileMenu() {
+  mobilePanel.hidden = true;
+  mobileBtn.setAttribute('aria-expanded', 'false');
+}
+mobileBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = mobilePanel.hidden;
+  mobilePanel.hidden = !open;
+  mobileBtn.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('click', e => {
+  if (mobilePanel.hidden) return;
+  if (!mobilePanel.contains(e.target) && e.target !== mobileBtn) closeMobileMenu();
+});
+document.querySelectorAll('.mobile-menu-panel .mmi').forEach(mi => {
+  mi.addEventListener('click', () => {
+    closeMobileMenu();
+    const target = document.getElementById(mi.dataset.for);
+    if (target) target.click();
+  });
+});
+
+/* ---- Sections overlay ---- */
+const overlay = document.getElementById('toc-overlay');
+document.getElementById('open-toc').addEventListener('click', () => overlay.classList.add('open'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); overlay.classList.toggle('open'); }
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'd') { e.preventDefault(); document.getElementById('download-md').click(); }
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'c') { e.preventDefault(); document.getElementById('copy-md').click(); }
+  if (e.key === 'Escape') overlay.classList.remove('open');
+});
+
+/* ---- Progress bar + section indicator ---- */
+const progressFill = document.getElementById('progress-fill');
+const sectionIndicator = document.getElementById('section-indicator');
+const sectionNum = document.getElementById('section-num');
+const sectionName = document.getElementById('section-name');
+const sectionMap = Array.from(document.querySelectorAll('article h2[id]')).map((h, i) => ({
+  id: h.id, name: h.textContent, num: '§' + (i+1), el: h
+}));
+
+function updateScroll() {
+  const h = document.documentElement;
+  const top = h.scrollTop || document.body.scrollTop;
+  const max = (h.scrollHeight - h.clientHeight) || 1;
+  progressFill.style.width = Math.min(100, (top / max) * 100) + '%';
+
+  let current = null;
+  for (const s of sectionMap) {
+    if (s.el.getBoundingClientRect().top <= 80) current = s; else break;
+  }
+  if (current) {
+    sectionNum.textContent = current.num;
+    sectionName.textContent = current.name;
+    if (top > 200) sectionIndicator.classList.add('show'); else sectionIndicator.classList.remove('show');
+  } else {
+    sectionIndicator.classList.remove('show');
+  }
+}
+window.addEventListener('scroll', updateScroll, { passive: true });
+updateScroll();
+
+/* ---- Seed sample comment (once) ---- */
+function seedSample() {
+  if (localStorage.getItem(SEED_KEY) === 'done') return;
+  if (loadAll().length > 0) { localStorage.setItem(SEED_KEY, 'done'); return; }
+  const seed = {
+    cid: 'c-sample-' + Date.now().toString(36),
+    pid: 'p-why-3',
+    quote: 'brittle DOM extraction',
+    text: 'Sample Comment seeded by the template so you can see the left-gutter channel without highlighting anything. It lives only in your browser (localStorage). Hover to reveal the × and delete — it will not re-seed. Agents can post comments programmatically via window.templateAPI.',
+    author: 'template',
+    origin: 'demo',
+    ts: Date.now(),
+  };
+  const all = loadAll();
+  all.push(seed);
+  saveAll(all);
+  localStorage.setItem(SEED_KEY, 'done');
+}
+
+seedSample();
+renderAll();
+
+/* ---- JSON Schema describing the API (machine-readable) ---- */
+function getSchema() {
+  return {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Protocolized Report Template — templateAPI",
+    "version": CONFIG.VERSION,
+    "defs": {
+      "CommentRecord": {
+        "type": "object",
+        "required": ["cid", "pid", "quote", "text", "author", "origin", "ts"],
+        "properties": {
+          "cid":    { "type": "string", "description": "stable id" },
+          "pid":    { "type": "string", "description": "DOM element id the comment anchors to" },
+          "quote":  { "type": "string", "description": "verbatim selection from pid's textContent" },
+          "text":   { "type": "string", "description": "comment body" },
+          "author": { "type": "string", "description": "attribution label (free-text)" },
+          "origin": { "type": "string", "enum": ["ui", "api", "demo"], "description": "runtime-stamped; cannot be spoofed by caller" },
+          "ts":     { "type": "integer", "description": "epoch ms" }
+        }
+      }
+    },
+    "methods": {
+      "addComment":   { "params": { "type": "object", "required": ["pid","quote","text"], "properties": { "pid": {"type":"string"}, "quote": {"type":"string"}, "text": {"type":"string"}, "author": {"type":"string"} } }, "returns": { "type": ["string","null"] } },
+      "listComments":      { "returns": { "type": "array", "items": { "$ref": "#/defs/CommentRecord" } } },
+      "deleteComment":     { "params": { "type": "string" }, "returns": { "type": "boolean" } },
+      "clearComments":     { "returns": { "type": "boolean" } },
+      "markdownSource":    { "returns": { "type": "string", "description": "raw body markdown" } },
+      "exportMarkdown":    { "params": { "type": "object", "properties": { "includeComments": { "type": "boolean" } } }, "returns": { "type": "string" } },
+      "exportAnnotations": { "returns": { "description": "W3C Web Annotation Data Model (JSON-LD)" } },
+      "docHash":           { "returns": { "description": "Promise<string> — sha256 hex of embedded markdown source" } },
+      "schema":            { "returns": { "description": "This schema (JSON)" } },
+      "on":                { "params": { "event": "string", "callback": "function" }, "returns": { "description": "unsubscribe function" } }
+    },
+    "events": ["comment:added", "comment:deleted", "comments:cleared"],
+    "alternateSources": {
+      "markdownSibling":   "./index.md",
+      "markdownEmbedded":  "#markdown-source",
+      "schemaEmbedded":    "#template-api-schema"
+    }
+  };
+}
+
+/* ---- W3C Web Annotation export ---- */
+function exportAnnotations() {
+  const base = location.origin + location.pathname;
+  const all = loadAll().sort((a,b) => a.ts - b.ts);
+  return {
+    "@context": "http://www.w3.org/ns/anno.jsonld",
+    "type": "AnnotationCollection",
+    "label": document.title,
+    "total": all.length,
+    "first": {
+      "type": "AnnotationPage",
+      "items": all.map(r => ({
+        "@context": "http://www.w3.org/ns/anno.jsonld",
+        "type": "Annotation",
+        "id": base + "#annotation-" + r.cid,
+        "creator": { "type": "Person", "name": r.author },
+        "created": new Date(r.ts).toISOString(),
+        "motivation": "commenting",
+        "body": { "type": "TextualBody", "value": r.text, "format": "text/plain" },
+        "target": {
+          "source": base + "#" + r.pid,
+          "selector": { "type": "TextQuoteSelector", "exact": r.quote }
+        },
+        "protocolized": { "origin": r.origin, "cid": r.cid }
+      }))
+    }
+  };
+}
+
+/* ---- Document hash (SHA-256 of embedded markdown source) ---- */
+async function docHash() {
+  const src = markdownSource();
+  const buf = new TextEncoder().encode(src);
+  const h   = await crypto.subtle.digest('SHA-256', buf);
+  const hex = Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return 'sha256:' + hex;
+}
+
+/* Publish a static schema block for zero-JS consumers */
+(function publishStaticSchema() {
+  const s = document.createElement('script');
+  s.type = 'application/json';
+  s.id   = 'template-api-schema';
+  s.textContent = JSON.stringify(getSchema());
+  document.head.appendChild(s);
+})();
+
+/* ---- Public API for agents / LLMs ---- */
+/**
+ * Programmatic comment API. Exposed on window for any agent in the same
+ * browser context. No auth, no backend, no network — all state lives in
+ * the reader's localStorage. See the §agent-API section of the document.
+ */
+window.templateAPI = Object.freeze({
+  version: CONFIG.VERSION,
+
+  /**
+   * Add a comment anchored to a paragraph id. Quote must occur verbatim
+   * in the target element's textContent (first occurrence is used).
+   * Runtime stamps origin: "api" — callers cannot spoof this.
+   * @param {{pid:string, quote:string, text:string, author?:string}} input
+   * @returns {string|null} cid on success; null on validation failure
+   */
+  addComment(input) {
+    const pid    = typeof input?.pid    === 'string' ? input.pid.trim()    : '';
+    const quote  = typeof input?.quote  === 'string' ? input.quote         : '';
+    const text   = typeof input?.text   === 'string' ? input.text.trim()   : '';
+    const author = typeof input?.author === 'string' ? input.author.trim() : '';
+    if (!pid || !quote || !text) return null;
+    const container = document.getElementById(pid);
+    if (!container) return null;
+    if (container.textContent.indexOf(quote) === -1) return null;
+    const record = makeRecord({ pid, quote, text, author: author || 'agent', origin: 'api' });
+    const all = loadAll(); all.push(record); saveAll(all);
+    renderComment(record);
+    emit('comment:added', record);
+    return record.cid;
+  },
+
+  /** @returns {CommentRecord[]} a copy of all stored comments */
+  listComments() { return loadAll().slice(); },
+
+  /** @param {string} cid @returns {boolean} */
+  deleteComment(cid) { deleteComment(cid); return true; },
+
+  /** Remove every comment. @returns {boolean} */
+  clearComments() {
+    const n = loadAll().length;
+    saveAll([]); renderAll();
+    emit('comments:cleared', { count: n });
+    return true;
+  },
+
+  /** @returns {string} raw body markdown (no comments appended) */
+  markdownSource,
+
+  /** @param {{includeComments?:boolean}} [opts] @returns {string} */
+  exportMarkdown,
+
+  /** W3C Web Annotation Data Model export (JSON-LD). */
+  exportAnnotations,
+
+  /** JSON Schema describing this API and the CommentRecord shape. */
+  schema: getSchema,
+
+  /** SHA-256 of the embedded markdown source (async; returns "sha256:<hex>"). */
+  docHash,
+
+  /**
+   * Subscribe to events: 'comment:added' | 'comment:deleted' | 'comments:cleared'.
+   * @returns {function} unsubscribe
+   */
+  on,
+
+  /** Re-render all comments from localStorage. */
+  refresh() { renderAll(); },
+});
+})();
+</script>
+
+</body>
+</html>

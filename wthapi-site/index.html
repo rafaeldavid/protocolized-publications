@@ -1,0 +1,1343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APIs: What They Are, What They Solve, What They Cost</title>
+<meta name="description" content="Ten questions for protocol-literate operators. A problem-centric, ontologically grounded design paper on APIs, SDKs, CLIs, MCP servers, and the consumer classes they serve." />
+<meta name="author" content="Protocolized / Protocols for Business Group" />
+<meta name="theme-color" content="#7d5a96" />
+
+<!-- Open Graph (Facebook, Slack, Discord, iMessage, LinkedIn) -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Protocolized" />
+<meta property="og:title" content="APIs: What They Are, What They Solve, What They Cost" />
+<meta property="og:description" content="Ten questions for protocol-literate operators. Ontology, tensions, and decisions for APIs, SDKs, CLIs, MCP servers, and the consumer classes they serve." />
+<meta property="og:url" content="https://npc.here.now/wthapi/" />
+<meta property="og:image" content="https://npc.here.now/wthapi/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="APIs: What They Are, What They Solve, What They Cost — a Protocolized / P4BSIG working paper in ten questions" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:published_time" content="2026-04-18T00:00:00Z" />
+<meta property="article:section" content="Protocol studies" />
+<meta property="article:tag" content="APIs" />
+<meta property="article:tag" content="MCP" />
+<meta property="article:tag" content="Protocols" />
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="APIs: What They Are, What They Solve, What They Cost" />
+<meta name="twitter:description" content="Ten questions for protocol-literate operators. A problem-centric design paper on APIs, SDKs, CLIs, and MCP." />
+<meta name="twitter:image" content="https://npc.here.now/wthapi/og.png" />
+<meta name="twitter:image:alt" content="APIs: What They Are, What They Solve, What They Cost — ten questions for protocol-literate operators" />
+
+<!-- Favicons -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="icon-512.png" type="image/png" sizes="512x512" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+
+<!-- Canonical -->
+<link rel="canonical" href="https://npc.here.now/wthapi/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Inherited from protocolized.dev */
+    --bg: #fafafa;
+    --surface: #f0f0f2;
+    --surface-2: #f6f5f7;
+    --fg: #1a1a2e;
+    --fg-muted: #6b6b7b;
+    --rule: #e5e5e7;
+    --accent: #7d5a96;           /* purple — primary emphasis */
+    --accent-mid: #a888bf;        /* purple — accents */
+    --accent-light: #f3eef7;      /* pale purple — tints */
+    --secondary: #d67339;         /* orange — secondary accent */
+    --secondary-light: #fdf1e8;
+    --secondary-dark: #8e4a1c;
+    --code-bg: #f0f0f2;
+    --code-dark: #0a081c;
+    --code-dark-fg: #e8e6f0;
+    --main-width: 42rem;
+    --side-width: 16rem;
+    --gap: 2.5rem;
+    --font-mono: 'Roboto Mono', ui-monospace, monospace;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body { font-family: var(--font-sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(125,90,150,0.3); }
+  a:hover { color: var(--secondary); border-bottom-color: var(--secondary); }
+  code, pre { font-family: var(--font-mono); }
+  code { background: var(--code-bg); padding: 0.05em 0.35em; border-radius: 3px; font-size: 0.85em; }
+  pre { background: var(--code-dark); color: var(--code-dark-fg); padding: 1rem 1.25rem; border-radius: 4px; overflow-x: auto; line-height: 1.55; font-size: 0.8em; }
+  pre code { background: transparent; padding: 0; color: inherit; }
+
+  /* Scroll progress bar */
+  .progress-bar { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: transparent; z-index: 40; pointer-events: none; }
+  .progress-bar .fill { height: 100%; width: 0%; background: var(--accent); transition: width 80ms linear; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250,250,250,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.8rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  header.site .brand { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--fg-muted); text-transform: uppercase; font-weight: 400; }
+  header.site .brand b { color: var(--fg); font-weight: 700; }
+  header.site .actions { display: flex; align-items: center; gap: 0.7rem; }
+  header.site button {
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500;
+    background: var(--fg); color: #fff; border: 0; cursor: pointer;
+    padding: 0.55rem 0.95rem; border-radius: 3px; letter-spacing: 0.03em;
+  }
+  header.site button:hover { background: var(--accent); }
+  header.site button.ghost { background: transparent; color: var(--fg-muted); border: 1px solid var(--rule); }
+  header.site button.ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+  header.site button .sh { opacity: 0.6; margin-left: 0.45rem; font-size: 0.7rem; }
+
+  .section-indicator {
+    position: fixed; top: 4.2rem; right: 2rem; z-index: 15;
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--fg-muted); padding: 0.42rem 0.8rem;
+    background: rgba(250,250,250,0.92); border: 1px solid var(--rule); border-radius: 999px;
+    opacity: 0; transform: translateY(-4px); transition: opacity 180ms ease, transform 180ms ease; backdrop-filter: blur(8px);
+  }
+  .section-indicator.visible { opacity: 1; transform: translateY(0); }
+  .section-indicator b { color: var(--accent); font-weight: 700; margin-right: 0.55em; }
+
+  .overlay { position: fixed; inset: 0; background: rgba(10,8,28,0.55); z-index: 50; display: none; align-items: flex-start; justify-content: center; padding-top: 12vh; }
+  .overlay.open { display: flex; }
+  .overlay .panel-box { background: var(--bg); width: min(34rem, 92vw); border-radius: 6px; padding: 1.4rem 1.6rem; box-shadow: 0 24px 60px rgba(0,0,0,0.3); font-family: var(--font-sans); }
+  .overlay h4 { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-muted); margin: 0 0 0.9rem; font-weight: 700; }
+  .overlay ol { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+  .overlay li { counter-increment: q; margin-bottom: 0.5rem; font-size: 0.95rem; display: flex; align-items: baseline; }
+  .overlay li::before { content: "Q" counter(q); color: var(--accent); font-weight: 700; font-family: var(--font-mono); font-variant-numeric: tabular-nums; display: inline-block; width: 2.8rem; flex: 0 0 2.8rem; }
+  .overlay a { color: var(--fg); border: 0; }
+  .overlay a:hover { color: var(--accent); }
+  .overlay .hint { margin-top: 1rem; color: var(--fg-muted); font-size: 0.78rem; }
+  .overlay kbd { font-family: var(--font-mono); font-size: 0.7rem; background: var(--surface); padding: 0.1em 0.4em; border-radius: 3px; border: 1px solid var(--rule); }
+
+  .title-block { max-width: calc(var(--main-width) + 2 * (var(--gap) + var(--side-width))); margin: 3.5rem auto 2.5rem; padding: 0 2rem; }
+  .title-block .kicker { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .title-block .kicker #build-ts { color: var(--fg-muted); font-weight: 500; margin-left: 0.25em; }
+  .title-block h1 { font-family: var(--font-mono); font-weight: 700; font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 0.8rem; }
+  .title-block .sub { color: var(--fg-muted); font-size: 1rem; font-family: var(--font-sans); }
+
+  main { max-width: var(--main-width); margin: 0 auto; padding: 0 2rem 6rem; }
+
+  article h2 {
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--accent); margin: 4rem 0 0.7rem; padding-top: 2.2rem; border-top: 1px solid var(--rule);
+    clear: both;
+    scroll-margin-top: 5rem;
+  }
+  article h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 2rem; }
+  article h3 {
+    font-family: var(--font-mono); font-weight: 700; font-size: 1.22rem; line-height: 1.35; letter-spacing: -0.005em;
+    margin: 2rem 0 1.2rem; color: var(--fg);
+    clear: both;
+    scroll-margin-top: 5rem;
+  }
+  article h3 .q { color: var(--accent); }
+
+  article p { margin: 0 0 1.1rem; }
+  article blockquote {
+    border-left: 3px solid var(--accent-mid); margin: 1.5rem 0;
+    background: var(--accent-light); padding: 0.9rem 1.2rem; border-radius: 0 4px 4px 0;
+  }
+  article blockquote p { margin: 0.4rem 0; }
+  article blockquote strong:first-child { color: var(--accent); font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: inline-block; margin-right: 0.3em; }
+  article ul, article ol { padding-left: 1.4rem; }
+  article li { margin-bottom: 0.45rem; }
+
+  article table {
+    border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.88rem;
+    width: 100%; background: #fff;
+    border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+  }
+  article table th, article table td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.5; }
+  article table tr:last-child td { border-bottom: 0; }
+  article table th { font-family: var(--font-mono); font-weight: 700; color: var(--fg); background: var(--surface); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  article table td strong { color: var(--fg); }
+  article table code { font-size: 0.84em; }
+
+  /* Sidenote system — floats into right margin.
+     No wrap-level clear: asides live in the negative-margin gutter and don't
+     reserve flow width in the main column, so they can extend past their anchor
+     paragraph without pushing following content down. Individual asides still
+     clear:right so they stack vertically in the gutter across wraps. Section
+     headings (h2, h3) clear:both to prevent sidenote leak across questions. */
+  aside.sn {
+    float: right; clear: right;
+    width: var(--side-width);
+    margin: 0.2rem calc(-1 * (var(--side-width) + var(--gap))) 0.9rem 1.3rem;
+    font-family: var(--font-sans); font-size: 0.78rem; line-height: 1.5; color: var(--fg-muted);
+    padding-left: 0.9rem; border-left: 2px solid var(--accent-mid);
+  }
+  aside.sn .sn-num { display: inline-block; font-weight: 700; color: var(--accent); margin-right: 0.4em; font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.85em; }
+  aside.sn a { color: var(--fg); border-bottom-color: var(--rule); }
+  aside.sn a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Gonzalo Comment: reader-feedback sidenote variant.
+     Same float/typography as sn, distinct border and label so the reader
+     can tell commentary apart from the author's own citations. */
+  aside.sn.gc { border-left-color: var(--secondary); background: #fff9f3; padding-top: 0.35rem; padding-bottom: 0.4rem; border-radius: 0 3px 3px 0; }
+  aside.sn.gc .gc-label {
+    display: block;
+    font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700;
+    color: var(--secondary); text-transform: uppercase; letter-spacing: 0.09em;
+    margin-bottom: 0.35rem;
+  }
+  aside.sn.gc em { color: var(--fg); font-style: italic; font-weight: 600; }
+
+  .ref-marker { color: var(--accent); font-size: 0.72em; font-weight: 700; padding: 0 0.12em; vertical-align: super; line-height: 0; cursor: pointer; font-family: var(--font-mono); }
+  .ref-marker:hover { color: var(--secondary); }
+
+  /* Interactive four-interface exercise */
+  .interactive { margin: 3rem 0; border: 1px solid var(--rule); border-radius: 6px; background: #fff; overflow: hidden; }
+  .interactive > header.ix {
+    background: var(--accent-light); padding: 1rem 1.2rem; border-bottom: 1px solid var(--rule);
+    position: static; backdrop-filter: none;
+  }
+  .interactive > header.ix .kick { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-weight: 700; margin-bottom: 0.3rem; }
+  .interactive > header.ix .task { font-family: var(--font-sans); font-size: 1rem; color: var(--fg); font-weight: 500; }
+  .interactive > header.ix .task code { background: #fff; border: 1px solid var(--rule); padding: 0.12em 0.4em; font-size: 0.9em; color: var(--fg); }
+
+  .interactive .tabs { display: flex; border-bottom: 1px solid var(--rule); background: var(--surface-2); padding: 0; }
+  .interactive .tab {
+    flex: 1; border: 0; background: transparent; padding: 0.9rem 0.5rem 0.75rem; cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--fg-muted); letter-spacing: 0.04em;
+    text-transform: uppercase; border-bottom: 2px solid transparent; transition: color 120ms, border-color 120ms, background 120ms;
+  }
+  .interactive .tab:hover { color: var(--fg); background: rgba(255,255,255,0.6); }
+  .interactive .tab.active { color: var(--accent); border-bottom-color: var(--accent); background: #fff; }
+  .interactive .tab small { display: block; font-weight: 400; font-size: 0.66rem; color: var(--fg-muted); margin-top: 0.2rem; letter-spacing: 0.02em; text-transform: none; font-family: var(--font-sans); }
+  .interactive .tab.active small { color: var(--accent-mid); }
+
+  .interactive .panel { display: none; padding: 1.3rem 1.4rem 1.4rem; }
+  .interactive .panel.active { display: block; }
+  .interactive .role { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-muted); margin: 1rem 0 0.4rem; font-weight: 700; }
+  .interactive .role:first-child { margin-top: 0; }
+  .interactive .role em { color: var(--secondary); font-style: normal; font-weight: 700; }
+  .interactive pre { margin: 0; font-size: 0.76rem; padding: 0.9rem 1.1rem; }
+
+  .interactive .chat { background: var(--accent-light); border: 1px solid var(--rule); border-radius: 4px; padding: 0.95rem 1.1rem; font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.55; color: var(--fg); }
+  .interactive .chat .turn { margin-bottom: 0.8rem; }
+  .interactive .chat .turn:last-child { margin-bottom: 0; }
+  .interactive .chat .who { display: inline-block; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; color: var(--fg-muted); margin-right: 0.6em; }
+  .interactive .chat .who.agent { color: var(--accent); }
+  .interactive .chat .tool { font-family: var(--font-mono); font-size: 0.76rem; background: #fff; border: 1px dashed var(--accent-mid); padding: 0.55rem 0.75rem; margin-top: 0.4rem; border-radius: 3px; color: var(--fg); white-space: pre-wrap; }
+  .interactive .chat .tool-desc { font-family: var(--font-mono); font-size: 0.74rem; background: var(--secondary-light); border: 1px solid #f0d3b5; padding: 0.55rem 0.75rem; margin-top: 0.5rem; border-radius: 3px; color: var(--secondary-dark); }
+  .interactive .chat .tool-desc b { color: var(--secondary-dark); font-weight: 700; }
+  .interactive .comment { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed var(--rule); font-size: 0.88rem; color: var(--fg); }
+  .interactive .comment strong { color: var(--accent); font-family: var(--font-mono); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; margin-right: 0.5em; display: inline-block; }
+
+  footer { max-width: calc(var(--main-width) + 2 * (var(--gap) + var(--side-width))); margin: 4rem auto 3rem; padding: 2rem; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 0.82rem; color: var(--fg-muted); text-align: center; }
+  footer a { color: var(--fg); }
+  .toast {
+    position: fixed; left: 50%; bottom: max(2rem, env(safe-area-inset-bottom, 1rem) + 1rem);
+    transform: translateX(-50%) translateY(calc(100% + 4rem));
+    background: var(--fg); color: #fff;
+    padding: 0.7rem 1.1rem; border-radius: 3px;
+    font-family: var(--font-mono); font-size: 0.8rem;
+    opacity: 0; pointer-events: none;
+    transition: transform 220ms ease, opacity 180ms ease;
+    z-index: 30;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 1100px) {
+    aside.sn {
+      float: none; clear: none; width: auto;
+      margin: 0.25rem 0 1rem 1.5rem;
+      border-left: 3px solid var(--accent-mid); background: var(--accent-light);
+      padding: 0.55rem 0.85rem; border-radius: 0 3px 3px 0; display: none;
+    }
+    aside.sn.open { display: block; }
+  }
+  /* ---- Mobile header (unified across sibling sites) ---- */
+  @media (max-width: 700px) {
+    header.site { padding: 0.6rem 0.9rem; gap: 0.55rem; flex-wrap: nowrap; min-height: 0; }
+    header.site .brand { font-size: 0.68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    header.site .brand .brand-long { display: none; }
+    header.site .actions { gap: 0.4rem; flex-shrink: 0; }
+    header.site button { padding: 0.5rem 0.7rem; font-size: 0.72rem; min-height: 40px; }
+    header.site button .sh { display: none; }
+    .title-block, main { padding-left: 1.25rem; padding-right: 1.25rem; }
+    article h3 { font-size: 1.1rem; }
+    .interactive .tabs { flex-wrap: wrap; }
+    .interactive .tab { flex: 1 1 50%; }
+    .section-indicator { display: none; }
+  }
+  @media (max-width: 480px) {
+    header.site { padding: 0.55rem 0.75rem; gap: 0.4rem; }
+    header.site .brand { display: none; }
+    header.site button { padding: 0.45rem 0.6rem; font-size: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="fill" id="progress-fill"></div></div>
+
+<header class="site">
+  <div class="brand">Protocolized · <b>P4BSIG<span class="brand-long"> Working Paper</span></b></div>
+  <div class="actions">
+    <button id="open-toc" class="ghost" title="Jump to a question (⌘K)">☰ Questions <span class="sh">⌘K</span></button>
+    <button id="download-md" title="Download full markdown for LLM discussion">↓ Markdown <span class="sh">⌘D</span></button>
+  </div>
+</header>
+
+<div class="section-indicator" id="section-indicator" aria-hidden="true"><b id="section-num">Q1</b><span id="section-name">Ontology</span></div>
+
+<div class="overlay" id="toc-overlay" role="dialog" aria-modal="true" aria-label="Question navigation">
+  <div class="panel-box">
+    <h4>Jump to a question</h4>
+    <ol>
+      <li><a href="#q1">What is an API, structurally?</a></li>
+      <li><a href="#q2">What do APIs solve — and what do they cost?</a></li>
+      <li><a href="#q3">Why multiple interfaces per product?</a></li>
+      <li><a href="#q4">Versioning, breaking changes, deprecation</a></li>
+      <li><a href="#q5">Authentication vs authorization</a></li>
+      <li><a href="#q6">Rate limits, idempotency, circuit breakers</a></li>
+      <li><a href="#q7">What makes an agent a distinct consumer class?</a></li>
+      <li><a href="#q8">Is MCP a new thing, or an SDK for agents?</a></li>
+      <li><a href="#q9">Permission surface and model capability</a></li>
+      <li><a href="#q10">When the API governs physical motion</a></li>
+    </ol>
+    <div class="hint">Press <kbd>Esc</kbd> to close · <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> anytime · <kbd>J</kbd>/<kbd>K</kbd> to step through sections</div>
+  </div>
+</div>
+
+<div class="title-block">
+  <div class="kicker">Updated · <span id="build-ts">2026-04-18 18:07 UTC</span></div>
+  <h1>APIs: What They Are, What They Solve, What They Cost</h1>
+  <div class="sub">Ten questions for protocol-literate operators.</div>
+</div>
+
+<main>
+<article>
+
+<h2>Orientation</h2>
+<p>The paper answers ten questions about APIs in the order a protocol-literate operator needs them answered. Each question defines any concepts it introduces; later questions build only on vocabulary already established. Analogies and worked examples are inline and used once. A closing note lists adjacent topics deliberately out of scope.</p>
+
+<!-- ============ Q1 ============ -->
+<h2 id="q1">§ 1 · Foundations</h2>
+<h3><span class="q">Q1 ·</span> What is an API, structurally — and how does it relate to the software product it exposes and to that product's other interfaces?</h3>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">1</span>The definition of <em>interface</em> here is intentionally broader than the W3C or POSIX uses; it includes GUIs, CLIs, SDKs, and network APIs as species of the same genus. See Fielding's dissertation, §5.1.5 on the uniform interface constraint: <a href="https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm" target="_blank" rel="noopener">Fielding 2000</a>.</aside>
+<p>Start with the thing the API is an interface <em>to</em>. A <strong>software product</strong> is a system with internal logic and state that does something useful — process payments, schedule robots, summarise documents. The product itself is invisible to anyone outside it. An <strong>interface</strong> is any surface through which an outside actor can reach the product. Every non-trivial product has more than one interface, because different actors need different surfaces.<span class="ref-marker">¹</span></p>
+</div>
+
+<p>Two properties of interfaces matter throughout the paper. First, every interface is simultaneously a <strong>door and a wall</strong>: what it admits, it admits; what it refuses, it refuses. Offering an interface is not only an act of access — it is an act of scope. Second, the ontology is <strong>recursive</strong>: a subsystem inside a larger product is itself a product, with its own interfaces and its own consumer classes. Most arguments below apply equally to external APIs and internal service boundaries, with cost profiles that differ in magnitude, not in structure.</p>
+
+<blockquote><p><strong>Analogy — a restaurant's kitchen and its doors.</strong> The kitchen is the product: ingredients, recipes, capacity, liabilities. The dining room with waiters is one door (for walk-in diners). The phone line is another (for structured remote orders). The drive-through window is a third (for quick human orders). All are doors to the same kitchen. Which door you use depends on who you are. The kitchen does not change; the doors do.</p></blockquote>
+
+<p>A <strong>consumer class</strong> is a population of actors that uses the same kind of interface for the same kind of reason: humans-with-browsers, Python programs, iOS apps, SREs at a shell, LLM agents. Each class has different cognitive and operational needs, which is why a product ends up with more than one door.</p>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">2</span>The term "application program interface" first appears in <a href="https://en.wikipedia.org/wiki/API#History_of_the_term" target="_blank" rel="noopener">Cotton &amp; Greatorex, AFIPS 1968</a>. Mozilla's contemporary glossary gloss: <a href="https://developer.mozilla.org/en-US/docs/Glossary/API" target="_blank" rel="noopener">MDN</a>.</aside>
+<p>An <strong>API (Application Programming Interface)</strong> is one specific species of interface: <em>a <strong><em>programmatic</em></strong>, <strong><em>versioned</em></strong>, <strong><em>governed contract</em></strong> through which software consumers reach the product, typically across a process or network boundary.</em><span class="ref-marker">²</span> Four words are doing load-bearing work:</p>
+</div>
+
+<ul>
+<li><strong><em>Programmatic</em></strong> — called by code, not by a human clicking. Distinguishes the API from the UI.</li>
+<li><strong><em>Contract</em></strong> — a <em>publisher-governed</em> commitment that a given request will produce a given response, within stated limits. This contract is <strong>asymmetric</strong>, not bilateral: the publisher sets terms; the consumer accepts them; remedy on breach is limited to what the publisher offers.</li>
+<li><strong><em>Versioned</em></strong> — the commitment changes over time; the version names a point in that history.</li>
+<li><div class="sn-wrap">
+<aside class="sn"><span class="sn-num">3</span><em>Hardness</em> as used here is from <a href="https://stark.mirror.xyz/n2UpRqwdf7yjuiPKVICPpGoUNeDhlWxGqjulrlpyYi0" target="_blank" rel="noopener">Josh Stark, "Atoms, Institutions, Blockchains" (2023)</a>: "the capacity of a system to make something very likely to be true in the future."</aside>
+<strong><em>Governed</em></strong> — a <strong>governor</strong> (whoever maintains the product) is the only party who can change the contract. The API's <strong>hardness</strong> — the extent to which its terms can be relied on in the future — is borrowed from that governor. An API is as hard as the institution behind it.<span class="ref-marker">³</span>
+</div></li>
+</ul>
+
+<p>The other interfaces most mature products expose — <strong>UI</strong> (for humans), <strong>SDK</strong> (an ergonomic wrapper over the API for a specific consumer class's native idiom), <strong>CLI</strong> (an ergonomic wrapper for humans at a shell), and <strong>MCP server</strong> (an ergonomic wrapper for LLM agents) — are not competitors to the API. They are derivative interfaces: each one re-expresses the API's capabilities in a form suited to a different consumer class. The API is the root contract; SDK, CLI, and MCP server are translations of it.</p>
+
+<p>This ontology — product, interface, consumer class, contract, governor, hardness, door-and-wall, recursive — is the backbone for everything that follows.</p>
+
+<!-- ============ Q2 ============ -->
+<h2 id="q2">§ 2 · What APIs Solve, What They Cost</h2>
+<h3><span class="q">Q2 ·</span> What problem does an API solve that direct integration, shared memory, or human coordination don't — and what persistent tension does the solution introduce?</h3>
+
+<p>The alternatives to an API are: let the consumer share the product's database, link the product's code as a library, or coordinate between humans on both sides. Each works narrowly and fails at scale.</p>
+<ul>
+<li>Shared database = every schema change is a cross-team migration.</li>
+<li>Shared library = every consumer is pinned to the product's internal language and release cycle.</li>
+<li>Human coordination = the speed of a phone call is the speed of the integration.</li>
+</ul>
+
+<p><strong>The problem an API solves</strong> is coordination between a product and consumers who do not share its code, its ownership, or its release schedule. The API draws a line: on your side, the product can evolve; on the consumer's side, their application can evolve; across the line, a versioned contract stabilises the interaction.</p>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">4</span>Enterprise tier price and academic-access shutdown reported in <a href="https://independenttechresearch.org/letter-twitters-new-api-plans-will-devastate-public-interest-research/" target="_blank" rel="noopener">Coalition for Independent Technology Research, Feb 2023</a>; downstream research decline in <a href="https://arxiv.org/abs/2404.07340" target="_blank" rel="noopener">"RIP Twitter API" (arXiv:2404.07340)</a>.</aside>
+<aside class="sn"><span class="sn-num">5</span>Apollo developer Christian Selig's projected cost and shutdown: <a href="https://www.macrumors.com/2023/05/31/reddit-api-changes-pricing-apollo/" target="_blank" rel="noopener">MacRumors, 31 May 2023</a>; <a href="https://techcrunch.com/2023/05/31/popular-reddit-app-apollo-may-go-out-of-business-over-reddits-new-unaffordable-api-pricing/" target="_blank" rel="noopener">TechCrunch</a>.</aside>
+<p><strong>The persistent tension</strong> follows directly from Q1's asymmetry. The line has an owner. Whoever owns the contract can change it, price it, deprecate it, rate-limit it, or withdraw it. Every API dependency is therefore an exposure to that governance. The 2023 retrenchments — Twitter pricing its API tier at $42,000/month<span class="ref-marker">⁴</span>, Reddit making Apollo's projected cost $20M/year<span class="ref-marker">⁵</span> — are the canonical illustrations. Consumers who thought they had stable infrastructure discovered they had a counterparty.</p>
+</div>
+
+<p>Two patterns exist because they protect the consumer from this tension:</p>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">6</span>From Eric Evans' <a href="https://www.dddcommunity.org/book/evans_2003/" target="_blank" rel="noopener"><em>Domain-Driven Design</em> (2003)</a>. A working summary: <a href="https://martinfowler.com/bliki/AnticorruptionLayer.html" target="_blank" rel="noopener">Martin Fowler's bliki</a>.</aside>
+<blockquote><p><strong>Anti-corruption layer.</strong> When you integrate with an external API whose model is incompatible with your domain, wrap it. The wrapper translates the publisher's vocabulary into yours. When the publisher renames a field, you change one file, not thirty.<span class="ref-marker">⁶</span></p></blockquote>
+</div>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">7</span>Coined by Martin Fowler, <a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener">"StranglerFigApplication"</a>.</aside>
+<blockquote><p><strong>Strangler fig.</strong> When migrating off an API you no longer want, put a facade in front that routes some calls to the old contract and some to the new, and retire endpoints path-by-path. The alternative — a big-bang cutover — is the most common cause of migration failure.<span class="ref-marker">⁷</span></p></blockquote>
+</div>
+
+<p>The same tension appears inside your own product (Q1's recursive ontology): how your services talk to each other. The choice between <em>synchronous</em> (HTTP, gRPC) and <em>asynchronous</em> (MQTT, Kafka, events) calls is not a style preference but a placement of this tension. Synchronous chains couple timing and availability across service boundaries; asynchronous calls make the coupling visible as queue depth and lag.</p>
+
+<p>Consider a Black Friday checkout built as a five-hop synchronous chain: <em>Cart → Tax → Inventory → Payment → Fulfilment</em>. At normal load each hop takes 250 ms and the chain finishes inside the 3-second client timeout. Under peak load each hop stretches to 900 ms, and the chain runs past 4.5 seconds — every customer sees failure. The fix is not longer timeouts; longer timeouts hide the coupling. The fix is to break the chain: keep Cart, Tax, Inventory synchronous (the user genuinely needs the total), but make Fulfilment an event that downstream consumes at its own pace. This is a tension-placement decision, not a performance tuning.</p>
+
+<!-- ============ Q3 ============ -->
+<h3 id="q3"><span class="q">Q3 ·</span> Why do mature products end up with more than one interface — and what problem is each additional surface solving for a different consumer class?</h3>
+
+<p>If Q2 was about the line between a product and its consumers, Q3 is about why that line has to be drawn several times — once per consumer class.</p>
+
+<p>From Q1: each interface exists for a consumer class with distinct needs. The reason a product ends up with several interfaces is that the same underlying capabilities have to be <em>re-expressed</em> for consumers that read the world differently.</p>
+
+<table>
+<thead><tr><th>Consumer class</th><th>Interface</th><th>Problem that surface solves</th></tr></thead>
+<tbody>
+<tr><td>Humans clicking through a page</td><td><strong>UI</strong></td><td>Affordance, perception, forgiveness of imprecise input</td></tr>
+<tr><td>Programs talking over the network</td><td><strong>API</strong></td><td>A neutral, long-lived contract across processes</td></tr>
+<tr><td>Developers writing in language X</td><td><strong>SDK</strong></td><td>The <strong>native idiom of the consumer class</strong> — typically a programming language, sometimes something else (see Q8). Ergonomic: auth helpers, pagination, retries.</td></tr>
+<tr><td>Humans at a shell at 2 a.m.</td><td><strong>CLI</strong></td><td>Stable commands, readable errors, shell-friendly output, scriptability</td></tr>
+<tr><td>LLM agents</td><td><strong>MCP server</strong></td><td>A manifest the agent reads <em>semantically</em> to choose which action to take (Q8)</td></tr>
+</tbody>
+</table>
+
+<p>Widening the SDK definition beyond "programming language" is the small but load-bearing move the paper's MCP argument rests on later: an SDK is any ergonomic wrapper in a consumer class's native idiom.</p>
+
+<p>Three rules follow:</p>
+<ol>
+<li><strong>Don't publish a surface for a consumer class that doesn't exist.</strong> If your API is consumed only by browsers you own, you need a typed fetch wrapper, not an SDK.</li>
+<li><strong>Parity across capabilities.</strong> If the API exposes an endpoint, every SDK you publish should expose it.</li>
+<li><strong>Independent versioning of release cadence.</strong> SDK 4.3 in Go and SDK 5.1 in Python can coexist — parity is about capability coverage, independent cadence is about release tempo. What you can't do is ship a feature in one SDK's next release and not the others.</li>
+</ol>
+
+<p>The underlying principle: each interface encodes the publisher's opinion about what a specific consumer class needs. That opinion is load-bearing. A half-hearted SDK damages the API more than no SDK at all.</p>
+
+<!-- ============ Q4 ============ -->
+<h2 id="q4">§ 3 · The Problem of Change Over Time</h2>
+<h3><span class="q">Q4 ·</span> What problem does versioning solve, what does every versioning strategy trade off, and what is deprecation discipline actually buying you?</h3>
+
+<p>A contract (Q1) is useful only if it holds still. It is evolvable only if it is allowed to change on a schedule everyone can see. <strong>Versioning</strong> makes both true at once: at any point, one specific version is the contract; between one version and the next, the contract is allowed to differ.</p>
+
+<p>Four strategies, ordered roughly by operational cost.</p>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">8</span>Stripe's approach described in <a href="https://stripe.com/blog/api-versioning" target="_blank" rel="noopener">Brandur Leach, "APIs as infrastructure: future-proofing Stripe with versioning" (Stripe Blog, 2017)</a>. Stripe has maintained "almost a hundred backwards-incompatible upgrades" while keeping all versions working since 2011.</aside>
+<table>
+<thead><tr><th>Strategy</th><th>Best fit</th></tr></thead>
+<tbody>
+<tr><td><strong>Dated rolling</strong> (<code>2024-09-01</code>, Stripe's pattern — account pinned on first call)<span class="ref-marker">⁸</span></td><td>Large public APIs with many third-party consumers</td></tr>
+<tr><td><strong>URL-path</strong> (<code>/v1/</code>, <code>/v2/</code>)</td><td>Mobile/desktop clients in the wild with long support windows</td></tr>
+<tr><td><strong>Header-based</strong> (<code>Accept: …v2+json</code>)</td><td>Small APIs, fast iteration</td></tr>
+<tr><td><strong>SDK-semver, API undated</strong></td><td>First-party integrations only</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Stripe has "maintained compatibility with every version of our API since the company's inception in 2011," through "almost a hundred backwards-incompatible upgrades" (Leach, Stripe 2017). That consumer experience is exceptional and expensive. Pick the strategy your team can honour for three years.</p>
+
+<p><strong>What counts as a breaking change</strong> is wider than most teams realise. Schema-level breaks are the obvious cases:</p>
+
+<table>
+<thead><tr><th>Schema change</th><th>Breaking?</th><th>Why it hurts</th></tr></thead>
+<tbody>
+<tr><td>Add optional field</td><td>No</td><td>—</td></tr>
+<tr><td>Add new endpoint</td><td>No</td><td>—</td></tr>
+<tr><td>Add new enum value</td><td><strong>Yes</strong> for strict consumers</td><td>A 2019 switch on <code>SETTLED</code>/<code>FAILED</code> silently mis-routes <code>PARTIALLY_SETTLED</code></td></tr>
+<tr><td>Rename field</td><td>Yes</td><td>Every exact-match deserializer fails</td></tr>
+<tr><td>Change field type</td><td>Yes</td><td>Arithmetic on <code>"100" * 0.08</code> produces tax garbage</td></tr>
+<tr><td>Tighten validation</td><td>Yes</td><td>Legacy test data with <code>foo@localhost</code> now 400s</td></tr>
+<tr><td>Remove field</td><td>Yes</td><td>Downstream <code>null</code> checks were never added</td></tr>
+</tbody>
+</table>
+
+<p>But most production incidents come from <strong>silent behavioural breaks</strong> that don't show up in a schema diff:</p>
+<ul>
+<li><strong>Default-value changes.</strong> A field that defaulted to <code>false</code> now defaults to <code>true</code>. Every consumer that omitted the field behaves differently overnight.</li>
+<li><strong>Error-response changes.</strong> Changing a <code>404</code> to a <code>410</code>, or altering the shape of the error body, breaks every handler that switched on the old codes.</li>
+<li><strong>Behavioural contract drift.</strong> Pagination ordering shifts, rate-limit envelopes tighten, timeout behaviours change, previously-lax nullability becomes strict. No schema diff catches any of these; they surface only in production.</li>
+</ul>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">9</span><a href="https://github.com/oasdiff/oasdiff" target="_blank" rel="noopener">oasdiff</a> (OpenAPI diff with breaking-change detection); <a href="https://buf.build/docs/breaking/overview" target="_blank" rel="noopener">buf breaking</a> (Protobuf schema breaking-change detection).</aside>
+<p>Enforce the schema cases with <code>oasdiff</code> or <code>buf breaking</code><span class="ref-marker">⁹</span> in CI. The behavioural cases require contract tests, paired environments, and consumer-run canaries — no amount of schema tooling catches them.</p>
+</div>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">10</span><a href="https://datatracker.ietf.org/doc/html/rfc8594" target="_blank" rel="noopener">RFC 8594, "The Sunset HTTP Header Field"</a> (Wilde, 2019). Companion: <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-deprecation-header" target="_blank" rel="noopener">the Deprecation header draft</a>.</aside>
+<p><strong>Deprecation discipline</strong> converts a breaking change from an incident into a project. Minimum practice: announce via your normal release channel, emit the <code>Sunset</code> HTTP header (RFC 8594)<span class="ref-marker">¹⁰</span> along with a <code>Deprecation: true</code> header, track consumption by consumer identity, provide migration tooling, and keep a rollback plan. <strong>If you cannot name the three largest consumers of an endpoint you intend to deprecate, you are not ready to deprecate it.</strong></p>
+</div>
+
+<!-- ============ Q5 ============ -->
+<h2 id="q5">§ 4 · The Trust and Blast-Radius Problems</h2>
+<h3><span class="q">Q5 ·</span> What problem does authentication solve that authorization doesn't — and what tension does credential scope and lifetime create with operational convenience?</h3>
+
+<p>Two distinct problems hide under the word "auth":</p>
+<ul>
+<li><strong>Authentication</strong> establishes <em>who</em> a request is from. The consumer proves identity.</li>
+<li><strong>Authorization</strong> establishes <em>what</em> the identified consumer is allowed to do. The product consults a policy.</li>
+</ul>
+
+<p>Conflating them — "they have the key, so let them do anything" — is the origin of most auth incidents. A single production API key used everywhere is an authentication credential doing an authorization job it cannot do safely.</p>
+
+<blockquote><p><strong>Analogy — hotel keycards, not house keys.</strong> A long-lived production key is a house key: lose it and you change every lock. A short-lived scoped token is a hotel keycard: it expires at checkout, only opens your room, and the front desk can revoke it instantly without rekeying the building.</p></blockquote>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">11</span>Workload identity primary sources: <a href="https://spiffe.io/docs/latest/spiffe-about/overview/" target="_blank" rel="noopener">SPIFFE</a> / <a href="https://spiffe.io/docs/latest/spire-about/" target="_blank" rel="noopener">SPIRE</a>; <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html" target="_blank" rel="noopener">AWS IRSA</a>; <a href="https://cloud.google.com/iam/docs/workload-identity-federation" target="_blank" rel="noopener">GCP workload identity federation</a>.</aside>
+<p>The tension is between credential <em>scope and lifetime</em> and <em>operational convenience</em>. Short, narrowly-scoped credentials are safer but require rotation, refresh, and secret management. Long, broadly-scoped credentials are convenient but catastrophic when leaked. Defensible defaults for 2026:</p>
+</div>
+
+<ul>
+<li><strong>Workload identity as the substrate</strong><span class="ref-marker">¹¹</span> — SPIFFE/SPIRE, AWS IRSA, GCP workload identity federation, Kubernetes service-account tokens. Credentials are bound to a workload, not stored as files.</li>
+<li><strong>mTLS</strong> for in-cluster machine-to-machine.</li>
+<li><div class="sn-wrap">
+<aside class="sn"><span class="sn-num">12</span><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/" target="_blank" rel="noopener">OAuth 2.1 consolidated draft (IETF)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc7636" target="_blank" rel="noopener">RFC 7636 PKCE</a>.</aside>
+<strong>OAuth 2.1</strong>  — authorization-code + PKCE for user-delegated, client-credentials for service-to-service.<span class="ref-marker">¹²</span>
+</div></li>
+<li><strong>Short-lived access tokens</strong> (~15 min) with rotated refresh.</li>
+<li><strong>Per-tenant, per-environment, per-purpose</strong> API keys where workload identity isn't available.</li>
+<li><strong>Secrets in a manager</strong> (Vault, AWS Secrets Manager), never in code, never on disk.</li>
+</ul>
+
+<p>Most firms are mid-transition: long-lived keys in a secret manager, migrating to workload identity as mesh and platform maturity allow. The bridge pattern is short-lived credentials fetched at runtime; the destination is identity bound to the workload itself.</p>
+
+<p>The principle scales down to one rule: <em>a credential should name exactly what it is allowed to do, for exactly as long as it is needed, and no more.</em> When a shared <code>.env</code> leaks onto GitHub — and it will — the blast radius is set by what that credential was allowed to do for how long.</p>
+
+<!-- ============ Q6 ============ -->
+<h3 id="q6"><span class="q">Q6 ·</span> What problem do rate limits, idempotency keys, and circuit breakers solve jointly — and why must they come as a set?</h3>
+
+<p>Each protects against a different failure mode; each alone leaves a gap the others close.</p>
+
+<p><strong>Rate limits</strong> protect the product from consumer volume. Without them, one misbehaving client drowns the service — including for consumers doing nothing wrong.</p>
+
+<blockquote><p><strong>Analogy — the onramp metering light.</strong> LA freeways meter onramps so a sudden surface-street surge doesn't collapse the highway. Rate limiters meter consumers so a sudden client-side surge doesn't collapse the API.</p></blockquote>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">13</span><a href="https://datatracker.ietf.org/doc/html/rfc6585" target="_blank" rel="noopener">RFC 6585 (Additional HTTP Status Codes, including 429)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc9331" target="_blank" rel="noopener">RateLimit header fields draft</a>.</aside>
+<p>Enforce in multiple dimensions (per-key AND per-tenant AND per-endpoint AND a global concurrency ceiling); return <code>429</code> with <code>Retry-After</code>, <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>, <code>X-RateLimit-Reset</code>; use a token bucket for bursty-but-capped traffic, a sliding window for stricter regulatory contexts.<span class="ref-marker">¹³</span> A single global RPS ceiling lets one misbehaving consumer starve every other customer.</p>
+</div>
+
+<p><strong>Idempotency keys</strong> protect the consumer from retry-induced duplication. The gas-pump pattern (swipe, glitch, swipe again, charged once) is the payment network's use of idempotency keys. Every write endpoint accepts <code>Idempotency-Key: &lt;uuid&gt;</code>; on retry, the server returns the stored response verbatim. This single design decision eliminates an entire category of duplicate-charge, duplicate-shipment, duplicate-ticket incidents.</p>
+
+<p><strong>Circuit breakers</strong> protect the consumer from a degraded downstream. A breaker trips before the wiring melts; an open circuit breaker trips before a degraded dependency takes your service down with it. A companion pattern — <strong>bulkheading</strong> — allocates separate thread or connection pools per downstream so one slow dependency cannot starve the others.</p>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">14</span>The canonical treatment is AWS's <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank" rel="noopener">"Exponential Backoff And Jitter"</a> (Brooker, 2015).</aside>
+<p>Retries, whenever they happen, must use <strong>exponential backoff with full jitter</strong>. Without jitter, retries synchronise and produce a thundering herd when the downstream recovers.<span class="ref-marker">¹⁴</span> <code>Retry-After</code> is advisory, not normative; clients must cap their own retries (a reasonable default: three attempts, exponential delay from 100 ms with full jitter, then fail fast).</p>
+</div>
+
+<p>They come as a set because each one's gap is another's solution. A rate limit without idempotency punishes the honest retry of a legitimately-lost response. Idempotency without rate limits lets an infinite-loop client hammer the endpoint at machine speed. Circuit breakers without jittered retry cause thundering herds when a service recovers. The set, operated together, bounds both how much damage one consumer can do and how much damage one degraded dependency can cause you. No single credential, endpoint, region, or consumer should be able to take down the whole API.</p>
+
+<!-- ============ Q7 ============ -->
+<h2 id="q7">§ 5 · The Agent Problem</h2>
+<h3><span class="q">Q7 ·</span> What makes an LLM agent a distinct consumer class — and what new problems does it introduce for API design?</h3>
+
+<p>Blast-radius reasoning in Q6 assumes you know who your consumers are. A new consumer class with different properties breaks that assumption. LLM agents are that class — distinct from human developers and headless services on four axes:</p>
+
+<ol>
+<li><strong>They read natural language, not types.</strong> A human developer parses a function signature; an agent parses the description. Tool names and docstrings shift from documentation (read once, at write-time) to <em>routing signal</em> (read on every invocation).</li>
+<li><strong>They re-decide which call to make on every invocation.</strong> A developer writes code once and runs it a thousand times. An agent reconsiders. Tool interfaces must be safe under "forgotten context between calls" — stateless, idempotent, tightly-typed.</li>
+<li><strong>They can be authored by someone you don't control.</strong> Your consumer might be Claude Desktop, Cursor, or an end-user's custom harness — hosts you have no contract with.</li>
+<li><div class="sn-wrap">
+<aside class="sn"><span class="sn-num">15</span><a href="https://www.postman.com/state-of-api/" target="_blank" rel="noopener">Postman, 2025 State of the API Report (7th edition)</a>.</aside>
+<strong>They scale beyond any prior consumer class's patience.</strong> Postman's 2025 report records agent API traffic growing 40% year-over-year, and "51% of developers worry about unauthorized or excessive API calls from AI agents — their number one security concern."<span class="ref-marker">¹⁵</span> Agents burst at machine speed for <em>semantic</em> reasons ("try a different phrasing") that existing retry detectors don't recognise.
+</div></li>
+</ol>
+
+<p>These properties don't break Q1's ontology — an API is still a contract between a product and a consumer class — but they change the contract's shape. The next two questions are about that change.</p>
+
+<!-- ============ Q8 ============ -->
+<h3 id="q8"><span class="q">Q8 ·</span> Is MCP a new architectural thing — or is it the SDK pattern specialised for the agent consumer class? What problem does the semantic SDK actually solve?</h3>
+
+<p>From Q3's widened definition: an SDK is an ergonomic wrapper over the API in the consumer class's native idiom. <strong>MCP is that, for agents.</strong> It is not a new architectural category; it is the SDK pattern specialised for a consumer class whose native idiom is natural language. The mapping is nearly exact:</p>
+
+<div class="sn-wrap">
+<aside class="sn gc"><span class="gc-label">Considerations</span><em>Context overload, and where Skills actually sit.</em> Most hosts today inject every connected server's full tool schema into every model turn. Three or four servers quickly crowds context. MCP 2025-06 adds elicitation/sampling but no progressive-disclosure equivalent at the tool-schema level. Anthropic's Skills (Oct 2025) answer progressive disclosure via SKILL.md frontmatter — only name + description loaded eagerly, body loaded on invocation.<br><br>The right axis for Skills vs MCP is <strong>interaction model, not location</strong>. Skills are prose + scripts the agent reads from disk and executes. MCP is a protocol the agent uses to discover and call tools via JSON-RPC (over stdio or HTTP). Either can be local or remote-reaching: an MCP server can run as a stdio subprocess on the same host; a skill can shell out to a CLI like <code>gws</code>, hit a REST API, or even invoke an MCP tool. So Skills don't "replace MCP for third-party tool exposure" — they compose with it. The distinguishing properties: Skills give you progressive disclosure and Anthropic-specific host support; MCP gives you a wire protocol and cross-vendor interop.</aside>
+<aside class="sn"><span class="sn-num">16</span>MCP architecture primitives (tools, resources, prompts; sampling, elicitation, logging) and transport: <a href="https://modelcontextprotocol.io/docs/concepts/architecture" target="_blank" rel="noopener">MCP docs</a>; <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener">Anthropic announcement, Nov 2024</a>.</aside>
+<table>
+<thead><tr><th>Traditional SDK</th><th>MCP server</th></tr></thead>
+<tbody>
+<tr><td>Method signatures</td><td>Tool names + JSON schemas</td></tr>
+<tr><td>Docstrings</td><td>Tool descriptions</td></tr>
+<tr><td>Auth helpers, retries, pagination</td><td>Auth headers, lifecycle handshake, notifications</td></tr>
+<tr><td>Imported at build time</td><td>Discovered at runtime via <code>tools/list</code></td></tr>
+<tr><td>Consumer: human developer, write-time</td><td>Consumer: LLM agent, run-time</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The word <em>semantic</em> is doing the real work.<span class="ref-marker">¹⁶</span> A traditional SDK binds names lexically, for a consumer that compiles them. A <strong>semantic SDK</strong> binds names <em>and prose</em> for a consumer that evaluates them by meaning. That is why a badly-described MCP tool is broken in a way a badly-named Python method isn't: the Python method still works; the MCP tool gets skipped because the agent can't tell what it's for. The tool description is the <strong>menu</strong> the agent reads before choosing.</p>
+
+<p><strong>What MCP solves that a well-documented raw API plus OpenAPI doesn't</strong> is the same problem every SDK solves — host compatibility and authoring ergonomics for a specific consumer class. Because MCP is a standard, any host (Claude Desktop, Cursor, VS Code, Claude Code) can consume any MCP server without custom integration. Publishing MCP is how you reach the agent consumer class, the same way publishing a Python SDK is how you reach Python developers.</p>
+
+<div class="sn-wrap">
+<aside class="sn gc"><span class="gc-label">Considerations</span><em>Role enforcement, located correctly.</em> A reader-framing to pre-empt: "MCP can't enforce roles like APIs can." The MCP server itself enforces authz with the same primitives any HTTP API uses — scopes, JWT claims, per-tool guards. What is genuinely harder is the <em>host-mediated</em> call path: the host process sometimes injects user credentials, and the tool-description channel is model-interpreted, so "role" can be bent by prompt injection upstream of the server. That is a host/protocol-level property, not an authz-primitive deficiency. The paragraph above locates it correctly as "treat operationally more like a browser extension."</aside>
+<aside class="sn gc"><span class="gc-label">Considerations</span><em>Attack-surface argument for going headless.</em> Matt Webb makes the adjacent security case in <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026): the alternative to dedicated agent tools is agents driving the same browser-based GUI humans use, and that is a larger attack surface than is comfortable once frontier models get good at finding flaws. Webb cites the <a href="https://www.theregister.com/2026/03/16/companies_house_breach/" target="_blank" rel="noopener">Companies House back-button privilege-escalation flaw (Mar 2026)</a> as the kind of defect an agent fleet would discover and exploit faster than a human team could patch. Reinforces the "treat operationally like a browser extension" framing: smaller, purpose-built surfaces (CLI or MCP) are smaller targets than letting an agent drive a full product UI.</aside>
+<aside class="sn"><span class="sn-num">17</span>Indirect prompt injection: <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener">OWASP LLM01:2025</a>; Simon Willison's <a href="https://simonwillison.net/tags/prompt-injection/" target="_blank" rel="noopener">long-running index</a>. On MCP-specific threats: <a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/" target="_blank" rel="noopener">Willison on MCP tool-shadowing</a>.</aside>
+<p><strong>One property has no traditional-SDK analogue, and it matters.</strong> A Python SDK runs inside the consumer's process under their own auth; a malicious SDK is a supply-chain attack on the consumer. An MCP server is a separate process mediated by the agent host, often running under the end-user's credentials and exposing tools discovered dynamically. A malicious MCP server can inject instructions into the agent's context, shadow another server's tool names, or exfiltrate data across servers. Tool namespacing, publisher allowlists, and <strong>indirect prompt injection</strong> (hostile text in retrieved content attempting to redirect the agent) are new failure modes an MCP publisher and consumer both have to reason about.<span class="ref-marker">¹⁷</span> Treat MCP ergonomically like an SDK; treat it operationally more like a browser extension.</p>
+</div>
+
+<p>Which consumer populations warrant the MCP surface:</p>
+
+<div class="sn-wrap">
+<aside class="sn gc"><span class="gc-label">Considerations</span><em>CLI-as-tool is a legitimate third option.</em> For local agents with shell access and a deterministic-behaviour requirement, a CLI wraps an API with tighter process boundaries and rigid positional/flag schema. Agents parse stdout/stderr; authz is whatever the CLI's calling shell has. Google shipped exactly this pattern in early 2026 as <a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener"><code>googleworkspace/cli</code></a> (<code>gws</code>) — a dynamically-generated CLI covering Drive, Gmail, Calendar, Docs, Sheets, Chat, Admin, etc., with 40+ bundled "agent skills" and an optional MCP server in the same binary. Coverage: <a href="https://venturebeat.com/orchestration/google-workspace-cli-brings-gmail-docs-sheets-and-more-into-a-common" target="_blank" rel="noopener">VentureBeat</a>. Nuance worth noting: <code>gws</code> is CLI-first but MCP-capable — agents typically consume it via the bundled MCP server, which means CLI and MCP aren't strictly either/or for the same product.</aside>
+<aside class="sn gc"><span class="gc-label">Considerations</span><em>"Headless everything" — the directional argument for CLI.</em> Matt Webb's <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026) makes the broader case that apps and services move toward exposing tools to personal AIs rather than just visual UI. Three claims worth engaging with: <strong>(1) Personal AI runs on a computer</strong> — the user's laptop or a virtualised one — so what it wants is "little apps it can use directly," not webservers it calls. CLIs fit that shape. <strong>(2) CLIs compose</strong> in the Unix-tools sense: query notes → jump to a spreadsheet → research the web → back to the spreadsheet, all in one session. Apps designed around "user journeys" don't. <strong>(3) Auto-generation is already here</strong> — <a href="https://github.com/HKUDS/CLI-Anything" target="_blank" rel="noopener">CLI-Anything</a> generates CLIs from arbitrary codebases, lowering the cost of shipping this surface. Mild caveat: CLIs still wrap APIs underneath (<code>gws</code> is literally generated from Google's Discovery Service), so the framing is "CLI-over-API as a distinct agent-facing surface," not "CLI instead of API."</aside>
+<table>
+<thead><tr><th>Who's calling</th><th>Publish</th></tr></thead>
+<tbody>
+<tr><td>Third-party agent hosts you don't control</td><td><strong>MCP</strong> — host compatibility is the whole point</td></tr>
+<tr><td>Your own in-house agent calling your own backend</td><td><strong>Purpose-built API</strong> (typed RPC). MCP adds overhead when you control both ends.</td></tr>
+<tr><td>Local/trusted agent with shell access, deterministic need</td><td><strong>CLI-as-tool</strong> — rigid schema, process boundaries, host-native auth (e.g. <code>gws</code> for Google Workspace)</td></tr>
+<tr><td>Both</td><td><strong>Both</strong> — the REST/gRPC API is the durable contract; the MCP server is a thin facade over it, re-expressed for the agent class.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The "thin facade" is compatible with "scoped authorization" in Q9 because the facade chooses which tools to expose; the scoping is inherent in which facade you publish, not added on top.</p>
+
+<!-- ============ INTERACTIVE ============ -->
+<section class="interactive" aria-labelledby="ix-title">
+  <header class="ix">
+    <div class="kick">Try the four doors · same task, four ergonomics</div>
+    <div class="task" id="ix-title">Charge <code>$49.99</code> to customer <code>c_123</code> · note "Widget"</div>
+  </header>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-panel="p-api" role="tab" aria-selected="true">API<small>raw HTTP</small></button>
+    <button class="tab" data-panel="p-sdk" role="tab" aria-selected="false">SDK<small>Python</small></button>
+    <button class="tab" data-panel="p-cli" role="tab" aria-selected="false">CLI<small>shell</small></button>
+    <button class="tab" data-panel="p-mcp" role="tab" aria-selected="false">MCP<small>agent</small></button>
+  </div>
+
+  <div class="panel active" id="p-api" role="tabpanel">
+    <div class="role">You send <em>→</em></div>
+<pre><code>POST /v1/payments HTTP/1.1
+Host: api.example.com
+Authorization: Bearer sk_live_•••
+Idempotency-Key: 8f2a-3d91-4e5c-b602
+Content-Type: application/json
+
+{
+  "amount":      4999,
+  "currency":    "usd",
+  "customer":    "c_123",
+  "description": "Widget"
+}</code></pre>
+    <div class="role">Server responds <em>←</em></div>
+<pre><code>HTTP/1.1 201 Created
+{
+  "id":       "pay_Q8a1NkR",
+  "status":   "succeeded",
+  "amount":   4999,
+  "currency": "usd",
+  "customer": "c_123",
+  "created":  1744995417
+}</code></pre>
+    <div class="comment"><strong>What this felt like</strong> You picked the endpoint, handled auth, attached an idempotency key, serialised JSON, read cents-not-dollars, and parsed the response. Full control; full responsibility. Every call is a contract negotiation.</div>
+  </div>
+
+  <div class="panel" id="p-sdk" role="tabpanel">
+    <div class="role">You write <em>→</em></div>
+<pre><code>from example import Client
+
+client = Client(api_key="sk_live_•••")
+
+payment = client.payments.create(
+    amount=4999,
+    currency="usd",
+    customer="c_123",
+    description="Widget",
+)
+
+print(payment.id, payment.status)</code></pre>
+    <div class="role">Output <em>←</em></div>
+<pre><code>pay_Q8a1NkR succeeded</code></pre>
+    <div class="comment"><strong>What this felt like</strong> The SDK hid auth, the idempotency key, retries with jitter, JSON parsing, and pagination. You get a typed <code>Payment</code> object your IDE autocompletes against. The same API; your language's native idiom.</div>
+  </div>
+
+  <div class="panel" id="p-cli" role="tabpanel">
+    <div class="role">You run <em>→</em></div>
+<pre><code>$ example payments create \
+    --amount 49.99 \
+    --customer c_123 \
+    --description "Widget"</code></pre>
+    <div class="role">Output <em>←</em></div>
+<pre><code>✓ Created pay_Q8a1NkR
+  Status:   succeeded
+  Amount:   $49.99 USD
+  Customer: c_123
+
+See dashboard: https://example.com/payments/pay_Q8a1NkR</code></pre>
+    <div class="comment"><strong>What this felt like</strong> One line, dollars-not-cents, human-readable output, a clickable dashboard URL. Same API underneath, surfaced for the SRE at 2 a.m. or a quick shell script. Exit code 0 on success.</div>
+  </div>
+
+  <div class="panel" id="p-mcp" role="tabpanel">
+    <div class="role">Tool the MCP server advertises</div>
+    <div class="chat" style="background:var(--surface-2); border-color:var(--rule);">
+      <div class="tool-desc"><b>create_payment</b>(amount: number, customer: string, description: string?) → Payment<br>Charge a customer. Amount in <b>dollars</b>. Returns the created payment. Use for one-off charges, not subscriptions.</div>
+    </div>
+    <div class="role">Conversation with an LLM agent</div>
+    <div class="chat">
+      <div class="turn"><span class="who">You</span>Charge $49.99 to customer c_123 for the widget.</div>
+      <div class="turn"><span class="who agent">Agent</span>I'll create that payment.
+        <div class="tool">→ create_payment(amount=49.99, customer="c_123", description="Widget")</div>
+        <div class="tool">← { "id": "pay_Q8a1NkR", "status": "succeeded", "amount": 4999 }</div>
+      </div>
+      <div class="turn"><span class="who agent">Agent</span>Done. Payment <code>pay_Q8a1NkR</code> succeeded — $49.99 charged to c_123.</div>
+    </div>
+    <div class="comment"><strong>What this felt like</strong> The agent chose <code>create_payment</code> because the description told it what the tool did. Natural-language in, natural-language out; the tool's JSON schema kept the call correct. The menu is the contract; what isn't on the menu can't be ordered.</div>
+  </div>
+</section>
+
+<!-- ============ Q9 ============ -->
+<h3 id="q9"><span class="q">Q9 ·</span> When the agent is capable enough to call the raw API directly, what problem does the permission surface still solve — and why does that problem grow with model capability?</h3>
+
+<p>A natural objection: a frontier model reads OpenAPI and writes correct HTTP. It does not <em>need</em> the menu. Why publish it?</p>
+
+<p>Because the menu isn't there for the LLM's benefit. Every interface is a door-and-wall (Q1), and a published tool surface is a <em>scoped grant of authorisation expressed as an interface</em>. When you expose twelve tools, you are telling the model: these twelve things are in scope for this session; everything else isn't. Not because the model can't find the other actions — because you don't want it to.</p>
+
+<p>This yields a counter-intuition worth carrying:</p>
+
+<blockquote><p><strong>The smarter the model, the more you want the menu.</strong> A weak model is rate-limited by its incompetence. A capable model is rate-limited only by what it has been authorised to do. A model that can flawlessly execute <code>DROP TABLE users</code> is exactly the one you don't want handed a raw database connection. Governance, not cognition, is the reason.</p></blockquote>
+
+<p>Four properties survive any increase in capability:</p>
+<ul>
+<li><strong>Auditability.</strong> <code>tools/call</code> produces a clean event stream compliance can read. Raw HTTP driven by a model produces packet captures you reconstruct intent from.</li>
+<li><strong>Liability surface.</strong> The tools you publish are the actions you warrant. Anything else, you disclaim.</li>
+<li><strong>Per-session scope.</strong> A support agent and an admin get different tool lists from the same MCP server, dynamically. Raw API access is static.</li>
+<li><strong>Cross-model stability.</strong> Swap Haiku for Opus for cost. Same tool surface, same behaviour. Raw API access gives you a different agent with every model change.</li>
+</ul>
+
+<p><strong>An unresolved design problem worth naming.</strong> The menu limits the <em>primitive</em> actions in scope; it cannot enforce that the <em>compositions</em> are in scope. A capable agent given <code>list_files</code>, <code>read_file</code>, and <code>write_file</code> can approximate <code>move_file</code> even if <code>move_file</code> isn't published. Coarse menus are therefore over-permissive under composition; fine-grained menus force thinking about which composed sequences the scope actually authorises. This is an active design problem, not a settled practice — and it is one place where threat modelling, not API design alone, has to catch up.</p>
+
+<p>The agent-access maturity ladder operationalises all of this:</p>
+
+<table>
+<thead><tr><th>Level</th><th>Concrete posture</th></tr></thead>
+<tbody>
+<tr><td><strong>0</strong></td><td>Developer pastes a personal API key into an agent host; no one knows</td></tr>
+<tr><td><strong>1</strong></td><td>Per-agent credentials; calls appear in logs; no agent-specific alerting</td></tr>
+<tr><td><strong>2</strong></td><td>MCP server published; scopes per tool; compliance can enumerate allowed actions</td></tr>
+<tr><td><strong>3</strong></td><td>Credentials ≤15 min TTL; agent-separate rate limits; destructive actions (irreversible or &gt;$X impact) require a human confirmation via <code>elicitation/request</code> or equivalent; threat model names indirect prompt injection and cross-server tool shadowing</td></tr>
+<tr><td><strong>4</strong></td><td>Replay harness; semantic-retry anomaly detection; agent-specific SLIs (tool-selection accuracy against a held-out eval set, median tokens per tool-call)</td></tr>
+<tr><td><strong>5</strong></td><td>Federated identity — agent acts on behalf of a user with their traceable identity through the call chain</td></tr>
+</tbody>
+</table>
+
+<p>Most firms sit at 0–1. Level 3 is achievable in a quarter and is the level where an agentic incident stops being an existential risk.</p>
+
+<!-- ============ Q10 ============ -->
+<h2 id="q10">§ 6 · The Physical-Layer Problem</h2>
+<h3><span class="q">Q10 ·</span> When the API governs physical motion rather than bits, what new problems emerge — and why does safety need its own architectural plane?</h3>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">18</span><a href="https://dronedj.com/2025/01/14/dji-geofencing-no-fly-zone/" target="_blank" rel="noopener">DroneDJ, 14 Jan 2025</a>; global rollout: <a href="https://dronedj.com/2025/11/17/dji-drone-geo-geofencing-unlock/" target="_blank" rel="noopener">17 Nov 2025</a>; security implications: <a href="https://www.skysafe.io/blog/djis-geofencing-removal" target="_blank" rel="noopener">SkySafe</a>.</aside>
+<p>Everything in §5 assumes the API governs bits. When the API governs atoms — a robot's motion, a drone's altitude, a conveyor's speed — the stakes change shape. The ontology from Q1 holds: the robot is a product, its API is a contract, its consumers are a fleet manager, an application, maybe an agent. The tensions from Q2 still apply: the contract is governed, and whoever governs it can change it. The January and November 2025 DJI geofencing reversals<span class="ref-marker">¹⁸</span> are the case study for that tension in a safety-adjacent context.</p>
+</div>
+
+<p>What changes is the consequence of governance turning: stopped production, stranded capital, or human injury.</p>
+
+<p><strong>Three new problems</strong> emerge.</p>
+
+<p><strong>First — vendor lock at the control plane.</strong> A vendor fleet SDK (DJI, Boston Dynamics, AMR vendors) is an external API of the kind Q2 described. The defensive pattern is the anti-corruption layer, applied to physical control:</p>
+
+<pre><code>Application logic (speaks your domain)
+       │
+   Facade (drone.fly_to, agv.pick_at)
+       │
+   ├─► DJI adapter  ─► DJI SDK
+   ├─► Spot adapter ─► Spot SDK
+   └─► V adapter    ─► Vendor V SDK</code></pre>
+
+<p>Firms with this facade absorbed the 2025 DJI geofencing changes by updating one file. Firms without scattered the logic across services and spent a quarter untangling it.</p>
+
+<p><strong>Second — intermittent connectivity.</strong> Industrial fleets operate in warehouses with patchy Wi-Fi and outdoor sites with cellular loss. Three non-negotiables: edge autonomy (robots continue current tasks when the fleet manager is unreachable); store-and-forward telemetry (MQTT with local persistence, drained on reconnect); idempotent command design (the same Q6 pattern, now for moving machines). The autonomy window is bounded; the operator must also specify degrade-to-safe behaviour for outages <em>longer</em> than the window — what the robot does in hour two.</p>
+
+<p><strong>Third — safety cannot ride the control plane.</strong> An e-stop signal whose delivery depends on the MQTT broker being up has coupled human safety to an unrelated software layer's availability. The convention is three planes, operated independently:</p>
+
+<blockquote><p><strong>Analogy — the taxi company.</strong> The radio dispatch is the <strong>control plane</strong>: who takes which fare. The cars actually moving are the <strong>data plane</strong>. The emergency brake inside each car is the <strong>safety plane</strong> — it works whether dispatch is on lunch, whether the meter is broken, whether the GPS is wrong. The three systems must fail independently.</p></blockquote>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">19</span>VDA 5050 — the German automotive industry's AGV/AMR master-control standard layered on MQTT/JSON. Spec: <a href="https://www.vda.de/en/topics/logistics-supply-chain/interface-agv" target="_blank" rel="noopener">VDA</a>.</aside>
+<aside class="sn"><span class="sn-num">20</span><a href="https://docs.ros.org/en/rolling/index.html" target="_blank" rel="noopener">ROS 2 Documentation</a>; <a href="https://www.omg.org/spec/DDS/" target="_blank" rel="noopener">OMG DDS spec</a>.</aside>
+<aside class="sn"><span class="sn-num">21</span><a href="https://mavlink.io/en/" target="_blank" rel="noopener">MAVLink Developer Guide</a>.</aside>
+<aside class="sn"><span class="sn-num">22</span><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/" target="_blank" rel="noopener">OPC UA, OPC Foundation</a>. Companion for MQTT (data-plane telemetry): <a href="https://mqtt.org/" target="_blank" rel="noopener">mqtt.org</a>.</aside>
+<aside class="sn"><span class="sn-num">23</span><a href="https://www.profibus.com/technology/profisafe" target="_blank" rel="noopener">PROFIsafe</a>; <a href="https://www.ethernet-powerlink.org/opensafety" target="_blank" rel="noopener">openSAFETY</a>.</aside>
+<table>
+<thead><tr><th>Plane</th><th>Protocol examples</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Control</strong></td><td>VDA 5050 over MQTT<span class="ref-marker">¹⁹</span>; vendor fleet APIs</td><td>Task dispatch, fleet coordination, scheduling</td></tr>
+<tr><td><strong>Data</strong></td><td>ROS 2 over DDS on-robot<span class="ref-marker">²⁰</span>; MAVLink for drones<span class="ref-marker">²¹</span>; OPC UA for OT<span class="ref-marker">²²</span></td><td>Sensor streams, actuator commands, real-time perception</td></tr>
+<tr><td><strong>Safety</strong></td><td>Hardware interlocks; certified protocols (PROFIsafe, openSAFETY)<span class="ref-marker">²³</span></td><td>E-stop, light-curtain, watchdog — fails independently</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sn-wrap">
+<aside class="sn"><span class="sn-num">24</span><a href="https://www.open-rmf.org/" target="_blank" rel="noopener">Open Robotics Middleware Framework</a> — "enables sharing and interoperability between multiple fleets of robots and physical infrastructure, like doors, elevators and building management systems."</aside>
+<p>Open-RMF<span class="ref-marker">²⁴</span> handles multi-vendor coordination where more than one fleet operates in the same space. If the question <em>"can my robots still stop when the MQTT broker is down?"</em> is not trivially yes, the safety plane has leaked into the control plane and the architecture needs rework before an auditor — or a person — gets hurt.</p>
+</div>
+
+<!-- ============ Consequences ============ -->
+<h2 id="consequences">§ 7 · Consequences</h2>
+
+<p>Q1–Q10 generate a compact set of decisions a protocol-literate operator can make consistently.</p>
+
+<h3><strong>Which surfaces to publish for which consumer classes</strong> (from Q3, Q7, Q8)</h3>
+
+<table>
+<thead><tr><th>Consumer</th><th>Publish</th></tr></thead>
+<tbody>
+<tr><td>Own web frontend only</td><td>Typed fetch wrapper</td></tr>
+<tr><td>First-party mobile + web</td><td>API + BFF + mobile SDKs</td></tr>
+<tr><td>Partners</td><td>API + SDKs (top 2 languages) + CLI</td></tr>
+<tr><td>Third-party LLM agents</td><td>API + <strong>MCP server</strong> + SDK</td></tr>
+<tr><td>In-house agents</td><td>Purpose-built API; skip MCP</td></tr>
+<tr><td>Internal microservices</td><td>API + generated SDK from schema</td></tr>
+</tbody>
+</table>
+
+<h3><strong>Ship-readiness for any external API</strong> (from Q4, Q5, Q6)</h3>
+<ul>
+<li>Versioning strategy chosen and documented; breaking-change definition includes silent behavioural breaks</li>
+<li>Sunset/deprecation process defined; consumer-identity tracking in place; top-3 consumers named before any deprecation</li>
+<li>Idempotency key on every write endpoint</li>
+<li>Rate limits per-key AND per-tenant AND per-endpoint, plus a global concurrency ceiling; <code>429</code> returns <code>Retry-After</code> + <code>X-RateLimit-*</code> headers</li>
+<li>Clients use exponential backoff with full jitter and cap retries (typical default: 3 attempts from 100 ms); <code>Retry-After</code> is advisory</li>
+<li>Workload identity where feasible; OAuth 2.1 / mTLS; short-lived scoped credentials; secrets in a manager, never on disk</li>
+<li>W3C <code>traceparent</code> propagated end-to-end; RED metrics (Rate, Errors, Duration) per endpoint and per tenant</li>
+<li>Canary rollout for schema changes; auto-rollback on SLO breach within 5 minutes</li>
+</ul>
+
+<h3><strong>Agent-readiness</strong> (from Q7, Q8, Q9)</h3>
+<ul>
+<li>MCP server (or equivalent tool manifest) if exposed to third-party agents</li>
+<li>Tool descriptions evaluated against a held-out prompt set; target ≥95% tool-selection accuracy</li>
+<li>Agent-specific credentials, ≤15 min TTL, tight scopes per tool</li>
+<li>Destructive-action human gate (irreversible or &gt;$X financial impact) via <code>elicitation/request</code> or equivalent</li>
+<li>Replay log retained ≥90 days, tenant-scoped, PII-handled per policy</li>
+<li>Agent-aware rate limits; semantic-retry anomaly detection</li>
+<li>Documented threat model covering indirect prompt injection, cross-server tool shadowing, confused-deputy scenarios</li>
+</ul>
+
+<h3><strong>Fleet-readiness</strong> (from Q10)</h3>
+<ul>
+<li>Control / data / safety planes separated; safety on hardware or certified protocol</li>
+<li>Vendor SDKs behind an application-owned facade</li>
+<li>Store-and-forward telemetry; edge autonomy during a 1-hour outage; degrade-to-safe behaviour specified beyond the autonomy window</li>
+<li>VDA 5050 or equivalent; Open-RMF if more than one vendor</li>
+<li>Firmware and SDK deprecation process documented with each vendor</li>
+</ul>
+
+<h3>Out of scope for this paper</h3>
+<p>The decisions above apply to each of the following, but the specifics require their own treatment: event/async schema evolution (Kafka, MQTT); the choice between REST, GraphQL, gRPC, and RPC-over-Connect; webhook and publisher-initiated traffic (signing, replay, backoff on the publisher's side); multi-region and data-residency patterns; agent-traffic cost metering and pass-through. Each is an adjacent concern with its own literature.</p>
+
+</article>
+</main>
+
+<footer>
+<p>Protocolized · Protocols for Business · <a href="https://discord.com/channels/1082444651946049567/1333851496416153702" target="_blank" rel="noopener">Join the discussion here</a></p>
+</footer>
+
+<div class="toast" id="toast">Downloaded paper.md</div>
+
+<!-- Raw markdown payload for download; kept out of the DOM render path -->
+<script id="markdown-source" type="text/x-markdown">
+# APIs: What They Are, What They Solve, What They Cost
+
+*v4 — companion to "APIs Through the Lens of Protocol Studies," P4BSIG, April 2026. Problem-centric, ontologically grounded.*
+
+---
+
+## Orientation
+
+The paper answers ten questions about APIs in the order a protocol-literate operator needs them answered. Each question defines any concepts it introduces; later questions build only on vocabulary already established. Analogies and worked examples are inline and used once. A closing note lists adjacent topics deliberately out of scope.
+
+---
+
+## § 1 · Foundations
+
+### Q1 · What is an API, structurally — and how does it relate to the software product it exposes and to that product's other interfaces?
+
+Start with the thing the API is an interface *to*. A **software product** is a system with internal logic and state that does something useful — process payments, schedule robots, summarise documents. The product itself is invisible to anyone outside it. An **interface** is any surface through which an outside actor can reach the product. Every non-trivial product has more than one interface, because different actors need different surfaces.
+
+Two properties of interfaces matter throughout the paper. First, every interface is simultaneously a **door and a wall**: what it admits, it admits; what it refuses, it refuses. Offering an interface is not only an act of access — it is an act of scope. Second, the ontology is **recursive**: a subsystem inside a larger product is itself a product, with its own interfaces and its own consumer classes. Most arguments below apply equally to external APIs and internal service boundaries, with cost profiles that differ in magnitude, not in structure.
+
+> **Analogy — a restaurant's kitchen and its doors.** The kitchen is the product: ingredients, recipes, capacity, liabilities. The dining room with waiters is one door (for walk-in diners). The phone line is another (for structured remote orders). The drive-through window is a third (for quick human orders). All are doors to the same kitchen. Which door you use depends on who you are. The kitchen does not change; the doors do.
+
+A **consumer class** is a population of actors that uses the same kind of interface for the same kind of reason: humans-with-browsers, Python programs, iOS apps, SREs at a shell, LLM agents. Each class has different cognitive and operational needs, which is why a product ends up with more than one door.
+
+An **API (Application Programming Interface)** is one specific species of interface: *a **programmatic**, **versioned**, **governed contract** through which software consumers reach the product, typically across a process or network boundary.* Four words are doing load-bearing work:
+
+- **Programmatic** — called by code, not by a human clicking. Distinguishes the API from the UI.
+- **Contract** — a *publisher-governed* commitment that a given request will produce a given response, within stated limits. This contract is **asymmetric**, not bilateral: the publisher sets terms; the consumer accepts them; remedy on breach is limited to what the publisher offers.
+- **Versioned** — the commitment changes over time; the version names a point in that history.
+- **Governed** — a **governor** (whoever maintains the product) is the only party who can change the contract. The API's **hardness** — the extent to which its terms can be relied on in the future — is borrowed from that governor. An API is as hard as the institution behind it.
+
+The other interfaces most mature products expose — **UI** (for humans), **SDK** (an ergonomic wrapper over the API for a specific consumer class's native idiom), **CLI** (an ergonomic wrapper for humans at a shell), and **MCP server** (an ergonomic wrapper for LLM agents) — are not competitors to the API. They are derivative interfaces: each one re-expresses the API's capabilities in a form suited to a different consumer class. The API is the root contract; SDK, CLI, and MCP server are translations of it.
+
+This ontology — product, interface, consumer class, contract, governor, hardness, door-and-wall, recursive — is the backbone for everything that follows.
+
+---
+
+## § 2 · What APIs Solve, What They Cost
+
+### Q2 · What problem does an API solve that direct integration, shared memory, or human coordination don't — and what persistent tension does the solution introduce?
+
+The alternatives to an API are: let the consumer share the product's database, link the product's code as a library, or coordinate between humans on both sides. Each works narrowly and fails at scale.
+
+- Shared database = every schema change is a cross-team migration.
+- Shared library = every consumer is pinned to the product's internal language and release cycle.
+- Human coordination = the speed of a phone call is the speed of the integration.
+
+**The problem an API solves** is coordination between a product and consumers who do not share its code, its ownership, or its release schedule. The API draws a line: on your side, the product can evolve; on the consumer's side, their application can evolve; across the line, a versioned contract stabilises the interaction.
+
+**The persistent tension** follows directly from Q1's asymmetry. The line has an owner. Whoever owns the contract can change it, price it, deprecate it, rate-limit it, or withdraw it. Every API dependency is therefore an exposure to that governance. The 2023 retrenchments — Twitter pricing its API tier at $42,000/month, Reddit making Apollo's projected cost $20M/year — are the canonical illustrations. Consumers who thought they had stable infrastructure discovered they had a counterparty.
+
+Two patterns exist because they protect the consumer from this tension:
+
+> **Anti-corruption layer.** When you integrate with an external API whose model is incompatible with your domain, wrap it. The wrapper translates the publisher's vocabulary into yours. When the publisher renames a field, you change one file, not thirty.
+
+> **Strangler fig.** When migrating off an API you no longer want, put a facade in front that routes some calls to the old contract and some to the new, and retire endpoints path-by-path. The alternative — a big-bang cutover — is the most common cause of migration failure.
+
+The same tension appears inside your own product (Q1's recursive ontology): how your services talk to each other. The choice between *synchronous* (HTTP, gRPC) and *asynchronous* (MQTT, Kafka, events) calls is not a style preference but a placement of this tension. Synchronous chains couple timing and availability across service boundaries; asynchronous calls make the coupling visible as queue depth and lag.
+
+Consider a Black Friday checkout built as a five-hop synchronous chain: *Cart → Tax → Inventory → Payment → Fulfilment*. At normal load each hop takes 250 ms and the chain finishes inside the 3-second client timeout. Under peak load each hop stretches to 900 ms, and the chain runs past 4.5 seconds — every customer sees failure. The fix is not longer timeouts; longer timeouts hide the coupling. The fix is to break the chain: keep Cart, Tax, Inventory synchronous (the user genuinely needs the total), but make Fulfilment an event that downstream consumes at its own pace. This is a tension-placement decision, not a performance tuning.
+
+---
+
+### Q3 · Why do mature products end up with more than one interface — and what problem is each additional surface solving for a different consumer class?
+
+If Q2 was about the line between a product and its consumers, Q3 is about why that line has to be drawn several times — once per consumer class.
+
+From Q1: each interface exists for a consumer class with distinct needs. The reason a product ends up with several interfaces is that the same underlying capabilities have to be *re-expressed* for consumers that read the world differently.
+
+| Consumer class | Interface | Problem that surface solves |
+|---|---|---|
+| Humans clicking through a page | **UI** | Affordance, perception, forgiveness of imprecise input |
+| Programs talking over the network | **API** | A neutral, long-lived contract across processes |
+| Developers writing in language X | **SDK** | The **native idiom of the consumer class** — typically a programming language, sometimes something else (see Q8). Ergonomic: auth helpers, pagination, retries. |
+| Humans at a shell at 2 a.m. | **CLI** | Stable commands, readable errors, shell-friendly output, scriptability |
+| LLM agents | **MCP server** | A manifest the agent reads *semantically* to choose which action to take (Q8) |
+
+Widening the SDK definition beyond "programming language" is the small but load-bearing move the paper's MCP argument rests on later: an SDK is any ergonomic wrapper in a consumer class's native idiom.
+
+Three rules follow:
+
+1. **Don't publish a surface for a consumer class that doesn't exist.** If your API is consumed only by browsers you own, you need a typed fetch wrapper, not an SDK.
+2. **Parity across capabilities.** If the API exposes an endpoint, every SDK you publish should expose it.
+3. **Independent versioning of release cadence.** SDK 4.3 in Go and SDK 5.1 in Python can coexist — parity is about capability coverage, independent cadence is about release tempo. What you can't do is ship a feature in one SDK's next release and not the others.
+
+The underlying principle: each interface encodes the publisher's opinion about what a specific consumer class needs. That opinion is load-bearing. A half-hearted SDK damages the API more than no SDK at all.
+
+---
+
+## § 3 · The Problem of Change Over Time
+
+### Q4 · What problem does versioning solve, what does every versioning strategy trade off, and what is deprecation discipline actually buying you?
+
+A contract (Q1) is useful only if it holds still. It is evolvable only if it is allowed to change on a schedule everyone can see. **Versioning** makes both true at once: at any point, one specific version is the contract; between one version and the next, the contract is allowed to differ.
+
+Four strategies, ordered roughly by operational cost.
+
+| Strategy | Best fit |
+|---|---|
+| **Dated rolling** (`2024-09-01`, Stripe's pattern — account pinned on first call) | Large public APIs with many third-party consumers |
+| **URL-path** (`/v1/`, `/v2/`) | Mobile/desktop clients in the wild with long support windows |
+| **Header-based** (`Accept: …v2+json`) | Small APIs, fast iteration |
+| **SDK-semver, API undated** | First-party integrations only |
+
+Stripe has "maintained compatibility with every version of our API since the company's inception in 2011," through "almost a hundred backwards-incompatible upgrades" (Leach, Stripe 2017). That consumer experience is exceptional and expensive. Pick the strategy your team can honour for three years.
+
+**What counts as a breaking change** is wider than most teams realise. Schema-level breaks are the obvious cases:
+
+| Schema change | Breaking? | Why it hurts |
+|---|---|---|
+| Add optional field | No | — |
+| Add new endpoint | No | — |
+| Add new enum value | **Yes** for strict consumers | A 2019 switch on `SETTLED`/`FAILED` silently mis-routes `PARTIALLY_SETTLED` |
+| Rename field | Yes | Every exact-match deserializer fails |
+| Change field type | Yes | Arithmetic on `"100" * 0.08` produces tax garbage |
+| Tighten validation | Yes | Legacy test data with `foo@localhost` now 400s |
+| Remove field | Yes | Downstream `null` checks were never added |
+
+But most production incidents come from **silent behavioural breaks** that don't show up in a schema diff:
+
+- **Default-value changes.** A field that defaulted to `false` now defaults to `true`. Every consumer that omitted the field behaves differently overnight.
+- **Error-response changes.** Changing a `404` to a `410`, or altering the shape of the error body, breaks every handler that switched on the old codes.
+- **Behavioural contract drift.** Pagination ordering shifts, rate-limit envelopes tighten, timeout behaviours change, previously-lax nullability becomes strict. No schema diff catches any of these; they surface only in production.
+
+Enforce the schema cases with `oasdiff` or `buf breaking` in CI. The behavioural cases require contract tests, paired environments, and consumer-run canaries — no amount of schema tooling catches them.
+
+**Deprecation discipline** converts a breaking change from an incident into a project. Minimum practice: announce via your normal release channel, emit the `Sunset` HTTP header (RFC 8594) along with a `Deprecation: true` header, track consumption by consumer identity, provide migration tooling, and keep a rollback plan. **If you cannot name the three largest consumers of an endpoint you intend to deprecate, you are not ready to deprecate it.**
+
+---
+
+## § 4 · The Trust and Blast-Radius Problems
+
+### Q5 · What problem does authentication solve that authorization doesn't — and what tension does credential scope and lifetime create with operational convenience?
+
+Two distinct problems hide under the word "auth":
+
+- **Authentication** establishes *who* a request is from. The consumer proves identity.
+- **Authorization** establishes *what* the identified consumer is allowed to do. The product consults a policy.
+
+Conflating them — "they have the key, so let them do anything" — is the origin of most auth incidents. A single production API key used everywhere is an authentication credential doing an authorization job it cannot do safely.
+
+> **Analogy — hotel keycards, not house keys.** A long-lived production key is a house key: lose it and you change every lock. A short-lived scoped token is a hotel keycard: it expires at checkout, only opens your room, and the front desk can revoke it instantly without rekeying the building.
+
+The tension is between credential *scope and lifetime* and *operational convenience*. Short, narrowly-scoped credentials are safer but require rotation, refresh, and secret management. Long, broadly-scoped credentials are convenient but catastrophic when leaked. Defensible defaults for 2026:
+
+- **Workload identity as the substrate** — SPIFFE/SPIRE, AWS IRSA, GCP workload identity federation, Kubernetes service-account tokens. Credentials are bound to a workload, not stored as files.
+- **mTLS** for in-cluster machine-to-machine.
+- **OAuth 2.1** — authorization-code + PKCE for user-delegated, client-credentials for service-to-service.
+- **Short-lived access tokens** (~15 min) with rotated refresh.
+- **Per-tenant, per-environment, per-purpose** API keys where workload identity isn't available.
+- **Secrets in a manager** (Vault, AWS Secrets Manager), never in code, never on disk.
+
+Most firms are mid-transition: long-lived keys in a secret manager, migrating to workload identity as mesh and platform maturity allow. The bridge pattern is short-lived credentials fetched at runtime; the destination is identity bound to the workload itself.
+
+The principle scales down to one rule: *a credential should name exactly what it is allowed to do, for exactly as long as it is needed, and no more.* When a shared `.env` leaks onto GitHub — and it will — the blast radius is set by what that credential was allowed to do for how long.
+
+---
+
+### Q6 · What problem do rate limits, idempotency keys, and circuit breakers solve jointly — and why must they come as a set?
+
+Each protects against a different failure mode; each alone leaves a gap the others close.
+
+**Rate limits** protect the product from consumer volume. Without them, one misbehaving client drowns the service — including for consumers doing nothing wrong.
+
+> **Analogy — the onramp metering light.** LA freeways meter onramps so a sudden surface-street surge doesn't collapse the highway. Rate limiters meter consumers so a sudden client-side surge doesn't collapse the API.
+
+Enforce in multiple dimensions (per-key AND per-tenant AND per-endpoint AND a global concurrency ceiling); return `429` with `Retry-After`, `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`; use a token bucket for bursty-but-capped traffic, a sliding window for stricter regulatory contexts. A single global RPS ceiling lets one misbehaving consumer starve every other customer.
+
+**Idempotency keys** protect the consumer from retry-induced duplication. The gas-pump pattern (swipe, glitch, swipe again, charged once) is the payment network's use of idempotency keys. Every write endpoint accepts `Idempotency-Key: <uuid>`; on retry, the server returns the stored response verbatim. This single design decision eliminates an entire category of duplicate-charge, duplicate-shipment, duplicate-ticket incidents.
+
+**Circuit breakers** protect the consumer from a degraded downstream. A breaker trips before the wiring melts; an open circuit breaker trips before a degraded dependency takes your service down with it. A companion pattern — **bulkheading** — allocates separate thread or connection pools per downstream so one slow dependency cannot starve the others.
+
+Retries, whenever they happen, must use **exponential backoff with full jitter**. Without jitter, retries synchronise and produce a thundering herd when the downstream recovers. `Retry-After` is advisory, not normative; clients must cap their own retries (a reasonable default: three attempts, exponential delay from 100 ms with full jitter, then fail fast).
+
+They come as a set because each one's gap is another's solution. A rate limit without idempotency punishes the honest retry of a legitimately-lost response. Idempotency without rate limits lets an infinite-loop client hammer the endpoint at machine speed. Circuit breakers without jittered retry cause thundering herds when a service recovers. The set, operated together, bounds both how much damage one consumer can do and how much damage one degraded dependency can cause you. No single credential, endpoint, region, or consumer should be able to take down the whole API.
+
+---
+
+## § 5 · The Agent Problem
+
+### Q7 · What makes an LLM agent a distinct consumer class — and what new problems does it introduce for API design?
+
+Blast-radius reasoning in Q6 assumes you know who your consumers are. A new consumer class with different properties breaks that assumption. LLM agents are that class — distinct from human developers and headless services on four axes:
+
+1. **They read natural language, not types.** A human developer parses a function signature; an agent parses the description. Tool names and docstrings shift from documentation (read once, at write-time) to *routing signal* (read on every invocation).
+2. **They re-decide which call to make on every invocation.** A developer writes code once and runs it a thousand times. An agent reconsiders. Tool interfaces must be safe under "forgotten context between calls" — stateless, idempotent, tightly-typed.
+3. **They can be authored by someone you don't control.** Your consumer might be Claude Desktop, Cursor, or an end-user's custom harness — hosts you have no contract with.
+4. **They scale beyond any prior consumer class's patience.** Postman's 2025 report records agent API traffic growing 40% year-over-year, and "51% of developers worry about unauthorized or excessive API calls from AI agents — their number one security concern" (Postman 2025). Agents burst at machine speed for *semantic* reasons ("try a different phrasing") that existing retry detectors don't recognise.
+
+These properties don't break Q1's ontology — an API is still a contract between a product and a consumer class — but they change the contract's shape. The next two questions are about that change.
+
+---
+
+### Q8 · Is MCP a new architectural thing — or is it the SDK pattern specialised for the agent consumer class? What problem does the semantic SDK actually solve?
+
+From Q3's widened definition: an SDK is an ergonomic wrapper over the API in the consumer class's native idiom. **MCP is that, for agents.** It is not a new architectural category; it is the SDK pattern specialised for a consumer class whose native idiom is natural language. The mapping is nearly exact:
+
+| Traditional SDK | MCP server |
+|---|---|
+| Method signatures | Tool names + JSON schemas |
+| Docstrings | Tool descriptions |
+| Auth helpers, retries, pagination | Auth headers, lifecycle handshake, notifications |
+| Imported at build time | Discovered at runtime via `tools/list` |
+| Consumer: human developer, write-time | Consumer: LLM agent, run-time |
+
+The word *semantic* is doing the real work. A traditional SDK binds names lexically, for a consumer that compiles them. A **semantic SDK** binds names *and prose* for a consumer that evaluates them by meaning. That is why a badly-described MCP tool is broken in a way a badly-named Python method isn't: the Python method still works; the MCP tool gets skipped because the agent can't tell what it's for. The tool description is the **menu** the agent reads before choosing.
+
+**What MCP solves that a well-documented raw API plus OpenAPI doesn't** is the same problem every SDK solves — host compatibility and authoring ergonomics for a specific consumer class. Because MCP is a standard, any host (Claude Desktop, Cursor, VS Code, Claude Code) can consume any MCP server without custom integration. Publishing MCP is how you reach the agent consumer class, the same way publishing a Python SDK is how you reach Python developers.
+
+**One property has no traditional-SDK analogue, and it matters.** A Python SDK runs inside the consumer's process under their own auth; a malicious SDK is a supply-chain attack on the consumer. An MCP server is a separate process mediated by the agent host, often running under the end-user's credentials and exposing tools discovered dynamically. A malicious MCP server can inject instructions into the agent's context, shadow another server's tool names, or exfiltrate data across servers. Tool namespacing, publisher allowlists, and **indirect prompt injection** (hostile text in retrieved content attempting to redirect the agent) are new failure modes an MCP publisher and consumer both have to reason about. Treat MCP ergonomically like an SDK; treat it operationally more like a browser extension.
+
+Which consumer populations warrant the MCP surface:
+
+| Who's calling | Publish |
+|---|---|
+| Third-party agent hosts you don't control | **MCP** — host compatibility is the whole point |
+| Your own in-house agent calling your own backend | **Purpose-built API** (typed RPC). MCP adds overhead when you control both ends. |
+| Both | **Both** — the REST/gRPC API is the durable contract; the MCP server is a thin facade over it, re-expressed for the agent class. |
+
+The "thin facade" is compatible with "scoped authorization" in Q9 because the facade chooses which tools to expose; the scoping is inherent in which facade you publish, not added on top.
+
+---
+
+### Q9 · When the agent is capable enough to call the raw API directly, what problem does the permission surface still solve — and why does that problem grow with model capability?
+
+A natural objection: a frontier model reads OpenAPI and writes correct HTTP. It does not *need* the menu. Why publish it?
+
+Because the menu isn't there for the LLM's benefit. Every interface is a door-and-wall (Q1), and a published tool surface is a *scoped grant of authorisation expressed as an interface*. When you expose twelve tools, you are telling the model: these twelve things are in scope for this session; everything else isn't. Not because the model can't find the other actions — because you don't want it to.
+
+This yields a counter-intuition worth carrying:
+
+> **The smarter the model, the more you want the menu.** A weak model is rate-limited by its incompetence. A capable model is rate-limited only by what it has been authorised to do. A model that can flawlessly execute `DROP TABLE users` is exactly the one you don't want handed a raw database connection. Governance, not cognition, is the reason.
+
+Four properties survive any increase in capability:
+
+- **Auditability.** `tools/call` produces a clean event stream compliance can read. Raw HTTP driven by a model produces packet captures you reconstruct intent from.
+- **Liability surface.** The tools you publish are the actions you warrant. Anything else, you disclaim.
+- **Per-session scope.** A support agent and an admin get different tool lists from the same MCP server, dynamically. Raw API access is static.
+- **Cross-model stability.** Swap Haiku for Opus for cost. Same tool surface, same behaviour. Raw API access gives you a different agent with every model change.
+
+**An unresolved design problem worth naming.** The menu limits the *primitive* actions in scope; it cannot enforce that the *compositions* are in scope. A capable agent given `list_files`, `read_file`, and `write_file` can approximate `move_file` even if `move_file` isn't published. Coarse menus are therefore over-permissive under composition; fine-grained menus force thinking about which composed sequences the scope actually authorises. This is an active design problem, not a settled practice — and it is one place where threat modelling, not API design alone, has to catch up.
+
+The agent-access maturity ladder operationalises all of this:
+
+| Level | Concrete posture |
+|---|---|
+| **0** | Developer pastes a personal API key into an agent host; no one knows |
+| **1** | Per-agent credentials; calls appear in logs; no agent-specific alerting |
+| **2** | MCP server published; scopes per tool; compliance can enumerate allowed actions |
+| **3** | Credentials ≤15 min TTL; agent-separate rate limits; destructive actions (irreversible or >$X impact) require a human confirmation via `elicitation/request` or equivalent; threat model names indirect prompt injection and cross-server tool shadowing |
+| **4** | Replay harness; semantic-retry anomaly detection; agent-specific SLIs (tool-selection accuracy against a held-out eval set, median tokens per tool-call) |
+| **5** | Federated identity — agent acts on behalf of a user with their traceable identity through the call chain |
+
+Most firms sit at 0–1. Level 3 is achievable in a quarter and is the level where an agentic incident stops being an existential risk.
+
+---
+
+## § 6 · The Physical-Layer Problem
+
+### Q10 · When the API governs physical motion rather than bits, what new problems emerge — and why does safety need its own architectural plane?
+
+Everything in §5 assumes the API governs bits. When the API governs atoms — a robot's motion, a drone's altitude, a conveyor's speed — the stakes change shape. The ontology from Q1 holds: the robot is a product, its API is a contract, its consumers are a fleet manager, an application, maybe an agent. The tensions from Q2 still apply: the contract is governed, and whoever governs it can change it. The January and November 2025 DJI geofencing reversals (DroneDJ 2025) are the case study for that tension in a safety-adjacent context.
+
+What changes is the consequence of governance turning: stopped production, stranded capital, or human injury.
+
+**Three new problems** emerge.
+
+**First — vendor lock at the control plane.** A vendor fleet SDK (DJI, Boston Dynamics, AMR vendors) is an external API of the kind Q2 described. The defensive pattern is the anti-corruption layer, applied to physical control:
+
+```
+Application logic (speaks your domain)
+       │
+   Facade (drone.fly_to, agv.pick_at)
+       │
+   ├─► DJI adapter  ─► DJI SDK
+   ├─► Spot adapter ─► Spot SDK
+   └─► V adapter    ─► Vendor V SDK
+```
+
+Firms with this facade absorbed the 2025 DJI geofencing changes by updating one file. Firms without scattered the logic across services and spent a quarter untangling it.
+
+**Second — intermittent connectivity.** Industrial fleets operate in warehouses with patchy Wi-Fi and outdoor sites with cellular loss. Three non-negotiables: edge autonomy (robots continue current tasks when the fleet manager is unreachable); store-and-forward telemetry (MQTT with local persistence, drained on reconnect); idempotent command design (the same Q6 pattern, now for moving machines). The autonomy window is bounded; the operator must also specify degrade-to-safe behaviour for outages *longer* than the window — what the robot does in hour two.
+
+**Third — safety cannot ride the control plane.** An e-stop signal whose delivery depends on the MQTT broker being up has coupled human safety to an unrelated software layer's availability. The convention is three planes, operated independently:
+
+> **Analogy — the taxi company.** The radio dispatch is the **control plane**: who takes which fare. The cars actually moving are the **data plane**. The emergency brake inside each car is the **safety plane** — it works whether dispatch is on lunch, whether the meter is broken, whether the GPS is wrong. The three systems must fail independently.
+
+| Plane | Protocol examples | What it does |
+|---|---|---|
+| **Control** | VDA 5050 over MQTT; vendor fleet APIs | Task dispatch, fleet coordination, scheduling |
+| **Data** | ROS 2 over DDS on-robot; MAVLink for drones; OPC UA for OT | Sensor streams, actuator commands, real-time perception |
+| **Safety** | Hardware interlocks; certified protocols (PROFIsafe, openSAFETY) | E-stop, light-curtain, watchdog — fails independently |
+
+Open-RMF handles multi-vendor coordination where more than one fleet operates in the same space. If the question *"can my robots still stop when the MQTT broker is down?"* is not trivially yes, the safety plane has leaked into the control plane and the architecture needs rework before an auditor — or a person — gets hurt.
+
+---
+
+## § 7 · Consequences
+
+Q1–Q10 generate a compact set of decisions a protocol-literate operator can make consistently.
+
+**Which surfaces to publish for which consumer classes** (from Q3, Q7, Q8):
+
+| Consumer | Publish |
+|---|---|
+| Own web frontend only | Typed fetch wrapper |
+| First-party mobile + web | API + BFF + mobile SDKs |
+| Partners | API + SDKs (top 2 languages) + CLI |
+| Third-party LLM agents | API + **MCP server** + SDK |
+| In-house agents | Purpose-built API; skip MCP |
+| Internal microservices | API + generated SDK from schema |
+
+**Ship-readiness for any external API** (from Q4, Q5, Q6):
+
+- [ ] Versioning strategy chosen and documented; breaking-change definition includes silent behavioural breaks
+- [ ] Sunset/deprecation process defined; consumer-identity tracking in place; top-3 consumers named before any deprecation
+- [ ] Idempotency key on every write endpoint
+- [ ] Rate limits per-key AND per-tenant AND per-endpoint, plus a global concurrency ceiling; `429` returns `Retry-After` + `X-RateLimit-*` headers
+- [ ] Clients use exponential backoff with full jitter and cap retries (typical default: 3 attempts from 100 ms); `Retry-After` is advisory
+- [ ] Workload identity where feasible; OAuth 2.1 / mTLS; short-lived scoped credentials; secrets in a manager, never on disk
+- [ ] W3C `traceparent` propagated end-to-end; RED metrics (Rate, Errors, Duration) per endpoint and per tenant
+- [ ] Canary rollout for schema changes; auto-rollback on SLO breach within 5 minutes
+
+**Agent-readiness** (from Q7, Q8, Q9):
+
+- [ ] MCP server (or equivalent tool manifest) if exposed to third-party agents
+- [ ] Tool descriptions evaluated against a held-out prompt set; target ≥95% tool-selection accuracy
+- [ ] Agent-specific credentials, ≤15 min TTL, tight scopes per tool
+- [ ] Destructive-action human gate (irreversible or >$X financial impact) via `elicitation/request` or equivalent
+- [ ] Replay log retained ≥90 days, tenant-scoped, PII-handled per policy
+- [ ] Agent-aware rate limits; semantic-retry anomaly detection
+- [ ] Documented threat model covering indirect prompt injection, cross-server tool shadowing, confused-deputy scenarios
+
+**Fleet-readiness** (from Q10):
+
+- [ ] Control / data / safety planes separated; safety on hardware or certified protocol
+- [ ] Vendor SDKs behind an application-owned facade
+- [ ] Store-and-forward telemetry; edge autonomy during a 1-hour outage; degrade-to-safe behaviour specified beyond the autonomy window
+- [ ] VDA 5050 or equivalent; Open-RMF if more than one vendor
+- [ ] Firmware and SDK deprecation process documented with each vendor
+
+---
+
+### Out of scope for this paper
+
+The decisions above apply to each of the following, but the specifics require their own treatment: event/async schema evolution (Kafka, MQTT); the choice between REST, GraphQL, gRPC, and RPC-over-Connect; webhook and publisher-initiated traffic (signing, replay, backoff on the publisher's side); multi-region and data-residency patterns; agent-traffic cost metering and pass-through. Each is an adjacent concern with its own literature.
+
+---
+
+## References
+
+- Anthropic. *Model Context Protocol — Architecture Overview*. https://modelcontextprotocol.io/docs/concepts/architecture
+- *DroneDJ.* "DJI drops old drone geofencing rules." 17 November 2025. https://dronedj.com/2025/11/17/dji-drone-geo-geofencing-unlock/
+- IETF RFC 8594. "The Sunset HTTP Header Field." May 2019. https://datatracker.ietf.org/doc/html/rfc8594
+- Leach, Brandur. "APIs as infrastructure: future-proofing Stripe with versioning." Stripe Blog, 28 August 2017. https://stripe.com/blog/api-versioning
+- MAVLink project. *MAVLink Developer Guide*. https://mavlink.io/en/
+- MQTT.org / OASIS. *MQTT Standard*. https://mqtt.org/
+- OpenAPI Initiative. *OpenAPI Specification v3.2.0*, 19 September 2025. https://spec.openapis.org/oas/latest.html
+- Open Robotics. *ROS 2 Documentation*. https://docs.ros.org/en/rolling/index.html
+- Open-RMF. *Open Robotics Middleware Framework*. https://www.open-rmf.org/
+- OPC Foundation. *OPC UA*. https://opcfoundation.org/about/opc-technologies/opc-ua/
+- Postman. *2025 State of the API Report*, 7th edition. https://www.postman.com/state-of-api/
+- VDA. *VDA 5050: Interface for the communication between AGVs and a master control.*
+- Evans, Eric. *Domain-Driven Design*, Addison-Wesley, 2003. (Anti-corruption layer pattern.)
+- Fowler, Martin. "StranglerFigApplication." https://martinfowler.com/bliki/StranglerFigApplication.html
+- SPIFFE / SPIRE. https://spiffe.io/
+- AWS IRSA. https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
+- GCP Workload Identity Federation. https://cloud.google.com/iam/docs/workload-identity-federation
+- OAuth 2.1 (draft). https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/
+- OWASP LLM01:2025 Prompt Injection. https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+- AWS: Exponential Backoff and Jitter (Brooker). https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
+</script>
+
+<script>
+(function() {
+  // ---- Download-markdown ----------------------------------------------------
+  var btn = document.getElementById('download-md');
+  var toast = document.getElementById('toast');
+  var src = document.getElementById('markdown-source');
+  function showToast(msg) {
+    if (msg) toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+  }
+  function doDownload() {
+    var text = (src.textContent || src.innerText || '').replace(/^\n+/, '');
+    var blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'apis-what-they-are.md';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Downloaded apis-what-they-are.md');
+  }
+  btn.addEventListener('click', doDownload);
+
+  // ---- TOC overlay (⌘K / Ctrl K) -------------------------------------------
+  var overlay = document.getElementById('toc-overlay');
+  var openBtn = document.getElementById('open-toc');
+  function openTOC() { overlay.classList.add('open'); }
+  function closeTOC() { overlay.classList.remove('open'); }
+  openBtn.addEventListener('click', openTOC);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeTOC(); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeTOC); });
+
+  // ---- Question headings (used by indicator + J/K nav) ---------------------
+  var LABELS = { q1: 'Ontology', q2: 'What APIs solve', q3: 'Multiple interfaces', q4: 'Change over time', q5: 'Authn vs authz', q6: 'Blast radius', q7: 'Agents as class', q8: 'Semantic SDK', q9: 'Permission surface', q10: 'Physical layer' };
+  var Q_IDS = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
+  var qHeadings = Q_IDS.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var currentSection = 0;
+
+  function scrollToSection(idx) {
+    idx = Math.max(0, Math.min(qHeadings.length - 1, idx));
+    var el = qHeadings[idx];
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('keydown', function(e) {
+    var meta = e.metaKey || e.ctrlKey;
+    if (meta && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); overlay.classList.contains('open') ? closeTOC() : openTOC(); return; }
+    if (meta && (e.key === 'd' || e.key === 'D')) { e.preventDefault(); doDownload(); return; }
+    if (e.key === 'Escape') { closeTOC(); return; }
+    if (overlay.classList.contains('open')) return;
+    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if (e.key === 'j' || e.key === 'J') { e.preventDefault(); scrollToSection(currentSection + 1); }
+    if (e.key === 'k' || e.key === 'K') { e.preventDefault(); scrollToSection(currentSection - 1); }
+  });
+
+  // ---- Scroll progress bar -------------------------------------------------
+  var progress = document.getElementById('progress-fill');
+  function onScroll() {
+    var h = document.documentElement;
+    var scrolled = h.scrollTop || document.body.scrollTop;
+    var total = h.scrollHeight - h.clientHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    progress.style.width = pct.toFixed(2) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---- Section indicator (active question) ---------------------------------
+  var indicator = document.getElementById('section-indicator');
+  var numEl = document.getElementById('section-num');
+  var nameEl = document.getElementById('section-name');
+  function updateIndicator() {
+    if (qHeadings.length === 0) return;
+    var threshold = window.innerHeight * 0.25;
+    var active = 0;
+    for (var i = 0; i < qHeadings.length; i++) {
+      var rect = qHeadings[i].getBoundingClientRect();
+      if (rect.top <= threshold) active = i; else break;
+    }
+    currentSection = active;
+    var h = qHeadings[active];
+    numEl.textContent = h.id.toUpperCase();
+    nameEl.textContent = LABELS[h.id] || '';
+    if (window.scrollY > 200) indicator.classList.add('visible');
+    else indicator.classList.remove('visible');
+  }
+  document.addEventListener('scroll', updateIndicator, { passive: true });
+  updateIndicator();
+
+  // ---- Interactive exercise: tab switching ---------------------------------
+  document.querySelectorAll('.interactive .tab').forEach(function(tab){
+    tab.addEventListener('click', function() {
+      var parent = tab.closest('.interactive');
+      parent.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      parent.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var target = parent.querySelector('#' + tab.getAttribute('data-panel'));
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // ---- Mobile sidenote toggle ----------------------------------------------
+  document.querySelectorAll('.ref-marker').forEach(function(m) {
+    m.addEventListener('click', function() {
+      var wrap = m.closest('.sn-wrap');
+      if (!wrap) return;
+      wrap.querySelectorAll('aside.sn').forEach(function(n){ n.classList.toggle('open'); });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
