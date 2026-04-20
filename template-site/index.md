@@ -87,6 +87,14 @@ window.templateAPI.addComment({
   author: "claude"
 });
 
+// Escalate a comment to a public GitHub issue (prefilled URL; no backend)
+window.templateAPI.submitAsIssue({
+  pid: "p-rf-3",
+  quote: "renders in the left gutter",
+  text:  "This pattern would be easier to discover with a keyboard shortcut.",
+  author: "claude"
+});  // → opens github.com/rafaeldavid/protocolized-publications/issues/new?…
+
 // Other operations
 window.templateAPI.listComments();
 window.templateAPI.deleteComment(cid);
@@ -99,6 +107,8 @@ await window.templateAPI.docHash();                        // "sha256:<hex>" of 
 window.templateAPI.on('comment:added', r => console.log('agent observer:', r));
 window.templateAPI.refresh();                              // re-render from localStorage
 ```
+
+Two submit paths, one form: **Save local** keeps the comment in the reader's browser (localStorage); **Submit as issue** opens a prefilled GitHub issue at <a href="https://github.com/rafaeldavid/protocolized-publications/issues" target="_blank" rel="noopener">rafaeldavid/protocolized-publications</a> with the quote, page anchor, and comment body laid out. The user's existing GitHub session handles auth — no tokens, no backend, no abuse vector. Forkers change <code>CONFIG.GH_REPO</code> and <code>CONFIG.GH_LABELS</code> at the top of the script to point at their own repo.
 
 Every stored record carries an immutable `origin` field stamped by the runtime: `"ui"` (saved via the selection popup), `"api"` (added via `templateAPI.addComment`), or `"demo"` (the template's first-visit seed). Callers cannot spoof `origin`. The `author` field is free-text and remains caller-controlled.
 
@@ -136,6 +146,7 @@ Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `t
 - {#p-back-done-8} **Cross-tab sync.** Comments added in one tab appear in other tabs on next render via the `storage` event.
 - {#p-back-done-9} **Document hash.** `templateAPI.docHash()` returns a SHA-256 of the embedded markdown source.
 - {#p-back-done-10} **Accessibility baseline.** `prefers-reduced-motion`, `:focus-visible`, toast as `role="status" aria-live="polite"`.
+- {#p-back-done-11} **GitHub issue escalation.** Every Comment form carries a `+ Issue ↗` button that opens a prefilled GitHub issue against `CONFIG.GH_REPO` (no backend, no tokens — the user's GitHub session authenticates). Agents can call `templateAPI.submitAsIssue({pid, quote, text, author})` to get the URL (and optionally open it).
 
 ### Open (requires external components)
 

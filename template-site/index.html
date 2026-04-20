@@ -337,6 +337,13 @@
   .comment-form button.primary:hover { background: var(--fg); }
   .comment-form button.ghost { background: #fff; color: var(--fg-muted); border: 1px solid var(--rule); }
   .comment-form button.ghost:hover { color: var(--fg); border-color: var(--fg); }
+  .comment-form button.gh { background: #fff; color: var(--fg); border: 1px solid var(--accent-mid); }
+  .comment-form button.gh:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+  .comment-form .cf-visibility {
+    font-size: 0.66rem; color: var(--fg-muted); font-style: italic;
+    padding: 0.15rem 0.1rem; line-height: 1.4;
+  }
+  .comment-form .cf-visibility strong { color: var(--fg); font-style: normal; font-weight: 600; }
 
   /* ---- Howto block ---- */
   .howto {
@@ -568,7 +575,7 @@
 
 <ul>
 <li id="p-rf-2"><strong>Copy</strong> places the selection text on the clipboard.</li>
-<li id="p-rf-3"><aside class="comment demo" data-role="reader-note" data-author-class="template" data-origin="demo"><span class="c-label">Comment<span class="c-author">· demo</span></span><span class="c-quote">renders in the left gutter</span><div class="c-body">Example Comment hardcoded in the HTML so every reader sees it. Real Comments (yours or posted by agents via <code>window.templateAPI</code>) render identically but live in your browser's localStorage, and carry a hover-× for deletion.</div><span class="c-meta">2026-04-20</span></aside><strong>Comment</strong> opens a compact floating form below the selection. Type a note, press <code>⌘↩</code> to save. The annotation <mark class="commented demo">renders in the left gutter</mark>, anchored to the nearest identified element, and the selected text is wrapped in a <code>&lt;mark&gt;</code>. Hover a comment to reveal the <code>×</code> for deletion.</li>
+<li id="p-rf-3"><aside class="comment demo" data-role="reader-note" data-author-class="template" data-origin="demo"><span class="c-label">Comment<span class="c-author">· demo</span></span><span class="c-quote">renders in the left gutter</span><div class="c-body">Example Comment hardcoded in the HTML so every reader sees it. Real Comments (yours or posted by agents via <code>window.templateAPI</code>) render identically but live in your browser's localStorage, and carry a hover-× for deletion.</div><span class="c-meta">2026-04-20</span></aside><strong>Comment</strong> opens a compact floating form below the selection with two submit paths: <strong>Save local</strong> (private, localStorage) or <strong>+ Issue ↗</strong> (public, opens a prefilled GitHub issue). The local annotation <mark class="commented demo">renders in the left gutter</mark>, anchored to the nearest identified element, and the selected text is wrapped in a <code>&lt;mark&gt;</code>. Hover a comment to reveal the <code>×</code> for deletion.</li>
 </ul>
 
 <p id="p-rf-4">Keyboard shortcuts:</p>
@@ -708,10 +715,15 @@ window.templateAPI.refresh();                              // re-render from loc
 <!-- Comment form -->
 <div class="comment-form" id="comment-form">
   <div class="cf-quote" id="cf-quote"></div>
-  <textarea id="cf-text" placeholder="Your comment (local only)…" rows="3"></textarea>
+  <textarea id="cf-text" placeholder="Your comment…" rows="3"></textarea>
+  <div class="cf-visibility">
+    <strong>Save</strong> keeps the comment in your browser (localStorage, private).
+    <strong>Submit as issue</strong> opens a prefilled GitHub issue (public).
+  </div>
   <div class="cf-actions">
     <button id="cf-cancel" class="ghost">Cancel</button>
-    <button id="cf-save" class="primary">Save (⌘↩)</button>
+    <button id="cf-github" class="gh" title="Open a prefilled GitHub issue (public)">+ Issue ↗</button>
+    <button id="cf-save" class="primary">Save local (⌘↩)</button>
   </div>
 </div>
 
@@ -807,6 +819,14 @@ window.templateAPI.addComment({
   author: "claude"
 });
 
+// Escalate a comment to a public GitHub issue (prefilled URL; no backend)
+window.templateAPI.submitAsIssue({
+  pid: "p-rf-3",
+  quote: "renders in the left gutter",
+  text:  "This pattern would be easier to discover with a keyboard shortcut.",
+  author: "claude"
+});  // → opens github.com/rafaeldavid/protocolized-publications/issues/new?…
+
 // Other operations
 window.templateAPI.listComments();
 window.templateAPI.deleteComment(cid);
@@ -819,6 +839,8 @@ await window.templateAPI.docHash();                        // "sha256:<hex>" of 
 window.templateAPI.on('comment:added', r => console.log('agent observer:', r));
 window.templateAPI.refresh();                              // re-render from localStorage
 ```
+
+Two submit paths, one form: **Save local** keeps the comment in the reader's browser (localStorage); **Submit as issue** opens a prefilled GitHub issue at <a href="https://github.com/rafaeldavid/protocolized-publications/issues" target="_blank" rel="noopener">rafaeldavid/protocolized-publications</a> with the quote, page anchor, and comment body laid out. The user's existing GitHub session handles auth — no tokens, no backend, no abuse vector. Forkers change <code>CONFIG.GH_REPO</code> and <code>CONFIG.GH_LABELS</code> at the top of the script to point at their own repo.
 
 Every stored record carries an immutable `origin` field stamped by the runtime: `"ui"` (saved via the selection popup), `"api"` (added via `templateAPI.addComment`), or `"demo"` (the template's first-visit seed). Callers cannot spoof `origin`. The `author` field is free-text and remains caller-controlled.
 
@@ -856,6 +878,7 @@ Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `t
 - {#p-back-done-8} **Cross-tab sync.** Comments added in one tab appear in other tabs on next render via the `storage` event.
 - {#p-back-done-9} **Document hash.** `templateAPI.docHash()` returns a SHA-256 of the embedded markdown source.
 - {#p-back-done-10} **Accessibility baseline.** `prefers-reduced-motion`, `:focus-visible`, toast as `role="status" aria-live="polite"`.
+- {#p-back-done-11} **GitHub issue escalation.** Every Comment form carries a `+ Issue ↗` button that opens a prefilled GitHub issue against `CONFIG.GH_REPO` (no backend, no tokens — the user's GitHub session authenticates). Agents can call `templateAPI.submitAsIssue({pid, quote, text, author})` to get the URL (and optionally open it).
 
 ### Open (requires external components)
 
@@ -909,6 +932,10 @@ Fork the source from [rafaeldavid/protocolized-publications/template-site](https
   MAX_QUOTE_IN_FORM: 180,
   TOAST_MS: 1600,
   VERSION: '1.0',
+  /* GitHub issue submission (prefilled URL; no backend, no tokens) */
+  GH_REPO:   'rafaeldavid/protocolized-publications',
+  GH_LABELS: ['reader-comment'],
+  GH_TITLE_PREFIX: '[template]',
 });
 
 const STORAGE_KEY = CONFIG.STORAGE_KEY;
@@ -1023,6 +1050,43 @@ document.getElementById('cf-save').addEventListener('click', () => {
 cfText.addEventListener('keydown', e => {
   if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); document.getElementById('cf-save').click(); }
   if (e.key === 'Escape') { e.preventDefault(); document.getElementById('cf-cancel').click(); }
+});
+
+/* ---- GitHub issue submission (prefilled URL; no backend) ---- */
+/**
+ * Build a GitHub issue-creation URL with title, body, and labels prefilled.
+ * The user's existing GitHub session handles auth when they click Submit.
+ * @param {{pid:string, quote:string, text:string, author?:string}} input
+ * @returns {string} issue URL
+ */
+function buildGitHubIssueURL({ pid, quote, text, author }) {
+  const pageUrl   = location.origin + location.pathname;
+  const anchorUrl = pageUrl + '#' + (pid || '');
+  const quoteShort = quote.length > 80 ? quote.slice(0, 80) + '…' : quote;
+  const title = `${CONFIG.GH_TITLE_PREFIX} ${pid || 'page'}: ${quoteShort}`;
+  const quotedQuote = quote.split('\n').map(l => '> ' + l).join('\n');
+  const whoStr = author ? ` _(author: ${author})_` : '';
+  const bodyText = text && text.trim() ? text : '_(no comment body — please fill in before submitting)_';
+  const body =
+    `**Quote**\n${quotedQuote}\n\n` +
+    `**Source**\n${anchorUrl}\n\n` +
+    `**Comment**${whoStr}\n${bodyText}\n\n` +
+    `---\n*Submitted via the template's in-page comment form. Comment was not stored locally.*`;
+  const params = new URLSearchParams({ title, body });
+  CONFIG.GH_LABELS.forEach(l => params.append('labels', l));
+  return `https://github.com/${CONFIG.GH_REPO}/issues/new?${params.toString()}`;
+}
+
+document.getElementById('cf-github').addEventListener('click', () => {
+  if (!lastSelection) return;
+  const text = cfText.value.trim();
+  const pid  = findAnchorPid(lastSelection.range) || '';
+  const url  = buildGitHubIssueURL({ pid, quote: lastSelection.text, text, author: 'reader' });
+  window.open(url, '_blank', 'noopener');
+  commentForm.classList.remove('open');
+  lastSelection = null;
+  window.getSelection().removeAllRanges();
+  showToast('Opening GitHub…');
 });
 
 /* ---- Anchor helpers ---- */
@@ -1343,10 +1407,13 @@ function getSchema() {
       "markdownSource":    { "returns": { "type": "string", "description": "raw body markdown" } },
       "exportMarkdown":    { "params": { "type": "object", "properties": { "includeComments": { "type": "boolean" } } }, "returns": { "type": "string" } },
       "exportAnnotations": { "returns": { "description": "W3C Web Annotation Data Model (JSON-LD)" } },
+      "submitAsIssue":     { "params": { "type": "object", "required": ["pid","quote","text"], "properties": { "pid": {"type":"string"}, "quote": {"type":"string"}, "text": {"type":"string"}, "author": {"type":"string"}, "openInNewTab": {"type":"boolean","default":true} } }, "returns": { "type": "string", "description": "GitHub issue URL" } },
       "docHash":           { "returns": { "description": "Promise<string> — sha256 hex of embedded markdown source" } },
       "schema":            { "returns": { "description": "This schema (JSON)" } },
       "on":                { "params": { "event": "string", "callback": "function" }, "returns": { "description": "unsubscribe function" } }
     },
+    "ghRepo": CONFIG.GH_REPO,
+    "ghLabels": CONFIG.GH_LABELS,
     "events": ["comment:added", "comment:deleted", "comments:cleared"],
     "alternateSources": {
       "markdownSibling":   "./index.md",
@@ -1457,6 +1524,24 @@ window.templateAPI = Object.freeze({
 
   /** W3C Web Annotation Data Model export (JSON-LD). */
   exportAnnotations,
+
+  /**
+   * Build (and optionally open) a prefilled GitHub issue URL for this comment.
+   * No backend; the user's existing GitHub session authenticates.
+   * @param {{pid:string, quote:string, text:string, author?:string}} input
+   * @param {{openInNewTab?:boolean}} [opts] defaults to { openInNewTab: true }
+   * @returns {string|null} the issue URL, or null on validation failure
+   */
+  submitAsIssue(input, opts) {
+    const pid    = typeof input?.pid    === 'string' ? input.pid.trim()    : '';
+    const quote  = typeof input?.quote  === 'string' ? input.quote         : '';
+    const text   = typeof input?.text   === 'string' ? input.text.trim()   : '';
+    const author = typeof input?.author === 'string' ? input.author.trim() : '';
+    if (!pid || !quote) return null;
+    const url = buildGitHubIssueURL({ pid, quote, text, author });
+    if (!opts || opts.openInNewTab !== false) window.open(url, '_blank', 'noopener');
+    return url;
+  },
 
   /** JSON Schema describing this API and the CommentRecord shape. */
   schema: getSchema,
