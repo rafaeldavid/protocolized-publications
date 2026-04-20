@@ -1680,6 +1680,28 @@ cfText.addEventListener('keydown', e => {
 });
 
 /* Anchor helpers */
+/* Stamp stable content-hash ids on every anchorable block that doesn't
+   already have one, so Comments can anchor even on pages whose authors
+   didn't manually assign semantic ids. Idempotent. */
+function strHash(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0).toString(36);
+}
+function ensureAnchorableIds() {
+  if (!article) return;
+  const sel = 'p, li, blockquote, figure, pre, table, dl, details';
+  article.querySelectorAll(sel).forEach(el => {
+    if (el.id) return;
+    const t = (el.textContent || '').trim().slice(0, 120);
+    if (!t) return;
+    el.id = 'auto-' + strHash(t);
+  });
+}
+
 function findAnchorPid(range) {
   let el = range.startContainer;
   if (el.nodeType === Node.TEXT_NODE) el = el.parentElement;
@@ -1862,6 +1884,7 @@ function exportAnnotations() {
 window.addEventListener('storage', e => { if (e.key === STORAGE_KEY) renderAll(); });
 
 /* Initial render */
+ensureAnchorableIds();
 renderAll();
 
 /* Public API — identical shape to template-site for cross-site consistency */

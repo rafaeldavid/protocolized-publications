@@ -1301,6 +1301,32 @@ document.getElementById('cf-github').addEventListener('click', () => {
 });
 
 /* ---- Anchor helpers ---- */
+/**
+ * Ensure every anchorable block inside <article> has an `id`. If the author
+ * pre-assigned ids (e.g. "p-why-1"), they're preserved; otherwise a
+ * content-hash id ("auto-<hash>") is stamped in-place. The hash is stable
+ * across page refreshes as long as the block's first ~120 chars of text
+ * don't change, so saved Comments re-anchor cleanly.
+ */
+function strHash(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0).toString(36);
+}
+function ensureAnchorableIds() {
+  if (!article) return;
+  const sel = 'p, li, blockquote, figure, pre, table, dl, details';
+  article.querySelectorAll(sel).forEach(el => {
+    if (el.id) return;
+    const t = (el.textContent || '').trim().slice(0, 120);
+    if (!t) return;
+    el.id = 'auto-' + strHash(t);
+  });
+}
+
 function findAnchorPid(range) {
   let el = range.startContainer;
   if (el.nodeType === Node.TEXT_NODE) el = el.parentElement;
@@ -1586,6 +1612,7 @@ function seedSample() {
   localStorage.setItem(SEED_KEY, 'done');
 }
 
+ensureAnchorableIds();
 seedSample();
 renderAll();
 
