@@ -150,7 +150,7 @@ Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `t
 
 ### How to contribute
 
-Fork the source from `/Users/rafa/Documents/protocols/P4BSIG/template-site/` (or `fetch` the page — one self-contained HTML file). Implement an item from the open list, republish via `publish.sh`. Consider upstreaming reusable improvements on the [Protocolized forum](https://protocolized.summerofprotocols.com/t/studies).
+Fork the source from [rafaeldavid/protocolized-publications/template-site](https://github.com/rafaeldavid/protocolized-publications/tree/main/template-site) (or `fetch` the page — one self-contained HTML file). Implement an item from the open list, republish via `publish.sh`. Consider upstreaming reusable improvements on the [Protocolized forum](https://protocolized.summerofprotocols.com/t/studies).
 
 ## Forking and reuse
 
@@ -162,4 +162,4 @@ Fork the source from `/Users/rafa/Documents/protocols/P4BSIG/template-site/` (or
 - {#p-fork-5} Change `STORAGE_KEY` if you want a separate comment set per report.
 - {#p-fork-6} For multi-page reports, copy `/template/exercise/` as a subpage stub and flip the breadcrumb's `active` class per page.
 
-{#p-fork-7} Source lives at `/Users/rafa/Documents/protocols/P4BSIG/template-site/`. Publish via the [here.now](https://here.now/) skill with `publish.sh`.
+{#p-fork-7} Source lives at [rafaeldavid/protocolized-publications/template-site](https://github.com/rafaeldavid/protocolized-publications/tree/main/template-site). Publish via the [here.now](https://here.now/) skill with `publish.sh`.

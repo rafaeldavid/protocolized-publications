@@ -40,6 +40,29 @@
 <!-- Canonical -->
 <link rel="canonical" href="https://npc.here.now/wthapi/" />
 
+<!-- Agent discovery: machine-readable entry points for LLM agents -->
+<meta name="llm-markdown" content="./paper.md" />
+<link rel="alternate" type="text/markdown" href="./paper.md" title="Markdown source (sibling file)" />
+
+<!-- Schema.org Article describing this document -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "APIs: What They Are, What They Solve, What They Cost",
+  "description": "Ten questions for protocol-literate operators. A problem-centric, ontologically grounded design paper on APIs, SDKs, CLIs, MCP servers, and the consumer classes they serve.",
+  "datePublished": "2026-04-18",
+  "author": { "@type": "Organization", "name": "Protocolized / Protocols for Business Group", "url": "https://protocolized.summerofprotocols.com/" },
+  "publisher": { "@type": "Organization", "name": "Protocolized" },
+  "url": "https://npc.here.now/wthapi/",
+  "encoding": [
+    { "@type": "MediaObject", "encodingFormat": "text/html", "contentUrl": "https://npc.here.now/wthapi/" },
+    { "@type": "MediaObject", "encodingFormat": "text/markdown", "contentUrl": "https://npc.here.now/wthapi/paper.md" }
+  ],
+  "isBasedOn": "https://github.com/rafaeldavid/protocolized-publications/tree/main/wthapi-site"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -66,7 +89,14 @@
     --gap: 2.5rem;
     --font-mono: 'Roboto Mono', ui-monospace, monospace;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+  :focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 3px; }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
   body { font-family: var(--font-sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
@@ -332,7 +362,7 @@
 <h3><span class="q">Q1 ·</span> What is an API, structurally — and how does it relate to the software product it exposes and to that product's other interfaces?</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">1</span>The definition of <em>interface</em> here is intentionally broader than the W3C or POSIX uses; it includes GUIs, CLIs, SDKs, and network APIs as species of the same genus. See Fielding's dissertation, §5.1.5 on the uniform interface constraint: <a href="https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm" target="_blank" rel="noopener">Fielding 2000</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">1</span>The definition of <em>interface</em> here is intentionally broader than the W3C or POSIX uses; it includes GUIs, CLIs, SDKs, and network APIs as species of the same genus. See Fielding's dissertation, §5.1.5 on the uniform interface constraint: <a href="https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm" target="_blank" rel="noopener">Fielding 2000</a>.</aside>
 <p>Start with the thing the API is an interface <em>to</em>. A <strong>software product</strong> is a system with internal logic and state that does something useful — process payments, schedule robots, summarise documents. The product itself is invisible to anyone outside it. An <strong>interface</strong> is any surface through which an outside actor can reach the product. Every non-trivial product has more than one interface, because different actors need different surfaces.<span class="ref-marker">¹</span></p>
 </div>
 
@@ -343,7 +373,7 @@
 <p>A <strong>consumer class</strong> is a population of actors that uses the same kind of interface for the same kind of reason: humans-with-browsers, Python programs, iOS apps, SREs at a shell, LLM agents. Each class has different cognitive and operational needs, which is why a product ends up with more than one door.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">2</span>The term "application program interface" first appears in <a href="https://en.wikipedia.org/wiki/API#History_of_the_term" target="_blank" rel="noopener">Cotton &amp; Greatorex, AFIPS 1968</a>. Mozilla's contemporary glossary gloss: <a href="https://developer.mozilla.org/en-US/docs/Glossary/API" target="_blank" rel="noopener">MDN</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">2</span>The term "application program interface" first appears in <a href="https://en.wikipedia.org/wiki/API#History_of_the_term" target="_blank" rel="noopener">Cotton &amp; Greatorex, AFIPS 1968</a>. Mozilla's contemporary glossary gloss: <a href="https://developer.mozilla.org/en-US/docs/Glossary/API" target="_blank" rel="noopener">MDN</a>.</aside>
 <p>An <strong>API (Application Programming Interface)</strong> is one specific species of interface: <em>a <strong><em>programmatic</em></strong>, <strong><em>versioned</em></strong>, <strong><em>governed contract</em></strong> through which software consumers reach the product, typically across a process or network boundary.</em><span class="ref-marker">²</span> Four words are doing load-bearing work:</p>
 </div>
 
@@ -352,7 +382,7 @@
 <li><strong><em>Contract</em></strong> — a <em>publisher-governed</em> commitment that a given request will produce a given response, within stated limits. This contract is <strong>asymmetric</strong>, not bilateral: the publisher sets terms; the consumer accepts them; remedy on breach is limited to what the publisher offers.</li>
 <li><strong><em>Versioned</em></strong> — the commitment changes over time; the version names a point in that history.</li>
 <li><div class="sn-wrap">
-<aside class="sn"><span class="sn-num">3</span><em>Hardness</em> as used here is from <a href="https://stark.mirror.xyz/n2UpRqwdf7yjuiPKVICPpGoUNeDhlWxGqjulrlpyYi0" target="_blank" rel="noopener">Josh Stark, "Atoms, Institutions, Blockchains" (2023)</a>: "the capacity of a system to make something very likely to be true in the future."</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">3</span><em>Hardness</em> as used here is from <a href="https://stark.mirror.xyz/n2UpRqwdf7yjuiPKVICPpGoUNeDhlWxGqjulrlpyYi0" target="_blank" rel="noopener">Josh Stark, "Atoms, Institutions, Blockchains" (2023)</a>: "the capacity of a system to make something very likely to be true in the future."</aside>
 <strong><em>Governed</em></strong> — a <strong>governor</strong> (whoever maintains the product) is the only party who can change the contract. The API's <strong>hardness</strong> — the extent to which its terms can be relied on in the future — is borrowed from that governor. An API is as hard as the institution behind it.<span class="ref-marker">³</span>
 </div></li>
 </ul>
@@ -375,20 +405,20 @@
 <p><strong>The problem an API solves</strong> is coordination between a product and consumers who do not share its code, its ownership, or its release schedule. The API draws a line: on your side, the product can evolve; on the consumer's side, their application can evolve; across the line, a versioned contract stabilises the interaction.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">4</span>Enterprise tier price and academic-access shutdown reported in <a href="https://independenttechresearch.org/letter-twitters-new-api-plans-will-devastate-public-interest-research/" target="_blank" rel="noopener">Coalition for Independent Technology Research, Feb 2023</a>; downstream research decline in <a href="https://arxiv.org/abs/2404.07340" target="_blank" rel="noopener">"RIP Twitter API" (arXiv:2404.07340)</a>.</aside>
-<aside class="sn"><span class="sn-num">5</span>Apollo developer Christian Selig's projected cost and shutdown: <a href="https://www.macrumors.com/2023/05/31/reddit-api-changes-pricing-apollo/" target="_blank" rel="noopener">MacRumors, 31 May 2023</a>; <a href="https://techcrunch.com/2023/05/31/popular-reddit-app-apollo-may-go-out-of-business-over-reddits-new-unaffordable-api-pricing/" target="_blank" rel="noopener">TechCrunch</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">4</span>Enterprise tier price and academic-access shutdown reported in <a href="https://independenttechresearch.org/letter-twitters-new-api-plans-will-devastate-public-interest-research/" target="_blank" rel="noopener">Coalition for Independent Technology Research, Feb 2023</a>; downstream research decline in <a href="https://arxiv.org/abs/2404.07340" target="_blank" rel="noopener">"RIP Twitter API" (arXiv:2404.07340)</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">5</span>Apollo developer Christian Selig's projected cost and shutdown: <a href="https://www.macrumors.com/2023/05/31/reddit-api-changes-pricing-apollo/" target="_blank" rel="noopener">MacRumors, 31 May 2023</a>; <a href="https://techcrunch.com/2023/05/31/popular-reddit-app-apollo-may-go-out-of-business-over-reddits-new-unaffordable-api-pricing/" target="_blank" rel="noopener">TechCrunch</a>.</aside>
 <p><strong>The persistent tension</strong> follows directly from Q1's asymmetry. The line has an owner. Whoever owns the contract can change it, price it, deprecate it, rate-limit it, or withdraw it. Every API dependency is therefore an exposure to that governance. The 2023 retrenchments — Twitter pricing its API tier at $42,000/month<span class="ref-marker">⁴</span>, Reddit making Apollo's projected cost $20M/year<span class="ref-marker">⁵</span> — are the canonical illustrations. Consumers who thought they had stable infrastructure discovered they had a counterparty.</p>
 </div>
 
 <p>Two patterns exist because they protect the consumer from this tension:</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">6</span>From Eric Evans' <a href="https://www.dddcommunity.org/book/evans_2003/" target="_blank" rel="noopener"><em>Domain-Driven Design</em> (2003)</a>. A working summary: <a href="https://martinfowler.com/bliki/AnticorruptionLayer.html" target="_blank" rel="noopener">Martin Fowler's bliki</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">6</span>From Eric Evans' <a href="https://www.dddcommunity.org/book/evans_2003/" target="_blank" rel="noopener"><em>Domain-Driven Design</em> (2003)</a>. A working summary: <a href="https://martinfowler.com/bliki/AnticorruptionLayer.html" target="_blank" rel="noopener">Martin Fowler's bliki</a>.</aside>
 <blockquote><p><strong>Anti-corruption layer.</strong> When you integrate with an external API whose model is incompatible with your domain, wrap it. The wrapper translates the publisher's vocabulary into yours. When the publisher renames a field, you change one file, not thirty.<span class="ref-marker">⁶</span></p></blockquote>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">7</span>Coined by Martin Fowler, <a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener">"StranglerFigApplication"</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">7</span>Coined by Martin Fowler, <a href="https://martinfowler.com/bliki/StranglerFigApplication.html" target="_blank" rel="noopener">"StranglerFigApplication"</a>.</aside>
 <blockquote><p><strong>Strangler fig.</strong> When migrating off an API you no longer want, put a facade in front that routes some calls to the old contract and some to the new, and retire endpoints path-by-path. The alternative — a big-bang cutover — is the most common cause of migration failure.<span class="ref-marker">⁷</span></p></blockquote>
 </div>
 
@@ -434,7 +464,7 @@
 <p>Four strategies, ordered roughly by operational cost.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">8</span>Stripe's approach described in <a href="https://stripe.com/blog/api-versioning" target="_blank" rel="noopener">Brandur Leach, "APIs as infrastructure: future-proofing Stripe with versioning" (Stripe Blog, 2017)</a>. Stripe has maintained "almost a hundred backwards-incompatible upgrades" while keeping all versions working since 2011.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">8</span>Stripe's approach described in <a href="https://stripe.com/blog/api-versioning" target="_blank" rel="noopener">Brandur Leach, "APIs as infrastructure: future-proofing Stripe with versioning" (Stripe Blog, 2017)</a>. Stripe has maintained "almost a hundred backwards-incompatible upgrades" while keeping all versions working since 2011.</aside>
 <table>
 <thead><tr><th>Strategy</th><th>Best fit</th></tr></thead>
 <tbody>
@@ -471,12 +501,12 @@
 </ul>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">9</span><a href="https://github.com/oasdiff/oasdiff" target="_blank" rel="noopener">oasdiff</a> (OpenAPI diff with breaking-change detection); <a href="https://buf.build/docs/breaking/overview" target="_blank" rel="noopener">buf breaking</a> (Protobuf schema breaking-change detection).</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">9</span><a href="https://github.com/oasdiff/oasdiff" target="_blank" rel="noopener">oasdiff</a> (OpenAPI diff with breaking-change detection); <a href="https://buf.build/docs/breaking/overview" target="_blank" rel="noopener">buf breaking</a> (Protobuf schema breaking-change detection).</aside>
 <p>Enforce the schema cases with <code>oasdiff</code> or <code>buf breaking</code><span class="ref-marker">⁹</span> in CI. The behavioural cases require contract tests, paired environments, and consumer-run canaries — no amount of schema tooling catches them.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">10</span><a href="https://datatracker.ietf.org/doc/html/rfc8594" target="_blank" rel="noopener">RFC 8594, "The Sunset HTTP Header Field"</a> (Wilde, 2019). Companion: <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-deprecation-header" target="_blank" rel="noopener">the Deprecation header draft</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">10</span><a href="https://datatracker.ietf.org/doc/html/rfc8594" target="_blank" rel="noopener">RFC 8594, "The Sunset HTTP Header Field"</a> (Wilde, 2019). Companion: <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-deprecation-header" target="_blank" rel="noopener">the Deprecation header draft</a>.</aside>
 <p><strong>Deprecation discipline</strong> converts a breaking change from an incident into a project. Minimum practice: announce via your normal release channel, emit the <code>Sunset</code> HTTP header (RFC 8594)<span class="ref-marker">¹⁰</span> along with a <code>Deprecation: true</code> header, track consumption by consumer identity, provide migration tooling, and keep a rollback plan. <strong>If you cannot name the three largest consumers of an endpoint you intend to deprecate, you are not ready to deprecate it.</strong></p>
 </div>
 
@@ -495,7 +525,7 @@
 <blockquote><p><strong>Analogy — hotel keycards, not house keys.</strong> A long-lived production key is a house key: lose it and you change every lock. A short-lived scoped token is a hotel keycard: it expires at checkout, only opens your room, and the front desk can revoke it instantly without rekeying the building.</p></blockquote>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">11</span>Workload identity primary sources: <a href="https://spiffe.io/docs/latest/spiffe-about/overview/" target="_blank" rel="noopener">SPIFFE</a> / <a href="https://spiffe.io/docs/latest/spire-about/" target="_blank" rel="noopener">SPIRE</a>; <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html" target="_blank" rel="noopener">AWS IRSA</a>; <a href="https://cloud.google.com/iam/docs/workload-identity-federation" target="_blank" rel="noopener">GCP workload identity federation</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">11</span>Workload identity primary sources: <a href="https://spiffe.io/docs/latest/spiffe-about/overview/" target="_blank" rel="noopener">SPIFFE</a> / <a href="https://spiffe.io/docs/latest/spire-about/" target="_blank" rel="noopener">SPIRE</a>; <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html" target="_blank" rel="noopener">AWS IRSA</a>; <a href="https://cloud.google.com/iam/docs/workload-identity-federation" target="_blank" rel="noopener">GCP workload identity federation</a>.</aside>
 <p>The tension is between credential <em>scope and lifetime</em> and <em>operational convenience</em>. Short, narrowly-scoped credentials are safer but require rotation, refresh, and secret management. Long, broadly-scoped credentials are convenient but catastrophic when leaked. Defensible defaults for 2026:</p>
 </div>
 
@@ -503,7 +533,7 @@
 <li><strong>Workload identity as the substrate</strong><span class="ref-marker">¹¹</span> — SPIFFE/SPIRE, AWS IRSA, GCP workload identity federation, Kubernetes service-account tokens. Credentials are bound to a workload, not stored as files.</li>
 <li><strong>mTLS</strong> for in-cluster machine-to-machine.</li>
 <li><div class="sn-wrap">
-<aside class="sn"><span class="sn-num">12</span><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/" target="_blank" rel="noopener">OAuth 2.1 consolidated draft (IETF)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc7636" target="_blank" rel="noopener">RFC 7636 PKCE</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">12</span><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/" target="_blank" rel="noopener">OAuth 2.1 consolidated draft (IETF)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc7636" target="_blank" rel="noopener">RFC 7636 PKCE</a>.</aside>
 <strong>OAuth 2.1</strong>  — authorization-code + PKCE for user-delegated, client-credentials for service-to-service.<span class="ref-marker">¹²</span>
 </div></li>
 <li><strong>Short-lived access tokens</strong> (~15 min) with rotated refresh.</li>
@@ -525,7 +555,7 @@
 <blockquote><p><strong>Analogy — the onramp metering light.</strong> LA freeways meter onramps so a sudden surface-street surge doesn't collapse the highway. Rate limiters meter consumers so a sudden client-side surge doesn't collapse the API.</p></blockquote>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">13</span><a href="https://datatracker.ietf.org/doc/html/rfc6585" target="_blank" rel="noopener">RFC 6585 (Additional HTTP Status Codes, including 429)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc9331" target="_blank" rel="noopener">RateLimit header fields draft</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">13</span><a href="https://datatracker.ietf.org/doc/html/rfc6585" target="_blank" rel="noopener">RFC 6585 (Additional HTTP Status Codes, including 429)</a>; <a href="https://datatracker.ietf.org/doc/html/rfc9331" target="_blank" rel="noopener">RateLimit header fields draft</a>.</aside>
 <p>Enforce in multiple dimensions (per-key AND per-tenant AND per-endpoint AND a global concurrency ceiling); return <code>429</code> with <code>Retry-After</code>, <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>, <code>X-RateLimit-Reset</code>; use a token bucket for bursty-but-capped traffic, a sliding window for stricter regulatory contexts.<span class="ref-marker">¹³</span> A single global RPS ceiling lets one misbehaving consumer starve every other customer.</p>
 </div>
 
@@ -534,7 +564,7 @@
 <p><strong>Circuit breakers</strong> protect the consumer from a degraded downstream. A breaker trips before the wiring melts; an open circuit breaker trips before a degraded dependency takes your service down with it. A companion pattern — <strong>bulkheading</strong> — allocates separate thread or connection pools per downstream so one slow dependency cannot starve the others.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">14</span>The canonical treatment is AWS's <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank" rel="noopener">"Exponential Backoff And Jitter"</a> (Brooker, 2015).</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">14</span>The canonical treatment is AWS's <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank" rel="noopener">"Exponential Backoff And Jitter"</a> (Brooker, 2015).</aside>
 <p>Retries, whenever they happen, must use <strong>exponential backoff with full jitter</strong>. Without jitter, retries synchronise and produce a thundering herd when the downstream recovers.<span class="ref-marker">¹⁴</span> <code>Retry-After</code> is advisory, not normative; clients must cap their own retries (a reasonable default: three attempts, exponential delay from 100 ms with full jitter, then fail fast).</p>
 </div>
 
@@ -551,7 +581,7 @@
 <li><strong>They re-decide which call to make on every invocation.</strong> A developer writes code once and runs it a thousand times. An agent reconsiders. Tool interfaces must be safe under "forgotten context between calls" — stateless, idempotent, tightly-typed.</li>
 <li><strong>They can be authored by someone you don't control.</strong> Your consumer might be Claude Desktop, Cursor, or an end-user's custom harness — hosts you have no contract with.</li>
 <li><div class="sn-wrap">
-<aside class="sn"><span class="sn-num">15</span><a href="https://www.postman.com/state-of-api/" target="_blank" rel="noopener">Postman, 2025 State of the API Report (7th edition)</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">15</span><a href="https://www.postman.com/state-of-api/" target="_blank" rel="noopener">Postman, 2025 State of the API Report (7th edition)</a>.</aside>
 <strong>They scale beyond any prior consumer class's patience.</strong> Postman's 2025 report records agent API traffic growing 40% year-over-year, and "51% of developers worry about unauthorized or excessive API calls from AI agents — their number one security concern."<span class="ref-marker">¹⁵</span> Agents burst at machine speed for <em>semantic</em> reasons ("try a different phrasing") that existing retry detectors don't recognise.
 </div></li>
 </ol>
@@ -564,8 +594,8 @@
 <p>From Q3's widened definition: an SDK is an ergonomic wrapper over the API in the consumer class's native idiom. <strong>MCP is that, for agents.</strong> It is not a new architectural category; it is the SDK pattern specialised for a consumer class whose native idiom is natural language. The mapping is nearly exact:</p>
 
 <div class="sn-wrap">
-<aside class="sn gc"><span class="gc-label">Considerations</span><em>Context overload, and where Skills actually sit.</em> Most hosts today inject every connected server's full tool schema into every model turn. Three or four servers quickly crowds context. MCP 2025-06 adds elicitation/sampling but no progressive-disclosure equivalent at the tool-schema level. Anthropic's Skills (Oct 2025) answer progressive disclosure via SKILL.md frontmatter — only name + description loaded eagerly, body loaded on invocation.<br><br>The right axis for Skills vs MCP is <strong>interaction model, not location</strong>. Skills are prose + scripts the agent reads from disk and executes. MCP is a protocol the agent uses to discover and call tools via JSON-RPC (over stdio or HTTP). Either can be local or remote-reaching: an MCP server can run as a stdio subprocess on the same host; a skill can shell out to a CLI like <code>gws</code>, hit a REST API, or even invoke an MCP tool. So Skills don't "replace MCP for third-party tool exposure" — they compose with it. The distinguishing properties: Skills give you progressive disclosure and Anthropic-specific host support; MCP gives you a wire protocol and cross-vendor interop.</aside>
-<aside class="sn"><span class="sn-num">16</span>MCP architecture primitives (tools, resources, prompts; sampling, elicitation, logging) and transport: <a href="https://modelcontextprotocol.io/docs/concepts/architecture" target="_blank" rel="noopener">MCP docs</a>; <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener">Anthropic announcement, Nov 2024</a>.</aside>
+<aside class="sn gc" data-role="consideration" data-author-class="author"><span class="gc-label">Considerations</span><em>Context overload, and where Skills actually sit.</em> Most hosts today inject every connected server's full tool schema into every model turn. Three or four servers quickly crowds context. MCP 2025-06 adds elicitation/sampling but no progressive-disclosure equivalent at the tool-schema level. Anthropic's Skills (Oct 2025) answer progressive disclosure via SKILL.md frontmatter — only name + description loaded eagerly, body loaded on invocation.<br><br>The right axis for Skills vs MCP is <strong>interaction model, not location</strong>. Skills are prose + scripts the agent reads from disk and executes. MCP is a protocol the agent uses to discover and call tools via JSON-RPC (over stdio or HTTP). Either can be local or remote-reaching: an MCP server can run as a stdio subprocess on the same host; a skill can shell out to a CLI like <code>gws</code>, hit a REST API, or even invoke an MCP tool. So Skills don't "replace MCP for third-party tool exposure" — they compose with it. The distinguishing properties: Skills give you progressive disclosure and Anthropic-specific host support; MCP gives you a wire protocol and cross-vendor interop.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">16</span>MCP architecture primitives (tools, resources, prompts; sampling, elicitation, logging) and transport: <a href="https://modelcontextprotocol.io/docs/concepts/architecture" target="_blank" rel="noopener">MCP docs</a>; <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener">Anthropic announcement, Nov 2024</a>.</aside>
 <table>
 <thead><tr><th>Traditional SDK</th><th>MCP server</th></tr></thead>
 <tbody>
@@ -583,17 +613,17 @@
 <p><strong>What MCP solves that a well-documented raw API plus OpenAPI doesn't</strong> is the same problem every SDK solves — host compatibility and authoring ergonomics for a specific consumer class. Because MCP is a standard, any host (Claude Desktop, Cursor, VS Code, Claude Code) can consume any MCP server without custom integration. Publishing MCP is how you reach the agent consumer class, the same way publishing a Python SDK is how you reach Python developers.</p>
 
 <div class="sn-wrap">
-<aside class="sn gc"><span class="gc-label">Considerations</span><em>Role enforcement, located correctly.</em> A reader-framing to pre-empt: "MCP can't enforce roles like APIs can." The MCP server itself enforces authz with the same primitives any HTTP API uses — scopes, JWT claims, per-tool guards. What is genuinely harder is the <em>host-mediated</em> call path: the host process sometimes injects user credentials, and the tool-description channel is model-interpreted, so "role" can be bent by prompt injection upstream of the server. That is a host/protocol-level property, not an authz-primitive deficiency. The paragraph above locates it correctly as "treat operationally more like a browser extension."</aside>
-<aside class="sn gc"><span class="gc-label">Considerations</span><em>Attack-surface argument for going headless.</em> Matt Webb makes the adjacent security case in <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026): the alternative to dedicated agent tools is agents driving the same browser-based GUI humans use, and that is a larger attack surface than is comfortable once frontier models get good at finding flaws. Webb cites the <a href="https://www.theregister.com/2026/03/16/companies_house_breach/" target="_blank" rel="noopener">Companies House back-button privilege-escalation flaw (Mar 2026)</a> as the kind of defect an agent fleet would discover and exploit faster than a human team could patch. Reinforces the "treat operationally like a browser extension" framing: smaller, purpose-built surfaces (CLI or MCP) are smaller targets than letting an agent drive a full product UI.</aside>
-<aside class="sn"><span class="sn-num">17</span>Indirect prompt injection: <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener">OWASP LLM01:2025</a>; Simon Willison's <a href="https://simonwillison.net/tags/prompt-injection/" target="_blank" rel="noopener">long-running index</a>. On MCP-specific threats: <a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/" target="_blank" rel="noopener">Willison on MCP tool-shadowing</a>.</aside>
+<aside class="sn gc" data-role="consideration" data-author-class="author"><span class="gc-label">Considerations</span><em>Role enforcement, located correctly.</em> A reader-framing to pre-empt: "MCP can't enforce roles like APIs can." The MCP server itself enforces authz with the same primitives any HTTP API uses — scopes, JWT claims, per-tool guards. What is genuinely harder is the <em>host-mediated</em> call path: the host process sometimes injects user credentials, and the tool-description channel is model-interpreted, so "role" can be bent by prompt injection upstream of the server. That is a host/protocol-level property, not an authz-primitive deficiency. The paragraph above locates it correctly as "treat operationally more like a browser extension."</aside>
+<aside class="sn gc" data-role="consideration" data-author-class="author"><span class="gc-label">Considerations</span><em>Attack-surface argument for going headless.</em> Matt Webb makes the adjacent security case in <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026): the alternative to dedicated agent tools is agents driving the same browser-based GUI humans use, and that is a larger attack surface than is comfortable once frontier models get good at finding flaws. Webb cites the <a href="https://www.theregister.com/2026/03/16/companies_house_breach/" target="_blank" rel="noopener">Companies House back-button privilege-escalation flaw (Mar 2026)</a> as the kind of defect an agent fleet would discover and exploit faster than a human team could patch. Reinforces the "treat operationally like a browser extension" framing: smaller, purpose-built surfaces (CLI or MCP) are smaller targets than letting an agent drive a full product UI.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">17</span>Indirect prompt injection: <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener">OWASP LLM01:2025</a>; Simon Willison's <a href="https://simonwillison.net/tags/prompt-injection/" target="_blank" rel="noopener">long-running index</a>. On MCP-specific threats: <a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/" target="_blank" rel="noopener">Willison on MCP tool-shadowing</a>.</aside>
 <p><strong>One property has no traditional-SDK analogue, and it matters.</strong> A Python SDK runs inside the consumer's process under their own auth; a malicious SDK is a supply-chain attack on the consumer. An MCP server is a separate process mediated by the agent host, often running under the end-user's credentials and exposing tools discovered dynamically. A malicious MCP server can inject instructions into the agent's context, shadow another server's tool names, or exfiltrate data across servers. Tool namespacing, publisher allowlists, and <strong>indirect prompt injection</strong> (hostile text in retrieved content attempting to redirect the agent) are new failure modes an MCP publisher and consumer both have to reason about.<span class="ref-marker">¹⁷</span> Treat MCP ergonomically like an SDK; treat it operationally more like a browser extension.</p>
 </div>
 
 <p>Which consumer populations warrant the MCP surface:</p>
 
 <div class="sn-wrap">
-<aside class="sn gc"><span class="gc-label">Considerations</span><em>CLI-as-tool is a legitimate third option.</em> For local agents with shell access and a deterministic-behaviour requirement, a CLI wraps an API with tighter process boundaries and rigid positional/flag schema. Agents parse stdout/stderr; authz is whatever the CLI's calling shell has. Google shipped exactly this pattern in early 2026 as <a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener"><code>googleworkspace/cli</code></a> (<code>gws</code>) — a dynamically-generated CLI covering Drive, Gmail, Calendar, Docs, Sheets, Chat, Admin, etc., with 40+ bundled "agent skills" and an optional MCP server in the same binary. Coverage: <a href="https://venturebeat.com/orchestration/google-workspace-cli-brings-gmail-docs-sheets-and-more-into-a-common" target="_blank" rel="noopener">VentureBeat</a>. Nuance worth noting: <code>gws</code> is CLI-first but MCP-capable — agents typically consume it via the bundled MCP server, which means CLI and MCP aren't strictly either/or for the same product.</aside>
-<aside class="sn gc"><span class="gc-label">Considerations</span><em>"Headless everything" — the directional argument for CLI.</em> Matt Webb's <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026) makes the broader case that apps and services move toward exposing tools to personal AIs rather than just visual UI. Three claims worth engaging with: <strong>(1) Personal AI runs on a computer</strong> — the user's laptop or a virtualised one — so what it wants is "little apps it can use directly," not webservers it calls. CLIs fit that shape. <strong>(2) CLIs compose</strong> in the Unix-tools sense: query notes → jump to a spreadsheet → research the web → back to the spreadsheet, all in one session. Apps designed around "user journeys" don't. <strong>(3) Auto-generation is already here</strong> — <a href="https://github.com/HKUDS/CLI-Anything" target="_blank" rel="noopener">CLI-Anything</a> generates CLIs from arbitrary codebases, lowering the cost of shipping this surface. Mild caveat: CLIs still wrap APIs underneath (<code>gws</code> is literally generated from Google's Discovery Service), so the framing is "CLI-over-API as a distinct agent-facing surface," not "CLI instead of API."</aside>
+<aside class="sn gc" data-role="consideration" data-author-class="author"><span class="gc-label">Considerations</span><em>CLI-as-tool is a legitimate third option.</em> For local agents with shell access and a deterministic-behaviour requirement, a CLI wraps an API with tighter process boundaries and rigid positional/flag schema. Agents parse stdout/stderr; authz is whatever the CLI's calling shell has. Google shipped exactly this pattern in early 2026 as <a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener"><code>googleworkspace/cli</code></a> (<code>gws</code>) — a dynamically-generated CLI covering Drive, Gmail, Calendar, Docs, Sheets, Chat, Admin, etc., with 40+ bundled "agent skills" and an optional MCP server in the same binary. Coverage: <a href="https://venturebeat.com/orchestration/google-workspace-cli-brings-gmail-docs-sheets-and-more-into-a-common" target="_blank" rel="noopener">VentureBeat</a>. Nuance worth noting: <code>gws</code> is CLI-first but MCP-capable — agents typically consume it via the bundled MCP server, which means CLI and MCP aren't strictly either/or for the same product.</aside>
+<aside class="sn gc" data-role="consideration" data-author-class="author"><span class="gc-label">Considerations</span><em>"Headless everything" — the directional argument for CLI.</em> Matt Webb's <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener">"Headless everything for personal AI"</a> (Apr 2026) makes the broader case that apps and services move toward exposing tools to personal AIs rather than just visual UI. Three claims worth engaging with: <strong>(1) Personal AI runs on a computer</strong> — the user's laptop or a virtualised one — so what it wants is "little apps it can use directly," not webservers it calls. CLIs fit that shape. <strong>(2) CLIs compose</strong> in the Unix-tools sense: query notes → jump to a spreadsheet → research the web → back to the spreadsheet, all in one session. Apps designed around "user journeys" don't. <strong>(3) Auto-generation is already here</strong> — <a href="https://github.com/HKUDS/CLI-Anything" target="_blank" rel="noopener">CLI-Anything</a> generates CLIs from arbitrary codebases, lowering the cost of shipping this surface. Mild caveat: CLIs still wrap APIs underneath (<code>gws</code> is literally generated from Google's Discovery Service), so the framing is "CLI-over-API as a distinct agent-facing surface," not "CLI instead of API."</aside>
 <table>
 <thead><tr><th>Who's calling</th><th>Publish</th></tr></thead>
 <tbody>
@@ -742,7 +772,7 @@ See dashboard: https://example.com/payments/pay_Q8a1NkR</code></pre>
 <h3><span class="q">Q10 ·</span> When the API governs physical motion rather than bits, what new problems emerge — and why does safety need its own architectural plane?</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">18</span><a href="https://dronedj.com/2025/01/14/dji-geofencing-no-fly-zone/" target="_blank" rel="noopener">DroneDJ, 14 Jan 2025</a>; global rollout: <a href="https://dronedj.com/2025/11/17/dji-drone-geo-geofencing-unlock/" target="_blank" rel="noopener">17 Nov 2025</a>; security implications: <a href="https://www.skysafe.io/blog/djis-geofencing-removal" target="_blank" rel="noopener">SkySafe</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">18</span><a href="https://dronedj.com/2025/01/14/dji-geofencing-no-fly-zone/" target="_blank" rel="noopener">DroneDJ, 14 Jan 2025</a>; global rollout: <a href="https://dronedj.com/2025/11/17/dji-drone-geo-geofencing-unlock/" target="_blank" rel="noopener">17 Nov 2025</a>; security implications: <a href="https://www.skysafe.io/blog/djis-geofencing-removal" target="_blank" rel="noopener">SkySafe</a>.</aside>
 <p>Everything in §5 assumes the API governs bits. When the API governs atoms — a robot's motion, a drone's altitude, a conveyor's speed — the stakes change shape. The ontology from Q1 holds: the robot is a product, its API is a contract, its consumers are a fleet manager, an application, maybe an agent. The tensions from Q2 still apply: the contract is governed, and whoever governs it can change it. The January and November 2025 DJI geofencing reversals<span class="ref-marker">¹⁸</span> are the case study for that tension in a safety-adjacent context.</p>
 </div>
 
@@ -769,11 +799,11 @@ See dashboard: https://example.com/payments/pay_Q8a1NkR</code></pre>
 <blockquote><p><strong>Analogy — the taxi company.</strong> The radio dispatch is the <strong>control plane</strong>: who takes which fare. The cars actually moving are the <strong>data plane</strong>. The emergency brake inside each car is the <strong>safety plane</strong> — it works whether dispatch is on lunch, whether the meter is broken, whether the GPS is wrong. The three systems must fail independently.</p></blockquote>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">19</span>VDA 5050 — the German automotive industry's AGV/AMR master-control standard layered on MQTT/JSON. Spec: <a href="https://www.vda.de/en/topics/logistics-supply-chain/interface-agv" target="_blank" rel="noopener">VDA</a>.</aside>
-<aside class="sn"><span class="sn-num">20</span><a href="https://docs.ros.org/en/rolling/index.html" target="_blank" rel="noopener">ROS 2 Documentation</a>; <a href="https://www.omg.org/spec/DDS/" target="_blank" rel="noopener">OMG DDS spec</a>.</aside>
-<aside class="sn"><span class="sn-num">21</span><a href="https://mavlink.io/en/" target="_blank" rel="noopener">MAVLink Developer Guide</a>.</aside>
-<aside class="sn"><span class="sn-num">22</span><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/" target="_blank" rel="noopener">OPC UA, OPC Foundation</a>. Companion for MQTT (data-plane telemetry): <a href="https://mqtt.org/" target="_blank" rel="noopener">mqtt.org</a>.</aside>
-<aside class="sn"><span class="sn-num">23</span><a href="https://www.profibus.com/technology/profisafe" target="_blank" rel="noopener">PROFIsafe</a>; <a href="https://www.ethernet-powerlink.org/opensafety" target="_blank" rel="noopener">openSAFETY</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">19</span>VDA 5050 — the German automotive industry's AGV/AMR master-control standard layered on MQTT/JSON. Spec: <a href="https://www.vda.de/en/topics/logistics-supply-chain/interface-agv" target="_blank" rel="noopener">VDA</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">20</span><a href="https://docs.ros.org/en/rolling/index.html" target="_blank" rel="noopener">ROS 2 Documentation</a>; <a href="https://www.omg.org/spec/DDS/" target="_blank" rel="noopener">OMG DDS spec</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">21</span><a href="https://mavlink.io/en/" target="_blank" rel="noopener">MAVLink Developer Guide</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">22</span><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/" target="_blank" rel="noopener">OPC UA, OPC Foundation</a>. Companion for MQTT (data-plane telemetry): <a href="https://mqtt.org/" target="_blank" rel="noopener">mqtt.org</a>.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">23</span><a href="https://www.profibus.com/technology/profisafe" target="_blank" rel="noopener">PROFIsafe</a>; <a href="https://www.ethernet-powerlink.org/opensafety" target="_blank" rel="noopener">openSAFETY</a>.</aside>
 <table>
 <thead><tr><th>Plane</th><th>Protocol examples</th><th>What it does</th></tr></thead>
 <tbody>
@@ -785,7 +815,7 @@ See dashboard: https://example.com/payments/pay_Q8a1NkR</code></pre>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">24</span><a href="https://www.open-rmf.org/" target="_blank" rel="noopener">Open Robotics Middleware Framework</a> — "enables sharing and interoperability between multiple fleets of robots and physical infrastructure, like doors, elevators and building management systems."</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">24</span><a href="https://www.open-rmf.org/" target="_blank" rel="noopener">Open Robotics Middleware Framework</a> — "enables sharing and interoperability between multiple fleets of robots and physical infrastructure, like doors, elevators and building management systems."</aside>
 <p>Open-RMF<span class="ref-marker">²⁴</span> handles multi-vendor coordination where more than one fleet operates in the same space. If the question <em>"can my robots still stop when the MQTT broker is down?"</em> is not trivially yes, the safety plane has leaked into the control plane and the architecture needs rework before an auditor — or a person — gets hurt.</p>
 </div>
 
@@ -847,10 +877,10 @@ See dashboard: https://example.com/payments/pay_Q8a1NkR</code></pre>
 </main>
 
 <footer>
-<p>Protocolized · Protocols for Business · <a href="https://discord.com/channels/1082444651946049567/1333851496416153702" target="_blank" rel="noopener">Join the discussion here</a></p>
+<p>Protocolized · Protocols for Business · <a href="https://discord.com/channels/1082444651946049567/1333851496416153702" target="_blank" rel="noopener">Join the discussion</a> · <a href="https://github.com/rafaeldavid/protocolized-publications/tree/main/wthapi-site" target="_blank" rel="noopener">Source on GitHub</a></p>
 </footer>
 
-<div class="toast" id="toast">Downloaded paper.md</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Downloaded paper.md</div>
 
 <!-- Raw markdown payload for download; kept out of the DOM render path -->
 <script id="markdown-source" type="text/x-markdown">

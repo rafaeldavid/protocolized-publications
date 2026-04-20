@@ -28,6 +28,29 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
 <link rel="canonical" href="https://npc.here.now/ai-org/" />
 
+<!-- Agent discovery: machine-readable entry points for LLM agents -->
+<meta name="llm-markdown" content="./report.md" />
+<link rel="alternate" type="text/markdown" href="./report.md" title="Markdown source (sibling file)" />
+
+<!-- Schema.org Article describing this document -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Org Design After Code Commoditisation",
+  "description": "Five prior commoditisations of expert technical work, a four-move pattern, and tactical guidance for AI-era org design. With a companion drag-drop org-chart exercise.",
+  "datePublished": "2026-04-19",
+  "author": { "@type": "Organization", "name": "Protocolized / Protocols for Business Group", "url": "https://protocolized.summerofprotocols.com/" },
+  "publisher": { "@type": "Organization", "name": "Protocolized" },
+  "url": "https://npc.here.now/ai-org/",
+  "encoding": [
+    { "@type": "MediaObject", "encodingFormat": "text/html", "contentUrl": "https://npc.here.now/ai-org/" },
+    { "@type": "MediaObject", "encodingFormat": "text/markdown", "contentUrl": "https://npc.here.now/ai-org/report.md" }
+  ],
+  "isBasedOn": "https://github.com/rafaeldavid/protocolized-publications/tree/main/ai-org-site"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +74,14 @@
     --gap: 2rem;
     --font-mono: 'Roboto Mono', ui-monospace, monospace;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+  :focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 3px; }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
   body { font-family: var(--font-sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
@@ -315,7 +345,7 @@
 <h2 id="pattern">The four-move pattern</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">1</span>Fed funds 0–0.25% December 2008 through December 2015, then March 2020 through March 2022. The March 2022 exit preceded the AI-era layoff wave by roughly 12 months.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">1</span>Fed funds 0–0.25% December 2008 through December 2015, then March 2020 through March 2022. The March 2022 exit preceded the AI-era layoff wave by roughly 12 months.</aside>
 <p>Across the five cases, expertise moved to specification, evaluation, integration, and vendor management rather than disappearing. One new internal role stabilised per case: spreadsheet-native analyst (FP&amp;A), NC programmer (engineering office), quant researcher (trading desk), site reliability engineer (engineering), escalation handler plus AI trainer (customer support). Budget authority moved from central IT toward line-of-business buyers in four of five cases; cloud was the exception, re-centralising spend via platform engineering. Adoption accelerated in recessions (1980–1982, 2001, 2008) and scaled during periods of cheap capital (1983–1990, 2009–2021); the end of zero-interest-rate policy (ZIRP) in March 2022 is the closest contemporary analogue and <a href="https://newsletter.pragmaticengineer.com/p/zirp-software-engineers">preceded, not followed, the AI-era layoff wave</a> (Orosz 2022)<span class="ref">¹</span>.</p>
 </div>
 
@@ -333,17 +363,17 @@
 <h2 id="spreadsheets">Spreadsheets (1979–1995)</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">2</span>Lotus 1-2-3's year-one revenue is widely cited at $53M; exact figure disputed across retrospective accounts. Bricklin's own ledgers are the primary reference for VisiCalc unit sales.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">2</span>Lotus 1-2-3's year-one revenue is widely cited at $53M; exact figure disputed across retrospective accounts. Bricklin's own ledgers are the primary reference for VisiCalc unit sales.</aside>
 <p>VisiCalc shipped for the Apple II in October 1979 (<a href="https://conservancy.umn.edu/items/82511821-e518-42f4-89da-90a7e14fc0e0">Bricklin &amp; Frankston 2004</a>)<span class="ref">²</span>. Lotus 1-2-3 shipped for the IBM PC in January 1983. Microsoft Excel shipped for Macintosh in 1985 and Windows in 1987. Before these tools, a pro-forma or sensitivity analysis required a request to the data-processing department for a custom COBOL report, with a multi-day turnaround, or a junior analyst working on a ledger pad. Iteration collapsed from days to seconds at the analyst's desk.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">3</span>FRED series FEDFUNDS. CPI inflation was 13.5% at its March 1980 peak and 4.1% by December 1982 — making fast DCF re-computation unusually valuable through the early 1980s.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">3</span>FRED series FEDFUNDS. CPI inflation was 13.5% at its March 1980 peak and 4.1% by December 1982 — making fast DCF re-computation unusually valuable through the early 1980s.</aside>
 <p>Departments bought the IBM PC plus Lotus 1-2-3 under office-equipment capex, bypassing the management information systems (MIS) function. <a href="https://harpers.org/archive/1984/11/a-spreadsheet-way-of-knowledge/">Levy 1984</a> documents the cultural shift: analysts and MBA-trained managers absorbed modelling work previously submitted to DP. Fed funds peaked at 19.1% in June 1981 during the Volcker tightening cycle (<a href="https://www.stlouisfed.org/-/media/project/frbstl/stlouisfed/publications/review/pdfs/2025/jan/volcker-tightening-cycle-explaining-1982-course-reversal.pdf">St Louis Fed 2025</a>)<span class="ref">³</span>; high rates made DCF sensitivity analysis commercially urgent. Lotus and Excel scaled through the 1983–1987 recovery and the late-1980s leveraged-buyout era.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">4</span>Garson's broader argument: the determining variable is not the technology but who already owned the discretion before it was encoded. Social-work and airline cases saw software lock-in top-down routing; spreadsheet cases saw it extend local discretion.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">4</span>Garson's broader argument: the determining variable is not the technology but who already owned the discretion before it was encoded. Social-work and airline cases saw software lock-in top-down routing; spreadsheet cases saw it extend local discretion.</aside>
 <p><a href="https://openlibrary.org/books/OL2209392M/The_electronic_sweatshop">Garson 1988</a> documents the inverse case in the same decade: airline reservation systems, social-work case-management software, and fast-food point-of-sale systems encoded worker discretion into software, reducing role authority<span class="ref">⁴</span>. The tool was similar; the outcome depended on who already owned the judgment. Spreadsheet adopters owned the modelling judgment; the DP department owned only the production step.</p>
 </div>
 
@@ -355,17 +385,17 @@
 <h2 id="nccnc">Numerical-control machining (1949–1990)</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">5</span>Noble 1984: ch 4 (Parsons' USAF contract for helicopter-rotor template milling, compound curves), ch 6 (management selection of NC over record-playback as a choice about where production authority sits).</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">5</span>Noble 1984: ch 4 (Parsons' USAF contract for helicopter-rotor template milling, compound curves), ch 6 (management selection of NC over record-playback as a choice about where production authority sits).</aside>
 <p>John Parsons received a US Air Force contract in 1949 to automate helicopter-rotor template milling<span class="ref">⁵</span>. MIT's Servomechanisms Laboratory produced the first numerically-controlled milling machine in 1952 under Gordon Brown. Computerised numerical control (CNC) stabilised as the standard through the 1970s. <a href="https://archive.org/details/forcesofproducti0000nobl">Noble 1984</a> documents that a competing technology called record-playback worked in parallel: a machinist guided the cutter, the machine recorded and replayed the movements, authorship remained on the shop floor. Management selected NC over record-playback because NC moved authorship to a programmer in the engineering office.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">6</span>Boustan et al (NBER w30400): plant-level data from Census of Manufactures 1987–2012; decline concentrated in durable-goods metalworking. Machinist counts from BLS Occupational Employment Statistics.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">6</span>Boustan et al (NBER w30400): plant-level data from Census of Manufactures 1987–2012; decline concentrated in durable-goods metalworking. Machinist counts from BLS Occupational Employment Statistics.</aside>
 <p><a href="https://www.nber.org/papers/w30400">Boustan et al 2022</a> report that CNC-adopting plants shifted labour composition toward programmers and away from machinists, with plant-level employment falling in the decade after adoption<span class="ref">⁶</span>. US Bureau of Labor Statistics series show machinist employment peaked in 1970 and declined ~34% by 1980. Contract machine shops grew as make-versus-buy tilted toward buy.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">7</span>Ohno, <em>Toyota Production System: Beyond Large-Scale Production</em> (English 1988, Japanese 1978). Jidoka pairs with kanban pull scheduling and keiretsu supplier integration; the 50% engineering-hours figure is from the IMVP 1989 dataset used in Womack, Jones &amp; Roos.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">7</span>Ohno, <em>Toyota Production System: Beyond Large-Scale Production</em> (English 1988, Japanese 1978). Jidoka pairs with kanban pull scheduling and keiretsu supplier integration; the 50% engineering-hours figure is from the IMVP 1989 dataset used in Womack, Jones &amp; Roos.</aside>
 <p><a href="https://www.amazon.com/Machine-That-Changed-World-Production/dp/0743299795">Womack, Jones &amp; Roos 1990</a> document Toyota's opposite deployment. Taiichi Ohno's jidoka ("automation with a human touch," developed from 1948) gave line workers andon-cord authority to halt production on a defect<span class="ref">⁷</span>. Toyota reduced engineering hours and development time by roughly 50% against American peers in the 1989 dataset. Same commoditisation pressure; inverted org outcome.</p>
 </div>
 
@@ -377,19 +407,19 @@
 <h2 id="electronification">Electronification of US equity markets (1971–2014)</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">8</span>Big Bang (1986-10-27) trade times on major names fell from roughly ten minutes to ten seconds. Reg NMS (2007) Order Protection Rule forces routing to best-priced venue, which makes fragmented electronic execution dominant.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">8</span>Big Bang (1986-10-27) trade times on major names fell from roughly ten minutes to ten seconds. Reg NMS (2007) Order Protection Rule forces routing to best-priced venue, which makes fragmented electronic execution dominant.</aside>
 <p>NASDAQ launched as an electronic quotation system on 8 February 1971, replacing telephone-and-tape price dissemination (<a href="https://www.sechistorical.org/museum/galleries/msr/msr03b_nasdaq.php">SEC Historical Society</a>). London's Big Bang on 27 October 1986 abolished the jobber-broker distinction and moved trading from the floor to terminals<span class="ref">⁸</span>. Decimalisation in US markets on 29 January 2001 eliminated the fractional spread that sustained specialist market-making economics. Regulation NMS (2007) mandated electronic routing to the best-priced venue. The Flash Crash of 6 May 2010 provided the first public legibility event for the new regime (<a href="https://www.sec.gov/news/studies/2010/marketevents-report.pdf">SEC/CFTC 2010</a>).</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">9</span>NYSE floor-trader count from subsequent NYSE member reporting; partial migration to prop/systematic-trading shops, majority exited finance. Getco merged with Virtu 2013. Jane Street 2024 net trading revenue reportedly ~$20B, a rough peer to a mid-sized investment bank.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">9</span>NYSE floor-trader count from subsequent NYSE member reporting; partial migration to prop/systematic-trading shops, majority exited finance. Getco merged with Virtu 2013. Jane Street 2024 net trading revenue reportedly ~$20B, a rough peer to a mid-sized investment bank.</aside>
 <p>New internal roles stabilised inside the decade: quant researcher, low-latency engineer, execution-algorithm product manager. NYSE floor-trader count fell from ~5,500 (2000) to under 300 by 2014<span class="ref">⁹</span>. Four firms — Getco, Virtu, Citadel Securities, Jane Street — replaced specialist market-making through software; headcount composition shifted toward physicists, FPGA engineers, and network specialists. By 2014 the industry ran most of its volume through a small number of firms that ran roughly 1960-era specialist desk headcounts.</p>
 </div>
 
 <p>The mechanism is comparable to LLM encoding of coding tasks: tacit expert judgement (order-flow reading; function-body generation) was moved into software. Migration paths for displaced humans: adjacent roles that design, tune, and supervise the software; or exit from the industry. Partial migration is the likely outcome for AI coding, based on the 10–15% plant-level employment decline reported in Boustan et al.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">10</span>MUFG and Goldman Sachs estimate hyperscaler AI capex above $500B for 2026, financed through operating cash flow plus investment-grade debt plus special-purpose vehicles (e.g. Microsoft's $100B AI Infrastructure Partnership with BlackRock, September 2024). Debt-financed shape is historically unusual and likely constrains further price cuts without balance-sheet stress.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">10</span>MUFG and Goldman Sachs estimate hyperscaler AI capex above $500B for 2026, financed through operating cash flow plus investment-grade debt plus special-purpose vehicles (e.g. Microsoft's $100B AI Infrastructure Partnership with BlackRock, September 2024). Debt-financed shape is historically unusual and likely constrains further price cuts without balance-sheet stress.</aside>
 <p>Macro timing: decimalisation was a regulatory shock that destroyed the old economics quickly; ZIRP (2009–2022) funded the subsequent quant-firm build-out. The March 2022 end of ZIRP plus the 2023–2026 AI capex cycle is the closest contemporary analogue. Hyperscaler AI capex is financed through debt and special-purpose vehicles rather than ZIRP-era equity (<a href="https://www.mufgamericas.com/insights/ai-supercycle">MUFG 2025</a>)<span class="ref">¹⁰</span>; provider pricing is likely to tighten through 2027–2028 as those instruments roll.</p>
 </div>
 
@@ -401,15 +431,15 @@
 <h2 id="cloud">Cloud operations (2006–2020)</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">11</span>S3 shipped 2006-03-14; EC2 shipped 2006-08-25 in limited beta. Bezos's "undifferentiated heavy lifting" framing appeared in Amazon leadership messaging around the same period.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">11</span>S3 shipped 2006-03-14; EC2 shipped 2006-08-25 in limited beta. Bezos's "undifferentiated heavy lifting" framing appeared in Amazon leadership messaging around the same period.</aside>
 <p>Amazon shipped S3 in March 2006 and EC2 in August 2006<span class="ref">¹¹</span>. The commoditised input was data-centre operations: provisioning, capacity planning, networking. Four new internal roles stabilised over the following decade.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">12</span>Allspaw &amp; Hammond's Velocity talk reported Flickr deploying 10+ times per day against a monthly-or-quarterly industry norm, making deployment frequency a legible engineering-management KPI.</aside>
-<aside class="sn"><span class="sn-num">13</span>Beyer et al 2016 edited the first systematic external description. SRE's signature idea: reliability as an engineering problem with error budgets, not a manual ops practice.</aside>
-<aside class="sn"><span class="sn-num">14</span><em>Team Topologies</em> codifies four team types (stream-aligned, platform, enabling, complicated-subsystem). Backstage was donated to the CNCF after its March 2020 open-source release; adoption reached the low thousands of organisations by 2025.</aside>
-<aside class="sn"><span class="sn-num">15</span>FinOps Foundation's <em>State of FinOps</em> annual survey and Duckbill Group's <em>Last Week in AWS</em> are the canonical trade publications for cloud-cost optimisation.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">12</span>Allspaw &amp; Hammond's Velocity talk reported Flickr deploying 10+ times per day against a monthly-or-quarterly industry norm, making deployment frequency a legible engineering-management KPI.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">13</span>Beyer et al 2016 edited the first systematic external description. SRE's signature idea: reliability as an engineering problem with error budgets, not a manual ops practice.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">14</span><em>Team Topologies</em> codifies four team types (stream-aligned, platform, enabling, complicated-subsystem). Backstage was donated to the CNCF after its March 2020 open-source release; adoption reached the low thousands of organisations by 2025.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">15</span>FinOps Foundation's <em>State of FinOps</em> annual survey and Duckbill Group's <em>Last Week in AWS</em> are the canonical trade publications for cloud-cost optimisation.</aside>
 <ol>
 <li><strong>DevOps</strong> (2009). <a href="https://www.youtube.com/watch?v=LdOe18KhtT4">Allspaw &amp; Hammond 2009</a> framed deployment frequency as an org-design variable at Velocity. Patrick Debois convened DevOpsDays in Ghent in October 2009<span class="ref">¹²</span>. <a href="https://itrevolution.com/product/the-phoenix-project/">Kim 2013</a> brought the category into Fortune 500 IT.</li>
 <li><strong>Site Reliability Engineering</strong>. Ben Treynor Sloss founded SRE at Google in 2003. <a href="https://sre.google/sre-book/table-of-contents/">Beyer et al 2016</a> codified the discipline externally<span class="ref">¹³</span>.</li>
@@ -428,12 +458,12 @@
 <h2 id="klarna">Klarna AI customer-support reversal (2024–2025)</h2>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">16</span>Klarna 2024-02-27 press release; figures per Klarna's own release, not independently audited.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">16</span>Klarna 2024-02-27 press release; figures per Klarna's own release, not independently audited.</aside>
 <p>Klarna issued a press release on 27 February 2024 claiming its AI assistant performed work equivalent to 700 full-time agents, handled 2.3 million conversations in its first month, resolved inquiries in 2 minutes (versus 11 for humans), and projected $40M in 2024 profit improvement (<a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/">Klarna 2024</a>)<span class="ref">¹⁶</span>. For fifteen months this was the reference case for AI labour substitution in knowledge work.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">17</span>Bergen, Bloomberg, May 2025. The reversal settled into a hybrid model with AI handling routine tier-1 and humans handling escalations.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">17</span>Bergen, Bloomberg, May 2025. The reversal settled into a hybrid model with AI handling routine tier-1 and humans handling escalations.</aside>
 <p>In May 2025 Klarna rehired human agents after customer-satisfaction scores declined. CEO Sebastian Siemiatkowski stated in interview that the firm had over-weighted cost and efficiency against quality (<a href="https://www.bloomberg.com/news/articles/2025-05-08/klarna-turns-from-ai-to-humans-again">Bergen 2025</a>)<span class="ref">¹⁷</span>.</p>
 </div>
 
@@ -445,7 +475,7 @@
 </ol>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">18</span>Gray &amp; Suri's ethnography identifies three populations sustaining pre-LLM "AI" systems: Mechanical Turk labellers, content moderators, and real-time correction workers. Their core finding: the invisible human workforce scales with the automation, not against it.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">18</span>Gray &amp; Suri's ethnography identifies three populations sustaining pre-LLM "AI" systems: Mechanical Turk labellers, content moderators, and real-time correction workers. Their core finding: the invisible human workforce scales with the automation, not against it.</aside>
 <a href="/ai-org/exercise/?preset=klarna-reversal" class="try-side">Try the Klarna hybrid CX<small>Escalation handlers + AI trainers</small></a>
 <p><a href="https://ghostwork.info/">Gray &amp; Suri 2019</a> provide the precedent: pre-LLM "AI" systems already ran on invisible human labour at the edges<span class="ref">¹⁸</span>. The Klarna arc confirms the edge workforce is structural.</p>
 </div>
@@ -455,14 +485,14 @@
 <h3>Expertise migration</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">19</span>Beauchemin 2017 crystallised the data-scientist/data-engineer split. The same pattern is now visible for AI: generalist "ML engineer" fragmenting into eval-engineer, applied-AI-engineer, MLOps, and interpretability specialists.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">19</span>Beauchemin 2017 crystallised the data-scientist/data-engineer split. The same pattern is now visible for AI: generalist "ML engineer" fragmenting into eval-engineer, applied-AI-engineer, MLOps, and interpretability specialists.</aside>
 <p>The AI-era migration targets are specification (what to build), evaluation (is the output correct), integration (does it fit the running system), and governance (auditability and defensibility). The cluster of ML engineer, MLOps engineer, and security engineer roles that stabilised between 2017 and 2024 is one answer, decomposing a single generalist role further (<a href="https://www.freecodecamp.org/news/the-rise-of-the-data-engineer-91be18f1e603/">Beauchemin 2017</a>)<span class="ref">¹⁹</span>. Mid-career software engineers displaced by agentic coding move toward specification and evaluation functions; the partial-migration and partial-exit ratios from the electronification case (roughly 10–15% plant-level employment decline in Boustan et al) are the baseline expectation.</p>
 </div>
 
 <h3>The translator role: eval engineer</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">20</span>OpenAI Evals open-sourced 2023-03-14. Braintrust (YC W24), Langfuse (open-source, 2023), and LangSmith (LangChain, 2023) are the dominant commercial offerings. Anthropic publishes evaluation methodology in its model cards.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">20</span>OpenAI Evals open-sourced 2023-03-14. Braintrust (YC W24), Langfuse (open-source, 2023), and LangSmith (LangChain, 2023) are the dominant commercial offerings. Anthropic publishes evaluation methodology in its model cards.</aside>
 <p>The new internal role forming in the AI case is the <strong>eval engineer</strong>: designs regression harnesses for model upgrades, maintains the golden set that procurement and release gates are measured against, specifies acceptance criteria for AI features, and owns correctness under model drift. Structural parallel: SRE in the cloud case. SRE emerged because uptime became a problem when data-centre operations commoditised; the eval engineer is emerging because correctness becomes a problem when code generation commoditises. Evidence the role is stabilising<span class="ref">²⁰</span>:</p>
 
 <ul>
@@ -475,26 +505,26 @@
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">21</span>Palantir's FDE model originated under Shyam Sankar in the 2000s. Schmidt 2024 observes services-led-growth firms have lower gross margins (40–70%) than 2010s SaaS peers (80%+) but higher net-revenue-retention.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">21</span>Palantir's FDE model originated under Shyam Sankar in the 2000s. Schmidt 2024 observes services-led-growth firms have lower gross margins (40–70%) than 2010s SaaS peers (80%+) but higher net-revenue-retention.</aside>
 <p>The forward-deployed engineer (FDE) is a GTM innovation at AI vendors, not an internal translator class. <a href="https://a16z.com/the-palantirization-of-everything/">Andrusko 2026</a> documents the Palantir FDE pattern being replicated across Anthropic, OpenAI, Scale, Sierra, and Harvey; job-posting data suggests several-fold growth in 2025. <a href="https://a16z.com/services-led-growth/">Schmidt 2024</a> frames it as services-led growth<span class="ref">²¹</span>. FDE is relevant to founders deciding GTM motion, not to operators consuming AI inside a firm.</p>
 </div>
 
 <h3>Vendor management</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">22</span>BetterCloud <em>State of SaaSOps 2024</em>; ~30% of SaaS spend estimated wasted on inactive licences, duplicate apps, and over-provisioned seats. FinOps Foundation's SaaS working group formalised the equivalent discipline in 2022.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">22</span>BetterCloud <em>State of SaaSOps 2024</em>; ~30% of SaaS spend estimated wasted on inactive licences, duplicate apps, and over-provisioned seats. FinOps Foundation's SaaS working group formalised the equivalent discipline in 2022.</aside>
 <p>SaaS proliferation did not reduce procurement discipline. It produced FinOps (2019–2020), SaaS-management tools (BetterCloud, Zylo, Productiv), and license optimisation as a named function. The median enterprise runs ~130 SaaS applications and wastes a material share of SaaS spend (<a href="https://www.bettercloud.com/monitor/state-of-saasops-2024/">BetterCloud 2024</a>)<span class="ref">²²</span>. AI-era model procurement will follow the same pattern, crossed with genuine model-portability and training-data indemnity questions.</p>
 </div>
 
 <h3>Budget locus</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">23</span>Brinker's annual MarTech landscape: 150 vendors in August 2011 → 14,106 in May 2024, roughly 94× in 13 years. Functions as the visible index of CMO-controlled technology procurement growth.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">23</span>Brinker's annual MarTech landscape: 150 vendors in August 2011 → 14,106 in May 2024, roughly 94× in 13 years. Functions as the visible index of CMO-controlled technology procurement growth.</aside>
 <p>Spreadsheet, Salesforce, and MarTech shifts moved buying authority from CIO toward LOB and CMO (<a href="https://chiefmartec.com/2024/05/marketing-technology-landscape-2024-supergraphic/">Brinker 2024</a>, documenting 14,106 marketing-technology vendors in 2024 versus 150 in 2011)<span class="ref">²³</span>. Cloud partially reversed via platform engineering. AI-era spend is likely to bifurcate: central AI platform team owning model selection, evaluation, guardrails, and budget; distributed AI capacity inside every LOB; Legal gaining authority over licence terms and training-data risk.</p>
 </div>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">24</span>IBM IBV 2024 CEO survey; Fortune August 2024. Many CAIOs have 12-month mandates and functional overlap with CTO or CDO, which fuels the durability debate.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">24</span>IBM IBV 2024 CEO survey; Fortune August 2024. Many CAIOs have 12-month mandates and functional overlap with CTO or CDO, which fuels the durability debate.</aside>
 <p>The Chief AI Officer (CAIO) title has grown materially since 2022 and is present in roughly one-third of the Fortune 500 on current trends (<a href="https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/ceo-generative-ai">IBM IBV 2024</a>); durability is contested (<a href="https://fortune.com/2024/08/16/chief-ai-officer-fortune-500/">Fortune 2024</a>)<span class="ref">²⁴</span>. CAIO may track CIO-of-2000: a title marking institutional response, then dissolving into CTO/CDO lieutenancy within a decade. Hire the function; let the title settle.</p>
 </div>
 
@@ -525,7 +555,7 @@
 <p>Every case has a macro accelerant. Volcker rates (1980–1982) for spreadsheets. Japanese competition and the 1980–1982 recession for CNC. Decimalisation (2001) and Regulation NMS (2007) for electronification. The 2008 financial crisis for cloud; ZIRP (2009–2022) for its role-proliferation wave. The March 2022 end of ZIRP preceded Meta's March 2023 "Year of Efficiency" (layoffs of ~21,000, framed explicitly as delayering). AI-era layoffs at Salesforce, IBM, Dropbox, and Duolingo (2024–2025) are a second wave where AI is more directly load-bearing.</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">25</span>Bloom's Stanford SIEPR work and the WFH Research Project find hybrid arrangements produce 3–5% measured productivity gains against fully onsite, with substantially lower turnover. Labour-market-leverage fits the 2023–2025 RTO timing better than coordination cost.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">25</span>Bloom's Stanford SIEPR work and the WFH Research Project find hybrid arrangements produce 3–5% measured productivity gains against fully onsite, with substantially lower turnover. Labour-market-leverage fits the 2023–2025 RTO timing better than coordination cost.</aside>
 <p>Return-to-office mandates preceded agentic AI deployment: Meta June 2023; Google January 2024; Amazon September 2024 for January 2025. Anduril's always-onsite policy predates the entire AI wave. <a href="https://siepr.stanford.edu/news/two-beers-pandemic-and-workplace-revolution">Bloom 2022</a> does not support the coordination-cost argument typically offered for RTO<span class="ref">²⁵</span>. The mandates correlate with the post-ZIRP employer-leverage shift, not with AI adoption. "AI companies require onsite" is a downstream observation, not a causal claim.</p>
 </div>
 
@@ -534,7 +564,7 @@
 <h3>Headcount bands for a central AI platform team</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">26</span><strong>Headcount bands assumption.</strong> Indicative 2026 defaults from observed staffing at scale-ups and mid-market firms; not a prescription. Specialised domains (HFT, regulated health/finance, defence) add compliance and sector-specific roles on top.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">26</span><strong>Headcount bands assumption.</strong> Indicative 2026 defaults from observed staffing at scale-ups and mid-market firms; not a prescription. Specialised domains (HFT, regulated health/finance, defence) add compliance and sector-specific roles on top.</aside>
 <p>The following bands are observed defaults for 2026. They assume a single general-purpose engineering organisation (not a specialised domain like HFT or regulated health/finance, which add roles) and are indicative rather than prescriptive<span class="ref">²⁶</span>.</p>
 </div>
 
@@ -562,7 +592,7 @@
 <li><strong>Jurisdictional routing.</strong> Data-residency pinning for prompts and completions. Specify processing regions, logging regions, training-exclusion region lists. Required for regulated industries; increasingly load-bearing for EU AI Act compliance.</li>
 </ol>
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">27</span>Vendors treat portability as a retention lever and eval access as an NDA-friction surface. Expect ~4–12 weeks of procurement-cycle time to negotiate either into a template contract.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">27</span>Vendors treat portability as a retention lever and eval access as an NDA-friction surface. Expect ~4–12 weeks of procurement-cycle time to negotiate either into a template contract.</aside>
 <p>Clauses 2 and 3 are weakest in default 2024–2026 contracts. Negotiate explicitly or budget for the cost of portability work as a contingency<span class="ref">²⁷</span>.</p>
 </div>
 
@@ -571,8 +601,8 @@
 <p>Every prior commoditisation shifted the composition of operating expenditure in the affected function, not only its total. Labour share fell; machine, data-feed, or compute share rose. Historical benchmarks:</p>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">28</span>Baily &amp; Bosworth use BEA value-added accounts and BLS OES. The share decline reflects automation plus offshoring and industrial-composition shifts; CNC is a major but not sole driver.</aside>
-<aside class="sn"><span class="sn-num">29</span>IDC's 2023 <em>Worldwide IT Spending Guide</em>; Gartner tracks a comparable trajectory. Precise numbers differ by analyst; the direction does not.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">28</span>Baily &amp; Bosworth use BEA value-added accounts and BLS OES. The share decline reflects automation plus offshoring and industrial-composition shifts; CNC is a major but not sole driver.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">29</span>IDC's 2023 <em>Worldwide IT Spending Guide</em>; Gartner tracks a comparable trajectory. Precise numbers differ by analyst; the direction does not.</aside>
 <ul>
 <li><strong>US durable-goods manufacturing, 1970–2010.</strong> Labour share of value added fell from ~30% to ~15% as automation including CNC matured (<a href="https://www.brookings.edu/articles/us-manufacturing-understanding-its-past-and-its-potential-future/">Baily &amp; Bosworth 2014</a>; BLS productivity accounts). Machinist employment fell 34% between 1970 and 1980; net US machinist count declined from ~470,000 (1970) to ~235,000 (2010) per BLS Occupational Employment Statistics<span class="ref">²⁸</span>.</li>
 <li><strong>Equity trading, 2000–2014.</strong> NYSE floor traders fell from ~5,500 to under 300. Surviving market-making firms' technology spend (co-location, FPGAs, market-data feeds, engineering headcount) rose from &lt;5% of operating costs in the late 1990s to roughly 20–40% by the mid-2010s; precise share varies by firm (10-K filings).</li>
@@ -603,8 +633,8 @@
 <h3>Token-spend worked example: 2,000-FTE engineering organisation</h3>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">30</span><strong>Comp assumption.</strong> $250K fully-loaded per engineer in 2026 US is a rough midpoint for mixed-seniority teams in hub cities (SF, NYC, Seattle, Boston, Austin). Breakdown: ~$180K base + ~$30K benefits + ~$30K equity (amortised expected value) + ~$10K overhead. European and Indian fully-loaded costs run 40–60% and 20–30% of US respectively. Non-hub US firms: $180–220K.</aside>
-<aside class="sn"><span class="sn-num">31</span><strong>Inference rate assumption.</strong> $30–80 per engineer per month reflects observed 2026 usage at typical Copilot-style plus moderate custom-tool adoption, priced against Anthropic and OpenAI published rates as of 2026-04-19. Quarterly re-pricing recommended; pricing has been volatile through 2024–2026.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">30</span><strong>Comp assumption.</strong> $250K fully-loaded per engineer in 2026 US is a rough midpoint for mixed-seniority teams in hub cities (SF, NYC, Seattle, Boston, Austin). Breakdown: ~$180K base + ~$30K benefits + ~$30K equity (amortised expected value) + ~$10K overhead. European and Indian fully-loaded costs run 40–60% and 20–30% of US respectively. Non-hub US firms: $180–220K.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">31</span><strong>Inference rate assumption.</strong> $30–80 per engineer per month reflects observed 2026 usage at typical Copilot-style plus moderate custom-tool adoption, priced against Anthropic and OpenAI published rates as of 2026-04-19. Quarterly re-pricing recommended; pricing has been volatile through 2024–2026.</aside>
 <p>Assumptions: average fully-loaded engineering comp $250,000 (2026 US; inclusive of benefits, equity, overhead, facilities)<span class="ref">³⁰</span>; standard coding-assistant adoption at current vendor pricing (<a href="https://www.anthropic.com/pricing">Anthropic</a>; <a href="https://openai.com/api/pricing/">OpenAI</a>, retrieved 2026-04-19)<span class="ref">³¹</span>.</p>
 </div>
 
@@ -620,8 +650,8 @@
 </table>
 
 <div class="sn-wrap">
-<aside class="sn"><span class="sn-num">32</span><strong>Agentic multiplier.</strong> 3–10× coding-assistant spend observed at firms with meaningful agentic adoption (retrieval over internal docs, CI integration, autonomous test generation). Range reflects deployment depth: low end = pilot usage, high end = sustained production agent use across engineering.</aside>
-<aside class="sn"><span class="sn-num">33</span><strong>Productivity-equivalence loss.</strong> 5–15% first-12-month loss is a conservative estimate anchored on Klarna's CX reversal and published ML-deployment failure rates. Recovery depends on eval-harness quality; firms without regression harnesses showed longer recovery windows in observed deployments. Treat as a planning assumption to re-measure against your own telemetry.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">32</span><strong>Agentic multiplier.</strong> 3–10× coding-assistant spend observed at firms with meaningful agentic adoption (retrieval over internal docs, CI integration, autonomous test generation). Range reflects deployment depth: low end = pilot usage, high end = sustained production agent use across engineering.</aside>
+<aside class="sn" data-role="reference" data-author-class="author"><span class="sn-num">33</span><strong>Productivity-equivalence loss.</strong> 5–15% first-12-month loss is a conservative estimate anchored on Klarna's CX reversal and published ML-deployment failure rates. Recovery depends on eval-harness quality; firms without regression harnesses showed longer recovery windows in observed deployments. Treat as a planning assumption to re-measure against your own telemetry.</aside>
 <p>At 15% engineering headcount reduction over 3 years, labour savings are ~$75M/year. A $20M annual token spend that enables the reduction produces net savings of ~$55M, contingent on the remaining 1,700 engineers producing output equivalent to the original 2,000<span class="ref">³²</span>. Klarna over-estimated this ratio in 2024 and reversed in 2025. Conservative 2026–2031 planning assumes 5–15% effective productivity-equivalence loss in the first 12 months post-automation, with recovery over 12–24 months if evaluation harnesses and prompt libraries are maintained<span class="ref">³³</span>.</p>
 </div>
 
@@ -707,10 +737,10 @@
 </main>
 
 <footer>
-<p>Protocolized · Protocols for Business · <a href="https://discord.com/channels/1082444651946049567/1333851496416153702" target="_blank" rel="noopener">Join the discussion here</a></p>
+<p>Protocolized · Protocols for Business · <a href="https://discord.com/channels/1082444651946049567/1333851496416153702" target="_blank" rel="noopener">Join the discussion</a> · <a href="https://github.com/rafaeldavid/protocolized-publications/tree/main/ai-org-site" target="_blank" rel="noopener">Source on GitHub</a></p>
 </footer>
 
-<div class="toast" id="toast">Downloaded</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Downloaded</div>
 
 <script id="markdown-source" type="text/x-markdown"># Org Design After Code Commoditisation
 
