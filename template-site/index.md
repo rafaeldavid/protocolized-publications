@@ -122,6 +122,67 @@ Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `t
 
 {#p-api-3} Markdown roundtrip: `exportMarkdown` returns the embedded source plus a `## Reader comments` section. Every comment becomes a block carrying its paragraph id, quote, author, date, and body. An agent can take the blob into a separate context window and resume working on the annotated document without re-reading the page.
 
+### Agent quickstart (browser MCP + Claude Code)
+
+{#p-qs-1} If you're driving this page from a local agent — Claude Code, Cursor, any MCP-capable host — you need a **browser MCP server** so the agent can `evaluate_script` into `window.templateAPI`. Two working options:
+
+- {#p-qs-2} [`chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) — Google's official; drives installed Chrome via CDP. Requires Node ≥ 20.19.
+- {#p-qs-3} [`@playwright/mcp`](https://github.com/microsoft/playwright-mcp) — Microsoft's; bundles its own Chromium. More permissive Node requirement.
+
+{#p-qs-4} Either works for this template — the only tool needed is `evaluate_script`. Register the MCP with Claude Code:
+
+```sh
+claude mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest
+# or for Playwright:
+claude mcp add playwright -- npx -y @playwright/mcp@latest
+```
+
+{#p-qs-6} Restart Claude Code — MCP servers load at session start. Verify with `claude mcp list`, or `/mcp` inside the CLI; the server should show ✓ Connected.
+
+{#p-qs-7} **Node-version pitfall** (chrome-devtools-mcp only). If you use `nvm`, `fnm`, or `volta`, `npx`'s `#!/usr/bin/env node` shebang resolves `node` through `PATH` at spawn time — which usually lands on your shell's default, not necessarily v20. Two fixes:
+
+```sh
+# Clean: set v20 as the global default across all shells
+nvm alias default 20
+
+# Scoped: prepend v20 bin to PATH just for this MCP command
+claude mcp add chrome-devtools -- sh -c \
+  'PATH=/Users/<you>/.nvm/versions/node/v20.x.y/bin:$PATH exec npx -y chrome-devtools-mcp@latest'
+```
+
+{#p-qs-9} **Profile-scope gotcha.** Both MCPs default to an isolated Chrome profile — comments the agent posts land in *that profile's* localStorage, not in your everyday Chrome. Defaults:
+
+- {#p-qs-10} `chrome-devtools-mcp`: `$HOME/.cache/chrome-devtools-mcp/chrome-profile`
+- {#p-qs-11} `@playwright/mcp`: ephemeral per-run
+
+{#p-qs-12} Three ways to make agent-posted comments visible in your regular browser:
+
+1. {#p-qs-13} **Shared profile.** Launch the MCP pointing at your everyday Chrome profile: `--userDataDir=/path/to/your/Chrome/profile`. Quit Chrome first — CDP cannot attach while Chrome is running against the same profile.
+2. {#p-qs-14} **Connect to a running Chrome.** Start Chrome with `--remote-debugging-port=9222`, then pass `--browserUrl=http://127.0.0.1:9222` to the MCP. The agent writes into your real session.
+3. {#p-qs-15} **Export and re-import.** The agent calls `templateAPI.exportAnnotations()` (W3C Web Annotation JSON-LD) or `exportMarkdown()`, writes to disk, you import manually into your browser. Safest if you are wary of the agent touching your main profile.
+
+{#p-qs-16} **Minimal agent loop.**
+
+```js
+// 1. navigate  → https://npc.here.now/template/
+// 2. evaluate  → templateAPI.schema()                   // confirm addComment signature
+// 3. evaluate  → templateAPI.addComment({
+//      pid:    "p-not-2",                               // DOM id of an anchorable block
+//      quote:  "verbatim substring of that block",      // must occur in pid's textContent
+//      text:   "Your comment body.",
+//      author: "claude"                                 // free-text label; see trust model below
+//    })
+// 4. evaluate  → templateAPI.exportMarkdown({ includeComments: true })  // roundtrip artifact
+// 5. evaluate  → templateAPI.docHash()                   // cache; detect drift on re-visit
+```
+
+{#p-qs-18} **Trust model.** Every `CommentRecord` carries two provenance fields with different trust levels:
+
+- {#p-qs-19} `origin`: **spoof-proof.** Stamped by the runtime as `"ui"` (form-submitted), `"api"` (added via `addComment`), or `"demo"` (template seed). The caller cannot set it.
+- {#p-qs-20} `author`: **free-text, caller-controlled.** Useful as a label (`"claude"`, `"reader-gonzalo"`) but do not rely on it for identity. A malicious caller can claim any `author` string.
+
+{#p-qs-21} `templateAPI.schema()` is the source of truth for method signatures and the `CommentRecord` shape — the prose above is a narrative summary; if it drifts, trust the schema.
+
 ## What this template is not
 
 - {#p-not-1} **Not a CMS.** The canonical text sits in the HTML. There is no backend writing it.
@@ -147,6 +208,7 @@ Events: `comment:added`, `comment:deleted`, `comments:cleared`. Subscribe via `t
 - {#p-back-done-9} **Document hash.** `templateAPI.docHash()` returns a SHA-256 of the embedded markdown source.
 - {#p-back-done-10} **Accessibility baseline.** `prefers-reduced-motion`, `:focus-visible`, toast as `role="status" aria-live="polite"`.
 - {#p-back-done-11} **GitHub issue escalation.** Every Comment form carries a `+ Issue ↗` button that opens a prefilled GitHub issue against `CONFIG.GH_REPO` (no backend, no tokens — the user's GitHub session authenticates). Agents can call `templateAPI.submitAsIssue({pid, quote, text, author})` to get the URL (and optionally open it).
+- {#p-back-done-12} **Agent quickstart (browser MCP + Claude Code).** Ships copy-paste MCP install lines (chrome-devtools-mcp, @playwright/mcp), the Node-v20 pitfall for nvm/fnm/volta users, the profile-scope gotcha (isolated profile vs everyday Chrome, with three resolutions), a minimal agent loop, and the `origin`-vs-`author` trust model. Distilled from reader feedback after a first agent integration.
 
 ### Open (requires external components)
 
