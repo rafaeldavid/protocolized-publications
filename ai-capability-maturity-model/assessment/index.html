@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Capability Maturity Model — Protocolized</title>
-  <meta name="description" content="A diagnostic tool for operations executives. Find out where your organization sits on the five-level AI capability maturity model — and what to do next.">
+  <title>The Assessment — AI Capability Maturity Model</title>
+  <meta name="description" content="Interactive diagnostic for deployment managers. Answer a few questions about your organization's AI adoption and receive a level-specific diagnosis with failure modes and next actions.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1304,257 +1304,21 @@
       </button>
     </div>
   </div>
-  <div class="nav-secondary">
-    <ul class="nav-secondary-links">
-      <li><a href="javascript:void(0)" onclick="navTo('context')">Levels</a></li>
-      <li><a href="javascript:void(0)" onclick="navTo('rationale')">Why It Exists</a></li>
-      <li><a href="javascript:void(0)" onclick="navTo('cases')">Case Studies</a></li>
-      <li><a href="javascript:void(0)" onclick="navTo('assessment')">Assessment</a></li>
-    </ul>
-  </div>
 </nav>
 
 <!-- ─── Section 1: Entry ─────────────────────────────────── -->
 <section id="entry">
   <div class="container">
-    <span class="label">Interactive Diagnostic · March 2026</span>
-    <h1>AI Capability<br><span>Maturity Assessment</span></h1>
-    <p class="entry-descriptor">A Practical Guide for Deployment Managers</p>
+    <span class="label">Interactive Diagnostic</span>
+    <h1>The<br><span>Assessment</span></h1>
+    <p class="entry-descriptor">Where does your organization stand on AI adoption?</p>
 
     <div class="entry-intro">
       <p>You are deploying AI whether you planned to or not. Your employees are already running Claude Code in their terminals, transcribing every meeting with AI tooling, and wiring homemade apps into their workflows without security review. The question is how to turn that unmanaged use into deliberate capability.</p>
 
-      <p>This Capability Maturity Model maps that path across five levels: Shadow, Sanctioned, Designed, Infrastructural, and Planetary — from the first unsanctioned use to the point where AI is invisible civilizational coordination infrastructure.</p>
+      <p>Answer a few questions about how AI behaves in your organization today. The diagnostic places you on the five-level model and returns the failure modes you are most exposed to plus a next action.</p>
 
-      <p>The conventional AI governance response — acceptable use policies, data boundaries, approved tool lists — addresses the wrong question. The right question is protocol design: specifying coordination rules at the handoff points where AI output enters organizational accountability.</p>
-
-      <p>Building capability systematically means clearing each level's governance requirements before advancing to the next. Each transition requires a different kind of governance. The failure modes at each level are predictable.</p>
-
-      <p>Most organizations are at Level 1 or early Level 2. That is the expected starting point, not a failure. The assessment below identifies where your organization sits, which failure modes you are most exposed to, and what the next move looks like.</p>
-    </div>
-
-    <a href="javascript:void(0)" onclick="navTo('assessment')" class="btn btn-primary">Take the assessment →</a>
-  </div>
-</section>
-
-<!-- ─── Section 2: Context ───────────────────────────────── -->
-<section id="context" class="section">
-  <div class="container">
-
-    <div class="label">The five levels</div>
-    <h2>From shadow adoption to planetary infrastructure</h2>
-    <p class="context-intro">Each level describes an organizational state with characteristic governance challenges and failure modes. Levels 1–3 are actionable today. Levels 4–5 are projected.</p>
-
-    <div class="level-cards">
-
-      <div class="level-card">
-        <div class="level-card-header">
-          <div class="arc-num">1</div>
-          <div class="level-card-name">Shadow</div>
-        </div>
-        <div class="level-card-tagline">AI is in use. The organization doesn't know how, by whom, or with what data.</div>
-        <div class="level-card-desc">AI tools are in active use through employee initiative, without organizational authorization or oversight. Individual workers use personal accounts for work tasks. No policy governs what data can be submitted to which services. Exposure is invisible until a data leak, regulatory inquiry, or quality failure makes it visible — typically 400+ days after the initial incident. The characteristic tension is between individual productivity gains and organizational risk that accumulates silently.</div>
-        <div class="level-historical">
-          <span class="level-historical-label">Historical parallel</span>
-          <span class="level-historical-tech">Spreadsheets in accounting — Lotus 1-2-3, mid-1980s</span>
-          <span class="level-historical-desc">Finance departments adopted spreadsheets through individual initiative before IT or management had any policy. Individual productivity gains were real; organizational risk from formula errors and uncontrolled data was invisible until it wasn't.</span>
-        </div>
-        <button class="expand-toggle level-dim-toggle" onclick="toggleContent(this)" data-closed="Show dimensions ↓" data-open="Hide dimensions ↑">Show dimensions ↓</button>
-        <div class="level-dims">
-          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">absent</span><span class="dim-desc">No governance exists. No policies, no oversight, no organizational awareness of AI use patterns.</span></div>
-          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">personal</span><span class="dim-desc">Employees use personal accounts (ChatGPT, Claude, Copilot) for work tasks. No enterprise licensing, access controls, or data handling review.</span></div>
-          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">ignored</span><span class="dim-desc">AI outputs are used without review or verification. No distinction exists between AI-generated and human-generated work. From the enterprise's vantage point, a high-value bilateral AI pipeline and reckless shadow use look identical — both are invisible.</span></div>
-          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">ad hoc</span><span class="dim-desc">Each employee makes independent decisions about which tools to use and how. No shared standard or organizational visibility.</span></div>
-          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">none</span><span class="dim-desc">No mechanism exists to detect, record, or learn from AI errors. Failures disappear into the flow of work.</span></div>
-          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">none</span><span class="dim-desc">AI outputs are not verified before use in consequential contexts. No review step exists at any point in the workflow.</span></div>
-        </div>
-      </div>
-
-      <div class="level-card">
-        <div class="level-card-header">
-          <div class="arc-num">2</div>
-          <div class="level-card-name">Sanctioned</div>
-        </div>
-        <div class="level-card-tagline">The organization has granted AI access. It hasn't designed what to do with it.</div>
-        <div class="level-card-desc">The organization has granted broad AI access and signaled strategic intent. Enterprise licenses are deployed; adoption rates climb. What is missing is the governing protocol: which tasks, with what review process, what quality standard, what escalation path when AI fails. High adoption rates and early productivity gains accumulate alongside governance failures that surface when they become external-facing — in customer complaints, court decisions, or regulatory findings. The characteristic tension is between maximizing adoption speed and building the review infrastructure that makes adoption durable. When employees share AI-generated work, they share contexts — decision spaces, embedded assumptions, implicit workflows — not discrete artifacts. Access governance cannot address this; it cannot specify how to evaluate an embedded decision space.</div>
-        <div class="level-historical">
-          <span class="level-historical-label">Historical parallel</span>
-          <span class="level-historical-tech">Corporate email — Microsoft Exchange / Lotus Notes, early 1990s</span>
-          <span class="level-historical-desc">Email was mandated broadly before organizations had designed how to use it. The mandate produced adoption. The absence of workflow design produced attention overload, inbox as default coordination mechanism, and meeting culture as the override.</span>
-        </div>
-        <button class="expand-toggle level-dim-toggle" onclick="toggleContent(this)" data-closed="Show dimensions ↓" data-open="Hide dimensions ↑">Show dimensions ↓</button>
-        <div class="level-dims">
-          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">reactive</span><span class="dim-desc">Governance responds to incidents. Policies exist but are triggered by failures, not designed around AI's probabilistic properties.</span></div>
-          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">sanctioned</span><span class="dim-desc">Enterprise AI licenses are in place and personal account use is discouraged. Tool selection has been reviewed, but workflows have not been redesigned around the tools.</span></div>
-          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">absorbed</span><span class="dim-desc">Errors are noticed and corrected informally when they surface. No systematic process exists for detecting AI failures before they reach end users.</span></div>
-          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">mandated</span><span class="dim-desc">AI use is mandated or encouraged organization-wide, but teams coordinate AI use independently with no shared workflow standard.</span></div>
-          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">reactive</span><span class="dim-desc">Failures trigger individual corrections but no systematic tracking, aggregate learning, or trend analysis across workflows.</span></div>
-          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">informal</span><span class="dim-desc">Some outputs are reviewed before use, but informally and inconsistently. No defined criteria, no named reviewer, no record of what was checked.</span></div>
-        </div>
-      </div>
-
-      <div class="level-card">
-        <div class="level-card-header">
-          <div class="arc-num">3</div>
-          <div class="level-card-name">Designed</div>
-        </div>
-        <div class="level-card-tagline">AI workflows are designed, not improvised. The business model depends on them.</div>
-        <div class="level-card-desc">At least one core workflow has been deliberately designed around AI — with a named owner, quality metrics, and a defined escalation path for failures. Removing AI from that workflow would require rebuilding it. The governance question has shifted from controlling use to designing protocols that handle failure, versioning, and external dependencies without losing the speed advantage AI provides. Domain expertise is the limiting constraint: the knowledge required to specify what good AI output looks like in a specific context. The characteristic tension is between AI-accelerated internal velocity and external dependencies — regulatory timelines, supplier lead times, partner cycles — that move at human pace. Domain expertise functions as higher-level perception: the ability to read the shape of AI output without inspecting every line — sensing whether the logic holds, the framing fits, something critical is missing. In well-designed Level 3 workflows, AI provides commodity execution; domain knowledge is the scarce resource.</div>
-        <div class="level-historical">
-          <span class="level-historical-label">Historical parallel</span>
-          <span class="level-historical-tech">Git and CI/CD — 2008–2015</span>
-          <span class="level-historical-desc">Competitive position in software development came to depend on how well the deployment workflow was designed. Teams that designed CI/CD protocols well shipped faster and with fewer regressions. Domain expertise — knowing what to test and when — was the limiting constraint, not tool access.</span>
-        </div>
-        <button class="expand-toggle level-dim-toggle" onclick="toggleContent(this)" data-closed="Show dimensions ↓" data-open="Hide dimensions ↑">Show dimensions ↓</button>
-        <div class="level-dims">
-          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">designed</span><span class="dim-desc">At least one workflow has a designed governance protocol: specific review criteria, named ownership, defined escalation paths. Governance is workflow-specific, not organization-wide.</span></div>
-          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">purpose-built</span><span class="dim-desc">The organization has built or customized AI tooling for its specific domain context — beyond off-the-shelf configuration. Internal tooling reflects the specific verification and coordination requirements of the workflows.</span></div>
-          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">governed</span><span class="dim-desc">AI outputs in governed workflows are reviewed against defined criteria by named reviewers. Outside governed workflows, handling remains informal.</span></div>
-          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">designed</span><span class="dim-desc">Coordination protocols are explicitly designed for AI-native workflows — handoffs, review cadences, and escalation paths are structured to handle the speed differential between AI production and human review.</span></div>
-          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">systematic</span><span class="dim-desc">Quality metrics track workflow performance on a defined cadence. Failures trigger protocol reviews, not just individual corrections.</span></div>
-          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">procedural</span><span class="dim-desc">Verification follows documented procedures in at least one workflow. Reviewers know what they're checking, why they're checking it, and what constitutes a failure. At the individual level this manifests as orientation debt: contexts multiplying faster than any reviewer can evaluate them.</span></div>
-        </div>
-      </div>
-
-      <div class="level-card projected">
-        <div class="level-card-header">
-          <div class="arc-num">4</div>
-          <div class="level-card-name">Infrastructural <span class="projected-badge">Projected</span></div>
-        </div>
-        <div class="level-card-tagline">AI is sector infrastructure. The question is no longer whether to use it but how to govern it collectively.</div>
-        <div class="level-card-desc">AI capability has become a baseline expectation across the sector. Individual organizational advantage has been competed away; the governance challenge is now collective. The questions are market-structural: how does the industry coordinate AI use, handle shared risks, establish interoperability standards, and prevent concentration of AI capability that produces anti-competitive outcomes. Individual organizational maturity is necessary but not sufficient at this level. The characteristic tension is between industry standardization — which enables coordination — and organizational differentiation through proprietary AI capability. AI has shifted from destination intelligence — people going to tools — to intelligence media, where intermediate artifacts circulate between people's bespoke AI setups like industrial intermediates between factories. At Level 4, governing this factory-to-factory coordination at sector scale is the central challenge.</div>
-        <div class="level-historical">
-          <span class="level-historical-label">Historical parallel</span>
-          <span class="level-historical-tech">EDI in retail and manufacturing — late 1980s–1990s</span>
-          <span class="level-historical-desc">Walmart mandated Electronic Data Interchange for all suppliers. Early adopters had competitive advantage. Then every major retailer adopted it. Individual advantage disappeared; the floor for the whole sector rose. Not adopting EDI meant not participating in the market.</span>
-        </div>
-        <button class="expand-toggle level-dim-toggle" onclick="toggleContent(this)" data-closed="Show dimensions ↓" data-open="Hide dimensions ↑">Show dimensions ↓</button>
-        <div class="level-dims">
-          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">systematized</span><span class="dim-desc">Governance protocols are systematized across the organization and aligned with sector-wide standards. The organization contributes to or formally complies with industry AI governance frameworks.</span></div>
-          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">native</span><span class="dim-desc">AI is native to the organization's core infrastructure — not deployed as a layer on top of existing systems but embedded in the systems themselves.</span></div>
-          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">systematized</span><span class="dim-desc">Cross-workflow quality standards exist and are tracked at the organizational level. Handling is consistent and measurable across all critical workflows.</span></div>
-          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">automated</span><span class="dim-desc">Coordination between AI workflows is automated where possible. Handoffs between workflows are governed by protocol without requiring manual intervention at each step.</span></div>
-          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">predictive</span><span class="dim-desc">Performance data from AI workflows predicts failure modes before they occur. Quality instrumentation is forward-looking, not just reactive.</span></div>
-          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">metriced</span><span class="dim-desc">Verification is tracked with quantitative metrics across all critical AI workflows. Error rates, correction rates, and escalation rates are monitored and reported on a defined cadence.</span></div>
-        </div>
-      </div>
-
-      <div class="level-card projected">
-        <div class="level-card-header">
-          <div class="arc-num">5</div>
-          <div class="level-card-name">Planetary <span class="projected-badge">Projected</span></div>
-        </div>
-        <div class="level-card-tagline">AI is invisible infrastructure for civilization-scale coordination. The governance challenge is legibility, not adoption.</div>
-        <div class="level-card-desc">AI governs critical civilizational coordination systems — supply chains, financial infrastructure, public health surveillance. The governance challenge is no longer adoption or protocol design but legibility: understanding what the systems are doing well enough to intervene when they fail. Individual organizational governance is a component of a problem no single actor controls. Historical precedent: the 2021 Maersk ransomware attack and the Ever Given Suez blockage as early examples of how infrastructure-level failures propagate across sectors before any actor can respond.</div>
-        <div class="level-historical">
-          <span class="level-historical-label">Historical parallel</span>
-          <span class="level-historical-tech">Internet protocols — TCP/IP, SMTP, BGP, 2000s–present</span>
-          <span class="level-historical-desc">The 2021 Facebook BGP misconfiguration took down Facebook, Instagram, and WhatsApp globally. The failure propagated before any single actor could respond. The internet's routing protocols are invisible until they fail — and when they fail, the failure is everywhere at once.</span>
-        </div>
-        <button class="expand-toggle level-dim-toggle" onclick="toggleContent(this)" data-closed="Show dimensions ↓" data-open="Hide dimensions ↑">Show dimensions ↓</button>
-        <div class="level-dims">
-          <div class="dim-item"><span class="dim-name">Governance</span><span class="dim-value-badge">infrastructure</span><span class="dim-desc">Governance is itself infrastructure — embedded in protocols operating at civilizational scale. No single organization controls or fully understands the full governance system.</span></div>
-          <div class="dim-item"><span class="dim-name">Tooling</span><span class="dim-value-badge">native</span><span class="dim-desc">AI tooling is indistinguishable from the infrastructure it governs. Tools are not deployed separately — they are the substrate of coordination across systems.</span></div>
-          <div class="dim-item"><span class="dim-name">Uncertainty handling</span><span class="dim-value-badge">generative</span><span class="dim-desc">AI protocols generate new coordination mechanisms in response to uncertainty faster than human review can operate. Human oversight functions at system design level, not individual output level.</span></div>
-          <div class="dim-item"><span class="dim-name">Coordination</span><span class="dim-value-badge">infrastructure</span><span class="dim-desc">Coordination between systems happens through AI protocols at machine speed, below the threshold of human attention in normal operation.</span></div>
-          <div class="dim-item"><span class="dim-name">Feedback loops</span><span class="dim-value-badge">generative</span><span class="dim-desc">The system modifies its own governing protocols in response to observed failures. Human intervention is required only for novel failure modes the self-correction mechanism cannot address.</span></div>
-          <div class="dim-item"><span class="dim-name">Verification</span><span class="dim-value-badge">self-correcting</span><span class="dim-desc">Verification is self-correcting at the protocol level. Failures trigger automated protocol adjustments. Human oversight is required only for failure modes outside the system's known envelope.</span></div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── Section 2b: Rationale ───────────────────────────── -->
-<section id="rationale" class="section">
-  <div class="container">
-    <div class="label">Why this model exists</div>
-    <h2>New protocols are the key to AI adoption success.</h2>
-    <p class="context-intro">Adoption maturity is defined by an organization's ability to govern uncertainty.</p>
-
-    <p>Most organizations apply enterprise-software governance logic to AI: policies, compliance controls, tooling checklists. That logic was designed for deterministic processes. AI systems are probabilistic. The mismatch produces characteristic failures — shadow adoption, quality floor collapse, liability exposure, over-reliance. The conventional response treats this as a control problem. The right framing is protocol design.</p>
-
-    <p>The unit of maturity in this model is the organization's ability to govern uncertainty productively: to define which AI outputs require human verification, to enforce that oversight, and to learn from failures when they occur.</p>
-
-    <p>Individuals with domain expertise are already discovering new protocols through daily AI use. Organizational standardization lags behind by design: the protocols worth formalizing are those that have proved their value through individual experimentation. The model describes how organizations close that gap.</p>
-
-    <p>Levels 1–3 describe organizational states deployment teams can act on directly. Levels 4–5 describe what happens when AI governance becomes an industry and civilizational challenge, beyond what any single organization controls.</p>
-
-    <div style="margin-top:20px;text-align:center"><a href="https://protocolized.dev/blog-the-missing-layer/" target="_blank" class="btn btn-secondary">Read more ↗</a></div>
-  </div>
-</section>
-
-<!-- ─── Section 3: Case Studies ──────────────────────────── -->
-<section id="cases" class="section">
-  <div class="container">
-    <div class="label">Evidence base</div>
-    <h2>Explore three case studies</h2>
-    <p class="context-intro" style="margin-bottom:36px">Read the diagnostic question at the bottom of each card — one of these patterns is probably yours.</p>
-
-    <div class="cases-grid">
-
-      <!-- Samsung -->
-      <div class="case-card">
-        <div class="level-pill">Level 1 — Shadow</div>
-        <h3 class="case-org"><a href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener" >Samsung Electronics ↗</a></h3>
-        <div class="case-sector">Technology / Semiconductor</div>
-        <div class="case-body">
-          Three engineers submitted proprietary source code and meeting transcripts to personal ChatGPT accounts within one month in April 2023. No policy governed this. Samsung had no visibility into what data had left the organization until after the fact. The data could not be recalled.
-        </div>
-        <div class="case-mechanism">
-          When governance is absent, exposure is invisible until it isn't.
-        </div>
-        <div class="case-question">
-          Do you know which AI tools your employees are using today — and which organizational data they've submitted to those tools?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          Samsung banned all external AI tools, built an internal LLM (Samsung Gauss), then selectively re-admitted external tools under a governed protocol over two years. The arc — incident → ban → internal alternative → governed re-admission — is the most documented Level 1 exit path available. The Samsung incident was not unusual in scale: contemporaneous Cyberhaven research found that in a 100,000-person company, confidential data was being shared with AI services hundreds of times per week. (Cyberhaven, Q1 2024.) Most organizations move directly to re-admission without building the governance protocol the ban was meant to create space for. The ban without a governed alternative is as common a failure mode as the original leak.
-        </div>
-      </div>
-
-      <!-- Klarna -->
-      <div class="case-card">
-        <div class="level-pill">Level 2 — Sanctioned</div>
-        <h3 class="case-org"><a href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener" >Klarna ↗</a></h3>
-        <div class="case-sector">Financial Technology</div>
-        <div class="case-body">
-          90% daily AI adoption in the first month. Two-thirds of customer service handled by AI. $40M in claimed profit improvement. Twelve months later, the CEO reversed course and began rehiring human agents, citing quality failures the absent governance layer could not address.
-        </div>
-        <div class="case-mechanism">
-          The mandate produced adoption. Adoption revealed quality failures. Quality failures required protocol. Designing protocol required slowing adoption. Leadership didn't want to slow adoption.
-        </div>
-        <div class="case-question">
-          When your AI produces a wrong answer in a customer-facing workflow, does a defined process exist for catching it — or does someone fix it when they notice?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          The financial results and the quality failures coexisted for longer than they should have. Cost savings from AI-handled volume were immediate and measurable. Quality degradation was diffuse and slow to surface — it required customers to complain, complaints to accumulate, and leadership to connect the pattern. That lag is the Level 2 trap: the metrics that look good are leading, and the metrics that matter are trailing. By the time the reversal became necessary, Klarna had already built the customer expectation that human support was gone.
-        </div>
-      </div>
-
-      <!-- Boom -->
-      <div class="case-card">
-        <div class="level-pill">Level 3 — Designed</div>
-        <h3 class="case-org"><a href="https://bscholl.substack.com/p/move-fast-and-dont-break-safety-critical" target="_blank" rel="noopener" >Boom Supersonic ↗</a></h3>
-        <div class="case-sector">Aerospace / Manufacturing</div>
-        <div class="case-body">
-          mkBoom automates full aircraft structural analysis from a parametric configuration file. The design methodology depends on it. Removing AI from Boom's core workflows would require rebuilding them — not substituting a human. A design discovery — Boomless Cruise — emerged through AI-enabled iteration that would have taken months under previous methods. Zero safety incidents across the XB-1 program.
-        </div>
-        <div class="case-mechanism">
-          When AI is embedded in the competitive position, governance shifts from controlling use to designing protocols that handle failure, versioning, and external dependencies while preserving the speed advantage AI provides.
-        </div>
-        <div class="case-question">
-          If your primary AI-assisted workflow stopped working tomorrow — would you pause it, or rebuild it?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="Why Level 3 and not higher ↓" data-open="Why Level 3 and not higher ↑">Why Level 3 and not higher ↓</button>
-        <div class="drill-content">
-          Boom is a late Level 3 case, not Level 4 or 5. Their business model depends on AI; the aerospace industry does not depend on Boom's approach. Level 3 is organizational competitive reliance. Level 4 is when the industry itself cannot function at standard productivity without AI. Boom is the clearest documented case of an organization that designed its governance protocol alongside its AI capability — rather than after a failure forced it.
-        </div>
-      </div>
-
+      <p>Most organizations are at Level 1 or early Level 2. That is the expected starting point, not a failure.</p>
     </div>
   </div>
 </section>
@@ -1690,121 +1454,6 @@
     </div>
     <div class="print-footer">
       Protocolized · Protocol Research and Development · protocolized.summerofprotocols.com · AI Capability Maturity Model v2.2 · 2026
-    </div>
-  </div>
-</section>
-
-<!-- ─── Section 6: Exit ───────────────────────────────────── -->
-<section id="exit" class="section">
-  <div class="container">
-    <div class="exit-grid">
-      <div class="card">
-        <div class="label">Go deeper</div>
-        <h3>The Protocolized newsletter</h3>
-        <p>Covers AI adoption, organizational governance, and protocol design — written for practitioners, not vendors.</p>
-        <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank" class="btn btn-primary">Subscribe ↗</a>
-      </div>
-
-      <div class="card">
-        <div class="label">Working through this with your team?</div>
-        <h3>Talk through your placement</h3>
-        <p>If you're navigating Level 2 or 3, we run structured working sessions on governance protocol design.</p>
-        <!-- TODO: Replace with Formspree endpoint or Netlify Forms when backend is ready -->
-        <!-- TODO: Optionally write submissions to GitHub-hosted CSV via GitHub Actions workflow_dispatch -->
-        <a href="https://discord.com/invite/PGauyYyu6T" target="_blank" class="btn btn-secondary">Get in touch ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Section 7: From the Archive ──────────────────────── -->
-<section id="essays" class="section">
-  <div class="container">
-    <h2>From the Archive</h2>
-    <p class="context-intro">Essays from Protocolized on protocol thinking, AI adoption, and organizational design.</p>
-
-    <div class="essay-carousel-wrap">
-      <div class="essay-carousel" id="essay-carousel">
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/have-your-factory-call-my-factory.png" alt="Have Your Factory Call My Factory" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">What if the real AI productivity gains are happening in relationships your org has no visibility into?</div>
-            <div class="essay-card-title">Have Your Factory Call My Factory</div>
-            <div class="essay-card-desc">The visible AI story — chatbots, enterprise licenses — is the surface layer. Substantive gains are accumulating in bilateral "factory-to-factory" networks: individuals with bespoke agent pipelines quietly doing work your org's formal tools can't match. Domain knowledge, not technical skill, is the differentiator.</div>
-            <div class="essay-card-meta">Venkatesh Rao · March 2026</div>
-          </div>
-        </a>
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/finding-fault-lines-within-the-firm" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/finding-fault-lines.jpg" alt="Finding Fault Lines within the Firm" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">What does it mean when AI adoption creates friction instead of removing it?</div>
-            <div class="essay-card-title">Finding Fault Lines within the Firm</div>
-            <div class="essay-card-desc">AI acts as a protocol disturbance that makes invisible coordination systems visible through strain. When AI speeds up internal production without changing external constraints, temporal misalignment surfaces. The friction AI creates is a map of where your governance structure needs redesign.</div>
-            <div class="essay-card-meta">Rafa Fernández · January 2026</div>
-          </div>
-        </a>
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/mechanical-currents" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/mechanical-currents.jpeg" alt="Mechanical Currents" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">Why are AI productivity estimates wildly unreliable across teams?</div>
-            <div class="essay-card-title">Mechanical Currents</div>
-            <div class="essay-card-desc">Three adoption challenges most organizations aren't naming correctly: AI as educational accelerant (not productivity multiplier), cheap content generation creating organizational noise that requires a strategic response, and uneven integration producing task estimation failures that create competitive exposure.</div>
-            <div class="essay-card-meta">Timber Stinson-Schroff · September 2025</div>
-          </div>
-        </a>
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/constructing-the-evil-twin-of-ai" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/constructing-the-evil-twin-of-ai.png" alt="Constructing the Evil Twin of AI" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">If AI is defined by fluid intelligence and proactive agency, what's its structural opposite — and why do you need it?</div>
-            <div class="essay-card-title">Constructing the Evil Twin of AI</div>
-            <div class="essay-card-desc">Protocols are AI's structural inverse: deliberately rigid, constrained in agency, resistant to fluidity. As AI systems grow more powerful and opaque, governance requires equivalently immovable structures. Effective AI governance doesn't fight intelligence with intelligence — it constrains it with mathematical inevitability.</div>
-            <div class="essay-card-meta">Venkatesh Rao · October 2025</div>
-          </div>
-        </a>
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/theorizing-protocolization-i-new" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/theorizing-protocolization.png" alt="Theorizing Protocolization I: New Nature" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">How do protocols become invisible — and why is that the governance problem?</div>
-            <div class="essay-card-title">Theorizing Protocolization I: New Nature</div>
-            <div class="essay-card-desc">Protocols succeed by disappearing. When coordination infrastructure becomes invisible, it becomes unmanageable — conditions for systemic failure accumulate silently. This essay maps how AI, blockchains, and sensing networks are creating a planetary computational tangle that no existing governance framework can comprehend in full.</div>
-            <div class="essay-card-meta">Venkatesh Rao & Patrick Nast · January 2026</div>
-          </div>
-        </a>
-
-        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/from-destination-ai-to-intelligence" target="_blank" rel="noopener">
-          <div class="essay-card-img">
-            <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/from-destination-ai-to-intelligence-media.png" alt="From Destination AI to Intelligence Media" loading="lazy">
-          </div>
-          <div class="essay-card-body">
-            <div class="essay-card-question">What happens when AI stops being a tool you visit and becomes the medium everything runs through?</div>
-            <div class="essay-card-title">From Destination AI to Intelligence Media</div>
-            <div class="essay-card-desc">AI is transitioning from destination to infrastructure — "intelligence media" through which AI-generated content circulates as intermediate artifacts. The most important developments aren't in model capability but in circulation infrastructure, and governance posture needs to shift accordingly.</div>
-            <div class="essay-card-meta">Protocolized · February 2026</div>
-          </div>
-        </a>
-
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" onclick="scrollEssays(-1)" aria-label="Previous">←</button>
-        <button class="carousel-btn" onclick="scrollEssays(1)" aria-label="Next">→</button>
-        <span class="carousel-hint">scroll to explore</span>
-      </div>
     </div>
   </div>
 </section>
@@ -2255,7 +1904,7 @@ function renderOutput(placement) {
 
     <div class="output-actions">
       <button class="btn btn-primary" onclick="window.print()">Print this result</button>
-      <button class="btn btn-secondary" onclick="navTo('context')">See all levels</button>
+      <a class="btn btn-secondary" href="https://protocolized.dev/levels/">See all levels</a>
       <span class="retake-link" onclick="retakeAssessment()">Retake the assessment</span>
     </div>
   `;
@@ -2291,11 +1940,6 @@ function retakeAssessment() {
   document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ─── Essay Carousel ────────────────────────────────────── */
-function scrollEssays(dir) {
-  const carousel = document.getElementById('essay-carousel');
-  carousel.scrollBy({ left: dir * 300, behavior: 'smooth' });
-}
 </script>
 
 </body>
