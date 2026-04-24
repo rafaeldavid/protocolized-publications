@@ -126,6 +126,80 @@ Each dimension is grounded in specific passages of the litepaper + bibliography.
 
 ---
 
+## Concepts per dimension
+
+Each dimension is built from a specific cluster of concepts in the source material. These are the conceptual anchors the quiz statements will operationalize.
+
+### D1 · Protocol specificity
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **Smooth-to-striated** | Rao, *Constructing the Evil Twin of AI* | Core mechanism: protocols convert open behavior spaces into structured ones. Striation IS protocol specificity made operational. |
+| **Protocol as codified behavior at adjacent loci** | Rao, *Introduction to the Protocol Reader* (Danny Ryan, cited) | Canonical definition; grounds the dimension in the foundational vocabulary. |
+| **Protocol trade pattern** | Rao, *Table: Learning to See Business Protocols* | Each protocol trades one class of problem for another. Specificity of the trade is the measure. |
+| **Protocol vs. policy distinction** | Litepaper §2 | Specificity lives at the handoff, not in policy documents. Separates this dimension from generic compliance. |
+| **Agent handoff contracts** | Litepaper L4 | L4-specific instance of high-specificity protocols between autonomous agents. |
+
+### D2 · Ontological stability
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **Ontological drift** | Benny, *Why Does AI Development Look Like 1980s Software Planning?* | Named failure mode this dimension measures against. Direct 1:1 mapping. |
+| **Cost-structure flip** | Benny (same essay) | LLMs make documents cheap but drift expensive — shifts the economics that make stability matter. |
+| **Waterfall inversion** | Benny (same) + Litepaper §2.2 | Practical response to drift: front-load definitional clarity. Stability is the design move. |
+| **Definition freezing at L3/4 boundary** | Litepaper L3 | Specific point where the dimension becomes load-bearing; organizations can't cross L3/4 without it. |
+
+### D3 · Temporal alignment
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **Slacker Index** | Scholl, *Vertical Integration* | Lead time ÷ working time — direct measure of temporal divergence. |
+| **Jevons's Law of engineering** | Scholl, *XB-1 and Jevons's Law* | When iteration is cheap, the quantity of designs evaluated changes what's possible. AI makes iteration cheap; alignment becomes the constraint. |
+| **AI-speed vs. review-speed mismatch** | Litepaper L3 failure mode | The canonical L3 failure: AI accelerates production without review infrastructure scaling. |
+| **Code review as first-class bottleneck** | Uber case | Empirical demonstration — AI PR volume outgrew review capacity; temporal mismatch became the limiting factor. |
+| **Intensification without absorption** | Ranganathan/Ye HBR (cited via blog post) | Individual workflow acceleration outrunning organizational standardization — temporal divergence at the work/org layer. |
+
+### D4 · Organizational visibility
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **"Not just policies but perception"** | *The Missing Protocol Layer* (blog post) | Most direct statement of the dimension. Perception precedes governance. |
+| **Protocol invisibility as persistence property** | Rao, *Protocol Reader* | Successful protocols disappear — an inherent tension this dimension surfaces. |
+| **Fault lines as stress-revealed protocols** | Rafa, *Finding Fault Lines* | Protocols become visible when they fail. Visibility dimension measures whether orgs find them before the failure. |
+| **Non-events / dynamic non-events** | Weick (cited via Stinson-Schroff, *Mechanical Currents*) | Non-events become invisible — same mechanism that makes mature infrastructure hard to govern. |
+| **Shadow AI detection** | Litepaper L1 + Samsung case | Canonical low-visibility failure. Visibility is what Samsung lacked. |
+
+### D5 · Domain expertise leverage
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **Domain expertise as higher-level perception** | Litepaper L3 | Explicit framing: expertise IS the validation mechanism in designed workflows. |
+| **F2F factory-to-factory pattern** | Rao, *Have Your Factory Call My Factory* | Both factories bring domain knowledge; the shared Dropbox + metadata server works because of it. |
+| **Bricoleur framing** | *The Missing Protocol Layer* (blog post) | Domain experts as protocol entrepreneurs inside enterprises. The unit of work is the expert-plus-AI dyad. |
+| **FDE pattern** | Armstrong, *The Hottest Job in Tech* + Scianna, *How to Build Your FDE Team* | Forward-deployed engineer as embedded domain expert; drives L2→L3 transition through specialized knowledge, not generic tooling. |
+| **Gravel road / Auftragstaktik** | Scianna (same) | HQ sets objective, field executes with domain autonomy — delegation to domain expertise as governance. |
+
+### D6 · Coordination scope
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **F2F bilateral coordination** | Rao, *Have Your Factory Call My Factory* | Narrow-scope case: two parties, tight bilateral protocol. Anchor for the "individual" end of the dimension. |
+| **Agent handoff contracts** | Litepaper L4 | Scope widens from bilateral to multi-party; protocols become first-class contracts. |
+| **EDI historical parallel** | Litepaper L4 | Sector-scope precedent for what L4/L5 coordination looks like when it matures. |
+| **Disruptive standards-making** | David Lang's Bristlemouth project (cited via Protocol Institute intro) | Contemporary example of sectoral protocol design; shows the shift from individual to sectoral scope. |
+| **Kitification** | Rafa (new concept, 2026-04-24) | Intermediate scope: kits coordinate across bespoke instances without requiring full standardization. |
+
+### Cross-cutting concepts (not dimensions — scoring logic)
+
+Some concepts operate across all dimensions rather than mapping to one:
+
+| Concept | Source | Role |
+|---|---|---|
+| **Bottleneck thinking** | Rafa, *Finding Fault Lines*; Microsoft RAI MM (interdependence warning) | Scoring rule: the organization's effective level is the weakest high-stakes dimension. This is *how dimensions combine*, not a dimension itself. |
+| **Non-events as output** | Weick via Stinson-Schroff | What well-functioning protocols *produce*. The diagnostic looks for their absence. |
+| **Carnival vs. archival** | Rao | Cultural framing that can apply to any dimension. Probably a voice/tone consideration for quiz copy rather than a structural axis. |
+| **Protocol entrepreneurship** | Bristlemouth / blog post framing | Agency framing: who designs the protocol. Relevant to all dimensions but not separable as one. |
+
 ## Dimensions considered and excluded
 
 | Dimension | Reason excluded |
