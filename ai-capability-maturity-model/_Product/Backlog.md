@@ -196,6 +196,12 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - **Dependencies:** Repo migration decision.
 - **Status:** intake
 
+### OBS-004 — Contact form worker proxy (harden the Discord webhook)
+- **Scope:** The homepage contact form currently POSTs directly from the browser to the Discord webhook URL. The URL is visible in page source; an abuser could spam the channel. Move the form submission through a Cloudflare Worker proxy (mirror the rafa-inbox pattern) that adds: (1) rate limit per IP, (2) honeypot check server-side, (3) minimal spam filter, (4) then forwards to Discord. Once in place, swap the form's POST target from the Discord URL to the worker URL and rotate the webhook.
+- **Rationale:** Exposing a webhook client-side is a known tradeoff. Acceptable for MVP, worth hardening before we drive real traffic to the contact form.
+- **Dependencies:** None, but best scheduled before any outbound promotion of the site.
+- **Status:** intake
+
 ### OBS-003 — Lede accept-and-deploy runbook
 - **Scope:** Small script (or documented steps) to take an accepted lede from a weekly brief → update the artifact `index.html` → republish `thorny-basin-5xkf` → append to `lede-history.md` in one command.
 - **Rationale:** Keeps the deploy step explicit and auditable while removing the manual find-and-replace. Prevents the lede-history log from drifting out of sync with what's deployed.
