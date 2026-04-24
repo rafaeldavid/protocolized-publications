@@ -1,20 +1,20 @@
 ---
-title: Assessment v2 framework · 6 orthogonal dimensions
-version: v1.1 (2026-04-24)
-status: draft · for review before writing quiz statements
+title: Assessment v2 framework · 7 orthogonal dimensions
+version: v1.2 (2026-04-24)
+status: draft · in use by v0.3.2 statement draft
 source_passes:
   - v1.0 — Explore agent pass over litepaper v7, bibliography, 13 research observations, blog post
-  - v1.1 — 7 additional Protocolized / Summer Lightning articles added (listed at bottom)
-precedes: quiz-statement drafting (v0.3+, once this framework is approved)
+  - v1.1 — 7 additional Protocolized / Summer Lightning articles added
+  - v1.2 — added D7 Value integration after Rafa flagged the missing "product/business that couldn't exist without AI" dimension
 ---
 
-# Assessment v2 framework — 6 orthogonal dimensions
+# Assessment v2 framework — 7 orthogonal dimensions
 
 The 5 levels (Shadow → Sanctioned → Designed → Infrastructural → Planetary) stay as the **output** of the assessment. This framework provides the **measurement axes** — the orthogonal dimensions on which organizations vary within and across levels.
 
 Each dimension is grounded in specific passages of the litepaper, bibliography, and related Protocolized essays. Quiz statements (later) will be plain-language operationalizations of these dimensions. Not implemented yet; reviewing the framework before writing the language.
 
-## The six dimensions
+## The seven dimensions
 
 ### 1. Protocol specificity · smooth → striated
 
@@ -145,6 +145,30 @@ Each dimension is grounded in specific passages of the litepaper, bibliography, 
 
 ---
 
+### 7. Value integration · adjacent → core
+
+**Definition.** The degree to which AI is integrated into the organization's value delivery — from AI as a productivity tool applied to existing work (adjacent) to AI as the substrate that makes the product or service possible (core).
+
+**Why orthogonal.** Separate from governance quality (D1) and expertise (D5). A startup whose product is AI-native can still have messy governance (low D1). A mature enterprise with excellent AI governance can still be using AI purely as a productivity layer on existing offerings (low D7). It's about *where AI sits in the value chain*, not how well it's managed.
+
+**Important caveat.** High D7 is NOT automatically higher maturity. Being deeply AI-embedded without governance (high D7, low D1) is the Klarna failure mode — over-reliance without the coordination layer. D7 supplies context to bottleneck-scoring; it doesn't stand alone as a progression axis.
+
+**Sources.**
+- Litepaper L3 — the level definition itself: "removing AI from that workflow would require rebuilding it"
+- Boom Supersonic / mkBoom case — AI-native structural analysis core to the product; business model depends on it
+- Litepaper L4 — AI capability as baseline sector expectation
+- Armstrong, *The Hottest Job in Tech* — "AI will end up being a bigger and more important platform shift than the cloud was"
+- Scholl, *XB-1 and Jevons's Law* — cheap iteration opens new design spaces; the output changes because AI enables new things
+- Rao, *Constructing the Evil Twin of AI* — AI as optionality-to-structure converter; new behavior spaces emerge and then get protocol-wrapped
+
+**Observable signals.**
+- If AI tools disappeared tomorrow, would the product still exist in more or less the same shape?
+- Do customers see AI in what you deliver, or is AI making existing delivery faster but invisible from the outside?
+- Did the most recent major product or offering require AI to exist, or would it have existed anyway?
+- Is AI in the customer-facing pitch, or is it internal infrastructure only?
+
+---
+
 ## Concepts per dimension
 
 Each dimension is built from a specific cluster of concepts in the source material. These are the conceptual anchors the quiz statements will operationalize.
@@ -217,6 +241,17 @@ Each dimension is built from a specific cluster of concepts in the source materi
 | **Brain vs. Fabric** | Rao & Nast, *A Primordial Computing Soup* | Splits scope into two sub-axes: AI agents (brain) versus coordination mechanisms that weave them together (fabric). Coordination scope is fundamentally a fabric property. |
 | **Squishy interfaces** | Rao & Nast, *A Primordial Computing Soup* | Ad-hoc cross-ecosystem bridges. Intermediate scope between bilateral and full sectoral — relevant to the L3/L4 transition zone. |
 | **Kitification** | Rafa (new concept, 2026-04-24) | Intermediate scope: kits coordinate across bespoke instances without requiring full standardization. |
+
+### D7 · Value integration
+
+| Concept | Source | How it ties |
+|---|---|---|
+| **"Removing AI would require rebuilding it"** | Litepaper L3 definition | Direct framing. The L3 level definition is essentially a D7 statement in prose form. |
+| **Boom Supersonic / mkBoom** | Uber + Boom case studies, Litepaper L3 | Canonical high-D7 case: AI-native structural analysis core to the aircraft program. |
+| **AI as platform shift** | Armstrong, *The Hottest Job in Tech* | Frames the business-model stakes. Compares AI's scope to the cloud platform shift. |
+| **Jevons's Law of engineering** | Scholl, *XB-1 and Jevons's Law* | Cheap iteration opens new design spaces. Output changes because AI enables new things, not just faster things. |
+| **Smooth-to-striated applied to value chain** | Rao, *Evil Twin of AI* | Used at D1 as a governance mechanism; reused here as a value-creation mechanism — AI opens behavior spaces, protocols then wrap them, and the product itself shifts. |
+| **Klarna reversal (caveat case)** | Observation file (Klarna) + Litepaper L2 | Cautionary: high D7 without matching D1 produces brittle over-reliance. Distinguishes "AI-embedded and governed" from "AI-embedded and winging it". |
 
 ### Cross-cutting concepts (not dimensions — scoring logic or framing)
 
