@@ -135,6 +135,29 @@ When we add extensions later:
 - Ext 1 (AI-Native Builder) splits L3 into "legacy-crossed-over" vs. "native-from-start."
 - Ext 2 (Compliant-First) + Ext 3 (FAFO) enrich L2.
 
+## Cross-check: *Four Paradigms of Craft* (Nation of Artisans)
+
+[*Four Paradigms of CRFT*](https://nationofartisans.substack.com/p/four-paradigms-of-crft) proposes a framework for how technology interacts with craft traditions — not directly about organizational AI adoption, but a useful cross-check on our dimensional logic. The four paradigms:
+
+| Paradigm | Definition | Mirror in our archetypes |
+|---|---|---|
+| **Augmentation** | Using tech to sustain / extend struggling crafts by reducing toil | Close to **The Pragmatist** — AI as productivity layer on existing work |
+| **Frontiers** | Deploying tech to unlock previously unreachable aesthetic possibilities | Close to **The Platform Builder** + **Ext 1 The AI-Native Builder** — AI enables what wasn't possible before |
+| **Resurrection** | Bringing lost or dying aesthetics back to life with tech | No clean mirror. In org terms: using AI to revive capabilities the org had lost (personalization at scale, expert-level service at commodity prices). A specific strategic move, not an adoption archetype. |
+| **Transcendence** | Abstracting a craft's core logic and applying it to different problems | No clean mirror. In org terms: abstracting AI-enabled capability from one domain and redeploying it elsewhere. A maturity-outcome, not an adoption archetype. |
+
+**What this contributes.**
+
+1. **Validates the Augmentation/Frontiers distinction** — the difference between Pragmatist (AI sustains existing work) and Platform Builder / AI-Native Builder (AI enables new capability) isn't just our framing; it shows up independently in adjacent frameworks.
+
+2. **Useful vocabulary to borrow for D7 (Value integration).** Two terms worth folding into D7's concept anchors:
+   - **"Load-bearing" technology** — innovation essential to a craft's (or product's) survival. Maps to high D7 (the product wouldn't exist without the AI).
+   - **"Condition of possibility"** — technology that enables forms otherwise unreachable. Maps to the Frontiers paradigm and to AI-Native Builder specifically.
+
+3. **Resurrection and Transcendence as strategic moves, not adoption archetypes.** These are things mature orgs *do* with AI capability once they have it — not ways of *adopting* AI. They could be useful language in the reader-facing result descriptors at high maturity levels, but they don't belong in the archetype inventory itself.
+
+**No new archetype added from this source.** The article reinforces existing distinctions and adds useful vocabulary; it doesn't surface a missing adoption-pattern archetype.
+
 ## Contested framings (flagged in the research pass)
 
 1. **Pragmatist vs. high-maturity experimenter.** The discourse is still settling on whether "measured adoption" and "rapid experimentation with codification" are distinct archetypes or two names for the same path. We're treating them as the same for now (the Pragmatist anchor).
