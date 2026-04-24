@@ -1,14 +1,41 @@
 ---
 title: Assessment v2 framework · 7 orthogonal dimensions
-version: v1.2 (2026-04-24)
-status: draft · in use by v0.3.2 statement draft
+version: v1.3 (2026-04-24)
+status: draft · in use by archetype inventory (Archetypes-v0.1.md)
 source_passes:
   - v1.0 — Explore agent pass over litepaper v7, bibliography, 13 research observations, blog post
   - v1.1 — 7 additional Protocolized / Summer Lightning articles added
   - v1.2 — added D7 Value integration after Rafa flagged the missing "product/business that couldn't exist without AI" dimension
+  - v1.3 — expanded the "AI" concept beyond tool use; introduced the archetype layer as the assessment's resolution target
 ---
 
 # Assessment v2 framework — 7 orthogonal dimensions
+
+## What "AI" means in this framework (v1.3 amendment)
+
+Earlier drafts implicitly used "AI" to mean "AI tools employees use" — retail ChatGPT, enterprise Copilot, Cursor. That framing is too narrow for an organizational diagnostic. For v1.3 onward, "AI" refers to the full range of capability integrations an enterprise can have, across five flavors:
+
+| # | Flavor | Examples |
+|---|---|---|
+| 1 | **Consumer AI** | Retail ChatGPT / Claude / Gemini used by individuals, often with personal accounts |
+| 2 | **Enterprise AI** | Sanctioned workforce tools — GitHub Copilot, Cursor, enterprise ChatGPT, Microsoft 365 Copilot |
+| 3 | **Product-integrated AI** | Inference running inside the org's own products: chat in the UI, recommendations, summarization features, AI-generated content paths |
+| 4 | **Infrastructure AI** | Automated decisioning in backend systems: fraud detection, dynamic pricing, forecasting, ML in data pipelines, operational observability |
+| 5 | **Custom / developed AI** | Models the org builds, fine-tunes, or trains in-house; proprietary inference endpoints |
+
+**Why this matters for the diagnostic.** An org with zero employee tool adoption but deep product-integrated AI is still an AI-using enterprise, and the dimensions apply to it. An enterprise with Copilot universally rolled out but no product integration is in a genuinely different shape than one with the inverse. Previous drafts of the quiz leaned heavily on flavors 1 and 2; v0.4+ statements and archetypes reflect all five.
+
+**Dimension notes under the broader scope.**
+
+- **D1 Protocol specificity** — rules at handoffs cover all five flavors. Inference endpoints have handoffs too: who owns drift, who reviews model updates, who gates deployment.
+- **D2 Ontological stability** — schemas feed into all five. A fine-tuned model is as brittle to data-definition drift as a Copilot prompt.
+- **D3 Temporal alignment** — applies to inference speed, not just employee review speed. Production inference can run 1000x faster than the governance reviewing it.
+- **D4 Organizational visibility** — most enterprises know their employee tool adoption better than they know their production inference endpoints. Visibility asymmetry across flavors is itself a diagnostic.
+- **D5 Domain expertise leverage** — applies to validation of all five, including custom models (who validates a fine-tuned model? domain experts, or ML engineers with no context?).
+- **D6 Coordination scope** — scope operates across all flavors. Inter-org AI protocols increasingly matter for product-integrated and custom flavors (agent handoff contracts, API standards, model cards).
+- **D7 Value integration** — this dimension is specifically about the expanded concept. A product that requires flavor 3 or 4 to exist is the "core" end of the axis.
+
+## The seven dimensions
 
 The 5 levels (Shadow → Sanctioned → Designed → Infrastructural → Planetary) stay as the **output** of the assessment. This framework provides the **measurement axes** — the orthogonal dimensions on which organizations vary within and across levels.
 
