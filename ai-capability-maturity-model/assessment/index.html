@@ -220,6 +220,33 @@
 
     .btn-secondary:hover { background: var(--accent-light); }
 
+    /* Landing-page-matched hero CTA button (also strips button UA defaults) */
+    .btn-hero {
+      display: inline-block;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      background: var(--accent-dark);
+      color: #fff;
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.15s ease;
+    }
+    .btn-hero:hover {
+      background: #6b4d82;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: #fff;
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--text-secondary);
@@ -1622,7 +1649,7 @@
     <div class="schedule-panel" id="schedule-panel" aria-hidden="true">
       <div class="schedule-panel-inner">
         <h3>Schedule a call</h3>
-        <p class="schedule-intro">Leave a note and we'll set up a 30-minute conversation. No hard sell — we run sessions as peer comparison, not pitch.</p>
+        <p class="schedule-intro">Leave a note and we'll set up a 30-minute conversation.</p>
 
         <form id="schedule-form" autocomplete="on">
           <input type="text" name="name" placeholder="Name" required autocomplete="name">
