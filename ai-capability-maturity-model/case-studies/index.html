@@ -1324,6 +1324,134 @@
     .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .footer-links a { font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; }
     .footer-links a:hover { color: var(--accent-dark); }
+    /* ─── Schedule + Share inline panels ───────────────────── */
+    .schedule-panel, .share-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, margin 0.35s ease, opacity 0.25s ease;
+      opacity: 0;
+      margin: 0 auto;
+    }
+    .schedule-panel.open, .share-panel.open {
+      max-height: 1400px;
+      opacity: 1;
+      margin: 1rem auto 3rem;
+    }
+    .schedule-panel-inner, .share-panel-inner {
+      background: #fff;
+      border: 1px solid rgba(168,136,191,0.25);
+      border-radius: 12px;
+      padding: 24px 24px 20px;
+      max-width: 560px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .schedule-panel h3, .share-panel h3 {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    .schedule-intro, .share-intro {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+    .schedule-panel input, .schedule-panel textarea,
+    .share-panel input, .share-panel textarea {
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .schedule-panel textarea, .share-panel textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: var(--font-sans);
+      line-height: 1.55;
+    }
+    .share-panel textarea { min-height: 220px; }
+    .schedule-panel input:focus, .schedule-panel textarea:focus,
+    .share-panel input:focus, .share-panel textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(168,136,191,0.18);
+    }
+    .contact-hp-scp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .panel-alt {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 14px 0 8px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .panel-alt a { color: var(--accent-dark); font-weight: 600; }
+    .panel-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+    .panel-actions .btn-link {
+      background: transparent; border: none; color: var(--text-secondary);
+      font-family: var(--font-mono); font-size: 0.82rem; cursor: pointer; padding: 10px 14px;
+    }
+    .panel-actions .btn-link:hover { color: var(--text); }
+    .panel-status { font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; min-height: 1.2em; }
+    .panel-status.error { color: #c0392b; }
+    .panel-status.success { color: #2d7a45; }
+
+    /* ─── Standard CTA block ───────────────────────────────── */
+    .std-cta-block {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 32px 28px;
+      max-width: 680px;
+      margin: 3rem auto 1rem;
+    }
+    .std-cta-block .label { margin-bottom: 14px; display: block; }
+    .std-cta-block h3 {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .std-cta-block p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.65;
+    }
+    .std-cta-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .std-cta-buttons .btn-secondary {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .std-cta-buttons .btn-secondary:hover {
+      background: var(--accent-light);
+      text-decoration: none;
+    }
+
 
 
   </style>
@@ -1446,6 +1574,43 @@
   </div>
 </section>
 
+<!-- ─── Standard CTA ───────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="std-cta-block">
+      <span class="label">Protocols for Business</span>
+      <h3>Ready to take the assessment?</h3>
+      <p>A 2-minute diagnostic places you on one of the five levels, returns the failure modes you're most exposed to, and gives you clear direction on what do next.</p>
+      <div class="std-cta-buttons">
+        <a class="btn-hero" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
+        <button type="button" class="btn-secondary" onclick="toggleSchedule()">Schedule a Call</button>
+      </div>
+    </div>
+
+    <div class="schedule-panel" id="schedule-panel" aria-hidden="true">
+      <div class="schedule-panel-inner">
+        <h3>Schedule a call</h3>
+        <p class="schedule-intro">Leave a note and we'll set up a 30-minute conversation. No hard sell — we run sessions as peer comparison, not pitch.</p>
+
+        <form id="schedule-form" autocomplete="on">
+          <input type="text" name="name" placeholder="Name" required autocomplete="name">
+          <input type="email" name="email" placeholder="Email" required autocomplete="email">
+          <textarea name="message" placeholder="Brief context — industry, role, what you'd like to discuss" required></textarea>
+          <div class="contact-hp-scp" aria-hidden="true"><label>Leave empty <input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>
+
+          <div class="panel-alt">Prefer email? Reach us at <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</div>
+
+          <div class="panel-actions">
+            <button type="button" class="btn-link" onclick="toggleSchedule()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+          <p class="panel-status" id="schedule-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── Footer ─────────────────────────────────────────────── -->
 <footer>
   <div class="footer-inner">
@@ -1487,6 +1652,74 @@ function toggleContent(btn) {
 }
 
 </script>
+<script>
+  function toggleSchedule() {
+    const panel = document.getElementById('schedule-panel');
+    if (!panel) return;
+    const isOpen = panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    if (isOpen) {
+      setTimeout(() => {
+        panel.scrollIntoView({behavior: 'smooth', block: 'center'});
+        const first = panel.querySelector('input[name="name"]');
+        if (first) first.focus({preventScroll: true});
+      }, 200);
+    }
+  }
+  document.getElementById('schedule-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('schedule-status');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    const hp = form._hp.value;
+    if (hp) { status.textContent = 'Request sent. Thank you.'; status.className = 'panel-status success'; form.reset(); return; }
+    if (!name || !email || !message) {
+      status.textContent = 'Name, email, and message are required.';
+      status.className = 'panel-status error';
+      return;
+    }
+    submitBtn.disabled = true;
+    status.textContent = 'Sending…';
+    status.className = 'panel-status';
+
+    const pageLabel = (document.title || '').split(' — ')[0] || location.pathname;
+    const lines = [
+      '📞 **Schedule a Call — protocolized.dev**',
+      '**Page:** ' + pageLabel + ' (' + location.pathname + ')',
+      '**From:** ' + name,
+      '**Email:** ' + email,
+      '',
+      message
+    ];
+    const content = lines.join('
+').slice(0, 1950);
+
+    try {
+      const res = await fetch('https://discord.com/api/webhooks/1497112237570265128/TpNewRJ80IevLBv7tsf6GsLwTT0G7aiLHGKq2QKdbdXwuoK_kG8G7TzrRAU3KM_yeWM1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content })
+      });
+      if (res.ok) {
+        status.textContent = "Request sent. We'll be in touch.";
+        status.className = 'panel-status success';
+        form.reset();
+        setTimeout(toggleSchedule, 1500);
+      } else {
+        status.textContent = 'Something went wrong. Please email team@protocol-institute.org directly.';
+        status.className = 'panel-status error';
+      }
+    } catch {
+      status.textContent = 'Could not send. Please email team@protocol-institute.org directly.';
+      status.className = 'panel-status error';
+    }
+    submitBtn.disabled = false;
+  });
+</script>
+
 
 </body>
 </html>
