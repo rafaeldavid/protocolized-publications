@@ -912,6 +912,23 @@
       .hero-links { flex-direction: column; gap: 16px; }
       .level-header { flex-direction: column; gap: 10px; }
     }
+    /* ─── Unified footer (matches landing page) ──────────────── */
+    footer { border-top: 1px solid var(--border); padding: 36px 0; margin-top: 0; background: transparent; }
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p { font-size: 0.8rem; color: var(--text-secondary); margin: 0; }
+    .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-dark); }
+
   </style>
 </head>
 <body>
@@ -1727,18 +1744,19 @@
   </div>
 </section>
 
-<!-- ─── Footer ─────────────────────────────────────────────────── -->
-<footer class="footer">
+<!-- ─── Footer ─────────────────────────────────────────────── -->
+<footer>
   <div class="footer-inner">
-    <div class="footer-left">
-      <span>© 2026 Protocolized</span><br>
-      <span class="footer-sub">Protocols for Business Practice &nbsp;·&nbsp; Version 5 (doomer tone pass)</span>
-    </div>
     <div class="footer-links">
-      <a href="https://protocolized.dev/">protocolized.dev</a>
-      <a href="https://protocolized.dev/assessment/">Interactive tool</a>
-      <a href="#hero">↑ Top</a>
+      <a href="https://protocolized.dev/assessment/">Assessment</a>
+      <a href="https://protocolized.dev/case-studies/">Case Studies</a>
+      <a href="https://protocolized.dev/levels/">Levels</a>
+      <a href="https://protocolized.dev/blog-the-missing-layer/">Blog</a>
+      <a href="https://protocolized.dev/litepaper-ai-protocols/">Litepaper</a>
+      <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank">Subscribe</a>
+      <a href="https://github.com/rafaeldavid/protocolized-publications" target="_blank">GitHub</a>
     </div>
+    <p>Protocolized · Protocols for Business · April 2026</p>
   </div>
 </footer>
 

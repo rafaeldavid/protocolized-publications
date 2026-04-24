@@ -440,6 +440,68 @@
       .article { padding: 40px 0 60px; }
       .level-block { padding: 16px 18px; }
     }
+    /* ─── Unified footer (matches landing page) ──────────────── */
+    footer { border-top: 1px solid var(--border); padding: 36px 0; margin-top: 0; background: transparent; }
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p { font-size: 0.8rem; color: var(--text-secondary); margin: 0; }
+    .footer-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-dark); }
+
+  
+    /* ─── Essay carousel ───────────────────────────────────── */
+    .essay-carousel-wrap { position: relative; }
+    .essay-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+      padding-right: 40px;
+    }
+    .essay-carousel::-webkit-scrollbar { display: none; }
+    .essay-card {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      background: #fff;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      border-radius: 2px;
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+    .essay-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: var(--accent); text-decoration: none; }
+    .essay-card-img { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface); flex-shrink: 0; }
+    .essay-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; }
+    .essay-card:hover .essay-card-img img { transform: scale(1.03); }
+    .essay-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .essay-card-question { font-family: var(--font-sans); font-size: 0.82rem; font-style: italic; color: var(--accent-dark); line-height: 1.45; margin-bottom: 10px; }
+    .essay-card-title { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 8px; }
+    .essay-card-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; flex: 1; margin-bottom: 12px; }
+    .essay-card-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); }
+    .carousel-controls { display: flex; align-items: center; gap: 8px; margin-top: 20px; }
+    .carousel-btn { background: none; border: 1px solid var(--border); color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s, color 0.15s; border-radius: 2px; }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .carousel-hint { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); margin-left: 4px; }
+    #essays { padding: 60px 0; border-top: 1px solid var(--border); }
+    #essays h2 { font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; margin-bottom: 8px; }
+    #essays .context-intro { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; }
+
   </style>
 </head>
 <body>
@@ -579,18 +641,109 @@
   </div>
 </main>
 
-<!-- ─── Footer ────────────────────────────────────────────── -->
-<footer class="footer">
+<!-- ─── From the Archive ─────────────────────────────────── -->
+<section id="essays">
   <div class="container">
-    <div class="footer-icons">
-      <a href="https://github.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model" target="_blank" rel="noopener" class="footer-icon-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        Source on GitHub
-      </a>
+    <h2>From the Archive</h2>
+    <p class="context-intro">Essays from Protocolized on protocol thinking, AI adoption, and organizational design.</p>
+
+    <div class="essay-carousel-wrap">
+      <div class="essay-carousel" id="essay-carousel">
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/have-your-factory-call-my-factory.png" alt="Have Your Factory Call My Factory" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What if the real AI productivity gains are happening in relationships your org has no visibility into?</div>
+            <div class="essay-card-title">Have Your Factory Call My Factory</div>
+            <div class="essay-card-desc">The visible AI story — chatbots, enterprise licenses — is the surface layer. Substantive gains are accumulating in bilateral "factory-to-factory" networks: individuals with bespoke agent pipelines quietly doing work your org's formal tools can't match. Domain knowledge, not technical skill, is the differentiator.</div>
+            <div class="essay-card-meta">Venkatesh Rao · March 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/finding-fault-lines-within-the-firm" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/finding-fault-lines.jpg" alt="Finding Fault Lines within the Firm" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What does it mean when AI adoption creates friction instead of removing it?</div>
+            <div class="essay-card-title">Finding Fault Lines within the Firm</div>
+            <div class="essay-card-desc">AI acts as a protocol disturbance that makes invisible coordination systems visible through strain. When AI speeds up internal production without changing external constraints, temporal misalignment surfaces. The friction AI creates is a map of where your governance structure needs redesign.</div>
+            <div class="essay-card-meta">Rafa Fernández · January 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/mechanical-currents" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/mechanical-currents.jpeg" alt="Mechanical Currents" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">Why are AI productivity estimates wildly unreliable across teams?</div>
+            <div class="essay-card-title">Mechanical Currents</div>
+            <div class="essay-card-desc">Three adoption challenges most organizations aren't naming correctly: AI as educational accelerant (not productivity multiplier), cheap content generation creating organizational noise that requires a strategic response, and uneven integration producing task estimation failures that create competitive exposure.</div>
+            <div class="essay-card-meta">Timber Stinson-Schroff · September 2025</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/constructing-the-evil-twin-of-ai" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/constructing-the-evil-twin-of-ai.png" alt="Constructing the Evil Twin of AI" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">If AI is defined by fluid intelligence and proactive agency, what's its structural opposite — and why do you need it?</div>
+            <div class="essay-card-title">Constructing the Evil Twin of AI</div>
+            <div class="essay-card-desc">Protocols are AI's structural inverse: deliberately rigid, constrained in agency, resistant to fluidity. As AI systems grow more powerful and opaque, governance requires equivalently immovable structures. Effective AI governance doesn't fight intelligence with intelligence — it constrains it with mathematical inevitability.</div>
+            <div class="essay-card-meta">Venkatesh Rao · October 2025</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/theorizing-protocolization-i-new" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/theorizing-protocolization.png" alt="Theorizing Protocolization I: New Nature" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">How do protocols become invisible — and why is that the governance problem?</div>
+            <div class="essay-card-title">Theorizing Protocolization I: New Nature</div>
+            <div class="essay-card-desc">Protocols succeed by disappearing. When coordination infrastructure becomes invisible, it becomes unmanageable — conditions for systemic failure accumulate silently. This essay maps how AI, blockchains, and sensing networks are creating a planetary computational tangle that no existing governance framework can comprehend in full.</div>
+            <div class="essay-card-meta">Venkatesh Rao &amp; Patrick Nast · January 2026</div>
+          </div>
+        </a>
+
+        <a class="essay-card" href="https://protocolized.summerofprotocols.com/p/from-destination-ai-to-intelligence" target="_blank" rel="noopener">
+          <div class="essay-card-img"><img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/from-destination-ai-to-intelligence-media.png" alt="From Destination AI to Intelligence Media" loading="lazy"></div>
+          <div class="essay-card-body">
+            <div class="essay-card-question">What happens when AI stops being a tool you visit and becomes the medium everything runs through?</div>
+            <div class="essay-card-title">From Destination AI to Intelligence Media</div>
+            <div class="essay-card-desc">AI is transitioning from destination to infrastructure — "intelligence media" through which AI-generated content circulates as intermediate artifacts. The most important developments aren't in model capability but in circulation infrastructure, and governance posture needs to shift accordingly.</div>
+            <div class="essay-card-meta">Protocolized · February 2026</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollEssays(-1)" aria-label="Previous">←</button>
+        <button class="carousel-btn" onclick="scrollEssays(1)" aria-label="Next">→</button>
+        <span class="carousel-hint">scroll to explore</span>
+      </div>
     </div>
-    <p>Protocolized · Protocol Research and Development · The Missing Protocol Layer · v1.2</p>
+  </div>
+</section>
+
+<!-- ─── Footer ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://protocolized.dev/assessment/">Assessment</a>
+      <a href="https://protocolized.dev/case-studies/">Case Studies</a>
+      <a href="https://protocolized.dev/levels/">Levels</a>
+      <a href="https://protocolized.dev/blog-the-missing-layer/">Blog</a>
+      <a href="https://protocolized.dev/litepaper-ai-protocols/">Litepaper</a>
+      <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank">Subscribe</a>
+      <a href="https://github.com/rafaeldavid/protocolized-publications" target="_blank">GitHub</a>
+    </div>
+    <p>Protocolized · Protocols for Business · April 2026</p>
   </div>
 </footer>
+
+
+<script>
+function scrollEssays(dir) {
+  const carousel = document.getElementById('essay-carousel');
+  if (carousel) carousel.scrollBy({ left: dir * 300, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
