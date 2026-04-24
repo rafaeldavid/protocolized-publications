@@ -8,12 +8,14 @@ Items selected for the current iteration slice, pulled from [`Backlog.md`](Backl
 
 ### Track C — usability per feedback (site-facing, visible)
 
-| Item | Scope | Est. |
-|---|---|---|
-| `COPY-001` | Tagline "Protocols for AI adoption" on homepage hero (and nav chrome across site) | 30 min |
-| `ASSESS-001` | Shorten assessment response option text to short phrases + smaller detail underneath | 1 h |
-| `ASSESS-004` | Results-block CTAs: "send to a peer" + "schedule a call" (Calendly or email) | 1 h |
-| `IA-003` | Case Studies top-level page (3-paras version pointing at the 5 existing research entries) | 2 h |
+| Item | Scope | Est. | Status |
+|---|---|---|---|
+| `COPY-001` | Tagline "Protocols for AI adoption" under the Protocolized wordmark, all 4 pages | 30 min | **shipped 2026-04-24** |
+| `IA-006` | Homepage restructure (quadrantology-shape: one primary CTA) + nav relabel across all 4 pages | 3 h | shipping |
+| `ASSESS-004` | Results-block CTAs: "send to a peer" + "discuss with the SIG" (reuses rafa-inbox worker → Discord forwarding) | 1 h | queued |
+| `IA-003` | Case Studies top-level page (dedicated mount) — supersedes the anchor-link stand-in from IA-006 | 2 h | queued |
+
+**Dropped from slice:** `ASSESS-001` (shorten option text) — absorbed into the larger `ASSESS-005` redesign. Not worth patching copy on a quiz we're about to rebuild.
 
 ### Track A — observations infrastructure (invisible but structural)
 
@@ -28,7 +30,12 @@ Items selected for the current iteration slice, pulled from [`Backlog.md`](Backl
 
 ## Next slice · 2026-05-02 → 2026-05-08
 
-**Foundational Q&A for the redesign direction.** Not implementation — a structured conversation to settle: aesthetic direction, nav architecture, content organization, designer-or-Claude-frontend-design-skill question. Output: a design brief (`_Product/Design-Brief-2026-05-08.md`) that becomes the scope document for the larger redesign slice.
+**Two design briefs to produce** (structured Q&A sessions, not implementation):
+
+1. **Redesign direction brief** (`_Product/Design-Brief-Redesign-2026-05-08.md`) — aesthetic direction, nav architecture, content organization, designer-vs-Claude-frontend-design-skill question. Scopes the larger redesign arc.
+2. **`ASSESS-005` diagnostic brief** (`_Product/Design-Brief-Assess-005-2026-05-08.md`) — question set, scoring model, data model, storage/privacy/consent, UX flow. Scopes the quiz v2 build.
+
+These can run in parallel or sequentially depending on bandwidth. Both are pre-reqs for anything in the "Later" slice below.
 
 ## Later · redesign slice (dates TBD at end of Q&A)
 

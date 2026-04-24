@@ -62,32 +62,61 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - **Rationale:** Consistency across the growing page set. Identified as a template need while parsing.
 - **Status:** intake
 
-### NAV-001 — Top-nav expansion
-- **Scope:** Expand primary nav to include About (IA-002), Case Studies (IA-003), and Lexicon (IA-004 if shipped). Decide where Litepaper / Blog / Assessment sit in the new hierarchy.
-- **Rationale:** Current nav is a flat link list; several reviewer items require new top-level entries.
-- **Dependencies:** IA-002, IA-003, IA-004 (what exists to link to).
-- **Status:** intake
+### NAV-001 — Top-nav expansion `(partially absorbed by IA-006)`
+- Original scope: expand primary nav to include About, Case Studies, Lexicon. `IA-006` handles the immediate re-ordering + label update (Assessment · Case Studies · Levels · Blog · Litepaper). About stays queued until `IA-002` ships; Lexicon stays queued until `IA-004` ships.
+- **Status:** partial-done via IA-006; remainder queued
+
+### IA-006 — Homepage restructure (quadrantology-shape landing)
+- **Scope:** Replace the current multi-section homepage with a quadrantology-shaped single-funnel landing:
+  - Hero with H1 "Five levels of AI adoption. Find yours.", concise subtitle, and ONE primary CTA ("Take the Assessment") directing to `/ai-maturity-model/#assessment`
+  - Single summary paragraph below hero
+  - Two "explore" cards: The Five Levels (L1–L5 list → `#context`), Case Studies (5 names → `#cases`)
+  - About strip (1 para, unchanged in essence)
+  - Primary nav relabeled across all 4 pages: `Assessment · Case Studies · Levels · Blog · Litepaper` (clicking wordmark = home)
+  - Nav targets deep-link into existing `/ai-maturity-model/` anchors for now; when `IA-001` (level pages) and `IA-003` (case studies page) ship, targets update but labels don't change
+- **Rationale:** Reference: [quadrantology.com](https://quadrantology.com/) — single prominent primary CTA, minimal landing, brand-identity H1. Addresses feedback by promoting the assessment as the top-line exit point rather than one of three equal deliverables.
+- **Dependencies:** None for the restructure itself. `IA-001` / `IA-003` later repoint the nav targets without changing labels.
+- **Supersedes / absorbs:** `NAV-001` (partially)
+- **Status:** shipping (current slice)
 
 ---
 
 ## Assessment
 
-### ASSESS-001 — Shorten response option text
-- **Scope:** Rewrite option cards in the assessment as short phrases (headline). Move explanatory detail into smaller secondary text below the headline.
-- **Rationale:** "People shouldn't have to read entire paragraphs for 3 options." Scan cost too high.
-- **Status:** intake
+### ASSESS-005 — Comprehensive diagnostic redesign (quiz v2)
+- **Scope:** Replace the current 2-step quiz with a 10–15 question multi-part diagnostic. Six parts to design:
+  1. **Behavioral questions (10–15)** — observable behaviors and symptoms, not self-categorization. Questions like: "Is there a named owner for AI failures in [function]?", "In the last 30 days, how many AI-generated outputs went to a customer without human review?", "Does your org version-control protocols when a model updates?". Replaces current Option A/B/C recognition + scenario flow.
+  2. **Tooling inventory** — which AI tools the org actually uses, with automatic level mapping (Claude Code → Designed; Cursor/Copilot → Sanctioned; retail ChatGPT → Shadow). Absorbs the previous `FEATURE-001` tooling evaluator.
+  3. **Protocol inventory** — which specific protocols are in place (data-boundary policy, AI-output review process, workflow design with named owner, versioning on model updates, incident response path, etc.). Respondents check what exists.
+  4. **Respondent context** — industry, role, org size, region, optional email + explicit consent for follow-up.
+  5. **Results output** — richer per-dimension diagnosis (behavioral maturity + tooling maturity + protocol coverage), not just a single 1–5 level. Probably a score across 3 axes resolving to a level + bottleneck identification.
+  6. **Data capture + storage** — where submissions land (new Cloudflare Worker + D1? Supabase? other?). Privacy/consent copy. GDPR considerations (Rafa is Berlin-based).
+- **Rationale:** Three feedback items point at this and one new Rafa directive:
+  - "Really shorten the response options to short phrases" (was `ASSESS-001` — moot in redesign)
+  - "Needs at least 10 questions that drill into finer-grained behaviors and symptoms" (was `ASSESS-002`)
+  - "Repeat questions in the context of major functions OR note suggesting functional leads take it" (was `ASSESS-003`)
+  - New (2026-04-24 session): gather visitor data to support the advisory practice
+- **Supersedes:** `ASSESS-001`, `ASSESS-002`, `ASSESS-003`. Absorbs `FEATURE-001` (tooling evaluator likely folds in as Part 2; might stay separate as a short-form on-ramp — decide during design brief).
+- **Dependencies:** Requires a dedicated design brief before implementation. Larger than a single weekly slice; likely multi-week work in the redesign arc.
+- **Open questions (for design brief):**
+  - 5-level single score, or multi-axis scoring that resolves to a level?
+  - Branching or linear question flow?
+  - Where does submission data land, and what's the consent/privacy model?
+  - Does `ASSESS-004` (results-page CTAs) get absorbed into the new results output, or ship separately on the current quiz in the meantime?
+  - Does `FEATURE-001` survive as a lightweight standalone tool evaluator, or fold in?
+- **Status:** intake · needs design brief
 
-### ASSESS-002 — Expand to 10+ behavior-focused questions
-- **Scope:** Redesign the question set around observable behaviors and symptoms (who does what, how often, with what process), not subjective vibes. Minimum 10 questions.
-- **Rationale:** Current 2-step (recognition + scenario) relies on respondent self-categorization. Finer-grained behavior probing yields a more defensible placement.
-- **Open questions:** Target ~10, or more? Does the result still map to 5 levels, or do we add sub-levels? Branching or linear flow?
-- **Status:** intake
+### ASSESS-001 — Shorten response option text `(superseded by ASSESS-005)`
+- Original scope: rewrite option cards as short phrases with secondary detail. Moot once quiz is redesigned.
+- **Status:** wont-do (superseded)
 
-### ASSESS-003 — Per-function assessment (or share-with-leads note)
-- **Scope:** Two options from reviewer: (a) repeat the question set in the context of major functions (engineering, marketing, sales); (b) add a note suggesting all major functional leads take the test and compare, with an offer to discuss on a call.
-- **Rationale:** Maturity is uneven across functions — current assessment treats the org as monolithic.
-- **Open questions:** (a) is a large build; (b) is a 3-line note. Start with (b), ship (a) later?
-- **Status:** intake
+### ASSESS-002 — Expand to 10+ behavior-focused questions `(superseded by ASSESS-005)`
+- Absorbed as Part 1 of `ASSESS-005`.
+- **Status:** wont-do (superseded)
+
+### ASSESS-003 — Per-function assessment (or share-with-leads note) `(superseded by ASSESS-005)`
+- Absorbed into behavioral question design in `ASSESS-005` Part 1.
+- **Status:** wont-do (superseded)
 
 ### ASSESS-004 — Results-page CTAs
 - **Scope:** After submitting, add CTAs: (1) share results with an org peer (email/link), (2) schedule a call to discuss (Calendly or email).
@@ -99,11 +128,9 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 
 ## New features
 
-### FEATURE-001 — Tooling evaluator
-- **Scope:** A secondary assessment (or sidecar to the main one) that slots specific AI tools into maturity levels. Reviewer's examples: Claude Code = Designed, Copilot + Cursor = Sanctioned, retail ChatGPT = Shadow.
-- **Rationale:** "People will be starting with tools." This is the on-ramp for readers who don't yet think in org-level maturity terms. Likely the highest-traffic entry point.
-- **Open questions:** Static tool-→-level mapping, or does user input affect placement? How do we update as the tool landscape shifts?
-- **Status:** intake
+### FEATURE-001 — Tooling evaluator `(absorbed by ASSESS-005)`
+- **Scope:** A tool-→-level mapping evaluator. Now part of `ASSESS-005` Part 2 (tooling inventory), unless the design brief decides it should survive as a separate short-form on-ramp.
+- **Status:** absorbed — revisit during `ASSESS-005` design brief
 
 ### FEATURE-002 — Embedded visual slide deck
 - **Scope:** HTML-based slide deck embedded in the site. Primarily visual. "No text longer than a fortune cookie."

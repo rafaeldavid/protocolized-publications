@@ -215,83 +215,30 @@
       margin: 0 auto 28px;
     }
 
-    .hero-cta {
+    .hero-links {
       display: flex;
+      align-items: center;
       justify-content: center;
-      margin-top: 36px;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
     }
 
-    .btn-hero {
-      font-size: 1rem;
-      padding: 16px 36px;
-      border-radius: 10px;
-      letter-spacing: 0.02em;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    .hero-link {
+      font-size: 0.8rem;
+      color: rgba(168,136,191,0.9);
+      text-decoration: none;
+      border: 1px solid rgba(168,136,191,0.35);
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
       transition: all 0.15s ease;
     }
 
-    .btn-hero:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(0,0,0,0.3);
-    }
-
-    /* ─── Explore cards ────────────────────────────────── */
-    .explore-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .explore-card {
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 24px;
+    .hero-link:hover {
+      background: rgba(168,136,191,0.12);
+      color: var(--accent);
       text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-    }
-
-    .explore-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(168,136,191,0.15);
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
-
-    .explore-card .label {
-      margin-bottom: 14px;
-      color: var(--accent-dark);
-    }
-
-    .explore-card h3 {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 18px;
-      font-family: var(--font-mono);
-    }
-
-    .explore-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 18px;
-      flex: 1;
-    }
-
-    .explore-card li {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      padding: 4px 0;
-    }
-
-    .explore-card .card-link {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      letter-spacing: 0.02em;
     }
 
     /* ─── Section spacing ──────────────────────────────────── */
@@ -567,10 +514,16 @@
       h1 { font-size: 1.8rem; }
       .nav-links { display: none; }
       .nav-hamburger { display: block; }
+      .nav-secondary { display: none; }
 
-      .explore-grid { grid-template-columns: 1fr; }
+      .deliverables-grid {
+        grid-template-columns: 1fr;
+      }
 
-      .btn-hero { width: 100%; text-align: center; }
+      .hero-links { gap: 12px; }
+      .hero-link { width: 100%; text-align: center; }
+
+      .btn-secondary { margin-left: 0; margin-top: 8px; }
 
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
@@ -584,11 +537,10 @@
     <div class="nav-inner">
       <a class="wordmark" href="https://protocolized.dev/"><span class="wordmark-name">Protocolized</span><span class="wordmark-tagline">Protocols for AI adoption</span></a>
       <ul class="nav-links">
-        <li><a href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">Assessment</a></li>
-        <li><a href="https://protocolized.dev/ai-maturity-model/#cases" target="_blank">Case Studies</a></li>
-        <li><a href="https://protocolized.dev/ai-maturity-model/#context" target="_blank">Levels</a></li>
-        <li><a href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">Blog</a></li>
+        <li><a href="https://protocolized.dev/ai-maturity-model/" target="_blank">Maturity Model</a></li>
         <li><a href="https://protocolized.dev/litepaper-ai-protocols/" target="_blank">Litepaper</a></li>
+        <li><a href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">Blog</a></li>
+        <li><a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank">Subscribe</a></li>
       </ul>
       <button class="nav-hamburger" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
@@ -599,60 +551,137 @@
       </button>
     </div>
   </div>
+  <div class="nav-secondary">
+    <ul class="nav-secondary-links">
+      <li><a href="#deliverables">Deliverables</a></li>
+      <li><a href="#model">The Model</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ─── Hero ─────────────────────────────────────────────── -->
 <header class="hero">
   <div class="container">
-    <span class="label">Protocols for Business SIG</span>
-    <h1>Five levels of AI adoption.<br><span>Find yours.</span></h1>
-    <p class="hero-sub">A diagnostic for deployment managers navigating shadow AI, sanctioned rollouts, and workflows you'd have to rebuild.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary btn-hero" href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">Take the Assessment →</a>
+    <span class="label">Protocols for Business · March 2026</span>
+    <h1>AI <span>Capability</span> Maturity Model</h1>
+    <p class="hero-sub">A protocol-first framework for understanding AI adoption — from shadow use to planetary infrastructure.</p>
+    <div class="hero-links">
+      <a class="hero-link" href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">→ Take the assessment</a>
+      <a class="hero-link" href="https://protocolized.dev/litepaper-ai-protocols/" target="_blank">→ Read the litepaper</a>
+      <a class="hero-link" href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">→ Read the blog post</a>
     </div>
   </div>
 </header>
 
-<!-- ─── Intro summary ────────────────────────────────────── -->
+<!-- ─── Intro ─────────────────────────────────────────────── -->
 <div class="intro">
   <div class="container">
     <div class="intro-text">
-      <p>The AI Capability Maturity Model reframes AI adoption as a <strong>protocol design problem</strong>. Shadow adoption, quality risk, trust collapse, and over-reliance are all protocol failures — breakdowns in the rules governing how humans and AI systems interact. A maturity model built on that framing generates different, more specific recommendations than one organized around security controls or tooling adoption rates. Built for deployment managers and operations executives.</p>
+      <p>Organizations fail at AI adoption by applying enterprise-software governance logic to a probabilistic, non-deterministic stack. The tools are not the problem.</p>
+      <p>The AI Capability Maturity Model reframes AI adoption as a <strong>protocol design problem</strong>. Shadow adoption, quality risk, trust collapse, and over-reliance are all protocol failures: breakdowns in the rules governing how humans and AI systems interact. A maturity model built on that framing generates different, more specific recommendations than one organized around security controls or tooling adoption rates.</p>
+      <p>Three deliverables. One coherent framework.</p>
     </div>
   </div>
 </div>
 
-<!-- ─── Explore cards ────────────────────────────────────── -->
-<div class="section" id="explore">
+<!-- ─── Deliverables ──────────────────────────────────────── -->
+<div class="section" id="deliverables">
   <div class="container">
-    <div class="explore-grid">
+    <div class="section-header">
+      <span class="label">Published outputs</span>
+      <h2>Three ways in</h2>
+      <p>Start with the assessment to place your organization. Read the litepaper for the full framework. The blog post is the argument for why this framing matters.</p>
+    </div>
 
-      <a class="explore-card" href="https://protocolized.dev/ai-maturity-model/#context" target="_blank">
-        <span class="label">The Five Levels</span>
-        <h3>From shadow to planetary</h3>
-        <ul>
-          <li>L1 — Shadow</li>
-          <li>L2 — Sanctioned</li>
-          <li>L3 — Designed</li>
-          <li>L4 — Infrastructural</li>
-          <li>L5 — Planetary</li>
-        </ul>
-        <span class="card-link">See full details →</span>
-      </a>
+    <div class="deliverables-grid">
 
-      <a class="explore-card" href="https://protocolized.dev/ai-maturity-model/#cases" target="_blank">
-        <span class="label">Case Studies</span>
-        <h3>Real enterprise stories</h3>
-        <ul>
-          <li>Samsung — shadow AI data leak</li>
-          <li>Klarna — AI mandate and reversal</li>
-          <li>Shopify — non-optional AI memo</li>
-          <li>Duolingo — contractor replacement</li>
-          <li>Moffatt v. Air Canada — chatbot liability</li>
-        </ul>
-        <span class="card-link">See case studies →</span>
-      </a>
+      <div class="deliverable-card">
+        <span class="label">Interactive Diagnostic</span>
+        <h3>AI Maturity Assessment</h3>
+        <p>Step through the five levels and place your organization. Receive a level-specific diagnosis: failure modes, blind spots, and a single next action.</p>
+        <a class="card-link" href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">Open the assessment →</a>
+      </div>
 
+      <div class="deliverable-card">
+        <span class="label">Litepaper</span>
+        <h3>The Full Model</h3>
+        <p>Eight pages. Five levels, each with its governing protocol, characteristic failure mode, historical parallel, and transition requirement. Built for deployment managers and operations executives.</p>
+        <a class="card-link" href="https://protocolized.dev/litepaper-ai-protocols/" target="_blank">Read the litepaper →</a>
+      </div>
+
+      <div class="deliverable-card">
+        <span class="label">Blog Post</span>
+        <h3>The Missing Protocol Layer</h3>
+        <p>Why AI intensifies work at the individual level while organizational standardization lags, and what enterprises keep missing about it. Introduces the bricoleur framing and the F2F pattern.</p>
+        <a class="card-link" href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">Read the post →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── Model overview ────────────────────────────────────── -->
+<div class="section" id="model">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Model overview</span>
+      <h2>Five levels of AI adoption</h2>
+      <p>Maturity is defined by the organization's ability to govern uncertainty productively, not process compliance.</p>
+    </div>
+
+    <div class="level-list">
+
+      <div class="level-row">
+        <span class="level-num">L1</span>
+        <div class="level-row-content">
+          <div class="level-row-name">Shadow</div>
+          <div class="level-row-desc">AI is in use but the organization doesn't know how, by whom, or with what data. Exposure is invisible until a data leak, regulatory inquiry, or quality failure surfaces it.</div>
+        </div>
+      </div>
+
+      <div class="level-row">
+        <span class="level-num">L2</span>
+        <div class="level-row-content">
+          <div class="level-row-name">Sanctioned</div>
+          <div class="level-row-desc">The organization has granted broad AI access and signaled strategic intent. High adoption and early productivity gains coexist with governance failures that surface when they reach customers or regulators.</div>
+        </div>
+      </div>
+
+      <div class="level-row">
+        <span class="level-num">L3</span>
+        <div class="level-row-content">
+          <div class="level-row-name">Designed</div>
+          <div class="level-row-desc">At least one core workflow has been deliberately built around AI with a named owner, quality metrics, and a defined escalation path. Domain expertise is the limiting constraint.</div>
+        </div>
+      </div>
+
+      <div class="level-row">
+        <span class="level-num">L4</span>
+        <div class="level-row-content">
+          <div class="level-row-name">Infrastructural</div>
+          <div class="level-row-desc">AI capability has become a baseline expectation across the sector. Individual organizational advantage has been competed away. The governance challenge is now collective.</div>
+        </div>
+      </div>
+
+      <div class="level-row">
+        <span class="level-num">L5</span>
+        <div class="level-row-content">
+          <div class="level-row-name">Planetary</div>
+          <div class="level-row-desc">AI governs critical civilization-scale coordination systems. The governance challenge is legibility: understanding what the systems are doing well enough to intervene when they fail.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-block">
+      <span class="label">Start here</span>
+      <h3>Where is your organization?</h3>
+      <p>The interactive diagnostic walks you through the five levels and returns a level-specific diagnosis with failure modes and a next action.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">Take the assessment</a>
+        <a class="btn btn-secondary" href="https://protocolized.dev/litepaper-ai-protocols/" target="_blank">Read the litepaper</a>
+      </div>
     </div>
   </div>
 </div>
@@ -673,15 +702,12 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-links">
-      <a href="https://protocolized.dev/ai-maturity-model/#assessment" target="_blank">Assessment</a>
-      <a href="https://protocolized.dev/ai-maturity-model/#cases" target="_blank">Case Studies</a>
-      <a href="https://protocolized.dev/ai-maturity-model/#context" target="_blank">Levels</a>
-      <a href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">Blog</a>
+      <a href="https://protocolized.dev/ai-maturity-model/" target="_blank">Maturity Model</a>
       <a href="https://protocolized.dev/litepaper-ai-protocols/" target="_blank">Litepaper</a>
-      <a href="https://protocolized.summerofprotocols.com/subscribe" target="_blank">Subscribe</a>
-      <a href="https://github.com/rafaeldavid/protocolized-publications" target="_blank">GitHub</a>
+      <a href="https://protocolized.dev/blog-the-missing-layer/" target="_blank">Blog</a>
+      <a href="https://github.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model" target="_blank">GitHub</a>
     </div>
-    <p>Protocolized · Protocols for Business SIG · April 2026</p>
+    <p>Protocolized · Protocols for Business Group · AI Capability Maturity Model · March 2026</p>
   </div>
 </footer>
 
