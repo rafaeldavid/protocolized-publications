@@ -221,6 +221,30 @@
 
     .btn-secondary:hover { background: var(--accent-light); }
 
+    /* Landing-page-matched hero CTA button */
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      background: var(--accent-dark);
+      color: #fff;
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.15s ease;
+    }
+    .btn-hero:hover {
+      background: #6b4d82;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: #fff;
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--text-secondary);
@@ -1320,7 +1344,7 @@
     <h1>Case Studies</h1>
     <p class="entry-descriptor">Evidence base — one enterprise pattern per level.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
+      <a class="btn-hero" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
     </div>
   </div>
 </section>

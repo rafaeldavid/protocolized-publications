@@ -352,6 +352,30 @@
     }
     .btn-secondary:hover { background: var(--accent-light); text-decoration: none; }
 
+    /* Landing-page-matched hero CTA button */
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      background: var(--accent-dark);
+      color: #fff;
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.15s ease;
+    }
+    .btn-hero:hover {
+      background: #6b4d82;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: #fff;
+    }
+
     /* ─── Summary ──────────────────────────────────────────── */
     #summary { background: var(--white); }
 
@@ -933,7 +957,7 @@
     <h1>The AI Capability Maturity Model</h1>
     <span class="hero-subtitle">A protocol framework for governing AI adoption — the full eight-page argument, built for deployment managers and operations executives.</span>
     <div class="hero-links">
-      <a class="btn btn-primary" href="https://protocolized.dev/assessment/">Take the assessment →</a>
+      <a class="btn-hero" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
     </div>
   </div>
 </header>

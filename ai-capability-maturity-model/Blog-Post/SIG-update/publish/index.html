@@ -367,6 +367,30 @@
     }
     .btn-secondary:hover { background: var(--accent-light); text-decoration: none; }
 
+    /* Landing-page-matched hero CTA button */
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      background: var(--accent-dark);
+      color: #fff;
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.15s ease;
+    }
+    .btn-hero:hover {
+      background: #6b4d82;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: #fff;
+    }
+
     /* ─── Footer ───────────────────────────────────────────── */
     .footer {
       background: var(--surface);
@@ -457,8 +481,7 @@
     <h1>The Missing <span>Protocol Layer</span></h1>
     <p class="hero-sub">AI Adoption, Disorientation, and Protocol Entrepreneurs</p>
     <div class="hero-links">
-      <a class="hero-link" href="https://protocolized.dev/assessment/">→ Interactive diagnostic</a>
-      <a class="hero-link" href="https://protocolized.dev/litepaper-ai-protocols/">→ Litepaper</a>
+      <a class="btn-hero" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
     </div>
   </div>
 </header>
