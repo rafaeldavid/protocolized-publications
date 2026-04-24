@@ -36,10 +36,9 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 ## Information architecture
 
 ### IA-001 — Split levels into individual pages
-- **Scope:** Each of the 5 levels gets its own page/URL (e.g. `/levels/shadow`, `/levels/sanctioned`, ...). Currently all five live inside the artifact page's "context" section.
-- **Rationale:** Deep-linkable, sharable, shorter reads per page, better for search/SEO.
-- **Open questions:** Keep the consolidated overview too, or replace it with a landing page that links to the five?
-- **Status:** intake
+- **Scope:** Two phases. Phase A (**shipped 2026-04-24**): single `/levels/` page carved out of the artifact, hosting all five level cards with drilldowns. Phase B (queued): split the single page into five per-level URLs (`/levels/shadow`, `/levels/sanctioned`, etc.) for deeper linkability + SEO.
+- **Rationale:** Phase A gives users a dedicated Levels destination without creating five new mounts. Phase B does the full split when we have per-level content worth expanding into its own page.
+- **Status:** phase-A shipped · phase-B intake
 
 ### IA-002 — About page
 - **Scope:** New top-nav page. Introduces the SIG, names members/contributors with photos, explains the relationship between Protocolized, Protocolized mag, and SOP / Protocol Institute.
