@@ -86,6 +86,10 @@
 
     /* ─── Layout ───────────────────────────────────────────── */
     .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .prose-narrow { max-width: 720px; }
+    #intro-body { padding: 48px 0 32px; }
+    #intro-body p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.1rem; }
+    #intro-body p:last-child { margin-bottom: 0; }
     .section { padding: 60px 0; }
     .section + .section { border-top: 1px solid var(--border); }
 
@@ -1317,14 +1321,12 @@
 
 <!-- ─── Body intro ────────────────────────────────────────── -->
 <section id="intro-body" class="section">
-  <div class="container">
-    <div class="entry-intro">
-      <p>You are deploying AI whether you planned to or not. Your employees are already running Claude Code in their terminals, transcribing every meeting with AI tooling, and wiring homemade apps into their workflows without security review. The question is how to turn that unmanaged use into deliberate capability.</p>
+  <div class="container prose-narrow">
+    <p>You are deploying AI whether you planned to or not. Your employees are already running Claude Code in their terminals, transcribing every meeting with AI tooling, and wiring homemade apps into their workflows without security review. The question is how to turn that unmanaged use into deliberate capability.</p>
 
-      <p>Answer a few questions about how AI behaves in your organization today. The diagnostic places you on the five-level model and returns the failure modes you are most exposed to plus a next action.</p>
+    <p>Answer a few questions about how AI behaves in your organization today. The diagnostic places you on the five-level model and returns the failure modes you are most exposed to plus a next action.</p>
 
-      <p>Most organizations are at Level 1 or early Level 2. That is the expected starting point, not a failure.</p>
-    </div>
+    <p>Most organizations are at Level 1 or early Level 2. That is the expected starting point, not a failure.</p>
   </div>
 </section>
 

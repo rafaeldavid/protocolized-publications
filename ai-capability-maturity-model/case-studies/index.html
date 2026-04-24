@@ -86,6 +86,11 @@
 
     /* ─── Layout ───────────────────────────────────────────── */
     .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .prose-narrow { max-width: 720px; }
+    #intro-body { padding: 48px 0 32px; }
+    #intro-body p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.1rem; }
+    #intro-body p:last-child { margin-bottom: 0; }
+    #entry .hero-cta { margin-top: 28px; display: flex; justify-content: center; }
     .section { padding: 60px 0; }
     .section + .section { border-top: 1px solid var(--border); }
 
@@ -1314,19 +1319,18 @@
     <span class="label">Protocols for Business</span>
     <h1>Case Studies</h1>
     <p class="entry-descriptor">Evidence base — one enterprise pattern per level.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
+    </div>
   </div>
 </section>
 
 <!-- ─── Body intro ────────────────────────────────────────── -->
 <section id="intro-body" class="section">
-  <div class="container">
-    <div class="entry-intro">
-      <p>Concrete cases at each level of the model. Samsung's data leak is a canonical Level 1 (Shadow) incident — three engineers, proprietary code, no visibility until after the fact. Klarna's 2024–2025 arc is the textbook Level 2 (Sanctioned) failure — 90% adoption mandated, governance not designed, quality degradation surfaced through customers. Boom Supersonic's mkBoom workflow is a late Level 3 (Designed) case — AI embedded where governance was designed alongside, not after.</p>
+  <div class="container prose-narrow">
+    <p>Concrete cases at each level of the model. Samsung's data leak is a canonical Level 1 (Shadow) incident — three engineers, proprietary code, no visibility until after the fact. Klarna's 2024–2025 arc is the textbook Level 2 (Sanctioned) failure — 90% adoption mandated, governance not designed, quality degradation surfaced through customers. Boom Supersonic's mkBoom workflow is a late Level 3 (Designed) case — AI embedded where governance was designed alongside, not after.</p>
 
-      <p>Read the diagnostic question at the bottom of each case — one of these patterns is probably yours.</p>
-    </div>
-
-    <a href="https://protocolized.dev/assessment/" class="btn btn-primary">Take the assessment →</a>
+    <p>Read the diagnostic question at the bottom of each case — one of these patterns is probably yours.</p>
   </div>
 </section>
 
