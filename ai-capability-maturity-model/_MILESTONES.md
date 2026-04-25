@@ -15,6 +15,31 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ## Milestone Log
 
+### 2026-04-25 (later that day) | Assessment v0.9 result page — rich profile rendering + admin shortcut
+
+- **Archetype card depth.** Rebuilt the archetype output to mirror the maturity card structure. Default visible: archetype title + self-claim quote + axis tags + full Profile paragraph (~120 words from `Archetypes-v0.5.md`). The "Explore in depth" expand reveals 10 sections: core strategic bet · canonical examples · strengths · common challenges · healthy vs. unhealthy expression (two-pole grid) · blind spot · protocol orientation (4 sub-sections — natural posture · effective management · ineffective management · protocol view that fits) · stress and growth directions (two-pole grid) · evolutionary path · warning sign. AI-flavor emphasis section retained in data, hidden from render (re-addable via one-line edit).
+- **Tarot mascot per archetype.** 10 inline-SVG icons in tarot-card framing on the left of the archetype card. Each card has decorative L-bracket corners, Roman numeral I–X, accent-colored symbolic icon, and archetype name plate. Symbols: flag (Vanguard), compass rose (Traveller), classical column (Architect), interlocking circles (Integrator), gears (Tinkerer), wax seal (Ratifier), shield with key (Warden), scales (Broker), winding path (Folkway), three masks (Guild).
+- **Maturity card restructure.** Same "Explore in depth" expand pattern as the archetype card. Default visible: level label · tagline · first paragraph of summary. Expand reveals: full description · failure modes · actions to take (with "Done when" criteria) · position arc · characteristic tension (Pull A vs Pull B) · historical parallels (period tech + containerization throughline). Restored the rich legacy report content keyed by RESULTS object.
+- **Maturity badge per level.** System-aesthetic badge (parallel structure to tarot card but distinct visual language): accent-colored top stripe, level identifier (L1 / L2→3 / etc.), 5-bar progress meter (full bars + half-bar for transitions), level icon (dashed silhouette · checkmark · gear · gear-with-network · etc.), level name in mono caps.
+- **CTA polish.** Result page CTAs centered, buttons identical size (min-width 220px, btn-hero styling). Standard CTA above footer (Schedule a Call + Share) also centered (min-width 200px). Print button removed.
+- **Admin shortcut.** URL pattern `?archetype={Name}&level={Lkey}` (or short forms `?a=...&l=...`) skips the quiz and renders the result directly. Useful for review and screenshots. Documented inline in JS source with examples. Valid archetypes: Vanguard / Traveller / Architect / Integrator / Tinkerer / Ratifier / Warden / Broker / Folkway / Guild. Valid levels: L1 / L1-L2 / L2 / L2-3 / L3 / L3-4.
+- **Published:** `https://protocolized.dev/assessment/` (slug `humble-gorge-n5j4`).
+
+### 2026-04-25 | Assessment v0.9 — quiz redesigned and shipped to live site
+
+- **What:** Replaced the existing 2-step Option A/B/C quiz at `/assessment/` with the v0.9 24-question forced-choice paired-statement flow that classifies respondents into one of 10 archetypes (Vanguard / Traveller / Architect / Integrator / Tinkerer / Ratifier / Warden / Broker / Folkway / Guild) plus a maturity level (L1–L3-4).
+- **Scoring:** Hierarchical placement (the model used by professional typological surveys — MBTI, Keirsey, Holland Codes). Each pick contributes to one of 7 axes (Origin, Stake, Timing, Locus, Driver, Reach, Depth); archetype is derived through tree branching: Origin → Stake×Timing quadrant → leaf resolver. Maturity decoupled and anchored to deployment density with governance as multiplier.
+- **Validation:** 100-simulation harness (10 archetype agents × 10 respondents). Match rate 21% (v0.8 additive) → **88% (v0.9 hierarchical)**. All archetypes ≥ 8/10. Tinkerer and Folkway 10/10. See `_Product/Assessment-v2-Design/test-results/Quiz-v0.9-test-results.md`.
+- **Result UI:** Two cards (archetype + maturity), each with a one-line label, archetype self-claim quote, axis tags, summary paragraph, and "Explore in depth" expand button revealing strengths, challenges, growth direction, stress response, protocol orientation, and warning sign.
+- **Wording fixes shipped:** All four critical grammar bugs flagged in v0.8 testing (Q2B subject-verb, Q6B stray apostrophe + "align to", Q9A "adopt" → "adapt", Q15B subject-verb).
+- **Published:** `https://protocolized.dev/assessment/` (here.now slug: `humble-gorge-n5j4`, authenticated, permanent). Footer string updated to "AI Capability Maturity Model v2.3".
+- **Source files:**
+  - `assessment/index.html` — live quiz markup, hierarchical scoring JS, archetype + maturity data, two-card result rendering
+  - `_Product/Assessment-v2-Design/Quiz-v0.9.md` — canonical question text + scoring spec
+  - `_Product/Assessment-v2-Design/Archetypes-v0.5.md` — archetype profiles (with protocol orientation sections)
+  - `_Product/Assessment-v2-Design/test-results/` — simulation harness, scoring scripts, and validation reports
+- **Status:** Live for review. User to send to peers for testing.
+
 ### 2026-03-24 | Homepage — built, style-reviewed, and published
 
 - **What:** `homepage/index.html` created as a standalone project landing page aggregating all three published deliverables (assessment, litepaper, blog post).

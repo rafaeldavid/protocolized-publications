@@ -2,7 +2,9 @@
 
 Parsed items from the `Feedback-Inbox/`. Grouped by theme. Status values: `intake | triaged | planned | shipping | shipped | wont-do`.
 
-All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-Inbox/2026-04-24-v1-review.md) unless noted.
+Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-Inbox/2026-04-24-v1-review.md). Subsequent additions noted inline with date and source.
+
+**Items added 2026-04-25** (post-Quiz-v0.8 design session): NAV-002, CONTENT-003, ASSESS-006, ASSESS-007, FEATURE-003. All scheduled for *after* the current archetype-assessment design (Quiz-v0.8) ships.
 
 ---
 
@@ -65,6 +67,12 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - Original scope: expand primary nav to include About, Case Studies, Lexicon. `IA-006` handles the immediate re-ordering + label update (Assessment · Case Studies · Levels · Blog · Litepaper). About stays queued until `IA-002` ships; Lexicon stays queued until `IA-004` ships.
 - **Status:** partial-done via IA-006; remainder queued
 
+### NAV-002 — Breadcrumb navigation on child pages (case studies, levels, assessment)
+- **Scope:** Add litepaper-style breadcrumb navigation to the case studies page, the levels page, and the assessment page. On the case studies page, breadcrumbs display *case study names* (e.g., "Shadow Data Leak," "Mandate Reversal"), not company/organization names. Pattern matches the existing litepaper breadcrumbs.
+- **Rationale:** Source: 2026-04-25 conversation. Improves wayfinding on multi-section pages and aligns navigation pattern across the site. Case-study-name (vs. company-name) labeling preserves Protocolized's framing of cases as protocol patterns rather than vendor stories.
+- **Dependencies:** IA-001 phase A (levels page exists), IA-003 (case studies page promoted), FEATURE-003 (multi-quiz assessment hub).
+- **Status:** **shipped 2026-04-25** — `.nav-secondary` blocks added to all three pages. Case-studies anchors: `#shadow-data-leak`, `#mandate-reversal`, `#non-optional-mandate`, `#contractor-replacement`, `#chatbot-liability`. Levels anchors: `#shadow`, `#sanctioned`, `#designed`, `#infrastructural`, `#planetary`. Assessment: `#assessment` (Begin), `#output` (Result).
+
 ### IA-006 — Homepage restructure (quadrantology-shape landing)
 - **Scope:** Replace the current multi-section homepage with a quadrantology-shaped single-funnel landing:
   - Hero with H1 "Five levels of AI adoption. Find yours.", concise subtitle, and ONE primary CTA ("Take the Assessment") directing to `/ai-maturity-model/#assessment`
@@ -117,6 +125,18 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - Absorbed into behavioral question design in `ASSESS-005` Part 1.
 - **Status:** wont-do (superseded)
 
+### ASSESS-006 — Tooling assessment (separate quiz)
+- **Scope:** Standalone tooling-focused assessment that complements the archetype assessment (Quiz-v0.8). Probes which AI tools the org uses across the five flavors (consumer, enterprise, product-integrated, infrastructure, custom), tool-stack maturity, and tooling-specific risks. Likely 8–12 items, shorter than the archetype quiz.
+- **Rationale:** Source: 2026-04-25 conversation. The archetype assessment classifies organizational posture; the tooling assessment classifies the tool stack. Distinct diagnostic value. Originally `FEATURE-001` was absorbed into `ASSESS-005`; this revives it as a *parallel* quiz now that v0.8 is the archetype-canonical.
+- **Dependencies:** Quiz-v0.8 ships first (archetype assessment is the anchor).
+- **Status:** intake
+
+### ASSESS-007 — Protocol understanding assessment (separate quiz)
+- **Scope:** Standalone protocol-literacy assessment. Probes the reader's understanding of protocols as coordination mechanisms, their distinctness from rules / policies / processes, and their relevance to AI adoption. Likely 8–12 items. Designed both as diagnostic (where is your team's protocol literacy?) and as educational (the act of taking it teaches concepts).
+- **Rationale:** Source: 2026-04-25 conversation. Many readers will arrive at the archetype assessment without sufficient protocol literacy to absorb the result. A protocol-understanding quiz both diagnoses the gap and partially closes it.
+- **Dependencies:** Aligns with `CONTENT-002` (CMM literacy). Quiz-v0.8 ships first.
+- **Status:** intake
+
 ### ASSESS-004 — Results-page CTAs
 - **Scope:** After submitting, add CTAs: (1) share results with an org peer (email/link), (2) schedule a call to discuss (Calendly or email).
 - **Rationale:** Converts the completed assessment into a relationship, supports the consulting practice. "See all levels" button is already shipped; these go alongside it.
@@ -137,6 +157,13 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - **Open questions:** Where does it live — own page, or section on homepage? Reveal.js / swipe-nav / scroll-driven?
 - **Status:** intake
 
+### FEATURE-003 — Multi-quiz assessment hub with inline-expand panels
+- **Scope:** Restructure the assessment page to host three quizzes side by side: archetype assessment (Quiz-v0.8), tooling assessment (`ASSESS-006`), protocol-understanding assessment (`ASSESS-007`). Each quiz card expands inline when clicked — same UI pattern as the contact-team modal on the homepage (no new modal type needed). Tooling and protocol-understanding cards show "Coming soon" placeholders until `ASSESS-006` / `ASSESS-007` ship.
+- **Rationale:** Source: 2026-04-25 conversation. Promotes the assessment page from a single-quiz launcher to a destination with multiple complementary diagnostics. Inline-expand pattern reuses an existing primitive.
+- **Dependencies:** Quiz-v0.8 ships first (archetype). Then placeholder cards. Then `ASSESS-006` and `ASSESS-007` fill in.
+- **Related:** `NAV-002` (breadcrumbs on the assessment page).
+- **Status:** intake
+
 ---
 
 ## Content
@@ -153,6 +180,14 @@ All items in this batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](
 - **Rationale:** Reviewer: "Teach the language and CMM literacy." Current site assumes readers can ingest the whole frame from the litepaper; most won't.
 - **Dependencies:** IA-004 (lexicon) covers terminology; this is broader — about the model itself.
 - **Status:** intake
+
+### CONTENT-003 — Case studies page expansion (3 → 5) + landing-page alignment
+- **Scope:** Two-part: (1) Add 2 more case studies to the case studies page (currently 3) to bring the page total to 5. (2) Ensure the 5 case studies displayed on the case studies page match exactly the 5 listed on the homepage landing page — same names, same order, same framing.
+- **Rationale:** Source: 2026-04-25 conversation. Case studies page is currently shorter than the landing-page list and the two surfaces are inconsistent. Aligning to a single canonical set of 5 removes the discrepancy and gives readers consistent depth wherever they land.
+- **Resolution:** Replaced Boom Supersonic with Shopify, added Duolingo and Air Canada. Final 5 cases on case-studies page now match homepage list: Samsung (Shadow Data Leak, L1) · Klarna (Mandate Reversal, L2) · Shopify (Non-Optional Mandate, L2) · Duolingo (Contractor Replacement, L2) · Air Canada (Chatbot Liability, L2). Section header updated from "Explore three case studies" → "Five case studies". Each card has an anchor ID matching its breadcrumb name.
+- **Trade-off note:** Spread across levels narrowed (was L1/L2/L3 with Boom; now L1/L2 only). Level 3 / Designed example removed from this surface — discoverable via the artifact's drilldowns and the litepaper. Worth revisiting if a new L3 case becomes available.
+- **Related:** `NAV-002` shipped breadcrumbs that target these new anchors.
+- **Status:** **shipped 2026-04-25**
 
 ---
 
