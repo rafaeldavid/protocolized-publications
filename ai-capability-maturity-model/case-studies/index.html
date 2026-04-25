@@ -1452,7 +1452,23 @@
       text-decoration: none;
     }
 
-
+    /* Mobile footer: stacked, centered, generous spacing */
+    @media (max-width: 600px) {
+      footer { padding: 28px 0 24px; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+      }
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+      }
+      .footer-links a { padding: 4px 0; }
+      footer p { font-size: 0.78rem; }
+    }
 
   </style>
 </head>
@@ -1480,6 +1496,15 @@
       </button>
     </div>
   </div>
+  <div class="nav-secondary">
+    <ul class="nav-secondary-links">
+      <li><a href="#shadow-data-leak">Shadow Data Leak</a></li>
+      <li><a href="#mandate-reversal">Mandate Reversal</a></li>
+      <li><a href="#non-optional-mandate">Non-Optional Mandate</a></li>
+      <li><a href="#chatbot-liability">Chatbot Liability</a></li>
+      <li><a href="#designed-workflow">Designed Workflow</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ─── Section 1: Entry ─────────────────────────────────── -->
@@ -1505,13 +1530,13 @@
 <section id="cases" class="section">
   <div class="container">
     <div class="label">Evidence base</div>
-    <h2>Explore three case studies</h2>
+    <h2>Five case studies</h2>
     <p class="context-intro" style="margin-bottom:36px">Read the diagnostic question at the bottom of each card — one of these patterns is probably yours.</p>
 
     <div class="cases-grid">
 
-      <!-- Samsung -->
-      <div class="case-card">
+      <!-- Samsung — Shadow Data Leak -->
+      <div class="case-card" id="shadow-data-leak">
         <div class="level-pill">Level 1 — Shadow</div>
         <h3 class="case-org"><a href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener" >Samsung Electronics ↗</a></h3>
         <div class="case-sector">Technology / Semiconductor</div>
@@ -1530,8 +1555,8 @@
         </div>
       </div>
 
-      <!-- Klarna -->
-      <div class="case-card">
+      <!-- Klarna — Mandate Reversal -->
+      <div class="case-card" id="mandate-reversal">
         <div class="level-pill">Level 2 — Sanctioned</div>
         <h3 class="case-org"><a href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener" >Klarna ↗</a></h3>
         <div class="case-sector">Financial Technology</div>
@@ -1550,8 +1575,48 @@
         </div>
       </div>
 
-      <!-- Boom -->
-      <div class="case-card">
+      <!-- Shopify — Non-Optional Mandate -->
+      <div class="case-card" id="non-optional-mandate">
+        <div class="level-pill">Level 2 — Sanctioned</div>
+        <h3 class="case-org"><a href="https://www.theverge.com/news/644943/shopify-tobi-lutke-ai-memo-developers-engineers" target="_blank" rel="noopener" >Shopify ↗</a></h3>
+        <div class="case-sector">Software / Commerce Platform</div>
+        <div class="case-body">
+          April 2025: CEO Tobi Lütke's internal memo declared AI use "non-optional" for every employee. Managers must demonstrate AI use before requesting additional headcount. The mandate produced an adoption signal but did not define what acceptable AI use looks like in non-technical roles. High adoption rate, unmeasured quality.
+        </div>
+        <div class="case-mechanism">
+          A mandate without a competency standard produces compliance theater. The reported adoption rate climbs; the governance maturity does not.
+        </div>
+        <div class="case-question">
+          Does your organization's AI mandate include a definition of acceptable use — or just a directive to use it?
+        </div>
+        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
+        <div class="drill-content">
+          Shopify is mid-Level 2: broad AI access has been granted, the workflow design hasn't been done. Without competency criteria, every team interprets "AI use" differently. Some teams genuinely redesign; most layer AI on existing work and report adoption metrics. The Level 2 risk surfaces when financial results and AI claims accumulate alongside un-measured quality drift — the gap between what's reported and what's actually happening becomes the next year's audit problem. The reversal scenario plays out when an external incident or stakeholder forces leadership to define what they meant by "AI use" — at which point the absence of that definition becomes the story.
+        </div>
+      </div>
+
+      <!-- Air Canada — Chatbot Liability -->
+      <div class="case-card" id="chatbot-liability">
+        <div class="level-pill">Level 2 — Sanctioned</div>
+        <h3 class="case-org"><a href="https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know" target="_blank" rel="noopener" >Moffatt v. Air Canada ↗</a></h3>
+        <div class="case-sector">Airline / Customer Service</div>
+        <div class="case-body">
+          February 2024: Air Canada's chatbot informed Jake Moffatt that bereavement fares could be claimed retroactively. Air Canada's actual policy did not permit retroactive claims. In court, Air Canada argued the chatbot was a "separate legal entity" responsible for its own statements. The British Columbia Civil Resolution Tribunal rejected the defense and ruled Air Canada liable.
+        </div>
+        <div class="case-mechanism">
+          External parties hold the organization responsible for AI outputs regardless of internal disclaimers. The chatbot speaks for the company because the company deployed it.
+        </div>
+        <div class="case-question">
+          If your AI-assisted customer-facing system tells a customer something that contradicts your formal policy, what's the customer's recourse — the chatbot, the policy, or the company?
+        </div>
+        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
+        <div class="drill-content">
+          Moffatt v. Air Canada became the canonical reference for AI-output liability — the first widely-cited tribunal ruling holding a company answerable for AI-generated statements. The "separate legal entity" defense became the textbook example of how not to handle AI-output liability. The implication for any organization deploying customer-facing AI: outputs in legally consequential functions need a review protocol the organization can defend in court — not a disclaimer that disclaims the AI itself. Air Canada's response after the ruling was operational (review and tighter constraints on the chatbot) rather than structural (a defined review protocol with named ownership).
+        </div>
+      </div>
+
+      <!-- Boom Supersonic — Designed Workflow -->
+      <div class="case-card" id="designed-workflow">
         <div class="level-pill">Level 3 — Designed</div>
         <h3 class="case-org"><a href="https://bscholl.substack.com/p/move-fast-and-dont-break-safety-critical" target="_blank" rel="noopener" >Boom Supersonic ↗</a></h3>
         <div class="case-sector">Aerospace / Manufacturing</div>

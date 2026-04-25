@@ -1450,7 +1450,23 @@
       text-decoration: none;
     }
 
-
+    /* Mobile footer: stacked, centered, generous spacing */
+    @media (max-width: 600px) {
+      footer { padding: 28px 0 24px; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+      }
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+      }
+      .footer-links a { padding: 4px 0; }
+      footer p { font-size: 0.78rem; }
+    }
 
   </style>
 </head>
@@ -1477,6 +1493,15 @@
         </svg>
       </button>
     </div>
+  </div>
+  <div class="nav-secondary">
+    <ul class="nav-secondary-links">
+      <li><a href="#shadow">Shadow</a></li>
+      <li><a href="#sanctioned">Sanctioned</a></li>
+      <li><a href="#designed">Designed</a></li>
+      <li><a href="#infrastructural">Infrastructural</a></li>
+      <li><a href="#planetary">Planetary</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -1509,7 +1534,7 @@
 
     <div class="level-cards">
 
-      <div class="level-card">
+      <div class="level-card" id="shadow">
         <div class="level-card-header">
           <div class="arc-num">1</div>
           <div class="level-card-name">Shadow</div>
@@ -1532,7 +1557,7 @@
         </div>
       </div>
 
-      <div class="level-card">
+      <div class="level-card" id="sanctioned">
         <div class="level-card-header">
           <div class="arc-num">2</div>
           <div class="level-card-name">Sanctioned</div>
@@ -1555,7 +1580,7 @@
         </div>
       </div>
 
-      <div class="level-card">
+      <div class="level-card" id="designed">
         <div class="level-card-header">
           <div class="arc-num">3</div>
           <div class="level-card-name">Designed</div>
@@ -1578,7 +1603,7 @@
         </div>
       </div>
 
-      <div class="level-card projected">
+      <div class="level-card projected" id="infrastructural">
         <div class="level-card-header">
           <div class="arc-num">4</div>
           <div class="level-card-name">Infrastructural <span class="projected-badge">Projected</span></div>
@@ -1601,7 +1626,7 @@
         </div>
       </div>
 
-      <div class="level-card projected">
+      <div class="level-card projected" id="planetary">
         <div class="level-card-header">
           <div class="arc-num">5</div>
           <div class="level-card-name">Planetary <span class="projected-badge">Projected</span></div>

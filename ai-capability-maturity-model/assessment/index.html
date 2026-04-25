@@ -792,6 +792,425 @@
       50% { opacity: 0.4; }
     }
 
+    /* ─── v0.9 Quiz ─────────────────────────────────────────── */
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .quiz-counter {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .quiz-progress-bar {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+    .quiz-prompt {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+    .quiz-option .option-text { font-size: 1rem; line-height: 1.55; }
+    .quiz-actions { justify-content: space-between; }
+    .btn-link {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .btn-link:hover { color: var(--accent); }
+
+    /* ─── v0.9 Result cards (archetype + maturity) ──────────── */
+    #result-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .result-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      transition: border-color 0.15s ease;
+    }
+    .result-card:hover { border-color: var(--accent); }
+
+    /* Tarot-style mascot card for archetype */
+    .archetype-card-body {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      margin-top: 4px;
+    }
+    .archetype-info { flex: 1; min-width: 0; }
+    .archetype-tarot {
+      width: 156px;
+      flex-shrink: 0;
+      background: linear-gradient(160deg, var(--accent-light) 0%, #fff 70%);
+      border: 2px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 14px 16px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 3px 14px rgba(70, 50, 180, 0.08);
+    }
+    .archetype-tarot::before, .archetype-tarot::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--accent);
+      opacity: 0.6;
+    }
+    .archetype-tarot::before {
+      top: 5px; left: 5px;
+      border-right: none;
+      border-bottom: none;
+    }
+    .archetype-tarot::after {
+      bottom: 5px; right: 5px;
+      border-left: none;
+      border-top: none;
+    }
+    .tarot-numeral {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.18em;
+    }
+    .tarot-icon {
+      width: 84px;
+      height: 84px;
+      color: var(--accent);
+      margin: 0 auto 14px;
+    }
+    .tarot-icon svg { width: 100%; height: 100%; }
+    .tarot-name {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      line-height: 1.3;
+      border-top: 1px solid rgba(70, 50, 180, 0.3);
+      padding-top: 10px;
+    }
+    @media (max-width: 640px) {
+      .archetype-card-body { flex-direction: column; align-items: center; }
+      .archetype-info { width: 100%; }
+      .archetype-tarot { width: 180px; }
+    }
+
+    /* Maturity badge (parallel to archetype-tarot, system-aesthetic) */
+    .maturity-badge {
+      width: 156px;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, #fff 0%, var(--surface) 100%);
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 14px 14px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+    .maturity-badge::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 4px 4px 0 0;
+    }
+    .badge-level-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .badge-progress {
+      display: flex;
+      gap: 3px;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .badge-progress span {
+      width: 14px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+    .badge-progress span.full { background: var(--accent); }
+    .badge-progress span.half {
+      background: linear-gradient(90deg, var(--accent) 50%, var(--border) 50%);
+    }
+    .badge-icon {
+      width: 70px;
+      height: 70px;
+      color: var(--accent);
+      margin: 0 auto 14px;
+    }
+    .badge-icon svg { width: 100%; height: 100%; }
+    .badge-name {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    @media (max-width: 640px) {
+      .maturity-badge { width: 180px; }
+    }
+
+    /* Failure modes / actions / arc / tension nested in expand */
+    .result-expand .failure-modes,
+    .result-expand .action-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .result-expand .failure-mode-item,
+    .result-expand .action-item {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 4px;
+    }
+    .result-expand .failure-mode-name,
+    .result-expand .action-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .result-expand .failure-mode-desc,
+    .result-expand .action-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .result-expand .action-done {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    .result-expand .output-arc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 4px;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+    }
+    .result-expand .arc-step {
+      padding: 4px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+    }
+    .result-expand .arc-step.current {
+      background: var(--accent-light);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .result-expand .arc-arrow { color: var(--text-secondary); padding: 0 2px; }
+    .result-expand .tension-poles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 640px) { .result-expand .tension-poles { grid-template-columns: 1fr; } }
+    .result-expand .tension-pole {
+      background: var(--surface);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .result-expand .tension-pole .pole-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .result-expand .historical-item {
+      margin-bottom: 14px;
+      padding-left: 14px;
+      border-left: 2px solid var(--border);
+    }
+    .result-expand .historical-item:last-of-type { margin-bottom: 0; }
+    .result-expand .historical-label {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .result-expand .historical-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .result-expand .trait-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .result-expand .strength-item,
+    .result-expand .challenge-item {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .result-expand .challenge-list .challenge-item {
+      border-left-color: #c97a4a;
+    }
+    .result-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .result-card-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .result-card-tagline {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .result-card-summary {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .result-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .result-meta-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .result-expand-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .result-expand-toggle:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .result-expand {
+      display: none;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .result-expand.open { display: block; }
+    .result-expand h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 18px;
+      margin-bottom: 10px;
+    }
+    .result-expand h4:first-child { margin-top: 0; }
+    .result-expand p,
+    .result-expand li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .result-expand ul { padding-left: 20px; margin-bottom: 14px; }
+    .result-expand .quote {
+      font-style: italic;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 14px 0;
+    }
+    .retake-link {
+      display: inline-block;
+      margin-left: 16px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+    .retake-link:hover { color: var(--accent); }
+
     /* ─── Section 5: Output ────────────────────────────────── */
     #output { display: none; }
     #output.visible { display: block; }
@@ -1027,15 +1446,54 @@
       line-height: 1.6;
     }
 
-    /* Output actions row */
+    /* Output actions row — centered, identical-size buttons */
     .output-actions {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
       align-items: center;
-      padding: 28px 40px;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
+      justify-content: center;
+      padding: 28px 0 8px;
+    }
+
+    .output-actions .btn,
+    .output-actions .btn-hero,
+    .output-actions .btn-secondary {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      letter-spacing: 0.02em;
+      min-width: 220px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+    }
+
+    .output-actions .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .output-actions .btn-primary:hover {
+      background: #6b4d82;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+
+    .output-actions .btn-secondary {
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+    }
+    .output-actions .btn-secondary:hover {
+      background: var(--accent-light);
     }
 
     .retake-link {
@@ -1043,9 +1501,7 @@
       color: var(--text-secondary);
       text-decoration: underline;
       cursor: pointer;
-      margin-left: auto;
     }
-
     .retake-link:hover { color: var(--accent-dark); }
 
     /* ─── Section 6: Exit ──────────────────────────────────── */
@@ -1428,10 +1884,12 @@
     }
     .std-cta-buttons {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
     }
+    .std-cta-buttons .btn-hero,
     .std-cta-buttons .btn-secondary {
       display: inline-block;
       font-family: var(--font-mono);
@@ -1441,18 +1899,39 @@
       border-radius: 8px;
       letter-spacing: 0.02em;
       text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-width: 200px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .std-cta-buttons .btn-secondary {
       background: transparent;
       color: var(--accent-dark);
       border: 1px solid var(--accent);
-      cursor: pointer;
-      transition: all 0.15s ease;
     }
     .std-cta-buttons .btn-secondary:hover {
       background: var(--accent-light);
       text-decoration: none;
     }
 
-
+    /* Mobile footer: stacked, centered, generous spacing */
+    @media (max-width: 600px) {
+      footer { padding: 28px 0 24px; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+      }
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+      }
+      .footer-links a { padding: 4px 0; }
+      footer p { font-size: 0.78rem; }
+    }
 
   </style>
 </head>
@@ -1480,6 +1959,12 @@
       </button>
     </div>
   </div>
+  <div class="nav-secondary">
+    <ul class="nav-secondary-links">
+      <li><a href="#assessment">Begin</a></li>
+      <li><a href="#output">Result</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ─── Section 1: Entry ─────────────────────────────────── -->
@@ -1503,117 +1988,63 @@
   <div class="container">
     <div class="label">Self-assessment</div>
     <h2>Where is your organization?</h2>
-    <p class="section-sub">Answer based on where your organization is today. Six months from now is not the question.</p>
 
-    <!-- Step 1: Recognition -->
-    <div id="step1" class="step active">
+    <!-- Scope: Q1 of 25 -->
+    <div id="scope-step" class="step active">
+      <div class="quiz-progress">
+        <span class="quiz-counter">Question 1 of 25</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="quiz-prompt">What scope are you answering for?</div>
+
+      <div class="radio-options">
+        <div class="radio-option" onclick="selectScope(this, 'small-org')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A small organization (under 200 people)</div>
+        </div>
+        <div class="radio-option" onclick="selectScope(this, 'business-unit')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A business unit or division of a larger enterprise</div>
+        </div>
+        <div class="radio-option" onclick="selectScope(this, 'function')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A specific function (engineering, product, operations, sales, support, etc.)</div>
+        </div>
+        <div class="radio-option" onclick="selectScope(this, 'team')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A specific team or workstream</div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button id="scope-next" class="btn btn-primary" onclick="startQuiz()" style="display:none">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Quiz: 24 paired statements -->
+    <div id="quiz-step" class="step">
+      <div class="quiz-progress">
+        <span class="quiz-counter" id="quiz-counter">Question 2 of 25</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+      </div>
+
+      <div class="quiz-prompt">Choose the statement that better describes your team, function, or company.</div>
 
       <div class="option-cards">
-        <div class="option-card" onclick="selectOption(this, 'A')">
+        <div class="option-card quiz-option" id="quiz-option-a" onclick="pickOption('A')">
           <div class="option-letter">Option A</div>
-          <div class="option-text">AI tools are in active use, but the organization has limited visibility into which tools, by which teams, on which account types. No formal data boundary policy governs what can be submitted to external AI services. When AI produces a wrong answer, the response is case-by-case — whoever notices it fixes it. There is no defined process.</div>
+          <div class="option-text" id="quiz-text-a"></div>
         </div>
-
-        <div class="option-card" onclick="selectOption(this, 'B')">
+        <div class="option-card quiz-option" id="quiz-option-b" onclick="pickOption('B')">
           <div class="option-letter">Option B</div>
-          <div class="option-text">Enterprise AI licenses have been rolled out broadly. AI use is encouraged or mandated. At least one team has started designing workflows around AI outputs. But governance is uneven: some workflows have review criteria, others don't. Quality failures in AI-assisted work are handled inconsistently across teams.</div>
-        </div>
-
-        <div class="option-card" onclick="selectOption(this, 'C')">
-          <div class="option-letter">Option C</div>
-          <div class="option-text">At least one core workflow has been deliberately designed around AI — with a named owner, a quality metric, and a defined escalation path when it fails. Removing AI from that workflow would require rebuilding it. The organization can describe its verification protocol for that workflow without consulting a policy document.</div>
+          <div class="option-text" id="quiz-text-b"></div>
         </div>
       </div>
 
-      <div class="step-actions">
-        <button id="step1-next" class="btn btn-primary" onclick="goToStep2()" style="display:none">Continue →</button>
-      </div>
-    </div>
-
-    <!-- Step 2A: Scenario for Option A -->
-    <div id="step2A" class="step">
-
-      <div class="scenario-label">The situation</div>
-      <div class="scenario-text">
-        A team lead reports that an AI tool produced an incorrect summary that went into a client deliverable. The error was caught by the client, not internally. What happens next in your organization?
-      </div>
-
-      <div class="radio-options">
-        <div class="radio-option" onclick="selectRadio(this, '1')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">There is no defined process — it gets handled ad hoc, noted informally, and people move on</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '2')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">It gets escalated, but who handles it and how depends on who's in the room</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '2-3')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">A defined review protocol exists for that workflow; the failure triggers a specific response and a record is created</div>
-        </div>
-      </div>
-
-      <div class="step-actions">
-        <button id="step2A-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
-        <span class="calculating" id="calc-A">Placing your organization…</span>
-      </div>
-    </div>
-
-    <!-- Step 2B: Scenario for Option B -->
-    <div id="step2B" class="step">
-
-      <div class="scenario-label">The situation</div>
-      <div class="scenario-text">
-        Your organization mandated AI adoption six months ago. Leadership wants a governance status update. Which of these is closest to the honest answer?
-      </div>
-
-      <div class="radio-options">
-        <div class="radio-option" onclick="selectRadio(this, '2')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">We have a policy document. Enforcement is inconsistent — it depends on the team</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '2-3')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">One or two teams have designed their workflow around AI with real accountability. Most teams haven't</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '3')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">Multiple core workflows are designed, owned, and tracked. We have quality metrics for at least two of them</div>
-        </div>
-      </div>
-
-      <div class="step-actions">
-        <button id="step2B-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
-        <span class="calculating" id="calc-B">Placing your organization…</span>
-      </div>
-    </div>
-
-    <!-- Step 2C: Scenario for Option C -->
-    <div id="step2C" class="step">
-
-      <div class="scenario-label">The situation</div>
-      <div class="scenario-text">
-        The AI tool your primary workflow depends on ships a model update. The tool's outputs change in ways that aren't immediately obvious — the failure modes differ from the previous version. What happens in your organization?
-      </div>
-
-      <div class="radio-options">
-        <div class="radio-option" onclick="selectRadio(this, '2-3')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">The review protocol stays the same. Someone might notice the change over time — it hasn't come up as a process question</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '3')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">The team that owns the workflow evaluates the update before deploying. The protocol is reviewed and adjusted if needed</div>
-        </div>
-        <div class="radio-option" onclick="selectRadio(this, '3-4')">
-          <div class="radio-dot"></div>
-          <div class="radio-text">Governance protocols are versioned with tooling changes. Multiple workflows are evaluated and updated on a defined schedule</div>
-        </div>
-      </div>
-
-      <div class="step-actions">
-        <button id="step2C-submit" class="btn btn-primary" onclick="submitAssessment()" style="display:none">See my result →</button>
-        <span class="calculating" id="calc-C">Placing your organization…</span>
+      <div class="step-actions quiz-actions">
+        <button class="btn-link" id="quiz-back" onclick="goBack()" style="visibility:hidden">← Back</button>
+        <span class="calculating" id="calc-final">Placing your organization…</span>
       </div>
     </div>
 
@@ -1624,11 +2055,15 @@
 <section id="output" class="section">
   <div class="container">
     <div class="label">Your result</div>
-    <div id="output-card" class="output-card">
-      <!-- Rendered by JS -->
+    <div id="result-cards">
+      <!-- Two cards rendered by JS: archetype + maturity -->
+    </div>
+    <div class="output-actions" id="result-actions" style="display:none;">
+      <a class="btn btn-primary" href="https://protocolized.dev/levels/">See all levels</a>
+      <button class="btn btn-secondary" onclick="retakeAssessment()">Retake the assessment</button>
     </div>
     <div class="print-footer">
-      Protocolized · Protocol Research and Development · protocolized.summerofprotocols.com · AI Capability Maturity Model v2.2 · 2026
+      Protocolized · Protocol Research and Development · protocolized.summerofprotocols.com · AI Capability Maturity Model v2.3 · 2026
     </div>
   </div>
 </section>
@@ -1728,9 +2163,358 @@ function navTo(id) {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ─── State ─────────────────────────────────────────────── */
-let step1Choice = null;   // 'A' | 'B' | 'C'
-let step2Choice = null;   // '1' | '2' | '2-3' | '3' | '3-4'
+/* ─── Quiz v0.9 state ───────────────────────────────────── */
+let scopeChoice = null;
+let currentQuestion = 0;
+let picks = new Array(24).fill(null);
+
+/* ─── v0.9 questions (24 paired statements) ─────────────── */
+const QUESTIONS = [
+  { a: "If AI technology stopped working tomorrow, our product would stop working too.",
+    b: "If AI technology stopped working tomorrow, our work would slow but continue." },
+  { a: "People outside our team interact with the AI capabilities we deploy.",
+    b: "The AI capabilities we deploy are invisible to anyone outside our team." },
+  { a: "If our main AI capability vendor changed pricing, it would have no impact on our offering.",
+    b: "If our main AI capability vendor changed pricing, we would change our offering." },
+  { a: "We've invested in dedicated AI talent (hired or developed) for our function.",
+    b: "We expect existing staff to learn AI skills as part of their regular work." },
+  { a: "Our AI tools keep producing useful outputs as our data and work evolve.",
+    b: "We regularly update our AI tools to stay aligned with our business." },
+  { a: "A senior specialist with domain knowledge reviews critical AI outputs.",
+    b: "AI outputs are reviewed by generalists or pass through automated checks." },
+  { a: "Our AI handoffs follow industry standards.",
+    b: "Our AI rules apply only inside our company." },
+  { a: "We deploy new AI use cases before most peers in our industry.",
+    b: "We deploy new AI use cases after peers have proven them." },
+  { a: "When AI changes require it, we adapt — including reversing AI deployments.",
+    b: "When we deploy AI visibly, we don't usually need to walk it back." },
+  { a: "Our own investment priorities set the pace of AI adoption.",
+    b: "Regulation or compliance review sets the pace of AI adoption." },
+  { a: "When we delay AI deployment, it's because we're choosing to wait for proven maturity.",
+    b: "When we delay AI deployment, it's because external rules require it." },
+  { a: "Our AI approach came from leadership first.",
+    b: "Our AI approach came from teams first." },
+  { a: "We have a current inventory of the AI tools each team uses.",
+    b: "We periodically learn about new AI tools other colleagues have adopted." },
+  { a: "Our business existed before AI; we added AI to it.",
+    b: "AI is why our business exists; there's no non-AI version of it." },
+  { a: "Our dominant AI posture is building internal infrastructure multiple teams depend on.",
+    b: "Our dominant AI posture is selectively deploying AI use cases that are already proven." },
+  { a: "Our AI experimentation runs many concurrent pilots to figure out what works.",
+    b: "Our AI experimentation picks specific use cases proven by peers before deploying." },
+  { a: "Most of our informal AI use is many people doing everyday tasks.",
+    b: "Most of our informal AI use is a few people doing sophisticated work." },
+  { a: "Multiple teams across our org run on the same internal AI platform.",
+    b: "Each team picks its own AI tools; there's no shared platform." },
+  { a: "Our main AI deployment criterion is whether the value case is proven.",
+    b: "Our main AI deployment criterion is whether compliance review clears the use." },
+  { a: "We're deploying AI with the tools that exist today.",
+    b: "We're waiting for the next generation of AI tools before we deploy." },
+  { a: "Our AI documentation is current enough to hand off to a new team member.",
+    b: "Our AI work is carried by a few people's practical knowledge." },
+  { a: "Our AI capability is held mostly by our internal team.",
+    b: "Our AI capability is held mostly by external partners we contract with." },
+  { a: "Our AI roadmap follows our own internal priorities and timeline.",
+    b: "Our AI roadmap follows what our vendor or partner ships." },
+  { a: "Our team uses AI tools as part of how we do our work.",
+    b: "Our team has never used or heard of AI tools." }
+];
+
+/* ─── Archetype tarot icons (inline SVG) ────────────────── */
+const ICONS = {
+  Vanguard: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="28" y1="14" x2="28" y2="66"/><path d="M28 18 L58 23 L52 30 L58 37 L28 32 Z" fill="currentColor" stroke="none"/><line x1="16" y1="66" x2="56" y2="66"/><circle cx="28" cy="14" r="2.2" fill="currentColor" stroke="none"/></svg>',
+  Traveller: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="22"/><path d="M40 18 L44 38 L40 40 L36 38 Z" fill="currentColor" stroke="none"/><path d="M40 62 L36 42 L40 40 L44 42 Z" fill="currentColor" stroke="none"/><path d="M18 40 L38 36 L40 40 L38 44 Z" fill="currentColor" stroke="none"/><path d="M62 40 L42 44 L40 40 L42 36 Z" fill="currentColor" stroke="none"/><circle cx="40" cy="40" r="2" fill="currentColor" stroke="none"/></svg>',
+  Architect: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="14" width="48" height="6"/><rect x="22" y="20" width="36" height="40"/><line x1="32" y1="20" x2="32" y2="60"/><line x1="40" y1="20" x2="40" y2="60"/><line x1="48" y1="20" x2="48" y2="60"/><rect x="14" y="60" width="52" height="6"/></svg>',
+  Integrator: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="32" cy="32" r="14"/><circle cx="48" cy="32" r="14"/><circle cx="40" cy="48" r="14"/></svg>',
+  Tinkerer: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="30" cy="36" r="11"/><circle cx="30" cy="36" r="3" fill="currentColor"/><path d="M30 22 L30 26 M30 46 L30 50 M16 36 L20 36 M40 36 L44 36 M20 26 L23 29 M37 29 L40 26 M20 46 L23 43 M37 43 L40 46"/><circle cx="55" cy="52" r="8"/><circle cx="55" cy="52" r="2" fill="currentColor"/><path d="M55 42 L55 45 M55 59 L55 62 M45 52 L48 52 M62 52 L65 52"/></svg>',
+  Ratifier: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="33" r="17"/><path d="M40 22 L43 30 L51 30 L45 35 L47 43 L40 38 L33 43 L35 35 L29 30 L37 30 Z" fill="currentColor" stroke="none"/><path d="M28 50 L24 66 L40 60 L56 66 L52 50"/></svg>',
+  Warden: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M40 12 L62 20 L62 40 C62 55 52 65 40 70 C28 65 18 55 18 40 L18 20 Z"/><circle cx="40" cy="33" r="6"/><line x1="40" y1="39" x2="40" y2="56"/><line x1="40" y1="49" x2="46" y2="49"/></svg>',
+  Broker: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="18" x2="40" y2="62"/><line x1="20" y1="26" x2="60" y2="26"/><path d="M20 26 L13 42 L27 42 Z"/><path d="M60 26 L53 42 L67 42 Z"/><line x1="32" y1="62" x2="48" y2="62"/><circle cx="40" cy="18" r="2" fill="currentColor"/></svg>',
+  Folkway: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 65 Q35 55 30 42 Q25 28 40 25 Q55 22 50 36 Q45 50 60 55"/><circle cx="20" cy="65" r="2.5" fill="currentColor"/><circle cx="60" cy="55" r="2.5" fill="currentColor"/><circle cx="40" cy="25" r="2.5" fill="currentColor"/></svg>',
+  Guild: '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="8"/><circle cx="37.5" cy="21" r="1.4" fill="currentColor"/><circle cx="42.5" cy="21" r="1.4" fill="currentColor"/><circle cx="26" cy="50" r="8"/><circle cx="23.5" cy="49" r="1.4" fill="currentColor"/><circle cx="28.5" cy="49" r="1.4" fill="currentColor"/><circle cx="54" cy="50" r="8"/><circle cx="51.5" cy="49" r="1.4" fill="currentColor"/><circle cx="56.5" cy="49" r="1.4" fill="currentColor"/><line x1="40" y1="30" x2="40" y2="38"/><line x1="40" y1="40" x2="28" y2="46"/><line x1="40" y1="40" x2="52" y2="46"/></svg>'
+};
+
+const ROMAN = { Vanguard: 'I', Traveller: 'II', Architect: 'III', Integrator: 'IV', Tinkerer: 'V', Ratifier: 'VI', Warden: 'VII', Broker: 'VIII', Folkway: 'IX', Guild: 'X' };
+
+/* ─── Maturity level icon badges (inline SVG) ───────────── */
+const LEVEL_ICONS = {
+  '1': '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="22" stroke-dasharray="3,5"/><circle cx="40" cy="32" r="5" stroke-dasharray="2,3"/><path d="M28 50 Q28 40 40 40 Q52 40 52 50" stroke-dasharray="3,3"/></svg>',
+  '2': '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="22"/><path d="M27 40 L36 49 L53 32" stroke-width="2.5"/></svg>',
+  '2-3': '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="20"/><path d="M30 40 L37 47 L50 32" stroke-width="2"/><path d="M40 18 L40 22 M40 58 L40 62 M18 40 L22 40 M58 40 L62 40"/></svg>',
+  '3': '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="14"/><circle cx="40" cy="40" r="4" fill="currentColor"/><path d="M40 22 L40 26 M40 54 L40 58 M22 40 L26 40 M54 40 L58 40 M27 27 L30 30 M50 50 L53 53 M27 53 L30 50 M50 30 L53 27"/></svg>',
+  '3-4': '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="11"/><circle cx="40" cy="40" r="3" fill="currentColor"/><path d="M40 25 L40 29 M40 51 L40 55 M25 40 L29 40 M51 40 L55 40"/><circle cx="62" cy="22" r="4" fill="currentColor"/><circle cx="22" cy="62" r="4" fill="currentColor"/><circle cx="62" cy="62" r="4" fill="currentColor"/><line x1="48" y1="33" x2="58" y2="25"/><line x1="32" y1="48" x2="25" y2="58"/><line x1="48" y1="48" x2="58" y2="58"/></svg>'
+};
+// Progress (out of 5 bars): L1=1, L2=2, L2-3=2.5, L3=3, L3-4=3.5
+const LEVEL_PROGRESS = { '1': 1, '2': 2, '2-3': 2.5, '3': 3, '3-4': 3.5 };
+const LEVEL_DISPLAY = { '1': 'L1', '2': 'L2', '2-3': 'L2→3', '3': 'L3', '3-4': 'L3→4' };
+
+/* ─── Archetype profiles (rich, parallel to maturity card) ── */
+const ARCHETYPES = {
+  Vanguard: {
+    title: "The Vanguard",
+    quote: "Someone has to go first. We'd rather learn hard than wait safe.",
+    axes: ["Strategic", "Architecture (retrofit)", "Ahead of proof", "Internal", "Chosen"],
+    coreStrategicBet: "First-mover advantage compounds faster than reversal risk compounds loss.",
+    examples: "Klarna (2024–25 AI-agent arc: mandated, reversed, rebuilt). Duolingo (AI-first content, user headwinds). Shopify (Lütke 'AI is non-optional' memo).",
+    profile: "The Vanguard deploys AI aggressively in customer-facing and core operational work before governance is ready. They retrofit AI into an existing organization because they believe leadership conviction matters more than waiting for external validation. Public mandates; explicit policy shifts; visible executive commitment. The bet is asymmetric — some deployments will roll back publicly, but the ones that stick compound. They treat reputational exposure as the price of not being late, and they absorb the criticism of specialists whose judgment was bypassed in the pursuit of speed.",
+    strengths: ["Organizational alignment — leadership has taken a clear public position","Forced learning under real conditions (no hiding in pilot-land)","Captures compounding advantages unavailable to orgs waiting for proof","Talent magnet for ambitious practitioners who want the leading edge"],
+    challenges: ["Governance lags deployment; fixes are reactive and publicly visible","Customer-facing quality incidents (the Klarna reversal pattern)","Internal backlash from domain specialists whose judgment was overridden","'Evaluative anesthesia' — so much is produced so fast that quality signal degrades"],
+    healthy: "Moves fast, learns fast, retrofits governance as issues surface.",
+    unhealthy: "Moves fast, reverses publicly, replaces the CEO.",
+    blindSpot: "Underestimates how much of the early 'success' was goodwill from stakeholders who expected eventual refinement, not production-grade polish.",
+    protocolNatural: "Treats protocols as drag at first; tends to encounter them as the consequence of a reversal rather than as a precondition for speed.",
+    protocolEffective: "Build protocols <em>during</em> deployment, not after. Choose lightweight protocol primitives — escalation triggers, rollback procedures, public-incident response — that don't slow deployment but absorb its volatility. The protocols you have when an incident hits decide whether you ship the fix in 48 hours or 4 weeks. Treat protocol design as a speed-multiplier, not a tax on it.",
+    protocolIneffective: "Defers all protocol work until incident forces it, then overcorrects with heavy governance that slows future deployments. Conflates 'speed' with 'no protocol,' missing that protocols are what makes speed sustainable.",
+    protocolView: "Protocols are reversal-prevention machinery. Without them, every aggressive deployment either succeeds by luck or burns trust. The Vanguard's strategic bet — moving first — depends on having the protocol layer that lets them move <em>back</em> gracefully when needed.",
+    underStress: "Compresses toward <strong>The Ratifier</strong> — a reversal crisis can trigger overcorrection into slowdown and heavy governance, sometimes overshooting into paralysis.",
+    growthDirection: "Evolves toward <strong>The Integrator</strong> — retrofits governance to match deployment footprint, codifies what worked, retires what didn't.",
+    evolutionaryPath: "Vanguards emerge from confident, opinionated leadership with strong AI conviction. They become Integrators if the retrofit succeeds; they become Ratifiers if a crisis forces a defensive reset.",
+    aiFlavor: "Flavor 2 (enterprise) + Flavor 3 (product-integrated), deployed aggressively. Flavors 4 + 5 typically underdeveloped relative to 2 + 3.",
+    warning: "'AI-first' becomes an internal mandate without an accompanying review infrastructure."
+  },
+  Traveller: {
+    title: "The Traveller",
+    quote: "We didn't add AI to our business. AI is why the business exists.",
+    axes: ["Strategic", "Architecture (greenfield)", "Ahead of proof", "Internal", "Chosen"],
+    coreStrategicBet: "A clean-sheet organization can outcompete incumbents retrofitting AI into legacy structures.",
+    examples: "Boom Supersonic (mkBoom engineering stack). Cursor. AI-native fintechs (Ramp, Brex adjacents). Logistics and customer-service operating-model rebuilders.",
+    profile: "The Traveller built the organization around AI from inception. The business doesn't function without AI — the product either creates capability that wasn't reachable before (market-creating) or rebuilds an existing market with a 3–5× leaner operating model (service-rebuilding). Protocols for validation, ontological stability, and domain-expert review are engineered alongside capability, not after an incident forces them. Travellers typically run with smaller headcount than revenue-equivalent incumbents and attract practitioners who want to work where AI isn't a bolt-on.",
+    strengths: ["No legacy baggage — every workflow is clean-sheet","Governance designed into product architecture, not layered on top","Capital-efficient operating model (talent structure built for AI)","Customers understand AI is the product, not a feature; expectations are calibrated"],
+    challenges: ["Fragility if underlying foundation models shift unexpectedly","Talent concentration — founders often hold critical judgment that can't yet delegate","Defensibility as incumbents close the gap with retrofit investment","Scaling past early product-market fit into a durable institution"],
+    healthy: "The team builds a real institution with distributed judgment.",
+    unhealthy: "AI-native team stays founder-dependent and never becomes a company.",
+    blindSpot: "Assumes the AI-native operating model is always faster — misses that some incumbent advantages (distribution, trust, data) aren't catchable by structural cleverness alone.",
+    protocolNatural: "Protocols are part of product architecture by default. AI validation, ontological stability, and escalation paths are designed alongside features rather than added retroactively.",
+    protocolEffective: "Treat the operating-model protocols (decision rights, incident response, scaling decisions) with the same rigor as product-level protocols. The Traveller's natural advantage is that they didn't have to retrofit; the strategic move is making the founder-team's tacit protocols explicit enough to scale beyond ten people. Watch for the gap between strong technical protocols and weak organizational ones as headcount doubles.",
+    protocolIneffective: "Protocols exist only at the technical or code layer; nothing organizational. The team scales 2× and discovers no shared protocol for handling internal disagreement, novel incident classes, or customer escalation.",
+    protocolView: "Protocols are not bureaucracy — they're the operating system. You're already running on protocols you designed; the question is whether you're tracking which ones are tacit and which need formalization before the next 50 hires.",
+    underStress: "Travellers don't disintegrate toward another archetype. They either iterate their way out or fail as companies; the form doesn't flex into Integrator or Architect because those require a different origin story.",
+    growthDirection: "Widens AI-specific governance into broader operating protocols as the org scales; deepens coordination scope toward industry partnerships and standards.",
+    evolutionaryPath: "Travellers don't transition — they scale within their form. An enterprise that retrofits successfully becomes an Integrator or Architect, not a Traveller. Travellers are topologically isolated on the archetype map.",
+    aiFlavor: "Flavor 3 (product-integrated) + Flavor 5 (custom/developed) central to the product. Flavor 2 supports internal work.",
+    warning: "The founder-team's judgment can't be delegated because no one else understands the AI-specific trade-offs."
+  },
+  Architect: {
+    title: "The Architect",
+    quote: "We're not chasing the latest model. We're building the platform our teams will run on for years.",
+    axes: ["Strategic", "Architecture", "Behind proof", "Internal", "Chosen"],
+    coreStrategicBet: "Internal AI infrastructure compounds as an economic moat — every rapid iterator's failed experiment feeds the platform's improvement.",
+    examples: "Uber (four-layer platform architecture, 84% developer agentic adoption). BBVA (4000+ custom GPTs). Frontier orgs from OpenAI's State of Enterprise AI report (6× internal AI messaging volume vs. median).",
+    profile: "The Architect invests in internal AI infrastructure that multiple teams depend on. They treat validation, governance, and monitoring as engineered constraints built into the platform rather than policy layered on top. Capital-intensive and slow to market. The reward is institutional-scale evolution — platforms outlast leadership transitions, and upstream signal capture creates a moat that competitors without comparable investment can't replicate. Platform teams hold specialist AI expertise while product teams consume it through clean abstractions.",
+    strengths: ["Institutional-scale durability — the platform outlasts executive tenures","Economies of scope across many internal use cases","Governance is invisible to users (built into tooling, not policy)","Signal-capture moat — upstream absorption of every team's iterative exhaust"],
+    challenges: ["Slower time-to-market than startups or Vanguards","Capital-intensive; requires sustained executive sponsorship across budget cycles","Internal coordination overhead (platform teams can become bottlenecks)","Platform can lag the model frontier if not actively refreshed"],
+    healthy: "Platform accelerates product teams; governance is felt as leverage, not friction.",
+    unhealthy: "Platform becomes a gate that slows the teams it was supposed to accelerate.",
+    blindSpot: "Undervalues speed. Assumes time is on their side because the platform compounds — misses moments when a competitor's non-platform speed captures a market before the platform's advantages matter.",
+    protocolNatural: "Protocols are the platform's product. Architects are the canonical protocol practitioners — best positioned to see protocols as durable coordination infrastructure rather than as policy or compliance overhead.",
+    protocolEffective: "Engineer governance into tooling so it's invisible to users; let specialist validation run automatically. Treat protocol design as a layered concern — separate the protocols teams interact with daily from the platform-level protocols that hold the whole structure together. Watch for protocol drift between platform versions and what teams actually use; enforce protocol updates as part of the platform's release cadence.",
+    protocolIneffective: "Protocols become heavy; the platform team becomes a gate that product teams route around rather than through. Protocol drift accumulates between platform versions and what teams use, eroding the moat.",
+    protocolView: "Protocols ARE infrastructure. The Architect's competitive moat <em>is</em> the protocol layer — the upstream signal capture, the validation discipline, the institutional knowledge encoded in how teams interact with the platform. Erosion of the protocol layer is erosion of the moat.",
+    underStress: "Compresses toward <strong>The Broker</strong> — under budget cuts, the platform gets outsourced to vendors and the institutional advantage dissolves.",
+    growthDirection: "Expands coordination scope into inter-organizational standards; moves toward L4 Infrastructural where the platform becomes a sector-wide baseline.",
+    evolutionaryPath: "Architects emerge from Integrators who realize multi-team coordination requires infrastructure, or from successful Travellers widening their scope. They tend to remain Architects once at scale; the transitions away are usually crises.",
+    aiFlavor: "Flavor 4 (infrastructure) + Flavor 5 (custom) central. The platform provides Flavors 2 + 3 to other teams as managed services.",
+    warning: "Platform team becomes a gatekeeper that product teams route around rather than through."
+  },
+  Integrator: {
+    title: "The Integrator",
+    quote: "We're not first. We're not lost. We adopt where it pays and redesign when it matters.",
+    axes: ["Strategic", "Augmentation", "Behind proof", "Internal", "Chosen"],
+    coreStrategicBet: "Evidence-driven selection yields higher ROI per deployment than speculative first-moves, and workflow redesign (not just tool-layering) is where the real leverage lives.",
+    examples: "Accenture 'AI Achievers' (≈12% of enterprises). McKinsey 'high performers' (3× more likely to fundamentally redesign workflows). Most mature enterprises with visible, disciplined AI programs.",
+    profile: "The Integrator deploys AI selectively where value is demonstrable, then redesigns workflows around the proven use rather than layering AI on existing processes. They wait for external evidence — competitor deployments, regulator guidance, vendor case studies, published results — before committing. Measured, evidence-driven, not first but not lost. The central basin of the archetype map: most healthy evolutionary paths converge here before continuing toward Architect. When Integrators execute, they capture real value; when they drift, they accumulate 'under evaluation' backlog without corresponding deployment.",
+    strengths: ["High ROI per deployment (selection is strict)","Organizational trust — workflow changes are visible and explicable","Knowledge transfer scales (codified workflow patterns propagate)","Adaptable to model-frontier shifts without business disruption"],
+    challenges: ["Slower than first-movers; some compounding advantages went elsewhere","'Evidence-waiting' can become a permanent excuse for inaction","Workflow redesign requires sustained change management that often underdelivers","Proliferation risk — many small wins without platform investment creates sprawl"],
+    healthy: "Selective, rigorous, compounding through workflow redesign.",
+    unhealthy: "Selective becomes paralytic; pilots never convert to standard practice.",
+    blindSpot: "Believes 'waiting for evidence' is always the rational choice — misses that some evidence only emerges after your own deployment generates it.",
+    protocolNatural: "Adopts proven protocols from elsewhere and tests them in their own context. Protocols are an adoption multiplier — the apparatus that turns external evidence into local operating practice.",
+    protocolEffective: "Adopt industry-standard protocols where they exist; adapt to local context with documented deviations; codify the adapted version. Build protocol literacy across teams so the next adoption is faster than the last. The Integrator's strength is selection rigor — that same rigor applied to protocols turns one-off deployments into compounding capability.",
+    protocolIneffective: "Keeps adopting protocols without adapting them; treats protocols as compliance checkboxes; never codifies the adapted version, so the next deployment starts from scratch again. The result is many small wins that don't propagate.",
+    protocolView: "Protocols are how disciplined adoption compounds. Each protocol an Integrator codifies makes the next AI deployment cheaper and more reliable. Without that codification, 'selective adoption' stays selective and never accumulates into platform.",
+    underStress: "Compresses toward <strong>The Warden</strong> — external pressure (regulatory, reputational, market) freezes deployment as compliance reviews multiply.",
+    growthDirection: "Evolves toward <strong>The Architect</strong> — invests in platform to scale the workflows; the natural next move when deployment count crosses a coordination threshold.",
+    evolutionaryPath: "Integrators come from Vanguards (post-retrofit), Tinkerers (post-codification), Wardens (post-regulatory-clarity), or Brokers (post-internalization). They become Architects when scale demands it.",
+    aiFlavor: "Flavor 2 (enterprise) + Flavor 3 (product-integrated), selectively and with domain-expert validation.",
+    warning: "Growing backlog of 'AI opportunities under evaluation' without corresponding deployment cadence."
+  },
+  Tinkerer: {
+    title: "The Tinkerer",
+    quote: "We don't know what will work until we try it. So we try a lot of things.",
+    axes: ["Strategic", "Augmentation", "Ahead of proof", "Internal", "Chosen"],
+    coreStrategicBet: "Generating own evidence via high experimentation volume beats waiting for external proof in markets that reward speed.",
+    examples: "Scaleups and fast-moving mid-size orgs. Small product pods inside larger enterprises given freedom to experiment. Early-stage AI-adjacent (not AI-native) product teams.",
+    profile: "The Tinkerer generates its own evidence through volume. Many small experiments run in parallel; few are codified yet. They move ahead of proof because their markets reward experimentation, and waiting for external validation means losing ground. A transient state by design: with discipline, Tinkerers become Integrators; with scale, they become Vanguards; without either, they dissolve back into Folkways. The discipline that matters is not starting experiments but retiring them — the signature Tinkerer failure mode is accumulating pilots without a retirement cadence.",
+    strengths: ["Pattern recognition across many real attempts (not theoretical)","Low cost per experiment — scale is small, reversibility is high","Practitioner culture attracts hands-on talent","Fast feedback loops; evidence comes from own work, not literature"],
+    challenges: ["Codification gap — what works doesn't become standard practice","Coordination overhead as concurrent experiments multiply","Hard to separate signal from noise across many small pilots","'Innovation theater' risk — looks active but doesn't converge"],
+    healthy: "Disciplined experimentation that converges on codification.",
+    unhealthy: "Perpetual experimentation that never commits.",
+    blindSpot: "Treats starting new experiments as progress, underestimates that retiring experiments is the real sign of discipline.",
+    protocolNatural: "Experiments include protocol experiments. Each pilot is also testing what protocols would govern its scaled version, even if the team doesn't think of it that way.",
+    protocolEffective: "Codify emergent protocols from successful pilots before starting more pilots. Treat protocols as the codification of what worked. The discipline that matters is treating 'we'll write the protocol later' as a debt that must be paid before the next experiment, not a TODO that drifts.",
+    protocolIneffective: "Starts new protocols faster than retiring old ones; no codification cadence; pilots end without protocol artifacts that can be reused. The result is protocol sprawl — many small ad hoc rules nobody can remember, let alone enforce.",
+    protocolView: "Protocols are how a Tinkerer becomes an Integrator without losing speed. Every successful pilot is a protocol waiting to be written down; writing it is what converts experimentation into compounding capability. The Tinkerer who codifies protocols ages into Integrator; the one who doesn't decays into Folkway.",
+    underStress: "Compresses toward <strong>The Folkway</strong> — under resource pressure, experiments continue individually but stop being tracked or centrally evaluated.",
+    growthDirection: "Evolves toward <strong>The Integrator</strong> — codifies what works into standard practice. The single most important move is retiring experiments as deliberately as starting them.",
+    evolutionaryPath: "Tinkerers come from Folkways (when leadership starts tracking what's emerging) or from scaleup-stage adoption. They become Integrators via codification or Vanguards via scale. Without either, they dissolve back into Folkway.",
+    aiFlavor: "Flavor 1 (consumer) + Flavor 2 (enterprise) + Flavor 3 (product-integrated), variably and concurrently.",
+    warning: "More than 3–4 concurrent pilots without clear retirement criteria."
+  },
+  Ratifier: {
+    title: "The Ratifier",
+    quote: "We don't surf the first wave. We ship the one that lasts.",
+    axes: ["Strategic", "Architecture", "Behind proof (deliberate)", "Internal", "Chosen"],
+    coreStrategicBet: "The second wave, well-executed, outlasts the first.",
+    examples: "Apple (historical posture across emerging technology categories; current AI stance). Risk-averse incumbents in consumer categories where brand trust is foundational. Institutional cultures that privilege polish over priority.",
+    profile: "The Ratifier defers deployment by strategic choice, not constraint. They wait for vendor consolidation, regulatory clarity, and use cases proven at scale by others. When they move, they deploy at higher polish than the early-movers who preceded them — trading early-market compounding for late-market quality. The bet is that the second wave, executed well, outlasts the first. Easy to confuse with paralysis from the outside; the distinguishing feature is a clear (if private) entry criterion. Apple's historical pattern is the canonical shape — and also the canonical reminder that Ratifiers can overstay their waiting posture.",
+    strengths: ["Deployment polish — their AI feels finished where others feel rough","Avoids public learning costs others absorbed","High trust with existing customers (no brand dilution from crapjects)","Capital discipline — no wasted spend on tools that didn't survive"],
+    challenges: ["Missed differentiation windows that went to earlier movers","Talent risk — practitioners want to work where the frontier is","Late-arrival inertia — hard to recalibrate when the moment arrives","Indistinguishable from paralysis without a clear entry criterion"],
+    healthy: "Deliberate timing with a clear trigger; ships polished second-wave product.",
+    unhealthy: "The trigger keeps moving; late becomes never.",
+    blindSpot: "Assumes polish compounds faster than time-in-market experience does — misses that second-movers rarely out-execute first-movers once those first-movers have iterated under real conditions.",
+    protocolNatural: "Waits for industry-standard protocols to emerge before committing. The Ratifier's deferral is partly a protocol-maturity bet — the second-wave protocol set will be cleaner than the first.",
+    protocolEffective: "Pre-commit to specific protocol-maturity triggers. Have an internal protocol that says 'we ratify when X protocol reaches Y maturity.' This converts vague waiting into a structured stance. Track which industry protocols are emerging and hold a thesis on which will dominate, so the entry decision is one already-rehearsed step rather than a fresh executive debate.",
+    protocolIneffective: "Waiting becomes endless because the trigger criterion keeps moving. Without a pre-committed trigger, 'wait for maturity' decays into 'wait for a permission no one will issue.' The outside view: paralysis dressed as patience.",
+    protocolView: "Protocols are what you're waiting for. The strategic risk is that waiting for the perfect protocol means missing the second-wave deployment window when the imperfect-but-mature protocol arrives. Pre-committing to the trigger is the move that distinguishes the Ratifier from the Ratifier-stalled-permanently.",
+    underStress: "Compresses toward <strong>The Broker</strong> — under competitive pressure, outsources the capability entirely to avoid committing too late.",
+    growthDirection: "Evolves toward <strong>The Integrator</strong> or <strong>The Architect</strong> when they finally move with a clear trigger.",
+    evolutionaryPath: "Ratifiers emerge from institutional cultures that privilege polish and brand (Apple-shape). They become Integrators or Architects when they move; rare to transition back. The dangerous path is stalled Ratifier → Broker permanently.",
+    aiFlavor: "Flavors 2 + 3 mostly, timed for later deployment. Minimal Flavor 1 exposure during the waiting period.",
+    warning: "Multiple planning cycles pass without a clear deployment date or trigger criterion."
+  },
+  Warden: {
+    title: "The Warden",
+    quote: "Our industry doesn't move until the regulator does. That's the job.",
+    axes: ["Strategic", "Augmentation", "Behind proof", "Variable locus", "Constrained"],
+    coreStrategicBet: "Compliance-ready infrastructure creates a competitive moat in regulated verticals (1.5–2× valuation premium for compliance-mature assets).",
+    examples: "EU banks, insurers, and financial-services firms under the AI Act. Healthcare organizations under HIPAA-adjacent frameworks. Public-sector agencies with mandated deployment reviews. Vertical-specific regulated industries (pharma, defense, utilities).",
+    profile: "The Warden gates deployment on regulatory approval. Compliance isn't a byproduct of their AI strategy; it's the operating posture. EU AI Act, HIPAA-adjacent frameworks, financial-services model governance, sector-specific audit regimes — the regulator sets deployment velocity. This can be a real strategic advantage in regulated verticals where compliance-mature infrastructure is hard to replicate. The underlying risk is that the regulatory clarity they're waiting for may arrive too late or too ambiguously, and meanwhile internal frustration produces shadow adoption — a Folkway forming quietly underneath the Warden posture.",
+    strengths: ["Compliance as moat — raises the barrier to entry for less-regulated competitors","High protocol specificity creates durable institutional knowledge","Trust premium with regulated customers and auditors","Risk-adjusted deployment — customer-facing AI incidents are rare"],
+    challenges: ["Regulatory uncertainty means deployment planning is always contingent","Talent flight to less-regulated competitors","Internal frustration drives shadow adoption (Folkway forming beneath)","Compliance infrastructure becomes a permanent brake even after regulation clarifies"],
+    healthy: "Compliance posture as active strategic advantage, with deployment ready to move when regulation clarifies.",
+    unhealthy: "Compliance as reason not to decide anything.",
+    blindSpot: "Assumes the regulator is the binding constraint, misses that internal compliance culture often continues to gate deployment long after regulatory clarity arrives.",
+    protocolNatural: "Protocols come from regulators; deployment is gated on compliance. The Warden is highly protocol-literate but only inbound (regulation → adoption); often weak on internal protocols beyond compliance.",
+    protocolEffective: "Turn compliance protocols into competitive moat — high protocol specificity that's hard for less-regulated competitors to replicate. Build internal protocols <em>beyond</em> compliance, especially the protocols for moving once regulation clarifies. Keep the protocol layer tight enough that Folkway pressure underneath doesn't have room to grow.",
+    protocolIneffective: "Compliance protocols ossify; shadow Folkway forms underneath because internal frustration finds informal channels; org can't move when regulation clarifies because internal compliance culture has become its own brake. The protocols originally meant as shield become a self-imposed cage.",
+    protocolView: "Protocols are both shield and cage. The shield is real value (compliance moat). The cage is the internal compliance culture continuing to gate deployment after the regulator stops gating. Watch for protocol-as-permission becoming protocol-as-prohibition.",
+    underStress: "Often develops a shadow <strong>Folkway</strong> underneath — individual practitioners use AI informally, bypassing compliance gates. The Samsung pattern.",
+    growthDirection: "Evolves toward <strong>The Integrator</strong> as regulation clarifies and compliance infrastructure becomes a deployment enabler rather than a gate.",
+    evolutionaryPath: "Wardens come from regulated verticals or from Integrators that hit a compliance wall. They become Integrators when regulation clarifies; they rarely become Architects (compliance overhead discourages platform-scale bets).",
+    aiFlavor: "Flavor 2 (enterprise) restricted to approved tools. Flavors 3 + 5 blocked pending regulatory approval. Flavor 1 officially prohibited, often happening unofficially.",
+    warning: "Growing internal workarounds that bypass official AI policy."
+  },
+  Broker: {
+    title: "The Broker",
+    quote: "We know what we need. Someone else is better at holding the tools.",
+    axes: ["Strategic", "Augmentation", "Behind proof", "External", "Chosen"],
+    coreStrategicBet: "AI moves too fast for non-specialist orgs to build competitively; renting capability is more rational than buying.",
+    examples: "Mid-market ops orgs on Palantir / Accenture / BCG X AI-as-a-service. Non-tech-native enterprises delegating AI capability to specialist consultancies. Smaller orgs that chose not to build AI talent internally.",
+    profile: "The Broker delegates AI capability externally. They hold the problem but not the tools; the vendor or consultancy holds the capability. The rational premise is that AI moves too fast for non-specialist orgs to build competitively — better to rent than buy. When it works, it's fast and cheap and lets internal teams focus on the business. When it doesn't, vendor lock-in becomes the dominant story and the org discovers it can't even evaluate the vendor's work critically. The growth pattern is usually 'build-buy-build' — start by buying, internalize the strategic pieces later.",
+    strengths: ["Speed to deployment with no internal build time","Access to specialist capability without salary commitments","Lower capital exposure during a period of technology uncertainty","Focus — internal teams work on the business, not the AI"],
+    challenges: ["Vendor lock-in becomes the dominant risk","Internal knowledge erosion — can't evaluate vendor claims critically","Data governance complexity (what does the vendor see, store, train on)","Strategic dependency — if the vendor pivots, the org is exposed"],
+    healthy: "Selective delegation with internal staff who can evaluate vendor output and internalize strategic pieces over time.",
+    unhealthy: "Total dependence without the internal capacity to critique the work.",
+    blindSpot: "Assumes the vendor relationship is a commercial question when it's actually a capability question — underestimates what happens when internal knowledge atrophies.",
+    protocolNatural: "Relies on vendor protocols; doesn't hold protocol design authority. The structural risk is that protocol authority follows capability — when the vendor sets the protocols, the Broker's internal autonomy shrinks invisibly.",
+    protocolEffective: "Layer internal protocols on top of vendor protocols. Maintain evaluative capacity through the protocols you control — specifically, the protocols for vetting vendor outputs and maintaining audit trails the vendor can't unilaterally rewrite. The protocols you keep are what protects against vendor lock-in becoming vendor capture.",
+    protocolIneffective: "Full delegation including protocol authority. Internal team can't critique vendor's protocols because they don't hold a parallel version themselves. When the vendor changes pricing or pivots, the Broker has no protocol foundation to fall back on.",
+    protocolView: "Protocols are what you keep when the vendor leaves. The Broker who holds a protocol layer (evaluation, governance, audit) at the boundary of the vendor relationship can change vendors; the Broker who doesn't, can't.",
+    underStress: "Compresses toward <strong>The Warden</strong> — under vendor disruption (pricing shock, acquisition, pivot), brings governance in-house as a defensive response without yet having the capability to match.",
+    growthDirection: "Evolves toward <strong>The Integrator</strong> or <strong>The Architect</strong> — selectively internalizes strategic capabilities as the build-vs-buy calculus shifts.",
+    evolutionaryPath: "Brokers come from non-tech-native orgs that need AI capability but rationally chose not to build. They become Integrators or Architects as the cost-benefit of delegation changes.",
+    aiFlavor: "Flavors 2 + 3 via vendor delivery. Flavors 4 + 5 not held internally at all.",
+    warning: "No internal staff who can sanity-check the vendor's claims."
+  },
+  Folkway: {
+    title: "The Folkway",
+    quote: "AI showed up through our teams before leadership noticed. We're still figuring out what that means.",
+    axes: ["Emergent", "Augmentation (shallow)", "—", "Individuals", "—"],
+    coreStrategicBet: "Not a bet — a state. The open question is whether the organization catches up to its own practitioners.",
+    examples: "Small orgs where everyone uses ChatGPT on the side. Non-tech teams at large enterprises informally adopting. Early-stage bottom-up adoption preceding any strategy formation.",
+    profile: "The Folkway is broad, shallow individual adoption happening below organizational visibility. Teams discovered AI on their own; the organization hasn't decided what to do about it yet. The strength is bottom-up sensing — practitioners are finding valuable use cases before leadership commissions a strategy. The risk is the Samsung scenario: valuable data walks out through unauthorized tool interfaces while leadership discusses policy. Most organizations pass through the Folkway briefly on their way to a chosen posture; a minority linger here for years, accumulating exposure without corresponding learning.",
+    strengths: ["Bottom-up discovery of valuable use cases","Low cost of experimentation (users often paying for tools personally)","High individual adoption velocity","Early signal about what matters to frontline work"],
+    challenges: ["Data exfiltration risk through personal tool accounts","No organizational learning — what works for one team doesn't propagate","Quality variance — some uses excellent, others produce 'crapjects'","Governance vacuum creates exposure without corresponding upside"],
+    healthy: "Brief passage state on the way to Tinkerer or Integrator, with leadership catching up and formalizing what's emerging.",
+    unhealthy: "Lingering Folkway that never gets inventoried; eventual incident forces heavy-handed reaction.",
+    blindSpot: "Underestimates the data-governance exposure because the individual users don't see what they, collectively, are sending out.",
+    protocolNatural: "The Folkway IS a protocol — just an undocumented, emergent one. The org's de facto AI use is governed by informal conventions nobody wrote down but everybody enforces through habit.",
+    protocolEffective: "Inventory before formalizing. Catch the emergent practices that are already working and lightly codify them — turning 'what we do' into 'what we do because we decided to.' Resist the urge to overwrite emergent protocols with imposed ones; the imposed version usually drives the practice underground rather than capturing it. The MVPi (minimum viable protocol intervention) framing fits: pick the one bottleneck where formalization unlocks the most, leave the rest to keep working.",
+    protocolIneffective: "Leadership clamps down with heavy formal protocols, driving practice further underground. Or, conversely, leaves emergence completely unmanaged until an incident forces a defensive overcorrection.",
+    protocolView: "Protocols are what emergence becomes when you write it down. The Folkway's informal conventions ARE proto-protocols; the question is whether the org will recognize and refine them, or wait for a regulator or incident to write them.",
+    underStress: "Under top-down pressure after a visible incident, often compresses toward <strong>The Warden</strong> — leadership responds with heavy-handed policy that lacks specificity, driving the Folkway further underground rather than resolving it.",
+    growthDirection: "Evolves toward <strong>The Tinkerer</strong> (formalizing what's already emerging) or <strong>The Guild</strong> (if sophistication is already concentrating in specific experts).",
+    evolutionaryPath: "Folkways are an entry state — most orgs pass through briefly. They become Tinkerers with formalization, Guilds with concentration + expertise, or Wardens if leadership responds by clamping down.",
+    aiFlavor: "Flavor 1 (consumer) dominant. Occasional Flavor 3 via personal account access wiring into products without oversight.",
+    warning: "Leadership cannot produce a current list of the AI tools in use across the organization."
+  },
+  Guild: {
+    title: "The Guild",
+    quote: "Our best people figured it out themselves. The rest of the org doesn't know yet.",
+    axes: ["Emergent", "Augmentation (sophisticated)", "—", "Individuals", "—"],
+    coreStrategicBet: "Not an organizational bet — an emergent capability. The strategic question is whether leadership recognizes and preserves what its experts have built before the experts leave.",
+    examples: "Enterprises where a few engineers or analysts have built sophisticated custom pipelines unknown to leadership. Domain experts using AI to take on work that was previously out of reach. Informal expert networks accumulating proprietary pattern recognition.",
+    profile: "The Guild is concentrated, sophisticated AI work living below organizational visibility. Individual experts — often with deep domain knowledge — have built proprietary pipelines and pattern recognition the organization may not realize it has. This is 'tasteful discrimination' accumulating at the practitioner layer, the kind of judgment base models don't possess and vendors can't replicate. Strength: the org holds a capability moat it doesn't know is a moat. Risk: the expertise leaves when the expert does. The Guild is usually detected, not self-reported — the archetype's defining feature is that the organization doesn't fully see itself.",
+    strengths: ["Proprietary pattern recognition — signal value base models don't have","High-sophistication work on real problems, not demos","Resilient to model frontier shifts (experts adapt faster than systems)","Low governance overhead at the practitioner level"],
+    challenges: ["Bus factor — if the expert leaves, the capability leaves","Opacity — organization can't evaluate or scale what it can't see","Reproducibility gap — the Guild member's work isn't codified","Bridge problem — Guild work doesn't integrate with official workflows"],
+    healthy: "Leadership recognizes the Guild, invests in codification, and the expertise becomes an Architect-level platform in that domain.",
+    unhealthy: "The org never sees the Guild; the expert leaves; the capability evaporates without trace.",
+    blindSpot: "The Guild member often underestimates how much of their work is tacit and non-transferable — 'anyone could do this' is almost always wrong.",
+    protocolNatural: "Each Guild member's pipeline is a personal protocol — tacit, expert, often undocumented. Protocols at the personal level may be highly sophisticated; at the org level they may not exist.",
+    protocolEffective: "Codify personal protocols into shared documentation before the expert leaves. Treat the Guild member's tacit pipeline as a draft protocol that needs translation, not as a finished product. The bridge from individual to platform runs through making the personal protocol transferable — that's also the bridge from L3-individual to L3-organizational maturity.",
+    protocolIneffective: "Protocols stay tacit; 'anyone could do this' is assumed but never tested; expertise leaves with the person and the protocol leaves with the expertise. The capability goes from invisible to absent without an intermediate visible state.",
+    protocolView: "Protocols are how tacit expertise survives departure. The Guild member's own pipelines are protocols — just personal ones. Making them transferable converts individual capability into organizational capital. The conversion rarely happens by default; it happens because someone in leadership recognizes the Guild and invests in the bridge.",
+    underStress: "Under organizational pressure (layoffs, mandated standardization, forced tool consolidation), Guilds often dissolve rather than transition — the experts leave and take the capability with them.",
+    growthDirection: "Evolves toward <strong>The Architect</strong> in their specific domain — the Guild's work gets codified into platform primitives. This requires leadership recognition and investment; it doesn't happen by default.",
+    evolutionaryPath: "Guilds come from Folkways (as sophistication concentrates) or from Integrators (where a particular expert goes deeper than the org expects). They become Architects in their domain if codified, or they disappear if not.",
+    aiFlavor: "Flavor 1 (consumer) + Flavor 5 (custom/developed) driven by individual experts, often stitched together with informal tooling.",
+    warning: "The expert can't explain their work to colleagues in under an hour — or more dangerous, leadership has never asked."
+  }
+};
+
+/* ─── Maturity level summaries ──────────────────────────── */
+const MATURITY_LEVELS = {
+  'L1': {
+    label: "Level 1 — Shadow",
+    short: "AI is in use but the organization doesn't know how, by whom, or with what data.",
+    summary: "Your function is at the default starting position — not a failure, but a baseline most organizations pass through. AI tools are in active use through individual initiative, but governance hasn't caught up. Adoption is real; visibility, policy, and review are not yet in place.",
+    nextStep: "Inventory what's already happening before formalizing anything. The MVPi (minimum viable protocol intervention) approach: find the one bottleneck where formalization unlocks the most, and leave the rest to keep working."
+  },
+  'L1-L2': {
+    label: "Level 1 → 2",
+    short: "Early deployment is happening; sanctioning protocols are still ahead of you.",
+    summary: "You've moved past pure shadow adoption — some AI use is acknowledged or tolerated — but the sanctioning layer (data boundaries, approved tools, deliberate governance) is still being built. This is a transitional zone with room to either consolidate into Level 2 or slide back if leadership doesn't act.",
+    nextStep: "Pick one workflow with real consequences and design the review protocol around it end-to-end. One success case is more valuable than ten policy memos."
+  },
+  'L2': {
+    label: "Level 2 — Sanctioned",
+    short: "AI access has been granted. The organization hasn't yet designed what to do with it.",
+    summary: "Your function has done the right thing: granted broad AI access and signaled commitment. The failure mode at this level is executing the mandate without designing the governing protocol — which tasks, what review, what quality standard, what escalation path when AI fails.",
+    nextStep: "Design one AI-native workflow end-to-end. Document what AI does, what humans review, what counts as acceptable output, and what the escalation path is when it fails. One such workflow is the foundation for Level 3."
+  },
+  'L2-3': {
+    label: "Level 2 → 3",
+    short: "You have the foundations of Level 3. Consistency and measurement are missing.",
+    summary: "At least one workflow is designed; you've demonstrated AI-native workflow design is possible in your context. What's missing is consistency across workflows and a quality measurement system that makes the governance protocol durable and repeatable.",
+    nextStep: "Extend the designed workflow pattern to one more high-stakes function. Document the pattern, not just the implementation, so it can be replicated without the same level of effort each time."
+  },
+  'L3': {
+    label: "Level 3 — Designed",
+    short: "Multiple workflows are AI-native by design with named owners and quality metrics.",
+    summary: "You've built deliberate AI-native workflows with measurable quality outputs. Domain expertise has been integrated into the validation layer. Now the governance question shifts: protocols that handle failure, versioning, and external dependencies without losing the speed advantage.",
+    nextStep: "Build the platform layer — internal infrastructure that absorbs upstream signal from across teams. The compounding advantage of Level 3 → Level 4 lives in shared infrastructure."
+  },
+  'L3-4': {
+    label: "Level 3 → 4",
+    short: "Approaching infrastructural maturity; influence on sector standards starts to matter.",
+    summary: "Your AI infrastructure is mature enough to coordinate with external partners and possibly influence industry standards. You've crossed from internal optimization to external coordination as a strategic concern.",
+    nextStep: "Start participating in (or initiating) industry coordination on AI handoffs and standards. The Level 4 threshold is sectoral, not organizational — you reach it together with peers, not alone."
+  }
+};
+
+/* ─── State for backward compat ───────────────────────────── */
+let step1Choice = null;
+let step2Choice = null;
 
 /* ─── Assessment data ────────────────────────────────────── */
 const RESULTS = {
@@ -2000,53 +2784,409 @@ Level 4 emerges when the aggregate of Level 3 organizations reaches density suff
   }
 };
 
-/* ─── Assessment logic ───────────────────────────────────── */
-function selectOption(el, choice) {
-  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+/* ─── Quiz v0.9 logic ────────────────────────────────────── */
+function selectScope(el, value) {
+  document.querySelectorAll('#scope-step .radio-option').forEach(r => r.classList.remove('selected'));
   el.classList.add('selected');
-  step1Choice = choice;
-  document.getElementById('step1-next').style.display = 'inline-block';
+  scopeChoice = value;
+  document.getElementById('scope-next').style.display = 'inline-block';
 }
 
-function goToStep2() {
-  document.getElementById('step1').classList.remove('active');
-  const stepId = 'step2' + step1Choice;
-  document.getElementById(stepId).classList.add('active');
+function startQuiz() {
+  document.getElementById('scope-step').classList.remove('active');
+  document.getElementById('quiz-step').classList.add('active');
+  currentQuestion = 0;
+  picks = new Array(24).fill(null);
+  renderQuestion();
   document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
 }
 
-function selectRadio(el, value) {
-  const parent = el.closest('.radio-options');
-  parent.querySelectorAll('.radio-option').forEach(r => r.classList.remove('selected'));
-  el.classList.add('selected');
-  step2Choice = value;
-
-  // Show submit button for the active step
-  const activeStep = document.querySelector('.step.active');
-  activeStep.querySelector('.btn').style.display = 'inline-block';
+function renderQuestion() {
+  const q = QUESTIONS[currentQuestion];
+  document.getElementById('quiz-text-a').textContent = q.a;
+  document.getElementById('quiz-text-b').textContent = q.b;
+  // Scope = Q1 of 25; binary questions are Q2..Q25 (currentQuestion 0..23)
+  const total = QUESTIONS.length + 1;
+  const num = currentQuestion + 2;
+  document.getElementById('quiz-counter').textContent = `Question ${num} of ${total}`;
+  const pct = (num - 1) / total * 100;
+  document.getElementById('quiz-progress-fill').style.width = pct + '%';
+  document.getElementById('quiz-back').style.visibility = currentQuestion > 0 ? 'visible' : 'hidden';
+  document.querySelectorAll('.quiz-option').forEach(c => c.classList.remove('selected'));
+  // restore prior pick if any
+  if (picks[currentQuestion]) {
+    const sel = picks[currentQuestion] === 'A' ? 'quiz-option-a' : 'quiz-option-b';
+    document.getElementById(sel).classList.add('selected');
+  }
 }
 
-function submitAssessment() {
-  // Determine final placement
-  let placement;
-  if (step1Choice === 'A') {
-    placement = step2Choice;  // '1', '2', or re-routes to 2-3 via B scenario, but we keep it direct
-    if (step2Choice === '2-3') placement = '2-3';
-  } else if (step1Choice === 'B') {
-    placement = step2Choice;  // '2', '2-3', '3'
-  } else {
-    placement = step2Choice;  // '2-3', '3', '3-4'
+function pickOption(choice) {
+  picks[currentQuestion] = choice;
+  document.querySelectorAll('.quiz-option').forEach(c => c.classList.remove('selected'));
+  document.getElementById(choice === 'A' ? 'quiz-option-a' : 'quiz-option-b').classList.add('selected');
+  // Auto-advance after brief delay
+  setTimeout(() => {
+    if (currentQuestion < QUESTIONS.length - 1) {
+      currentQuestion++;
+      renderQuestion();
+    } else {
+      // Final question — submit
+      document.getElementById('calc-final').classList.add('visible');
+      // Update progress to 100%
+      document.getElementById('quiz-progress-fill').style.width = '100%';
+      setTimeout(submitQuiz, CALC_DELAY_MS);
+    }
+  }, 220);
+}
+
+function goBack() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+  }
+}
+
+/* ─── v0.9 Scoring: hierarchical placement ───────────────── */
+function signed(pick) { return pick === 'A' ? 1 : -1; }
+
+function axisScores(p) {
+  // p is 1-indexed pick lookup
+  return {
+    origin: 2 * signed(p[12]) + 1 * signed(p[13]),
+    stake:  2 * signed(p[1])  + 1 * signed(p[2]),
+    timing: 2 * signed(p[8])  + 1 * signed(p[9]),
+    locus:  2 * signed(p[3])  + 1 * signed(p[4]) + 2 * signed(p[22]) + 1 * signed(p[23]),
+    driver: 2 * signed(p[10]) + 1 * signed(p[11]) + 2 * signed(p[19])
+  };
+}
+
+function classifyArchetype(p) {
+  const a = axisScores(p);
+  // Branch 1: Origin
+  if (a.origin < 0) {
+    return p[17] === 'B' ? 'Guild' : 'Folkway';
+  }
+  // Strategic
+  // Pre-quadrant Ratifier check: Q20=B + Timing<0 + Driver>=0
+  if (p[20] === 'B' && a.timing < 0 && a.driver >= 0) {
+    return 'Ratifier';
+  }
+  const arch = a.stake > 0;
+  const ahead = a.timing > 0;
+  if (arch && ahead) return p[14] === 'A' ? 'Vanguard' : 'Traveller';
+  if (arch && !ahead) return p[20] === 'A' ? 'Architect' : 'Ratifier';
+  if (!arch && ahead) return 'Tinkerer';
+  // Augmentation × Behind: Integrator / Warden / Broker
+  if (p[22] === 'B' && p[23] === 'B') return 'Broker';
+  if (a.locus < -2) return 'Broker';
+  if (a.driver < -1) return 'Warden';
+  if (p[19] === 'B' && a.driver < 0) return 'Warden';
+  return 'Integrator';
+}
+
+function deploymentDensity(p) {
+  let d = (p[1] === 'A' ? 2 : 1);
+  if (p[2] === 'A') d += 1;
+  if (p[14] === 'B') d += 2;
+  if (p[20] === 'A') d += 1;
+  else d -= 2;
+  // visibility (D4)
+  d += (p[13] === 'A' ? 2 : -2);
+  d += (p[21] === 'A' ? 1 : -1);
+  return d;
+}
+
+function governanceDensity(p) {
+  let g = 0;
+  // D1
+  g += (p[8] === 'A' ? -1 : 1);
+  if (p[10] === 'B') g += 2;
+  if (p[11] === 'B') g += 1;
+  if (p[19] === 'B') g += 2;
+  if (p[18] === 'A') g += 1;
+  if (p[15] === 'A' || p[15] === 'B') g += 1;
+  g += (p[21] === 'A' ? 1 : -1);
+  // D2
+  g += (p[5] === 'A' ? 2 : -1);
+  if (p[18] === 'A') g += 2;
+  if (p[15] === 'A') g += 2;
+  // D3
+  g += (p[8] === 'A' ? -1 : 1);
+  g += (p[9] === 'A' ? -1 : 1);
+  g += (p[16] === 'A' ? -1 : 1);
+  // D5
+  g += (p[3] === 'A' ? 2 : -2);
+  g += (p[4] === 'A' ? 1 : -1);
+  g += (p[6] === 'A' ? 2 : -1);
+  if (p[18] === 'A') g += 1;
+  // D6
+  g += (p[7] === 'A' ? 2 : -1);
+  return g;
+}
+
+function classifyMaturity(p) {
+  const d = deploymentDensity(p);
+  const g = governanceDensity(p);
+  if (d <= 0) return 'L1';
+  if (d <= 2) return g >= 8 ? 'L2' : 'L1-L2';
+  if (d <= 5) {
+    if (g >= 10) return 'L2-3';
+    if (g >= 5) return 'L2';
+    return 'L2';
+  }
+  if (d <= 8) {
+    if (g >= 12) return 'L3';
+    if (g >= 6) return 'L2-3';
+    return 'L2';
+  }
+  if (g >= 14) return 'L3-4';
+  if (g >= 8) return 'L3';
+  return 'L3';
+}
+
+function submitQuiz() {
+  const p = {};
+  for (let i = 0; i < picks.length; i++) p[i + 1] = picks[i] || 'A';
+  const archetype = classifyArchetype(p);
+  const maturity = classifyMaturity(p);
+  document.getElementById('calc-final').classList.remove('visible');
+  renderResult(archetype, maturity);
+}
+
+/* ─── Admin shortcut: ?archetype=Vanguard&level=L2 ────────
+   Skips the quiz and renders the result directly. Useful for review and screenshots.
+   Examples:
+     /assessment/?archetype=Vanguard&level=L2
+     /assessment/?archetype=Folkway&level=L1
+     /assessment/?archetype=Architect&level=L3-4
+   Valid archetype values: Vanguard, Traveller, Architect, Integrator, Tinkerer,
+                            Ratifier, Warden, Broker, Folkway, Guild
+   Valid level values: L1, L1-L2, L2, L2-3, L3, L3-4
+*/
+function checkAdminShortcut() {
+  const params = new URLSearchParams(window.location.search);
+  const archetype = params.get('archetype') || params.get('a');
+  const level = params.get('level') || params.get('l');
+  if (archetype && level && ARCHETYPES[archetype] && MATURITY_TO_RESULTS[level]) {
+    // Hide the quiz section entirely, render result directly
+    document.getElementById('assessment').style.display = 'none';
+    renderResult(archetype, level);
+    return true;
+  }
+  return false;
+}
+
+// Run admin-shortcut check on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', checkAdminShortcut);
+} else {
+  checkAdminShortcut();
+}
+
+/* ─── Map v0.9 maturity keys to legacy RESULTS keys ─────── */
+const MATURITY_TO_RESULTS = {
+  'L1': '1',
+  'L1-L2': '1',
+  'L2': '2',
+  'L2-3': '2-3',
+  'L3': '3',
+  'L3-4': '3-4'
+};
+
+/* ─── Result rendering: two cards (archetype + maturity) ─── */
+function renderResult(archetypeKey, maturityKey) {
+  const a = ARCHETYPES[archetypeKey];
+  const cards = document.getElementById('result-cards');
+
+  // ── Archetype card with tarot mascot + rich content ─────
+  const strengthsHtml = a.strengths.map(s => `<div class="strength-item">${s}</div>`).join('');
+  const challengesHtml = a.challenges.map(c => `<div class="challenge-item">${c}</div>`).join('');
+
+  const archetypeCard = `
+    <div class="result-card archetype-card">
+      <div class="result-card-label">Your archetype</div>
+      <div class="archetype-card-body">
+        <div class="archetype-tarot">
+          <div class="tarot-numeral">${ROMAN[archetypeKey]}</div>
+          <div class="tarot-icon">${ICONS[archetypeKey]}</div>
+          <div class="tarot-name">${a.title}</div>
+        </div>
+        <div class="archetype-info">
+          <div class="result-card-title">${a.title}</div>
+          <div class="result-card-tagline">"${a.quote}"</div>
+          <div class="result-card-meta">
+            ${a.axes.map(ax => `<span class="result-meta-tag">${ax}</span>`).join('')}
+          </div>
+          <div class="result-card-summary"><p>${a.profile}</p></div>
+          <button class="result-expand-toggle" onclick="toggleExpand(this)">Explore in depth ↓</button>
+          <div class="result-expand">
+
+            <h4>Core strategic bet</h4>
+            <p>${a.coreStrategicBet}</p>
+
+            <h4>Canonical examples</h4>
+            <p>${a.examples}</p>
+
+            <h4>Strengths</h4>
+            <div class="trait-list">${strengthsHtml}</div>
+
+            <h4>Common challenges</h4>
+            <div class="trait-list challenge-list">${challengesHtml}</div>
+
+            <h4>Healthy vs. unhealthy expression</h4>
+            <div class="tension-poles">
+              <div class="tension-pole">
+                <div class="pole-label">Healthy</div>
+                ${a.healthy}
+              </div>
+              <div class="tension-pole">
+                <div class="pole-label">Unhealthy</div>
+                ${a.unhealthy}
+              </div>
+            </div>
+
+            <h4>Blind spot</h4>
+            <p class="quote">${a.blindSpot}</p>
+
+            <h4>Protocol orientation</h4>
+            <div class="historical-item">
+              <div class="historical-label">Natural posture toward protocols</div>
+              <div class="historical-text">${a.protocolNatural}</div>
+            </div>
+            <div class="historical-item">
+              <div class="historical-label">Effective protocol management</div>
+              <div class="historical-text">${a.protocolEffective}</div>
+            </div>
+            <div class="historical-item">
+              <div class="historical-label">Ineffective protocol management</div>
+              <div class="historical-text">${a.protocolIneffective}</div>
+            </div>
+            <div class="historical-item">
+              <div class="historical-label">The protocol view that fits this archetype</div>
+              <div class="historical-text">${a.protocolView}</div>
+            </div>
+
+            <h4>Stress and growth directions</h4>
+            <div class="tension-poles">
+              <div class="tension-pole">
+                <div class="pole-label">Under stress</div>
+                ${a.underStress}
+              </div>
+              <div class="tension-pole">
+                <div class="pole-label">Growth direction</div>
+                ${a.growthDirection}
+              </div>
+            </div>
+
+            <h4>Evolutionary path</h4>
+            <p>${a.evolutionaryPath}</p>
+
+            <h4>Warning sign</h4>
+            <p class="quote">${a.warning}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // ── Maturity card (parallel to archetype card with expand pattern) ──
+  const resultsKey = MATURITY_TO_RESULTS[maturityKey] || '1';
+  const r = RESULTS[resultsKey];
+
+  const fmHtml = r.failureModes.map(fm => `
+    <div class="failure-mode-item">
+      <div class="failure-mode-name">${fm.name}</div>
+      <div class="failure-mode-desc">${fm.description}</div>
+    </div>
+  `).join('');
+  const actHtml = r.actions.map(act => `
+    <div class="action-item">
+      <div class="action-name">${act.name}</div>
+      <div class="action-desc">${act.description}</div>
+      <div class="action-done"><strong>Done when:</strong> ${act.doneWhen}</div>
+    </div>
+  `).join('');
+  const arcHtml = r.arcSteps.map((step, i) =>
+    `<span class="arc-step ${i === r.current ? 'current' : ''}">${step}</span>${i < r.arcSteps.length - 1 ? '<span class="arc-arrow">→</span>' : ''}`
+  ).join('');
+  const summaryHtml = '<p>' + r.description.split('\n\n')[0] + '</p>';
+
+  // Build progress meter (5 bars)
+  const progress = LEVEL_PROGRESS[resultsKey];
+  let progressBars = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= Math.floor(progress)) progressBars += '<span class="full"></span>';
+    else if (i - 0.5 === progress) progressBars += '<span class="half"></span>';
+    else progressBars += '<span></span>';
   }
 
-  // Show calculating state
-  const activeStep = document.querySelector('.step.active');
-  activeStep.querySelector('.btn').style.display = 'none';
-  const calcId = 'calc-' + step1Choice;
-  document.getElementById(calcId).classList.add('visible');
+  const maturityCard = `
+    <div class="result-card maturity-card">
+      <div class="result-card-label">Your maturity level</div>
+      <div class="archetype-card-body">
+        <div class="maturity-badge">
+          <div class="badge-level-num">${LEVEL_DISPLAY[resultsKey]}</div>
+          <div class="badge-progress">${progressBars}</div>
+          <div class="badge-icon">${LEVEL_ICONS[resultsKey]}</div>
+          <div class="badge-name">${r.levelName}</div>
+        </div>
+        <div class="archetype-info">
+          <div class="result-card-title">Level ${r.levelNum} — ${r.levelName}</div>
+          <div class="result-card-tagline">${r.tagline}</div>
+          <div class="result-card-summary">${summaryHtml}</div>
+          <button class="result-expand-toggle" onclick="toggleExpand(this)">Explore in depth ↓</button>
+          <div class="result-expand">
+            <h4>Where you are</h4>
+            ${r.description.split('\n\n').slice(1).map(p => '<p>' + p + '</p>').join('')}
 
+            <h4>Failure modes at this level</h4>
+            <div class="failure-modes">${fmHtml}</div>
+
+            <h4>Actions to take</h4>
+            <div class="action-items">${actHtml}</div>
+
+            <h4>Your position in the model</h4>
+            <div class="output-arc">${arcHtml}</div>
+
+            <h4>Characteristic tension</h4>
+            <div class="tension-poles">
+              <div class="tension-pole">
+                <div class="pole-label">Pull A</div>
+                ${r.tension.a}
+              </div>
+              <div class="tension-pole">
+                <div class="pole-label">Pull B</div>
+                ${r.tension.b}
+              </div>
+            </div>
+
+            <h4>Historical parallels</h4>
+            <div class="historical-item">
+              <div class="historical-label">${r.periodTech.label}</div>
+              <div class="historical-text">${r.periodTech.text}</div>
+            </div>
+            <div class="historical-item">
+              <div class="historical-label">${r.containerization.label}</div>
+              <div class="historical-text">${r.containerization.text}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  cards.innerHTML = archetypeCard + maturityCard;
+  document.getElementById('result-actions').style.display = 'flex';
+  document.getElementById('output').classList.add('visible');
   setTimeout(() => {
-    renderOutput(placement);
-  }, CALC_DELAY_MS);
+    document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+function toggleExpand(btn) {
+  const expand = btn.nextElementSibling;
+  const isOpen = expand.classList.toggle('open');
+  btn.textContent = isOpen ? 'Hide details ↑' : 'Explore in depth ↓';
 }
 
 /* ─── Output rendering ───────────────────────────────────── */
@@ -2160,18 +3300,17 @@ function toggleContent(btn) {
 }
 
 function retakeAssessment() {
-  step1Choice = null;
-  step2Choice = null;
+  scopeChoice = null;
+  currentQuestion = 0;
+  picks = new Array(24).fill(null);
 
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('scope-step').classList.add('active');
   document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
   document.querySelectorAll('.radio-option').forEach(r => r.classList.remove('selected'));
-  document.querySelectorAll('[id^="step2"]').forEach(s => {
-    const btn = s.querySelector('.btn');
-    if (btn) btn.style.display = 'none';
-    const calc = s.querySelector('.calculating');
-    if (calc) calc.classList.remove('visible');
-  });
+  document.getElementById('scope-next').style.display = 'none';
+  document.getElementById('calc-final').classList.remove('visible');
+  document.getElementById('result-actions').style.display = 'none';
   document.getElementById('step1-next').style.display = 'none';
   document.getElementById('step1').classList.add('active');
   document.getElementById('output').classList.remove('visible');
