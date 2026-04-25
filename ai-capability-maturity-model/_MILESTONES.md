@@ -15,6 +15,13 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ## Milestone Log
 
+### 2026-04-25 (afternoon) | OBS-004 contact form worker proxy + bibliography progress + FEATURE-004 added
+
+- **OBS-004 shipped.** Built `_Infrastructure/protocolized-inbox/` Cloudflare Worker. `POST /contact` endpoint (live) + `POST /comment` stub (for FEATURE-004). Rate limit 5/hr/IP via KV namespace `RATE_LIMIT` (id `61f1fde1f27e4367ba85ff6c50047cd3`). Discord webhook URL stored as worker secret `DISCORD_WEBHOOK`. CORS allowlist for protocolized.dev + here.now staging mounts. All 6 site pages (homepage, assessment, case-studies, levels, litepaper, blog) updated to POST to `https://protocolized-inbox.rafaeldf2.workers.dev/contact` instead of the Discord URL directly. **Outstanding for Rafa:** rotate the original Discord webhook URL in Discord channel settings.
+- **Bibliography progress (OBS-001 partial).** Seeded 5 new `_Observations/research/` entries: rao-evil-twin (Entry 24), rao-factory-to-factory (Entry 27), finding-fault-lines (Entry 26), and the two non-bibliography sources used during archetype dev (`vibe-coding-and-maker-movement`, `four-paradigms-of-crft`). 18 of ~32 entries now seeded; 14 remaining.
+- **FEATURE-004 added to backlog.** Copy-editor comment mode — passcode-protected highlight-to-comment UI with gutter-anchored cards (npc.here.now/template/ pattern). Worker stub `POST /comment` endpoint already in place; needs frontend implementation. Two secrets to set when shipping: `DISCORD_COMMENT_WEBHOOK`, `COMMENT_PASSCODE`.
+- **Cert/DNS investigation.** Enterprise user reported "bad or invalid certificates" warning. Verified `protocolized.dev` cert is valid (Google Trust Services WE1, expires 2026-06-15) and DNS routes via Cloudflare to here.now origin. The warning is on the user's side — corporate SSL inspection appliance not trusting the WE1 intermediate. Not fixable from us.
+
 ### 2026-04-25 (later that day) | Assessment v0.9 result page — rich profile rendering + admin shortcut
 
 - **Archetype card depth.** Rebuilt the archetype output to mirror the maturity card structure. Default visible: archetype title + self-claim quote + axis tags + full Profile paragraph (~120 words from `Archetypes-v0.5.md`). The "Explore in depth" expand reveals 10 sections: core strategic bet · canonical examples · strengths · common challenges · healthy vs. unhealthy expression (two-pole grid) · blind spot · protocol orientation (4 sub-sections — natural posture · effective management · ineffective management · protocol view that fits) · stress and growth directions (two-pole grid) · evolutionary path · warning sign. AI-flavor emphasis section retained in data, hidden from render (re-addable via one-line edit).

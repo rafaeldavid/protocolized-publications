@@ -1962,21 +1962,13 @@
     status.className = 'panel-status';
 
     const pageLabel = (document.title || '').split(' — ')[0] || location.pathname;
-    const lines = [
-      '📞 **Schedule a Call — protocolized.dev**',
-      '**Page:** ' + pageLabel + ' (' + location.pathname + ')',
-      '**From:** ' + name,
-      '**Email:** ' + email,
-      '',
-      message
-    ];
-    const content = lines.join('\n').slice(0, 1950);
+    const messageWithPage = 'Page: ' + pageLabel + ' (' + location.pathname + ')\n\n' + message;
 
     try {
-      const res = await fetch('https://discord.com/api/webhooks/1497112237570265128/TpNewRJ80IevLBv7tsf6GsLwTT0G7aiLHGKq2QKdbdXwuoK_kG8G7TzrRAU3KM_yeWM1', {
+      const res = await fetch('https://protocolized-inbox.rafaeldf2.workers.dev/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content })
+        body: JSON.stringify({ name, email, message: messageWithPage, subject: 'Schedule a Call', _hp: hp })
       });
       if (res.ok) {
         status.textContent = "Request sent. We'll be in touch.";

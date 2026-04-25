@@ -989,19 +989,11 @@
     status.textContent = 'Sending…';
     status.className = 'contact-status';
 
-    const lines = [
-      '📬 **New contact message — protocolized.dev**',
-      '**From:** ' + name,
-    ];
-    if (email) lines.push('**Email:** ' + email);
-    lines.push('', message);
-    const content = lines.join('\n').slice(0, 1950);
-
     try {
-      const res = await fetch('https://discord.com/api/webhooks/1497112237570265128/TpNewRJ80IevLBv7tsf6GsLwTT0G7aiLHGKq2QKdbdXwuoK_kG8G7TzrRAU3KM_yeWM1', {
+      const res = await fetch('https://protocolized-inbox.rafaeldf2.workers.dev/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content })
+        body: JSON.stringify({ name, email, message, subject: 'New contact message — homepage', _hp: hp })
       });
       if (res.ok) {
         status.textContent = 'Message sent. Thank you.';

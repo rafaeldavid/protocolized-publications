@@ -214,11 +214,12 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 ## Observations / monitoring infrastructure
 
 ### OBS-001 — Seed `_Observations/research/` from litepaper bibliography
-- **Scope:** Ingest the remaining ~35 bibliography entries in `Litepaper/litepaper-bibliography.md` as research observations matching the `research/_TEMPLATE.md` shape. Three are already seeded (Samsung, Klarna, Menlo).
+- **Scope:** Ingest the bibliography entries in `Litepaper/litepaper-bibliography.md` as research observations matching the `research/_TEMPLATE.md` shape. Plus the two articles used during archetype development that aren't in the litepaper bibliography.
+- **Progress (2026-04-25):** **18 of ~32 entries seeded.** Initial 13 from 2026-04-24 batch (Samsung, Klarna, Menlo, Accenture, Armstrong-FDE, Duolingo, EU AI Act, McKinsey, Moffatt-Air-Canada, OpenAI State of Enterprise AI, Rao Protocol Reader, Shopify, Uber Agentic Shift). Added 2026-04-25: rao-evil-twin (Entry 24), rao-factory-to-factory (Entry 27), finding-fault-lines (Entry 26), vibe-coding-and-maker-movement (NEW — used in archetype v0.3 dev), four-paradigms-of-crft (NEW — used in archetype v0.2 dev).
+- **Remaining (~14 entries):** Entries 3, 4, 7, 8, 13, 14, 23 (Rao FPT), 29 (legal hallucinations), 30 (healthcare shadow AI), 34 (shadow AI prevalence), 35 (business-protocols table), 36 (HBR — AI intensifies work), 38 (Humphrey CMM), 39 (NIST AI RMF).
 - **Rationale:** Establishes the primary-source corpus the weekly brief can cite into. Without it, each weekly scan starts from zero context.
-- **Open questions:** Batch all at once, or ingest priority-first (canonical cases cited by the artifact + litepaper hero sections)? Recommend priority-first: ~10 more to hit the items referenced on the live pages.
 - **Dependencies:** None — can proceed any time.
-- **Status:** intake
+- **Status:** in-progress (partial 2026-04-25); remaining 14 entries queued
 
 ### OBS-002 — Weekly scan automation (mechanism decision + wire-up)
 - **Scope:** Build the recurring agent that scans the past week's AI workforce/adoption news, writes a brief to `_Observations/weekly-briefs/YYYY-WW-scan.md`, proposes a lede update, and commits to the repo. Also manually triggerable by Rafa.
@@ -231,9 +232,19 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 - **Status:** intake
 
 ### OBS-004 — Contact form worker proxy (harden the Discord webhook)
-- **Scope:** The homepage contact form currently POSTs directly from the browser to the Discord webhook URL. The URL is visible in page source; an abuser could spam the channel. Move the form submission through a Cloudflare Worker proxy (mirror the rafa-inbox pattern) that adds: (1) rate limit per IP, (2) honeypot check server-side, (3) minimal spam filter, (4) then forwards to Discord. Once in place, swap the form's POST target from the Discord URL to the worker URL and rotate the webhook.
-- **Rationale:** Exposing a webhook client-side is a known tradeoff. Acceptable for MVP, worth hardening before we drive real traffic to the contact form.
-- **Dependencies:** None, but best scheduled before any outbound promotion of the site.
+- **Scope:** Move the contact form / schedule-a-call submissions off the client-exposed Discord webhook URL onto a server-side Cloudflare Worker proxy with rate limit + honeypot + length caps + CORS allowlist.
+- **Resolution:** Built `_Infrastructure/protocolized-inbox/` (Cloudflare Worker) with `POST /contact` (live) and `POST /comment` (stub for FEATURE-004). KV namespace `RATE_LIMIT` provisioned (5/hr/IP). Discord webhook URL stored as worker secret `DISCORD_WEBHOOK`. All 6 site pages updated to POST to `https://protocolized-inbox.rafaeldf2.workers.dev/contact` instead of the Discord URL directly.
+- **Outstanding (for Rafa):** Rotate the original Discord webhook URL in Discord channel settings now that the live pages no longer use it. Anything still hitting the old URL after rotation will fail (the point — neutralises any cached client copies that still have the old URL).
+- **Status:** **shipped 2026-04-25**
+
+### FEATURE-004 — Copy-editor comment mode
+- **Scope:** A passcode-protected comment mode for editing review across the entire site. UX: editor unlocks comment mode (passcode prompt), highlights any text on a page, a comment modal opens with the highlighted text pre-populated as "Before" + a free field for the suggested edit + a free-form note field. On submit, the comment is sent to the worker (`POST /comment` endpoint, already stubbed in `_Infrastructure/protocolized-inbox/`) and forwarded to a dedicated Discord channel (different from the contact-form webhook). Comments are also written to a synthesised log so we can pattern-match across them.
+- **UI inspiration:** The right gutter from [`npc.here.now/template`](https://npc.here.now/template/) — the "Considerations" sidenote pattern. Each highlighted edit suggestion lives as a gutter-anchored card on the page, with the highlight visible inline; clicking the card opens the modal again to edit/resolve the suggestion.
+- **Backend:** Already partially in place — the `/comment` endpoint exists in `protocolized-inbox` worker with passcode-header check and a Discord-webhook forward. Two secrets to set when shipping: `wrangler secret put DISCORD_COMMENT_WEBHOOK` (separate Discord channel), `wrangler secret put COMMENT_PASSCODE`. KV is shared with the contact-form rate limiter.
+- **Storage of synthesised edits:** Open question — Discord-channel-only (synthesise manually from the channel), OR also write to a markdown log in the repo via GitHub API, OR write to a Cloudflare D1 table with a small admin viewer. Recommendation: start Discord-only; promote to D1 if volume justifies it.
+- **Frontend:** Per-page JS that (1) wraps text nodes for highlight detection, (2) shows the modal on selection + comment-mode-active, (3) renders gutter cards from existing comments fetched from worker (or stored in localStorage during a single review session if backend persistence is deferred).
+- **Rationale:** Source: 2026-04-25 conversation. Editor will be reviewing the entire site; needs a structured way to capture before/after suggestions without breaking page flow. Also lets us synthesise patterns rather than chase one-off edits.
+- **Dependencies:** None blocking — worker stub already handles the endpoint. Frontend implementation is the remaining work.
 - **Status:** intake
 
 ### OBS-003 — Lede accept-and-deploy runbook

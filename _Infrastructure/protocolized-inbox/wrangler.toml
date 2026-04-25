@@ -1,0 +1,13 @@
+name = "protocolized-inbox"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+
+# Rate-limit storage (KV namespace).
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "61f1fde1f27e4367ba85ff6c50047cd3"
+
+# Secrets to set after first deploy (do NOT put real values in this file):
+#   wrangler secret put DISCORD_WEBHOOK     # contact form Discord webhook URL
+#   wrangler secret put DISCORD_COMMENT_WEBHOOK  # (future) comment-mode webhook
+#   wrangler secret put COMMENT_PASSCODE    # (future) passcode for comment mode
