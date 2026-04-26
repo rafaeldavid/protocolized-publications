@@ -32,5 +32,5 @@ Direct contribution to the archetype taxonomy in v0.4:
 
 ## Related observations
 - vibe-coding-and-maker-movement — adjacent vocabulary on judgment development at the maker layer
-- (pending) rao-evil-twin — protocol-theory grounding for how AI engagement gets striated into operating modes
+- [rao-evil-twin](rao-evil-twin.md) — protocol-theory grounding for how AI engagement gets striated into operating modes
 - rao-protocol-reader — foundational protocol vocabulary

@@ -36,4 +36,4 @@ It exemplifies the Level-1 failure mode: organizational risk accumulating silent
 - Company memo cited "transmission of sensitive information" as the specific failure mode
 
 ## Related observations
-- (pending) shadow-ai-prevalence-roundup — IBM data showing shadow AI incidents cost $4.63M on average
+- [shadow-ai-prevalence](shadow-ai-prevalence.md) — IBM data showing shadow AI incidents cost $4.63M on average

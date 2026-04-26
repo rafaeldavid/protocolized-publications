@@ -35,5 +35,5 @@ Three contributions:
 ## Related observations
 - rao-protocol-reader — foundational protocol vocabulary (Entry 20)
 - rao-evil-twin — striated coordination in factor-to-factory context (Entry 24)
-- (pending) finding-fault-lines — applies F2F insight to enterprise firms (Entry 26)
+- [finding-fault-lines](finding-fault-lines.md) — applies F2F insight to enterprise firms (Entry 26)
 - uber-agentic-shift — F2F pattern at platform scale inside one company

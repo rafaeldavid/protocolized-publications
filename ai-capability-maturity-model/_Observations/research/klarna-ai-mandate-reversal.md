@@ -31,5 +31,5 @@ Canonical Level-2 (Sanctioned) failure arc. The organization granted broad AI ac
 - The public framing of the reversal was quality, not cost
 
 ## Related observations
-- (pending) shopify-ai-mandate — Lütke "non-optional" memo
-- (pending) duolingo-contractor-replacement — similar L2 reversal pattern
+- [shopify-lutke-memo](shopify-lutke-memo.md) — Lütke "non-optional" memo
+- [duolingo-contractor-replacement](duolingo-contractor-replacement.md) — similar L2 reversal pattern

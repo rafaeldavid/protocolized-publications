@@ -28,5 +28,5 @@ Section 2 of the litepaper depends on this vocabulary. "Protocol" is the lens th
 - Rao cites Whitehead: "Civilization advances by extending the number of important operations which we can perform without thinking of them."
 
 ## Related observations
-- (pending) rao-evil-twin — smooth-to-striated framing (Entry 24)
-- (pending) rao-formal-protocol-theory — methodology of protocol framing (Entry 23)
+- [rao-evil-twin](rao-evil-twin.md) — smooth-to-striated framing (Entry 24)
+- [rao-formal-protocol-theory](rao-formal-protocol-theory.md) — methodology of protocol framing (Entry 23)

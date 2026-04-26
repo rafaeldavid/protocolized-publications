@@ -31,6 +31,6 @@ Two load-bearing contributions to the framework:
 
 ## Related observations
 - rao-protocol-reader — foundational protocol vocabulary (Entry 20)
-- (pending) rao-formal-protocol-theory — methodology for analysing protocols (Entry 23)
-- (pending) finding-fault-lines — application of striated framing to firms specifically (Entry 26)
+- [rao-formal-protocol-theory](rao-formal-protocol-theory.md) — methodology for analysing protocols (Entry 23)
+- [finding-fault-lines](finding-fault-lines.md) — application of striated framing to firms specifically (Entry 26)
 - vibe-coding-and-maker-movement — what happens when smooth behavior space is exploited without striation

@@ -33,7 +33,7 @@ Three direct contributions to the v0.5 archetype set:
 - Signal capture happens at the infrastructure / platform layer rather than with the makers.
 
 ## Related observations
-- (pending) rao-evil-twin — smooth-to-striated framing of protocols (Entry 24)
+- [rao-evil-twin](rao-evil-twin.md) — smooth-to-striated framing of protocols (Entry 24)
 - four-paradigms-of-crft — adjacent vocabulary on Augmentation vs. Frontiers paradigms
 - klarna-ai-mandate-reversal — canonical case of "evaluative anesthesia" at deployment scale
 - duolingo-contractor-replacement — adjacent case of fast-shipping without quality-signal preservation

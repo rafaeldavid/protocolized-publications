@@ -28,5 +28,5 @@ Empirical anchor for "most organizations are at Level 1 or early Level 2." The 1
 - Copilot-style deployment remains the dominant enterprise pattern
 
 ## Related observations
-- (pending) mckinsey-state-of-ai-2025 — complementary adoption-vs-value-capture gap
+- [mckinsey-state-of-ai-2025](mckinsey-state-of-ai-2025.md) — complementary adoption-vs-value-capture gap
 - (pending) stanford-hai-index — methodological contrast on adoption measurement
