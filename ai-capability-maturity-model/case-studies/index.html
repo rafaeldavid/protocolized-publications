@@ -592,39 +592,140 @@
       margin: 0 auto;
     }
 
+    /* ─── Case card (IA-007 Phase D — redesigned for tighter info density) ─── */
     .case-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 32px;
+      padding: 22px 24px;
       display: flex;
       flex-direction: column;
+      gap: 10px;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .case-card:hover {
+      border-color: var(--accent);
+    }
+    .case-card.expanded {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(125, 90, 150, 0.08);
     }
 
-    .case-org { font-size: 1.05rem; margin-bottom: 4px; }
-    .case-sector { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 16px; }
-    .case-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; flex: 1; }
-    .case-mechanism {
-      font-size: 0.85rem;
-      font-style: italic;
+    /* Header row: metadata (pill + sector) on the left, chevron at right */
+    .case-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .case-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .case-card-meta .level-pill {
+      margin: 0;
+    }
+    .case-card-meta .case-sector {
+      margin: 0;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    /* Chevron toggle */
+    .case-toggle-icon {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      color: var(--text-secondary);
+      padding: 0;
+      transition: transform 220ms ease, border-color 200ms ease, color 200ms ease, background 200ms ease;
+    }
+    .case-toggle-icon svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+    .case-toggle-icon:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: var(--accent-light);
+    }
+    .case-card.expanded .case-toggle-icon {
+      transform: rotate(180deg);
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: var(--accent-light);
+    }
+
+    /* Title and content typography */
+    .case-card .case-org {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .case-card .case-mechanism {
+      font-size: 0.875rem;
+      font-style: normal;
       color: var(--text);
-      border-left: 3px solid var(--accent);
+      border-left: 2px solid var(--accent-light);
       padding-left: 12px;
-      margin: 16px 0;
-      line-height: 1.5;
+      margin: 0;
+      line-height: 1.55;
     }
 
-    .case-question {
+    /* Body / question / deep — only visible when expanded */
+    .case-card .case-body {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .case-card .case-question {
       font-size: 0.875rem;
       font-weight: 600;
       color: var(--accent-dark);
-      margin-top: 16px;
       line-height: 1.5;
+      margin: 0;
+    }
+    .case-card .case-deep {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
     }
 
-    /* .drill-toggle extends .expand-toggle with case-specific overrides */
-    .drill-toggle { font-size: 0.8rem; margin-top: 16px; }
+    /* Detail wrapper — hidden by default; revealed by .open */
+    .case-detail {
+      display: none;
+    }
+    .case-detail.open {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
 
+    /* Legacy drill-content (used elsewhere on the page — leave untouched) */
+    .drill-toggle { font-size: 0.8rem; margin-top: 16px; }
     .drill-content {
       display: none;
       font-size: 0.8rem;
@@ -634,8 +735,25 @@
       padding-top: 12px;
       border-top: 1px solid var(--border);
     }
-
     .drill-content.open { display: block; }
+
+    /* Section intros (IA-007 Phase D) */
+    .section-intro {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 0 36px;
+    }
+    .section-divider {
+      margin-top: 56px;
+    }
+
+    /* Mobile */
+    @media (max-width: 720px) {
+      .case-card { padding: 18px 20px; }
+      .case-card .case-org { font-size: 1rem; }
+    }
 
     /* ─── Section 4: Assessment ────────────────────────────── */
     #assessment { background: var(--surface); }
@@ -1499,11 +1617,8 @@
   </div>
   <div class="nav-secondary">
     <ul class="nav-secondary-links">
-      <li><a href="#shadow-data-leak">Shadow Data Leak</a></li>
-      <li><a href="#mandate-reversal">Mandate Reversal</a></li>
-      <li><a href="#non-optional-mandate">Non-Optional Mandate</a></li>
-      <li><a href="#chatbot-liability">Chatbot Liability</a></li>
-      <li><a href="#designed-workflow">Designed Workflow</a></li>
+      <li><a href="#adoption-stories">Today's AI Adoption Stories</a></li>
+      <li><a href="#lessons-from-the-past">Lessons from the Past</a></li>
     </ul>
   </div>
 </nav>
@@ -1513,126 +1628,312 @@
   <div class="container">
     <span class="label">Protocols for Business</span>
     <h1>Case Studies</h1>
-    <p class="entry-descriptor">Three enterprise cases map to the first three levels of the model and show how organizations succeed, stall, or reverse under AI pressure.</p>
+    <p class="entry-descriptor">Recent organizational AI deployments and the technology adoption patterns they echo.</p>
     <div class="hero-cta">
       <a class="btn-hero" href="https://protocolized.dev/assessment/">Take the Assessment →</a>
     </div>
   </div>
 </section>
 
-<!-- ─── Body intro ────────────────────────────────────────── -->
-<section id="intro-body" class="section">
-  <div class="container prose-narrow">
-    <p>Concrete cases at each level of the model. Samsung's data leak is a canonical Level 1 (Shadow) incident — three engineers, proprietary code, no visibility until after the fact. Klarna's 2024–2025 arc is the textbook Level 2 (Sanctioned) failure — 90% adoption mandated, governance not designed, quality degradation surfaced through customers. Boom Supersonic's mkBoom workflow is a late Level 3 (Designed) case — AI embedded where governance was designed alongside, not after.</p>
-  </div>
-</section>
-
-<!-- ─── Section 3: Case Studies ──────────────────────────── -->
-<section id="cases" class="section">
+<!-- ─── Section A: Today's AI Adoption Stories ─────────────── -->
+<section id="adoption-stories" class="section">
   <div class="container">
     <div class="label">Evidence base</div>
-    <h2>Five case studies</h2>
-    <p class="context-intro" style="margin-bottom:36px">Read the diagnostic question at the bottom of each card — one of these patterns is probably yours.</p>
+    <h2>Today's AI Adoption Stories</h2>
+    <p class="section-intro">Five recent organizational AI deployments. Each card names the company, the year, what was deployed, and the outcome reported in public sources. Cases range from Level 1 shadow adoption to Level 3 designed integration.</p>
 
     <div class="cases-grid">
 
       <!-- Samsung — Shadow Data Leak -->
       <div class="case-card" id="shadow-data-leak">
-        <div class="level-pill">Level 1 — Shadow</div>
-        <h3 class="case-org"><a href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener" >Samsung Electronics ↗</a></h3>
-        <div class="case-sector">Technology / Semiconductor</div>
-        <div class="case-body">
-          Three engineers submitted proprietary source code and meeting transcripts to personal ChatGPT accounts within one month in April 2023. No policy governed this. Samsung had no visibility into what data had left the organization until after the fact. The data could not be recalled.
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 1 — Shadow</span>
+            <span class="case-sector">Technology / Semiconductor</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
+        <h3 class="case-org"><a href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener" >Samsung Electronics ↗</a></h3>
         <div class="case-mechanism">
           When governance is absent, exposure is invisible until it isn't.
         </div>
-        <div class="case-question">
-          Do you know which AI tools your employees are using today — and which organizational data they've submitted to those tools?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          Samsung banned all external AI tools, built an internal LLM (Samsung Gauss), then selectively re-admitted external tools under a governed protocol over two years. The arc — incident → ban → internal alternative → governed re-admission — is the most documented Level 1 exit path available. The Samsung incident was not unusual in scale: contemporaneous Cyberhaven research found that in a 100,000-person company, confidential data was being shared with AI services hundreds of times per week. (Cyberhaven, Q1 2024.) Most organizations move directly to re-admission without building the governance protocol the ban was meant to create space for. The ban without a governed alternative is as common a failure mode as the original leak.
+        <div class="case-detail">
+          <div class="case-body">
+            Three engineers submitted proprietary source code and meeting transcripts to personal ChatGPT accounts within one month in April 2023. No policy governed this. Samsung had no visibility into what data had left the organization until after the fact. The data could not be recalled.
+          </div>
+          <div class="case-question">
+            Do you know which AI tools your employees are using today — and which organizational data they've submitted to those tools?
+          </div>
+          <div class="case-deep">
+            Samsung banned all external AI tools, built an internal LLM (Samsung Gauss), then selectively re-admitted external tools under a governed protocol over two years. The arc — incident → ban → internal alternative → governed re-admission — is the most documented Level 1 exit path available. The Samsung incident was not unusual in scale: contemporaneous Cyberhaven research found that in a 100,000-person company, confidential data was being shared with AI services hundreds of times per week. (Cyberhaven, Q1 2024.) Most organizations move directly to re-admission without building the governance protocol the ban was meant to create space for. The ban without a governed alternative is as common a failure mode as the original leak.
+          </div>
         </div>
       </div>
 
       <!-- Klarna — Mandate Reversal -->
       <div class="case-card" id="mandate-reversal">
-        <div class="level-pill">Level 2 — Sanctioned</div>
-        <h3 class="case-org"><a href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener" >Klarna ↗</a></h3>
-        <div class="case-sector">Financial Technology</div>
-        <div class="case-body">
-          90% daily AI adoption in the first month. Two-thirds of customer service handled by AI. $40M in claimed profit improvement. Twelve months later, the CEO reversed course and began rehiring human agents, citing quality failures the absent governance layer could not address.
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 2 — Sanctioned</span>
+            <span class="case-sector">Financial Technology</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
+        <h3 class="case-org"><a href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener" >Klarna ↗</a></h3>
         <div class="case-mechanism">
           The mandate produced adoption. Adoption revealed quality failures. Quality failures required protocol. Designing protocol required slowing adoption. Leadership didn't want to slow adoption.
         </div>
-        <div class="case-question">
-          When your AI produces a wrong answer in a customer-facing workflow, does a defined process exist for catching it — or does someone fix it when they notice?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          The financial results and the quality failures coexisted for longer than they should have. Cost savings from AI-handled volume were immediate and measurable. Quality degradation was diffuse and slow to surface — it required customers to complain, complaints to accumulate, and leadership to connect the pattern. That lag is the Level 2 trap: the metrics that look good are leading, and the metrics that matter are trailing. By the time the reversal became necessary, Klarna had already built the customer expectation that human support was gone.
+        <div class="case-detail">
+          <div class="case-body">
+            90% daily AI adoption in the first month. Two-thirds of customer service handled by AI. $40M in claimed profit improvement. Twelve months later, the CEO reversed course and began rehiring human agents, citing quality failures the absent governance layer could not address.
+          </div>
+          <div class="case-question">
+            When your AI produces a wrong answer in a customer-facing workflow, does a defined process exist for catching it — or does someone fix it when they notice?
+          </div>
+          <div class="case-deep">
+            The financial results and the quality failures coexisted for longer than they should have. Cost savings from AI-handled volume were immediate and measurable. Quality degradation was diffuse and slow to surface — it required customers to complain, complaints to accumulate, and leadership to connect the pattern. That lag is the Level 2 trap: the metrics that look good are leading, and the metrics that matter are trailing. By the time the reversal became necessary, Klarna had already built the customer expectation that human support was gone.
+          </div>
         </div>
       </div>
 
       <!-- Shopify — Non-Optional Mandate -->
       <div class="case-card" id="non-optional-mandate">
-        <div class="level-pill">Level 2 — Sanctioned</div>
-        <h3 class="case-org"><a href="https://www.theverge.com/news/644943/shopify-tobi-lutke-ai-memo-developers-engineers" target="_blank" rel="noopener" >Shopify ↗</a></h3>
-        <div class="case-sector">Software / Commerce Platform</div>
-        <div class="case-body">
-          April 2025: CEO Tobi Lütke's internal memo declared AI use "non-optional" for every employee. Managers must demonstrate AI use before requesting additional headcount. The mandate produced an adoption signal but did not define what acceptable AI use looks like in non-technical roles. High adoption rate, unmeasured quality.
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 2 — Sanctioned</span>
+            <span class="case-sector">Software / Commerce Platform</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
+        <h3 class="case-org"><a href="https://www.theverge.com/news/644943/shopify-tobi-lutke-ai-memo-developers-engineers" target="_blank" rel="noopener" >Shopify ↗</a></h3>
         <div class="case-mechanism">
           A mandate without a competency standard produces compliance theater. The reported adoption rate climbs; the governance maturity does not.
         </div>
-        <div class="case-question">
-          Does your organization's AI mandate include a definition of acceptable use — or just a directive to use it?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          Shopify is mid-Level 2: broad AI access has been granted, the workflow design hasn't been done. Without competency criteria, every team interprets "AI use" differently. Some teams genuinely redesign; most layer AI on existing work and report adoption metrics. The Level 2 risk surfaces when financial results and AI claims accumulate alongside un-measured quality drift — the gap between what's reported and what's actually happening becomes the next year's audit problem. The reversal scenario plays out when an external incident or stakeholder forces leadership to define what they meant by "AI use" — at which point the absence of that definition becomes the story.
+        <div class="case-detail">
+          <div class="case-body">
+            April 2025: CEO Tobi Lütke's internal memo declared AI use "non-optional" for every employee. Managers must demonstrate AI use before requesting additional headcount. The mandate produced an adoption signal but did not define what acceptable AI use looks like in non-technical roles. High adoption rate, unmeasured quality.
+          </div>
+          <div class="case-question">
+            Does your organization's AI mandate include a definition of acceptable use — or just a directive to use it?
+          </div>
+          <div class="case-deep">
+            Shopify is mid-Level 2: broad AI access has been granted, the workflow design hasn't been done. Without competency criteria, every team interprets "AI use" differently. Some teams genuinely redesign; most layer AI on existing work and report adoption metrics. The Level 2 risk surfaces when financial results and AI claims accumulate alongside un-measured quality drift — the gap between what's reported and what's actually happening becomes the next year's audit problem. The reversal scenario plays out when an external incident or stakeholder forces leadership to define what they meant by "AI use" — at which point the absence of that definition becomes the story.
+          </div>
         </div>
       </div>
 
       <!-- Air Canada — Chatbot Liability -->
       <div class="case-card" id="chatbot-liability">
-        <div class="level-pill">Level 2 — Sanctioned</div>
-        <h3 class="case-org"><a href="https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know" target="_blank" rel="noopener" >Moffatt v. Air Canada ↗</a></h3>
-        <div class="case-sector">Airline / Customer Service</div>
-        <div class="case-body">
-          February 2024: Air Canada's chatbot informed Jake Moffatt that bereavement fares could be claimed retroactively. Air Canada's actual policy did not permit retroactive claims. In court, Air Canada argued the chatbot was a "separate legal entity" responsible for its own statements. The British Columbia Civil Resolution Tribunal rejected the defense and ruled Air Canada liable.
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 2 — Sanctioned</span>
+            <span class="case-sector">Airline / Customer Service</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
+        <h3 class="case-org"><a href="https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know" target="_blank" rel="noopener" >Moffatt v. Air Canada ↗</a></h3>
         <div class="case-mechanism">
           External parties hold the organization responsible for AI outputs regardless of internal disclaimers. The chatbot speaks for the company because the company deployed it.
         </div>
-        <div class="case-question">
-          If your AI-assisted customer-facing system tells a customer something that contradicts your formal policy, what's the customer's recourse — the chatbot, the policy, or the company?
-        </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="What happened next ↓" data-open="What happened next ↑">What happened next ↓</button>
-        <div class="drill-content">
-          Moffatt v. Air Canada became the canonical reference for AI-output liability — the first widely-cited tribunal ruling holding a company answerable for AI-generated statements. The "separate legal entity" defense became the textbook example of how not to handle AI-output liability. The implication for any organization deploying customer-facing AI: outputs in legally consequential functions need a review protocol the organization can defend in court — not a disclaimer that disclaims the AI itself. Air Canada's response after the ruling was operational (review and tighter constraints on the chatbot) rather than structural (a defined review protocol with named ownership).
+        <div class="case-detail">
+          <div class="case-body">
+            February 2024: Air Canada's chatbot informed Jake Moffatt that bereavement fares could be claimed retroactively. Air Canada's actual policy did not permit retroactive claims. In court, Air Canada argued the chatbot was a "separate legal entity" responsible for its own statements. The British Columbia Civil Resolution Tribunal rejected the defense and ruled Air Canada liable.
+          </div>
+          <div class="case-question">
+            If your AI-assisted customer-facing system tells a customer something that contradicts your formal policy, what's the customer's recourse — the chatbot, the policy, or the company?
+          </div>
+          <div class="case-deep">
+            Moffatt v. Air Canada became the canonical reference for AI-output liability — the first widely-cited tribunal ruling holding a company answerable for AI-generated statements. The "separate legal entity" defense became the textbook example of how not to handle AI-output liability. The implication for any organization deploying customer-facing AI: outputs in legally consequential functions need a review protocol the organization can defend in court — not a disclaimer that disclaims the AI itself. Air Canada's response after the ruling was operational (review and tighter constraints on the chatbot) rather than structural (a defined review protocol with named ownership).
+          </div>
         </div>
       </div>
 
       <!-- Boom Supersonic — Designed Workflow -->
       <div class="case-card" id="designed-workflow">
-        <div class="level-pill">Level 3 — Designed</div>
-        <h3 class="case-org"><a href="https://bscholl.substack.com/p/move-fast-and-dont-break-safety-critical" target="_blank" rel="noopener" >Boom Supersonic ↗</a></h3>
-        <div class="case-sector">Aerospace / Manufacturing</div>
-        <div class="case-body">
-          mkBoom automates full aircraft structural analysis from a parametric configuration file. The design methodology depends on it. Removing AI from Boom's core workflows would require rebuilding them — not substituting a human. A design discovery — Boomless Cruise — emerged through AI-enabled iteration that would have taken months under previous methods. Zero safety incidents across the XB-1 program.
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 3 — Designed</span>
+            <span class="case-sector">Aerospace / Manufacturing</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
+        <h3 class="case-org"><a href="https://bscholl.substack.com/p/move-fast-and-dont-break-safety-critical" target="_blank" rel="noopener" >Boom Supersonic ↗</a></h3>
         <div class="case-mechanism">
           When AI is embedded in the competitive position, governance shifts from controlling use to designing protocols that handle failure, versioning, and external dependencies while preserving the speed advantage AI provides.
         </div>
-        <div class="case-question">
-          If your primary AI-assisted workflow stopped working tomorrow — would you pause it, or rebuild it?
+        <div class="case-detail">
+          <div class="case-body">
+            mkBoom automates full aircraft structural analysis from a parametric configuration file. The design methodology depends on it. Removing AI from Boom's core workflows would require rebuilding them — not substituting a human. A design discovery — Boomless Cruise — emerged through AI-enabled iteration that would have taken months under previous methods. Zero safety incidents across the XB-1 program.
+          </div>
+          <div class="case-question">
+            If your primary AI-assisted workflow stopped working tomorrow — would you pause it, or rebuild it?
+          </div>
+          <div class="case-deep">
+            Boom is a late Level 3 case, not Level 4 or 5. Their business model depends on AI; the aerospace industry does not depend on Boom's approach. Level 3 is organizational competitive reliance. Level 4 is when the industry itself cannot function at standard productivity without AI. Boom is the clearest documented case of an organization that designed its governance protocol alongside its AI capability — rather than after a failure forced it.
+          </div>
         </div>
-        <button class="expand-toggle drill-toggle" onclick="toggleContent(this)" data-closed="Why Level 3 and not higher ↓" data-open="Why Level 3 and not higher ↑">Why Level 3 and not higher ↓</button>
-        <div class="drill-content">
-          Boom is a late Level 3 case, not Level 4 or 5. Their business model depends on AI; the aerospace industry does not depend on Boom's approach. Level 3 is organizational competitive reliance. Level 4 is when the industry itself cannot function at standard productivity without AI. Boom is the clearest documented case of an organization that designed its governance protocol alongside its AI capability — rather than after a failure forced it.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section B: Lessons from the Past ──────────────────── -->
+<section id="lessons-from-the-past" class="section section-divider">
+  <div class="container">
+    <div class="label">Historical patterns</div>
+    <h2>Lessons from the Past</h2>
+    <p class="section-intro">Five technology adoption arcs from earlier decades. Each card names the technology, the originating event or actor, and the protocol pattern that emerged. Cases span 1956 to 2005 and Levels 1 through 5.</p>
+
+    <div class="cases-grid">
+
+      <!-- Excel / Visicalc — L1 success-mode -->
+      <div class="case-card" id="excel-visicalc">
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 1 — Shadow</span>
+            <span class="case-sector">Knowledge work</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <h3 class="case-org"><a href="https://medium.com/backchannel/a-spreadsheet-way-of-knowledge-8de60af7146e" target="_blank" rel="noopener" >Visicalc and Excel ↗</a></h3>
+        <div class="case-mechanism">
+          Conventions nobody mandated became universal standards because the artifact carried its standards with it.
+        </div>
+        <div class="case-detail">
+          <div class="case-body">
+            Visicalc launched in 1979 on the Apple II as the first recalculating-grid spreadsheet — an individual tool that finance and operations practitioners adopted for personal productivity. The product changed hands three times — Visicalc → Lotus 1-2-3 → Excel — but the file format and its conventions stayed in place. By 2026, more than a billion users run business operations through spreadsheet logic that nobody designed and no central authority approved.
+          </div>
+          <div class="case-question">
+            Which AI conventions are already emerging in your organization within individual use? Should any be scaled?
+          </div>
+          <div class="case-deep">
+            Three structural properties let Excel's conventions spread by example: the file format was the standard; the artifact was pedagogical (open another team's pivot table and you learned how they thought); and no central authority gated adoption. Steven Levy's 1984 <em>Harper's</em> essay <em>A Spreadsheet Way of Knowledge</em> — linked above — was written while Visicalc was still the dominant package, before any convention had been institutionalised. It is the closest contemporary account of how an L1 substrate emerges.
+          </div>
+        </div>
+      </div>
+
+      <!-- Email mandate — Gates 1995 — L2 -->
+      <div class="case-card" id="email-gates-internet-tidal-wave">
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 2 — Sanctioned</span>
+            <span class="case-sector">Corporate communication</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <h3 class="case-org"><a href="https://www.justice.gov/sites/default/files/atr/legacy/2006/03/03/20.pdf" target="_blank" rel="noopener" >The Internet Tidal Wave (Gates, 1995) ↗</a></h3>
+        <div class="case-mechanism">
+          A written mandate lands when it sanctions what the periphery has been doing unofficially — and names concrete product-level specifics, not just a direction.
+        </div>
+        <div class="case-detail">
+          <div class="case-body">
+            On May 26, 1995, Bill Gates sent a ~5,600-word internal memo to Microsoft's executive staff declaring "I assign the Internet the highest level of importance" and naming Netscape as the competitive threat. Twelve weeks later Microsoft shipped Internet Explorer 1.0 inside Windows 95; within two years Outlook and Exchange Server 5.0 had moved corporate mail decisively onto internet protocols. The memo ratified what Microsoft developers had already been doing unofficially for fifteen months.
+          </div>
+          <div class="case-question">
+            What AI capabilities have been emerging on the periphery of your organisation and industry for the past twelve months? Are they ready for someone to champion?
+          </div>
+          <div class="case-deep">
+            The memo did not invent the strategy. Fifteen months earlier, Steven Sinofsky had sent an internal "Cornell is WIRED!" email after watching undergraduates use Mosaic; an April 1994 internet offsite and a 300-page briefing followed. By May 1995 Microsoft developers were already evaluating Mosaic and Netscape; consumer email was already on Hotmail and AOL. Gates's memo crystallised twelve months of practice into a dated, attributable mandate with specifics — browser, MSN repositioning, internet protocols inside the mail/server stack, content strategy.
+          </div>
+        </div>
+      </div>
+
+      <!-- Git + CI/CD — L3 -->
+      <div class="case-card" id="git-ci-cd">
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 3 — Designed</span>
+            <span class="case-sector">Software engineering</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <h3 class="case-org"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/BK-usage/bk-kernel-howto.txt?id=1da177e4c3f41524e886b7f1b8a0c1fc7321cac2" target="_blank" rel="noopener" >Git and the GitHub pull request ↗</a></h3>
+        <div class="case-mechanism">
+          The technology absorbs the coordination practice into the software itself. In git, the artifact and the conversation share one address, and the merge gate stays closed until the machine checks pass.
+        </div>
+        <div class="case-detail">
+          <div class="case-body">
+            Linus Torvalds wrote the first version of Git in two weeks in April 2005 after BitMover revoked the Linux kernel's BitKeeper licence. Three years later, GitHub introduced the pull request: a Git branch wrapped in a discussion thread with inline review, approvals, and merge controls. By 2026 the PR-with-CI/CD workflow is the assumed shape of professional software work — roughly 100 million developers, present in essentially every IDE, CI service, and cloud development environment.
+          </div>
+          <div class="case-question">
+            What are the new modes of collaboration that are becoming the default? How are your core business technologies absorbing that new pattern of collaboration?
+          </div>
+          <div class="case-deep">
+            Three properties did the work. The Git data model (content-addressed, branch-cheap, distributed) made it safe to experiment in branches and merge selectively. The pull-request UI (comments threaded against lines of diff, with approval state) made review a structured activity rather than a meeting. The CI/CD layer (machine-readable pass/fail signals attached to each commit) automated the routine parts of judgement. Coding agents producing PRs at scale — Stripe's "minions" reportedly ship ~1,300 PRs per week — are now stress-testing whether the existing review capacity is the constraint, and whether a new automated review layer needs to sit on top without losing what made the original workflow durable.
+          </div>
+        </div>
+      </div>
+
+      <!-- EDI / Walmart 1988 — L4 -->
+      <div class="case-card" id="edi-walmart-1988">
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 4 — Infrastructural</span>
+            <span class="case-sector">Supply chain</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <h3 class="case-org"><a href="https://www.crstl.ai/blog/walmart-edi-requirements-the-complete-2026-guide#:~:text=Walmart%20pioneered%20electronic%20data%20interchange,2%2D5%25%20or%20more." target="_blank" rel="noopener" >Walmart's EDI mandate (1988) ↗</a></h3>
+        <div class="case-mechanism">
+          A single buyer with enough market power can install a coordination protocol across an entire industry — if the spec is concrete, the deadline is enforceable, and the receiving infrastructure is built before the mandate ships.
+        </div>
+        <div class="case-detail">
+          <div class="case-body">
+            In 1988 Walmart told its top suppliers: send purchase orders, invoices, and shipping notices via EDI (X12 transaction sets 850, 810, 856), or lose our business. Smaller suppliers had to invest in EDI infrastructure or be cut. The mandate cascaded: every major retailer copied Walmart's terms within a few years, and EDI compliance became a precondition for US retail shelf space. By 2026, EDI underlies roughly 95% of US supply-chain B2B document exchange.
+          </div>
+          <div class="case-question">
+            Which of your industry's largest customers has the leverage to mandate AI capabilities and standards? Are you aware of the conditions on which the industry will demand these standards for you?
+          </div>
+          <div class="case-deep">
+            The mandate worked because Walmart paired it with operational specifics on its own side. The Bentonville distribution centres restructured around Advance Shipment Notifications: a supplier's truck arriving at a DC could be unloaded directly into outbound trucks (cross-docking) because the inventory data had arrived 24–48 hours ahead of the goods. Walmart's lead time on stock replenishment dropped from weeks to days; inventory carrying cost dropped accordingly. The Walmart playbook — pick the spec, set the deadline, make compliance a precondition for participation, then build the receiving infrastructure — has been reused by Toyota (kanban), the EU (e-invoicing mandates from 2019), and healthcare regulators (HIPAA EDI). The receiving infrastructure is what separates infrastructure-installation from compliance theatre.
+          </div>
+        </div>
+      </div>
+
+      <!-- Containerization (shipping) — L5 -->
+      <div class="case-card" id="containerization-shipping">
+        <div class="case-card-head">
+          <div class="case-card-meta">
+            <span class="level-pill">Level 5 — Planetary</span>
+            <span class="case-sector">Global logistics</span>
+          </div>
+          <button class="case-toggle-icon" onclick="toggleCard(this)" aria-expanded="false" aria-label="Expand case">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <h3 class="case-org"><a href="https://press.princeton.edu/books/paperback/9780691170817/the-box" target="_blank" rel="noopener" >McLean's Ideal X (1956) and the global container protocol ↗</a></h3>
+        <div class="case-mechanism">
+          A technology that succeeds at planetary scale becomes a background to the people who depend on it. This invisibility concentrates at chokepoints whose failure modes few plan for until they trigger.
+        </div>
+        <div class="case-detail">
+          <div class="case-body">
+            On April 26, 1956, Malcom McLean sailed the SS Ideal X from Port Newark to Houston with 33 standardised steel containers welded to a converted oil-tanker deck. The maritime industry ignored him for a decade. In 1968 ISO 668 codified the 20-foot and 40-foot TEU dimensions globally. By 2000 essentially all manufactured-goods trade moved by container. By 2026 about 90% of non-bulk world trade moves through this standard — and a single ship grounding in the Suez Canal blocked roughly 12% of world trade for six days in 2021.
+          </div>
+          <div class="case-question">
+            Where are the chokepoints in the AI-coordination infrastructure your organisation now depends on? How would you find out you had a single point of failure before the failure happens?
+          </div>
+          <div class="case-deep">
+            Containerization has reorganized civilization. Only now has it become apparent how the technology concentrated its failure modes at five geographic chokepoints — Suez, Malacca, Panama, Hormuz, the Bosphorus — whose physical capacity does not change with the volume flowing through them. The 2021 Ever Given grounding cost an estimated $9–10 billion per day for six days. The pattern that the container era makes legible: planetary protocols become invisible to their users, and the equivalent of an Ever Given event is what makes the chokepoint visible. Marc Levinson's <em>The Box</em> (2006) is the canonical history.
+          </div>
         </div>
       </div>
 
@@ -1716,6 +2017,31 @@ function toggleContent(btn) {
   const isOpen = btn.nextElementSibling.classList.toggle('open');
   btn.textContent = isOpen ? btn.dataset.open : btn.dataset.closed;
 }
+
+// Toggle a case-card open/closed via its chevron icon
+function toggleCard(btn) {
+  const card = btn.closest('.case-card');
+  if (!card) return;
+  const detail = card.querySelector('.case-detail');
+  if (!detail) return;
+  const isOpen = detail.classList.toggle('open');
+  card.classList.toggle('expanded', isOpen);
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+// Hash-on-load: auto-expand the matching case card when the URL carries an anchor
+// (so deep links like /case-studies/#excel-visicalc land readably on an open card)
+document.addEventListener('DOMContentLoaded', () => {
+  const hash = (location.hash || '').slice(1);
+  if (!hash) return;
+  const card = document.getElementById(hash);
+  if (!card || !card.classList.contains('case-card')) return;
+  const btn = card.querySelector('.case-toggle-icon');
+  if (btn && !card.classList.contains('expanded')) {
+    btn.click();
+    setTimeout(() => card.scrollIntoView({behavior: 'smooth', block: 'start'}), 50);
+  }
+});
 
 </script>
 <script>

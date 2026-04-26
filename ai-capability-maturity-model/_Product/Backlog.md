@@ -10,6 +10,8 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 
 **IA-007 expanded later 2026-04-26** (follow-up conversation): from "two-class case studies" into a full **Case Studies Library** with a multi-week design brief — unified card template, 6 seed Class B tech-arc cases (containerization, Excel/spreadsheets, corporate email, Git/CI-CD, EDI, internet protocols), and tech-arc cards peppered throughout the site. CONTENT-008 absorbed.
 
+**Items added 2026-04-26 (later)**: FEATURE-005 (Feed page — daily curated AI-adoption news/blogs/essays). Adjacent to OBS-002 (shared discovery layer; distinct outputs); design brief queued in `_Product/Feed-Design/`.
+
 ---
 
 ## Design / aesthetics
@@ -80,13 +82,17 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 ### IA-007 — `/case-studies/` → Case Studies Library (design brief + design phase)
 - **Scope:** Convert `/case-studies/` from a 5-card AI-adoption page into a structured **Case Studies Library** with a unified card template and two distinct case classes that scale to ~15+ entries. Treat as a multi-week design effort modelled on Quiz-v0.8 (i.e. lock a design brief first, iterate on the structure, *then* implement) — not an incremental edit.
   - **Class A — AI adoption stories** (current 5 + ongoing additions): Samsung, Klarna, Shopify, Duolingo, Air Canada. Working tagline: "Today's adoption stories."
-  - **Class B — Technology-arc cases** (new — historical and adjacent technology shifts that surface protocol patterns relevant to reasoning about AI). Seed inventory from 2026-04-26 reviewer:
+  - **Class B — Technology-arc cases** (new — historical and adjacent technology shifts that surface protocol patterns relevant to reasoning about AI). Seed inventory:
     1. **Containerization** (Docker / Kubernetes) — packaging-as-protocol, runtime portability
     2. **Excel spreadsheets and org design** — end-user computing, shadow IT precedent, calc-as-coordination
     3. **Corporate email adoption** — protocol-becoming-infrastructure; an L4 → L5 historical analog
     4. **Git + CI/CD** — version control as coordination protocol; review-as-gate
     5. **EDI in retail and manufacturing** — inter-firm protocol adoption; mandates as forcing functions
     6. **Internet protocols** (TCP/IP, HTTP, SMTP) — sample L5 case: planetary-scale invisible coordination
+    7. **Cloud era** (~2006 AWS S3/EC2 → present) — IaaS/PaaS/SaaS adoption arcs. Strong L1 → L5 hindsight: shadow cloud (devs spinning up unauthorised AWS accounts) → sanctioned (CIO-approved vendor list) → designed (cloud-architect role, well-architected reviews) → infrastructural (cloud-native by default) → planetary (the cloud as ambient compute substrate). Rich success/failure split: Netflix migration vs. retail laggards. Added 2026-04-26 — reviewer flagged that Class B was thin on the obvious 20-year tech arc.
+    8. **Mobile era** (~2008 App Store → present) — smartphone adoption changing org workflows. Same L1 → L5 hindsight: shadow BYOD → sanctioned MDM → designed mobile-first product strategy → infrastructural API-first/mobile-as-default → planetary ambient computing. Rich success/failure split: Uber/Airbnb/Starbucks (mobile-native) vs. retailers who bolted on apps. Added 2026-04-26 alongside Cloud.
+
+  Plus, on the **Class A success-story** side: the current Class A roster is failure-heavy (Samsung, Klarna, Air Canada, Duolingo all cautionary). CONTENT-007 already requests a Folkway/Guild L1 success counterpart (F2F pattern). 2026-04-26 reviewer broadens this: actively hunt for L1 and L2 *success* candidates — orgs that handled early adoption well, not just badly. Candidates to research: F2F-pattern individuals; companies that sanctioned AI with deliberate review protocols early (Anthropic ops? Vercel? Linear?); BBVA's 4000-GPTs reframed as a L2 → L3 transition success rather than a pure L4 case.
   - Plus the org-design transitions outlined at [npc.here.now/ai-org/](https://npc.here.now/ai-org/) — could be additional Class B cases or a sidebar linking out.
   - **Pepper Class B cases throughout the site**, not just on `/case-studies/` — surface the most relevant tech-arc case inline on the homepage, the litepaper, and individual level pages where it grounds a claim.
 - **Rationale:** Source: 2026-04-26 conversation. AI-adoption cases alone show point-in-time symptoms; the protocol-emergence pattern across technology shifts is what makes the model legible. Adding tech-arc cases turns `/case-studies/` from a sympathy gallery into a reference library and gives the SIG's "neutral commons" voice (BRAND-001) historical depth. Volume (~10–15+ cards) breaks the existing single-row breadcrumb pattern (NAV-002) and the current ad-hoc card markup — both need rethinking together.
@@ -109,7 +115,17 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
   - `CONTENT-007` (Folkway/Guild L1 counterexample for Samsung) — folds in as one of the Class A additions
   - `CONTENT-008` (intro rewrite) — folds in as the library page intro design
 - **Dependencies:** Research first (lock Class B inventory + write `_Observations/research/` entries for each new tech-arc case). Then the design brief. Then implementation. DESIGN-001 should ideally land near the same time so the card-template inherits the new visual system.
-- **Status:** intake · needs design brief
+- **Phase A complete (2026-04-26):** `_Product/Case-Studies-Library-Design/Inventory-v0.1.md` (968 lines, 132 external sources). Audited 9 Class A originals + 8 Class A success-mode candidates (extension pass) + 11 Class B candidates. Coverage matrix shows L4/L5 Class A is empty on `/case-studies/`; L1/L2 success/failure balance significantly improved by extension pass.
+- **Phase B (2026-04-26 — narrowed scope per user):** page layout / chips / search descoped — leave the live page as-is for now. Phase B focused on **Class B-5 selection** instead. **Locked picks (one per maturity level), value-emergence framing:**
+  1. **L1 · Excel / Visicalc** (B3) — Folkway/Guild shadow → infrastructure (Packy McCormick "Excel Never Dies" anchor)
+  2. **L2 · Email mandate** (B4 reframed) — Bill Gates *Internet Tidal Wave* memo, May 1995 — top-down sanctioning catches institution up to existing personal practice. Not the Zubulake-litigation framing.
+  3. **L3 · Git + CI/CD** (B5) — designed coordination protocol; review-as-gate
+  4. **L4 · EDI / Walmart 1988** (B6) — sector-wide protocol forcing function; one actor's mandate elevates an entire industry to interoperable infrastructure (B2B + JIT enablement). Picked over Cloud-Netflix-snapshot to break readers out of the silicon-valley-only frame.
+  5. **L5 · Containerization (shipping)** (B1) — McLean → ISO 668 → Maersk/Sea-Land → ambient global trade; planetary infra + JIT + geography-as-protocol-substrate (chokepoints)
+  Cloud (B10) and Mobile (B11) deferred to v2; B2 (software containerization), B7 (TCP/IP), B8 (NotPetya), B9 (FB BGP) not selected. See `_Product/Case-Studies-Library-Design/Inventory-v0.1.md` for full rationale.
+- **Phase C complete (2026-04-26):** Card template v0.1 (`Card-Template-v0.1.md`) + 5 prototype cards in `prototypes/` (B1 Excel, B2 Email/Gates, B3 Git, B4 EDI, B5 Containerization) + commissioned `_Observations/research/gates-internet-tidal-wave-1995.md` plus full memo transcription at `gates-internet-tidal-wave-1995-full-text.md` and DOJ scan at `sources/Gates-Internet-Tidal-Wave-1995-DOJ-GX20.pdf`. Editorial principle locked: cards self-contained, body language is plain (no L1–L5 jargon in body); maturity-model framing lives in metadata, level pill, and drilldown CTA labels only.
+- **Phase D shipped (2026-04-26):** Live page redesigned. `/case-studies/` now hosts **10 cards across two named sections** — *Today's AI Adoption Stories* (5 Class A: Samsung · Klarna · Shopify · Air Canada · Boom) and *Lessons from the Past* (5 Class B: Visicalc-Excel · Internet Tidal Wave · Git · Walmart EDI · Containerization). Cards are **collapsed-by-default** with a 2-level disclosure (chevron toggle reveals full body + diagnostic question + deep-dive in one click). Breadcrumb compressed to two section links (was 5 per-case). Hero descriptor updated. Card template redesigned for tighter information density per front-end best practice (24px padding, flex header with metadata-row + chevron, mechanism without italic / lighter left-border, hover and expanded states). Hash-on-load auto-expands matching card. See `Page-Layout-v0.1.md` for full design rationale.
+- **Status:** **shipped 2026-04-26.** Live at https://protocolized.dev/case-studies/ (slug `plush-nutmeg-h2rj`).
 
 ### IA-006 — Homepage restructure (quadrantology-shape landing)
 - **Scope:** Replace the current multi-section homepage with a quadrantology-shaped single-funnel landing:
@@ -195,7 +211,43 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 - **Open questions:** Where does it live — own page, or section on homepage? Reveal.js / swipe-nav / scroll-driven?
 - **Status:** intake
 
-### FEATURE-003 — Multi-quiz assessment hub with inline-expand panels
+### FEATURE-005 — `/feed/` (daily AI-adoption feed page) — design brief
+- **Scope:** A new top-level page on protocolized.dev that surfaces a daily-refreshing curated feed of AI-adoption-relevant news, blogs, and essays. Orientation is **organizational changes and announcements** — workforce moves, deployment incidents, vendor releases, regulatory developments, case-study-shaped reports. Not a generic AI news firehose; not opinion pieces; not benchmark releases unless they have org-adoption implications.
+- **Rationale:** Source: 2026-04-26 conversation. The artifact today is a static document; nothing on the site changes between visits. A daily feed gives readers a reason to return, gives the site a pulse, and feeds source candidates into the existing observation pipelines (cases land in `_Observations/research/`; lede-relevant signals land in OBS-002 weekly briefs). Editorial framing: aggregator with neutral-commons voice (BRAND-001) — not Techmeme, not Hacker News, not LinkedIn. Closer to a Pew topic page or a curated newsletter archive in tone.
+- **Relationship to `OBS-002`:** Adjacent and likely shared infrastructure, but distinct outputs.
+  - `OBS-002` = internal weekly scan that proposes lede updates to `_Observations/lede-history.md`; output is editorial.
+  - `FEATURE-005` = public-facing daily feed page; output is reader-facing.
+  - The discovery layer (sources, ranking) can be shared. The synthesis layer differs: OBS-002 produces one paragraph for the hero; FEATURE-005 produces ~5–10 link cards per day.
+  - Recommend: scope and ship FEATURE-005 first as the simpler public surface; OBS-002 inherits the discovery infrastructure and adds the synthesis layer for lede updates.
+- **Architecture candidates** (the design brief picks one or hybridises):
+  1. **Manual curation** via the existing comment-mode-style worker. Editor hand-picks links daily, posts to a `/feed-item` endpoint, page renders from KV. Editorial quality high; daily editor time required; ships fastest.
+  2. **Scheduled remote agent** (CCR via the schedule skill — same pattern as the copy-edit triage agent). Agent runs daily, queries source allowlist, LLM-ranks for relevance to org-adoption, writes structured items into the repo (or KV), page reads. Automated; relevance quality varies; needs source maintenance.
+  3. **Hybrid (recommended)**: scheduled agent fetches candidates into a draft area; editor (via the in-page editor mode) reviews + promotes daily; promoted items render on the public feed. Best of both; more pieces.
+  4. **Pure RSS aggregation** of a curated source list (no LLM, no agent) — simplest, lowest editorial control, lowest relevance.
+- **Source candidates** (initial allowlist — refine in design brief):
+  - Substacks: protocolized.summerofprotocols, npc.here.now, technically.dev, leverage.media (Armstrong), perasapera.dev (Scianna), latent.space, pragmatic engineer, stratechery
+  - Mainstream tech: HBR, MIT Sloan, The Information, Bloomberg, TechCrunch, Fortune, Verge
+  - Lab + vendor blogs: Anthropic, OpenAI, Google DeepMind, Microsoft AI, Klarna engineering, Shopify engineering, Uber engineering
+  - Regulatory: NIST AI office, EU AI Office, FTC, OCC
+- **Page architecture (sketch — refine in design brief):**
+  - Reverse-chronological feed (newest day at top)
+  - Each item: source favicon · title · 1-line take · level/archetype tag(s) · publish date · external link
+  - Day-grouping headers (today, yesterday, last week archived)
+  - Optional filtering: by source type (substack, mainstream, vendor, regulatory), by level mapped (L1–L5)
+  - Light archive (probably 30–60 days visible; older items roll off into a static archive page)
+  - RSS export of the feed (so other publications can subscribe)
+- **Editorial voice:** "Curated · neutral · one-line take per item." Each item gets a brief framing of *why this matters for AI adoption* (1 sentence, max). No commentary, no opinion, no tldr — link to the source for the substance.
+- **Open questions (for the design brief):**
+  - Build vs. buy on discovery: Google Alerts RSS (free, brittle), Brave Search API, SerpAPI, RSS-only, or LLM-driven crawl?
+  - Cadence: truly daily, or weekday-only, or twice-weekly? "Daily" is the user's framing but consider editorial cost.
+  - Volume per day: target 5–10 items? Less is more for editorial trust.
+  - Storage: KV (like comment mode) or git-committed JSON/MD (like the triage queue) or D1?
+  - Dedup: how to avoid same story surfacing multiple times across sources?
+  - Naming: "Feed" is the working name; could be "Today" / "Pulse" / "Signal" / "The Stack" — locks in BRAND-002 territory.
+  - Inline placement: do feed items also pepper other pages (e.g., a "today's relevant signals" widget on the homepage), or is the page the only surface?
+- **Process:** Mirrors `IA-007` and `ASSESS-005` — a design brief in `_Product/Feed-Design/` first, layout + source-allowlist + cadence locked, then implementation. Multi-week effort.
+- **Dependencies:** None blocking. Implementation can reuse `protocolized-inbox` worker patterns (KV storage, scheduled remote agent, in-page editor mode for promotion).
+- **Status:** intake · needs design brief
 - **Scope:** Restructure the assessment page to host three quizzes side by side: archetype assessment (Quiz-v0.8), tooling assessment (`ASSESS-006`), protocol-understanding assessment (`ASSESS-007`). Each quiz card expands inline when clicked — same UI pattern as the contact-team modal on the homepage (no new modal type needed). Tooling and protocol-understanding cards show "Coming soon" placeholders until `ASSESS-006` / `ASSESS-007` ship.
 - **Rationale:** Source: 2026-04-25 conversation. Promotes the assessment page from a single-quiz launcher to a destination with multiple complementary diagnostics. Inline-expand pattern reuses an existing primitive.
 - **Dependencies:** Quiz-v0.8 ships first (archetype). Then placeholder cards. Then `ASSESS-006` and `ASSESS-007` fill in.
@@ -255,8 +307,10 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 ### CONTENT-003 — Case studies page expansion (3 → 5) + landing-page alignment
 - **Scope:** Two-part: (1) Add 2 more case studies to the case studies page (currently 3) to bring the page total to 5. (2) Ensure the 5 case studies displayed on the case studies page match exactly the 5 listed on the homepage landing page — same names, same order, same framing.
 - **Rationale:** Source: 2026-04-25 conversation. Case studies page is currently shorter than the landing-page list and the two surfaces are inconsistent. Aligning to a single canonical set of 5 removes the discrepancy and gives readers consistent depth wherever they land.
-- **Resolution:** Replaced Boom Supersonic with Shopify, added Duolingo and Air Canada. Final 5 cases on case-studies page now match homepage list: Samsung (Shadow Data Leak, L1) · Klarna (Mandate Reversal, L2) · Shopify (Non-Optional Mandate, L2) · Duolingo (Contractor Replacement, L2) · Air Canada (Chatbot Liability, L2). Section header updated from "Explore three case studies" → "Five case studies". Each card has an anchor ID matching its breadcrumb name.
-- **Trade-off note:** Spread across levels narrowed (was L1/L2/L3 with Boom; now L1/L2 only). Level 3 / Designed example removed from this surface — discoverable via the artifact's drilldowns and the litepaper. Worth revisiting if a new L3 case becomes available.
+- **Resolution (intended):** Replace Boom Supersonic with Shopify, add Duolingo and Air Canada. Final 5 intended: Samsung · Klarna · Shopify · Duolingo · Air Canada. Section header from "Explore three case studies" → "Five case studies"; each card with an anchor ID matching its breadcrumb name.
+- **Actual live state (audited 2026-04-26):** The live `/case-studies/` page hosts **Samsung · Klarna · Shopify · Air Canada · Boom** — Boom remained, Duolingo did not land. The homepage explore card matches the live state.
+- **Resolution (actual, per 2026-04-26 user decision in IA-007 prep):** Boom stays as the canonical L3 case; Duolingo does not get added in this pass; the level spread on the page is L1/L2/L3.
+- **Trade-off note:** Spread is L1/L2/L3. L4 and L5 still uncovered on this surface — folded into IA-007 (Case Studies Library) for the relaunch, which will promote Uber/BBVA/NotPetya/FB BGP candidates from the Inventory-v0.1 audit.
 - **Related:** `NAV-002` shipped breadcrumbs that target these new anchors.
 - **Status:** **shipped 2026-04-25**
 

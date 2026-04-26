@@ -15,6 +15,52 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ## Milestone Log
 
+### 2026-04-26 (evening) | IA-007 Phase D shipped — `/case-studies/` Library live
+
+- **`/case-studies/` redesigned and republished** to slug `plush-nutmeg-h2rj`. Live at https://protocolized.dev/case-studies/.
+- **Two named sections, 10 cards total:**
+  - *Today's AI Adoption Stories* (Class A, L1–L3): Samsung · Klarna · Shopify · Air Canada · Boom. The existing 5 cards retrofitted to the new collapsed-by-default disclosure pattern.
+  - *Lessons from the Past* (Class B, L1–L5): Visicalc/Excel · Internet Tidal Wave (Gates 1995) · Git/CI-CD · Walmart EDI 1988 · Containerization (McLean 1956). 5 new cards from the locked Class B-5 selection.
+- **Card pattern: collapsed-by-default, 2-level disclosure.** Visible when collapsed: level-pill + sector chip + title + 1-line mechanism + chevron toggle at top-right. Clicking the chevron reveals body + diagnostic question + deep-dive paragraph in one move (folded the previous separate "What happened next" drilldown into the same expand). Editorial principle: card body uses plain language; maturity-model jargon (L1–L5, archetype names) lives only in frontmatter, level pill, and drilldown CTA labels.
+- **Card template redesigned for information density** per front-end best practice (Stripe Press / Linear / Pew Research patterns): padding 32px → 22px×24px; flex header with metadata-row (pill + sector inline) + chevron; mechanism without italic + lighter left border; hover and expanded visual states; mobile padding 18px×20px. Same accent palette / typography / border-radius preserved.
+- **Breadcrumb compressed** to two section links only (*Today's AI Adoption Stories* / *Lessons from the Past*); per-case anchor IDs retained for deep-linking. New JS hash-on-load handler auto-expands the matching card for `/case-studies/#<slug>` URLs.
+- **CONTENT-007 (Folkway/Guild L1 counterexample for Samsung) and CONTENT-008 (intro rewrite)** absorbed and resolved through this shipping pass.
+- Design folder under `_Product/Case-Studies-Library-Design/` carries the full lineage: `README.md` · `Inventory-v0.1.md` (968 lines / 132 external sources, audited Phase A) · `Card-Template-v0.1.md` (Phase C template spec with voice principles) · `prototypes/B1-B5*.md` (5 long-form prototype docs, each with HTML card block) · `Page-Layout-v0.1.md` (Phase D layout spec with all design decisions logged).
+
+### 2026-04-26 (also) | Bill Gates *Internet Tidal Wave* memo — primary-source artifact archived
+
+- New research entry `_Observations/research/gates-internet-tidal-wave-1995.md` — companion case-study citation entry with summary, citable claims, and CMM-relevance commentary.
+- Full ~5,600-word memo text transcribed to `gates-internet-tidal-wave-1995-full-text.md` (cross-checked between the DOJ scan and Letters of Note transcription). All four sections (*The Internet Tidal Wave* / *The Internet Today* / *Competition* / *Next Steps* / *The Future*) plus HyperLink Appendix.
+- DOJ-published scan archived locally at `_Observations/research/sources/Gates-Internet-Tidal-Wave-1995-DOJ-GX20.pdf` — Government Exhibit 20 from *United States v. Microsoft Corporation*. Anchors the L2 case-study card on `/case-studies/`.
+
+### 2026-04-26 (also) | FEATURE-005 added — `/feed/` daily AI-adoption feed page
+
+- New backlog item: a daily-refreshing public-facing feed of AI-adoption news/blogs/essays, oriented around organizational changes and announcements. Adjacent to OBS-002 (shared discovery layer; distinct outputs).
+- Design folder scaffolded at `_Product/Feed-Design/README.md` with 4-phase process (Sources → Spec → Pipeline → Implementation) and 10 open architectural questions surfaced.
+- Status: intake · needs design brief.
+
+### 2026-04-26 (later) | IA-007 Phase B locked — Class B-5 selection
+
+- **Class B-5 locked, one per maturity level, value-emergence framing:**
+  1. L1 · Excel / Visicalc — Folkway/Guild shadow → infrastructure (Packy McCormick anchor)
+  2. L2 · Email mandate — Bill Gates *Internet Tidal Wave* memo (May 1995)
+  3. L3 · Git + CI/CD — designed coordination protocol
+  4. L4 · EDI / Walmart 1988 — sector-wide protocol forcing function (industry-elevating)
+  5. L5 · Containerization (shipping) — planetary infra + JIT + geography-as-chokepoints
+- Cloud (B10) and Mobile (B11) deferred to library v2; B2 (software containerization), B7 (TCP/IP), B8 (NotPetya), B9 (FB BGP) not selected for v1.
+- **Phase B narrowed:** page layout / chips / search descoped per user direction (leave live page as-is for now). Phase B = selection lock only.
+- **Phase C started:** card template (single template across all 5) + 5 prototype cards + 1 new research entry to commission (`gates-internet-tidal-wave-1995.md` — the only locked pick without existing repo grounding).
+- See `_Product/Case-Studies-Library-Design/Inventory-v0.1.md` for the locked selection's rationale + full not-selected reasoning.
+
+### 2026-04-26 | CONTENT-003 historical-record correction + IA-007 inventory landed (Phase A complete)
+
+- **CONTENT-003 correction.** The 2026-04-25 resolution note for CONTENT-003 said the case-studies page swap had landed as Samsung · Klarna · Shopify · Duolingo · Air Canada (Boom replaced). Inventory audit (Phase A of IA-007) confirmed the live state is actually Samsung · Klarna · Shopify · Air Canada · **Boom** — Duolingo did not land. User decision 2026-04-26: leave the live page as-is (Boom is canonical for the L3 slot until IA-007 ships). `Backlog.md` CONTENT-003 entry updated with both intended and actual states.
+- **IA-007 Phase A complete.** `_Product/Case-Studies-Library-Design/Inventory-v0.1.md` landed (968 lines, 132 external sources). 9 Class A originals + 8 Class A success-mode candidates (A10–A18 minus A13 dropped) + 11 Class B candidates (B1–B11 including B10 Cloud era and B11 Mobile era added in extension pass). Coverage matrix shows L4/L5 Class A is empty on `/case-studies/`; L1/L2 success/failure balance significantly improved by extension pass.
+- **Class B-5 selection in progress.** User decision: lock 5 of the 11 Class B candidates as the inaugural library cards. Decision pending in next session.
+- **Other actionable findings from inventory:**
+  - Litepaper §3 L3 attribution typo: "CTO Dario Khosrowshahi" → should be "CEO Dara Khosrowshahi"; the actual presenters were Anshu Chada and Ty Smith. Flag for litepaper v8.
+  - `_Observations/research/` entries to commission before Phase C card-writing: bbva-* (A8/A17), docker-kubernetes-containerization (B2), willison-personal-ai-tooling (A11), yc-small-team-ai-production (A12), wikipedia-ai-content-policy (A14), openai-fde-program (A15), palantir-fde-origins (A16), stripe-toolshed-minions (A18), cloud-era (B10), mobile-era (B11).
+
 ### 2026-04-25 (afternoon) | OBS-004 contact form worker proxy + bibliography progress + FEATURE-004 added
 
 - **OBS-004 shipped.** Built `_Infrastructure/protocolized-inbox/` Cloudflare Worker. `POST /contact` endpoint (live) + `POST /comment` stub (for FEATURE-004). Rate limit 5/hr/IP via KV namespace `RATE_LIMIT` (id `61f1fde1f27e4367ba85ff6c50047cd3`). Discord webhook URL stored as worker secret `DISCORD_WEBHOOK`. CORS allowlist for protocolized.dev + here.now staging mounts. All 6 site pages (homepage, assessment, case-studies, levels, litepaper, blog) updated to POST to `https://protocolized-inbox.rafaeldf2.workers.dev/contact` instead of the Discord URL directly. **Outstanding for Rafa:** rotate the original Discord webhook URL in Discord channel settings.
