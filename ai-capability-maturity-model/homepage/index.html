@@ -286,12 +286,57 @@
       padding: 4px 0;
     }
 
+    .explore-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 18px;
+      flex: 1;
+    }
+
     .explore-card .card-link {
       font-family: var(--font-mono);
       font-size: 0.78rem;
       font-weight: 700;
       color: var(--accent-dark);
       letter-spacing: 0.02em;
+    }
+
+    /* Full-width featured card (spans both columns of .explore-grid) */
+    .explore-card-full { grid-column: 1 / -1; }
+
+    /* Five-levels list inside the featured Levels card */
+    .levels-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+    .levels-list li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0;
+      line-height: 1.55;
+    }
+    .levels-list li strong {
+      color: var(--text);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .levels-list li em {
+      display: block;
+      margin-top: 4px;
+      font-style: italic;
+      color: var(--text-secondary);
+      opacity: 0.85;
+      font-size: 0.85rem;
     }
 
     /* ─── Section spacing ──────────────────────────────────── */
@@ -854,30 +899,49 @@
   <div class="container">
     <div class="explore-grid">
 
-      <a class="explore-card" href="https://protocolized.dev/levels/">
+      <!-- Featured (full-width): The Five Levels — main central communication -->
+      <a class="explore-card explore-card-full" href="https://protocolized.dev/levels/">
         <span class="label">The Five Levels</span>
         <h3>From shadow to planetary</h3>
-        <ul>
-          <li>L1 — Shadow</li>
-          <li>L2 — Sanctioned</li>
-          <li>L3 — Designed</li>
-          <li>L4 — Infrastructural</li>
-          <li>L5 — Planetary</li>
+        <ul class="levels-list">
+          <li>
+            <strong>L1 — Shadow.</strong> Individuals adopt AI tools without organizational sanctioning. Adoption is real; visibility, policy, and review are not yet in place.
+            <em>Like spreadsheets at every desk before IT had a policy.</em>
+          </li>
+          <li>
+            <strong>L2 — Sanctioned.</strong> AI access has been granted top-down. The work of designing what AI does and how it is reviewed has not yet happened.
+            <em>Like Bill Gates's 1995 <span style="font-style: normal">Internet Tidal Wave</span> memo to Microsoft executives.</em>
+          </li>
+          <li>
+            <strong>L3 — Designed.</strong> Workflows are AI-native by design with named owners, review protocols, and quality measurement.
+            <em>Like the Git pull request — coordination absorbed into the artifact itself.</em>
+          </li>
+          <li>
+            <strong>L4 — Infrastructural.</strong> AI is infrastructural across the industry — other systems and partners depend on it. The mandate and the operational receiving end are paired.
+            <em>Like Walmart's 1988 EDI mandate that elevated all of US retail.</em>
+          </li>
+          <li>
+            <strong>L5 — Planetary.</strong> AI as ambient coordination substrate. The protocol is invisible to most participants — until a chokepoint event makes it visible.
+            <em>Like the global container shipping protocol since 1956.</em>
+          </li>
         </ul>
         <span class="card-link">See full details →</span>
       </a>
 
+      <!-- Adoption Paths (left column, supporting) -->
+      <a class="explore-card" href="https://protocolized.dev/assessment/">
+        <span class="label">Adoption Paths</span>
+        <h3>The 10 archetypes</h3>
+        <p>People and teams adopt AI in different shapes. The assessment classifies you into one of 10 archetypes — Vanguard, Architect, Tinkerer, Folkway, and seven others — based on how you actually approach AI in your work, then maps your archetype onto the five levels above.</p>
+        <span class="card-link">Take the Assessment →</span>
+      </a>
+
+      <!-- Case Studies (right column, supporting) -->
       <a class="explore-card" href="https://protocolized.dev/case-studies/">
         <span class="label">Case Studies</span>
-        <h3>Real enterprise stories</h3>
-        <ul>
-          <li>Samsung — shadow AI data leak</li>
-          <li>Klarna — AI mandate and reversal</li>
-          <li>Shopify — non-optional AI memo</li>
-          <li>Moffatt v. Air Canada — chatbot liability</li>
-          <li>Boom Supersonic — designed AI workflow</li>
-        </ul>
-        <span class="card-link">See case studies →</span>
+        <h3>Stories from now and before</h3>
+        <p>Recent organizational AI deployments alongside the technology adoption patterns they echo. Samsung's shadow data leak, Klarna's mandate reversal, and Boom Supersonic's designed workflow — paired with Bill Gates's 1995 internet memo, Walmart's 1988 EDI mandate, and the global container protocol from 1956.</p>
+        <span class="card-link">See the case studies →</span>
       </a>
 
     </div>
