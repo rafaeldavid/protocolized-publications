@@ -1,0 +1,5 @@
+{
+  "imported_ids": [],
+  "last_pull": null,
+  "_note": "Driven by the scheduled triage agent. The first 9 edits submitted on 2026-04-25/26 were synthesised manually into Backlog items CONTENT-004 through IA-007 BEFORE this state file existed; their source KV entries were also pruned, so they will never appear in a future export. From this file's creation onward, the agent is the source of truth for which edits have been seen."
+}
