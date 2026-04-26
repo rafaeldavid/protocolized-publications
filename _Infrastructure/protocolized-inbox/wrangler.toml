@@ -7,7 +7,20 @@ compatibility_date = "2025-04-01"
 binding = "RATE_LIMIT"
 id = "61f1fde1f27e4367ba85ff6c50047cd3"
 
+# Copy-editor edit-suggestion log (one entry per submission).
+# Read back via GET /comment/export.csv (passcode-gated).
+[[kv_namespaces]]
+binding = "EDITS"
+id = "9d8c87e04f7d4190a42e500cb4e6eeb2"
+
+# Embed *.bundle.js files as text strings (used to ship the
+# comment-mode client bundle from GET /comment-mode.js).
+[[rules]]
+type = "Text"
+globs = ["**/*.bundle.js"]
+fallthrough = false
+
 # Secrets to set after first deploy (do NOT put real values in this file):
 #   wrangler secret put DISCORD_WEBHOOK     # contact form Discord webhook URL
-#   wrangler secret put DISCORD_COMMENT_WEBHOOK  # (future) comment-mode webhook
-#   wrangler secret put COMMENT_PASSCODE    # (future) passcode for comment mode
+#   wrangler secret put COMMENT_PASSCODE    # passcode for editors entering comment mode
+#   wrangler secret put EXPORT_SECRET       # admin secret for downloading the edit-suggestions CSV

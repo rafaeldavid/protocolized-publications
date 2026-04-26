@@ -52,7 +52,7 @@ Public contact-form endpoint.
 
 Returns `{ ok: true }` on success, `{ error: "..." }` otherwise.
 
-### `POST /comment` (future, passcode-protected)
+### `POST /comment` (passcode-protected)
 
 Copy-editor comment-mode endpoint. Requires `X-Comment-Passcode` header matching the `COMMENT_PASSCODE` secret.
 
@@ -66,12 +66,63 @@ Copy-editor comment-mode endpoint. Requires `X-Comment-Passcode` header matching
 }
 ```
 
-Forwards to `DISCORD_COMMENT_WEBHOOK` (separate webhook from the contact form). Set up later when comment mode is implemented:
+Each accepted submission is written as a single JSON entry to the `EDITS` KV namespace under key `edit:<ISO-timestamp>:<random-id>`. Nothing is forwarded to Discord — submissions accumulate in KV and are pulled down as a CSV when ready to synthesize.
+
+Required secrets (otherwise endpoint returns `503 Comment mode not configured`):
 
 ```bash
-npx wrangler secret put DISCORD_COMMENT_WEBHOOK
-npx wrangler secret put COMMENT_PASSCODE
+npx wrangler secret put COMMENT_PASSCODE          # any string; share with editors
 ```
+
+### `GET /comment/export.csv` (admin-only)
+
+Streams every stored edit suggestion as a single RFC-4180 CSV with columns:
+
+`timestamp, reviewer, page, before, suggestion, note, ip`
+
+Gated by the `EXPORT_SECRET` admin secret (separate from the editor passcode — leak of the editor passcode does not leak the export). Provide the secret via either:
+
+- Header: `X-Export-Secret: <value>`
+- Query param: `?secret=<value>` (handy for one-shot `curl` to file)
+
+Required secret:
+
+```bash
+npx wrangler secret put EXPORT_SECRET             # admin-only; do NOT share with editors
+```
+
+**Pulling the CSV down:**
+
+```bash
+curl -fSL -o protocolized-edits.csv \
+  "https://protocolized-inbox.<subdomain>.workers.dev/comment/export.csv?secret=YOUR_EXPORT_SECRET"
+```
+
+Then import the CSV into your synthesis workflow — open in Numbers/Excel, or `csvkit`, or scan-and-cluster as new backlog items in `_Product/Backlog.md`.
+
+Submissions are not auto-deleted from KV after export. To prune after synthesis, list and delete keys matching `edit:` via `wrangler kv key list --binding=EDITS --prefix=edit:` and `wrangler kv key delete --binding=EDITS <key>`.
+
+### `GET /comment-mode.js`
+
+Serves the copy-editor client bundle (CSS + JS, IIFE) included by every page on the site via `<script src="https://protocolized-inbox.<subdomain>.workers.dev/comment-mode.js" defer></script>`. The bundle goes dormant unless an editor activates it.
+
+**Source:** `src/comment-mode.bundle.js` — embedded as a string at deploy time via the wrangler `[[rules]] type = "Text"` rule on `**/*.bundle.js`.
+
+**Activation paths (for editors):**
+1. **URL param** — visit any page with `?edit=<passcode>`, e.g. `https://protocolized.dev/?edit=hunter2`. The bundle stores the passcode in `sessionStorage`, strips the param from the URL, and turns on edit mode for the rest of the tab session.
+2. **Keyboard shortcut** — `⌘⇧E` (or `Ctrl⇧E` on Windows) opens a passcode prompt. Same effect.
+
+**Editor flow:**
+1. Banner appears at the top: `EDIT MODE | <page> | reviewer name | hint | Leave`.
+2. Highlight any text on the page → small dark popup appears with `✏ Suggest edit`.
+3. Click → modal opens with **Before** (read-only, the selection) and **After** (textarea, pre-filled with the original; user edits). Optional **Note** for rationale.
+4. Submit → POSTs to `/comment` with the passcode. Edits arrive in the editor's Discord channel; the suggestion also lands in a session-only "Session edits" gutter on the page (collapsible, top-right).
+5. `Leave` clears `sessionStorage` and returns the page to normal-reader state.
+
+**Privacy / security notes:**
+- The passcode is the only gate; treat it like a password. The bundle itself is public — anyone can read it. Without the right passcode, every POST returns `401`.
+- Comments are NOT stored in the reader's browser beyond the session edits gutter (which is in-memory only). They are sent to Discord, where rafa actions them.
+- Rotate `COMMENT_PASSCODE` if it leaks — no harm to existing edits, but new ones from the leaked passcode will be locked out on rotation.
 
 ## Post-deploy: rotate the old webhook
 
