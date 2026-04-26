@@ -305,56 +305,65 @@
     /* Full-width featured card (spans both columns of .explore-grid) */
     .explore-card-full { grid-column: 1 / -1; }
 
-    /* Five-levels list — vertical stack, prominent L# + name header per row */
-    .levels-list {
+    /* Five levels — 5-column horizontal layout (one row of 5 columns).
+       Each column has accent-bar top, L# + Name header, then desc + analogy.
+       Compact: total card height ~225px instead of 550px stacked. */
+    .levels-grid {
       list-style: none;
       padding: 0;
       margin: 0 0 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
       flex: 1;
     }
-    .levels-list .level-row {
-      padding: 0 0 18px;
-      border-bottom: 1px dashed var(--border);
-    }
-    .levels-list .level-row:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-    .level-row-head {
+    .level-col {
       display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 8px;
+      flex-direction: column;
+      padding-top: 14px;
+      border-top: 2px solid var(--accent);
     }
-    .level-num {
+    .level-col-num {
       font-family: var(--font-mono);
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--accent-dark);
       line-height: 1;
       letter-spacing: 0.01em;
     }
-    .level-name {
-      font-size: 1.2rem;
+    .level-col-name {
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text);
-      line-height: 1.15;
+      line-height: 1.2;
+      margin-top: 4px;
+      margin-bottom: 10px;
     }
-    .level-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      margin: 0 0 4px;
-    }
-    .level-analogy {
+    .level-col-desc {
       font-size: 0.85rem;
       color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+    .level-col-analogy {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
       font-style: italic;
+      line-height: 1.45;
       margin: 0;
       opacity: 0.85;
+    }
+    @media (max-width: 960px) {
+      .levels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px 20px;
+      }
+    }
+    @media (max-width: 560px) {
+      .levels-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
     }
 
     /* Archetype 2-col grid inside the Adoption Paths card */
@@ -1004,46 +1013,36 @@
       <a class="explore-card explore-card-full" href="https://protocolized.dev/levels/">
         <span class="label">The Five Levels</span>
         <h3>From shadow to planetary</h3>
-        <ul class="levels-list">
-          <li class="level-row">
-            <div class="level-row-head">
-              <span class="level-num">L1</span>
-              <span class="level-name">Shadow</span>
-            </div>
-            <p class="level-desc">Individuals adopt AI tools without organizational sanctioning. Adoption is real; visibility, policy, and review are not yet in place.</p>
-            <p class="level-analogy">Like spreadsheets at every desk before IT had a policy.</p>
+        <ul class="levels-grid">
+          <li class="level-col">
+            <span class="level-col-num">L1</span>
+            <span class="level-col-name">Shadow</span>
+            <p class="level-col-desc">Individuals adopt AI tools without organizational sanctioning. Adoption is real; visibility, policy, and review are not yet in place.</p>
+            <p class="level-col-analogy">Like spreadsheets at every desk before IT had a policy.</p>
           </li>
-          <li class="level-row">
-            <div class="level-row-head">
-              <span class="level-num">L2</span>
-              <span class="level-name">Sanctioned</span>
-            </div>
-            <p class="level-desc">AI access has been granted top-down. The work of designing what AI does and how it is reviewed has not yet happened.</p>
-            <p class="level-analogy">Like Bill Gates's 1995 Internet Tidal Wave memo to Microsoft executives.</p>
+          <li class="level-col">
+            <span class="level-col-num">L2</span>
+            <span class="level-col-name">Sanctioned</span>
+            <p class="level-col-desc">AI access has been granted top-down. The work of designing what AI does and how it is reviewed has not yet happened.</p>
+            <p class="level-col-analogy">Like Bill Gates's 1995 Internet Tidal Wave memo to Microsoft executives.</p>
           </li>
-          <li class="level-row">
-            <div class="level-row-head">
-              <span class="level-num">L3</span>
-              <span class="level-name">Designed</span>
-            </div>
-            <p class="level-desc">Workflows are AI-native by design with named owners, review protocols, and quality measurement.</p>
-            <p class="level-analogy">Like the Git pull request — coordination absorbed into the artifact itself.</p>
+          <li class="level-col">
+            <span class="level-col-num">L3</span>
+            <span class="level-col-name">Designed</span>
+            <p class="level-col-desc">Workflows are AI-native by design with named owners, review protocols, and quality measurement.</p>
+            <p class="level-col-analogy">Like the Git pull request — coordination absorbed into the artifact itself.</p>
           </li>
-          <li class="level-row">
-            <div class="level-row-head">
-              <span class="level-num">L4</span>
-              <span class="level-name">Infrastructural</span>
-            </div>
-            <p class="level-desc">AI is infrastructural across the industry — other systems and partners depend on it. The mandate and the operational receiving end are paired.</p>
-            <p class="level-analogy">Like Walmart's 1988 EDI mandate that elevated all of US retail.</p>
+          <li class="level-col">
+            <span class="level-col-num">L4</span>
+            <span class="level-col-name">Infrastructural</span>
+            <p class="level-col-desc">AI is infrastructural across the industry — other systems and partners depend on it. The mandate and the operational receiving end are paired.</p>
+            <p class="level-col-analogy">Like Walmart's 1988 EDI mandate that elevated all of US retail.</p>
           </li>
-          <li class="level-row">
-            <div class="level-row-head">
-              <span class="level-num">L5</span>
-              <span class="level-name">Planetary</span>
-            </div>
-            <p class="level-desc">AI as ambient coordination substrate. The protocol is invisible to most participants — until a chokepoint event makes it visible.</p>
-            <p class="level-analogy">Like the global container shipping protocol since 1956.</p>
+          <li class="level-col">
+            <span class="level-col-num">L5</span>
+            <span class="level-col-name">Planetary</span>
+            <p class="level-col-desc">AI as ambient coordination substrate. The protocol is invisible to most participants — until a chokepoint event makes it visible.</p>
+            <p class="level-col-analogy">Like the global container shipping protocol since 1956.</p>
           </li>
         </ul>
         <span class="card-link">See full details →</span>
