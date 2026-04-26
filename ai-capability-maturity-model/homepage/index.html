@@ -305,51 +305,49 @@
     /* Full-width featured card (spans both columns of .explore-grid) */
     .explore-card-full { grid-column: 1 / -1; }
 
-    /* Five-levels list inside the featured Levels card — scannable layout */
+    /* Five-levels list — vertical stack, prominent L# + name header per row */
     .levels-list {
       list-style: none;
       padding: 0;
       margin: 0 0 22px;
       display: flex;
       flex-direction: column;
+      gap: 18px;
       flex: 1;
     }
     .levels-list .level-row {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      padding: 16px 0;
-      border-top: 1px solid var(--border);
-      align-items: baseline;
+      padding: 0 0 18px;
+      border-bottom: 1px dashed var(--border);
     }
-    .levels-list .level-row:first-child { border-top: 0; padding-top: 4px; }
-    .levels-list .level-row:last-child { padding-bottom: 4px; }
-
-    .level-row-label {
+    .levels-list .level-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .level-row-head {
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 14px;
+      margin-bottom: 8px;
     }
     .level-num {
       font-family: var(--font-mono);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--accent-dark);
-      letter-spacing: 0.01em;
       line-height: 1;
+      letter-spacing: 0.01em;
     }
     .level-name {
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--text);
-      line-height: 1.2;
+      line-height: 1.15;
     }
-    .level-row-body { min-width: 0; }
     .level-desc {
       font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.55;
-      margin: 0 0 6px;
+      margin: 0 0 4px;
     }
     .level-analogy {
       font-size: 0.85rem;
@@ -359,31 +357,42 @@
       opacity: 0.85;
     }
 
-    /* Archetype chips inside the Adoption Paths card */
-    .archetype-chips {
+    /* Archetype 2-col grid inside the Adoption Paths card */
+    .archetype-grid {
       list-style: none;
       padding: 0;
-      margin: 0 0 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      margin: 0 0 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 18px;
+      flex: 1;
+      align-content: start;
     }
-    .archetype-chips li {
+    .archetype-grid li {
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--accent-light);
-      color: var(--accent-dark);
-      line-height: 1.3;
+      color: var(--text);
+      padding: 0 0 0 16px;
+      position: relative;
+      line-height: 1.4;
     }
+    .archetype-grid li::before {
+      content: "·";
+      position: absolute;
+      left: 4px;
+      top: -3px;
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Card lead/tail copy (used by Adoption Paths + Case Studies cards) */
     .explore-card .card-lead {
       font-size: 0.9rem;
       color: var(--text);
       line-height: 1.5;
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       font-weight: 500;
     }
     .explore-card .card-tail {
@@ -391,42 +400,44 @@
       color: var(--text-secondary);
       line-height: 1.55;
       margin: 0 0 18px;
-      flex: 1;
     }
 
-    /* Case Studies mini-list inside the Stories card */
-    .case-mini-list {
-      margin: 0 0 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    /* Case Studies 2-col labelled lists */
+    .case-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
+      margin: 0 0 18px;
       flex: 1;
+      align-content: start;
     }
-    .case-mini-group {
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-    .case-mini-label {
+    .case-cols-label {
       font-family: var(--font-mono);
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       color: var(--accent-dark);
+      text-transform: uppercase;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
-    .case-mini-names {
+    .case-cols ul {
+      list-style: none;
+      padding: 0;
       margin: 0;
-      color: var(--text-secondary);
+    }
+    .case-cols li {
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 2px 0;
       font-weight: 500;
+      line-height: 1.5;
     }
 
-    /* Mobile: stack level rows vertically */
-    @media (max-width: 720px) {
-      .levels-list .level-row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
+    /* Mobile: archetype + case cols stay 2-col (compact); collapse only on small */
+    @media (max-width: 480px) {
+      .archetype-grid { grid-template-columns: 1fr; gap: 6px; }
+      .case-cols { grid-template-columns: 1fr; gap: 16px; }
     }
 
     /* ─── Section spacing ──────────────────────────────────── */
@@ -995,54 +1006,44 @@
         <h3>From shadow to planetary</h3>
         <ul class="levels-list">
           <li class="level-row">
-            <div class="level-row-label">
+            <div class="level-row-head">
               <span class="level-num">L1</span>
               <span class="level-name">Shadow</span>
             </div>
-            <div class="level-row-body">
-              <p class="level-desc">Individuals adopt AI tools without organizational sanctioning. Adoption is real; visibility, policy, and review are not yet in place.</p>
-              <p class="level-analogy">Like spreadsheets at every desk before IT had a policy.</p>
-            </div>
+            <p class="level-desc">Individuals adopt AI tools without organizational sanctioning. Adoption is real; visibility, policy, and review are not yet in place.</p>
+            <p class="level-analogy">Like spreadsheets at every desk before IT had a policy.</p>
           </li>
           <li class="level-row">
-            <div class="level-row-label">
+            <div class="level-row-head">
               <span class="level-num">L2</span>
               <span class="level-name">Sanctioned</span>
             </div>
-            <div class="level-row-body">
-              <p class="level-desc">AI access has been granted top-down. The work of designing what AI does and how it is reviewed has not yet happened.</p>
-              <p class="level-analogy">Like Bill Gates's 1995 Internet Tidal Wave memo to Microsoft executives.</p>
-            </div>
+            <p class="level-desc">AI access has been granted top-down. The work of designing what AI does and how it is reviewed has not yet happened.</p>
+            <p class="level-analogy">Like Bill Gates's 1995 Internet Tidal Wave memo to Microsoft executives.</p>
           </li>
           <li class="level-row">
-            <div class="level-row-label">
+            <div class="level-row-head">
               <span class="level-num">L3</span>
               <span class="level-name">Designed</span>
             </div>
-            <div class="level-row-body">
-              <p class="level-desc">Workflows are AI-native by design with named owners, review protocols, and quality measurement.</p>
-              <p class="level-analogy">Like the Git pull request — coordination absorbed into the artifact itself.</p>
-            </div>
+            <p class="level-desc">Workflows are AI-native by design with named owners, review protocols, and quality measurement.</p>
+            <p class="level-analogy">Like the Git pull request — coordination absorbed into the artifact itself.</p>
           </li>
           <li class="level-row">
-            <div class="level-row-label">
+            <div class="level-row-head">
               <span class="level-num">L4</span>
               <span class="level-name">Infrastructural</span>
             </div>
-            <div class="level-row-body">
-              <p class="level-desc">AI is infrastructural across the industry — other systems and partners depend on it. The mandate and the operational receiving end are paired.</p>
-              <p class="level-analogy">Like Walmart's 1988 EDI mandate that elevated all of US retail.</p>
-            </div>
+            <p class="level-desc">AI is infrastructural across the industry — other systems and partners depend on it. The mandate and the operational receiving end are paired.</p>
+            <p class="level-analogy">Like Walmart's 1988 EDI mandate that elevated all of US retail.</p>
           </li>
           <li class="level-row">
-            <div class="level-row-label">
+            <div class="level-row-head">
               <span class="level-num">L5</span>
               <span class="level-name">Planetary</span>
             </div>
-            <div class="level-row-body">
-              <p class="level-desc">AI as ambient coordination substrate. The protocol is invisible to most participants — until a chokepoint event makes it visible.</p>
-              <p class="level-analogy">Like the global container shipping protocol since 1956.</p>
-            </div>
+            <p class="level-desc">AI as ambient coordination substrate. The protocol is invisible to most participants — until a chokepoint event makes it visible.</p>
+            <p class="level-analogy">Like the global container shipping protocol since 1956.</p>
           </li>
         </ul>
         <span class="card-link">See full details →</span>
@@ -1053,16 +1054,16 @@
         <span class="label">Adoption Paths</span>
         <h3>The 10 archetypes</h3>
         <p class="card-lead">How people and teams approach AI.</p>
-        <ul class="archetype-chips">
+        <ul class="archetype-grid">
           <li>Vanguard</li>
-          <li>Architect</li>
-          <li>Tinkerer</li>
-          <li>Folkway</li>
           <li>Traveller</li>
+          <li>Architect</li>
           <li>Integrator</li>
+          <li>Tinkerer</li>
           <li>Ratifier</li>
           <li>Warden</li>
           <li>Broker</li>
+          <li>Folkway</li>
           <li>Guild</li>
         </ul>
         <p class="card-tail">The assessment classifies you into one of these, then maps your archetype onto the five levels above.</p>
@@ -1074,14 +1075,26 @@
         <span class="label">Case Studies</span>
         <h3>Stories from now and before</h3>
         <p class="card-lead">Recent AI deployments and the technology arcs they echo.</p>
-        <div class="case-mini-list">
-          <div class="case-mini-group">
-            <span class="case-mini-label">NOW</span>
-            <p class="case-mini-names">Samsung · Klarna · Shopify · Air Canada · Boom Supersonic</p>
+        <div class="case-cols">
+          <div>
+            <span class="case-cols-label">Now</span>
+            <ul>
+              <li>Samsung</li>
+              <li>Klarna</li>
+              <li>Shopify</li>
+              <li>Air Canada</li>
+              <li>Boom Supersonic</li>
+            </ul>
           </div>
-          <div class="case-mini-group">
-            <span class="case-mini-label">BEFORE</span>
-            <p class="case-mini-names">Visicalc &amp; Excel · Gates' 1995 memo · Git · Walmart EDI · Containerization</p>
+          <div>
+            <span class="case-cols-label">Before</span>
+            <ul>
+              <li>Visicalc &amp; Excel</li>
+              <li>Gates' 1995 memo</li>
+              <li>Git pull request</li>
+              <li>Walmart EDI</li>
+              <li>Containerization</li>
+            </ul>
           </div>
         </div>
         <span class="card-link">See the case studies →</span>
