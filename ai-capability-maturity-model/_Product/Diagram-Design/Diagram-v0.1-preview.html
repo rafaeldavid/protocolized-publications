@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maturity Model — Visual Diagram Options · v0.1 preview</title>
+<style>
+  :root {
+    --accent: #5b3fa3;
+    --accent-dark: #432d7a;
+    --accent-light: #efeaf7;
+    --text: #1a1a1a;
+    --text-secondary: #666;
+    --border: #d8d8d8;
+    --bg: #fafafa;
+    --surface: #f4f4f6;
+    --warn: #c97a4a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header.page-head {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0 22px;
+    background: #fff;
+    position: sticky; top: 0; z-index: 50;
+  }
+  header.page-head .label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  header.page-head h1 { font-size: 1.5rem; margin: 0 0 4px; font-weight: 600; }
+  header.page-head p { margin: 0; color: var(--text-secondary); font-size: 0.92rem; }
+
+  nav.jump {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    position: sticky; top: 88px; z-index: 49;
+    overflow-x: auto;
+  }
+  nav.jump ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; gap: 16px; flex-wrap: nowrap;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+  }
+  nav.jump a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
+  nav.jump a:hover { background: var(--accent-light); color: var(--accent); }
+
+  /* Section */
+  section.analogy {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 32px 0;
+    padding: 32px;
+  }
+  section.analogy h2 {
+    margin: 0 0 4px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  section.analogy .num {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--accent);
+    font-size: 1.1rem;
+  }
+  section.analogy .glyph-line {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  section.analogy .glyph-line span.glyph-icon {
+    font-family: serif;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  section.analogy .glyph-line span.rating { color: var(--accent); }
+
+  .diagram-row {
+    display: grid;
+    grid-template-columns: minmax(260px, 360px) 1fr;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 720px) {
+    .diagram-row { grid-template-columns: 1fr; }
+  }
+  .diagram {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .diagram svg { width: 100%; height: auto; max-width: 320px; display: block; }
+  .diagram-caption {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .story h3 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .story p { margin: 0 0 14px; font-size: 0.94rem; }
+
+  /* Region styling — generic */
+  .region {
+    fill: rgba(91, 63, 163, 0.18);
+    stroke: var(--accent);
+    stroke-width: 1.4;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+  }
+  .region:hover, .region.active {
+    fill: rgba(91, 63, 163, 0.55);
+  }
+  .stroke-only {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: stroke-width 0.2s ease, stroke 0.2s ease;
+  }
+  .stroke-only:hover, .stroke-only.active {
+    stroke-width: 3;
+    stroke: var(--accent-dark);
+  }
+  .lvl-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    fill: var(--accent-dark);
+    pointer-events: none;
+    font-weight: 700;
+  }
+  .lvl-label-light {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    fill: white;
+    pointer-events: none;
+    font-weight: 700;
+  }
+  .stage-num {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    fill: var(--accent);
+    pointer-events: none;
+    font-weight: 700;
+  }
+
+  /* Levels list */
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 18px 0 0;
+  }
+  .level-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .level-card:hover, .level-card.active {
+    background: var(--accent-light);
+    border-color: var(--accent-dark);
+  }
+  .level-card .level-num {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .level-card .level-name {
+    font-weight: 600;
+    margin: 2px 0 6px;
+    font-size: 0.92rem;
+  }
+  .level-card .level-pos {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .level-card .level-desc {
+    font-size: 0.84rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Context block */
+  details.context {
+    margin-top: 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  details.context summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  details.context > div {
+    padding: 0 16px 16px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  details.context h4 {
+    margin: 14px 0 6px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    font-weight: 700;
+  }
+  details.context ul { padding-left: 20px; margin: 6px 0; }
+  details.context li { margin-bottom: 4px; }
+
+  .mnemonic-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+  .mnemonic-row svg { width: 36px; height: 36px; }
+
+  footer.page-foot {
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    padding: 36px 0 60px;
+    background: #fff;
+  }
+  footer.page-foot h2 {
+    font-size: 1.25rem;
+    margin: 0 0 14px;
+    font-weight: 600;
+  }
+  footer.page-foot p {
+    font-size: 0.92rem;
+    margin: 0 0 12px;
+    color: var(--text-secondary);
+  }
+  .recap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .recap-card {
+    background: var(--surface);
+    padding: 14px 16px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+  }
+  .recap-card h3 {
+    font-size: 0.82rem;
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .recap-card p {
+    font-size: 0.84rem;
+    margin: 0;
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="container">
+    <div class="label">Diagram Design · v0.1 preview</div>
+    <h1>Maturity model — 10 visual analogies</h1>
+    <p>Pyramid alternatives. Each diagram is interactive: hover or click any level region to highlight it.</p>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="container">
+    <ul>
+      <li><a href="#a01">01 · Iceberg</a></li>
+      <li><a href="#a02">02 · Desire path</a></li>
+      <li><a href="#a03">03 · Geological strata</a></li>
+      <li><a href="#a04">04 · Fault line</a></li>
+      <li><a href="#a05">05 · River / watershed</a></li>
+      <li><a href="#a06">06 · Subway network</a></li>
+      <li><a href="#a07">07 · Coral reef</a></li>
+      <li><a href="#a08">08 · Lighthouse / beacon</a></li>
+      <li><a href="#a09">09 · Protocol stack</a></li>
+      <li><a href="#a10">10 · Construction → city</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+
+<!-- ─── 01. Iceberg ─────────────────────────────────────────── -->
+<section class="analogy" id="a01" data-analogy="iceberg">
+  <h2><span class="num">01</span>The Iceberg</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">▲</span> with waterline</span>
+    <span class="rating">Iconography ★★★★ · Story ★★★ · Protocol ★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ice-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7fafc"/>
+            <stop offset="1" stop-color="#e2eaf2"/>
+          </linearGradient>
+          <linearGradient id="ice-water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#bdd7ee" stop-opacity="0.45"/>
+            <stop offset="1" stop-color="#5b8fb9" stop-opacity="0.55"/>
+          </linearGradient>
+        </defs>
+        <rect width="280" height="220" fill="url(#ice-sky)"/>
+        <rect y="220" width="280" height="120" fill="url(#ice-water)"/>
+        <!-- L5 tip -->
+        <polygon class="region" data-level="5" points="140,40 158,80 122,80"/>
+        <!-- L4 -->
+        <polygon class="region" data-level="4" points="122,80 158,80 178,135 102,135"/>
+        <!-- L3 (just above waterline) -->
+        <polygon class="region" data-level="3" points="102,135 178,135 195,185 85,185"/>
+        <!-- L2 (just below waterline) -->
+        <polygon class="region" data-level="2" points="85,185 195,185 215,240 65,240"/>
+        <!-- L1 (deepest, largest) -->
+        <polygon class="region" data-level="1" points="65,240 215,240 248,325 32,325"/>
+        <line x1="0" y1="220" x2="280" y2="220" stroke="#333" stroke-dasharray="3,4" stroke-width="1"/>
+        <text x="6" y="216" font-size="9" fill="#777">waterline</text>
+        <text x="140" y="68" text-anchor="middle" class="lvl-label">L5</text>
+        <text x="140" y="115" text-anchor="middle" class="lvl-label">L4</text>
+        <text x="140" y="168" text-anchor="middle" class="lvl-label">L3</text>
+        <text x="140" y="220" text-anchor="middle" class="lvl-label">L2</text>
+        <text x="140" y="290" text-anchor="middle" class="lvl-label">L1</text>
+      </svg>
+      <div class="diagram-caption">↑ visible to most · ↓ submerged majority</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>The visible thing is a small fraction of what's there. "Tip of the iceberg" is already the cultural mnemonic for the L1 Shadow problem. L5 sits at the very tip — visible but receding, infrastructure that becomes background.</p>
+      <h3>How to read this diagram</h3>
+      <p>L1 Shadow is the submerged base — the hidden mass everyone has, nobody talks about. L2–L4 progressively emerge above the waterline. L5 is the visible tip — paradoxically, the most-pervasive layer is also the one that recedes from notice once everyone depends on it.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">submerged base</div><div class="level-desc">Hidden mass; everyone's there but nobody admits it. Largest single-level population.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">just at waterline</div><div class="level-desc">Just-emerged, partially visible. Mandate exists; protocol doesn't.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">just above water</div><div class="level-desc">Visible, defended, but minority. Designed workflows with named owners.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">tip just above</div><div class="level-desc">Few orgs reach here; sectoral coordination.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">highest peak — recedes</div><div class="level-desc">Visible to all; also a different kind of invisible — civilization-scale infrastructure.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Memorable shape; "tip of the iceberg" is in cultural vocabulary already</li>
+        <li>Communicates that visible activity is a small fraction of total</li>
+        <li>Implies hidden mass doesn't go away just because you don't see it</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Static — icebergs don't grow; doesn't show how an org moves through levels</li>
+        <li>Vertical-only; misses L4's lateral / sectoral nature</li>
+        <li>L5's "infrastructure-becomes-invisible" inverts the iceberg's logic of "visible = above water"</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for opening framing — the first encounter with the model, when the priority is "you are not where you think you are." Cultural carry of "tip of the iceberg" does free work.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="18,4 32,32 4,32" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-dasharray="2,2" stroke-width="1"/>
+    </svg>
+    <span>triangle bisected by waterline</span>
+  </div>
+</section>
+
+<!-- ─── 02. Desire path → highway ───────────────────────────── -->
+<section class="analogy" id="a02" data-analogy="trail">
+  <h2><span class="num">02</span>Desire path → highway</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">⌒→═</span> evolving path</span>
+    <span class="rating">Iconography ★★★ · Story ★★★★★ · Protocol ★★★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: scattered dots, smooth/open terrain -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="20" y="14" width="240" height="46" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="40" cy="36" r="2" fill="var(--accent)"/>
+          <circle cx="80" cy="44" r="2" fill="var(--accent)"/>
+          <circle cx="115" cy="30" r="2" fill="var(--accent)"/>
+          <circle cx="155" cy="40" r="2" fill="var(--accent)"/>
+          <circle cx="195" cy="28" r="2" fill="var(--accent)"/>
+          <circle cx="235" cy="46" r="2" fill="var(--accent)"/>
+          <circle cx="60" cy="50" r="2" fill="var(--accent)"/>
+          <circle cx="135" cy="48" r="2" fill="var(--accent)"/>
+          <circle cx="215" cy="38" r="2" fill="var(--accent)"/>
+        </g>
+        <text x="14" y="40" class="stage-num">L1</text>
+        <text x="262" y="40" font-size="9" fill="#777" text-anchor="end">smooth</text>
+
+        <!-- L2: wavy desire path -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="20" y="74" width="240" height="46" fill="white" fill-opacity="0.001" stroke="none"/>
+          <path d="M30 102 Q 60 85, 90 102 T 150 102 T 210 102 T 260 102" stroke-width="2"/>
+        </g>
+        <text x="14" y="100" class="stage-num">L2</text>
+        <text x="262" y="100" font-size="9" fill="#777" text-anchor="end">desire path</text>
+
+        <!-- L3: marked trail -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="20" y="134" width="240" height="46" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="30" y1="160" x2="260" y2="160" stroke-width="2"/>
+          <line x1="50" y1="155" x2="50" y2="165" stroke-width="2"/>
+          <line x1="100" y1="155" x2="100" y2="165" stroke-width="2"/>
+          <line x1="150" y1="155" x2="150" y2="165" stroke-width="2"/>
+          <line x1="200" y1="155" x2="200" y2="165" stroke-width="2"/>
+          <line x1="250" y1="155" x2="250" y2="165" stroke-width="2"/>
+        </g>
+        <text x="14" y="160" class="stage-num">L3</text>
+        <text x="262" y="160" font-size="9" fill="#777" text-anchor="end">marked trail</text>
+
+        <!-- L4: paved road -->
+        <g class="region" data-level="4">
+          <rect x="20" y="194" width="240" height="46" fill="white" fill-opacity="0.001" stroke="none"/>
+          <rect x="30" y="214" width="230" height="12" fill="var(--accent)" fill-opacity="0.3" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="30" y1="220" x2="60" y2="220" stroke="white" stroke-width="1.2"/>
+          <line x1="80" y1="220" x2="110" y2="220" stroke="white" stroke-width="1.2"/>
+          <line x1="130" y1="220" x2="160" y2="220" stroke="white" stroke-width="1.2"/>
+          <line x1="180" y1="220" x2="210" y2="220" stroke="white" stroke-width="1.2"/>
+          <line x1="230" y1="220" x2="260" y2="220" stroke="white" stroke-width="1.2"/>
+        </g>
+        <text x="14" y="222" class="stage-num">L4</text>
+        <text x="262" y="220" font-size="9" fill="#777" text-anchor="end">paved road</text>
+
+        <!-- L5: highway network -->
+        <g class="region stroke-only" data-level="5">
+          <rect x="20" y="254" width="240" height="80" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="40" y1="280" x2="240" y2="280" stroke-width="2.5"/>
+          <line x1="40" y1="318" x2="240" y2="318" stroke-width="2.5"/>
+          <line x1="80" y1="280" x2="80" y2="318" stroke-width="2"/>
+          <line x1="140" y1="280" x2="140" y2="318" stroke-width="2"/>
+          <line x1="200" y1="280" x2="200" y2="318" stroke-width="2"/>
+          <circle cx="80" cy="280" r="3" fill="var(--accent)"/>
+          <circle cx="140" cy="280" r="3" fill="var(--accent)"/>
+          <circle cx="200" cy="280" r="3" fill="var(--accent)"/>
+          <circle cx="80" cy="318" r="3" fill="var(--accent)"/>
+          <circle cx="140" cy="318" r="3" fill="var(--accent)"/>
+          <circle cx="200" cy="318" r="3" fill="var(--accent)"/>
+        </g>
+        <text x="14" y="300" class="stage-num">L5</text>
+        <text x="262" y="299" font-size="9" fill="#777" text-anchor="end">network</text>
+      </svg>
+      <div class="diagram-caption">smooth → striated (Rao, <em>Evil Twin</em>)</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>This <em>is</em> the protocol-theory thesis: protocols turn smooth behavior spaces into striated ones. The terrain doesn't change — the structure imposed on it does. Each level is a different degree of striation.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: open terrain (people moving freely) → emergent track (worn by repeated use) → marked trail (signed) → engineered road (paved, named) → highway network (multi-route, sector-spanning). The terrain at L5 is now <em>defined by</em> the network, not the network by the terrain.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">open terrain</div><div class="level-desc">No path. Anyone goes anywhere. Pure smoothness.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">desire path</div><div class="level-desc">Worn into being by repeated use. Acknowledged, not designed.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">marked trail</div><div class="level-desc">Someone signed it. Maintained. Still single-org.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">paved road</div><div class="level-desc">Engineered. Named. Cross-org coordination.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">highway network</div><div class="level-desc">Multi-route, sector-spanning. Terrain defined by the network now.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Direct quote anchor in Rao's <em>Constructing the Evil Twin of AI</em> — protocols turn smooth behavior spaces into striated ones</li>
+        <li>Captures cumulative agency: each layer is a deliberate addition of structure, not "more of the same"</li>
+        <li>Non-monotonic visibility — the highway exists because it was built, but the road that's been there 100 years recedes into infrastructure</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Glyph isn't iconic the way pyramid / iceberg are — it's a process more than a shape</li>
+        <li>Five-level distinction is clean but each individual glyph is plain</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for SIG-internal / protocol-theory-aware audiences. The metaphor does heavy work for anyone who's read <em>Evil Twin</em>; less so for cold readers.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="8" r="0.8" fill="currentColor"/>
+      <circle cx="11" cy="11" r="0.8" fill="currentColor"/>
+      <path d="M3 18 Q 9 14, 15 18 T 27 18" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <line x1="3" y1="25" x2="33" y2="25" stroke="currentColor" stroke-width="2.4"/>
+      <line x1="6" y1="32" x2="33" y2="32" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="14" y1="29" x2="14" y2="34" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="22" y1="29" x2="22" y2="34" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>5 stages of path striation</span>
+  </div>
+</section>
+
+<!-- ─── 03. Geological strata ───────────────────────────────── -->
+<section class="analogy" id="a03" data-analogy="strata">
+  <h2><span class="num">03</span>Geological strata</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">▤</span> stacked sediment</span>
+    <span class="rating">Iconography ★★★★ · Story ★★★★ · Protocol ★★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L5: atmosphere (top, gradient) -->
+        <g class="region" data-level="5">
+          <rect x="10" y="10" width="260" height="50" fill="rgba(91,63,163,0.06)" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="50" cy="35" r="1" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="100" cy="28" r="1" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="160" cy="40" r="1" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="210" cy="32" r="1" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="240" cy="42" r="1" fill="var(--accent)" opacity="0.4"/>
+        </g>
+        <text x="20" y="40" class="lvl-label">L5 atmosphere</text>
+
+        <!-- L4: bedrock (solid dark) -->
+        <g class="region" data-level="4">
+          <rect x="10" y="60" width="260" height="55" fill="rgba(67,45,122,0.45)" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="30" y1="80" x2="50" y2="92" stroke="white" stroke-width="0.5" opacity="0.5"/>
+          <line x1="120" y1="78" x2="135" y2="98" stroke="white" stroke-width="0.5" opacity="0.5"/>
+          <line x1="200" y1="82" x2="220" y2="102" stroke="white" stroke-width="0.5" opacity="0.5"/>
+        </g>
+        <text x="20" y="92" class="lvl-label-light">L4 bedrock</text>
+
+        <!-- L3: sandstone (cross-hatched) -->
+        <g class="region" data-level="3">
+          <rect x="10" y="115" width="260" height="60" fill="rgba(91,63,163,0.28)" stroke="var(--accent)" stroke-width="1.5"/>
+          <pattern id="hatch3" patternUnits="userSpaceOnUse" width="8" height="8">
+            <line x1="0" y1="8" x2="8" y2="0" stroke="var(--accent)" stroke-width="0.5" opacity="0.5"/>
+          </pattern>
+          <rect x="10" y="115" width="260" height="60" fill="url(#hatch3)" pointer-events="none"/>
+        </g>
+        <text x="20" y="150" class="lvl-label">L3 sandstone</text>
+
+        <!-- L2: sediment (dotted layers) -->
+        <g class="region" data-level="2">
+          <rect x="10" y="175" width="260" height="60" fill="rgba(91,63,163,0.15)" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="10" y1="190" x2="270" y2="190" stroke="var(--accent)" stroke-width="0.5" opacity="0.5" stroke-dasharray="2,3"/>
+          <line x1="10" y1="205" x2="270" y2="205" stroke="var(--accent)" stroke-width="0.5" opacity="0.5" stroke-dasharray="2,3"/>
+          <line x1="10" y1="220" x2="270" y2="220" stroke="var(--accent)" stroke-width="0.5" opacity="0.5" stroke-dasharray="2,3"/>
+        </g>
+        <text x="20" y="210" class="lvl-label">L2 sediment</text>
+
+        <!-- L1: loose dust (sparse dots) -->
+        <g class="region" data-level="1">
+          <rect x="10" y="235" width="260" height="95" fill="rgba(91,63,163,0.06)" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="40" cy="265" r="1.5" fill="var(--accent)"/>
+          <circle cx="90" cy="280" r="1.5" fill="var(--accent)"/>
+          <circle cx="130" cy="260" r="1.5" fill="var(--accent)"/>
+          <circle cx="180" cy="285" r="1.5" fill="var(--accent)"/>
+          <circle cx="220" cy="270" r="1.5" fill="var(--accent)"/>
+          <circle cx="60" cy="305" r="1.5" fill="var(--accent)"/>
+          <circle cx="150" cy="310" r="1.5" fill="var(--accent)"/>
+          <circle cx="240" cy="305" r="1.5" fill="var(--accent)"/>
+        </g>
+        <text x="20" y="280" class="lvl-label">L1 loose dust</text>
+      </svg>
+      <div class="diagram-caption">pressure + time compresses each layer</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Pressure and time consolidate loose material into structure. Each layer is a <em>different category</em> of substance, not just "more of the same." The protocol-theory framing lifts directly from <em>Finding Fault Lines within the Firm</em>.</p>
+      <h3>How to read this diagram</h3>
+      <p>Bottom to top: loose dust (individual AI use) → sediment (sanctioned, layered but loose) → sandstone (designed, hard, navigable) → bedrock (foundational, sector-wide) → atmosphere (surrounding, pervasive). L5 is structurally different — it's the medium, not a layer.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">loose dust / gravel</div><div class="level-desc">Unconsolidated. Wind-blown. Each particle a separate AI use.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">sediment</div><div class="level-desc">Beginning to settle. Layers form, but pressure hasn't compacted them.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">sandstone</div><div class="level-desc">Pressure + time compressed sediment into structure. Hard, navigable.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">bedrock</div><div class="level-desc">Foundation. Other things are built on it. Hard to remove.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">atmosphere</div><div class="level-desc">Different kind of structure — pervasive, surrounding, not "above."</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Pressure-and-time framing aligns with how the SIG paper treats organizational protocols — accumulated stress reveals underlying structure</li>
+        <li>Each level is a literal different material type — visual distinction is sharp</li>
+        <li>L5 as "atmosphere" captures the L5-as-medium framing that pyramids miss</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Inverts traditional "high = good" reading — older / deeper layers are usually more foundational geologically</li>
+        <li>L5 doesn't tile cleanly with the other layers (it's qualitatively different)</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for the long-form artifact / litepaper context where the reader has time to absorb the metaphor. Less effective as a small mnemonic.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="28" height="5" fill="none" stroke="currentColor" stroke-width="1"/>
+      <rect x="4" y="9" width="28" height="6" fill="currentColor" opacity="0.7"/>
+      <rect x="4" y="15" width="28" height="6" fill="currentColor" opacity="0.4"/>
+      <rect x="4" y="21" width="28" height="6" fill="currentColor" opacity="0.2"/>
+      <rect x="4" y="27" width="28" height="5" fill="currentColor" opacity="0.08"/>
+    </svg>
+    <span>five stacked strata</span>
+  </div>
+</section>
+
+<!-- ─── 04. Fault line cross-section ────────────────────────── -->
+<section class="analogy" id="a04" data-analogy="fault">
+  <h2><span class="num">04</span>Fault line cross-section</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">↯</span> stress reveals structure</span>
+    <span class="rating">Iconography ★★★ · Story ★★★★ · Protocol ★★★★★ (site naming)</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: smooth surface -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="10" y="14" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="20" y1="40" x2="260" y2="40" stroke-width="2"/>
+        </g>
+        <text x="14" y="32" class="stage-num">L1</text>
+        <text x="266" y="40" font-size="9" fill="#777" text-anchor="end">smooth</text>
+
+        <!-- L2: first cracks -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="10" y="74" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <path d="M20 100 L 95 100 L 105 95 L 115 105 L 165 105 L 175 100 L 260 100" stroke-width="2"/>
+        </g>
+        <text x="14" y="92" class="stage-num">L2</text>
+        <text x="266" y="100" font-size="9" fill="#777" text-anchor="end">cracks emerge</text>
+
+        <!-- L3: fault mapped -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="10" y="134" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="20" y1="160" x2="100" y2="160" stroke-width="2"/>
+          <line x1="100" y1="160" x2="115" y2="148" stroke-width="2"/>
+          <line x1="115" y1="148" x2="135" y2="172" stroke-width="2"/>
+          <line x1="135" y1="172" x2="160" y2="160" stroke-width="2"/>
+          <line x1="160" y1="160" x2="260" y2="160" stroke-width="2"/>
+          <circle cx="120" cy="160" r="3" fill="var(--accent)"/>
+          <text x="125" y="146" font-size="8" fill="var(--accent)">named</text>
+        </g>
+        <text x="14" y="152" class="stage-num">L3</text>
+        <text x="266" y="160" font-size="9" fill="#777" text-anchor="end">fault mapped</text>
+
+        <!-- L4: tectonic plates / multi-fault -->
+        <g class="region stroke-only" data-level="4">
+          <rect x="10" y="194" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="20" y1="222" x2="60" y2="222" stroke-width="2"/>
+          <line x1="60" y1="222" x2="75" y2="210" stroke-width="2"/>
+          <line x1="75" y1="210" x2="100" y2="232" stroke-width="2"/>
+          <line x1="100" y1="232" x2="135" y2="222" stroke-width="2"/>
+          <line x1="135" y1="222" x2="150" y2="210" stroke-width="2"/>
+          <line x1="150" y1="210" x2="180" y2="232" stroke-width="2"/>
+          <line x1="180" y1="232" x2="210" y2="220" stroke-width="2"/>
+          <line x1="210" y1="220" x2="225" y2="208" stroke-width="2"/>
+          <line x1="225" y1="208" x2="260" y2="222" stroke-width="2"/>
+        </g>
+        <text x="14" y="218" class="stage-num">L4</text>
+        <text x="266" y="220" font-size="9" fill="#777" text-anchor="end">tectonic</text>
+
+        <!-- L5: planetary tectonics -->
+        <g class="region stroke-only" data-level="5">
+          <rect x="10" y="264" width="260" height="70" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="60" cy="298" r="14" stroke-width="2"/>
+          <circle cx="140" cy="298" r="14" stroke-width="2"/>
+          <circle cx="220" cy="298" r="14" stroke-width="2"/>
+          <line x1="74" y1="298" x2="126" y2="298" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <line x1="154" y1="298" x2="206" y2="298" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <text x="60" y="302" text-anchor="middle" font-size="8" fill="var(--accent)">⊕</text>
+          <text x="140" y="302" text-anchor="middle" font-size="8" fill="var(--accent)">⊕</text>
+          <text x="220" y="302" text-anchor="middle" font-size="8" fill="var(--accent)">⊕</text>
+        </g>
+        <text x="14" y="298" class="stage-num">L5</text>
+        <text x="266" y="298" font-size="9" fill="#777" text-anchor="end">planetary</text>
+      </svg>
+      <div class="diagram-caption"><em>Finding Fault Lines</em> — stress reveals structure</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Protocols are responses to pressure, not arbitrary construction. Smooth surface accumulates stress invisibly until something cracks. Direct site-naming alignment — <code>finding-fault-lines.jpg</code> is the hero image across all six pages.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: smooth surface → first cracks emerge under stress → fault is mapped, named, and worked with → multi-fault tectonic structure (sectoral) → planetary plates (civilization-scale).</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">smooth surface</div><div class="level-desc">Pressure is real but invisible; nothing has cracked yet.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">first cracks</div><div class="level-desc">Stress finds the weak places. Cracks visible but unmapped.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">fault mapped + named</div><div class="level-desc">Org has acknowledged the fault and built protocols around it.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">tectonic structure</div><div class="level-desc">Sector-wide fault systems; multiple orgs share the same plates.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">civilization-scale plates</div><div class="level-desc">Continental tectonics. Movement is planetary.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Direct site-naming alignment — <em>Finding Fault Lines within the Firm</em> is the SIG foundation paper</li>
+        <li>"Stress reveals structure" matches the model's core thesis about why protocols exist</li>
+        <li>Captures protocols as <em>response</em>, not <em>imposition</em></li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Less universally recognized than pyramid / iceberg — needs explanation</li>
+        <li>Glyph is harder to reduce — fault lines are jagged and irregular</li>
+        <li>"Fault" carries negative connotation in everyday English (this is "your fault")</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for SIG-internal contexts and the litepaper. Strong narrative fit with the existing site identity.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <line x1="3" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="14" y1="6" x2="20" y2="14" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="20" y1="14" x2="26" y2="6" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="26" y1="6" x2="33" y2="6" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="3" y1="22" x2="11" y2="22" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="11" y1="22" x2="16" y2="32" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="16" y1="32" x2="22" y2="22" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="22" y1="22" x2="33" y2="22" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <span>jagged fault traces</span>
+  </div>
+</section>
+
+<!-- ─── 05. River / watershed ──────────────────────────────── -->
+<section class="analogy" id="a05" data-analogy="river">
+  <h2><span class="num">05</span>River / watershed system</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">⌇</span> branching flow</span>
+    <span class="rating">Iconography ★★★★ · Story ★★★ · Protocol ★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: scattered springs (top) -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="10" y="10" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="40" cy="30" r="3" fill="var(--accent)"/>
+          <circle cx="80" cy="20" r="3" fill="var(--accent)"/>
+          <circle cx="120" cy="32" r="3" fill="var(--accent)"/>
+          <circle cx="160" cy="22" r="3" fill="var(--accent)"/>
+          <circle cx="200" cy="34" r="3" fill="var(--accent)"/>
+          <circle cx="240" cy="26" r="3" fill="var(--accent)"/>
+        </g>
+        <text x="14" y="48" class="stage-num">L1 springs</text>
+
+        <!-- L2: creeks (small streams converging) -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="10" y="60" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <path d="M40 65 Q 50 80, 65 95 L 90 110" stroke-width="1.5"/>
+          <path d="M80 65 Q 80 80, 90 95 L 90 110" stroke-width="1.5"/>
+          <path d="M120 65 Q 130 80, 140 95 L 140 110" stroke-width="1.5"/>
+          <path d="M160 65 Q 150 80, 145 95 L 140 110" stroke-width="1.5"/>
+          <path d="M200 65 Q 200 80, 190 95 L 190 110" stroke-width="1.5"/>
+          <path d="M240 65 Q 230 80, 215 95 L 190 110" stroke-width="1.5"/>
+        </g>
+        <text x="200" y="90" class="stage-num">L2 creeks</text>
+
+        <!-- L3: river -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="10" y="120" width="260" height="55" fill="white" fill-opacity="0.001" stroke="none"/>
+          <path d="M90 120 Q 100 135, 130 150 Q 140 160, 140 175" stroke-width="2.5"/>
+          <path d="M140 120 Q 145 135, 145 150 Q 145 160, 140 175" stroke-width="2.5"/>
+          <path d="M190 120 Q 175 135, 155 150 Q 145 160, 140 175" stroke-width="2.5"/>
+        </g>
+        <text x="20" y="155" class="stage-num">L3 river</text>
+
+        <!-- L4: river basin -->
+        <g class="region stroke-only" data-level="4">
+          <rect x="10" y="175" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <path d="M140 175 L 100 200 L 90 230" stroke-width="2"/>
+          <path d="M140 175 L 140 200 L 140 230" stroke-width="2.5"/>
+          <path d="M140 175 L 180 200 L 190 230" stroke-width="2"/>
+          <path d="M120 200 L 130 215" stroke-width="1.5"/>
+          <path d="M160 200 L 150 215" stroke-width="1.5"/>
+        </g>
+        <text x="20" y="210" class="stage-num">L4 basin</text>
+
+        <!-- L5: ocean (planetary) -->
+        <g class="region" data-level="5">
+          <rect x="10" y="235" width="260" height="100" fill="rgba(91,63,163,0.18)" stroke="var(--accent)" stroke-width="1.5"/>
+          <path d="M20 260 Q 50 255, 80 260 T 140 260 T 200 260 T 260 260" stroke="var(--accent)" stroke-width="0.8" fill="none"/>
+          <path d="M20 285 Q 50 280, 80 285 T 140 285 T 200 285 T 260 285" stroke="var(--accent)" stroke-width="0.8" fill="none"/>
+          <path d="M20 310 Q 50 305, 80 310 T 140 310 T 200 310 T 260 310" stroke="var(--accent)" stroke-width="0.8" fill="none"/>
+        </g>
+        <text x="20" y="285" class="lvl-label">L5 ocean</text>
+      </svg>
+      <div class="diagram-caption">individual sources → planetary convergence</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Many sources converge into shared infrastructure. Each level is a different stage of consolidation. Convergent rather than additive.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: springs (individual, scattered) → creeks (first merging) → river (one channel, defined banks) → river basin (multiple rivers, sectoral) → ocean (planetary convergence).</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">springs / drips</div><div class="level-desc">Individual sources. No coordination.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">creeks</div><div class="level-desc">First merging. Visible flow but unstable banks.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">river with channel</div><div class="level-desc">Banks defined. Flow predictable.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">river basin</div><div class="level-desc">Multiple rivers, shared watershed. Sector.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">ocean</div><div class="level-desc">Convergence into one body. Planetary scale.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Universal cultural metaphor — readers know what watersheds do</li>
+        <li>Convergence framing fits the model's L4 / L5 sector dynamics</li>
+        <li>Directionality (downstream) implies adoption flow</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>"Flowing downhill" can read as decline rather than maturation</li>
+        <li>Implies rivers and oceans are inevitable destinations — most orgs never reach L4 / L5</li>
+        <li>L1 as "springs" is too neutral / pretty; the model's L1 has danger</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for the litepaper macro-framing of sector-wide adoption (L4 / L5 discussion).</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="6" r="1" fill="currentColor"/>
+      <circle cx="18" cy="4" r="1" fill="currentColor"/>
+      <circle cx="30" cy="6" r="1" fill="currentColor"/>
+      <path d="M6 7 L 14 18 L 18 30" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <path d="M18 5 L 18 30" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <path d="M30 7 L 22 18 L 18 30" stroke="currentColor" fill="none" stroke-width="1.2"/>
+    </svg>
+    <span>branching flow</span>
+  </div>
+</section>
+
+<!-- ─── 06. Subway network ─────────────────────────────────── -->
+<section class="analogy" id="a06" data-analogy="subway">
+  <h2><span class="num">06</span>Subway / transit network</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">●─●</span> nodes + edges</span>
+    <span class="rating">Iconography ★★★★ · Story ★★★★ · Protocol ★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: walking — scattered points -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="10" y="10" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="40" cy="38" r="3" fill="var(--accent)"/>
+          <circle cx="90" cy="28" r="3" fill="var(--accent)"/>
+          <circle cx="140" cy="40" r="3" fill="var(--accent)"/>
+          <circle cx="195" cy="32" r="3" fill="var(--accent)"/>
+          <circle cx="245" cy="42" r="3" fill="var(--accent)"/>
+        </g>
+        <text x="14" y="32" class="stage-num">L1 walking</text>
+
+        <!-- L2: bus route — single line -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="10" y="60" width="260" height="50" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="30" y1="88" x2="260" y2="88" stroke-width="2"/>
+          <circle cx="50" cy="88" r="3.5" fill="var(--accent)"/>
+          <circle cx="100" cy="88" r="3.5" fill="var(--accent)"/>
+          <circle cx="150" cy="88" r="3.5" fill="var(--accent)"/>
+          <circle cx="200" cy="88" r="3.5" fill="var(--accent)"/>
+          <circle cx="250" cy="88" r="3.5" fill="var(--accent)"/>
+        </g>
+        <text x="14" y="80" class="stage-num">L2 bus route</text>
+
+        <!-- L3: subway — multi-line -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="10" y="115" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="30" y1="135" x2="260" y2="135" stroke-width="2.5"/>
+          <line x1="60" y1="120" x2="60" y2="170" stroke-width="2.5"/>
+          <line x1="120" y1="120" x2="200" y2="170" stroke-width="2.5"/>
+          <circle cx="60" cy="135" r="3.5" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="120" cy="135" r="3.5" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="160" cy="152" r="3.5" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="200" cy="135" r="3.5" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+        </g>
+        <text x="14" y="155" class="stage-num">L3 subway</text>
+
+        <!-- L4: intercity rail — mesh -->
+        <g class="region stroke-only" data-level="4">
+          <rect x="10" y="175" width="260" height="80" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="50" y1="200" x2="140" y2="200" stroke-width="2"/>
+          <line x1="140" y1="200" x2="230" y2="200" stroke-width="2"/>
+          <line x1="50" y1="200" x2="80" y2="240" stroke-width="2"/>
+          <line x1="80" y1="240" x2="140" y2="200" stroke-width="2"/>
+          <line x1="140" y1="200" x2="200" y2="240" stroke-width="2"/>
+          <line x1="200" y1="240" x2="230" y2="200" stroke-width="2"/>
+          <line x1="80" y1="240" x2="200" y2="240" stroke-width="2"/>
+          <circle cx="50" cy="200" r="4" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="140" cy="200" r="5" fill="var(--accent)"/>
+          <circle cx="230" cy="200" r="4" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="80" cy="240" r="4" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="200" cy="240" r="4" fill="white" stroke="var(--accent)" stroke-width="1.5"/>
+        </g>
+        <text x="14" y="220" class="stage-num">L4 intercity</text>
+
+        <!-- L5: aviation — global hubs -->
+        <g class="region stroke-only" data-level="5">
+          <rect x="10" y="255" width="260" height="80" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="60" cy="295" r="6" fill="var(--accent)"/>
+          <circle cx="140" cy="285" r="8" fill="var(--accent-dark)"/>
+          <circle cx="220" cy="298" r="6" fill="var(--accent)"/>
+          <circle cx="100" cy="320" r="3" fill="var(--accent)"/>
+          <circle cx="180" cy="320" r="3" fill="var(--accent)"/>
+          <circle cx="40" cy="320" r="3" fill="var(--accent)"/>
+          <circle cx="240" cy="320" r="3" fill="var(--accent)"/>
+          <line x1="60" y1="295" x2="140" y2="285" stroke-width="1.2"/>
+          <line x1="140" y1="285" x2="220" y2="298" stroke-width="1.2"/>
+          <line x1="60" y1="295" x2="220" y2="298" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <line x1="60" y1="295" x2="40" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="60" y1="295" x2="100" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="140" y1="285" x2="100" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="140" y1="285" x2="180" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="220" y1="298" x2="180" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="220" y1="298" x2="240" y2="320" stroke-width="0.8" stroke-dasharray="2,2"/>
+        </g>
+        <text x="14" y="298" class="stage-num">L5 aviation</text>
+      </svg>
+      <div class="diagram-caption">5 zoom levels of transit coordination</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Coordination scope expands at each level. Each scale (individual / route / network / region / planet) is structurally different.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: walking (each person picks their path) → single bus route → designed metro → multi-city rail mesh → global aviation hubs. Each scale needs different protocols (and different tooling) to function.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">walking</div><div class="level-desc">Each person makes their own path.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">bus route</div><div class="level-desc">Single line, sanctioned, but rough.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">subway</div><div class="level-desc">Engineered, multiple stops, one city.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">intercity rail</div><div class="level-desc">Multiple cities, shared standards.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">aviation network</div><div class="level-desc">Every node reachable through hubs.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Coordination scope is immediately legible</li>
+        <li>Each scale (individual / city / region / planet) is structurally distinct</li>
+        <li>Maps cleanly to the model's "what kind of governance does this scale need?" question</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Glyph is busy — five different network shapes don't reduce to one icon</li>
+        <li>Scale jumps are large; small-org users may not relate to "intercity rail"</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best when the audience already understands the model's levels and wants to see <em>scale</em> made vivid. Less effective as the introductory diagram.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="18" r="3" fill="currentColor"/>
+      <circle cx="26" cy="10" r="3" fill="currentColor"/>
+      <circle cx="26" cy="26" r="3" fill="currentColor"/>
+      <line x1="13" y1="18" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="13" y1="18" x2="23" y2="26" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="26" y1="13" x2="26" y2="23" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <span>nodes connected by edges</span>
+  </div>
+</section>
+
+<!-- ─── 07. Coral reef ─────────────────────────────────────── -->
+<section class="analogy" id="a07" data-analogy="coral">
+  <h2><span class="num">07</span>Coral reef succession</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">🪸</span> ecological emergence</span>
+    <span class="rating">Iconography ★★ · Story ★★★ · Protocol ★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#bdd7ee" stop-opacity="0.4"/>
+            <stop offset="1" stop-color="#5b8fb9" stop-opacity="0.3"/>
+          </linearGradient>
+        </defs>
+        <rect width="280" height="340" fill="url(#ocean)"/>
+
+        <!-- L5: ocean ecology (top, ambient) -->
+        <g class="region" data-level="5">
+          <rect x="10" y="10" width="260" height="50" fill="rgba(91,63,163,0.08)" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4,3"/>
+          <text x="20" y="28" class="lvl-label">L5 ecology</text>
+          <path d="M40 40 Q 50 38, 60 42 Q 70 44, 80 42" stroke="var(--accent)" fill="none" stroke-width="1"/>
+          <path d="M120 38 Q 130 42, 140 38 Q 150 36, 160 42" stroke="var(--accent)" fill="none" stroke-width="1"/>
+          <path d="M210 40 Q 220 44, 230 38 Q 240 36, 250 42" stroke="var(--accent)" fill="none" stroke-width="1"/>
+        </g>
+
+        <!-- L4: barrier reef -->
+        <g class="region" data-level="4">
+          <rect x="10" y="60" width="260" height="60" fill="rgba(91,63,163,0.18)" stroke="var(--accent)" stroke-width="1.5"/>
+          <ellipse cx="50" cy="100" rx="20" ry="12" stroke="var(--accent)" fill="none" stroke-width="1.2"/>
+          <ellipse cx="100" cy="105" rx="22" ry="10" stroke="var(--accent)" fill="none" stroke-width="1.2"/>
+          <ellipse cx="150" cy="100" rx="20" ry="12" stroke="var(--accent)" fill="none" stroke-width="1.2"/>
+          <ellipse cx="200" cy="105" rx="22" ry="10" stroke="var(--accent)" fill="none" stroke-width="1.2"/>
+          <ellipse cx="250" cy="100" rx="18" ry="12" stroke="var(--accent)" fill="none" stroke-width="1.2"/>
+          <text x="20" y="78" class="lvl-label">L4 barrier reef</text>
+        </g>
+
+        <!-- L3: established reef -->
+        <g class="region" data-level="3">
+          <rect x="10" y="120" width="260" height="65" fill="rgba(91,63,163,0.28)" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="50" cy="160" r="10" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <circle cx="80" cy="170" r="8" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <circle cx="110" cy="160" r="9" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <circle cx="150" cy="170" r="11" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <circle cx="190" cy="160" r="8" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <circle cx="225" cy="168" r="10" stroke="var(--accent-dark)" fill="rgba(91,63,163,0.4)" stroke-width="1.2"/>
+          <text x="20" y="138" class="lvl-label">L3 established reef</text>
+        </g>
+
+        <!-- L2: pioneer corals -->
+        <g class="region" data-level="2">
+          <rect x="10" y="185" width="260" height="65" fill="rgba(91,63,163,0.15)" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="60" cy="225" r="5" stroke="var(--accent)" fill="rgba(91,63,163,0.3)" stroke-width="1.2"/>
+          <circle cx="120" cy="230" r="4" stroke="var(--accent)" fill="rgba(91,63,163,0.3)" stroke-width="1.2"/>
+          <circle cx="180" cy="225" r="5" stroke="var(--accent)" fill="rgba(91,63,163,0.3)" stroke-width="1.2"/>
+          <circle cx="230" cy="230" r="4" stroke="var(--accent)" fill="rgba(91,63,163,0.3)" stroke-width="1.2"/>
+          <text x="20" y="203" class="lvl-label">L2 pioneers</text>
+        </g>
+
+        <!-- L1: bare seafloor -->
+        <g class="region" data-level="1">
+          <rect x="10" y="250" width="260" height="80" fill="rgba(91,63,163,0.06)" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="20" y1="295" x2="260" y2="295" stroke="var(--accent)" stroke-width="0.8" opacity="0.5" stroke-dasharray="2,3"/>
+          <text x="20" y="280" class="lvl-label">L1 bare seafloor</text>
+        </g>
+      </svg>
+      <div class="diagram-caption">ecological succession — bottom-up emergence</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Living systems build themselves. Each layer enables the next. Cooperation between organisms creates structure no single organism could.</p>
+      <h3>How to read this diagram</h3>
+      <p>Bottom to top: bare seafloor (no structure) → pioneer corals (early settlers) → established reef (biodiverse, structured) → barrier reef (sectoral, multi-species) → ocean ecology (planetary currents and climate).</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">bare seafloor</div><div class="level-desc">No structure. Substrate exposed.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">pioneer corals</div><div class="level-desc">Early settlers. Beginning of structure.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">established reef</div><div class="level-desc">Biodiverse, structured ecosystem.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">barrier reef</div><div class="level-desc">Sectoral, multi-species cooperation.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">ocean ecology</div><div class="level-desc">Currents, migration, climate-scale.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Captures emergent organization and inter-organism cooperation</li>
+        <li>Beautiful, distinctive visual language</li>
+        <li>Bottom-up framing matches how protocols actually develop</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Niche metaphor — coral reefs aren't universally understood</li>
+        <li>Hard to draw at small scale and remain legible</li>
+        <li>"Pretty" risks undermining the model's seriousness for an enterprise audience</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for sustainability-adjacent or biological-systems audiences. Probably not for a deployment-manager-facing artifact.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="22" r="4" stroke="currentColor" fill="none" stroke-width="1.4"/>
+      <circle cx="20" cy="20" r="5" stroke="currentColor" fill="none" stroke-width="1.4"/>
+      <circle cx="28" cy="24" r="3" stroke="currentColor" fill="none" stroke-width="1.4"/>
+      <line x1="3" y1="32" x2="33" y2="32" stroke="currentColor" stroke-width="1"/>
+      <path d="M3 8 Q 10 6, 18 8 T 33 8" stroke="currentColor" fill="none" stroke-width="0.8"/>
+    </svg>
+    <span>stacked organic structures</span>
+  </div>
+</section>
+
+<!-- ─── 08. Lighthouse / beacon ────────────────────────────── -->
+<section class="analogy" id="a08" data-analogy="beacon">
+  <h2><span class="num">08</span>Lighthouse → beacon network</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">⛯</span> tower + rays</span>
+    <span class="rating">Iconography ★★★ · Story ★★★★ · Protocol ★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: signal fire (small flame) -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="10" y="10" width="260" height="55" fill="white" fill-opacity="0.001" stroke="none"/>
+          <line x1="138" y1="50" x2="138" y2="58" stroke-width="2"/>
+          <line x1="142" y1="48" x2="142" y2="58" stroke-width="2"/>
+          <line x1="134" y1="52" x2="134" y2="58" stroke-width="2"/>
+          <line x1="130" y1="58" x2="146" y2="58" stroke-width="1"/>
+          <text x="14" y="40" class="stage-num">L1 fire</text>
+        </g>
+
+        <!-- L2: oil lamp -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="10" y="65" width="260" height="55" fill="white" fill-opacity="0.001" stroke="none"/>
+          <ellipse cx="140" cy="100" rx="6" ry="5" stroke-width="1.5"/>
+          <line x1="140" y1="90" x2="140" y2="93" stroke-width="2"/>
+          <line x1="135" y1="92" x2="145" y2="92" stroke-width="0.5" opacity="0.5"/>
+          <rect x="138" y="105" width="4" height="5" fill="var(--accent)"/>
+          <text x="14" y="98" class="stage-num">L2 oil lamp</text>
+        </g>
+
+        <!-- L3: lighthouse -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="10" y="120" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <polygon points="138,140 142,140 144,170 136,170" stroke-width="1.5" fill="rgba(91,63,163,0.2)"/>
+          <rect x="135" y="170" width="10" height="3" stroke-width="1" fill="var(--accent)"/>
+          <circle cx="140" cy="138" r="3" fill="var(--accent)"/>
+          <line x1="120" y1="138" x2="100" y2="135" stroke-width="0.6" opacity="0.5"/>
+          <line x1="160" y1="138" x2="180" y2="135" stroke-width="0.6" opacity="0.5"/>
+          <line x1="125" y1="148" x2="105" y2="155" stroke-width="0.6" opacity="0.5"/>
+          <line x1="155" y1="148" x2="175" y2="155" stroke-width="0.6" opacity="0.5"/>
+          <text x="14" y="158" class="stage-num">L3 lighthouse</text>
+        </g>
+
+        <!-- L4: lighthouse network -->
+        <g class="region stroke-only" data-level="4">
+          <rect x="10" y="180" width="260" height="70" fill="white" fill-opacity="0.001" stroke="none"/>
+          <g transform="translate(60,210)">
+            <polygon points="-3,0 3,0 5,28 -5,28" stroke-width="1.2"/>
+            <circle cx="0" cy="-2" r="2.5" fill="var(--accent)"/>
+            <line x1="-12" y1="-2" x2="12" y2="-2" stroke-width="0.5" opacity="0.4"/>
+          </g>
+          <g transform="translate(140,205)">
+            <polygon points="-3,0 3,0 5,32 -5,32" stroke-width="1.2"/>
+            <circle cx="0" cy="-2" r="2.5" fill="var(--accent)"/>
+            <line x1="-12" y1="-2" x2="12" y2="-2" stroke-width="0.5" opacity="0.4"/>
+          </g>
+          <g transform="translate(220,210)">
+            <polygon points="-3,0 3,0 5,28 -5,28" stroke-width="1.2"/>
+            <circle cx="0" cy="-2" r="2.5" fill="var(--accent)"/>
+            <line x1="-12" y1="-2" x2="12" y2="-2" stroke-width="0.5" opacity="0.4"/>
+          </g>
+          <line x1="60" y1="240" x2="220" y2="240" stroke-dasharray="2,3" stroke-width="0.6"/>
+          <text x="14" y="220" class="stage-num">L4 network</text>
+        </g>
+
+        <!-- L5: GPS / satellite -->
+        <g class="region stroke-only" data-level="5">
+          <rect x="10" y="250" width="260" height="80" fill="white" fill-opacity="0.001" stroke="none"/>
+          <ellipse cx="140" cy="305" rx="80" ry="22" stroke-width="1" stroke-dasharray="3,3"/>
+          <ellipse cx="140" cy="305" rx="50" ry="14" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <circle cx="140" cy="305" r="8" fill="var(--accent)"/>
+          <rect x="80" y="278" width="6" height="4" fill="var(--accent)"/>
+          <line x1="78" y1="280" x2="74" y2="278" stroke-width="0.8"/>
+          <line x1="88" y1="280" x2="92" y2="278" stroke-width="0.8"/>
+          <rect x="200" y="278" width="6" height="4" fill="var(--accent)"/>
+          <line x1="198" y1="280" x2="194" y2="278" stroke-width="0.8"/>
+          <line x1="208" y1="280" x2="212" y2="278" stroke-width="0.8"/>
+          <rect x="135" y="266" width="10" height="4" fill="var(--accent)"/>
+          <line x1="133" y1="268" x2="129" y2="266" stroke-width="0.8"/>
+          <line x1="147" y1="268" x2="151" y2="266" stroke-width="0.8"/>
+          <text x="14" y="298" class="stage-num">L5 satellite</text>
+        </g>
+      </svg>
+      <div class="diagram-caption">signal infrastructure: visible → invisible</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Visibility is non-monotonic. A lighthouse is the most visible signal. GPS — which everyone depends on — is invisible. Civilization-scale infrastructure recedes precisely because everyone uses it.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: signal fire (ad hoc) → oil lamp (sanctioned, local) → lighthouse (engineered, named) → lighthouse network (coordinated coastline) → GPS / satellite (planetary, invisible to most).</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">signal fire</div><div class="level-desc">Ad hoc; whoever has wood lights one.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">oil lamp</div><div class="level-desc">Standardized fuel, fixed location, local responsibility.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">lighthouse</div><div class="level-desc">Engineered, characteristic light pattern, named.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">lighthouse network</div><div class="level-desc">Coordinated along coastlines; ships expect it.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">GPS / satellite</div><div class="level-desc">Invisible to most; civilization depends on it.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Maps L5's "infrastructure-becomes-invisible" framing better than any other analogy here</li>
+        <li>Visibility is non-monotonic — handles the L3-most-visible / L5-least-visible inversion</li>
+        <li>"Lighthouse" carries clear cultural meaning (signal, navigation, safety)</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>L1's "signal fire" reads as primitive, when AI L1 is actually <em>modern</em> shadow tools</li>
+        <li>Glyph reduction is medium — tower with rays is recognizable but not unique</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best when the audience needs to understand the L4 → L5 transition specifically. The lighthouse-to-GPS arc captures it cleanly.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15,8 21,8 23,30 13,30" stroke="currentColor" fill="none" stroke-width="1.5"/>
+      <circle cx="18" cy="6" r="2" fill="currentColor"/>
+      <line x1="3" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="0.8"/>
+      <line x1="23" y1="6" x2="33" y2="6" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+    <span>tower with rays</span>
+  </div>
+</section>
+
+<!-- ─── 09. Protocol stack (OSI) ───────────────────────────── -->
+<section class="analogy" id="a09" data-analogy="stack">
+  <h2><span class="num">09</span>Protocol stack (OSI-style)</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">▤</span> layered rectangles</span>
+    <span class="rating">Iconography ★★★★ · Story ★★★ · Protocol ★★★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L5 (top) -->
+        <g class="region" data-level="5">
+          <rect x="20" y="20" width="240" height="50" fill="rgba(67,45,122,0.55)" stroke="var(--accent-dark)" stroke-width="1.5"/>
+          <text x="40" y="50" class="lvl-label-light">L5 — Planetary</text>
+          <text x="240" y="50" text-anchor="end" font-size="10" fill="white" opacity="0.8">civilization</text>
+        </g>
+        <!-- L4 -->
+        <g class="region" data-level="4">
+          <rect x="20" y="72" width="240" height="50" fill="rgba(67,45,122,0.4)" stroke="var(--accent-dark)" stroke-width="1.5"/>
+          <text x="40" y="102" class="lvl-label-light">L4 — Infrastructural</text>
+          <text x="240" y="102" text-anchor="end" font-size="10" fill="white" opacity="0.8">sector</text>
+        </g>
+        <!-- L3 -->
+        <g class="region" data-level="3">
+          <rect x="20" y="124" width="240" height="50" fill="rgba(91,63,163,0.32)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="40" y="154" class="lvl-label">L3 — Designed</text>
+          <text x="240" y="154" text-anchor="end" font-size="10" fill="var(--text-secondary)">org</text>
+        </g>
+        <!-- L2 -->
+        <g class="region" data-level="2">
+          <rect x="20" y="176" width="240" height="50" fill="rgba(91,63,163,0.2)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="40" y="206" class="lvl-label">L2 — Sanctioned</text>
+          <text x="240" y="206" text-anchor="end" font-size="10" fill="var(--text-secondary)">access</text>
+        </g>
+        <!-- L1 -->
+        <g class="region" data-level="1">
+          <rect x="20" y="228" width="240" height="50" fill="rgba(91,63,163,0.08)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="40" y="258" class="lvl-label">L1 — Shadow</text>
+          <text x="240" y="258" text-anchor="end" font-size="10" fill="var(--text-secondary)">individual</text>
+        </g>
+        <text x="140" y="305" text-anchor="middle" font-size="10" fill="var(--text-secondary)">each layer depends on the one below</text>
+      </svg>
+      <div class="diagram-caption">cumulative dependency, OSI-style</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Each level is a layer that depends on the one below. The model literally <em>is</em> a protocol stack — this metaphor doesn't translate, it's identity.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: civilization-scale coordination → sector-wide standards → org-specific designed workflows → organizational permission + access → individual unsanctioned use. Each layer needs the one below to function.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">individual layer</div><div class="level-desc">Raw use of tools by individuals; no abstraction.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">access layer</div><div class="level-desc">Connection sanctioned; flow controlled.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">workflow layer</div><div class="level-desc">Routing, addressing, reliable delivery within an org.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">application layer</div><div class="level-desc">HTTP / DNS / SSL — sector-wide standards.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">civilization layer</div><div class="level-desc">The Web — civilization-scale coordination layer.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Most directly protocol-theory native — the model literally is a protocol stack</li>
+        <li>Each layer's dependency on the lower one is built in</li>
+        <li>Glyph reduces cleanly to stacked rectangles</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Reads as technical — non-engineer audiences may bounce</li>
+        <li>Visually it's a pyramid on its side (or close to it)</li>
+        <li>Doesn't capture the "smooth → striated" dynamism that makes the model not-just-static</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for technical audiences (engineering managers, platform leads). Good as the "how does this map to what I already know?" diagram for OSI-literate readers.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="4" width="24" height="5" fill="currentColor" opacity="0.9"/>
+      <rect x="6" y="10" width="24" height="5" fill="currentColor" opacity="0.7"/>
+      <rect x="6" y="16" width="24" height="5" fill="currentColor" opacity="0.5"/>
+      <rect x="6" y="22" width="24" height="5" fill="currentColor" opacity="0.3"/>
+      <rect x="6" y="28" width="24" height="5" fill="currentColor" opacity="0.15"/>
+    </svg>
+    <span>five stacked layers</span>
+  </div>
+</section>
+
+<!-- ─── 10. Construction → city ────────────────────────────── -->
+<section class="analogy" id="a10" data-analogy="construction">
+  <h2><span class="num">10</span>Construction site → city</h2>
+  <div class="glyph-line">
+    <span><span class="glyph-icon">🏛</span> tangible scalar</span>
+    <span class="rating">Iconography ★★★ · Story ★★★ · Protocol ★★</span>
+  </div>
+
+  <div class="diagram-row">
+    <div class="diagram">
+      <svg viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- L1: tent -->
+        <g class="region stroke-only" data-level="1">
+          <rect x="10" y="10" width="260" height="55" fill="white" fill-opacity="0.001" stroke="none"/>
+          <polygon points="125,55 155,55 140,30" stroke-width="1.5"/>
+          <line x1="140" y1="30" x2="140" y2="55" stroke-width="1"/>
+          <text x="14" y="38" class="stage-num">L1 tent</text>
+        </g>
+
+        <!-- L2: house -->
+        <g class="region stroke-only" data-level="2">
+          <rect x="10" y="65" width="260" height="60" fill="white" fill-opacity="0.001" stroke="none"/>
+          <rect x="125" y="100" width="30" height="20" stroke-width="1.5" fill="rgba(91,63,163,0.15)"/>
+          <polygon points="125,100 155,100 140,82" stroke-width="1.5" fill="rgba(91,63,163,0.25)"/>
+          <rect x="135" y="108" width="4" height="12" fill="var(--accent)"/>
+          <rect x="143" y="106" width="6" height="6" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <text x="14" y="98" class="stage-num">L2 house</text>
+        </g>
+
+        <!-- L3: designed building -->
+        <g class="region stroke-only" data-level="3">
+          <rect x="10" y="125" width="260" height="65" fill="white" fill-opacity="0.001" stroke="none"/>
+          <rect x="115" y="150" width="50" height="35" stroke-width="1.5" fill="rgba(91,63,163,0.2)"/>
+          <polygon points="115,150 165,150 165,140 115,140" stroke-width="1.5" fill="rgba(91,63,163,0.3)"/>
+          <rect x="120" y="160" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="132" y="160" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="144" y="160" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="156" y="160" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="120" y="172" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="132" y="172" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="138" y="178" width="4" height="7" fill="var(--accent)"/>
+          <rect x="150" y="172" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <rect x="156" y="172" width="6" height="8" fill="white" stroke="var(--accent)" stroke-width="0.8"/>
+          <text x="14" y="158" class="stage-num">L3 building</text>
+        </g>
+
+        <!-- L4: city block -->
+        <g class="region stroke-only" data-level="4">
+          <rect x="10" y="190" width="260" height="65" fill="white" fill-opacity="0.001" stroke="none"/>
+          <rect x="50" y="215" width="20" height="35" stroke-width="1.2" fill="rgba(91,63,163,0.2)"/>
+          <rect x="75" y="200" width="25" height="50" stroke-width="1.2" fill="rgba(91,63,163,0.3)"/>
+          <rect x="105" y="220" width="20" height="30" stroke-width="1.2" fill="rgba(91,63,163,0.2)"/>
+          <rect x="130" y="195" width="22" height="55" stroke-width="1.2" fill="rgba(91,63,163,0.4)"/>
+          <rect x="157" y="210" width="20" height="40" stroke-width="1.2" fill="rgba(91,63,163,0.2)"/>
+          <rect x="182" y="220" width="22" height="30" stroke-width="1.2" fill="rgba(91,63,163,0.25)"/>
+          <rect x="209" y="200" width="20" height="50" stroke-width="1.2" fill="rgba(91,63,163,0.3)"/>
+          <line x1="40" y1="251" x2="240" y2="251" stroke-width="1"/>
+          <text x="14" y="220" class="stage-num">L4 city block</text>
+        </g>
+
+        <!-- L5: smart city / planetary -->
+        <g class="region stroke-only" data-level="5">
+          <rect x="10" y="255" width="260" height="80" fill="white" fill-opacity="0.001" stroke="none"/>
+          <circle cx="140" cy="295" r="30" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+          <circle cx="140" cy="295" r="20" stroke-width="1.5" stroke-dasharray="2,2" fill="none"/>
+          <rect x="130" y="284" width="20" height="22" fill="rgba(91,63,163,0.25)" stroke-width="0.8"/>
+          <rect x="115" y="290" width="10" height="16" fill="rgba(91,63,163,0.2)" stroke-width="0.8"/>
+          <rect x="155" y="290" width="10" height="16" fill="rgba(91,63,163,0.2)" stroke-width="0.8"/>
+          <circle cx="140" cy="262" r="2" fill="var(--accent)"/>
+          <circle cx="100" cy="320" r="2" fill="var(--accent)"/>
+          <circle cx="180" cy="320" r="2" fill="var(--accent)"/>
+          <line x1="140" y1="262" x2="140" y2="284" stroke-dasharray="2,2" stroke-width="0.6"/>
+          <text x="14" y="298" class="stage-num">L5 smart city</text>
+        </g>
+      </svg>
+      <div class="diagram-caption">tangible scalar — built environment</div>
+    </div>
+
+    <div class="story">
+      <h3>The story it tells</h3>
+      <p>Each level is a different category of built thing. Tents, houses, designed buildings, city blocks, and smart cities aren't degrees of "more building" — they're different kinds of structure with different governance.</p>
+      <h3>How to read this diagram</h3>
+      <p>Top to bottom: tent (improvised) → house (built informally) → designed building (architect-led) → city block (zoning + utilities) → smart city / planetary infrastructure.</p>
+    </div>
+  </div>
+
+  <div class="levels">
+    <div class="level-card" data-level="1"><div class="level-num">L1</div><div class="level-name">Shadow</div><div class="level-pos">tent</div><div class="level-desc">Improvised, individual.</div></div>
+    <div class="level-card" data-level="2"><div class="level-num">L2</div><div class="level-name">Sanctioned</div><div class="level-pos">house</div><div class="level-desc">Built but informal; no shared code.</div></div>
+    <div class="level-card" data-level="3"><div class="level-num">L3</div><div class="level-name">Designed</div><div class="level-pos">architected building</div><div class="level-desc">Plans, codes, engineer-stamped.</div></div>
+    <div class="level-card" data-level="4"><div class="level-num">L4</div><div class="level-name">Infrastructural</div><div class="level-pos">city block</div><div class="level-desc">Zoning, utilities, shared streets.</div></div>
+    <div class="level-card" data-level="5"><div class="level-num">L5</div><div class="level-name">Planetary</div><div class="level-pos">smart city</div><div class="level-desc">Embedded sensors, coordination at scale.</div></div>
+  </div>
+
+  <details class="context">
+    <summary>Strengths · weaknesses · when to use</summary>
+    <div>
+      <h4>Strengths</h4>
+      <ul>
+        <li>Tangible — readers can picture each stage</li>
+        <li>Each stage clearly more complex than the prior</li>
+        <li>Maps to real-world governance categories (zoning, building codes, utilities)</li>
+      </ul>
+      <h4>Weaknesses</h4>
+      <ul>
+        <li>Implies "bigger = better" which the model contests for L4 / L5</li>
+        <li>Generic — many maturity models use construction as a metaphor</li>
+        <li>"Planetary smart city" is harder to picture than the other stages</li>
+      </ul>
+      <h4>When to use it</h4>
+      <p>Best for non-technical audiences who need a concrete metaphor. The construction frame does well in conversation; less in print.</p>
+    </div>
+  </details>
+
+  <div class="mnemonic-row">
+    <span>Mnemonic glyph:</span>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="6,16 12,16 9,10" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <rect x="14" y="14" width="6" height="8" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <rect x="22" y="10" width="8" height="12" stroke="currentColor" fill="none" stroke-width="1.2"/>
+      <line x1="3" y1="22" x2="33" y2="22" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <span>buildings of increasing scale</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-foot">
+  <div class="container">
+    <h2>Recommendation framing</h2>
+    <p>Three contenders if we want to leave the pyramid behind. The fourth option is to keep the pyramid as the canonical glyph and use one of these as a secondary diagram alongside the level descriptions.</p>
+
+    <div class="recap-grid">
+      <div class="recap-card">
+        <h3>Strongest protocol-theory alignment</h3>
+        <p><strong>02 · Desire path → highway.</strong> This <em>is</em> the smooth-to-striated thesis. Direct anchor in Rao's <em>Evil Twin</em>.</p>
+      </div>
+      <div class="recap-card">
+        <h3>Strongest cultural mnemonic</h3>
+        <p><strong>01 · Iceberg.</strong> "Tip of the iceberg" is already in shared vocabulary for the L1 Shadow problem.</p>
+      </div>
+      <div class="recap-card">
+        <h3>Strongest site-naming alignment</h3>
+        <p><strong>04 · Fault lines.</strong> Direct reference to <em>Finding Fault Lines within the Firm</em> — the source of the site's hero image.</p>
+      </div>
+      <div class="recap-card">
+        <h3>Hybrid sketch</h3>
+        <p>Geological strata below + emerging road on top. Two-axis: depth-of-pressure story plus surface-trail-becoming-network story.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:24px">Open questions queued at the end of <code>Diagram-v0.1-visual-analogies.md</code>: pyramid keep-or-drop · single image vs. per-level glyphs · static vs. animated · audience constraint.</p>
+  </div>
+</footer>
+
+<script>
+// Sync hover/click between SVG regions and level cards.
+document.querySelectorAll('section.analogy').forEach(section => {
+  const regions = section.querySelectorAll('.region');
+  const cards = section.querySelectorAll('.level-card');
+
+  function setActive(level, source) {
+    regions.forEach(r => r.classList.toggle('active', r.dataset.level === level));
+    cards.forEach(c => c.classList.toggle('active', c.dataset.level === level));
+  }
+  function clearActive() {
+    regions.forEach(r => r.classList.remove('active'));
+    cards.forEach(c => c.classList.remove('active'));
+  }
+
+  regions.forEach(r => {
+    r.addEventListener('mouseenter', () => setActive(r.dataset.level));
+    r.addEventListener('mouseleave', clearActive);
+    r.addEventListener('click', () => setActive(r.dataset.level));
+  });
+  cards.forEach(c => {
+    c.addEventListener('mouseenter', () => setActive(c.dataset.level));
+    c.addEventListener('mouseleave', clearActive);
+    c.addEventListener('click', () => setActive(c.dataset.level));
+  });
+});
+</script>
+
+</body>
+</html>

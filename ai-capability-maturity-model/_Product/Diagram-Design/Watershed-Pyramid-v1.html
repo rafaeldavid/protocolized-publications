@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Maturity Pyramid · An Inverted Watershed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep:     #0d0a1f;
+    --bg-warm:     #1a0e08;
+    --bg-mid:      #14101e;
+    --ink:         #0a0810;
+    --ink-soft:    #1c1626;
+    --bone:        #f4f1e6;
+    --bone-dim:    #c8c4b3;
+    --bone-soft:   #8b8676;
+    --cobalt:      #1d3fc4;
+    --cobalt-dark: #142b86;
+    --cobalt-light:#3f6ae0;
+    --amber:       #e6a73c;
+    --amber-dark:  #b8801a;
+    --magenta:     #c7398b;
+    --lime:        #a8d439;
+    --rust:        #c44a1f;
+    --teal:        #2b8a8a;
+    --violet:      #6b3fb5;
+
+    --font-serif:  'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --font-mono:   'JetBrains Mono', 'Roboto Mono', ui-monospace, monospace;
+    --font-sans:   'Inter', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg-deep);
+    color: var(--bone);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--amber); color: var(--ink); }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(230, 167, 60, 0.35); }
+  a:hover { border-bottom-color: var(--amber); }
+
+  /* ─── layout shell ───────────────────────────── */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 48px 96px;
+    position: relative;
+  }
+
+  .page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1200px 800px at 20% 10%, rgba(29, 63, 196, 0.18), transparent 60%),
+      radial-gradient(900px 700px at 90% 90%, rgba(199, 57, 139, 0.10), transparent 55%),
+      radial-gradient(700px 600px at 70% 40%, rgba(230, 167, 60, 0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page > * { position: relative; z-index: 1; }
+
+  /* ─── eyebrow / title ───────────────────────── */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--amber);
+  }
+  .eyebrow .frame-id { color: var(--bone-soft); }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    color: var(--bone);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    line-height: 1.45;
+    color: var(--bone-dim);
+    max-width: 780px;
+    font-style: italic;
+    margin: 0 0 28px;
+  }
+
+  .meta-strip {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--bone-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(244, 241, 230, 0.12);
+    border-bottom: 1px solid rgba(244, 241, 230, 0.12);
+    padding: 14px 0;
+    margin-bottom: 56px;
+  }
+  .meta-strip span strong {
+    color: var(--bone);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+
+  /* ─── stage layout ──────────────────────────── */
+  .stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  @media (max-width: 1024px) {
+    .stage { grid-template-columns: 1fr; }
+  }
+
+  .stage-visual {
+    position: relative;
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: linear-gradient(180deg, #06040d 0%, #0d0a1f 60%, #1a0e08 100%);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .stage-visual::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(244, 241, 230, 0.10);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .stage-visual .crosshair {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--bone-soft);
+    letter-spacing: 0.16em;
+  }
+  .crosshair.tl { top: 18px; left: 22px; }
+  .crosshair.tr { top: 18px; right: 22px; text-align: right; }
+  .crosshair.bl { bottom: 18px; left: 22px; }
+  .crosshair.br { bottom: 18px; right: 22px; text-align: right; }
+
+  svg.diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ─── level cards ───────────────────────────── */
+  .levels {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .level {
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: rgba(13, 10, 31, 0.55);
+    backdrop-filter: blur(4px);
+    padding: 18px 20px 18px 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .level::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--level-color, var(--bone-soft));
+    opacity: 0.55;
+    transition: opacity 220ms ease, width 220ms ease;
+  }
+  .level[data-level="1"] { --level-color: var(--cobalt-light); }
+  .level[data-level="2"] { --level-color: var(--teal); }
+  .level[data-level="3"] { --level-color: var(--amber); }
+  .level[data-level="4"] { --level-color: var(--rust); }
+  .level[data-level="5"] { --level-color: var(--magenta); }
+
+  .level:hover, .level.is-active {
+    border-color: var(--level-color);
+    background: rgba(13, 10, 31, 0.85);
+  }
+  .level:hover::before, .level.is-active::before {
+    opacity: 1;
+    width: 5px;
+  }
+
+  .level-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .level-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--level-color);
+    font-weight: 700;
+  }
+  .level-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--bone);
+    letter-spacing: -0.005em;
+  }
+  .level-name em {
+    color: var(--level-color);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .level-water {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--bone-soft);
+    margin-bottom: 10px;
+  }
+  .level-water strong {
+    color: var(--level-color);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .level-body {
+    color: var(--bone-dim);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  .level-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--bone-soft);
+    text-transform: uppercase;
+    border: 1px solid rgba(244, 241, 230, 0.16);
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+
+  /* ─── SVG interactivity ─────────────────────── */
+  .level-zone {
+    cursor: pointer;
+    transition: opacity 240ms ease;
+  }
+  .level-zone .zone-fill {
+    transition: opacity 240ms ease;
+    opacity: 0.55;
+  }
+  .diagram[data-active] .level-zone .zone-fill {
+    opacity: 0.18;
+  }
+  .diagram[data-active="1"] .level-zone[data-level="1"] .zone-fill,
+  .diagram[data-active="2"] .level-zone[data-level="2"] .zone-fill,
+  .diagram[data-active="3"] .level-zone[data-level="3"] .zone-fill,
+  .diagram[data-active="4"] .level-zone[data-level="4"] .zone-fill,
+  .diagram[data-active="5"] .level-zone[data-level="5"] .zone-fill { opacity: 0.85; }
+
+  .level-zone .zone-detail {
+    transition: opacity 240ms ease;
+    opacity: 0.92;
+  }
+  .diagram[data-active] .level-zone .zone-detail { opacity: 0.32; }
+  .diagram[data-active="1"] .level-zone[data-level="1"] .zone-detail,
+  .diagram[data-active="2"] .level-zone[data-level="2"] .zone-detail,
+  .diagram[data-active="3"] .level-zone[data-level="3"] .zone-detail,
+  .diagram[data-active="4"] .level-zone[data-level="4"] .zone-detail,
+  .diagram[data-active="5"] .level-zone[data-level="5"] .zone-detail { opacity: 1; }
+
+  .zone-hit { fill: transparent; cursor: pointer; }
+
+  /* ─── ocean particles drift animation ───────── */
+  @keyframes drift {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(8px, -6px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes mist {
+    0%, 100% { opacity: 0.28; transform: translate(0, 0); }
+    50%      { opacity: 0.55; transform: translate(4px, -8px); }
+  }
+  @keyframes spark {
+    0%, 90% { opacity: 0; }
+    45%     { opacity: 1; }
+    50%     { opacity: 0; }
+  }
+  .mist-particle { animation: mist 6s ease-in-out infinite; }
+  .mist-particle:nth-child(2n) { animation-duration: 8s; animation-delay: -2s; }
+  .mist-particle:nth-child(3n) { animation-duration: 7s; animation-delay: -4s; }
+  .mist-particle:nth-child(5n) { animation-duration: 9s; animation-delay: -1s; }
+
+  .spark { animation: spark 2.4s ease-in-out infinite; }
+  .spark:nth-child(2n) { animation-delay: 0.6s; }
+  .spark:nth-child(3n) { animation-delay: 1.2s; }
+
+  .ripple { animation: drift 5s ease-in-out infinite; transform-origin: center; }
+  .ripple:nth-child(2n) { animation-duration: 7s; animation-delay: -1s; }
+
+  /* ─── reading panels below ──────────────────── */
+  .reading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) {
+    .reading { grid-template-columns: 1fr; }
+  }
+  .panel {
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    padding: 22px 24px;
+    background: rgba(13, 10, 31, 0.4);
+    border-radius: 3px;
+  }
+  .panel h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+  .panel p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    margin: 0 0 12px;
+  }
+  .panel p:last-child { margin: 0; }
+  .panel p strong { color: var(--bone); font-weight: 600; }
+
+  /* ─── mnemonic glyph row ────────────────────── */
+  .mnemonic {
+    margin-top: 56px;
+    padding: 36px 32px;
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: rgba(13, 10, 31, 0.4);
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .mnemonic { grid-template-columns: 1fr; text-align: center; }
+  }
+  .mnemonic h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .mnemonic p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    margin: 0;
+  }
+  .mnemonic .glyph-set {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .mnemonic .glyph-set svg { width: 36px; height: 36px; }
+
+  /* ─── footer ────────────────────────────────── */
+  footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(244, 241, 230, 0.10);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--bone-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .left, footer .right { display: flex; gap: 18px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="eyebrow">
+    <span>Diagram Concept · v1</span>
+    <span class="frame-id">CMM / Watershed-Pyramid</span>
+  </div>
+
+  <h1>The Maturity Pyramid &mdash; an <em>inverted watershed</em>.</h1>
+  <p class="lede">
+    Five stages of organizational AI maturity, drawn as the human management of water.
+    Springs at the base. Ocean at the apex. The pyramid is the structure;
+    the water is the flow that the structure shapes &mdash; and ultimately releases.
+  </p>
+
+  <div class="meta-strip">
+    <span><strong>FORM</strong> Pyramid · 5 strata</span>
+    <span><strong>READING</strong> Bottom → Apex</span>
+    <span><strong>METAPHOR</strong> Watershed, inverted</span>
+    <span><strong>MNEMONIC</strong> Triangle with vapor crown</span>
+  </div>
+
+  <!-- ───────────────────────── STAGE ───────────────────────── -->
+  <div class="stage">
+
+    <!-- ───── visual ───── -->
+    <div class="stage-visual">
+      <div class="crosshair tl">CMM&middot;01</div>
+      <div class="crosshair tr">WATERSHED · INVERTED</div>
+      <div class="crosshair bl">v1.0 · 2026·04</div>
+      <div class="crosshair br">800 × 880</div>
+
+      <svg class="diagram" id="diagram" viewBox="0 0 800 880" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Maturity pyramid drawn as an inverted watershed">
+        <defs>
+          <!-- background sky → night gradient -->
+          <linearGradient id="bg-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#1d3fc4" stop-opacity="0.55"/>
+            <stop offset="22%" stop-color="#0d0a1f" stop-opacity="1"/>
+            <stop offset="65%" stop-color="#0d0a1f" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#1a0e08" stop-opacity="1"/>
+          </linearGradient>
+
+          <!-- glow halo behind pyramid -->
+          <radialGradient id="halo" cx="0.5" cy="0.6" r="0.55">
+            <stop offset="0%"   stop-color="#e6a73c" stop-opacity="0.42"/>
+            <stop offset="35%"  stop-color="#c7398b" stop-opacity="0.18"/>
+            <stop offset="70%"  stop-color="#1d3fc4" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0"/>
+          </radialGradient>
+
+          <!-- ocean band gradient (top) -->
+          <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#3f6ae0" stop-opacity="0.85"/>
+            <stop offset="60%" stop-color="#1d3fc4" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- L1 spring water -->
+          <radialGradient id="spring-fill" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%"  stop-color="#3f6ae0"/>
+            <stop offset="60%" stop-color="#1d3fc4"/>
+            <stop offset="100%" stop-color="#142b86"/>
+          </radialGradient>
+
+          <!-- L2 channel water -->
+          <linearGradient id="channel-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#3f6ae0"/>
+            <stop offset="100%" stop-color="#142b86"/>
+          </linearGradient>
+
+          <!-- L3 dam concrete -->
+          <linearGradient id="dam-stone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#8b8676"/>
+            <stop offset="100%" stop-color="#3a342a"/>
+          </linearGradient>
+
+          <!-- L4 generator amber -->
+          <radialGradient id="generator-glow" cx="0.5" cy="0.5" r="0.6">
+            <stop offset="0%"  stop-color="#e6a73c" stop-opacity="0.95"/>
+            <stop offset="60%" stop-color="#b8801a" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#3a1a05" stop-opacity="0"/>
+          </radialGradient>
+
+          <!-- L5 vapor / dissolution -->
+          <linearGradient id="vapor" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%"  stop-color="#c7398b" stop-opacity="0.7"/>
+            <stop offset="50%" stop-color="#e6a73c" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#3f6ae0" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- pyramid edge glow filter -->
+          <filter id="edge-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+
+          <!-- mist soft blur -->
+          <filter id="soft-mist" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+
+          <!-- pyramid clip -->
+          <clipPath id="pyramid-clip">
+            <polygon points="400,140 100,820 700,820"/>
+          </clipPath>
+
+          <!-- per-level clip paths (trapezoid bands inside pyramid) -->
+          <clipPath id="band-l1"><polygon points="100,820 700,820 640,684 160,684"/></clipPath>
+          <clipPath id="band-l2"><polygon points="160,684 640,684 580,548 220,548"/></clipPath>
+          <clipPath id="band-l3"><polygon points="220,548 580,548 520,412 280,412"/></clipPath>
+          <clipPath id="band-l4"><polygon points="280,412 520,412 460,276 340,276"/></clipPath>
+          <clipPath id="band-l5"><polygon points="340,276 460,276 400,140"/></clipPath>
+
+          <!-- ripple ring -->
+          <symbol id="ripple-ring" viewBox="-20 -8 40 16">
+            <ellipse cx="0" cy="0" rx="18" ry="5" fill="none" stroke="#3f6ae0" stroke-width="1.4" opacity="0.7"/>
+            <ellipse cx="0" cy="0" rx="11" ry="3" fill="none" stroke="#3f6ae0" stroke-width="1.1" opacity="0.5"/>
+          </symbol>
+
+          <!-- spring bubble -->
+          <symbol id="spring-bubble" viewBox="-22 -16 44 32">
+            <ellipse cx="0" cy="6" rx="20" ry="6" fill="url(#spring-fill)" stroke="#0a0810" stroke-width="1.2"/>
+            <ellipse cx="0" cy="4" rx="14" ry="3.5" fill="#3f6ae0" opacity="0.6"/>
+            <circle cx="-6" cy="-2" r="2.2" fill="#3f6ae0" opacity="0.85"/>
+            <circle cx="4" cy="-6" r="1.6" fill="#3f6ae0" opacity="0.7"/>
+            <circle cx="8" cy="-1" r="1.2" fill="#3f6ae0" opacity="0.55"/>
+          </symbol>
+
+          <!-- spark mark -->
+          <symbol id="spark-mark" viewBox="-6 -6 12 12">
+            <path d="M 0 -5 L 1 -1 L 5 0 L 1 1 L 0 5 L -1 1 L -5 0 L -1 -1 Z" fill="#e6a73c"/>
+          </symbol>
+
+          <!-- ocean wave silhouette pattern -->
+          <pattern id="wave-pattern" width="60" height="14" patternUnits="userSpaceOnUse">
+            <path d="M 0 8 Q 15 0 30 8 T 60 8" fill="none" stroke="#3f6ae0" stroke-width="1.1" opacity="0.55"/>
+          </pattern>
+        </defs>
+
+        <!-- ── background field ── -->
+        <rect width="800" height="880" fill="url(#bg-sky)"/>
+
+        <!-- ── ocean above the pyramid (the planetary scale) ── -->
+        <g id="ocean-zone" opacity="0.95">
+          <rect x="0" y="0" width="800" height="180" fill="url(#ocean)"/>
+          <!-- distant horizon waves -->
+          <rect x="0" y="40" width="800" height="120" fill="url(#wave-pattern)" opacity="0.65"/>
+          <!-- a few birds / specks -->
+          <g fill="#f4f1e6" opacity="0.55">
+            <path d="M 120 70 q 4 -3 8 0 q 4 -3 8 0" fill="none" stroke="#f4f1e6" stroke-width="1"/>
+            <path d="M 240 50 q 3 -2 6 0 q 3 -2 6 0" fill="none" stroke="#f4f1e6" stroke-width="0.9"/>
+            <path d="M 580 80 q 3 -2 6 0 q 3 -2 6 0" fill="none" stroke="#f4f1e6" stroke-width="0.9"/>
+            <path d="M 690 60 q 3 -2 6 0 q 3 -2 6 0" fill="none" stroke="#f4f1e6" stroke-width="0.9"/>
+          </g>
+          <!-- distant stars -->
+          <g fill="#f4f1e6" opacity="0.4">
+            <circle cx="50" cy="20" r="1"/><circle cx="180" cy="14" r="0.8"/>
+            <circle cx="320" cy="22" r="0.9"/><circle cx="460" cy="10" r="1.1"/>
+            <circle cx="640" cy="22" r="0.8"/><circle cx="760" cy="14" r="1"/>
+          </g>
+        </g>
+
+        <!-- ── halo behind pyramid ── -->
+        <ellipse cx="400" cy="540" rx="430" ry="340" fill="url(#halo)"/>
+
+        <!-- ── pyramid silhouette (filled with strata) ── -->
+        <g id="pyramid">
+
+          <!-- ─ L1 BAND · Springs (shadow / scattered sources) ─ -->
+          <g class="level-zone" data-level="1">
+            <g clip-path="url(#band-l1)">
+              <rect class="zone-fill" x="100" y="684" width="600" height="140" fill="#142b86"/>
+              <g class="zone-detail">
+                <!-- ground line -->
+                <path d="M 100 820 L 700 820" stroke="#0a0810" stroke-width="1.4" opacity="0.7"/>
+                <!-- moss / earth speckle -->
+                <g opacity="0.55">
+                  <circle cx="190" cy="816" r="1.2" fill="#a8d439"/>
+                  <circle cx="220" cy="818" r="1" fill="#a8d439"/>
+                  <circle cx="370" cy="817" r="1.4" fill="#a8d439"/>
+                  <circle cx="510" cy="816" r="1.1" fill="#a8d439"/>
+                  <circle cx="600" cy="818" r="1" fill="#a8d439"/>
+                  <circle cx="640" cy="816" r="1.3" fill="#a8d439"/>
+                </g>
+                <!-- scattered springs -->
+                <use href="#spring-bubble" x="220" y="780" class="ripple"/>
+                <use href="#spring-bubble" x="320" y="800" class="ripple"/>
+                <use href="#spring-bubble" x="430" y="775" class="ripple"/>
+                <use href="#spring-bubble" x="540" y="795" class="ripple"/>
+                <use href="#spring-bubble" x="620" y="780" class="ripple"/>
+                <!-- ripples -->
+                <use href="#ripple-ring" x="270" y="752" class="ripple"/>
+                <use href="#ripple-ring" x="385" y="745" class="ripple"/>
+                <use href="#ripple-ring" x="490" y="755" class="ripple"/>
+                <use href="#ripple-ring" x="585" y="745" class="ripple"/>
+                <!-- reeds -->
+                <g stroke="#a8d439" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8">
+                  <path d="M 250 810 q 1 -14 4 -22"/>
+                  <path d="M 254 810 q 0 -16 -2 -24"/>
+                  <path d="M 470 810 q 1 -14 4 -22"/>
+                  <path d="M 475 810 q -1 -16 1 -22"/>
+                  <path d="M 660 810 q 0 -14 -3 -22"/>
+                </g>
+                <!-- droplets in air -->
+                <g fill="#3f6ae0" opacity="0.7">
+                  <circle cx="280" cy="745" r="2"/>
+                  <circle cx="395" cy="735" r="1.8"/>
+                  <circle cx="500" cy="740" r="1.6"/>
+                  <circle cx="615" cy="730" r="1.7"/>
+                </g>
+              </g>
+            </g>
+            <!-- hit area -->
+            <polygon class="zone-hit" points="100,820 700,820 640,684 160,684"/>
+          </g>
+
+          <!-- ─ L2 BAND · Channels (sanctioned, man-made waterways) ─ -->
+          <g class="level-zone" data-level="2">
+            <g clip-path="url(#band-l2)">
+              <rect class="zone-fill" x="160" y="548" width="480" height="140" fill="#1c3a5e"/>
+              <g class="zone-detail">
+                <!-- channel base -->
+                <rect x="170" y="660" width="460" height="22" fill="#3a342a" stroke="#0a0810" stroke-width="1.2"/>
+                <!-- two parallel channels carved into ground -->
+                <path d="M 200 644 L 600 644 L 600 660 L 200 660 Z" fill="#142b86" stroke="#0a0810" stroke-width="1.2"/>
+                <path d="M 220 622 L 580 622 L 580 638 L 220 638 Z" fill="#1d3fc4" stroke="#0a0810" stroke-width="1.2"/>
+                <!-- water flow lines -->
+                <g stroke="#3f6ae0" stroke-width="1" stroke-linecap="round" opacity="0.85">
+                  <path d="M 230 652 L 270 652"/>
+                  <path d="M 300 652 L 360 652"/>
+                  <path d="M 400 652 L 470 652"/>
+                  <path d="M 510 652 L 570 652"/>
+                  <path d="M 240 630 L 290 630"/>
+                  <path d="M 330 630 L 400 630"/>
+                  <path d="M 440 630 L 510 630"/>
+                </g>
+                <!-- sluice gates / posts -->
+                <g fill="#8b8676" stroke="#0a0810" stroke-width="1.2">
+                  <rect x="280" y="608" width="6" height="58"/>
+                  <rect x="396" y="608" width="6" height="58"/>
+                  <rect x="514" y="608" width="6" height="58"/>
+                </g>
+                <!-- gate cross-bars -->
+                <g stroke="#8b8676" stroke-width="2" opacity="0.95">
+                  <line x1="284" y1="612" x2="284" y2="666"/>
+                  <line x1="400" y1="612" x2="400" y2="666"/>
+                  <line x1="518" y1="612" x2="518" y2="666"/>
+                </g>
+                <!-- masonry edge dotted -->
+                <g stroke="#8b8676" stroke-dasharray="3 3" stroke-width="1" opacity="0.6">
+                  <line x1="200" y1="612" x2="600" y2="612"/>
+                  <line x1="220" y1="600" x2="580" y2="600"/>
+                </g>
+                <!-- sun-glint -->
+                <g fill="#f4f1e6" opacity="0.6">
+                  <circle cx="350" cy="650" r="1.2"/>
+                  <circle cx="455" cy="630" r="1"/>
+                </g>
+              </g>
+            </g>
+            <polygon class="zone-hit" points="160,684 640,684 580,548 220,548"/>
+          </g>
+
+          <!-- ─ L3 BAND · Dam (designed accumulation) ─ -->
+          <g class="level-zone" data-level="3">
+            <g clip-path="url(#band-l3)">
+              <rect class="zone-fill" x="220" y="412" width="360" height="140" fill="#3a342a"/>
+              <g class="zone-detail">
+                <!-- reservoir water above the dam -->
+                <path d="M 280 420 L 520 420 L 520 470 L 280 470 Z" fill="url(#channel-fill)" opacity="0.95"/>
+                <!-- water shimmer lines -->
+                <g stroke="#3f6ae0" stroke-width="0.9" opacity="0.7">
+                  <line x1="295" y1="430" x2="345" y2="430"/>
+                  <line x1="370" y1="430" x2="430" y2="430"/>
+                  <line x1="455" y1="430" x2="510" y2="430"/>
+                  <line x1="305" y1="442" x2="350" y2="442"/>
+                  <line x1="380" y1="442" x2="435" y2="442"/>
+                  <line x1="460" y1="442" x2="500" y2="442"/>
+                </g>
+                <!-- dam crest -->
+                <rect x="280" y="468" width="240" height="14" fill="url(#dam-stone)" stroke="#0a0810" stroke-width="1.4"/>
+                <!-- dam body (thick concrete wall) -->
+                <path d="M 280 482 L 520 482 L 540 548 L 260 548 Z" fill="url(#dam-stone)" stroke="#0a0810" stroke-width="1.4"/>
+                <!-- vertical seams in concrete -->
+                <g stroke="#0a0810" stroke-width="0.8" opacity="0.5">
+                  <line x1="320" y1="482" x2="318" y2="548"/>
+                  <line x1="360" y1="482" x2="356" y2="548"/>
+                  <line x1="400" y1="482" x2="400" y2="548"/>
+                  <line x1="440" y1="482" x2="444" y2="548"/>
+                  <line x1="480" y1="482" x2="482" y2="548"/>
+                </g>
+                <!-- arched outflow gates -->
+                <g fill="#142b86" stroke="#0a0810" stroke-width="1.2">
+                  <path d="M 312 530 q 12 -22 24 0 L 336 548 L 312 548 Z"/>
+                  <path d="M 388 530 q 12 -22 24 0 L 412 548 L 388 548 Z"/>
+                  <path d="M 464 530 q 12 -22 24 0 L 488 548 L 464 548 Z"/>
+                </g>
+                <!-- water spillway streaks below the dam -->
+                <g stroke="#3f6ae0" stroke-width="1.5" opacity="0.85">
+                  <line x1="324" y1="548" x2="324" y2="556"/>
+                  <line x1="400" y1="548" x2="400" y2="556"/>
+                  <line x1="476" y1="548" x2="476" y2="556"/>
+                </g>
+                <!-- crest lamps -->
+                <g fill="#e6a73c">
+                  <circle cx="300" cy="468" r="1.6"/>
+                  <circle cx="400" cy="466" r="1.8"/>
+                  <circle cx="500" cy="468" r="1.6"/>
+                </g>
+                <!-- plaque -->
+                <rect x="384" y="492" width="32" height="10" fill="#0a0810" stroke="#8b8676" stroke-width="0.8"/>
+                <text x="400" y="500" text-anchor="middle" fill="#e6a73c" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1">L3·DAM</text>
+              </g>
+            </g>
+            <polygon class="zone-hit" points="220,548 580,548 520,412 280,412"/>
+          </g>
+
+          <!-- ─ L4 BAND · Generator (productive infrastructure) ─ -->
+          <g class="level-zone" data-level="4">
+            <g clip-path="url(#band-l4)">
+              <rect class="zone-fill" x="280" y="276" width="240" height="140" fill="#3a1a05"/>
+              <g class="zone-detail">
+                <!-- generator core glow -->
+                <circle cx="400" cy="344" r="48" fill="url(#generator-glow)"/>
+                <!-- turbine housing -->
+                <circle cx="400" cy="344" r="38" fill="#1a0e08" stroke="#e6a73c" stroke-width="1.6"/>
+                <!-- inner bolt ring -->
+                <g fill="#0a0810" stroke="#e6a73c" stroke-width="1">
+                  <circle cx="400" cy="312" r="2.4"/>
+                  <circle cx="423" cy="322" r="2.4"/>
+                  <circle cx="432" cy="344" r="2.4"/>
+                  <circle cx="423" cy="366" r="2.4"/>
+                  <circle cx="400" cy="376" r="2.4"/>
+                  <circle cx="377" cy="366" r="2.4"/>
+                  <circle cx="368" cy="344" r="2.4"/>
+                  <circle cx="377" cy="322" r="2.4"/>
+                </g>
+                <!-- turbine blades -->
+                <g fill="#e6a73c" stroke="#0a0810" stroke-width="0.8" opacity="0.95">
+                  <path d="M 400 344 L 400 314 L 408 320 Z"/>
+                  <path d="M 400 344 L 426 330 L 426 340 Z"/>
+                  <path d="M 400 344 L 426 358 L 418 364 Z"/>
+                  <path d="M 400 344 L 400 374 L 392 368 Z"/>
+                  <path d="M 400 344 L 374 358 L 374 348 Z"/>
+                  <path d="M 400 344 L 374 330 L 382 324 Z"/>
+                </g>
+                <!-- center shaft -->
+                <circle cx="400" cy="344" r="4" fill="#0a0810" stroke="#e6a73c" stroke-width="1"/>
+                <!-- transmission lines reaching out -->
+                <g stroke="#e6a73c" stroke-width="1.2" opacity="0.8" fill="none">
+                  <path d="M 438 344 L 502 344 L 514 320"/>
+                  <path d="M 362 344 L 298 344 L 286 320"/>
+                  <path d="M 400 306 L 400 286"/>
+                  <path d="M 400 382 L 400 408"/>
+                </g>
+                <!-- pylon caps -->
+                <g fill="#e6a73c">
+                  <circle cx="514" cy="320" r="2"/>
+                  <circle cx="286" cy="320" r="2"/>
+                </g>
+                <!-- sparks -->
+                <use href="#spark-mark" x="430" y="306" class="spark"/>
+                <use href="#spark-mark" x="370" y="382" class="spark"/>
+                <use href="#spark-mark" x="466" y="354" class="spark"/>
+                <use href="#spark-mark" x="334" y="334" class="spark"/>
+                <!-- ambient heat haze -->
+                <g fill="#e6a73c" opacity="0.5">
+                  <circle cx="328" cy="296" r="2.8"/>
+                  <circle cx="476" cy="298" r="2.4"/>
+                  <circle cx="346" cy="396" r="2.6"/>
+                  <circle cx="456" cy="394" r="2.2"/>
+                </g>
+              </g>
+            </g>
+            <polygon class="zone-hit" points="280,412 520,412 460,276 340,276"/>
+          </g>
+
+          <!-- ─ L5 BAND · Apex / reversion (vapor → ocean) ─ -->
+          <g class="level-zone" data-level="5">
+            <g clip-path="url(#band-l5)">
+              <rect class="zone-fill" x="340" y="140" width="120" height="140" fill="#2b1840" opacity="0.7"/>
+              <g class="zone-detail">
+                <!-- vapor column rising -->
+                <path d="M 340 276 L 460 276 L 410 200 L 390 200 Z" fill="url(#vapor)" opacity="0.85"/>
+                <!-- mist clouds -->
+                <g filter="url(#soft-mist)" fill="#f4f1e6" opacity="0.4">
+                  <ellipse cx="400" cy="220" rx="36" ry="14"/>
+                  <ellipse cx="380" cy="190" rx="24" ry="10"/>
+                  <ellipse cx="420" cy="170" rx="22" ry="9"/>
+                </g>
+                <!-- vapor rising particles -->
+                <g class="mist-particle" fill="#f4f1e6" opacity="0.7">
+                  <circle cx="392" cy="240" r="2"/>
+                  <circle cx="404" cy="232" r="1.6"/>
+                  <circle cx="386" cy="218" r="1.4"/>
+                  <circle cx="412" cy="202" r="1.6"/>
+                  <circle cx="398" cy="186" r="1.2"/>
+                  <circle cx="406" cy="168" r="1.4"/>
+                  <circle cx="392" cy="156" r="1"/>
+                  <circle cx="416" cy="148" r="1.2"/>
+                </g>
+                <g class="mist-particle" fill="#c7398b" opacity="0.55">
+                  <circle cx="398" cy="248" r="1.6"/>
+                  <circle cx="412" cy="226" r="1.4"/>
+                  <circle cx="384" cy="208" r="1.2"/>
+                  <circle cx="402" cy="178" r="1.2"/>
+                </g>
+                <g class="mist-particle" fill="#3f6ae0" opacity="0.7">
+                  <circle cx="386" cy="252" r="1.4"/>
+                  <circle cx="400" cy="200" r="1.2"/>
+                  <circle cx="410" cy="184" r="1"/>
+                  <circle cx="392" cy="166" r="1"/>
+                </g>
+              </g>
+            </g>
+            <!-- particles ABOVE the apex (escaping into ocean) — outside clip -->
+            <g class="zone-detail">
+              <g class="mist-particle" fill="#f4f1e6" opacity="0.85">
+                <circle cx="408" cy="128" r="1.4"/>
+                <circle cx="392" cy="112" r="1.2"/>
+                <circle cx="418" cy="98" r="1.6"/>
+                <circle cx="380" cy="88" r="1.2"/>
+                <circle cx="430" cy="76" r="1"/>
+                <circle cx="368" cy="68" r="1"/>
+              </g>
+              <g class="mist-particle" fill="#3f6ae0" opacity="0.7">
+                <circle cx="402" cy="118" r="1.2"/>
+                <circle cx="424" cy="86" r="1.2"/>
+                <circle cx="386" cy="78" r="1"/>
+              </g>
+              <!-- ghost echo of the apex point -->
+              <circle cx="400" cy="140" r="3" fill="#f4f1e6" opacity="0.9"/>
+              <circle cx="400" cy="140" r="7" fill="none" stroke="#f4f1e6" stroke-width="0.8" opacity="0.5"/>
+              <circle cx="400" cy="140" r="12" fill="none" stroke="#f4f1e6" stroke-width="0.6" opacity="0.3"/>
+            </g>
+            <!-- hit area extends slightly above apex -->
+            <polygon class="zone-hit" points="340,276 460,276 420,156 380,156"/>
+          </g>
+
+          <!-- ─ pyramid silhouette outline (drawn last so it sits over strata) ─ -->
+          <g filter="url(#edge-glow)">
+            <!-- base/sides solid -->
+            <line x1="100" y1="820" x2="700" y2="820" stroke="#f4f1e6" stroke-width="1.6"/>
+            <line x1="100" y1="820" x2="340" y2="276" stroke="#f4f1e6" stroke-width="1.6"/>
+            <line x1="700" y1="820" x2="460" y2="276" stroke="#f4f1e6" stroke-width="1.6"/>
+            <!-- apex disintegrates: dashed last segment -->
+            <line x1="340" y1="276" x2="380" y2="186" stroke="#f4f1e6" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.65"/>
+            <line x1="460" y1="276" x2="420" y2="186" stroke="#f4f1e6" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.65"/>
+            <line x1="380" y1="186" x2="400" y2="148" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.4"/>
+            <line x1="420" y1="186" x2="400" y2="148" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.4"/>
+          </g>
+
+          <!-- ─ vertex circles (substack motif) ─ -->
+          <g fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1.4">
+            <circle cx="100" cy="820" r="5"/>
+            <circle cx="700" cy="820" r="5"/>
+            <circle cx="400" cy="148" r="4" stroke-dasharray="2 2"/>
+          </g>
+
+          <!-- ─ stratum dividers (faint horizontal lines) ─ -->
+          <g stroke="#f4f1e6" stroke-width="0.6" opacity="0.18" stroke-dasharray="2 4">
+            <line x1="160" y1="684" x2="640" y2="684"/>
+            <line x1="220" y1="548" x2="580" y2="548"/>
+            <line x1="280" y1="412" x2="520" y2="412"/>
+            <line x1="340" y1="276" x2="460" y2="276"/>
+          </g>
+
+          <!-- ─ level numerals along right edge ─ -->
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#f4f1e6" opacity="0.9" letter-spacing="1.5">
+            <text x="720" y="760" >L1</text>
+            <text x="708" y="624" >L2</text>
+            <text x="694" y="488" >L3</text>
+            <text x="680" y="352" >L4</text>
+            <text x="466" y="216" >L5</text>
+          </g>
+          <!-- level lead lines -->
+          <g stroke="#f4f1e6" stroke-width="0.6" opacity="0.4">
+            <line x1="700" y1="755" x2="716" y2="755"/>
+            <line x1="668" y1="619" x2="704" y2="619"/>
+            <line x1="608" y1="483" x2="690" y2="483"/>
+            <line x1="548" y1="347" x2="676" y2="347"/>
+            <line x1="448" y1="211" x2="462" y2="211"/>
+          </g>
+        </g>
+
+        <!-- ── ground line below pyramid ── -->
+        <g opacity="0.4">
+          <line x1="40" y1="850" x2="760" y2="850" stroke="#8b8676" stroke-width="0.8" stroke-dasharray="3 4"/>
+          <text x="40" y="868" font-family="JetBrains Mono, monospace" font-size="9" fill="#8b8676" letter-spacing="2">SURFACE · ORG. GROUND</text>
+          <text x="760" y="868" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="#8b8676" letter-spacing="2">2026 · CMM v0.9</text>
+        </g>
+
+        <!-- ── ocean label at top ── -->
+        <g opacity="0.7">
+          <line x1="40" y1="14" x2="760" y2="14" stroke="#3f6ae0" stroke-width="0.6" stroke-dasharray="2 3"/>
+          <text x="400" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#3f6ae0" letter-spacing="3">— PLANETARY · OCEAN BEYOND —</text>
+        </g>
+
+      </svg>
+    </div>
+
+    <!-- ───── level cards ───── -->
+    <div class="levels" id="levels">
+
+      <article class="level" data-level="1" tabindex="0">
+        <div class="level-head">
+          <div>
+            <div class="level-num">L1 · BASE</div>
+            <div class="level-name">Springs <em>— shadow origins.</em></div>
+          </div>
+        </div>
+        <div class="level-water"><strong>WATER</strong>scattered springs</div>
+        <p class="level-body">
+          Water emerges where it will. Many small sources, no plan. The ground itself decides.
+          <br/>
+          <strong>In AI terms:</strong> shadow adoption — individuals using tools without sanction, organic and unaudited.
+        </p>
+        <span class="level-tag">Origin · Pre-protocol</span>
+      </article>
+
+      <article class="level" data-level="2" tabindex="0">
+        <div class="level-head">
+          <div>
+            <div class="level-num">L2 · LOWER STRATUM</div>
+            <div class="level-name">Channels <em>— sanctioned routes.</em></div>
+          </div>
+        </div>
+        <div class="level-water"><strong>WATER</strong>man-made channels</div>
+        <p class="level-body">
+          Humans intervene. Water is directed into cuts and sluices. Flow is now permitted &mdash; and gated.
+          <br/>
+          <strong>In AI terms:</strong> sanctioned use within an approved tool list, but no protocol behind the choice.
+        </p>
+        <span class="level-tag">Permission · Conduits</span>
+      </article>
+
+      <article class="level" data-level="3" tabindex="0">
+        <div class="level-head">
+          <div>
+            <div class="level-num">L3 · MIDDLE STRATUM</div>
+            <div class="level-name">Dam <em>— designed accumulation.</em></div>
+          </div>
+        </div>
+        <div class="level-water"><strong>WATER</strong>impounded reservoir</div>
+        <p class="level-body">
+          A wall is built. Water is held back, reserved, released on schedule. Storage and discharge become decisions.
+          <br/>
+          <strong>In AI terms:</strong> designed protocols &mdash; review boards, evaluation gates, deliberate accumulation of capability.
+        </p>
+        <span class="level-tag">Designed · Engineered hold</span>
+      </article>
+
+      <article class="level" data-level="4" tabindex="0">
+        <div class="level-head">
+          <div>
+            <div class="level-num">L4 · UPPER STRATUM</div>
+            <div class="level-name">Generator <em>— infrastructural work.</em></div>
+          </div>
+        </div>
+        <div class="level-water"><strong>WATER</strong>turbine, current</div>
+        <p class="level-body">
+          The held water now does work. The dam is no longer a wall &mdash; it is a power station. Output flows out as something other than water.
+          <br/>
+          <strong>In AI terms:</strong> infrastructural AI &mdash; protocols become productive substrate other systems depend on.
+        </p>
+        <span class="level-tag">Infrastructural · Productive</span>
+      </article>
+
+      <article class="level" data-level="5" tabindex="0">
+        <div class="level-head">
+          <div>
+            <div class="level-num">L5 · APEX</div>
+            <div class="level-name">Reversion <em>— back to ocean.</em></div>
+          </div>
+        </div>
+        <div class="level-water"><strong>WATER</strong>vapor → planetary ocean</div>
+        <p class="level-body">
+          The structure dissolves at the top. Water leaves as vapor and rejoins the ocean it came from &mdash; no longer an artifact, just weather.
+          <br/>
+          <strong>In AI terms:</strong> the protocol becomes ambient. Compliance shifts to planetary norms; the firm's edge fades into the field.
+        </p>
+        <span class="level-tag">Planetary · Ambient</span>
+      </article>
+
+    </div>
+  </div>
+  <!-- ─────────────────── /STAGE ─────────────────── -->
+
+  <!-- ─────────────────── reading ─────────────────── -->
+  <div class="reading">
+    <div class="panel">
+      <h3>How to read</h3>
+      <p>Read <strong>upward</strong>: each stratum requires the one below to function. A dam without springs is dry; a generator without a dam idles.</p>
+      <p>Read <strong>outward</strong>: the apex is not a peak achieved &mdash; it is where the firm's structure fades into a field larger than itself.</p>
+    </div>
+    <div class="panel">
+      <h3>Why a watershed</h3>
+      <p>A pyramid alone implies <em>climbing</em>. A watershed implies <em>flow</em>. Inverting the watershed lets the pyramid keep its mnemonic shape while the metaphor underneath says: you are managing a moving substance, not stacking stones.</p>
+    </div>
+    <div class="panel">
+      <h3>Where the metaphor cuts</h3>
+      <p>A real watershed flows down. This one rises. The inversion is intentional: maturity is not gravity-fed. It takes work to lift water from springs to apex &mdash; and the apex is precisely where the work stops mattering, because the system has joined a larger one.</p>
+    </div>
+  </div>
+
+  <!-- ─────────────────── mnemonic glyph ─────────────────── -->
+  <div class="mnemonic">
+    <div>
+      <svg viewBox="0 0 120 120" width="180" height="180">
+        <defs>
+          <radialGradient id="mn-glow" cx="0.5" cy="0.6" r="0.5">
+            <stop offset="0%" stop-color="#e6a73c" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="120" height="120" fill="#0d0a1f"/>
+        <circle cx="60" cy="74" r="48" fill="url(#mn-glow)"/>
+        <!-- pyramid -->
+        <line x1="14" y1="104" x2="106" y2="104" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="14" y1="104" x2="50" y2="34" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="106" y1="104" x2="70" y2="34" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="50" y1="34" x2="56" y2="20" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <line x1="70" y1="34" x2="64" y2="20" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <!-- vertices -->
+        <circle cx="14" cy="104" r="2.4" fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1"/>
+        <circle cx="106" cy="104" r="2.4" fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1"/>
+        <circle cx="60" cy="20" r="2" fill="#f4f1e6" opacity="0.8"/>
+        <!-- vapor dots -->
+        <circle cx="58" cy="12" r="1.2" fill="#f4f1e6" opacity="0.7"/>
+        <circle cx="64" cy="6" r="1" fill="#3f6ae0" opacity="0.8"/>
+        <circle cx="52" cy="6" r="0.8" fill="#c7398b" opacity="0.7"/>
+        <!-- water at base -->
+        <ellipse cx="40" cy="106" rx="6" ry="1.4" fill="#3f6ae0" opacity="0.7"/>
+        <ellipse cx="80" cy="106" rx="5" ry="1.2" fill="#3f6ae0" opacity="0.6"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Mnemonic glyph · printable</h3>
+      <p>
+        Reduces to a <strong>triangle whose apex disintegrates upward</strong>: the canonical pyramid silhouette
+        with a vapor crown. Vertex circles (substack motif) anchor the base; the apex is a soft mark
+        rather than a sharp point. Suitable for favicons, slide corners, watermarks, and the in-page chip
+        used to indicate maturity assessments.
+      </p>
+      <div class="glyph-set">
+        <!-- 36px reductions in three tones -->
+        <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#0d0a1f"/><line x1="6" y1="30" x2="30" y2="30" stroke="#f4f1e6" stroke-width="1"/><line x1="6" y1="30" x2="16" y2="11" stroke="#f4f1e6" stroke-width="1"/><line x1="30" y1="30" x2="20" y2="11" stroke="#f4f1e6" stroke-width="1"/><line x1="16" y1="11" x2="18" y2="6" stroke="#f4f1e6" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><line x1="20" y1="11" x2="18" y2="6" stroke="#f4f1e6" stroke-width="0.8" stroke-dasharray="1.5 1.5"/></svg>
+        <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#1d3fc4"/><line x1="6" y1="30" x2="30" y2="30" stroke="#f4f1e6" stroke-width="1"/><line x1="6" y1="30" x2="16" y2="11" stroke="#f4f1e6" stroke-width="1"/><line x1="30" y1="30" x2="20" y2="11" stroke="#f4f1e6" stroke-width="1"/><line x1="16" y1="11" x2="18" y2="6" stroke="#f4f1e6" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><line x1="20" y1="11" x2="18" y2="6" stroke="#f4f1e6" stroke-width="0.8" stroke-dasharray="1.5 1.5"/></svg>
+        <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#f4f1e6"/><line x1="6" y1="30" x2="30" y2="30" stroke="#0d0a1f" stroke-width="1"/><line x1="6" y1="30" x2="16" y2="11" stroke="#0d0a1f" stroke-width="1"/><line x1="30" y1="30" x2="20" y2="11" stroke="#0d0a1f" stroke-width="1"/><line x1="16" y1="11" x2="18" y2="6" stroke="#0d0a1f" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><line x1="20" y1="11" x2="18" y2="6" stroke="#0d0a1f" stroke-width="0.8" stroke-dasharray="1.5 1.5"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">
+      <span>CMM · Diagram Concepts · v1</span>
+      <span>FORM-01 · WATERSHED-PYRAMID</span>
+    </div>
+    <div class="right">
+      <span>Hover or click any stratum or card</span>
+      <span>Press 1 – 5 to step</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    const diagram = document.getElementById('diagram');
+    const cards = Array.from(document.querySelectorAll('.level'));
+    const zones = Array.from(diagram.querySelectorAll('.level-zone'));
+    let pinned = null;
+
+    const setActive = (lvl) => {
+      if (lvl) diagram.setAttribute('data-active', lvl);
+      else diagram.removeAttribute('data-active');
+      cards.forEach(c => c.classList.toggle('is-active', c.dataset.level === String(lvl)));
+    };
+
+    const hoverIn  = (lvl) => { if (!pinned) setActive(lvl); };
+    const hoverOut = ()    => { if (!pinned) setActive(null); };
+    const toggle   = (lvl) => {
+      if (pinned === lvl) { pinned = null; setActive(null); }
+      else                { pinned = lvl;  setActive(lvl);  }
+    };
+
+    cards.forEach(c => {
+      const lvl = c.dataset.level;
+      c.addEventListener('mouseenter', () => hoverIn(lvl));
+      c.addEventListener('mouseleave', hoverOut);
+      c.addEventListener('click',      () => toggle(lvl));
+      c.addEventListener('focus',      () => hoverIn(lvl));
+      c.addEventListener('blur',       hoverOut);
+      c.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(lvl); }
+      });
+    });
+
+    zones.forEach(z => {
+      const lvl = z.dataset.level;
+      z.addEventListener('mouseenter', () => hoverIn(lvl));
+      z.addEventListener('mouseleave', hoverOut);
+      z.addEventListener('click',      () => toggle(lvl));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (['1','2','3','4','5'].includes(e.key)) toggle(e.key);
+      if (e.key === 'Escape')                    { pinned = null; setActive(null); }
+    });
+  })();
+</script>
+
+</body>
+</html>

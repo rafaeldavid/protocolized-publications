@@ -12,3 +12,7 @@ Thumbs.db
 *.bak
 *.orig
 *.tmp
+
+# Third-party reference assets — kept locally for design grounding,
+# not redistributed via this public repo.
+ai-capability-maturity-model/_Product/Diagram-Design/artifacts/substack-references-2026/*.png

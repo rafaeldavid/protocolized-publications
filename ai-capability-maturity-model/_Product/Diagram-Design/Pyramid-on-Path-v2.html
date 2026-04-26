@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Maturity Pyramid · A Path That Becomes Itself Again (v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep:     #0d0a1f;
+    --bg-warm:     #1a0e08;
+    --ink:         #0a0810;
+    --bone:        #f4f1e6;
+    --bone-dim:    #c8c4b3;
+    --bone-soft:   #8b8676;
+    --cobalt:      #1d3fc4;
+    --cobalt-light:#3f6ae0;
+    --cobalt-dark: #142b86;
+    --amber:       #e6a73c;
+    --amber-dark:  #b8801a;
+    --magenta:     #c7398b;
+    --lime:        #a8d439;
+    --rust:        #c44a1f;
+    --teal:        #2b8a8a;
+    --violet:      #6b3fb5;
+    --earth:       #6b4a2b;
+    --moss:        #5a6b2e;
+    --asphalt:     #2a2a32;
+
+    --font-serif:  'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --font-mono:   'JetBrains Mono', 'Roboto Mono', ui-monospace, monospace;
+    --font-sans:   'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg-deep);
+    color: var(--bone);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--amber); color: var(--ink); }
+
+  .page {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 56px 40px 96px;
+    position: relative;
+  }
+  .page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1200px 800px at 80% 10%, rgba(230, 167, 60, 0.10), transparent 60%),
+      radial-gradient(900px 700px at 10% 90%, rgba(199, 57, 139, 0.08), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--amber); }
+  .eyebrow .frame-id { color: var(--bone-soft); }
+  .eyebrow .ver-tag { color: var(--bone-soft); margin-left: auto; border: 1px solid rgba(244,241,230,0.18); padding: 2px 8px; border-radius: 2px; }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+  }
+  h1 em { font-style: italic; color: var(--amber); font-weight: 400; }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    line-height: 1.45;
+    color: var(--bone-dim);
+    max-width: 880px;
+    font-style: italic;
+    margin: 0 0 28px;
+  }
+
+  .meta-strip {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--bone-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(244, 241, 230, 0.12);
+    border-bottom: 1px solid rgba(244, 241, 230, 0.12);
+    padding: 14px 0;
+    margin-bottom: 40px;
+  }
+  .meta-strip span strong { color: var(--bone); font-weight: 500; margin-right: 6px; }
+
+  /* ─── HERO VISUAL ─── */
+  .stage-visual {
+    position: relative;
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: linear-gradient(180deg, #1a0e08 0%, #0d0a1f 50%, #06040d 100%);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .stage-visual::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(244, 241, 230, 0.10);
+    pointer-events: none;
+    z-index: 5;
+  }
+  .stage-visual .crosshair {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--bone-soft);
+    letter-spacing: 0.16em;
+  }
+  .crosshair.tl { top: 18px; left: 22px; }
+  .crosshair.tr { top: 18px; right: 22px; text-align: right; }
+  .crosshair.bl { bottom: 18px; left: 22px; }
+  .crosshair.br { bottom: 18px; right: 22px; text-align: right; }
+
+  svg.diagram { display: block; width: 100%; height: auto; max-height: 88vh; }
+
+  /* SVG band interactivity — vertical column based on active level */
+  .level-band  { transition: opacity 240ms ease; }
+  .pyramid-band-label { transition: opacity 240ms ease, fill 240ms ease; }
+  .diagram[data-active] .level-band { opacity: 0.42; }
+  .diagram[data-active="1"] .level-band[data-level="1"],
+  .diagram[data-active="2"] .level-band[data-level="2"],
+  .diagram[data-active="3"] .level-band[data-level="3"],
+  .diagram[data-active="4"] .level-band[data-level="4"],
+  .diagram[data-active="5"] .level-band[data-level="5"] { opacity: 1; }
+  .diagram[data-active] .pyramid-band-label { fill: rgba(244,241,230,0.45); }
+  .diagram[data-active="1"] .pyramid-band-label[data-level="1"],
+  .diagram[data-active="2"] .pyramid-band-label[data-level="2"],
+  .diagram[data-active="3"] .pyramid-band-label[data-level="3"],
+  .diagram[data-active="4"] .pyramid-band-label[data-level="4"],
+  .diagram[data-active="5"] .pyramid-band-label[data-level="5"] { fill: var(--amber); }
+
+  /* highlight column on the active segment */
+  .col-highlight { transition: opacity 240ms ease; opacity: 0; }
+  .diagram[data-active="1"] .col-highlight[data-level="1"],
+  .diagram[data-active="2"] .col-highlight[data-level="2"],
+  .diagram[data-active="3"] .col-highlight[data-level="3"],
+  .diagram[data-active="4"] .col-highlight[data-level="4"],
+  .diagram[data-active="5"] .col-highlight[data-level="5"] { opacity: 1; }
+
+  .band-hit { fill: transparent; cursor: pointer; }
+
+  .pyramid-overlay { transition: opacity 240ms ease; }
+  .diagram[data-active] .pyramid-overlay { opacity: 0.55; }
+
+  @keyframes mist {
+    0%, 100% { opacity: 0.28; transform: translate(0, 0); }
+    50%      { opacity: 0.55; transform: translate(4px, -8px); }
+  }
+  @keyframes spark {
+    0%, 90% { opacity: 0; }
+    45%     { opacity: 1; }
+    50%     { opacity: 0; }
+  }
+  @keyframes drift {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(6px, -4px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes traveler-anim {
+    0% { transform: translate(0, 0); opacity: 0; }
+    8% { opacity: 0.85; }
+    92% { opacity: 0.85; }
+    100% { transform: translate(1380px, -10px); opacity: 0; }
+  }
+  .mist-particle { animation: mist 6s ease-in-out infinite; }
+  .mist-particle:nth-child(2n) { animation-duration: 8s; animation-delay: -2s; }
+  .mist-particle:nth-child(3n) { animation-duration: 7s; animation-delay: -4s; }
+  .spark { animation: spark 2.4s ease-in-out infinite; }
+  .spark:nth-child(2n) { animation-delay: 0.6s; }
+  .traveler { animation: traveler-anim 30s linear infinite; }
+
+  /* ─── modal opening — anchored to active column horizontally ─── */
+  .level-modal {
+    position: absolute;
+    top: 28px;
+    width: 360px;
+    max-width: calc(100% - 56px);
+    background: rgba(13, 10, 31, 0.96);
+    border: 1px solid var(--modal-color, var(--bone-soft));
+    border-top: 4px solid var(--modal-color, var(--bone-soft));
+    border-radius: 3px;
+    padding: 22px 26px 24px;
+    z-index: 10;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(244, 241, 230, 0.06);
+    backdrop-filter: blur(6px);
+    transition: opacity 220ms ease, transform 260ms cubic-bezier(.2,.8,.3,1), left 320ms cubic-bezier(.4,.2,.3,1);
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px);
+    left: 50%;
+    pointer-events: none;
+    will-change: opacity, transform, left;
+  }
+  .level-modal.is-open {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  /* horizontal centering per active level (matches segment center) */
+  .level-modal[data-level="1"] { --modal-color: #6b8a3c; left: 14%; }
+  .level-modal[data-level="2"] { --modal-color: #b8884a; left: 32%; }
+  .level-modal[data-level="3"] { --modal-color: #c8c4b3; left: 50%; }
+  .level-modal[data-level="4"] { --modal-color: #e6a73c; left: 68%; }
+  .level-modal[data-level="5"] { --modal-color: #c7398b; left: 86%; }
+
+  .level-modal[data-pinned="true"] {
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65),
+                0 0 0 1px var(--modal-color),
+                0 0 24px rgba(230, 167, 60, 0.12);
+  }
+
+  .modal-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--modal-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .modal-eyebrow .modal-state {
+    color: var(--bone-soft);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+  }
+  .modal-name {
+    font-family: var(--font-serif);
+    font-size: 1.65rem;
+    line-height: 1.1;
+    font-weight: 500;
+    color: var(--bone);
+    margin: 0 0 12px;
+    letter-spacing: -0.005em;
+  }
+  .modal-name em {
+    color: var(--modal-color);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .modal-body {
+    color: var(--bone-dim);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin: 0 0 14px;
+    font-family: var(--font-sans);
+  }
+  .modal-body strong { color: var(--bone); font-weight: 600; }
+  .modal-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--bone-soft);
+    text-transform: uppercase;
+    border: 1px solid rgba(244, 241, 230, 0.18);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 1px solid rgba(244, 241, 230, 0.16);
+    color: var(--bone-soft);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .modal-close:hover { color: var(--bone); border-color: var(--bone); }
+  .level-modal[data-pinned="true"] .modal-close { display: flex; }
+
+  @media (max-width: 760px) {
+    .level-modal {
+      left: 12px !important;
+      right: 12px;
+      width: auto;
+      max-width: none;
+      transform: translateX(0) translateY(-12px);
+    }
+    .level-modal.is-open { transform: translateX(0) translateY(0); }
+  }
+
+  /* ─── legend strip ─── */
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 720px) { .legend { gap: 4px; } }
+  .legend-item {
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: rgba(13, 10, 31, 0.4);
+    padding: 10px 12px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: border-color 200ms ease, background 200ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .legend-item::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2px;
+    background: var(--legend-color, var(--bone-soft));
+    opacity: 0.6;
+  }
+  .legend-item[data-level="1"] { --legend-color: #6b8a3c; }
+  .legend-item[data-level="2"] { --legend-color: #b8884a; }
+  .legend-item[data-level="3"] { --legend-color: #c8c4b3; }
+  .legend-item[data-level="4"] { --legend-color: #e6a73c; }
+  .legend-item[data-level="5"] { --legend-color: #c7398b; }
+  .legend-item:hover, .legend-item.is-active {
+    border-color: var(--legend-color);
+    background: rgba(13, 10, 31, 0.85);
+  }
+  .legend-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--legend-color);
+    margin-bottom: 4px;
+  }
+  .legend-name {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--bone);
+    line-height: 1.15;
+  }
+  @media (max-width: 720px) {
+    .legend-name { font-size: 0.85rem; }
+  }
+
+  /* ─── reading panels ─── */
+  .reading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 900px) { .reading { grid-template-columns: 1fr; } }
+  .panel {
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    padding: 22px 24px;
+    background: rgba(13, 10, 31, 0.4);
+    border-radius: 3px;
+  }
+  .panel h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+  .panel p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    margin: 0 0 10px;
+  }
+  .panel p:last-child { margin: 0; }
+  .panel p strong { color: var(--bone); font-weight: 600; }
+
+  .mnemonic {
+    margin-top: 32px;
+    padding: 32px;
+    border: 1px solid rgba(244, 241, 230, 0.10);
+    background: rgba(13, 10, 31, 0.4);
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 700px) { .mnemonic { grid-template-columns: 1fr; text-align: center; } }
+  .mnemonic h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .mnemonic p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    margin: 0;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(244, 241, 230, 0.10);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--bone-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="eyebrow">
+    <span>Diagram Concept</span>
+    <span class="frame-id">CMM / Pyramid-on-Path</span>
+    <span class="ver-tag">v2 · framework overlay · modals</span>
+  </div>
+
+  <h1>The Maturity Pyramid &mdash; a <em>path that becomes itself again</em>.</h1>
+  <p class="lede">
+    A single road across a single landscape. It begins as scattered animal tracks and
+    ends, fragmented, where the asphalt lets grass grow back through. The pyramid floats
+    above as a translucent reading frame &mdash; it tells you which stage you are looking at,
+    not what the picture is.
+  </p>
+
+  <div class="meta-strip">
+    <span><strong>FORM</strong> Continuous road · horizontal</span>
+    <span><strong>READING</strong> Cow-track (left) → Reabsorption (right)</span>
+    <span><strong>OVERLAY</strong> Pyramid as framework lens</span>
+    <span><strong>INTERACTION</strong> Hover or click to open modal</span>
+  </div>
+
+  <!-- ───────────────────── HERO VISUAL ───────────────────── -->
+  <div class="stage-visual">
+    <div class="crosshair tl">CMM&middot;02</div>
+    <div class="crosshair tr">PATH · CONTINUOUS · HORIZONTAL</div>
+    <div class="crosshair bl">v2.0 · 2026·04</div>
+    <div class="crosshair br">1500 × 850</div>
+
+    <svg class="diagram" id="diagram" viewBox="0 0 1500 850" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Maturity pyramid as a translucent overlay on a continuous road that evolves left to right">
+      <defs>
+        <!-- sky gradient (dawn) -->
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#1d3fc4" stop-opacity="0.5"/>
+          <stop offset="20%"  stop-color="#c7398b" stop-opacity="0.32"/>
+          <stop offset="50%"  stop-color="#e6a73c" stop-opacity="0.38"/>
+          <stop offset="78%"  stop-color="#c44a1f" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#1a0e08" stop-opacity="0"/>
+        </linearGradient>
+
+        <!-- ground gradient -->
+        <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#3a2818" stop-opacity="0"/>
+          <stop offset="20%"  stop-color="#3a2818" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#1a0e08" stop-opacity="1"/>
+        </linearGradient>
+
+        <!-- earth gradient — modulated per segment -->
+        <linearGradient id="earth-l1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#5a6b2e"/>
+          <stop offset="100%" stop-color="#3a4520"/>
+        </linearGradient>
+        <linearGradient id="earth-l2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#7a5a36"/>
+          <stop offset="100%" stop-color="#4a3520"/>
+        </linearGradient>
+
+        <!-- amber halo -->
+        <radialGradient id="halo-sun" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#e6a73c" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0"/>
+        </radialGradient>
+
+        <filter id="soft-mist" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+
+        <filter id="edge-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+
+        <!-- noise filter for grain -->
+        <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.04 0"/>
+          <feComposite in2="SourceGraphic" operator="in"/>
+        </filter>
+
+        <!-- traveler / pilgrim figure -->
+        <symbol id="walker" viewBox="-4 -10 8 12">
+          <circle cx="0" cy="-8" r="1.6" fill="#0a0810"/>
+          <line x1="0" y1="-6" x2="0" y2="-2" stroke="#0a0810" stroke-width="1.2"/>
+          <line x1="0" y1="-2" x2="-2" y2="2" stroke="#0a0810" stroke-width="1"/>
+          <line x1="0" y1="-2" x2="2" y2="2" stroke="#0a0810" stroke-width="1"/>
+          <line x1="0" y1="-6" x2="2.5" y2="-3" stroke="#0a0810" stroke-width="0.9"/>
+        </symbol>
+
+        <!-- car silhouette -->
+        <symbol id="car" viewBox="-12 -6 24 9">
+          <path d="M -12 3 L -10 -2 L -4 -5 L 4 -5 L 8 -2 L 12 3 Z" fill="#0a0810"/>
+          <circle cx="-7" cy="3" r="1.6" fill="#0a0810" stroke="#e6a73c" stroke-width="0.6"/>
+          <circle cx="7" cy="3" r="1.6" fill="#0a0810" stroke="#e6a73c" stroke-width="0.6"/>
+          <rect x="-5" y="-4" width="10" height="2" fill="#3f6ae0" opacity="0.7"/>
+        </symbol>
+
+        <!-- signpost -->
+        <symbol id="signpost" viewBox="-6 -28 14 32">
+          <line x1="0" y1="-28" x2="0" y2="2" stroke="#7a5a36" stroke-width="1.6"/>
+          <rect x="-5" y="-26" width="12" height="6" fill="#a8d439" stroke="#0a0810" stroke-width="0.8"/>
+          <line x1="-3" y1="-22" x2="5" y2="-22" stroke="#0a0810" stroke-width="0.6"/>
+        </symbol>
+
+        <!-- distant peak -->
+        <symbol id="peak" viewBox="-40 -30 80 32">
+          <path d="M -40 2 L -16 -22 L -2 -10 L 14 -28 L 40 2 Z" fill="#1c1626" stroke="#0a0810" stroke-width="0.8"/>
+        </symbol>
+
+        <!-- tree silhouette (broad) -->
+        <symbol id="tree" viewBox="-12 -28 24 32">
+          <line x1="0" y1="0" x2="0" y2="-12" stroke="#3a2818" stroke-width="2"/>
+          <ellipse cx="-2" cy="-18" rx="10" ry="11" fill="#3a4520" stroke="#0a0810" stroke-width="0.8"/>
+          <ellipse cx="3" cy="-22" rx="8" ry="9" fill="#5a6b2e" stroke="#0a0810" stroke-width="0.8"/>
+        </symbol>
+
+        <!-- shrub -->
+        <symbol id="shrub" viewBox="-8 -10 16 14">
+          <ellipse cx="0" cy="0" rx="6" ry="3" fill="#3a4520" stroke="#0a0810" stroke-width="0.8"/>
+          <ellipse cx="-3" cy="-3" rx="3" ry="3" fill="#5a6b2e" stroke="#0a0810" stroke-width="0.7"/>
+          <ellipse cx="3" cy="-2" rx="3" ry="3" fill="#5a6b2e" stroke="#0a0810" stroke-width="0.7"/>
+        </symbol>
+
+        <!-- grass tuft -->
+        <symbol id="tuft" viewBox="-8 -10 16 12">
+          <g stroke="#a8d439" stroke-width="1" stroke-linecap="round" fill="none">
+            <path d="M -5 0 Q -5 -7 -3 -10"/>
+            <path d="M -1 0 Q -1 -8 1 -10"/>
+            <path d="M 3 0 Q 3 -7 5 -9"/>
+          </g>
+        </symbol>
+
+        <!-- streetlamp -->
+        <symbol id="lamp" viewBox="-6 -36 12 40">
+          <line x1="0" y1="-36" x2="0" y2="2" stroke="#8b8676" stroke-width="1.4"/>
+          <line x1="0" y1="-36" x2="6" y2="-36" stroke="#8b8676" stroke-width="1.4"/>
+          <circle cx="6" cy="-34" r="2" fill="#e6a73c"/>
+          <circle cx="6" cy="-34" r="5" fill="#e6a73c" opacity="0.4" filter="url(#soft-mist)"/>
+        </symbol>
+      </defs>
+
+      <!-- ════════════════════════════════════════════════════════
+           BACKGROUND : sky + ground
+           ════════════════════════════════════════════════════════ -->
+      <rect width="1500" height="850" fill="#0d0a1f"/>
+      <rect x="0" y="0" width="1500" height="540" fill="url(#sky)"/>
+      <rect x="0" y="510" width="1500" height="340" fill="url(#ground)"/>
+
+      <!-- column highlight rectangles (drawn now, fade in only when active) -->
+      <g style="mix-blend-mode: screen">
+        <rect class="col-highlight" data-level="1" x="0"    y="0" width="300"  height="850" fill="#a8d439" opacity="0"/>
+        <rect class="col-highlight" data-level="2" x="300"  y="0" width="280"  height="850" fill="#e6a73c" opacity="0"/>
+        <rect class="col-highlight" data-level="3" x="580"  y="0" width="280"  height="850" fill="#f4f1e6" opacity="0"/>
+        <rect class="col-highlight" data-level="4" x="860"  y="0" width="280"  height="850" fill="#3f6ae0" opacity="0"/>
+        <rect class="col-highlight" data-level="5" x="1140" y="0" width="360"  height="850" fill="#c7398b" opacity="0"/>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           DISTANT BACKDROP (sun, peaks, stars, birds)
+           ════════════════════════════════════════════════════════ -->
+      <!-- sun glow -->
+      <circle cx="1240" cy="290" r="120" fill="url(#halo-sun)"/>
+      <circle cx="1240" cy="290" r="44" fill="#e6a73c" opacity="0.7"/>
+      <circle cx="1240" cy="290" r="26" fill="#f4f1e6" opacity="0.85"/>
+
+      <!-- distant peaks -->
+      <use href="#peak" x="120" y="540" />
+      <use href="#peak" x="380" y="540" transform="scale(0.85) translate(67,95)"/>
+      <use href="#peak" x="700" y="540" transform="scale(0.7) translate(300,230)"/>
+      <use href="#peak" x="1080" y="540" transform="scale(0.9) translate(120,60)"/>
+      <use href="#peak" x="1380" y="540" transform="scale(0.75) translate(460,180)"/>
+
+      <!-- mid-distance hills -->
+      <path d="M 0 540 Q 200 510 400 540 Q 600 565 800 538 Q 1000 510 1200 540 Q 1350 552 1500 530 L 1500 600 L 0 600 Z"
+            fill="#1a1408" stroke="none" opacity="0.85"/>
+
+      <!-- stars (faint, pre-dawn) -->
+      <g fill="#f4f1e6" opacity="0.55">
+        <circle cx="80" cy="60" r="1"/><circle cx="200" cy="40" r="0.8"/>
+        <circle cx="320" cy="80" r="1"/><circle cx="430" cy="48" r="0.9"/>
+        <circle cx="540" cy="64" r="0.8"/><circle cx="700" cy="38" r="1"/>
+        <circle cx="820" cy="70" r="0.9"/><circle cx="940" cy="48" r="0.8"/>
+      </g>
+
+      <!-- bird flecks -->
+      <g fill="none" stroke="#0a0810" stroke-width="1" opacity="0.7">
+        <path d="M 280 160 q 4 -3 8 0 q 4 -3 8 0"/>
+        <path d="M 600 130 q 4 -3 8 0 q 4 -3 8 0"/>
+        <path d="M 880 150 q 4 -3 8 0 q 4 -3 8 0"/>
+      </g>
+
+      <!-- horizon line (subtle) -->
+      <line x1="0" y1="600" x2="1500" y2="600" stroke="#0a0810" stroke-width="1" opacity="0.6"/>
+
+      <!-- ════════════════════════════════════════════════════════
+           THE GROUND : continuous earth surface, modulated per zone
+           ════════════════════════════════════════════════════════ -->
+      <!-- L1 ground (rough grass) -->
+      <path d="M 0 600 L 0 850 L 320 850 L 320 600
+               Q 280 580 240 595 Q 200 612 160 590 Q 120 575 80 600 Q 40 615 0 600 Z"
+            fill="url(#earth-l1)" opacity="0.95"/>
+      <!-- L2 ground (compacted earth) -->
+      <path d="M 280 600 L 280 850 L 600 850 L 600 600
+               Q 560 590 520 600 Q 480 612 440 596 Q 400 580 360 596 Q 320 612 280 600 Z"
+            fill="url(#earth-l2)" opacity="0.95"/>
+      <!-- L3 ground (paved with stone shoulders) -->
+      <path d="M 580 600 L 580 850 L 880 850 L 880 600
+               Q 840 596 800 602 Q 760 610 720 600 Q 680 590 640 600 Q 610 608 580 600 Z"
+            fill="#5a564a" opacity="0.85"/>
+      <!-- L4 ground (asphalt shoulders) -->
+      <path d="M 840 600 L 840 850 L 1160 850 L 1160 600
+               Q 1120 596 1080 600 Q 1040 604 1000 600 Q 960 596 920 600 Q 880 604 840 600 Z"
+            fill="#1c1c24" opacity="0.92"/>
+      <!-- L5 ground (overgrown) -->
+      <path d="M 1140 600 L 1140 850 L 1500 850 L 1500 600
+               Q 1460 590 1420 600 Q 1380 615 1340 595 Q 1300 580 1260 600 Q 1220 615 1180 600 Q 1160 595 1140 600 Z"
+            fill="url(#earth-l1)" opacity="0.85"/>
+
+      <!-- subtle grain noise on ground -->
+      <rect x="0" y="600" width="1500" height="250" fill="#000" opacity="0.18" filter="url(#grain)"/>
+
+      <!-- ════════════════════════════════════════════════════════
+           LEVEL 1 · COW-PATH (x 0–300)
+           Multiple wandering desire lines through wild grass.
+           No coordination, organic emergence, footprints in soil.
+           ════════════════════════════════════════════════════════ -->
+      <g class="level-band" data-level="1">
+        <!-- background/lighting tint -->
+        <rect x="0" y="540" width="300" height="310" fill="#5a6b2e" opacity="0.05"/>
+
+        <!-- moss specks -->
+        <g opacity="0.6" fill="#3a4520">
+          <circle cx="40" cy="730" r="2"/>
+          <circle cx="90" cy="744" r="1.6"/>
+          <circle cx="140" cy="722" r="2.2"/>
+          <circle cx="200" cy="748" r="1.6"/>
+          <circle cx="240" cy="730" r="1.8"/>
+          <circle cx="280" cy="746" r="1.4"/>
+        </g>
+
+        <!-- multiple desire lines (3 wandering tracks) -->
+        <g fill="none" stroke="#7a5a36" stroke-linecap="round">
+          <!-- main strongest track -->
+          <path d="M -10 738 Q 50 720 100 720 Q 150 718 200 716 Q 250 715 310 718"
+                stroke-width="11" opacity="0.85"/>
+          <!-- secondary lighter track -->
+          <path d="M -8 750 Q 60 740 120 730 Q 180 720 260 718 Q 290 718 310 720"
+                stroke-width="6" opacity="0.55"/>
+          <!-- tertiary thin track (dashed) -->
+          <path d="M 10 728 Q 60 712 130 706 Q 200 700 260 702 Q 290 704 310 708"
+                stroke-width="2" opacity="0.4" stroke-dasharray="4 4"/>
+          <!-- small offshoot loop -->
+          <path d="M 50 722 Q 70 710 110 708 Q 150 706 180 716" stroke-width="3" opacity="0.4"/>
+        </g>
+
+        <!-- footprint marks -->
+        <g fill="#3a2a14" opacity="0.85">
+          <ellipse cx="80"  cy="724" rx="3" ry="1.5" transform="rotate(-12 80 724)"/>
+          <ellipse cx="92"  cy="720" rx="3" ry="1.5" transform="rotate(-12 92 720)"/>
+          <ellipse cx="170" cy="715" rx="3" ry="1.5" transform="rotate(-15 170 715)"/>
+          <ellipse cx="182" cy="710" rx="3" ry="1.5" transform="rotate(-15 182 710)"/>
+          <ellipse cx="240" cy="713" rx="3" ry="1.5" transform="rotate(-10 240 713)"/>
+          <ellipse cx="252" cy="708" rx="3" ry="1.5" transform="rotate(-10 252 708)"/>
+        </g>
+
+        <!-- grass tufts -->
+        <use href="#tuft" x="50"  y="752"/>
+        <use href="#tuft" x="120" y="746"/>
+        <use href="#tuft" x="180" y="754"/>
+        <use href="#tuft" x="220" y="744"/>
+        <use href="#tuft" x="260" y="752"/>
+        <use href="#tuft" x="30"  y="780"/>
+        <use href="#tuft" x="100" y="790"/>
+        <use href="#tuft" x="170" y="794"/>
+        <use href="#tuft" x="240" y="788"/>
+        <use href="#tuft" x="290" y="800"/>
+
+        <!-- shrubs -->
+        <use href="#shrub" x="35" y="810"/>
+        <use href="#shrub" x="200" y="816"/>
+        <use href="#shrub" x="280" y="824"/>
+
+        <!-- a wandering walker -->
+        <use href="#walker" x="135" y="708"/>
+
+        <!-- segment label -->
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#a8d439" letter-spacing="2.5" opacity="0.85">
+          <text x="20" y="828">L1 · COW-PATH</text>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           LEVEL 2 · MARKED TRAIL (x 300–580)
+           Single beaten path, signposts, waymarks.
+           ════════════════════════════════════════════════════════ -->
+      <g class="level-band" data-level="2">
+        <rect x="300" y="540" width="280" height="310" fill="#7a5a36" opacity="0.04"/>
+
+        <!-- earth speckle -->
+        <g opacity="0.55" fill="#3a2818">
+          <circle cx="340" cy="730" r="1.6"/>
+          <circle cx="400" cy="744" r="1.4"/>
+          <circle cx="460" cy="724" r="1.8"/>
+          <circle cx="520" cy="744" r="1.4"/>
+          <circle cx="560" cy="730" r="1.5"/>
+        </g>
+
+        <!-- main beaten path: single, wider, with shoulders -->
+        <path d="M 280 720 Q 360 716 440 715 Q 520 714 600 716"
+              fill="none" stroke="#3a2818" stroke-width="22" stroke-linecap="round" opacity="0.95"/>
+        <path d="M 280 720 Q 360 716 440 715 Q 520 714 600 716"
+              fill="none" stroke="#a07a4a" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+        <!-- center wear line (lighter compaction in middle) -->
+        <path d="M 290 720 Q 380 715 470 714 Q 560 714 600 716"
+              fill="none" stroke="#3a2818" stroke-width="1.4" stroke-dasharray="6 4" opacity="0.7"/>
+
+        <!-- signposts at intervals -->
+        <use href="#signpost" x="330" y="708"/>
+        <use href="#signpost" x="430" y="706"/>
+        <use href="#signpost" x="530" y="706"/>
+
+        <!-- waymark stones -->
+        <g fill="#8b8676" stroke="#0a0810" stroke-width="0.9">
+          <ellipse cx="378" cy="730" rx="4" ry="2.4"/>
+          <ellipse cx="478" cy="728" rx="4" ry="2.4"/>
+          <ellipse cx="558" cy="730" rx="4" ry="2.4"/>
+        </g>
+        <!-- shadow under stones -->
+        <g fill="#0a0810" opacity="0.55">
+          <ellipse cx="378" cy="734" rx="5" ry="1"/>
+          <ellipse cx="478" cy="732" rx="5" ry="1"/>
+          <ellipse cx="558" cy="734" rx="5" ry="1"/>
+        </g>
+
+        <!-- a single walker on the beaten path -->
+        <use href="#walker" x="450" y="710"/>
+
+        <!-- shrubs alongside trail -->
+        <use href="#shrub" x="310" y="780"/>
+        <use href="#shrub" x="420" y="790"/>
+        <use href="#shrub" x="540" y="784"/>
+
+        <!-- small grass alongside -->
+        <use href="#tuft" x="340" y="746"/>
+        <use href="#tuft" x="500" y="744"/>
+
+        <!-- trail tick marks (numbers on signpost banners) -->
+        <g font-family="JetBrains Mono, monospace" font-size="6" fill="#0a0810" letter-spacing="1">
+          <text x="334" y="685" text-anchor="middle">II</text>
+          <text x="434" y="683" text-anchor="middle">III</text>
+          <text x="534" y="683" text-anchor="middle">IV</text>
+        </g>
+
+        <!-- segment label -->
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#b8884a" letter-spacing="2.5" opacity="0.85">
+          <text x="306" y="828">L2 · MARKED TRAIL</text>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           LEVEL 3 · STONE WAY (x 580–860)
+           Cut slabs, milestones, masonry shoulders.
+           ════════════════════════════════════════════════════════ -->
+      <g class="level-band" data-level="3">
+        <rect x="580" y="540" width="280" height="310" fill="#c8c4b3" opacity="0.04"/>
+
+        <!-- shoulder dirt -->
+        <g opacity="0.5" fill="#3a342a">
+          <circle cx="600" cy="744" r="1.4"/>
+          <circle cx="680" cy="745" r="1.2"/>
+          <circle cx="780" cy="744" r="1.4"/>
+          <circle cx="840" cy="746" r="1.2"/>
+        </g>
+
+        <!-- main stone path -->
+        <path d="M 580 706 L 860 706 L 860 736 L 580 736 Z"
+              fill="#5a564a" stroke="#0a0810" stroke-width="1.4"/>
+
+        <!-- stone slabs (rectangular tile pattern) -->
+        <g fill="#8b8676" stroke="#0a0810" stroke-width="0.9">
+          <rect x="585" y="708" width="38" height="26"/>
+          <rect x="625" y="708" width="38" height="26" fill="#7c7766"/>
+          <rect x="665" y="708" width="38" height="26"/>
+          <rect x="705" y="708" width="38" height="26" fill="#7c7766"/>
+          <rect x="745" y="708" width="38" height="26"/>
+          <rect x="785" y="708" width="38" height="26" fill="#7c7766"/>
+          <rect x="825" y="708" width="33" height="26"/>
+        </g>
+
+        <!-- moss in cracks -->
+        <g fill="#5a6b2e" opacity="0.6">
+          <circle cx="624" cy="722" r="1.4"/>
+          <circle cx="704" cy="724" r="1.2"/>
+          <circle cx="784" cy="722" r="1.4"/>
+        </g>
+
+        <!-- milestone (carved L3) -->
+        <g>
+          <rect x="666" y="676" width="36" height="32" fill="#6e6a5c" stroke="#0a0810" stroke-width="1.2"/>
+          <rect x="668" y="678" width="32" height="28" fill="#8b8676" stroke="#0a0810" stroke-width="0.6"/>
+          <text x="684" y="697" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#0a0810" letter-spacing="1.5">L3</text>
+          <text x="684" y="708" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" fill="#0a0810" letter-spacing="1">VIA</text>
+        </g>
+
+        <!-- stone path edge raised lip -->
+        <line x1="580" y1="708" x2="860" y2="708" stroke="#0a0810" stroke-width="1.4" opacity="0.85"/>
+        <line x1="580" y1="736" x2="860" y2="736" stroke="#0a0810" stroke-width="1.4" opacity="0.85"/>
+        <!-- subtle highlight on top edge of slabs (sun catch) -->
+        <line x1="580" y1="710" x2="860" y2="710" stroke="#f4f1e6" stroke-width="0.6" opacity="0.45"/>
+
+        <!-- waymark monuments at edges -->
+        <g fill="#6e6a5c" stroke="#0a0810" stroke-width="1">
+          <rect x="588" y="694" width="6" height="14"/>
+          <rect x="846" y="694" width="6" height="14"/>
+        </g>
+
+        <!-- a walker on the stones -->
+        <use href="#walker" x="745" y="708"/>
+
+        <!-- shrubs at edges -->
+        <use href="#shrub" x="610" y="784"/>
+        <use href="#shrub" x="820" y="788"/>
+
+        <!-- segment label -->
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#c8c4b3" letter-spacing="2.5" opacity="0.85">
+          <text x="586" y="828">L3 · STONE WAY</text>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           LEVEL 4 · ASPHALT ROAD (x 860–1140)
+           Smooth paving, lights, lines, vehicle.
+           ════════════════════════════════════════════════════════ -->
+      <g class="level-band" data-level="4">
+        <rect x="860" y="540" width="280" height="310" fill="#e6a73c" opacity="0.05"/>
+
+        <!-- asphalt surface (slightly wider than stone) -->
+        <path d="M 860 700 L 1140 700 L 1140 740 L 860 740 Z"
+              fill="#2a2a32" stroke="#0a0810" stroke-width="1.2"/>
+
+        <!-- shoulder lines (white) -->
+        <line x1="860" y1="704" x2="1140" y2="704" stroke="#f4f1e6" stroke-width="1.4" opacity="0.85"/>
+        <line x1="860" y1="736" x2="1140" y2="736" stroke="#f4f1e6" stroke-width="1.4" opacity="0.85"/>
+
+        <!-- center dashed yellow line -->
+        <g stroke="#e6a73c" stroke-width="2.2" stroke-linecap="round">
+          <line x1="870"  y1="720" x2="900"  y2="720"/>
+          <line x1="918"  y1="720" x2="948"  y2="720"/>
+          <line x1="966"  y1="720" x2="996"  y2="720"/>
+          <line x1="1014" y1="720" x2="1044" y2="720"/>
+          <line x1="1062" y1="720" x2="1092" y2="720"/>
+          <line x1="1110" y1="720" x2="1140" y2="720"/>
+        </g>
+
+        <!-- streetlamps -->
+        <use href="#lamp" x="880" y="702"/>
+        <use href="#lamp" x="1000" y="702"/>
+        <use href="#lamp" x="1120" y="702"/>
+
+        <!-- highway sign (square) -->
+        <g>
+          <line x1="1056" y1="672" x2="1056" y2="700" stroke="#8b8676" stroke-width="1.2"/>
+          <rect x="1040" y="654" width="32" height="22" fill="#1a3a8a" stroke="#f4f1e6" stroke-width="0.8"/>
+          <text x="1056" y="668" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#f4f1e6" letter-spacing="1.5">L4</text>
+          <text x="1056" y="675" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="4.5" fill="#f4f1e6" letter-spacing="0.5">EXIT</text>
+        </g>
+
+        <!-- a vehicle on the road -->
+        <use href="#car" x="950" y="717"/>
+        <!-- a smaller vehicle in distance -->
+        <g transform="translate(1080, 712) scale(0.6)">
+          <use href="#car" x="0" y="0"/>
+        </g>
+
+        <!-- guardrail posts -->
+        <g fill="#8b8676" stroke="#0a0810" stroke-width="0.6">
+          <rect x="894" y="744" width="2" height="12"/>
+          <rect x="940" y="744" width="2" height="12"/>
+          <rect x="986" y="744" width="2" height="12"/>
+          <rect x="1032" y="744" width="2" height="12"/>
+          <rect x="1078" y="744" width="2" height="12"/>
+        </g>
+        <line x1="892" y1="747" x2="1080" y2="747" stroke="#8b8676" stroke-width="0.8"/>
+
+        <!-- segment label -->
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#e6a73c" letter-spacing="2.5" opacity="0.85">
+          <text x="866" y="828">L4 · ASPHALT</text>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           LEVEL 5 · REABSORPTION (x 1140–1500)
+           Asphalt fragmenting, grass through cracks, road dissolves.
+           ════════════════════════════════════════════════════════ -->
+      <g class="level-band" data-level="5">
+        <rect x="1140" y="540" width="360" height="310" fill="#c7398b" opacity="0.04"/>
+
+        <!-- continuing asphalt (begins to break) -->
+        <path d="M 1140 700 L 1280 700 L 1280 740 L 1140 740 Z"
+              fill="#2a2a32" stroke="#0a0810" stroke-width="1.2"/>
+
+        <!-- center line still present at start -->
+        <g stroke="#e6a73c" stroke-width="2" stroke-linecap="round" opacity="0.85">
+          <line x1="1148" y1="720" x2="1178" y2="720"/>
+          <line x1="1196" y1="720" x2="1226" y2="720"/>
+          <line x1="1244" y1="720" x2="1268" y2="720"/>
+        </g>
+
+        <!-- asphalt fragmenting into chunks -->
+        <g fill="#2a2a32" stroke="#0a0810" stroke-width="0.9" opacity="0.92">
+          <polygon points="1280,700 1316,700 1320,740 1276,740"/>
+          <polygon points="1326,700 1356,700 1352,740 1330,740"/>
+          <polygon points="1370,704 1396,704 1390,738 1368,738"/>
+          <polygon points="1410,706 1430,706 1426,734 1408,734"/>
+        </g>
+        <!-- smaller fragments scattered -->
+        <g fill="#2a2a32" stroke="#0a0810" stroke-width="0.7" opacity="0.85">
+          <polygon points="1442,710 1454,712 1450,728 1438,726"/>
+          <polygon points="1466,716 1478,716 1474,728 1462,726"/>
+          <polygon points="1488,712 1496,718 1490,728 1482,724"/>
+        </g>
+
+        <!-- grass growing through cracks in asphalt -->
+        <g stroke="#a8d439" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.85">
+          <path d="M 1230 720 q 0 -8 -2 -14"/>
+          <path d="M 1232 720 q 1 -8 3 -14"/>
+          <path d="M 1300 718 q 0 -8 -2 -14"/>
+          <path d="M 1302 718 q 1 -8 3 -14"/>
+          <path d="M 1360 720 q 0 -8 -2 -12"/>
+          <path d="M 1404 718 q 0 -8 -2 -12"/>
+          <path d="M 1450 720 q 0 -8 -2 -10"/>
+        </g>
+
+        <!-- ghost-trace continuing into background (very faint dashed line where road would be) -->
+        <g fill="none" stroke="#7a5a36" stroke-width="1" opacity="0.3" stroke-dasharray="4 6">
+          <path d="M 1280 720 Q 1380 718 1500 716"/>
+        </g>
+
+        <!-- shrubs and trees reclaiming -->
+        <use href="#shrub" x="1180" y="794"/>
+        <use href="#shrub" x="1330" y="780"/>
+        <use href="#shrub" x="1430" y="800"/>
+        <use href="#tree"  x="1240" y="740"/>
+        <use href="#tree"  x="1380" y="730" transform="scale(0.9)"/>
+        <use href="#tree"  x="1470" y="724" transform="scale(0.85)"/>
+
+        <!-- grass tufts overtaking -->
+        <use href="#tuft" x="1300" y="748"/>
+        <use href="#tuft" x="1370" y="744"/>
+        <use href="#tuft" x="1420" y="752"/>
+        <use href="#tuft" x="1460" y="746"/>
+
+        <!-- mist particles drifting up (the road dissolving into atmosphere) -->
+        <g class="mist-particle" fill="#f4f1e6" opacity="0.65">
+          <circle cx="1340" cy="680" r="1.6"/>
+          <circle cx="1380" cy="660" r="1.4"/>
+          <circle cx="1420" cy="640" r="1.2"/>
+          <circle cx="1450" cy="620" r="1.4"/>
+        </g>
+        <g class="mist-particle" fill="#c7398b" opacity="0.45">
+          <circle cx="1360" cy="670" r="1.4"/>
+          <circle cx="1410" cy="650" r="1.2"/>
+        </g>
+
+        <!-- bird returning to wild -->
+        <path d="M 1390 540 q 4 -3 8 0 q 4 -3 8 0" fill="none" stroke="#0a0810" stroke-width="1" opacity="0.65"/>
+
+        <!-- segment label -->
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#c7398b" letter-spacing="2.5" opacity="0.85">
+          <text x="1146" y="828">L5 · REABSORPTION</text>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           CONTINUOUS PATH TRACE — a single thin guideline that
+           runs across the whole image, threading the 5 segments
+           together visually.
+           ════════════════════════════════════════════════════════ -->
+      <g style="mix-blend-mode: screen" opacity="0.45">
+        <path d="M 0 740 Q 100 728 200 720 Q 280 716 320 720
+                 Q 400 716 500 716 L 600 718
+                 L 860 720
+                 L 1140 720
+                 L 1280 720 Q 1380 720 1500 718"
+              fill="none" stroke="#f4f1e6" stroke-width="1" stroke-dasharray="2 6" opacity="0.6"/>
+      </g>
+
+      <!-- a slow-walking traveler that crosses the entire path (animated) -->
+      <g class="traveler">
+        <use href="#walker" x="60" y="708"/>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           PYRAMID OVERLAY — translucent framework lens
+           Sits centered over the upper half of the canvas.
+           Base aligns just above the path; apex disintegrates
+           into the sky. Bands are reading guides only.
+           ════════════════════════════════════════════════════════ -->
+      <g class="pyramid-overlay" opacity="0.45">
+        <g filter="url(#edge-glow)">
+          <line x1="510"  y1="720" x2="990"  y2="720" stroke="#f4f1e6" stroke-width="1.6"/>
+          <line x1="510"  y1="720" x2="750"  y2="120" stroke="#f4f1e6" stroke-width="1.6"/>
+          <line x1="990"  y1="720" x2="750"  y2="120" stroke="#f4f1e6" stroke-width="1.6"/>
+          <!-- apex disintegrating -->
+          <line x1="750" y1="120" x2="740" y2="78"  stroke="#f4f1e6" stroke-width="1.4" stroke-dasharray="3 4" opacity="0.7"/>
+          <line x1="750" y1="120" x2="760" y2="78"  stroke="#f4f1e6" stroke-width="1.4" stroke-dasharray="3 4" opacity="0.7"/>
+          <line x1="740" y1="78"  x2="750" y2="46"  stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 5" opacity="0.45"/>
+          <line x1="760" y1="78"  x2="750" y2="46"  stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 5" opacity="0.45"/>
+        </g>
+
+        <!-- vertex circles -->
+        <g fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1.6">
+          <circle cx="510" cy="720" r="6"/>
+          <circle cx="990" cy="720" r="6"/>
+          <circle cx="750" cy="46" r="4" stroke-dasharray="2 2"/>
+        </g>
+
+        <!-- horizontal stratum dividers (very faint) -->
+        <g stroke="#f4f1e6" stroke-width="0.8" stroke-dasharray="3 5" opacity="0.45">
+          <line x1="558" y1="600" x2="942" y2="600"/>
+          <line x1="606" y1="480" x2="894" y2="480"/>
+          <line x1="654" y1="360" x2="846" y2="360"/>
+          <line x1="702" y1="240" x2="798" y2="240"/>
+        </g>
+
+        <!-- band labels (right edge of pyramid) — clickable -->
+        <g font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2.5" font-weight="700">
+          <text class="pyramid-band-label" data-level="1" x="1004" y="666" fill="#f4f1e6">L1</text>
+          <text class="pyramid-band-label" data-level="2" x="908"  y="546" fill="#f4f1e6">L2</text>
+          <text class="pyramid-band-label" data-level="3" x="860"  y="426" fill="#f4f1e6">L3</text>
+          <text class="pyramid-band-label" data-level="4" x="812"  y="306" fill="#f4f1e6">L4</text>
+          <text class="pyramid-band-label" data-level="5" x="764"  y="186" fill="#f4f1e6">L5</text>
+        </g>
+
+        <!-- leader lines from labels to silhouette edge -->
+        <g stroke="#f4f1e6" stroke-width="0.8" opacity="0.6">
+          <line x1="942" y1="660" x2="998" y2="660"/>
+          <line x1="894" y1="540" x2="902" y2="540"/>
+          <line x1="846" y1="420" x2="854" y2="420"/>
+          <line x1="798" y1="300" x2="806" y2="300"/>
+          <line x1="750" y1="180" x2="758" y2="180"/>
+        </g>
+
+        <!-- DOWNWARD anchor lines from each pyramid band to its
+             corresponding path segment below — the binding device -->
+        <g stroke="#f4f1e6" stroke-width="0.6" stroke-dasharray="2 6" opacity="0.35">
+          <line x1="150"  y1="700" x2="150"  y2="744"/>
+          <line x1="440"  y1="700" x2="440"  y2="744"/>
+          <line x1="720"  y1="700" x2="720"  y2="744"/>
+          <line x1="1000" y1="700" x2="1000" y2="744"/>
+          <line x1="1320" y1="700" x2="1320" y2="744"/>
+        </g>
+      </g>
+
+      <!-- ════════════════════════════════════════════════════════
+           HIT TARGETS (invisible) — full-height vertical columns
+           ════════════════════════════════════════════════════════ -->
+      <g>
+        <rect class="band-hit" data-level="1" x="0"    y="0" width="300"  height="850"/>
+        <rect class="band-hit" data-level="2" x="300"  y="0" width="280"  height="850"/>
+        <rect class="band-hit" data-level="3" x="580"  y="0" width="280"  height="850"/>
+        <rect class="band-hit" data-level="4" x="860"  y="0" width="280"  height="850"/>
+        <rect class="band-hit" data-level="5" x="1140" y="0" width="360"  height="850"/>
+      </g>
+
+      <!-- frame ticks at top + bottom (the 5 columns) -->
+      <g stroke="#8b8676" stroke-width="0.6" opacity="0.4">
+        <line x1="300"  y1="40" x2="300"  y2="60"/>
+        <line x1="580"  y1="40" x2="580"  y2="60"/>
+        <line x1="860"  y1="40" x2="860"  y2="60"/>
+        <line x1="1140" y1="40" x2="1140" y2="60"/>
+        <line x1="300"  y1="800" x2="300"  y2="820"/>
+        <line x1="580"  y1="800" x2="580"  y2="820"/>
+        <line x1="860"  y1="800" x2="860"  y2="820"/>
+        <line x1="1140" y1="800" x2="1140" y2="820"/>
+      </g>
+
+      <!-- horizon labels -->
+      <g opacity="0.45">
+        <text x="40" y="836" font-family="JetBrains Mono, monospace" font-size="9" fill="#8b8676" letter-spacing="2.5">START · ORG. GROUND</text>
+        <text x="1460" y="836" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="#8b8676" letter-spacing="2.5">2026 · CMM v0.9</text>
+      </g>
+    </svg>
+
+    <!-- ─── modal: opens on hover/click of any band; populated dynamically ─── -->
+    <aside class="level-modal" id="level-modal" role="dialog" aria-live="polite">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div class="modal-eyebrow">
+        <span class="modal-num"></span>
+        <span class="modal-state"></span>
+      </div>
+      <h2 class="modal-name"></h2>
+      <p class="modal-body"></p>
+      <span class="modal-tag"></span>
+    </aside>
+  </div>
+
+  <!-- ─── compact legend strip · click any item to pin its modal ─── -->
+  <div class="legend" id="legend" role="tablist" aria-label="Maturity levels">
+    <div class="legend-item" data-level="1" tabindex="0" role="tab">
+      <div class="legend-num">L1</div>
+      <div class="legend-name">Cow-path</div>
+    </div>
+    <div class="legend-item" data-level="2" tabindex="0" role="tab">
+      <div class="legend-num">L2</div>
+      <div class="legend-name">Marked trail</div>
+    </div>
+    <div class="legend-item" data-level="3" tabindex="0" role="tab">
+      <div class="legend-num">L3</div>
+      <div class="legend-name">Stone way</div>
+    </div>
+    <div class="legend-item" data-level="4" tabindex="0" role="tab">
+      <div class="legend-num">L4</div>
+      <div class="legend-name">Asphalt</div>
+    </div>
+    <div class="legend-item" data-level="5" tabindex="0" role="tab">
+      <div class="legend-num">L5</div>
+      <div class="legend-name">Reabsorption</div>
+    </div>
+  </div>
+
+  <!-- ───────────────────── reading panels ───────────────────── -->
+  <div class="reading">
+    <div class="panel">
+      <h3>How to read</h3>
+      <p>Read <strong>left to right</strong>: a single road across a single landscape, drawn at five points in its own life.</p>
+      <p>The pyramid is the <strong>reading frame</strong> overlaid on the picture. Look through it to know which stage the road is at; look past it to see the road itself.</p>
+    </div>
+    <div class="panel">
+      <h3>Why a path</h3>
+      <p>A path is the simplest protocol. It records past coordination &mdash; who went here, in what direction &mdash; and constrains future coordination without enforcing it.</p>
+      <p>Letting the path evolve along one continuous line keeps the metaphor doing the work. The pyramid only marks where you are along it.</p>
+    </div>
+    <div class="panel">
+      <h3>Where the metaphor cuts</h3>
+      <p>A real road gets harder, not softer, as it matures. Here the most mature stage looks the most fragile.</p>
+      <p>That is the point: the protocol's job is done when it can disappear into the world it served.</p>
+    </div>
+  </div>
+
+  <!-- ───────────────────── mnemonic ───────────────────── -->
+  <div class="mnemonic">
+    <div>
+      <svg viewBox="0 0 120 120" width="160" height="160">
+        <defs>
+          <radialGradient id="mn-glow-2" cx="0.5" cy="0.55" r="0.5">
+            <stop offset="0%" stop-color="#e6a73c" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#0d0a1f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="mn-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c44a1f" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#0d0a1f"/>
+          </linearGradient>
+        </defs>
+        <rect width="120" height="120" fill="url(#mn-sky)"/>
+        <!-- horizon -->
+        <line x1="0" y1="92" x2="120" y2="92" stroke="#1a0e08" stroke-width="0.8"/>
+        <!-- distant path -->
+        <path d="M 0 100 Q 30 96 50 92 Q 60 90 70 92 Q 90 96 120 100"
+              fill="none" stroke="#7a5a36" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 0 104 Q 30 100 50 96 Q 60 95 70 96 Q 90 100 120 104"
+              fill="none" stroke="#7a5a36" stroke-width="1" opacity="0.55"/>
+        <!-- halo -->
+        <circle cx="60" cy="74" r="48" fill="url(#mn-glow-2)"/>
+        <!-- pyramid -->
+        <line x1="14" y1="104" x2="106" y2="104" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="14" y1="104" x2="50" y2="34" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="106" y1="104" x2="70" y2="34" stroke="#f4f1e6" stroke-width="1.4"/>
+        <line x1="50" y1="34" x2="56" y2="20" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <line x1="70" y1="34" x2="64" y2="20" stroke="#f4f1e6" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <!-- vertices -->
+        <circle cx="14" cy="104" r="2.4" fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1"/>
+        <circle cx="106" cy="104" r="2.4" fill="#0d0a1f" stroke="#f4f1e6" stroke-width="1"/>
+        <circle cx="60" cy="20" r="2" fill="#f4f1e6" opacity="0.8"/>
+        <!-- mist -->
+        <circle cx="58" cy="12" r="1.2" fill="#f4f1e6" opacity="0.7"/>
+        <circle cx="64" cy="6" r="1" fill="#3f6ae0" opacity="0.8"/>
+        <circle cx="52" cy="6" r="0.8" fill="#c7398b" opacity="0.7"/>
+      </svg>
+    </div>
+    <div>
+      <h3>Mnemonic glyph · printable</h3>
+      <p>
+        Triangle floating over a horizon-path. Apex disintegrates upward; a soft umber stroke
+        runs the bottom. At favicon size the inversion is still legible: framework above,
+        metaphor below. Use as the page chip for any "you are at L<i>n</i>" indicator.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <div>CMM · Diagram Concepts · v2 · framework overlay · modal interaction</div>
+    <div>Hover, click, or press 1 – 5 to step · Esc to clear</div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    /* ── per-level data ─────────────────────────────────────── */
+    const LEVELS = {
+      '1': {
+        num:  'L1 · BASE',
+        state:'organic, multi-track',
+        name: 'Cow-path <em>— desire lines.</em>',
+        body: 'The path is not yet a path. Many feet, many wanders &mdash; whichever route gets there. The ground records the strongest tendencies, no more.<br/><br/><strong>In AI terms:</strong> shadow adoption. People route around official tools because something else got them there faster.',
+        tag:  'Origin · Pre-protocol'
+      },
+      '2': {
+        num:  'L2 · LOWER STRATUM',
+        state:'beaten, signed',
+        name: 'Marked trail <em>— signposts and stones.</em>',
+        body: 'One track wins. It gets named, marked, walked again and again. The ground compacts; the route is now a route.<br/><br/><strong>In AI terms:</strong> sanctioned use &mdash; an approved tool list, lightweight rules, but no architecture yet.',
+        tag:  'Permission · Wayfinding'
+      },
+      '3': {
+        num:  'L3 · MIDDLE STRATUM',
+        state:'laid stone, engineered',
+        name: 'Stone way <em>— deliberate paving.</em>',
+        body: 'Slabs are cut, fitted, set. The path is now a thing that took planning. It survives weather, traffic, and the absence of any single walker.<br/><br/><strong>In AI terms:</strong> designed protocols. Review boards, evaluation gates, durable artifacts that outlast the team that wrote them.',
+        tag:  'Designed · Engineered'
+      },
+      '4': {
+        num:  'L4 · UPPER STRATUM',
+        state:'asphalt, lit, signed',
+        name: 'Asphalt road <em>— infrastructural.</em>',
+        body: 'The road is no longer a path; it is infrastructure. Lit at night, signed for any stranger, carrying things the original walkers could not.<br/><br/><strong>In AI terms:</strong> infrastructural AI &mdash; protocols become the substrate that other systems build on.',
+        tag:  'Infrastructural · Substrate'
+      },
+      '5': {
+        num:  'L5 · APEX',
+        state:'fragmenting, overgrown',
+        name: 'Reabsorption <em>— road becomes ground.</em>',
+        body: 'The road lets go. Grass grows through. Fragments remain, but the boundary between road and world has dissolved &mdash; the route is part of the terrain now.<br/><br/><strong>In AI terms:</strong> the protocol becomes ambient. Compliance shifts to planetary norms; the firm\'s structure fades into the field.',
+        tag:  'Planetary · Ambient'
+      }
+    };
+
+    const diagram     = document.getElementById('diagram');
+    const modal       = document.getElementById('level-modal');
+    const closeBtn    = document.getElementById('modal-close');
+    const hits        = Array.from(diagram.querySelectorAll('.band-hit'));
+    const labels      = Array.from(diagram.querySelectorAll('.pyramid-band-label'));
+    const legendItems = Array.from(document.querySelectorAll('.legend-item'));
+    let pinned = null;
+
+    const populate = (lvl) => {
+      const d = LEVELS[lvl];
+      if (!d) return;
+      modal.querySelector('.modal-num').textContent   = d.num;
+      modal.querySelector('.modal-state').textContent = d.state;
+      modal.querySelector('.modal-name').innerHTML    = d.name;
+      modal.querySelector('.modal-body').innerHTML    = d.body;
+      modal.querySelector('.modal-tag').textContent   = d.tag;
+      modal.setAttribute('data-level', lvl);
+    };
+
+    const showModal = (lvl) => { populate(lvl); modal.classList.add('is-open'); };
+    const hideModal = ()    => { modal.classList.remove('is-open'); };
+
+    const setActive = (lvl) => {
+      if (lvl) {
+        diagram.setAttribute('data-active', lvl);
+        showModal(lvl);
+      } else {
+        diagram.removeAttribute('data-active');
+        hideModal();
+      }
+      legendItems.forEach(it => it.classList.toggle('is-active', it.dataset.level === String(lvl)));
+    };
+
+    const hoverIn  = (lvl) => { if (!pinned) setActive(lvl); };
+    const hoverOut = ()    => { if (!pinned) setActive(null); };
+    const togglePin = (lvl) => {
+      if (pinned === lvl) {
+        pinned = null;
+        modal.removeAttribute('data-pinned');
+        setActive(null);
+      } else {
+        pinned = lvl;
+        modal.setAttribute('data-pinned', 'true');
+        setActive(lvl);
+      }
+    };
+
+    /* ── SVG band hit-targets (vertical columns) ── */
+    hits.forEach(h => {
+      const lvl = h.dataset.level;
+      h.addEventListener('mouseenter', () => hoverIn(lvl));
+      h.addEventListener('mouseleave', hoverOut);
+      h.addEventListener('click',      () => togglePin(lvl));
+    });
+
+    /* ── pyramid band labels (also clickable) ── */
+    labels.forEach(t => {
+      t.style.cursor = 'pointer';
+      const lvl = t.dataset.level;
+      t.addEventListener('mouseenter', () => hoverIn(lvl));
+      t.addEventListener('mouseleave', hoverOut);
+      t.addEventListener('click',      () => togglePin(lvl));
+    });
+
+    /* ── legend chips ── */
+    legendItems.forEach(it => {
+      const lvl = it.dataset.level;
+      it.addEventListener('mouseenter', () => hoverIn(lvl));
+      it.addEventListener('mouseleave', hoverOut);
+      it.addEventListener('click',      () => togglePin(lvl));
+      it.addEventListener('focus',      () => hoverIn(lvl));
+      it.addEventListener('blur',       hoverOut);
+      it.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePin(lvl); }
+      });
+    });
+
+    modal.addEventListener('mouseenter', () => { if (!pinned) modal.classList.add('is-open'); });
+    modal.addEventListener('mouseleave', () => { if (!pinned) setActive(null); });
+
+    closeBtn.addEventListener('click', () => {
+      pinned = null;
+      modal.removeAttribute('data-pinned');
+      setActive(null);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (['1','2','3','4','5'].includes(e.key)) togglePin(e.key);
+      if (e.key === 'Escape') {
+        pinned = null;
+        modal.removeAttribute('data-pinned');
+        setActive(null);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
