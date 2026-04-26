@@ -445,87 +445,109 @@
       }
     }
 
-    /* Archetype 2-col grid inside the Adoption Paths card */
-    .archetype-grid {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 18px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 18px;
-      flex: 1;
-      align-content: start;
-    }
-    .archetype-grid li {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      padding: 0 0 0 16px;
-      position: relative;
-      line-height: 1.4;
-    }
-    .archetype-grid li::before {
-      content: "·";
-      position: absolute;
-      left: 4px;
-      top: -3px;
-      color: var(--accent-dark);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
+    /* Tighten the Explore section's top padding so the cards sit closer
+       to the intro paragraph above them. */
+    #explore { padding-top: 28px; }
 
     /* Card lead/tail copy (used by Adoption Paths + Case Studies cards) */
     .explore-card .card-lead {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text);
-      line-height: 1.5;
-      margin: 0 0 14px;
-      font-weight: 500;
-    }
-    .explore-card .card-tail {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
       line-height: 1.55;
       margin: 0 0 18px;
+      font-weight: 400;
+    }
+    .explore-card .card-lead em {
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.01em;
+    }
+    .explore-card .card-tail {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 14px 0 18px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      flex: 1;
+    }
+    .explore-card .card-tail-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--accent-dark);
+      margin-right: 6px;
     }
 
-    /* Case Studies 2-col labelled lists */
-    .case-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 20px;
-      margin: 0 0 18px;
-      flex: 1;
-      align-content: start;
-    }
-    .case-cols-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--accent-dark);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .case-cols ul {
+    /* Archetype preview — three named archetypes, each with a one-line trait */
+    .archetype-preview {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .case-cols li {
-      font-size: 0.85rem;
-      color: var(--text);
-      padding: 2px 0;
-      font-weight: 500;
-      line-height: 1.5;
+    .archetype-preview li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .archetype-preview li:first-child { border-top: none; padding-top: 0; }
+    .ap-name {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.01em;
+    }
+    .ap-trait {
+      color: var(--text-secondary);
     }
 
-    /* Mobile: archetype + case cols stay 2-col (compact); collapse only on small */
+    /* Case Studies preview — three paired rows (Now ↔ Before) */
+    .case-preview {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .case-preview li {
+      display: grid;
+      grid-template-columns: 1fr 22px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+    .case-preview li:first-child { border-top: none; padding-top: 0; }
+    .cp-now, .cp-before {
+      color: var(--text);
+    }
+    .cp-now strong, .cp-before strong {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-dark);
+      display: block;
+      font-size: 0.84rem;
+      letter-spacing: 0.01em;
+    }
+    .cp-arrow {
+      text-align: center;
+      color: var(--text-secondary);
+      opacity: 0.55;
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 480px) {
-      .archetype-grid { grid-template-columns: 1fr; gap: 6px; }
-      .case-cols { grid-template-columns: 1fr; gap: 16px; }
+      .archetype-preview li { grid-template-columns: 1fr; gap: 2px; }
+      .case-preview li { grid-template-columns: 1fr; gap: 4px; }
+      .cp-arrow { display: none; }
     }
 
     /* ─── Section spacing ──────────────────────────────────── */
@@ -1150,20 +1172,13 @@
       <a class="explore-card" href="https://protocolized.dev/assessment/">
         <span class="label">Adoption Paths</span>
         <h3>The 10 archetypes</h3>
-        <p class="card-lead">How people and teams approach AI.</p>
-        <ul class="archetype-grid">
-          <li>Vanguard</li>
-          <li>Traveller</li>
-          <li>Architect</li>
-          <li>Integrator</li>
-          <li>Tinkerer</li>
-          <li>Ratifier</li>
-          <li>Warden</li>
-          <li>Broker</li>
-          <li>Folkway</li>
-          <li>Guild</li>
+        <p class="card-lead">Ten distinct shapes of AI adopter, derived from seven dimensions: <em>origin · stake · timing · locus · driver · reach · depth</em>.</p>
+        <ul class="archetype-preview">
+          <li><span class="ap-name">Vanguard</span><span class="ap-trait">moves first; tolerates uncertainty</span></li>
+          <li><span class="ap-name">Architect</span><span class="ap-trait">builds the rails; codifies the workflow</span></li>
+          <li><span class="ap-name">Folkway</span><span class="ap-trait">adopts what the team already does</span></li>
         </ul>
-        <p class="card-tail">The assessment classifies you into one of these, then maps your archetype onto the five levels above.</p>
+        <p class="card-tail"><span class="card-tail-label">+7 more</span>Traveller · Integrator · Tinkerer · Ratifier · Warden · Broker · Guild</p>
         <span class="card-link">Take the Assessment →</span>
       </a>
 
@@ -1171,29 +1186,25 @@
       <a class="explore-card" href="https://protocolized.dev/case-studies/">
         <span class="label">Case Studies</span>
         <h3>Stories from now and before</h3>
-        <p class="card-lead">Recent AI deployments and the technology arcs they echo.</p>
-        <div class="case-cols">
-          <div>
-            <span class="case-cols-label">Now</span>
-            <ul>
-              <li>Samsung</li>
-              <li>Klarna</li>
-              <li>Shopify</li>
-              <li>Air Canada</li>
-              <li>Boom Supersonic</li>
-            </ul>
-          </div>
-          <div>
-            <span class="case-cols-label">Before</span>
-            <ul>
-              <li>Visicalc &amp; Excel</li>
-              <li>Gates' 1995 memo</li>
-              <li>Git pull request</li>
-              <li>Walmart EDI</li>
-              <li>Containerization</li>
-            </ul>
-          </div>
-        </div>
+        <p class="card-lead">Five recent AI deployments paired with five technology arcs of the past — the present read through patterns we've already lived through.</p>
+        <ul class="case-preview">
+          <li>
+            <span class="cp-now"><strong>Samsung · 2023</strong>code pasted into ChatGPT, no policy</span>
+            <span class="cp-arrow">↔</span>
+            <span class="cp-before"><strong>Excel · 1985+</strong>spreadsheets at every desk</span>
+          </li>
+          <li>
+            <span class="cp-now"><strong>Klarna · 2024</strong>top-down AI rollout, walked back</span>
+            <span class="cp-arrow">↔</span>
+            <span class="cp-before"><strong>Gates · 1995</strong>Internet Tidal Wave memo</span>
+          </li>
+          <li>
+            <span class="cp-now"><strong>Boom Supersonic · 2025</strong>30:1 review leverage on safety code</span>
+            <span class="cp-arrow">↔</span>
+            <span class="cp-before"><strong>Linux · 2005</strong>Git pull request absorbs review</span>
+          </li>
+        </ul>
+        <p class="card-tail"><span class="card-tail-label">+2 more pairs</span>Shopify × Walmart EDI · Air Canada × Containerization</p>
         <span class="card-link">See the case studies →</span>
       </a>
 
