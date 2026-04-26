@@ -6,6 +6,10 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 
 **Items added 2026-04-25** (post-Quiz-v0.8 design session): NAV-002, CONTENT-003, ASSESS-006, ASSESS-007, FEATURE-003. All scheduled for *after* the current archetype-assessment design (Quiz-v0.8) ships.
 
+**Items added 2026-04-26** (first copy-edit pass via the in-page editor mode): CONTENT-004, CONTENT-005, CONTENT-006, CONTENT-007, CONTENT-008, IA-007. Imported from the editor-mode KV store (8 substantive suggestions across `/levels/` and `/case-studies/`).
+
+**IA-007 expanded later 2026-04-26** (follow-up conversation): from "two-class case studies" into a full **Case Studies Library** with a multi-week design brief — unified card template, 6 seed Class B tech-arc cases (containerization, Excel/spreadsheets, corporate email, Git/CI-CD, EDI, internet protocols), and tech-arc cards peppered throughout the site. CONTENT-008 absorbed.
+
 ---
 
 ## Design / aesthetics
@@ -72,6 +76,40 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 - **Rationale:** Source: 2026-04-25 conversation. Improves wayfinding on multi-section pages and aligns navigation pattern across the site. Case-study-name (vs. company-name) labeling preserves Protocolized's framing of cases as protocol patterns rather than vendor stories.
 - **Dependencies:** IA-001 phase A (levels page exists), IA-003 (case studies page promoted), FEATURE-003 (multi-quiz assessment hub).
 - **Status:** **shipped 2026-04-25** — `.nav-secondary` blocks added to all three pages. Case-studies anchors: `#shadow-data-leak`, `#mandate-reversal`, `#non-optional-mandate`, `#contractor-replacement`, `#chatbot-liability`. Levels anchors: `#shadow`, `#sanctioned`, `#designed`, `#infrastructural`, `#planetary`. Assessment: `#assessment` (Begin), `#output` (Result).
+
+### IA-007 — `/case-studies/` → Case Studies Library (design brief + design phase)
+- **Scope:** Convert `/case-studies/` from a 5-card AI-adoption page into a structured **Case Studies Library** with a unified card template and two distinct case classes that scale to ~15+ entries. Treat as a multi-week design effort modelled on Quiz-v0.8 (i.e. lock a design brief first, iterate on the structure, *then* implement) — not an incremental edit.
+  - **Class A — AI adoption stories** (current 5 + ongoing additions): Samsung, Klarna, Shopify, Duolingo, Air Canada. Working tagline: "Today's adoption stories."
+  - **Class B — Technology-arc cases** (new — historical and adjacent technology shifts that surface protocol patterns relevant to reasoning about AI). Seed inventory from 2026-04-26 reviewer:
+    1. **Containerization** (Docker / Kubernetes) — packaging-as-protocol, runtime portability
+    2. **Excel spreadsheets and org design** — end-user computing, shadow IT precedent, calc-as-coordination
+    3. **Corporate email adoption** — protocol-becoming-infrastructure; an L4 → L5 historical analog
+    4. **Git + CI/CD** — version control as coordination protocol; review-as-gate
+    5. **EDI in retail and manufacturing** — inter-firm protocol adoption; mandates as forcing functions
+    6. **Internet protocols** (TCP/IP, HTTP, SMTP) — sample L5 case: planetary-scale invisible coordination
+  - Plus the org-design transitions outlined at [npc.here.now/ai-org/](https://npc.here.now/ai-org/) — could be additional Class B cases or a sidebar linking out.
+  - **Pepper Class B cases throughout the site**, not just on `/case-studies/` — surface the most relevant tech-arc case inline on the homepage, the litepaper, and individual level pages where it grounds a claim.
+- **Rationale:** Source: 2026-04-26 conversation. AI-adoption cases alone show point-in-time symptoms; the protocol-emergence pattern across technology shifts is what makes the model legible. Adding tech-arc cases turns `/case-studies/` from a sympathy gallery into a reference library and gives the SIG's "neutral commons" voice (BRAND-001) historical depth. Volume (~10–15+ cards) breaks the existing single-row breadcrumb pattern (NAV-002) and the current ad-hoc card markup — both need rethinking together.
+- **Design brief — open questions to lock before implementation:**
+  - **Naming:** Class A working title is "Today's adoption stories"; Class B name is open (candidates: "Technology arcs," "Protocol precedents," "Historical analogs," "How protocols emerge"). The names anchor the brand narrative and need to land before card copy is written.
+  - **Card template:** A single template both classes use, with class-tagged metadata. Fields likely include: title, class (A/B), level mapped (L1–L5), one-line frame, decade, what-changed, what-the-protocol-looked-like, what-AI-can-learn-from-it, source links. Specifically, what does the card look like at thumbnail vs. expanded vs. full-page?
+  - **Layout for ~15+ cards:** options:
+    - Two-column scrolling list (Class A left, Class B right)
+    - Tabbed switcher (Class A / Class B / All) over a single grid
+    - Section nav at top → carousel-of-big-cards per section (reviewer's sketch from 2026-04-26)
+    - Filtered library — class chips + level chips + free-text search
+  - **Per-card depth:** does each card stay short (3-para summary) or do select cards get full sub-pages (matching IA-001 phase B for level pages)?
+  - **Inline-elsewhere placement:** which Class B cases pepper which other pages, and what's the rule for picking? (e.g., the Internet Protocols case naturally pairs with any L5 mention in the litepaper.)
+  - **Research depth per Class B card:** how much grounding before publishing? Each Class B case deserves a `_Observations/research/` entry in the same format as the AI cases (see `samsung-chatgpt-leak.md` etc.), so the case page cites primary sources.
+  - **Card-template aesthetic:** picks up DESIGN-001 (whole-site refresh) work — coordinate with that effort to avoid a card-template that gets thrown out a quarter later.
+- **Process:** Mirrors ASSESS-005 / Quiz-v0.8 — author a design brief in `_Product/Case-Studies-Library-Design/` (folder TBD) before implementation; iterate on card-template and layout; *then* ship.
+- **Supersedes / absorbs:**
+  - `IA-003` (case studies page promotion — Class A side already shipped via CONTENT-003)
+  - `NAV-002` case-studies breadcrumb pattern (needs reinventing for ~15+ cards)
+  - `CONTENT-007` (Folkway/Guild L1 counterexample for Samsung) — folds in as one of the Class A additions
+  - `CONTENT-008` (intro rewrite) — folds in as the library page intro design
+- **Dependencies:** Research first (lock Class B inventory + write `_Observations/research/` entries for each new tech-arc case). Then the design brief. Then implementation. DESIGN-001 should ideally land near the same time so the card-template inherits the new visual system.
+- **Status:** intake · needs design brief
 
 ### IA-006 — Homepage restructure (quadrantology-shape landing)
 - **Scope:** Replace the current multi-section homepage with a quadrantology-shaped single-funnel landing:
@@ -181,6 +219,39 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 - **Dependencies:** IA-004 (lexicon) covers terminology; this is broader — about the model itself.
 - **Status:** intake
 
+### CONTENT-004 — `/levels/` hero copy: rewrite as invitation, drop the trailing definitional clause
+- **Scope:** Two related rewrites on the `/levels/` page hero copy.
+  - **(a)** Replace the current sentence "Every level below maps the organizational shift required to move from one governing protocol to the next as AI is embedded into business flows." with a verb-first invitation along the lines of "Explore the organizational shifts happening as AI is embedded into business flows." — shorter, makes the page sound like a destination rather than an explainer.
+  - **(b)** In the same hero, **delete** the trailing phrase "— from the first unsanctioned use to the point where AI is invisible civilizational coordination infrastructure." It loads the hero with a definitional payoff before the page has earned it; the levels themselves should reveal the arc.
+- **Rationale:** Source: 2026-04-26 in-page copy-edit pass (reviewer: Rafa). Two suggestions submitted from the same hero, both pulling toward fewer words and more invitation. The deleted phrase also pre-spoils the L1→L5 narrative.
+- **Status:** intake
+
+### CONTENT-005 — Klarna case study: rewrite as narrative, refocus toward last-mile / protocols-have-reasons
+- **Scope:** The Klarna case-study card on `/case-studies/` needs two changes — currently they collide:
+  - **(a) Narrative form, not statements-of-truth.** The current opening — "90% daily AI adoption in the first month. Two-thirds of customer service handled by AI. $40M in claimed profit improvement. Twelve months later, the CEO reversed course and began rehiring human agents, citing quality failures the absent governance layer could not address." — reads as four detached facts. Rewrite as a paragraph with cause and consequence, and **specify which function was replaced** (customer service) and **whether the layoff was total or partial** at the start.
+  - **(b) Reframe the takeaway.** The closing chain ("The mandate produced adoption. Adoption revealed quality failures. Quality failures required protocol. Designing protocol required slowing adoption. Leadership didn't want to slow adoption.") elegant but not the actual lesson. Reviewer's read: the takeaway is about **last-mile work that AI capabilities can't actually solve** and **protocols that exist for a reason** — i.e., the residual work pattern, not a governance-paralysis loop. Reference to incorporate: [npc.here.now/ai-org/](https://npc.here.now/ai-org/).
+- **Rationale:** Source: 2026-04-26 in-page copy-edit pass (reviewer: Rafa). Two suggestions on the same Klarna card.
+- **Dependencies:** Reference reading at [npc.here.now/ai-org/](https://npc.here.now/ai-org/) before rewriting.
+- **Status:** intake
+
+### CONTENT-006 — `/case-studies/` outcome questions: rewrite for subtler diagnostic framing
+- **Scope:** The outcome question on `/case-studies/` ("When your AI produces a wrong answer in a customer-facing workflow, does a defined process exist for catching it — or does someone fix it when they notice?") is too pointed for the case-study takeaway. Rewrite to surface the more subtle questions reviewers actually ask after reading these cases:
+  - How do you manage edge cases — and do you know which work persists / remains?
+  - How do you reason about the long-term risk of integrating AI into existing operations (e.g. automating customer success activities), where edge cases compound over time?
+- **Rationale:** Source: 2026-04-26 in-page copy-edit pass (reviewer: Rafa). The current single binary question reads as a checklist item; the case studies actually point to compounding risk, not point-in-time review.
+- **Dependencies:** Touches the same `/case-studies/` page as CONTENT-005; consider sequencing them together.
+- **Status:** intake
+
+### CONTENT-007 — Samsung case study: pair with a Folkway/Guild "protocol-emergence" L1 counterexample
+- **Scope:** Keep the Samsung case study (it works as a fear/oversight cautionary tale), but pair it with a contrasting L1 case from the Folkway / Guild end of the archetype set — an organic "protocol emergence and reconstruction" story. Reviewer's reference: the F2F pattern in [Have Your Factory Call My Factory](https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory). Open-ended research task: identify another L1 story about groundbreaking expertise emergence (not failure mode) that we can write up as a sibling to Samsung.
+- **Rationale:** Source: 2026-04-26 in-page copy-edit pass (reviewer: Rafa). The current L1 surface is monotonal — all failure stories. Folkway / Guild archetypes need a positive-frame L1 example showing what organic protocol emergence looks like before sanctioning catches up.
+- **Dependencies:** Research first (find the case), then content. The F2F essay is already in `_Observations/research/rao-factory-to-factory.md` (Entry 27/41) — start there for grounding.
+- **Status:** intake
+
+### CONTENT-008 — `/case-studies/` page intro: reposition as "real-time arc + curated reference" `(absorbed by IA-007)`
+- Original scope: rewrite the page intro from a flat label ("Concrete cases at each level of the model.") into two beats — *real-time changes happening everywhere* → *curated ongoing reference* of cases by level/stage. Folded into the IA-007 library design brief, since the library page will need its own framing intro anyway. Keep this note as the seed copy direction for the IA-007 intro work.
+- **Status:** wont-do (absorbed by IA-007)
+
 ### CONTENT-003 — Case studies page expansion (3 → 5) + landing-page alignment
 - **Scope:** Two-part: (1) Add 2 more case studies to the case studies page (currently 3) to bring the page total to 5. (2) Ensure the 5 case studies displayed on the case studies page match exactly the 5 listed on the homepage landing page — same names, same order, same framing.
 - **Rationale:** Source: 2026-04-25 conversation. Case studies page is currently shorter than the landing-page list and the two surfaces are inconsistent. Aligning to a single canonical set of 5 removes the discrepancy and gives readers consistent depth wherever they land.
@@ -215,11 +286,9 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 
 ### OBS-001 — Seed `_Observations/research/` from litepaper bibliography
 - **Scope:** Ingest the bibliography entries in `Litepaper/litepaper-bibliography.md` as research observations matching the `research/_TEMPLATE.md` shape. Plus the two articles used during archetype development that aren't in the litepaper bibliography.
-- **Progress (2026-04-25):** **18 of ~32 entries seeded.** Initial 13 from 2026-04-24 batch (Samsung, Klarna, Menlo, Accenture, Armstrong-FDE, Duolingo, EU AI Act, McKinsey, Moffatt-Air-Canada, OpenAI State of Enterprise AI, Rao Protocol Reader, Shopify, Uber Agentic Shift). Added 2026-04-25: rao-evil-twin (Entry 24), rao-factory-to-factory (Entry 27), finding-fault-lines (Entry 26), vibe-coding-and-maker-movement (NEW — used in archetype v0.3 dev), four-paradigms-of-crft (NEW — used in archetype v0.2 dev).
-- **Remaining (~14 entries):** Entries 3, 4, 7, 8, 13, 14, 23 (Rao FPT), 29 (legal hallucinations), 30 (healthcare shadow AI), 34 (shadow AI prevalence), 35 (business-protocols table), 36 (HBR — AI intensifies work), 38 (Humphrey CMM), 39 (NIST AI RMF).
+- **Resolution (2026-04-25):** **All 32 entries seeded.** First 13 + 5 added during archetype work shipped 2026-04-24/25; remaining 14 (Entries 3, 4, 7, 8, 13, 14, 23, 29, 30, 34, 35, 36, 38, 39) seeded 2026-04-25 evening as a single batch via subagent. Two entries carry `[PARAPHRASE]` markers per source-bibliography directives (Entry 35 protocol-trade examples; Entry 36 HBR intensification + intrinsic-motivation findings) — flagged in those files for verbatim quote extraction before customer-facing citation. Cross-references in 9 sibling entries had `(pending)` markers that were resolved as the new entries came online.
 - **Rationale:** Establishes the primary-source corpus the weekly brief can cite into. Without it, each weekly scan starts from zero context.
-- **Dependencies:** None — can proceed any time.
-- **Status:** in-progress (partial 2026-04-25); remaining 14 entries queued
+- **Status:** **shipped 2026-04-25** (32/32 entries; 2 entries still need verbatim quote extraction before citation)
 
 ### OBS-002 — Weekly scan automation (mechanism decision + wire-up)
 - **Scope:** Build the recurring agent that scans the past week's AI workforce/adoption news, writes a brief to `_Observations/weekly-briefs/YYYY-WW-scan.md`, proposes a lede update, and commits to the repo. Also manually triggerable by Rafa.
@@ -238,14 +307,15 @@ Initial batch sourced from [`Feedback-Inbox/2026-04-24-v1-review.md`](Feedback-I
 - **Status:** **shipped 2026-04-25**
 
 ### FEATURE-004 — Copy-editor comment mode
-- **Scope:** A passcode-protected comment mode for editing review across the entire site. UX: editor unlocks comment mode (passcode prompt), highlights any text on a page, a comment modal opens with the highlighted text pre-populated as "Before" + a free field for the suggested edit + a free-form note field. On submit, the comment is sent to the worker (`POST /comment` endpoint, already stubbed in `_Infrastructure/protocolized-inbox/`) and forwarded to a dedicated Discord channel (different from the contact-form webhook). Comments are also written to a synthesised log so we can pattern-match across them.
-- **UI inspiration:** The right gutter from [`npc.here.now/template`](https://npc.here.now/template/) — the "Considerations" sidenote pattern. Each highlighted edit suggestion lives as a gutter-anchored card on the page, with the highlight visible inline; clicking the card opens the modal again to edit/resolve the suggestion.
-- **Backend:** Already partially in place — the `/comment` endpoint exists in `protocolized-inbox` worker with passcode-header check and a Discord-webhook forward. Two secrets to set when shipping: `wrangler secret put DISCORD_COMMENT_WEBHOOK` (separate Discord channel), `wrangler secret put COMMENT_PASSCODE`. KV is shared with the contact-form rate limiter.
-- **Storage of synthesised edits:** Open question — Discord-channel-only (synthesise manually from the channel), OR also write to a markdown log in the repo via GitHub API, OR write to a Cloudflare D1 table with a small admin viewer. Recommendation: start Discord-only; promote to D1 if volume justifies it.
-- **Frontend:** Per-page JS that (1) wraps text nodes for highlight detection, (2) shows the modal on selection + comment-mode-active, (3) renders gutter cards from existing comments fetched from worker (or stored in localStorage during a single review session if backend persistence is deferred).
-- **Rationale:** Source: 2026-04-25 conversation. Editor will be reviewing the entire site; needs a structured way to capture before/after suggestions without breaking page flow. Also lets us synthesise patterns rather than chase one-off edits.
-- **Dependencies:** None blocking — worker stub already handles the endpoint. Frontend implementation is the remaining work.
-- **Status:** intake
+- **Scope:** A passcode-protected comment mode for editing review across the entire site. UX: editor activates comment mode (URL `?edit=<passcode>`, ⌘⇧E shortcut, or pencil icon in the nav), highlights any text on a page, a modal opens with Before (pre-filled from selection), After (textarea), and Note. Submissions land in storage; admin pulls down later as CSV.
+- **Resolution (2026-04-25):** Shipped end-to-end.
+  - **Backend:** `_Infrastructure/protocolized-inbox/` worker now serves `POST /comment` (passcode-gated), `GET /comment/export.csv` (admin-secret-gated CSV export), and `GET /comment-mode.js` (the client bundle, served as text-import via wrangler `[[rules]] type = "Text"`). Storage swapped from Discord webhook to dedicated KV namespace `EDITS` — one entry per submission keyed `edit:<ISO-timestamp>:<random-id>`, value is JSON `{ts, page, before, suggestion, note, reviewer, ip}`. Rate limit raised from 5/hr to 100/hr for `/comment` (kept at 5/hr for `/contact`); rate-limit keys split by scope (`rl:contact:<ip>`, `rl:comment:<ip>`).
+  - **Frontend:** `src/comment-mode.bundle.js` — self-contained CSS+JS IIFE. EDIT MODE banner with reviewer-name input + page pill + Leave button. `▾ Browse` dropdown reveals an editor catalog (10 archetypes, 9 levels, archetype×level builder, link to live quiz) — opens result pages in new tabs. Selection popup → modal (Before/After/Note) → submit. Session-edits gutter (collapsible, top-right). Toast confirmations. Passcode entry via URL `?edit=`, ⌘⇧E shortcut, or always-on pencil icon at the right end of `.nav-links`.
+  - **Pages:** All 6 site pages (homepage, assessment, case-studies, levels, litepaper, blog) carry `<script src="https://protocolized-inbox.rafaeldf2.workers.dev/comment-mode.js" defer>` before `</head>`. Bundle is dormant for normal readers.
+  - **Secrets set:** `COMMENT_PASSCODE` (editor side), `EXPORT_SECRET` (admin export). The earlier `DISCORD_COMMENT_WEBHOOK` is now unused.
+- **Synthesis path:** Pull CSV via `curl -fSL "https://protocolized-inbox.rafaeldf2.workers.dev/comment/export.csv?secret=YOUR_EXPORT_SECRET"`, then synthesize patterns into CONTENT-### items in this backlog. First batch synthesized 2026-04-26 → CONTENT-004, CONTENT-005, CONTENT-006.
+- **UI inspiration credit:** The right gutter from [`npc.here.now/template`](https://npc.here.now/template/) — selection popup + modal pattern.
+- **Status:** **shipped 2026-04-25**
 
 ### OBS-003 — Lede accept-and-deploy runbook
 - **Scope:** Small script (or documented steps) to take an accepted lede from a weekly brief → update the artifact `index.html` → republish `thorny-basin-5xkf` → append to `lede-history.md` in one command.
