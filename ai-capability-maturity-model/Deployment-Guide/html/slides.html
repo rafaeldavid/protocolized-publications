@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Fit-to-width on mobile: when the device is narrower than the slide canvas
+    // (~1056px), switch viewport to a fixed 1100px so the browser scales the
+    // whole page down to fit. Pinch-to-zoom remains enabled.
+    (function() {
+      if (window.innerWidth < 1100) {
+        var v = document.querySelector('meta[name="viewport"]');
+        if (v) v.setAttribute('content', 'width=1100, user-scalable=yes');
+      }
+    })();
+  </script>
   <title>Adopting AI within your organization — Slides</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
