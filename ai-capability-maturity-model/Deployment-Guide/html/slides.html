@@ -898,6 +898,33 @@
       color: var(--text);
     }
     .slide-pattern-card-body p { margin-bottom: 0; font-size: var(--fs-body-sm); }
+    .slide-pattern-card-mitigation {
+      margin-top: 8pt;
+      padding-top: 6pt;
+      border-top: 1px solid var(--border-soft);
+      display: flex;
+      align-items: baseline;
+      gap: 6pt;
+      font-size: var(--fs-caption);
+      line-height: 1.3;
+    }
+    .mitigation-label {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+    .mitigation-name {
+      color: #4a7560;
+      font-weight: 600;
+    }
+    .mitigation-icon {
+      font-family: var(--font-mono);
+      color: #4a7560;
+      margin-right: 2pt;
+    }
 
     /* ─── Case study slide layout ────────────────────────────── */
     .case-slide-wrapper {
@@ -1032,8 +1059,8 @@
     <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">17</span></li>
     <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">20</span></li>
     <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">23</span></li>
-    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">27</span></li>
-    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">29</span></li>
+    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">26</span></li>
+    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">28</span></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -1657,7 +1684,6 @@
   </header>
   <h2 class="slide-h1">Four emerging success patterns</h2>
   <main class="slide-body">
-    <p>This chapter focuses on the <em>emerging</em> patterns specific to AI's structural properties (probabilistic outputs, agentic capability, asymmetric tempo) — not inherited governance challenges. Four of each recur. Each success pattern is the mitigation for the failure mode it pairs with.</p>
     <div class="slide-pattern-grid">
       <div class="slide-pattern-card success">
         <div class="slide-pattern-card-icon">▦→▣</div>
@@ -1701,93 +1727,47 @@
         <div class="slide-pattern-card-name">Premature optimization</div>
         <div class="slide-pattern-card-tag">Standardizing before the kit phase has done its work.</div>
         <div class="slide-pattern-card-body"><p>Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: <em>premature consolidation</em> (collapsing kits into a single platform) and <em>premature procurement</em> (vendor stack before need is known).</p></div>
+        <div class="slide-pattern-card-mitigation">
+          <span class="mitigation-label">Mitigated via</span>
+          <span><span class="mitigation-icon">▦→▣</span><span class="mitigation-name">Kit harvesting over central design</span></span>
+        </div>
       </div>
       <div class="slide-pattern-card failure">
         <div class="slide-pattern-card-icon">?↺</div>
         <div class="slide-pattern-card-name">Disorientation</div>
         <div class="slide-pattern-card-tag">Commitments outpace shared understanding; exposure accumulates invisibly.</div>
         <div class="slide-pattern-card-body"><p>The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as <em>psychological debt</em>.</p></div>
+        <div class="slide-pattern-card-mitigation">
+          <span class="mitigation-label">Mitigated via</span>
+          <span><span class="mitigation-icon">↻</span><span class="mitigation-name">Planning after production</span></span>
+        </div>
       </div>
       <div class="slide-pattern-card failure">
         <div class="slide-pattern-card-icon">≠</div>
         <div class="slide-pattern-card-name">Tempo misalignment</div>
         <div class="slide-pattern-card-tag">Output stacks up at the slowest neighbor.</div>
         <div class="slide-pattern-card-body"><p>AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.</p></div>
+        <div class="slide-pattern-card-mitigation">
+          <span class="mitigation-label">Mitigated via</span>
+          <span><span class="mitigation-icon">◐◑</span><span class="mitigation-name">Differential gear trains</span></span>
+        </div>
       </div>
       <div class="slide-pattern-card failure">
         <div class="slide-pattern-card-icon">◉○○</div>
         <div class="slide-pattern-card-name">Extended blast radius</div>
         <div class="slide-pattern-card-tag">Permissions outpace judgment, faster than humans can intervene.</div>
         <div class="slide-pattern-card-body"><p>Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).</p></div>
+        <div class="slide-pattern-card-mitigation">
+          <span class="mitigation-label">Mitigated via</span>
+          <span><span class="mitigation-icon">&lt;/&gt;</span><span class="mitigation-name">Constitutional software</span></span>
+        </div>
       </div>
     </div>
   </main>
   <span class="slide-page">25</span>
 </section>
 
-<!-- ─── 26 — Ch7 pairings ───────────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
-  </header>
-  <h2 class="slide-h1">The pairings</h2>
-  <main class="slide-body">
-    <p class="lead-p">Each success pattern is the mitigation for the failure mode it pairs with.</p>
-    <div class="pairing-list">
-      <div class="pairing">
-        <div class="pairing-side">
-          <span class="pairing-icon-success">▦→▣</span>
-          <span class="pairing-name">Kit harvesting</span>
-        </div>
-        <div class="pairing-arrow">↔</div>
-        <div class="pairing-side">
-          <span class="pairing-icon-failure">⊘</span>
-          <span class="pairing-name">Premature optimization</span>
-        </div>
-        <div class="pairing-trade">Where premature optimization closes the kit phase before its work is done, kit harvesting closes it on the basis of evidence.</div>
-      </div>
-      <div class="pairing">
-        <div class="pairing-side">
-          <span class="pairing-icon-success">↻</span>
-          <span class="pairing-name">Planning after production</span>
-        </div>
-        <div class="pairing-arrow">↔</div>
-        <div class="pairing-side">
-          <span class="pairing-icon-failure">?↺</span>
-          <span class="pairing-name">Disorientation</span>
-        </div>
-        <div class="pairing-trade">Closes the disorientation gap by making orientation continuous with action rather than an upstream act the work has already overrun.</div>
-      </div>
-      <div class="pairing">
-        <div class="pairing-side">
-          <span class="pairing-icon-success">◐◑</span>
-          <span class="pairing-name">Differential gear trains</span>
-        </div>
-        <div class="pairing-arrow">↔</div>
-        <div class="pairing-side">
-          <span class="pairing-icon-failure">≠</span>
-          <span class="pairing-name">Tempo misalignment</span>
-        </div>
-        <div class="pairing-trade">The mitigation is the buffer, not the throttle. Coordination layer between paces, not enforcement of a shared one.</div>
-      </div>
-      <div class="pairing">
-        <div class="pairing-side">
-          <span class="pairing-icon-success">&lt;/&gt;</span>
-          <span class="pairing-name">Constitutional software</span>
-        </div>
-        <div class="pairing-arrow">↔</div>
-        <div class="pairing-side">
-          <span class="pairing-icon-failure">◉○○</span>
-          <span class="pairing-name">Extended blast radius</span>
-        </div>
-        <div class="pairing-trade">Constrains scope before the agent acts. Compiled-in constraints intervene faster than alerts reach humans.</div>
-      </div>
-    </div>
-  </main>
-  <span class="slide-page">26</span>
-</section>
-
-<!-- ─── 27 — Ch8 section title ──────────────────────────────── -->
+<!-- ─── 25 — Ch8 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-8">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 8</span>
@@ -1796,16 +1776,16 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/constructing-the-evil-twin-of-ai.png" alt="">
   </div>
-  <span class="slide-page">27</span>
+  <span class="slide-page">26</span>
 </section>
 
-<!-- ─── 28 — Ch8 body ───────────────────────────────────────── -->
+<!-- ─── 27 — Ch8 body ───────────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 8 · The new nature of work</span>
   </header>
   <h2 class="slide-h1">The new nature of work</h2>
-  <p class="slide-subtitle">AI-mediated work is no longer a feature of the workplace — it is the workplace itself. The deployment lead's job changes accordingly.</p>
+  <p class="slide-subtitle">AI-mediated work is here to stay.</p>
   <main class="slide-body">
     <div class="slide-body-cols-2">
       <p>AI-mediated tools and workflows are no longer features of the workplace; they have become part of the workplace itself — closer to weather or terrain than to thermostats. This is <em>new nature</em>: technologically mediated conditions that have become immutable and indefinitely persistent. The dominant posture becomes foraging and adapting in a landscape rather than top-down planning with a blueprint. The work environment is increasingly something that cannot be engineered. It is the world your team inhabits.</p>
@@ -1814,10 +1794,10 @@
       <p>The job is not to finish a platform deployment; it is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies. It is a function whose people know how to work in this new nature, and whose managers know how to keep it inhabitable. The terrain will keep shifting, fast.</p>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">27</span>
 </section>
 
-<!-- ─── 29 — About & Resources (split slide) ────────────────── -->
+<!-- ─── 28 — About & Resources (split slide) ────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">About &amp; Resources</span>
@@ -1854,7 +1834,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">29</span>
+  <span class="slide-page">28</span>
 </section>
 
 </div><!-- /.deck -->
