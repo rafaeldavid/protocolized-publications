@@ -1,0 +1,97 @@
+# Revenge of the Dilettantes
+**Author:** Venkatesh Rao
+**Publication:** Contraptions (Substack)
+**URL:** https://contraptions.venkateshrao.com/p/revenge-of-the-dilettantes
+**Date:** December 20, 2025
+
+---
+
+Last year I decided to stop doing annual roundups of all my writing, so for the second year in a row here is my gift to you — no annual roundup. You can scroll the archives if you _actually_ want a list of what I wrote or slopped about.
+
+The lighthouse handcrafted post of the year was probably _The Gramsci Gap_ from January 10, and the lighthouse sloptraption was probably _Configurancy_ from Dec 11, the first of my posts that I think I could _not_ have written any version of, without AI assistance. ChatGPT contributed on all fronts — knowledge, ideas, and even to my signature move, naming the focal new concept.
+
+The dates of those two bookend lighthouse posts alone tell you the story of the year. In 2025, _Contraptions_ itself became a contraption. A monstrous contraption. Monsters, first encountered in The Gramsci Gap, increasingly took over my imagination and eventually led to my new motto: _Be Slightly Monstrous_. This is now the governing ethos of what is now less a newsletter and more an AI-scaffolded workshop, study group, and centaur-social network of sorts. It's only going to get more monstrous from here on out.
+
+All my friends are now all-in on transforming themselves into AI-augmented transhuman monsters who read, write, make, think, and socialize with AI intimately in the loop. There isn't even much schadenfreude to be found in the antics of frantic humanists in cope mode. Better spectacles abound.
+
+This new phase demands new rules of engagement, so let me get that out of the way before continuing with what's going to be a wild riff on many matters.
+
+**Going forward, I will not be paywalling any of my writing.** You can still be a much-appreciated paid subscriber, but the only thing that will affect is ability to comment on articles.
+
+I'm also slowly going back and unpaywalling all my archives (it's slow since Substack doesn't offer a bulk unpaywall mechanism).
+
+If you're pushing up against the limits of your newsletter budget, feel free to go unpaid. If you choose to stay on the paid tier, thank you 🫡.
+
+There are some Substack-specific reasons I'm doing this (more at end), but the main reason has nothing to do with Substack — it is now obvious that barring catastrophic AI-bubble-popping, _all_ my future creative shenanigans will be heavily shaped by AI use, misuse, and abuse, and necessarily, many will take shape in more AI-native media rather than this mildly AI-hostile one.
+
+So I'm going to start using Substack more in the way it already _wants_ to be used anyway — as a place to report on activities with centers-of-gravity elsewhere (true "newsletter"), and join conversations with other writers.
+
+There will still be essays here of course, but they're probably going to have a different, more workshop-notebook/release notes type energy.
+
+## Notes on Writing
+
+Much of my writing energy and attention this year actually flowed towards getting the _Protocolized_ magazine off the ground, along with Timber Stinson-Schroff and James Langdon.
+
+It's been an amazing opportunity for me to channel the spirit of John W. Campbell of _Astounding_ fame, and try and meme the genre of Protocol Fiction into existence. Through three contests and dozens of published short stories, we've spun up a solid cabal of a dozen odd writers (all filtered for radical AI-positivity of course) now pushing the boundaries of that project.
+
+While much of the energy that's gone towards Protocolized has been in the editorial vision-setting and direction department, I've also been writing there. My most substantial piece of the year was probably the one I published in Protocolized in January — _Strange New Rules_ (hand-written). But my _favorite_ piece of the year, also in Protocolized, was _The Signal Under Innsmouth_, an AI-assisted transposition of a classic Lovecraft story to an AI-transhumanism register.
+
+Protocolized will continue to be a big part of my presence here on Substack next year.
+
+As an aside, for some reason, these days I find it easier to write for publications other than my own. Two other pieces I was very happy with were the introduction to _The Protocol Reader_, and a preface for a friend's book that I'll be able to share next year.
+
+There's more going on with my writing that is making me reconsider how and where I do it. Over the last 6 years that I've been on Substack, I've been _very_ slowly serializing a book, as well as developing several other serialized projects. Even before the rapid maturation of AI tools for writing, these were never quite a comfortable fit for Substack.
+
+I plan to move these serialized projects (or at least, the ones I intend to finish) off Substack and into more book-like AI-assisted production and publishing workflows. If I ever finish my book, it's definitely going to get done with AI assistance and get published online-first in an AI-forward way. Right now, LLMs aren't _quite_ good enough to work on book-length things, but they're getting close. They're _more_ than good enough to help rig custom workflows and do supporting backend research though.
+
+Two projects I've been procrastinating on for ever went from zero to nearly done in mere days thanks to AI — the Yakverse Chronicles, which is now published as a rough cut online, and a book based on my Twitter archives (150k tweets and hundreds of threads to filter, select from, and clean up), which is 90% done and will be published online in January.
+
+What's notable about both projects, but especially the latter, is that they are the results of completely bespoke, even idiosyncratic workflows, and _sui generis_ publishing solutions. What had me stalled previously was that no off-the-shelf tool could easily produce online books the way I wanted: With minimal infrastructure and maintenance needs. So a fat AI workflow leading to a lean output, such as a static html site, was ideal. I don't need either my development workflow, or my content architecture, to be reproducible, repeatable, or scalable either horizontally or vertically. N=1 solutions are fine.
+
+In the case of the Twitter book, transforming and formatting tweet content into a roughly book-shaped static html artifact was simply beyond the capabilities of _any_ standard publishing workflow short of brute force manual labor. One does not simply _print_ tweets.
+
+I have an even bigger project ahead — getting my retired blog Ribbonfarm off expensive WordPress hosting and porting it to some sort of customized low-cost, zero-maintenance, high-longevity memorial/archival hosting solution.
+
+There is a bigger theme in the direction all my writing and writing-scaffolding projects, from shitpost-scale to book-scale, are tending.
+
+## Bespokeness
+
+If you're wondering "what comes next for publishing" after the late-blogging Substack-enclosure era, it's not a single new publishing paradigm, "alt" coded substitute platforms like Ghost, or alt techno-political publishing paradigms like decentralized publishing on IPFS.
+
+The future is _bespokeness._
+
+There is no reason anymore to force-fit content into standardized containers besides convenience.
+
+The marginal cost of making a custom workflow and publishing solution for your idea is now low enough, it's a serious alternative to what we've been doing for centuries — making the content conform to the constraints of production, publishing, and distribution media. AI allows us to make things that look more like illuminated manuscripts than books.
+
+What happened to marketing a decade ago is now happening to publishing. The message is becoming the medium (the link is to a blog post about a couple of talks I did in 2014, about this inversion triggered by intelligent computation capabilities).
+
+Now, there's no reason to go nuts with idiosyncratic publishing solutions for bog-standard essays simply because you can, but also… there's no reason _not_ to when you have an idea that would otherwise call for medium-driven compromises. For example, I don't like how Substack doesn't allow text or image centering. Well, now if I want that, I don't have to spin up a high-maintenance SSG site or use a heavyweight CMS. I can just vibecode a one-pager site exactly the way I want. In green Comic Sans font too if I want.
+
+As someone pointed out somewhere, one interesting effect of this is that registering a domain just to serve a single custom-formatted essay is now a meaningful option at scale. If you have money to spare, you can just spin up a new site for _each_ new essay, and each can be a unique work of art if you want.
+
+In a few years, you might even be able to define a meta workflow where an AI designs bespoke distribution artifacts for each essay based on creative design rules you specify. It's now less about AI getting more capable, and more about AI continuing to get too cheap to meter along the current trajectory. The capabilities are already there.
+
+Writing as a sequence of art-gallery like singleton essay sites is probably overkill and would cause brand/marketing problems, but the point is — the future is bespokeness. It's going to look like the wild and crazy era of Geocities webpages again. Even extreme n=1 futures are possible, where no two sites will look the same or get published the same way. It will be gloriously ugly and all the font mavens will be sad.
+
+After all, n=1 production at scale is the way nature operates, and nature does fine without economies of scale. Intelligence is how you get on diminishing cost curves without surrendering to uniformity and monocultures. If the solution is good enough for nature, it's good enough for me.
+
+_Economies of variety_, which I've been lusting after for a decade, are finally here for real.
+
+## Full-Stack Dilettante Futures
+
+Routinely reaching well beyond my native creative aptitudes is a heady feeling. Apparently, I've always-already been an artist/programmer/roboticist etc. It's just that previously you had to be some sort of full-stack genius-god on the aptitudes front to _express_ such a personality.
+
+Now you can just invoke a full-stack-genius-god jinn to complete your natural personality for $20/month.
+
+It's genuinely hard, depressing, and _boring_ to think of myself as primarily a writer now. With AI prosthetics, my natural dilettante tendencies are finding pathways for expression that simply didn't exist before, and it is becoming clear that temperamentally, I tend towards a breadth that demands full-stack _depth_ for realization.
+
+This train of thought inspired a _bon mot_ recently — _a man's reach should exceed his grasp, else what's vibecoding for?_
+
+I've spent most of my life just looking for the best leverage I can find for my minimally, reluctantly honed amateur tendencies. This mostly meant gravitating to n=1 margins with so little competition, low-craft amateurishness was never the issue.
+
+Now the jinn-tooling is gravitating to the margins too, where us dilettantes have already been camped out all our lives.
+
+It's time for a revenge of the dilettantes. The self-consciously deep types are going to hate it. We're poised to take over the world, one bespoke n=1 janky contraption at a time, conjured up with the help of genius-god full-stack jinns who don't skeptically challenge even our dumbest, shallowest ideas.
+
+[NOTE: This file omits the "Art, Code, and Robots", "The Book Club", "The Studious Dilettante", and "Whither Substack?" sections of the original. Full essay at the URL above.]

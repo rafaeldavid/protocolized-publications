@@ -1,0 +1,74 @@
+# No Solutions
+**Author:** Timber Stinson-Schroff
+**Publication:** Blundercheck (formerly The Protocolist)
+**URL:** https://blundercheck.timberschroff.com/p/no-solutions
+**Date:** Jul 17, 2024
+
+---
+
+**No Solutions**
+
+### Trade Offs & The Zero Incident Problem
+
+AI Safety… II
+
+The first part of this article is on AI safety, which I know very little about from a technical perspective. So if you feel like workplace safety concepts can't inform AI safety strategy, maybe pass on that. The second part of the article is about tensions and pareto frontiers, and a recap of my time at the Protocol Worlds event at Esmeralda.
+
+Erik Hollnagel et al propose that there are two kinds of safety. The first, our standard definition of safety, is the absence of incidents. This is known as Safety-I. The second notion of safety is measured by the number of actions completed without incident. This is known as Safety-II.
+
+Hollnagel and others have fruitfully applied this distinction in many areas where safety is a chief concern, ranging from commercial flight to nuclear power plant operations. I have not yet seen it applied to AI safety.
+
+I know nothing about AI, except for two things:
+
+1. Some people consider it incredibly hazardous,
+2. AI safety is discussed exclusively in terms of Safety-I.
+
+Under the Safety-I definition, 100% protection from AI risk is achievable – just don't build AI at all. Or anything like it. Ever. This is the "bomb the data centers" approach. Benefits aside, it doesn't appear feasible. If AI is possible, someone, somewhere will build it.
+
+**Goal of Safety-I = Zero Incidents**
+
+Then there's the approach of not building dangerous AI. This follows the same logical pattern of identifying the source of risk and eliminating it completely. Both this approach and the first one throw out the baby with the bathwater.
+
+It's like being worried about crashing on your bicycle, but instead of buying a helmet you stop cycling altogether. Voila, not a single chance of a bike crash. On the other hand, you don't get any benefits from cycling. This kind of zero-incident policy is considered optimal under the definition of Safety-I.
+
+**Goal of Safety-II = Maximize: # of Operations / # of Incidents**
+
+However, it's a total policy failure in terms of Safety-II, where the goal is to maximize the ratio of successful operations to incidents. This means accepting some level of danger. But not all risks are equal. Riding a bike across a highway at rush hour – at least at my skill level – would probably eliminate the possibility of any future successful bike rides, thus minimizing the expected value of the ratio.
+
+For some risks, a policy of abstinence makes sense. Existential risks to a person or a system are just categorically different than riding a bike. AI could belong in that category. But AI itself is not a risk. It's the many, many things that it might enable (or do) that are the risks. As Sara Hooker points out, in order to discuss safety intelligently, we need to get specific about the specific incidents which we're trying to avoid.
+
+To design AI policy optimally in accordance with Safety-I is too precautionary. The technology has many potential benefits (plus, it's looking impossible to stop development).
+
+I think, rather than pursuing a zero-incident strategy for AI as a whole, it would be better to accelerate feedback loops about the risks that AI is generating – or could generate.
+
+Something like the DUSK Loop, which is based on Boyd's OODA loop, could constitute an operating model for an AI Safety-II Organization.
+
+It's worth emphasizing that Safety-I and Safety-II are complementary. Some actions, like biking across the Autobahn, are never worth taking. Commercial flight became miraculously safe, and is now safer than driving, but that wasn't always the case. Insurance mechanisms and incident tolerance created space for innovation in both efficiency and safety.
+
+---
+
+## ETTO Space
+
+The theme of Protocol Worlds was tensions. We took the saying "There are no solutions, only trade offs." to the extreme, exploring over twenty different dilemmas commonly faced by professionals. These ranged from things that I'm familiar with, such as Safety vs. Adaptability, to some more obscure ones like Ossification vs. Functional Escape Velocity.
+
+This turned out to be a great workshop format. Many of the problems people face are evergreen – they have to be "solved" over and over again, and no solution is really optimal. Erik Hollnagel, whose theory was mentioned above, has also talked about tensions in detail. He coined the term ETTO which stands for Efficiency-Thoroughness Trade Off (Plural: ETTOs, Verb: ETTOing).
+
+"ETTOing well is the pathway to glory; ETTOing badly will make you feel sorry!"
+
+Optimal trade offs between things like speed and quality, or control and scale, are rare, if not impossible. During the Protocol Worlds workshop, I started to wonder if there is always one element of efficiency and one element of thoroughness in every trade off.
+
+**Examples of Efficiency:** Time, Space, Labor, Energy, Materials, and Knowledge.
+
+**Examples of Thoroughness:** Safety, Quality, Durability, Performance, Beauty, Morality, Reusability, Security, Scope, Transparency, Cleanliness, etc.
+
+ETTOs are asymmetrical – there are only so many ways to achieve efficiency, and a virtually endless set of options for thoroughness. Efficiency is limited by time and resources (costs). Meanwhile, thoroughness is determined by human preferences.
+
+Optimal tradeoffs are rare, if not impossible. In theory, there is a winning ETTO at each point of the frontier. But real life is messy and it's hard to possess pure qualities. In practice, both Max-E and Max-T strategies lead to inaction.
+
+Similar to the Safety-I and Safety-II problem, what matters is throughput. The number of operations that can be executed within the bounds of acceptable performance. The ratio of successful actions to incidents. Maximum thoroughness is a zero-incident strategy, and maximum efficiency leads to you getting squashed on the Autobahn.
+
+Protocols are unreasonably sufficient tools for ETTOing well – that is, reproducing near-optimal trade off choices. A process sets the goal, and a protocol determines the balance between efficiency and thoroughness of that process, however those two things are measured.
+
+Moriarty, on the SoP forum, recently gave a great illustration of this definition of protocol.
+
+To wrap things up here, the entire Edge City Esmeralda event was great. Going in, I was a bit apprehensive of the popup city model, but I think it has an important role to play alongside well established city states. Kinda reminded me of the caravan-dwelling travelers in Peaky Blinders, The Gentlemen, or Snatch, except a lot more high tech. It's a geographically mobile and energetic crowd who have strong opinions about what the world should look like. This sort of emerging network state or coordinated nation or whatever won't replace the world's capitals and their protocol stacks, but it's looking like a productive interface is increasingly likely.

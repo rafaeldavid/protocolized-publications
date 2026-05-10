@@ -1,0 +1,86 @@
+# General-Purpose Technologies as Annealing Agents
+**Author:** Sachin Benny
+**Publication:** Summer Lightning (Substack)
+**URL:** https://summerlightning.substack.com/p/general-purpose-technologies-as-annealing
+**Date:** January 9, 2026
+
+---
+
+Technology functions as an **annealing agent** in culture, temporarily softening cultural material so that new dislocations can be introduced and retained.
+
+A dislocation, as discussed in *Work-Hardened Archetypes*, is a memory-bearing mismatch: a form of unresolved tension managed by protocols and technology. Dislocations represent how civilizations remember over the long term.
+
+In metallurgy, annealing reduces stress in work-hardened metal by heating it to relieve internal strain through removing dislocations. During recrystallization, the metal reaches temperatures below melting but above the recrystallization threshold, allowing new grains to form and replace deformed ones. Controlled cooling enables new grain growth, completely changing the microstructure and resulting in greater ductility and lower hardness.
+
+General-purpose technologies produce what the author calls **heating** and **pinning** effects.
+
+The heating from GPTs mobilizes dislocations accumulated through long periods of institutional and social hardening. Institutions, roles, and protocols don't disappear but loosen. What society experiences as social acceleration is "the sensation of a system approaching a structural phase boundary, where rearrangement becomes cheap and established constraints temporarily lose force."
+
+This resembles **Mikhail Bakhtin's** concept of *carnival time*: "a suspension of ordinary hierarchies, norms, and temporalities" where roles invert, seriousness dissolves, and fixed identities become temporarily mobile, making order renegotiable.
+
+**The Printing Press Example**
+
+The printing press heated culture by dramatically lowering costs and friction in reproducing and disseminating information. Before print, reading was collective, mediated by priests and scribes; texts varied with each scribe. After print, readers encountered texts privately and directly, fostering new reading practices and relationships to knowledge and authority. This shift from a priest-audience relationship to an audience-book relationship helped decentralize interpretive authority and contributed to the Renaissance and Reformation.
+
+The pinning effect came through **standardization and preservation**—what Elizabeth Eisenstein called *typographical fixity*. Unlike manuscripts that varied and drifted, printed texts remained stable across copies, allowing scholars to reliably reference the same text, compare works, critique, and build upon them. Early world atlases like Abraham Ortelius's *Theatrum Orbis Terrarum* exemplified this: successive printed editions incorporated revisions into standardized corpora widely disseminated and critiqued, creating shared reference frameworks that accelerated collective scholarly enterprise.
+
+**The Internet as Carnival Time**
+
+The internet liquefied distribution and coordination, producing aggregation dynamics that dissolved firm boundaries, professional gatekeeping, and institutional pacing. Publishing, broadcasting, organizing, and mobilizing became cheap enough to outrun governance, creating a carnival interval in which hierarchies inverted, authority was mocked, identities loosened, and collective attention surged in cyclical bursts. Anonymous users could dethrone experts; memes outperformed institutions; outrage and humor circulated equally.
+
+During this interval, protocols lost binding force faster than new ones could form. Journalistic standards, academic authority, corporate boundaries, and public-private distinctions all softened. The sensation of social acceleration came less from linear speed than from **temporal suspension**: carnival time displaced ordinary institutional rhythms—cyclical, excessive, regenerative, collective.
+
+"These phases feel fast because they are *out of time*. Like carnival, they are lived as exception rather than continuity."
+
+**From Carnival to Archival Time**
+
+However, carnival never lasts. Cooling follows. New protocols and technologies pin what survived the heat. The temporal regime produced by pinning is **Archival Time**.
+
+"If the social web produced carnival time, then LLMs produce archival time."
+
+The essay contrasts these regimes:
+
+- Internet = "cycles of frenzy and renewal"
+- LLMs = "archival slices—frozen cultural moments recombined as if timeless"
+
+"LLMs do not impose progressive continuity in the Enlightenment sense. Instead, they create **archival temporality**: sealed cultural snapshots recombined into a perpetual present."
+
+Each model represents "a total but temporary world, replaced by the next." Unlike carnival temporality (cyclical, regenerative) or official temporality (linear, progressive), LLM temporality is "discontinuous, iterative, punctuated." The rhythm involves "periodic release of **archival slices** of culture."
+
+LLMs introduce genuinely new temporality, forcing invention of new cultural production modes: "How do we write, create, and remember in an environment where our tools are discontinuous archives, replaced every few years?"
+
+**Toward a New Theory of Social Acceleration**
+
+"General-purpose technologies do not permanently accelerate society. They **introduce carnival time into historical time**—a bounded interval in which accumulated dislocations become mobile, hierarchies loosen, and rearrangement becomes cheap."
+
+What appears as social acceleration is not simply increased speed but "a temporary suspension of ordinary temporal discipline: roles blur, norms invert, authority loses its grip, and coordination outruns governance."
+
+"Social acceleration is a **phase condition**." Societies feel fast because they're out of sync with their own institutions. Old protocols no longer bind; new ones haven't hardened. This produces instability, improvisation, excess, and possibility characteristic of major technological shifts.
+
+"But carnival never lasts. Cooling follows." Dislocations briefly mobile are selectively pinned through new protocols, standards, laws, platforms, and institutional forms. What emerges is not a return to prior order or simple slowdown, but new **archival temporality**: "a denser social structure that remembers more than what came before." Post-pinning societies are slower in some dimensions, faster in others, but "above all more complex, layered, and internally differentiated."
+
+"Archival temporality can only be produced by technology."
+
+**The Cozyweb as Pinning Response**
+
+The cozyweb—small groups, private servers, niche forums—represents "a **human-scale pinning response** to the heating effects of the social web." Where feeds and platforms produce carnival time, the cozyweb attempts cooling by reintroducing protocol interpersonally. Shared irony, self-awareness, and cynicism function as stabilizing norms.
+
+However, this carries hidden costs. Without external pinning mechanisms—law, hierarchy, durable institutions—the cozyweb must be "**continuously reenacted** to hold together." Attunement lacks long-term memory and requires constant performance. Cynicism cannot harden into doctrine; it must refresh through memes and in-jokes. Consequently, the cozyweb risks reproducing the very carnival temporality it escapes, remaining "suspended in a fragile in-between state: neither the acceleration of the feed nor the solidity of institutions, but a perpetual micro-carnival sustained by constant maintenance."
+
+**Escalating Energetic Density**
+
+"Culture does not accelerate in a straight line. Each general-purpose technology introduces a carnival interval, followed by a phase of consolidation in which complexity accumulates."
+
+As social life becomes more complex and densely pinned, technologies require more delivered energy to produce comparable heating effects. This occurs not because complex societies resist absolutely but because "the heat must be applied *everywhere, continuously, and at sufficient intensity*" to overcome increasingly fine-grained protocol lattices.
+
+Early GPTs achieved cultural heating with surprisingly little physical energy as high-leverage amplifiers. The printing press exemplifies this contrast: rough estimates suggest hundreds of millions of books produced in early European print, representing roughly **10¹⁵ joules or one terawatt-hour** spread over decades. Even multiplying substantially for transport and inefficiencies yields "single-digit terawatt-hours over a century." The effect was enormous despite localized mechanical power.
+
+The internet represents qualitative shift: heating is "no longer episodic or local but **continuous, global, and synchronous**." Infrastructure—fiber-optic cables, cellular networks, routers, data centers—requires constant powering. Global data center electricity consumption alone reaches "**hundreds of terawatt-hours per year**, with transmission networks adding hundreds more." Unlike print's cumulative energy spread thinly across generations, this is "a standing burn" maintaining cultural heating perpetually near phase boundaries.
+
+LLMs push further. They're not merely content multipliers but "**archival furnaces** that must continuously recompute, serve, and refresh frozen cultural snapshots at planetary scale." Even conservative estimates show energy budgets climbing into "**tens to hundreds of terawatt-hours annually**, layered on top of an already energy-intensive internet substrate."
+
+"The pattern that emerges is not linear acceleration but **escalating energetic density per unit of cultural rearrangement**."
+
+Printing softened society with minimal heat because institutions were coarse-grained and sparsely pinned. The internet required vastly more energy dissolving deeper boundaries. LLMs require more still, "not to accelerate society in the carnival sense, but to sustain **archival temporality**—a regime in which cultural memory itself becomes infrastructural, expensive, and discontinuous."
+
+"Seen this way, the feeling that technological change now 'costs more' is not an illusion. As civilization accretes protocols, standards, and memory, heating can no longer be applied in bursts; it must be **distributed, personalized, and permanent**. The furnace grows not because society is harder to move, but because it remembers more."
