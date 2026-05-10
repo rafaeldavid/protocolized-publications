@@ -1516,36 +1516,35 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
-  <h2 class="slide-h1">Six roles emerging in AI-native organizations</h2>
+  <h2 class="slide-h1">Six categories of new work in AI-native organizations</h2>
   <main class="slide-body">
-    <p class="lead-p">These are the durable roles mature AI-adopting organizations build toward, not pilot-only positions but the disciplines an AI-native org chart begins to require. Some evolve from existing functions; others are new. The cleanest implementations name the role-holder in writing and define the scope independent of who currently fills it.</p>
+    <p class="lead-p">These categories of work appear across mature AI-adopting organizations regardless of size or sector. Titles vary; the work is the same.</p>
     <div class="roles-grid">
       <div class="role-card">
-        <div class="role-name">Chief AI Officer</div>
-        <p class="role-body">Owns AI strategy at the executive level; allocates capital across platform, talent, and governance; signs off on the organizational AI risk register.</p>
+        <div class="role-name">Kit Harvesting</div>
+        <p class="role-body">Surfacing the AI workflows people are already running on their own — in personal repos, Obsidian vaults, pinned Slack messages, custom GPTs — and moving the best of those into shared organizational infrastructure with named owners. Composed of an audit conversation per function, a promotion review, and the engineering work to make a kit operable by a second user.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">AI Platform Engineer</div>
-        <p class="role-body">Runs the model gateway, evaluation harness, prompt and skill registries, and cost controls. The AI equivalent of cloud or data platform engineering.</p>
+        <div class="role-name">Evals</div>
+        <p class="role-body">Defining what "good" means for each AI workflow and building the test harness that measures it. Composed of golden datasets, rubrics co-authored with domain experts, and the scoring runner that executes on every prompt change, model upgrade, or workflow modification. Maintenance is continuous as failure modes surface in production and get added to the suite.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Forward Deployed Engineer</div>
-        <p class="role-body">Embedded inside a function; builds and maintains the AI workflows that function depends on; bridges platform capability and domain need.</p>
+        <div class="role-name">Forward Deployment</div>
+        <p class="role-body">Embedding engineers inside functions — alongside lawyers, sales reps, analysts — to build the AI workflows that function depends on. The forward-deployed engineer pairs with domain experts, reads their existing work product, and ships the production integration. Each engagement is project-shaped and closes when a real loop runs end-to-end.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Protocol Designer</div>
-        <p class="role-body">Designs verification checkpoints, escalation paths, and accountability boundaries for AI handoffs. Produces the protocols organizational policies depend on.</p>
+        <div class="role-name">Platform Operations</div>
+        <p class="role-body">Operating the shared AI infrastructure domain teams build on. Composed of the model gateway (routing across providers with fallbacks), prompt and skill registries decoupled from application code, eval pipelines running in CI, observability (latency, cost, quality, drift), cost controls, and vendor management. A 24/7 system; major upgrades quarterly.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Kit Owner</div>
-        <p class="role-body">Owns a specific promoted AI workflow used across teams; updates it as models change; tracks usage and quality.</p>
+        <div class="role-name">Risk Stewardship</div>
+        <p class="role-body">Maintaining the AI risk register and the technical interlocks that bound what AI is allowed to do. Composed of the register itself (models, data, blast radius), permission boundaries (autonomous vs human-approved vs forbidden), constitutional infrastructure (sandboxes, planning-only modes, write-locks, rollback paths), and the audit trail that lets commitments be reviewed after the fact.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">AI Risk Officer</div>
-        <p class="role-body">Owns model risk and compliance: data handling, output verification, regulatory boundaries, vendor due diligence. The AI-native evolution of the security and compliance role.</p>
+        <div class="role-name">Context Stabilization</div>
+        <p class="role-body">Curating the context AI systems depend on and keeping it stable across models, tools, and agents. Composed of context gathering, curation (which sources are authoritative, which versions current), ontology work (entity definitions, relationships, category boundaries), and stabilization across the surface area so the legal team's "contract" and the agent's "contract" don't silently diverge.</p>
       </div>
     </div>
-    <p><strong>The boundary most often confused:</strong> the platform engineer and the protocol designer. The platform engineer shapes what AI <em>can</em> do; the protocol designer shapes what AI is <em>allowed</em> to do, and how its outputs are checked. Collapsing them into a single role is the most reliable way to let capability outpace accountability.</p>
   </main>
   <span class="slide-page">19</span>
 </section>
