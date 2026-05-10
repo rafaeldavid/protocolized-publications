@@ -619,8 +619,8 @@
     /* ─── Pre-pilot checklist cards (Ch3) ────────────────────── */
     .checklist-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12pt;
+      grid-template-columns: 1fr;
+      gap: 8pt;
       margin: 10pt 0;
     }
     .checklist-card {
@@ -693,11 +693,11 @@
       margin: 0;
     }
 
-    /* ─── Evaluation criteria cards (Ch3, 2x2) ───────────────── */
+    /* ─── Evaluation criteria cards (Ch3, vertical stack) ────── */
     .criteria-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10pt 14pt;
+      grid-template-columns: 1fr;
+      gap: 8pt;
       margin: 8pt 0;
     }
     .criteria-card {
@@ -769,10 +769,10 @@
       color: var(--text);
     }
 
-    /* ─── Roles grid (Ch4, 3x2) ──────────────────────────────── */
+    /* ─── Roles grid (Ch4, 2x3) ──────────────────────────────── */
     .roles-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 12pt;
       margin: 10pt 0;
     }
@@ -1422,7 +1422,7 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
   </header>
-  <h2 class="slide-h1">Evaluation criteria for a candidate use case</h2>
+  <h2 class="slide-h1">Evaluating potential pilot use cases</h2>
   <main class="slide-body">
     <p class="lead-p">Not every shadow workflow is a good first pilot. A candidate is worth running when it meets all four conditions. Use cases that meet three or fewer should be parked.</p>
     <div class="criteria-grid">
@@ -1472,7 +1472,7 @@
     <div class="phase-grid">
       <div class="phase-card">
         <div class="phase-num">Phase 01</div>
-        <div class="phase-name">Evaluate</div>
+        <div class="phase-name">Forage</div>
         <div class="phase-meta">Approach</div>
         <div class="phase-content">Find champions among people already experimenting on their own time. Install missing prerequisites and connect data sources so they move past plain chatbots.</div>
         <div class="phase-meta">Timeline</div>
@@ -1516,36 +1516,36 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
-  <h2 class="slide-h1">Six roles, one boundary that matters</h2>
+  <h2 class="slide-h1">Six roles emerging in AI-native organizations</h2>
   <main class="slide-body">
-    <p class="lead-p">Six roles carry the work across the three phases. Some are full-time positions; others are responsibilities assigned to existing staff. The cleanest implementations name the role-holder explicitly in writing.</p>
+    <p class="lead-p">These are the durable roles mature AI-adopting organizations build toward, not pilot-only positions but the disciplines an AI-native org chart begins to require. Some evolve from existing functions; others are new. The cleanest implementations name the role-holder in writing and define the scope independent of who currently fills it.</p>
     <div class="roles-grid">
       <div class="role-card">
-        <div class="role-name">Executive sponsor</div>
-        <p class="role-body">Budget authority; clears organizational obstacles; signs off on scale decisions.</p>
+        <div class="role-name">Chief AI Officer</div>
+        <p class="role-body">Owns AI strategy at the executive level; allocates capital across platform, talent, and governance; signs off on the organizational AI risk register.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Adoption lead</div>
-        <p class="role-body">Owns the program end to end; runs the audit; runs the check-ins; reports to sponsor.</p>
+        <div class="role-name">AI Platform Engineer</div>
+        <p class="role-body">Runs the model gateway, evaluation harness, prompt and skill registries, and cost controls. The AI equivalent of cloud or data platform engineering.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Function champion</div>
-        <p class="role-body">A motivated user inside a function who chooses the pilot use case and writes the first kits.</p>
+        <div class="role-name">Forward Deployed Engineer</div>
+        <p class="role-body">Embedded inside a function; builds and maintains the AI workflows that function depends on; bridges platform capability and domain need.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Kit owner</div>
-        <p class="role-body">The person responsible for a specific promoted kit's evolution; updates it; fields questions.</p>
+        <div class="role-name">Protocol Designer</div>
+        <p class="role-body">Designs verification checkpoints, escalation paths, and accountability boundaries for AI handoffs. Produces the protocols organizational policies depend on.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Protocol designer <span style="font-weight: 400; font-size: var(--fs-caption); color: var(--text-tertiary);">(FDE-equivalent)</span></div>
-        <p class="role-body">Embedded in a function; identifies which kits are worth formalizing; designs verification checkpoints.</p>
+        <div class="role-name">Kit Owner</div>
+        <p class="role-body">Owns a specific promoted AI workflow used across teams; updates it as models change; tracks usage and quality.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Security reviewer</div>
-        <p class="role-body">Owns the data-handling, connector, and audit review; gates phase entries on readiness.</p>
+        <div class="role-name">AI Risk Officer</div>
+        <p class="role-body">Owns model risk and compliance: data handling, output verification, regulatory boundaries, vendor due diligence. The AI-native evolution of the security and compliance role.</p>
       </div>
     </div>
-    <p><strong>The boundary that matters:</strong> the adoption lead does not pick the use case. The adoption lead picks the <em>champion</em>, the <em>function</em>, and the <em>evaluation rubric</em>. The use case is the champion's call, audited but not assigned. This is the operational form of <em>kit harvesting over central design</em>.</p>
+    <p><strong>The boundary most often confused:</strong> the platform engineer and the protocol designer. The platform engineer shapes what AI <em>can</em> do; the protocol designer shapes what AI is <em>allowed</em> to do, and how its outputs are checked. Collapsing them into a single role is the most reliable way to let capability outpace accountability.</p>
   </main>
   <span class="slide-page">19</span>
 </section>
