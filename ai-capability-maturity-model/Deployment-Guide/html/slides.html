@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adopting AI within your organization — Slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --text-tertiary:  #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+
+      --tint-foreword:  #f0e8d4;
+      --tint-ch1:       #e9e1f2;
+      --tint-ch2:       #d6e6dc;
+      --tint-ch3:       #efe4cc;
+      --tint-ch4:       #cfc1e6;
+      --tint-ch5:       #f0d9d8;
+      --tint-ch7:       #d8d8de;
+      --tint-ch8:       #cfe0e2;
+
+      /* ── Type scale ───────────────────────────────────────────
+         8 sizes total, ratio ≈ 1.4 between display steps,
+         ≈ 1.2 between heading/body steps. Mono for display
+         and labels; sans for body and most subheadings.
+
+         Display     — slide-level titles (cover, section, H1)
+         Heading-1   — card display names (phase, role, icon-type)
+         Heading-2   — subtitles, lead paragraphs, sub-headings
+         Body        — main reading text and card titles
+         Body-sm     — compact body, tables, secondary text
+         Caption     — labels, page numbers, pills, meta
+      ─────────────────────────────────────────────────────────── */
+      --fs-display-1: 44pt;   /* Cover title */
+      --fs-display-2: 30pt;   /* Section title slides · Contents */
+      --fs-display-3: 20pt;   /* Content slide H1 · split column titles */
+      --fs-heading-1: 16pt;   /* Card display names · large icons · numbers */
+      --fs-heading-2: 13pt;   /* Subtitles · lead paragraphs · blockquotes */
+      --fs-body:      11pt;   /* Body paragraphs · card titles · contents list */
+      --fs-body-sm:   10pt;   /* Compact body · table cells · card body */
+      --fs-caption:   8pt;    /* Labels · page numbers · pills · meta */
+
+      --lh-display:   1.08;
+      --lh-heading:   1.25;
+      --lh-body:      1.55;
+      --lh-caption:   1.4;
+    }
+
+    @page {
+      size: 11in 8.5in;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0 48px;
+    }
+
+    .slide {
+      width: 11in;
+      height: 8.5in;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      page-break-after: always;
+      break-after: page;
+      box-shadow: 0 4px 24px rgba(26,26,46,0.10);
+      flex-shrink: 0;
+    }
+    .slide:last-child { page-break-after: avoid; break-after: auto; }
+
+    /* ─── Page number (bottom right only) ────────────────────── */
+    .slide-page {
+      position: absolute;
+      bottom: 0.4in;
+      right: 0.7in;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Cover ──────────────────────────────────────────────── */
+    .slide-cover {
+      background: var(--tint-foreword);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* ── Cover quilt ──────────────────────────────────────────
+       True tessellation: 14 patches share edges in a CSS Grid.
+       Cell tracks are uneven (1.0fr–1.4fr) for an improvised feel.
+       Each patch gets an irregular polygon clip-path that cuts
+       its corners at different angles. The 5px grid gap plus the
+       dark grid background show through as visible stitching
+       between patches and inside the corner clips.
+    ─────────────────────────────────────────────────────────── */
+    .cover-collage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4.5in;
+      display: grid;
+      grid-template-columns: 1.4fr 1.2fr 1.3fr 1.0fr 1.4fr 1.1fr;
+      grid-template-rows: 1.2fr 1.0fr 1.3fr 1.0fr 1.1fr;
+      gap: 5px;
+      background: var(--text);
+      overflow: hidden;
+    }
+    .cover-collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+    }
+    /* Each patch: grid placement + an irregular polygon clip giving 4–5% corner cuts. */
+    .cover-img-1  { grid-area: 1 / 1 / 3 / 3; clip-path: polygon(4% 0, 100% 3%, 96% 100%, 0 95%); }
+    .cover-img-2  { grid-area: 1 / 3 / 2 / 5; clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 100%); }
+    .cover-img-3  { grid-area: 2 / 3 / 3 / 5; clip-path: polygon(5% 0, 95% 4%, 100% 100%, 0 96%); }
+    .cover-img-4  { grid-area: 3 / 1 / 5 / 2; clip-path: polygon(0 0, 100% 5%, 95% 100%, 0 96%); }
+    .cover-img-5  { grid-area: 1 / 5 / 2 / 6; clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 95%); }
+    .cover-img-6  { grid-area: 1 / 6 / 2 / 7; clip-path: polygon(0 4%, 95% 0, 100% 96%, 5% 100%); }
+    .cover-img-7  { grid-area: 2 / 5 / 3 / 7; clip-path: polygon(0 5%, 100% 0, 96% 100%, 4% 100%); }
+    .cover-img-8  { grid-area: 3 / 2 / 5 / 4; clip-path: polygon(3% 0, 100% 0, 96% 100%, 0 95%); }
+    .cover-img-9  { grid-area: 4 / 4 / 6 / 5; clip-path: polygon(0 5%, 95% 0, 100% 96%, 5% 100%); }
+    .cover-img-10 { grid-area: 3 / 6 / 4 / 7; clip-path: polygon(5% 0, 100% 5%, 95% 100%, 0 95%); }
+    .cover-img-11 { grid-area: 3 / 4 / 4 / 6; clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 95%); }
+    .cover-img-12 { grid-area: 4 / 5 / 6 / 6; clip-path: polygon(0 4%, 100% 0, 95% 100%, 5% 96%); }
+    .cover-img-13 { grid-area: 4 / 6 / 6 / 7; clip-path: polygon(4% 0, 100% 5%, 96% 100%, 0 95%); }
+    .cover-img-14 { grid-area: 5 / 1 / 6 / 4; clip-path: polygon(0 0, 96% 4%, 100% 100%, 5% 95%); }
+
+    .cover-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5in 0.85in 0.55in;
+      background: linear-gradient(to top, var(--tint-foreword) 0%, var(--tint-foreword) 80%, rgba(240,232,212,0) 100%);
+      z-index: 10;
+    }
+    .cover-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 0.18in;
+    }
+    .cover-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-1);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin: 0 0 0.18in;
+      max-width: 9.3in;
+      text-wrap: balance;
+    }
+    .cover-sub {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading-2);
+      line-height: 1.45;
+      color: var(--text);
+      max-width: 7.5in;
+      margin-bottom: 0.22in;
+    }
+    .cover-meta {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Contents ───────────────────────────────────────────── */
+    .slide-contents { padding: 0.85in 0.85in 0.6in; }
+    .contents-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4in;
+    }
+    .contents-list { list-style: none; max-width: 8in; }
+    .contents-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 8pt 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: var(--fs-body);
+      line-height: 1.4;
+    }
+    .contents-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--text-tertiary);
+      width: 28px;
+      flex-shrink: 0;
+    }
+    .contents-name { flex: 1; color: var(--text); }
+    .contents-page {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Section title slide ────────────────────────────────── */
+    .slide-section {
+      padding: 0;
+      position: relative;
+      display: block;
+    }
+    .slide-section-text {
+      position: absolute;
+      left: 0.85in;
+      right: 0.85in;
+      bottom: 1.05in;
+      z-index: 2;
+    }
+    .slide-section-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      border: 1px solid var(--text);
+      border-radius: 999px;
+      padding: 4pt 12pt;
+      margin-bottom: 0.2in;
+    }
+    .slide-section-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0;
+      max-width: 9.3in;
+      text-wrap: balance;
+    }
+    .slide-section-image-diagonal {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7.5in;
+      height: 6.2in;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      z-index: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    .slide-section-image-diagonal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-section.ch-foreword { background: var(--tint-foreword); }
+    .slide-section.ch-1 { background: var(--tint-ch1); }
+    .slide-section.ch-2 { background: var(--tint-ch2); }
+    .slide-section.ch-3 { background: var(--tint-ch3); }
+    .slide-section.ch-4 { background: var(--tint-ch4); }
+    .slide-section.ch-5 { background: var(--tint-ch5); }
+    .slide-section.ch-7 { background: var(--tint-ch7); }
+    .slide-section.ch-8 { background: var(--tint-ch8); }
+
+    /* ─── Content slide ──────────────────────────────────────── */
+    .slide-content {
+      padding: 0.55in 0.7in 0.55in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-header {
+      margin-bottom: 0.18in;
+      padding-bottom: 6pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-header-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+    }
+    .slide-header-pill::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translateY(-1px);
+    }
+
+    .slide-h1 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-3);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin: 0.05in 0 0.18in;
+      text-wrap: balance;
+    }
+
+    .slide-body {
+      flex: 1;
+      overflow: hidden;
+      padding-bottom: 0.4in;
+    }
+
+    .slide-body p,
+    .slide-body ul,
+    .slide-body ol {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      margin-bottom: 7pt;
+      color: var(--text);
+    }
+    .slide-body p:last-child,
+    .slide-body ul:last-child,
+    .slide-body ol:last-child { margin-bottom: 0; }
+    .slide-body ul, .slide-body ol { padding-left: 16pt; }
+    .slide-body li { margin-bottom: 3pt; }
+
+    .slide-body h3 {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading-2);
+      font-weight: 600;
+      margin: 12pt 0 5pt;
+      line-height: var(--lh-heading);
+    }
+    .slide-body h3:first-child { margin-top: 0; }
+
+    .slide-body em { font-style: italic; }
+    .slide-body strong { font-weight: 600; }
+    .slide-body code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      background: var(--surface);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .slide-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 5pt 12pt;
+      margin: 8pt 0;
+      background: var(--accent-light);
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
+    }
+
+    /* ─── Tables ─────────────────────────────────────────────── */
+    .slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-body-sm);
+      line-height: 1.4;
+      margin: 5pt 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .slide-table th, .slide-table td {
+      text-align: left;
+      padding: 5pt 7pt;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-table tr:last-child td { border-bottom: none; }
+    .slide-table th {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: var(--fs-caption);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--surface);
+    }
+
+    .term { border-bottom: 1px dashed var(--accent); }
+
+    /* ─── Split slide (2-col with rule between) ──────────────── */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 32pt;
+      height: 100%;
+    }
+    .split-col {
+      padding-right: 4pt;
+      border-right: 1px solid var(--border-soft);
+      padding-left: 4pt;
+    }
+    .split-col:last-child {
+      border-right: none;
+      padding-left: 28pt;
+      padding-right: 0;
+    }
+    .split-col:first-child { padding-left: 0; padding-right: 28pt; }
+    .split-col-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin: 0 0 14pt;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    /* ─── Magazine-style prose layout (2/3-column) ───────────── */
+    .slide-subtitle {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading-2);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin: -2pt 0 14pt;
+      max-width: 8.5in;
+      text-wrap: balance;
+      padding-bottom: 10pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-body-cols-3 {
+      column-count: 3;
+      column-gap: 26pt;
+      column-rule: 1px solid var(--border-soft);
+    }
+    .slide-body-cols-2 {
+      column-count: 2;
+      column-gap: 30pt;
+      column-rule: 1px solid var(--border-soft);
+    }
+    .slide-body-cols-3 p,
+    .slide-body-cols-2 p {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      font-size: var(--fs-body);
+      line-height: 1.55;
+      margin-bottom: 8pt;
+    }
+    .slide-body-cols-3 p:first-child::first-line,
+    .slide-body-cols-2 p:first-child::first-line {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── Level callout (legacy, kept for fallback) ──────────── */
+    .level-callout {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 7pt 12pt;
+      margin: 6pt 0;
+    }
+    .level-callout-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      display: block;
+      margin-bottom: 2pt;
+    }
+    .level-callout p { font-size: var(--fs-body-sm); line-height: 1.4; margin: 0; }
+
+    /* ─── Level intro (image + lead) ─────────────────────────── */
+    .level-intro {
+      display: grid;
+      grid-template-columns: 1fr 2.6in;
+      gap: 18pt;
+      align-items: start;
+      margin-bottom: 12pt;
+    }
+    .level-intro .lead-p { margin-bottom: 0; }
+    .level-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      background: var(--surface);
+    }
+    .level-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── Level cards (Ch2 level slides — 2x2 grid) ──────────── */
+    .level-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12pt;
+      margin-top: 10pt;
+    }
+    .level-card {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12pt 16pt;
+    }
+    .level-card-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 5pt;
+    }
+    .level-card p {
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      margin: 0;
+      color: var(--text);
+    }
+    .lead-p {
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      margin-bottom: 8pt;
+    }
+
+    /* ─── Pre-pilot checklist cards (Ch3) ────────────────────── */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12pt;
+      margin: 10pt 0;
+    }
+    .checklist-card {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12pt 16pt;
+      display: flex;
+      gap: 12pt;
+      align-items: flex-start;
+    }
+    .checklist-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2pt;
+    }
+    .checklist-question {
+      font-size: var(--fs-body);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 6pt;
+      color: var(--text);
+    }
+    .checklist-pass {
+      font-size: var(--fs-body-sm);
+      line-height: 1.4;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* ─── Audit steps (Ch3, 3-col) ───────────────────────────── */
+    .audit-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14pt;
+      margin: 10pt 0;
+    }
+    .audit-step {
+      background: var(--surface);
+      border-top: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14pt 16pt;
+    }
+    .audit-step-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6pt;
+    }
+    .audit-step-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      margin-bottom: 8pt;
+      line-height: 1.2;
+    }
+    .audit-step-body {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* ─── Evaluation criteria cards (Ch3, 2x2) ───────────────── */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10pt 14pt;
+      margin: 8pt 0;
+    }
+    .criteria-card {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 10pt 14pt;
+    }
+    .criteria-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      margin-bottom: 5pt;
+      color: var(--text);
+    }
+    .criteria-card p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      margin: 0;
+      color: var(--text);
+    }
+
+    /* ─── Phase cards (Ch4, 3-col) ───────────────────────────── */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14pt;
+      margin: 10pt 0;
+    }
+    .phase-card {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-top: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14pt 16pt;
+      display: flex;
+      flex-direction: column;
+    }
+    .phase-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .phase-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 4pt 0 10pt;
+      line-height: 1.1;
+    }
+    .phase-meta {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 8pt;
+      margin-bottom: 3pt;
+    }
+    .phase-meta:first-of-type { margin-top: 0; }
+    .phase-content {
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    /* ─── Roles grid (Ch4, 3x2) ──────────────────────────────── */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12pt;
+      margin: 10pt 0;
+    }
+    .role-card {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 11pt 14pt;
+    }
+    .role-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      margin-bottom: 6pt;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .role-body {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* ─── Pairing rows (Ch7) ─────────────────────────────────── */
+    .pairing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10pt;
+      margin: 10pt 0;
+    }
+    .pairing {
+      display: grid;
+      grid-template-columns: 1fr 0.6in 1fr;
+      gap: 12pt;
+      align-items: center;
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 10pt 16pt 12pt;
+    }
+    .pairing-side {
+      display: flex;
+      align-items: center;
+      gap: 12pt;
+    }
+    .pairing-icon-success,
+    .pairing-icon-failure {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .pairing-icon-success { color: #4a7560; }
+    .pairing-icon-failure { color: #a35f48; }
+    .pairing-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .pairing-arrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      color: var(--text-tertiary);
+      text-align: center;
+      font-weight: 400;
+    }
+    .pairing-trade {
+      grid-column: 1 / span 3;
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      font-style: italic;
+      line-height: 1.45;
+      padding-top: 8pt;
+      margin-top: 4pt;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    /* ─── Pattern cards (Ch7) ────────────────────────────────── */
+    .slide-pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12pt;
+      margin-top: 4pt;
+    }
+    .slide-pattern-card {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-top: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 11pt 13pt;
+    }
+    .slide-pattern-card.success { border-top-color: #5a8a73; }
+    .slide-pattern-card.failure { border-top-color: #c07458; }
+    .slide-pattern-card-icon {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      line-height: 1;
+      margin-bottom: 6pt;
+      color: var(--text);
+    }
+    .slide-pattern-card.success .slide-pattern-card-icon { color: #4a7560; }
+    .slide-pattern-card.failure .slide-pattern-card-icon { color: #a35f48; }
+    .slide-pattern-card-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 5pt;
+      line-height: var(--lh-heading);
+    }
+    .slide-pattern-card-tag {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 7pt;
+      line-height: 1.45;
+    }
+    .slide-pattern-card-body {
+      font-size: var(--fs-body-sm);
+      line-height: var(--lh-body);
+      color: var(--text);
+    }
+    .slide-pattern-card-body p { margin-bottom: 0; font-size: var(--fs-body-sm); }
+
+    /* ─── Case study slide layout ────────────────────────────── */
+    .case-slide-wrapper {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-top: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 18pt 24pt;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22pt 28pt;
+      align-content: start;
+    }
+    .case-slide-header {
+      grid-column: 1 / span 2;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .case-slide-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 4pt;
+    }
+    .case-slide-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin: 0 0 4pt;
+    }
+    .case-slide-frame-line {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      font-style: italic;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .case-slide-section h5 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 0 0 6pt;
+    }
+    .case-slide-section p,
+    .case-slide-section ul {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      margin-bottom: 5pt;
+    }
+    .case-slide-section p:last-child,
+    .case-slide-section ul:last-child { margin-bottom: 0; }
+    .case-slide-section ul { padding-left: 14pt; }
+    .case-slide-section li { margin-bottom: 3pt; }
+    .case-slide-section blockquote {
+      margin: 6pt 0;
+      padding: 5pt 10pt;
+      font-size: var(--fs-caption);
+      font-style: italic;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-light);
+      border-radius: 0 4px 4px 0;
+      line-height: 1.4;
+    }
+    .case-slide-section.span-2 { grid-column: 1 / span 2; }
+
+    /* ─── Print rules ────────────────────────────────────────── */
+    @media print {
+      html, body { background: white; }
+      body { margin: 0; padding: 0; }
+      .deck { gap: 0; padding: 0; }
+      .slide {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+      .slide:last-child { page-break-after: avoid; break-after: auto; }
+    }
+
+    @media screen {
+      body { background: #d4d4d8; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ─── 01 — Cover ──────────────────────────────────────────── -->
+<section class="slide slide-cover">
+  <div class="cover-collage" aria-hidden="true">
+    <img class="cover-img-1"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/theorizing-protocolization.png" alt="">
+    <img class="cover-img-2"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/from-destination-ai-to-intelligence-media.png" alt="">
+    <img class="cover-img-3"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/mechanical-currents.jpeg" alt="">
+    <img class="cover-img-4"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/have-your-factory-call-my-factory.png" alt="">
+    <img class="cover-img-5"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/finding-fault-lines.jpg" alt="">
+    <img class="cover-img-6"  src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/constructing-the-evil-twin-of-ai.png" alt="">
+    <img class="cover-img-7"  src="https://substack-post-media.s3.amazonaws.com/public/images/f864098f-8365-430b-98b2-7507d2d06419_1129x1129.png" alt="">
+    <img class="cover-img-8"  src="https://substack-post-media.s3.amazonaws.com/public/images/3cd212b7-cc96-4504-a750-824f409e8f30_1200x630.png" alt="">
+    <img class="cover-img-9"  src="https://substack-post-media.s3.amazonaws.com/public/images/80a162ef-2938-4798-b86d-687cb4067815_1200x630.png" alt="">
+    <img class="cover-img-10" src="https://substack-post-media.s3.amazonaws.com/public/images/d1219068-3c81-483e-b66f-a36ca89a46c4_1200x630.png" alt="">
+    <img class="cover-img-11" src="https://substack-post-media.s3.amazonaws.com/public/images/d71f7a50-2c22-469d-9909-b6b4c5094de6_1129x1129.png" alt="">
+    <img class="cover-img-12" src="https://substack-post-media.s3.amazonaws.com/public/images/ce2f2d1a-eb49-4524-9669-351cd4efae0c_1024x630.png" alt="">
+    <img class="cover-img-13" src="https://substack-post-media.s3.amazonaws.com/public/images/6ea17520-ef13-4eba-9bf4-61f3ec7ec79f_1200x630.png" alt="">
+    <img class="cover-img-14" src="https://substack-post-media.s3.amazonaws.com/public/images/f5568e8a-e3e2-4f6e-aba0-a3965b39c2aa_1200x630.png" alt="">
+  </div>
+  <div class="cover-text">
+    <div class="cover-eyebrow">The Protocol Institute · Protocols for Business Practice</div>
+    <h1 class="cover-title">Adopting AI within your organization</h1>
+    <p class="cover-sub">A practical guide for understanding, and accelerating, AI adoption through the lens of protocols, with use cases and lessons from the Protocol Institute and other organizations.</p>
+    <div class="cover-meta">v0.5 · May 2026</div>
+  </div>
+</section>
+
+<!-- ─── 02 — Contents ───────────────────────────────────────── -->
+<section class="slide slide-contents">
+  <h2 class="contents-title">Contents</h2>
+  <ol class="contents-list">
+    <li><span class="contents-num">00</span><span class="contents-name">Foreword: The evolution of AI at work</span><span class="contents-page">04</span></li>
+    <li><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">06</span></li>
+    <li><span class="contents-num">02</span><span class="contents-name">An adoption model in five levels</span><span class="contents-page">08</span></li>
+    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">14</span></li>
+    <li><span class="contents-num">04</span><span class="contents-name">Driving AI adoption at scale</span><span class="contents-page">18</span></li>
+    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">22</span></li>
+    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">25</span></li>
+    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">29</span></li>
+    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">31</span></li>
+  </ol>
+  <span class="slide-page">02</span>
+</section>
+
+<!-- ─── 03 — Foreword section title ─────────────────────────── -->
+<section class="slide slide-section ch-foreword">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Foreword</span>
+    <h1 class="slide-section-title">The evolution of AI at work</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/from-destination-ai-to-intelligence-media.png" alt="">
+  </div>
+  <span class="slide-page">03</span>
+</section>
+
+<!-- ─── 04 — Foreword body ──────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Foreword · The evolution of AI at work</span>
+  </header>
+  <h2 class="slide-h1">The evolution of AI at work</h2>
+  <p class="slide-subtitle">Most organizations crossed every boundary of AI at work without a framework of orientation. This guide is one.</p>
+  <main class="slide-body">
+    <div class="slide-body-cols-2">
+      <p>AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours. The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.</p>
+      <p>In just a few years, AI has evolved from a chat window to agentic tools moved into developer workflows. Now, the same pattern reached every other function — analysts, lawyers, marketers, account executives — moving from a chatbot you ask a question to an agent that delegates work end to end. Most of us have been unsure if we're getting better at adoption or just busier.</p>
+      <p>Over the last year, the Protocols for Business Special Interest Group of the Protocol Institute has been building that orientation framework. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. The patterns are field-tested and meant to be lifted into your own context.</p>
+      <p>Before you dive in: AI is not a tool, a platform, or a product. It is a technology paradigm — a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <em>deployment</em> is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself. This guide is about <em>adoption</em>.</p>
+    </div>
+  </main>
+  <span class="slide-page">04</span>
+</section>
+
+<!-- ─── 05 — Ch1 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-1">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 1</span>
+    <h1 class="slide-section-title">Introducing the AI Adoption Guide</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/theorizing-protocolization.png" alt="">
+  </div>
+  <span class="slide-page">05</span>
+</section>
+
+<!-- ─── 06 — Ch1 body ───────────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 1 · Introducing the AI Adoption Guide</span>
+  </header>
+  <h2 class="slide-h1">Introducing the AI Adoption Guide</h2>
+  <p class="slide-subtitle">AI is a technology paradigm, not a product. The failure modes that follow from treating it like enterprise software are predictable.</p>
+  <main class="slide-body">
+    <div class="slide-body-cols-2">
+      <p>Most enterprises are discussing and planning for <span class="term">AI</span> as if it were a next enterprise software productivity solution. It is not, and the failure modes that follow from that assumption are predictable.</p>
+      <p>AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance. Deterministic software has bugs whose modes are, at least in principle, enumerable. AI failures are not, because the distribution shifts with every model update, input domain, context length, and tooling configuration. The correct response to AI uncertainty is protocol design.</p>
+      <p>This property breaks the conventional <span class="term">governance</span> model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. The right framing is thinking in <span class="term">protocols</span>: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.</p>
+      <p>A useful frame from the Protocol Institute's launch essay: protocols are <em>infrastructural technologies for producing non-events</em>. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification. Karl Weick called these <span class="term"><em>dynamic non-events</em></span>: outcomes whose absence is invisible until the protocol fails to produce them.</p>
+      <p>The capability <span class="term">maturity</span> of an AI-adopting organization is the precision with which its protocols produce those non-events. Precision is uneven across functions, and the function with the largest gap between AI exposure and protocol precision is the <span class="term">bottleneck</span> for the whole organization. The chapters that follow trace the five levels along which precision grows, the patterns that drive it, and the failure modes that recur when an organization tries to skip a level.</p>
+    </div>
+  </main>
+  <span class="slide-page">06</span>
+</section>
+
+<!-- ─── 07 — Ch2 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-2">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 2</span>
+    <h1 class="slide-section-title">An adoption model in five levels</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://substack-post-media.s3.amazonaws.com/public/images/f864098f-8365-430b-98b2-7507d2d06419_1129x1129.png" alt="">
+  </div>
+  <span class="slide-page">07</span>
+</section>
+
+<!-- ─── 08 — Ch2 levels overview (4-col table from index.html) -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Five levels at a glance</h2>
+  <main class="slide-body">
+    <p>Five levels describe how organizations move from invisible AI use to AI as coordination infrastructure. Each has a governing protocol, a blind spot that protocol creates, and a failure mode predictable from the limits of the protocol. The next five slides expand each level.</p>
+    <table class="slide-table">
+      <thead>
+        <tr><th>Level</th><th>What it looks like</th><th>Example</th><th>Historical parallel</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>01 · Shadow</strong></td>
+          <td>AI in use through personal accounts; no monitoring, no governing policy.</td>
+          <td>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — discovered after the fact, banned enterprise-wide.</td>
+          <td>Late 1990s — personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous.</td>
+        </tr>
+        <tr>
+          <td><strong>02 · Kit</strong></td>
+          <td>Access policy in place; users encoding workflows into reusable kits; productivity invisible to dashboards.</td>
+          <td>Klarna's 2023–2025 deployment hit 90% daily AI adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 citing outputs "generic, repetitive, insufficiently nuanced."</td>
+          <td>Early 20th century — rural users repurposed automobiles as corn shellers, washing machines, and water pumps; the kit phase produced the human capital later integration capitalized on.</td>
+        </tr>
+        <tr>
+          <td><strong>03 · Designed</strong></td>
+          <td>Workflows built around AI with named owners, quality metrics, and escalation paths.</td>
+          <td>Uber engineering, March 2026: 84% agentic-coding adoption, 65–72% of code AI-generated, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review.</td>
+          <td>2008–2015 — software teams redesigned workflows around git and CI/CD. Domain expertise became the limiting constraint.</td>
+        </tr>
+        <tr>
+          <td><strong>04 · Infrastructural</strong></td>
+          <td>AI is a sector baseline; coordination challenge crosses organizational boundaries.</td>
+          <td>Walmart's 1990s mandate of EDI for all suppliers — not adopting EDI meant not participating in the market; one supply-chain failure could propagate across hundreds of trading partners.</td>
+          <td>Late 1980s–1990s — EDI in retail and SWIFT in finance. Each became table stakes; each created the failure modes that follow from shared infrastructure.</td>
+        </tr>
+        <tr>
+          <td><strong>05 · Planetary</strong></td>
+          <td>AI integrated into civilization-scale systems; legibility is the governance challenge.</td>
+          <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally before any organization could respond, because the protocol stack had grown opaque to its own operators.</td>
+          <td>1980s to present — TCP/IP and BGP were designed for cooperative use among a small number of well-resourced operators; planetary-scale use produced the legibility problem.</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <span class="slide-page">08</span>
+</section>
+
+<!-- ─── 09 — L1 Shadow ──────────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Level 01 · Shadow</h2>
+  <main class="slide-body">
+    <div class="level-intro">
+      <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
+      <div class="level-image">
+        <img src="https://substack-post-media.s3.amazonaws.com/public/images/d1219068-3c81-483e-b66f-a36ca89a46c4_1200x630.png" alt="">
+      </div>
+    </div>
+    <div class="level-card-grid">
+      <div class="level-card">
+        <span class="level-card-label">Blind spot</span>
+        <p>No coordination mechanism specifies what tools may be used, what data may be submitted, what outputs require review, or who is accountable. The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines; both are invisible.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Failure mode</span>
+        <p>Unaccountable AI access. AI systems operate with organizational data and produce outputs entering organizational decisions without any protocol governing accountability.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Anchor case</span>
+        <p>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — discovered after the fact, banned enterprise-wide. Reco.ai (2025): 71% of enterprise employees use unauthorized AI tools, with a 400-day average discovery lag.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Historical parallel · late 1990s</span>
+        <p>Personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous. Resolved through IT-provisioned corporate email with governance.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">09</span>
+</section>
+
+<!-- ─── 10 — L2 Kit ─────────────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Level 02 · Kit</h2>
+  <main class="slide-body">
+    <div class="level-intro">
+      <p class="lead-p">Leadership has decided AI adoption is strategically necessary and granted broad access. Enterprise licenses are in place; an access policy exists; integration accelerates. Underneath the policy, users are encoding workflows into <em>kits</em> — reusable components (markdown skills, prompt templates, scheduled jobs, shared notebooks) that make AI behave the same way the same time on the same task.</p>
+      <div class="level-image">
+        <img src="https://substack-post-media.s3.amazonaws.com/public/images/d71f7a50-2c22-469d-9909-b6b4c5094de6_1129x1129.png" alt="">
+      </div>
+    </div>
+    <div class="level-card-grid">
+      <div class="level-card">
+        <span class="level-card-label">Blind spot</span>
+        <p>The kit layer itself. Dashboards measure license utilization, not the user-encoded components doing the actual productivity work. Two organizations with identical license utilization but different kit layers underneath end up at different places.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Failure mode</span>
+        <p>Access-without-output-governance. As AI becomes entrenched in customer communications, financial models, meeting notes, and contracting, output quality is determined by individual judgment.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Anchor case</span>
+        <p>Klarna's 2023–2025 deployment hit 90% daily AI adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 citing outputs "generic, repetitive, insufficiently nuanced." Anthropic's legal team self-reports the inverse: extended capability through a plugin built on the team's actual memos and risk frameworks.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Historical parallel · early 20th century</span>
+        <p>Rural users repurposed automobiles as corn shellers, washing machines, and water pumps from 1903 to 1950. Their interpretive flexibility (Kline and Pinch) drove Ford to release dedicated trucks. The kit phase produced the human capital later integration capitalized on.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">10</span>
+</section>
+
+<!-- ─── 11 — L3 Designed ────────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Level 03 · Designed</h2>
+  <main class="slide-body">
+    <div class="level-intro">
+      <p class="lead-p">AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em> Workflows have defined input standards, output verification checkpoints, escalation triggers, and feedback loops.</p>
+      <div class="level-image">
+        <img src="https://substack-post-media.s3.amazonaws.com/public/images/ce2f2d1a-eb49-4524-9669-351cd4efae0c_1024x630.png" alt="">
+      </div>
+    </div>
+    <div class="level-card-grid">
+      <div class="level-card">
+        <span class="level-card-label">Blind spot</span>
+        <p>Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, with external partners, or with regulators operating at different speeds.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Failure mode</span>
+        <p>Temporal divergence. AI accelerates some workflows while external dependencies — client review cycles, regulatory response, cross-functional handoffs — remain at a different pace.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Anchor case</span>
+        <p>Uber engineering, March 2026: 84% agentic-coding adoption, 65–72% of code AI-generated, 11% of pull requests opened by agents. The bottleneck shifted from coding to review; Uber built two protocol systems — Code Inbox and U Review — to absorb the new tempo. Boom Supersonic illustrates the same pattern in a safety-critical domain.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Historical parallel · 2008–2015</span>
+        <p>Software teams redesigned workflows around git and CI/CD. Domain expertise — what a good code review looks like — became the limiting constraint.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">11</span>
+</section>
+
+<!-- ─── 12 — L4 Infrastructural ─────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Level 04 · Infrastructural</h2>
+  <main class="slide-body">
+    <div class="level-intro">
+      <p class="lead-p">AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards. Trading partners, regulators, and competitors operate within shared interfaces.</p>
+      <div class="level-image">
+        <img src="https://substack-post-media.s3.amazonaws.com/public/images/6ea17520-ef13-4eba-9bf4-61f3ec7ec79f_1200x630.png" alt="">
+      </div>
+    </div>
+    <div class="level-card-grid">
+      <div class="level-card">
+        <span class="level-card-label">Blind spot</span>
+        <p>What an organization cannot see beyond its own boundary: second-order effects of sector-wide adoption, the shared attack surface, cascading failures when several organizations' protocols rest on a common assumption.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Failure mode</span>
+        <p>Sector fragility. The protocol that made the sector work also makes the sector vulnerable to a single point of failure.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Anchor case</span>
+        <p>Walmart's 1990s mandate of EDI for all suppliers — not adopting meant not participating in the market; one supply-chain failure could propagate across hundreds of trading partners. The 2017 NotPetya attack exploited the same shared-protocol surface in containerized shipping. Sector-scale AI adoption is at the equivalent of EDI's mandate phase.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Historical parallel · late 1980s–1990s</span>
+        <p>EDI in retail, SWIFT in finance. Each became table stakes; each created the failure modes that follow from shared infrastructure.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">12</span>
+</section>
+
+<!-- ─── 13 — L5 Planetary ───────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · An adoption model in five levels</span>
+  </header>
+  <h2 class="slide-h1">Level 05 · Planetary</h2>
+  <main class="slide-body">
+    <div class="level-intro">
+      <p class="lead-p">AI is embedded within civilization-scale coordination systems: supply chains, financial infrastructure, public health surveillance, energy grids. The governance challenge is legibility — understanding what the systems are doing well enough to intervene when they fail. No single actor controls the full system; coordination happens through layers of inherited protocol now operating at scales its designers did not anticipate.</p>
+      <div class="level-image">
+        <img src="https://substack-post-media.s3.amazonaws.com/public/images/f5568e8a-e3e2-4f6e-aba0-a3965b39c2aa_1200x630.png" alt="">
+      </div>
+    </div>
+    <div class="level-card-grid">
+      <div class="level-card">
+        <span class="level-card-label">Blind spot</span>
+        <p>Systemic. The failure modes are emergent properties of protocol interaction, not properties of any one component.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Failure mode</span>
+        <p>Legibility collapse. The system continues to function — most of the time — but no one can fully describe what it is doing or why.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Anchor case</span>
+        <p>The 2021 Facebook BGP misconfiguration took multiple platforms offline globally before any organization could respond. Internet protocols (TCP/IP, BGP) are the present-day case: trillion-dollar coordination flows, no actor controls them, the people who could explain how they work are aging out.</p>
+      </div>
+      <div class="level-card">
+        <span class="level-card-label">Historical parallel · 1980s to present</span>
+        <p>TCP/IP and BGP were designed for cooperative use among a small number of well-resourced operators. Their use at planetary scale produced the legibility problem they were not designed to handle.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">13</span>
+</section>
+
+<!-- ─── 14 — Ch3 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-3">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 3</span>
+    <h1 class="slide-section-title">Getting started with AI adoption</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/mechanical-currents.jpeg" alt="">
+  </div>
+  <span class="slide-page">14</span>
+</section>
+
+<!-- ─── 15 — Ch3 readiness check ────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
+  </header>
+  <h2 class="slide-h1">Pre-pilot readiness check</h2>
+  <main class="slide-body">
+    <p class="lead-p">Before identifying a use case, run a quick readiness check with the executive sponsor. The check is not about which use case is right; it is about whether the organization can support a real pilot at all.</p>
+    <div class="checklist-grid">
+      <div class="checklist-card">
+        <span class="checklist-num">01</span>
+        <div>
+          <div class="checklist-question">Has the organization completed a security and legal review of the most likely AI tools and data?</div>
+          <div class="checklist-pass">Pass: Data boundaries, connector permissions, legal alignment, and auditability documented.</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">02</span>
+        <div>
+          <div class="checklist-question">Does an executive sponsor exist with budget authority for the pilot?</div>
+          <div class="checklist-pass">Pass: Named individual; budget approved through Phase 2 (Months 2–3).</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">03</span>
+        <div>
+          <div class="checklist-question">Have two or three pilot teams been identified with motivated leads?</div>
+          <div class="checklist-pass">Pass: Champions named; their function leads aware and supportive.</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">04</span>
+        <div>
+          <div class="checklist-question">Are success metrics defined for <em>the pilot itself</em> — not the use case?</div>
+          <div class="checklist-pass">Pass: Specific, baselined, observable in weekly check-ins.</div>
+        </div>
+      </div>
+    </div>
+    <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
+  </main>
+  <span class="slide-page">15</span>
+</section>
+
+<!-- ─── 16 — Ch3 surface what is already happening ─────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
+  </header>
+  <h2 class="slide-h1">Surface what is already happening</h2>
+  <main class="slide-body">
+    <p class="lead-p">Most organizations are already at Level 1 — they simply cannot see it. The audit is a half-day exercise per function and does three things.</p>
+    <div class="audit-steps">
+      <div class="audit-step">
+        <span class="audit-step-num">Step 01</span>
+        <div class="audit-step-title">Find the shadow workflows</div>
+        <p class="audit-step-body">Ask each function lead, separately and informally: who on your team is already using AI for work, and on what? The answers — usually a handful of names per function — are your champion shortlist. These are people who have absorbed early failure on their own time.</p>
+      </div>
+      <div class="audit-step">
+        <span class="audit-step-num">Step 02</span>
+        <div class="audit-step-title">Find the unwritten processes</div>
+        <p class="audit-step-body">What does your most experienced person do that no one has written down? Where does the "I just know how" knowledge live? These are the candidate kits — work with a knowable pattern and a clear quality bar that runs often enough to repay encoding.</p>
+      </div>
+      <div class="audit-step">
+        <span class="audit-step-num">Step 03</span>
+        <div class="audit-step-title">Find the bottleneck</div>
+        <p class="audit-step-body">The function that matters is not the one with the most AI excitement but the one where AI exposure × stakes is highest and protocol precision is lowest. Usually visible to the people downstream of it.</p>
+      </div>
+    </div>
+    <p>The output of the audit is a short list of four to six candidate use cases, surfaced by each function's own champions. The deployment lead uncovers the list; the function chooses what to run.</p>
+  </main>
+  <span class="slide-page">16</span>
+</section>
+
+<!-- ─── 17 — Ch3 evaluation criteria + what not to do ──────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
+  </header>
+  <h2 class="slide-h1">Evaluation criteria for a candidate use case</h2>
+  <main class="slide-body">
+    <p class="lead-p">Not every shadow workflow is a good first pilot. A candidate is worth running when it meets all four conditions. Use cases that meet three or fewer should be parked.</p>
+    <div class="criteria-grid">
+      <div class="criteria-card">
+        <div class="criteria-name">Recurring</div>
+        <p>The work happens often enough — weekly or more — that a kit produced this quarter pays back this quarter.</p>
+      </div>
+      <div class="criteria-card">
+        <div class="criteria-name">Encodes tacit expertise</div>
+        <p>A domain expert can describe the steps if asked, but no one has written them down. Encoding the steps is the value, not speeding them up.</p>
+      </div>
+      <div class="criteria-card">
+        <div class="criteria-name">Observable result</div>
+        <p>The deliverable is concrete. Someone external can tell whether it improved. <em>Time from input to a draft the manager will accept</em> beats <em>more writing produced</em>.</p>
+      </div>
+      <div class="criteria-card">
+        <div class="criteria-name">Bounded blast radius</div>
+        <p>A bad output during the pilot is recoverable. The first kit is not the contract that goes to the regulator or the customer email that goes out automatically.</p>
+      </div>
+    </div>
+    <h3>What not to do</h3>
+    <p>The pattern that fails reliably is to pick the first use case from a vendor case study, a competitor announcement, or a framework like this one. Each is an artifact from a different organization, with a different fault-line, talent layer, and stakes. The right question is <em>whose unwritten process in this organization does AI most cleanly encode?</em></p>
+  </main>
+  <span class="slide-page">17</span>
+</section>
+
+<!-- ─── 18 — Ch4 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-4">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 4</span>
+    <h1 class="slide-section-title">Driving AI adoption at scale</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/have-your-factory-call-my-factory.png" alt="">
+  </div>
+  <span class="slide-page">18</span>
+</section>
+
+<!-- ─── 19 — Ch4 three-phase framework ──────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 4 · Driving AI adoption at scale</span>
+  </header>
+  <h2 class="slide-h1">The three-phase framework</h2>
+  <main class="slide-body">
+    <p class="lead-p">The pattern that produces durable adoption is <em>bottom-up discovery, top-down scale.</em> Champions discover the workflows that matter; the organization promotes what worked so that the next user inherits it. The two halves are not interchangeable.</p>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">Phase 01</div>
+        <div class="phase-name">Evaluate</div>
+        <div class="phase-meta">Timeline</div>
+        <div class="phase-content">Month 1</div>
+        <div class="phase-meta">Target</div>
+        <div class="phase-content">Champions identified — 2–3 motivated practitioners running real workflows on real data.</div>
+        <div class="phase-meta">Exit signal</div>
+        <div class="phase-content">Each champion team has produced a real deliverable on a real use case the champion chose.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 02</div>
+        <div class="phase-name">Seed</div>
+        <div class="phase-meta">Timeline</div>
+        <div class="phase-content">Months 2–6</div>
+        <div class="phase-meta">Target</div>
+        <div class="phase-content">Champions reach Level 2 (Kit) — encoding their workflows into reusable, shareable components.</div>
+        <div class="phase-meta">Exit signal</div>
+        <div class="phase-content">At least three named, owned, shared kits per pilot team.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 03</div>
+        <div class="phase-name">Harvest</div>
+        <div class="phase-meta">Timeline</div>
+        <div class="phase-content">Months 6+</div>
+        <div class="phase-meta">Target</div>
+        <div class="phase-content">Department reaches Level 3 (Designed) — kits promoted to shared infrastructure with named owners.</div>
+        <div class="phase-meta">Exit signal</div>
+        <div class="phase-content">Kit reuse measurable across teams; new hires inheriting workflows on day one.</div>
+      </div>
+    </div>
+    <p>Top-down attempts to skip the discovery half produce reported adoption without underlying kit growth — the most common failure mode in published case studies.</p>
+  </main>
+  <span class="slide-page">19</span>
+</section>
+
+<!-- ─── 20 — Ch4 named roles ────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 4 · Driving AI adoption at scale</span>
+  </header>
+  <h2 class="slide-h1">Named roles</h2>
+  <main class="slide-body">
+    <p class="lead-p">Six roles carry the work across the three phases. Some are full-time positions; others are responsibilities assigned to existing staff. The cleanest implementations name the role-holder explicitly in writing.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-name">Executive sponsor</div>
+        <p class="role-body">Budget authority; clears organizational obstacles; signs off on scale decisions.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Adoption lead</div>
+        <p class="role-body">Owns the program end to end; runs the audit; runs the check-ins; reports to sponsor.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Function champion</div>
+        <p class="role-body">A motivated user inside a function who chooses the pilot use case and writes the first kits.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Kit owner</div>
+        <p class="role-body">The person responsible for a specific promoted kit's evolution; updates it; fields questions.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Protocol designer <span style="font-weight: 400; font-size: var(--fs-caption); color: var(--text-tertiary);">(FDE-equivalent)</span></div>
+        <p class="role-body">Embedded in a function; identifies which kits are worth formalizing; designs verification checkpoints.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-name">Security reviewer</div>
+        <p class="role-body">Owns the data-handling, connector, and audit review; gates phase entries on readiness.</p>
+      </div>
+    </div>
+    <p><strong>The boundary that matters:</strong> the adoption lead does not pick the use case. The adoption lead picks the <em>champion</em>, the <em>function</em>, and the <em>evaluation rubric</em>. The use case is the champion's call, audited but not assigned. This is the operational form of <em>kit harvesting over central design</em>.</p>
+  </main>
+  <span class="slide-page">20</span>
+</section>
+
+<!-- ─── 21 — Ch4 phases in detail ───────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 4 · Driving AI adoption at scale</span>
+  </header>
+  <h2 class="slide-h1">The three phases in detail</h2>
+  <main class="slide-body">
+    <h3>Phase 1 · Evaluate</h3>
+    <p>Find your champions. The right champions are people already experimenting with AI on their own time — surfaced through the Chapter 3 audit. They are not adversarial skeptics who need to be converted; conversion happens later, through the demonstrations the champions produce. Install missing prerequisites and connect data sources so champions move past plain chatbots. Phase 1 is complete when each champion team has produced a real deliverable on a real use case the champion chose.</p>
+    <h3>Phase 2 · Seed</h3>
+    <p>Encourage the champions to show their teams what their workflows look like with AI in them. Skeptics convert when they see a four-hour contract review happen in forty-five minutes on a real contract. Run weekly check-ins. The signal that the pilot is working is not hours saved — it is <em>champions starting to build their own reusable kits</em>. When a sales rep takes a workflow and turns it into a <code>/call-prep</code> skill, she has crossed from casual usage to workflow-kit usage. Track champion-authored kit count.</p>
+    <h3>Phase 3 · Harvest</h3>
+    <p>Every kit built during the pilot is an asset. Tribal knowledge gets encoded and reused rather than walking out the door when someone leaves. New hires installing promoted kits on day one start with a different model of work. The adoption lead's role is not to build kits — it is to make sure the path upward is paved. <em>A failure to harvest</em> is the most common Phase 3 failure: the pilot succeeds, the kits stay personal, and the gain stays local and often temporary.</p>
+  </main>
+  <span class="slide-page">21</span>
+</section>
+
+<!-- ─── 22 — Ch5 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-5">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 5</span>
+    <h1 class="slide-section-title">How the Protocol Institute adopts AI</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://substack-post-media.s3.amazonaws.com/public/images/3cd212b7-cc96-4504-a750-824f409e8f30_1200x630.png" alt="">
+  </div>
+  <span class="slide-page">22</span>
+</section>
+
+<!-- ─── 23 — Case study 01: SIGBIZ ──────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 01</span>
+        <h4 class="case-slide-name">SIGBIZ AI Discovery Acceleration</h4>
+        <p class="case-slide-frame-line">Level 1 → Level 2 (Kit) transition inside a Special Interest Group.</p>
+      </div>
+
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>Throughout 2025, most members of the Protocols for Business Special Interest Group were using AI tools for their own work, and almost none of that work was visible to anyone else in the SIG. Members were collecting their own prompts, scripting small workflows in personal repos, learning the same early lessons in parallel. The cost was learning loss. The community of practice was running in private.</p>
+        <p>The challenge was the standard L1 → L2 transition: make shadow use visible, encourage further adoption without prescribing tools, and harvest what members had discovered before it was forgotten.</p>
+      </div>
+
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>The SIG settled on three lightweight moves rather than a formal program.</p>
+        <ul>
+          <li><strong>Encourage basic AI tools, not common stacks.</strong> Members used whatever AI tool they were already using. The SIG explicitly avoided sanctioning a single tool.</li>
+          <li><strong>Avoid optimization; embrace customization.</strong> No one was told their workflow was wrong. Interpretive flexibility is the engine of the transition.</li>
+          <li><strong>Fortnightly show-and-tell.</strong> Every two weeks, members brought workflows, kits, and failures to the meeting.</li>
+        </ul>
+      </div>
+
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>Three things have shifted. First, AI adoption inside the SIG is now visible. Second, mutual discussion improved: members are collaborating on kits. Lastly, ambitions have expanded. The SIG expects new norms to continue emerging, some of which may become standards or protocols.</p>
+        <blockquote>"The SIG never decided to 'build kits.' It decided to make AI use visible to itself. The kits were the residue of that visibility."</blockquote>
+        <p>The case study illustrates the cheapest viable Level 1 → Level 2 transition: a recurring meeting, a no-judgment posture, and a willingness to wait for the patterns to emerge from practice rather than to legislate them in advance.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">23</span>
+</section>
+
+<!-- ─── 24 — Case study 02: Visual identity ────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 02</span>
+        <h4 class="case-slide-name"><em>Protocolized</em> visual identity</h4>
+        <p class="case-slide-frame-line">Level 3 (Designed) in the magazine's visual production pipeline.</p>
+      </div>
+
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p><em>Protocolized</em> needed a visual language for a magazine whose editorial method openly integrates LLM-assisted writing. Off-the-shelf image generators produce a generic AI aesthetic that locates the magazine in the same trough every other AI-assisted publication occupies. Commissioned human illustration would not scale to a weekly cadence. Aesthetic nostalgia (mid-century pulp, <em>Astounding</em>-era revival) was the wrong move on principle: <em>Astounding's</em> original power came from embracing the contemporary art of its time.</p>
+      </div>
+
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>The magazine commissioned two narrowly-defined image generation models, each developed in collaboration with a named artist and hosted on the TITLES platform.</p>
+        <ul>
+          <li><em>The Hyperpress model</em>, by artist Darius Ou, trained on art derived from 3D-printed structures sliced into 2D cross-sections — what Ou calls <em>Spaceland Trees</em>.</li>
+          <li><em>The Langdon model</em>, trained by editor James Langdon on neumorphic interface elements combined with archaeological mark-making.</li>
+        </ul>
+        <p>Both deliberately narrow: "not primed by their training art to resolve figurative prompts." TITLES handles attribution and royalties as protocol; image metadata stored onchain.</p>
+      </div>
+
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>The visual production pipeline meets the Level 3 criteria. Named owners (Langdon as editor, Ou and Langdon as model artists), a verification checkpoint built into the model itself (the abstraction constraint that fails figurative prompts), and a designed coordination layer between participating roles. The output is a coherent visual identity that holds across issues without each cover requiring an art-direction debate. Choosing to train narrow models on commissioned training art rather than to use stock generators is the same kind of move SIGBIZ made when it harvested its own kits — designing the kit rather than inheriting one designed by a vendor whose interests are not the publication's.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">24</span>
+</section>
+
+<!-- ─── 25 — Ch7 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-7">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 7</span>
+    <h1 class="slide-section-title">Success patterns and failure modes</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://substack-post-media.s3.amazonaws.com/public/images/80a162ef-2938-4798-b86d-687cb4067815_1200x630.png" alt="">
+  </div>
+  <span class="slide-page">25</span>
+</section>
+
+<!-- ─── 26 — Ch7 success patterns ───────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
+  </header>
+  <h2 class="slide-h1">Four emerging success patterns</h2>
+  <main class="slide-body">
+    <p>This chapter focuses on the <em>emerging</em> patterns specific to AI's structural properties (probabilistic outputs, agentic capability, asymmetric tempo) — not inherited governance challenges. Four of each recur. Each success pattern is the mitigation for the failure mode it pairs with.</p>
+    <div class="slide-pattern-grid">
+      <div class="slide-pattern-card success">
+        <div class="slide-pattern-card-icon">▦→▣</div>
+        <div class="slide-pattern-card-name">Kit harvesting over central design</div>
+        <div class="slide-pattern-card-tag">Wait for variation to express itself before committing to a standard.</div>
+        <div class="slide-pattern-card-body"><p>The protocols worth formalizing are the ones domain experts have already proved through daily use. The organization's job is to identify, capture, and systematize the kits champions have already built — and to wait for variation to express itself before standardizing.</p></div>
+      </div>
+      <div class="slide-pattern-card success">
+        <div class="slide-pattern-card-icon">↻</div>
+        <div class="slide-pattern-card-name">Planning after production</div>
+        <div class="slide-pattern-card-tag">Plan from observed reality, not from intention.</div>
+        <div class="slide-pattern-card-body"><p>AI-mediated work outpaces upfront planning. Invert the order: let production run at native speed, then plan continuously from the observed state. Quarterly plans become rolling syntheses; weekly or biweekly reorientation rituals reconcile commitments against reality.</p></div>
+      </div>
+      <div class="slide-pattern-card success">
+        <div class="slide-pattern-card-icon">◐◑</div>
+        <div class="slide-pattern-card-name">Differential gear trains</div>
+        <div class="slide-pattern-card-tag">Buffer the tempo mismatch instead of throttling either side.</div>
+        <div class="slide-pattern-card-body"><p>Engineers know this from car differentials — a mechanical assembly that transmits power between components rotating at different rates. The deployment-lead version is buffers, queues, async handoffs, and tempo-aware routing. Uber's Code Inbox is the canonical case.</p></div>
+      </div>
+      <div class="slide-pattern-card success">
+        <div class="slide-pattern-card-icon">&lt;/&gt;</div>
+        <div class="slide-pattern-card-name">Constitutional software</div>
+        <div class="slide-pattern-card-tag">Compile governance constraints into code that runs.</div>
+        <div class="slide-pattern-card-body"><p>Encode constraints in code itself: sandboxed environments the agent cannot escape, separate dev/prod boundaries, planning-only modes, and revocation paths that compile authority into technical interlocks rather than relying on human reaction time.</p></div>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">26</span>
+</section>
+
+<!-- ─── 27 — Ch7 failure modes ──────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
+  </header>
+  <h2 class="slide-h1">Four emerging failure modes</h2>
+  <main class="slide-body">
+    <div class="slide-pattern-grid">
+      <div class="slide-pattern-card failure">
+        <div class="slide-pattern-card-icon">⊘</div>
+        <div class="slide-pattern-card-name">Premature optimization</div>
+        <div class="slide-pattern-card-tag">Standardizing before the kit phase has done its work.</div>
+        <div class="slide-pattern-card-body"><p>Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: <em>premature consolidation</em> (collapsing kits into a single platform) and <em>premature procurement</em> (vendor stack before need is known).</p></div>
+      </div>
+      <div class="slide-pattern-card failure">
+        <div class="slide-pattern-card-icon">?↺</div>
+        <div class="slide-pattern-card-name">Disorientation</div>
+        <div class="slide-pattern-card-tag">Commitments outpace shared understanding; exposure accumulates invisibly.</div>
+        <div class="slide-pattern-card-body"><p>The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as <em>psychological debt</em>.</p></div>
+      </div>
+      <div class="slide-pattern-card failure">
+        <div class="slide-pattern-card-icon">≠</div>
+        <div class="slide-pattern-card-name">Tempo misalignment</div>
+        <div class="slide-pattern-card-tag">Output stacks up at the slowest neighbor.</div>
+        <div class="slide-pattern-card-body"><p>AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.</p></div>
+      </div>
+      <div class="slide-pattern-card failure">
+        <div class="slide-pattern-card-icon">◉○○</div>
+        <div class="slide-pattern-card-name">Extended blast radius</div>
+        <div class="slide-pattern-card-tag">Permissions outpace judgment, faster than humans can intervene.</div>
+        <div class="slide-pattern-card-body"><p>Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).</p></div>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">27</span>
+</section>
+
+<!-- ─── 28 — Ch7 pairings ───────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
+  </header>
+  <h2 class="slide-h1">The pairings</h2>
+  <main class="slide-body">
+    <p class="lead-p">Each success pattern is the mitigation for the failure mode it pairs with.</p>
+    <div class="pairing-list">
+      <div class="pairing">
+        <div class="pairing-side">
+          <span class="pairing-icon-success">▦→▣</span>
+          <span class="pairing-name">Kit harvesting</span>
+        </div>
+        <div class="pairing-arrow">↔</div>
+        <div class="pairing-side">
+          <span class="pairing-icon-failure">⊘</span>
+          <span class="pairing-name">Premature optimization</span>
+        </div>
+        <div class="pairing-trade">Where premature optimization closes the kit phase before its work is done, kit harvesting closes it on the basis of evidence.</div>
+      </div>
+      <div class="pairing">
+        <div class="pairing-side">
+          <span class="pairing-icon-success">↻</span>
+          <span class="pairing-name">Planning after production</span>
+        </div>
+        <div class="pairing-arrow">↔</div>
+        <div class="pairing-side">
+          <span class="pairing-icon-failure">?↺</span>
+          <span class="pairing-name">Disorientation</span>
+        </div>
+        <div class="pairing-trade">Closes the disorientation gap by making orientation continuous with action rather than an upstream act the work has already overrun.</div>
+      </div>
+      <div class="pairing">
+        <div class="pairing-side">
+          <span class="pairing-icon-success">◐◑</span>
+          <span class="pairing-name">Differential gear trains</span>
+        </div>
+        <div class="pairing-arrow">↔</div>
+        <div class="pairing-side">
+          <span class="pairing-icon-failure">≠</span>
+          <span class="pairing-name">Tempo misalignment</span>
+        </div>
+        <div class="pairing-trade">The mitigation is the buffer, not the throttle. Coordination layer between paces, not enforcement of a shared one.</div>
+      </div>
+      <div class="pairing">
+        <div class="pairing-side">
+          <span class="pairing-icon-success">&lt;/&gt;</span>
+          <span class="pairing-name">Constitutional software</span>
+        </div>
+        <div class="pairing-arrow">↔</div>
+        <div class="pairing-side">
+          <span class="pairing-icon-failure">◉○○</span>
+          <span class="pairing-name">Extended blast radius</span>
+        </div>
+        <div class="pairing-trade">Constrains scope before the agent acts. Compiled-in constraints intervene faster than alerts reach humans.</div>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">28</span>
+</section>
+
+<!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
+<section class="slide slide-section ch-8">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 8</span>
+    <h1 class="slide-section-title">The new nature of work</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img src="https://raw.githubusercontent.com/rafathebuilder-ZK/protocols-AI-capability-maturity-model/master/Artifact/images/constructing-the-evil-twin-of-ai.png" alt="">
+  </div>
+  <span class="slide-page">29</span>
+</section>
+
+<!-- ─── 30 — Ch8 body ───────────────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 8 · The new nature of work</span>
+  </header>
+  <h2 class="slide-h1">The new nature of work</h2>
+  <p class="slide-subtitle">AI-mediated work is no longer a feature of the workplace — it is the workplace itself. The deployment lead's job changes accordingly.</p>
+  <main class="slide-body">
+    <div class="slide-body-cols-2">
+      <p>AI-mediated tools and workflows are no longer features of the workplace; they have become part of the workplace itself — closer to weather or terrain than to thermostats. This is <em>new nature</em>: technologically mediated conditions that have become immutable and indefinitely persistent. The dominant posture becomes foraging and adapting in a landscape rather than top-down planning with a blueprint. The work environment is increasingly something that cannot be engineered. It is the world your team inhabits.</p>
+      <p>The shift changes what the deployment lead's job actually is. Older models defined SOPs, enforced compliance, adjusted when the metric drifted. Now the volume of AI-assisted output is too high to inspect case-by-case. New kits surface from the floor faster than any central process can catalogue them. The tools themselves shift behavior on every model update. The job becomes making the new landscape navigable — providing the maps, keeping the trails open, keeping the lighthouse lit, helping re-orient when a team starts moving toward a pattern that compounds risk.</p>
+      <p>Hiring, performance, and onboarding follow. The candidate who follows an SOP rigorously is no longer the central hire; the candidate who finds their way through unfamiliar terrain is. The scarce skill is closer to applied curiosity than to AI literacy — building an internal map fast, noticing what works, sharing it with the team.</p>
+      <p>The job is not to finish a platform deployment; it is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies. It is a function whose people know how to work in this new nature, and whose managers know how to keep it inhabitable. The terrain will keep shifting, fast.</p>
+    </div>
+  </main>
+  <span class="slide-page">30</span>
+</section>
+
+<!-- ─── 31 — About & Resources (split slide) ────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">About &amp; Resources</span>
+  </header>
+  <main class="slide-body">
+    <div class="split-grid">
+      <div class="split-col">
+        <h2 class="split-col-title">About the Protocol Institute</h2>
+        <p>The Protocol Institute is an independent research organization studying protocols — the rules and coordination structures that shape interaction across diplomacy, software, medicine, governance, and beyond. Evolved from the Ethereum Foundation-funded Summer of Protocols program (2023–2025), it continues that work through research, publishing, and community building across organizational theory, infrastructure studies, and governance design.</p>
+        <p><em>Protocolized</em> is its flagship publication; the AI Capability Maturity Model is one of its practitioner-facing frameworks, produced by the Protocols for Business leads.</p>
+        <p>Reach us at <strong>team@protocol-institute.org</strong></p>
+        <h3>Companion outputs from this project</h3>
+        <ul>
+          <li><em>The AI Capability Maturity Assessment</em> — protocolized.dev/assessment</li>
+          <li><em>The AI Capability Maturity Model: Litepaper</em> — protocolized.dev/litepaper-ai-protocols</li>
+          <li><em>The Missing Protocol Layer</em> — protocolized.dev/blog-the-missing-layer</li>
+        </ul>
+      </div>
+      <div class="split-col">
+        <h2 class="split-col-title">Additional resources</h2>
+        <h3>Source materials</h3>
+        <ul>
+          <li><em>AI, tractors, and the productivity paradox</em> — Sachin Benny. Summer Lightning, 2026.</li>
+          <li><em>Finding Fault Lines within the Firm</em> — Protocols for Business SIG. Protocolized, January 2026.</li>
+          <li><em>Have Your Factory Call My Factory</em> — Venkatesh Rao. Protocolized, March 2026.</li>
+          <li><em>Introducing the Protocol Institute</em> — Timber Stinson-Schroff. Protocolized, 2025.</li>
+          <li><em>Protocol Fiction Aesthetics</em> — James Langdon. Protocolized, November 2025.</li>
+        </ul>
+        <h3>Engage</h3>
+        <ul>
+          <li><em>Protocolized</em> magazine — protocolized.summerofprotocols.com</li>
+          <li>Protocols for Business Special Interest Group (SIGBIZ). Contact: team@protocol-institute.org</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">31</span>
+</section>
+
+</div><!-- /.deck -->
+
+</body>
+</html>
