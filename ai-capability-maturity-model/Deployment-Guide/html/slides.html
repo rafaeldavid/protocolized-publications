@@ -581,6 +581,75 @@
       display: block;
     }
 
+    /* ─── Level band (full-width image header w/ overlaid title) ── */
+    .slide-level { padding-top: 0; }
+    .slide-level .level-band {
+      width: 11in;
+      height: 2.1in;
+      margin: 0 -0.7in 14pt;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-level .level-band > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .slide-level .level-band::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.0) 0%,
+        rgba(0,0,0,0.0) 45%,
+        rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+    }
+    .slide-level .level-band .slide-header {
+      position: absolute;
+      top: 0.4in;
+      left: 0.7in;
+      margin: 0;
+      padding: 0;
+      border: none;
+      z-index: 2;
+    }
+    .slide-level .level-band .slide-header-pill {
+      background: rgba(255,255,255,0.92);
+      padding: 4pt 10pt;
+      border-radius: 999px;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      color: var(--text-secondary);
+    }
+    .slide-level .level-band-title {
+      position: absolute;
+      left: 0.7in;
+      bottom: 0.3in;
+      color: #fff;
+      z-index: 2;
+    }
+    .slide-level .level-band-eyebrow {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 4pt;
+    }
+    .slide-level .level-band-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+
     /* ─── Level cards (Ch2 level slides — 2x2 grid) ──────────── */
     .level-card-grid {
       display: grid;
@@ -1185,18 +1254,19 @@
 </section>
 
 <!-- ─── 08 — L1 Shadow ──────────────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Level 01 · Shadow</h2>
-  <main class="slide-body">
-    <div class="level-intro">
-      <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
-      <div class="level-image">
-        <img src="./images/faithful-channel.png" alt="">
-      </div>
+<section class="slide slide-content slide-level">
+  <div class="level-band">
+    <img src="./images/faithful-channel.png" alt="">
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="level-band-title">
+      <span class="level-band-eyebrow">Level 01</span>
+      <span class="level-band-name">Shadow</span>
     </div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
     <div class="level-card-grid">
       <div class="level-card">
         <span class="level-card-label">Blind spot</span>
@@ -1220,18 +1290,19 @@
 </section>
 
 <!-- ─── 09 — L2 Kit ─────────────────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Level 02 · Kit</h2>
-  <main class="slide-body">
-    <div class="level-intro">
-      <p class="lead-p">Leadership has decided AI adoption is strategically necessary and granted broad access. Enterprise licenses are in place; an access policy exists; integration accelerates. Underneath the policy, users are encoding workflows into <em>kits</em> — reusable components (markdown skills, prompt templates, scheduled jobs, shared notebooks) that make AI behave the same way the same time on the same task.</p>
-      <div class="level-image">
-        <img src="./images/primordial-soup.png" alt="">
-      </div>
+<section class="slide slide-content slide-level">
+  <div class="level-band">
+    <img src="./images/primordial-soup.png" alt="">
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="level-band-title">
+      <span class="level-band-eyebrow">Level 02</span>
+      <span class="level-band-name">Kit</span>
     </div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">Leadership has decided AI adoption is strategically necessary and granted broad access. Enterprise licenses are in place; an access policy exists; integration accelerates. Underneath the policy, users are encoding workflows into <em>kits</em> — reusable components (markdown skills, prompt templates, scheduled jobs, shared notebooks) that make AI behave the same way the same time on the same task.</p>
     <div class="level-card-grid">
       <div class="level-card">
         <span class="level-card-label">Blind spot</span>
@@ -1255,18 +1326,19 @@
 </section>
 
 <!-- ─── 10 — L3 Designed ────────────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Level 03 · Designed</h2>
-  <main class="slide-body">
-    <div class="level-intro">
-      <p class="lead-p">AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em> Workflows have defined input standards, output verification checkpoints, escalation triggers, and feedback loops.</p>
-      <div class="level-image">
-        <img src="./images/last-mile-optimism.png" alt="">
-      </div>
+<section class="slide slide-content slide-level">
+  <div class="level-band">
+    <img src="./images/last-mile-optimism.png" alt="">
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="level-band-title">
+      <span class="level-band-eyebrow">Level 03</span>
+      <span class="level-band-name">Designed</span>
     </div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em> Workflows have defined input standards, output verification checkpoints, escalation triggers, and feedback loops.</p>
     <div class="level-card-grid">
       <div class="level-card">
         <span class="level-card-label">Blind spot</span>
@@ -1290,18 +1362,19 @@
 </section>
 
 <!-- ─── 11 — L4 Infrastructural ─────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Level 04 · Infrastructural</h2>
-  <main class="slide-body">
-    <div class="level-intro">
-      <p class="lead-p">AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards. Trading partners, regulators, and competitors operate within shared interfaces.</p>
-      <div class="level-image">
-        <img src="./images/open-protocols-government.png" alt="">
-      </div>
+<section class="slide slide-content slide-level">
+  <div class="level-band">
+    <img src="./images/open-protocols-government.png" alt="">
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="level-band-title">
+      <span class="level-band-eyebrow">Level 04</span>
+      <span class="level-band-name">Infrastructural</span>
     </div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards. Trading partners, regulators, and competitors operate within shared interfaces.</p>
     <div class="level-card-grid">
       <div class="level-card">
         <span class="level-card-label">Blind spot</span>
@@ -1325,18 +1398,19 @@
 </section>
 
 <!-- ─── 12 — L5 Planetary ───────────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Level 05 · Planetary</h2>
-  <main class="slide-body">
-    <div class="level-intro">
-      <p class="lead-p">AI is embedded within civilization-scale coordination systems: supply chains, financial infrastructure, public health surveillance, energy grids. The governance challenge is legibility — understanding what the systems are doing well enough to intervene when they fail. No single actor controls the full system; coordination happens through layers of inherited protocol now operating at scales its designers did not anticipate.</p>
-      <div class="level-image">
-        <img src="./images/protocols-for-the-long-now.png" alt="">
-      </div>
+<section class="slide slide-content slide-level">
+  <div class="level-band">
+    <img src="./images/protocols-for-the-long-now.png" alt="">
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="level-band-title">
+      <span class="level-band-eyebrow">Level 05</span>
+      <span class="level-band-name">Planetary</span>
     </div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI is embedded within civilization-scale coordination systems: supply chains, financial infrastructure, public health surveillance, energy grids. The governance challenge is legibility — understanding what the systems are doing well enough to intervene when they fail. No single actor controls the full system; coordination happens through layers of inherited protocol now operating at scales its designers did not anticipate.</p>
     <div class="level-card-grid">
       <div class="level-card">
         <span class="level-card-label">Blind spot</span>

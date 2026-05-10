@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level slide redesign — preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --text-tertiary:  #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+
+      --fs-display-1: 44pt;
+      --fs-display-2: 30pt;
+      --fs-display-3: 20pt;
+      --fs-heading-1: 16pt;
+      --fs-heading-2: 13pt;
+      --fs-body:      11pt;
+      --fs-body-sm:   10pt;
+      --fs-caption:   8pt;
+
+      --lh-display:   1.08;
+      --lh-heading:   1.25;
+      --lh-body:      1.55;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .preview-note {
+      max-width: 11in;
+      margin: 24px auto 0;
+      padding: 12px 16px;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+    .preview-note strong { font-family: var(--font-mono); font-weight: 600; }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0 48px;
+    }
+
+    .slide {
+      width: 11in;
+      height: 8.5in;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(26,26,46,0.10);
+      flex-shrink: 0;
+    }
+    .slide-page {
+      position: absolute;
+      bottom: 0.4in;
+      right: 0.7in;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Header pill ─────────────────────────────────────────── */
+    .slide-header {
+      position: absolute;
+      top: 0.4in;
+      left: 0.7in;
+      right: 0.7in;
+      z-index: 3;
+    }
+    .slide-header-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4pt 10pt;
+      background: rgba(255,255,255,0.92);
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ─── Body container ─────────────────────────────────────── */
+    .slide-body {
+      position: absolute;
+      top: 2.5in;
+      left: 0.7in;
+      right: 0.7in;
+      bottom: 0.7in;
+      display: flex;
+      flex-direction: column;
+      gap: 12pt;
+    }
+    .lead-p {
+      font-size: var(--fs-heading-2);
+      line-height: 1.45;
+      color: var(--text);
+      max-width: 9in;
+    }
+
+    /* ─── Image band (NEW) ───────────────────────────────────── */
+    .level-band {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2.1in;
+      overflow: hidden;
+    }
+    .level-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .level-band::after {
+      /* dark gradient at bottom of the band, for title legibility */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.0) 0%,
+        rgba(0,0,0,0.0) 45%,
+        rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+    }
+    .level-band-title {
+      position: absolute;
+      left: 0.7in;
+      bottom: 0.3in;
+      color: #fff;
+      z-index: 2;
+    }
+    .level-band-eyebrow {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 4pt;
+    }
+    .level-band-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+
+    /* ─── Card grid (4 cards, 2x2) ───────────────────────────── */
+    .level-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12pt;
+      flex: 1;
+    }
+    .level-card {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 11pt 14pt;
+    }
+    .level-card-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 5pt;
+    }
+    .level-card p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
+      color: var(--text);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-note">
+  <strong>Level slide redesign — preview.</strong> The image is cropped as a full-width band at the top of the slide (2.1in tall), with the level number and name overlaid in the lower-left. A subtle dark gradient at the bottom of the band keeps the title legible regardless of the underlying image. Compare against slides 08–12 in the live deck. If this works, I'll roll the same treatment across all five level slides.
+</div>
+
+<div class="deck">
+
+  <section class="slide">
+    <div class="level-band">
+      <img src="./images/faithful-channel.png" alt="">
+      <div class="level-band-title">
+        <span class="level-band-eyebrow">Level 01</span>
+        <span class="level-band-name">Shadow</span>
+      </div>
+    </div>
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <main class="slide-body">
+      <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
+      <div class="level-card-grid">
+        <div class="level-card">
+          <span class="level-card-label">Blind spot</span>
+          <p>No coordination mechanism specifies what tools may be used, what data may be submitted, what outputs require review, or who is accountable. The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines; both are invisible.</p>
+        </div>
+        <div class="level-card">
+          <span class="level-card-label">Failure mode</span>
+          <p>Unaccountable AI access. AI systems operate with organizational data and produce outputs entering organizational decisions without any protocol governing accountability.</p>
+        </div>
+        <div class="level-card">
+          <span class="level-card-label">Anchor case</span>
+          <p>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — discovered after the fact, banned enterprise-wide. Reco.ai (2025): 71% of enterprise employees use unauthorized AI tools, with a 400-day average discovery lag.</p>
+        </div>
+        <div class="level-card">
+          <span class="level-card-label">Historical parallel · late 1990s</span>
+          <p>Personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous. Resolved through IT-provisioned corporate email with governance.</p>
+        </div>
+      </div>
+    </main>
+    <span class="slide-page">08</span>
+  </section>
+
+</div>
+
+</body>
+</html>
