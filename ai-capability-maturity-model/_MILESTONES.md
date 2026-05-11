@@ -3,10 +3,11 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ---
 
-## Current Status (as of 2026-03-24)
+## Current Status (as of 2026-05-11)
 
-**Active work:** Homepage (`homepage/index.html`) built and style-reviewed. Next action: irony/humor pass on litepaper per `_VOICE-FEEDBACK.md`.
+**Active work:** Deployment Guide slide deck — *Durable AI Adoption*. Markdown v0.6 + HTML web rendition + printable letter-landscape slide deck all in `Deployment-Guide/`. Foreword and Ch1 prose polish in flight; not yet published to protocolized.dev.
 **Blocking items:** None.
+**Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24).
 **Versioning:** v1.0 is the deployed baseline. Future artifact changes tracked as v1.1, v1.2, etc. (incremental) or v2.0 (major model update). New versions saved as separate files before promoting to deployment.
 
 ---
@@ -14,6 +15,39 @@ Append-only record of completed work, key decisions, and current status. Newest 
 ---
 
 ## Milestone Log
+
+### 2026-05-11 | Deployment Guide slide deck — foreword/Ch1/Ch2 polish pass
+
+- **Foreword reworked.** Opening paragraph split after the first sentence; second paragraph tightened with forced column break so it stays in col 1; callout dropped and paradigm paragraph inlined into the body flow; closing rewritten to "Let's dive in." Subtitle reworked twice ("crossed every boundary" → "trendy bundle of software products" → "latest bundle of software upgrades"). Tool/Paradigm × Local/Planetary 2x2 added in col 2.
+- **Ch1 polish.** Closing tightened with forced column break so the "useful frame" paragraph stays in col 1. Dropped: the Karl Weick / dynamic non-events sentence and the "deterministic software has bugs..." sentences. Added a 3-step journey arc below the prose with "See / Adapt / Build New Protocols" pills on each step. First step relabeled "Getting started with your first pilot".
+- **Ch2 split.** Levels overview split into two slides.
+- **Slide 05 subtitle:** "The key to success in AI adoption is thinking in protocols."
+- **Ch5 SIGBIZ case:** Dropped the "residue of that visibility" pull quote.
+- **Slide 07:** Level badges vertically centered in the slide body.
+- **Type scale:** Table cells bumped from body-sm (10pt) to body (11pt).
+- **Social-share metadata:** Open Graph and Twitter Card metadata added to slides.
+- **Status:** Local only — not yet pushed to a published slug.
+
+### 2026-05-10 | Deployment Guide — *Durable AI Adoption* slide deck created
+
+- **New deliverable scaffolded.** `Deployment-Guide/` folder: `_DEPLOYMENT-GUIDE-BRIEF.md` (single-landing-page handbook for deployment managers, modeled on Anthropic's *Claude Cowork Deployment Handbook* eight-section structure, lifted out of vendor specifics and grounded in the CMM); `deployment-guide-v0.1-outline.md`; `framework-success-and-failure.md` (framework synthesis); `level-2-kit-respec.md` (Level 2 reframed as *Kit* for this guide only — productivity artifact vs. policy artifact); `workpackets-analysis.md`; `drafts/deployment-guide-v0.1.md` through `v0.6.md`; `drafts/chapter-8-rewrite.md`.
+- **HTML rendition built.** `Deployment-Guide/html/index.html` (single-landing-page web view) + `slides.html` (printable letter-landscape slide deck). Favicon, apple-touch-icon, OG image assets added.
+- **14 images bundled locally** in `html/images/` — remote-image dependencies dropped from both the web rendition and the slide deck so the deck renders offline and survives source rot.
+- **Mobile rendering:** viewport-meta swap so the slide deck fits to width on mobile.
+- **Cover retitled** to *Durable AI Adoption*; subtitle updated. Chapter 4 renamed to "The path to durable AI adoption". Contents list "Adoption Maturity Level" → "Levels" (plural). Ch2 intro rewritten as a path metaphor with historical analogues. Chapter 2 pluralized to "Adoption Maturity Levels" everywhere.
+- **Slide 19 pivot.** Replaced role-based content with six categories of new work; each category definition tightened to ≤50 words.
+- **Level slides 08–12 redesigned** with image-as-band header treatment.
+- **Ch4 structural change:** Phase detail merged into the framework cards; standalone phase slide dropped.
+- **Resources:** Rao, Sachin, and Timber source articles saved to `Resources/` for citation/grounding.
+- **Status:** Local only — `Deployment-Guide/html/` is the canonical source. Not yet copied to a here.now slug.
+
+### 2026-04-26 (latest) | Homepage redesign — explore section rebuilt around 3 preview cards
+
+- **Explore section restructured.** Single block replaced with a 3-card layout: Levels · Archetypes · Case Studies, each as a preview card linking into its dedicated page. Two scannability passes applied after the first build.
+- **Levels card iterated through three forms:** (1) 5-column horizontal layout; (2) hover-reactive 5-column with metaphor icons; (3) final form — tabs row + full-width content panel, so the visitor lands on one level's content and can tab through L1–L5 in place without leaving the homepage.
+- **Archetypes + Case Studies cards rebuilt as previews** of the linked pages. Case Studies card framed as two distinct sets (Today's Stories / Lessons from the Past), not pairs.
+- **Mobile pass:** Levels-card mobile layout tightened.
+- **Published:** Updated `homepage/index.html`, redeployed to `https://protocolized.dev/` (slug `gleaming-sketch-5q8b`).
 
 ### 2026-04-26 (evening) | IA-007 Phase D shipped — `/case-studies/` Library live
 
