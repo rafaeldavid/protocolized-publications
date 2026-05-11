@@ -652,6 +652,66 @@
       margin-right: 3pt;
     }
 
+    /* ─── Journey arc (3-step horizontal preview of chapters) ── */
+    .journey-arc {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      margin-top: 16pt;
+      gap: 0;
+    }
+    .journey-arc-title {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8pt;
+      text-align: center;
+    }
+    .journey-step {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 10pt 14pt;
+      display: flex;
+      flex-direction: column;
+      gap: 4pt;
+    }
+    .journey-step-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    .journey-step-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .journey-step-body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.4;
+      color: var(--text-secondary);
+      margin-top: 2pt;
+    }
+    .journey-arrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      color: var(--accent);
+      align-self: center;
+      padding: 0 10pt;
+      font-weight: 400;
+    }
+
     /* ─── Level callout (legacy, kept for fallback) ──────────── */
     .level-callout {
       background: var(--surface);
@@ -1356,7 +1416,27 @@
       <p>AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance.</p>
       <p>This property breaks the conventional <span class="term">governance</span> model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. The right framing is thinking in <span class="term">protocols</span>: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.</p>
       <p>A useful frame from the Protocol Institute's launch essay: protocols are <em>infrastructural technologies for producing non-events</em>. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.</p>
-      <p style="break-after: column;">Following this insight, the capability <span class="term">maturity</span> of an organization adopting AI is the precision with which its protocols produce those non-events.</p>
+      <p>Following this insight, the capability <span class="term">maturity</span> of an organization adopting AI is the precision with which its protocols produce those non-events.</p>
+    </div>
+    <div class="journey-arc" aria-label="The path through this guide">
+      <div class="journey-arc-title">The path through this guide</div>
+      <div class="journey-step">
+        <span class="journey-step-num">Chapter 02</span>
+        <span class="journey-step-name">Understanding your maturity</span>
+        <span class="journey-step-body">Locate where your organization sits on the five levels.</span>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="journey-step">
+        <span class="journey-step-num">Chapter 03</span>
+        <span class="journey-step-name">Getting started</span>
+        <span class="journey-step-body">Surface what's already happening; find your first pilot.</span>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="journey-step">
+        <span class="journey-step-num">Chapter 04</span>
+        <span class="journey-step-name">Driving durable adoption</span>
+        <span class="journey-step-body">Bottom-up discovery, top-down scale.</span>
+      </div>
     </div>
   </main>
   <span class="slide-page">05</span>
