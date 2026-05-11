@@ -331,7 +331,7 @@ Four emerging failure modes and four emerging success patterns recur across orga
 
 ### Success patterns
 
-**Kit harvesting over central design.** *Wait for variation to express itself before committing to a standard.* The protocols worth formalizing are the ones domain experts have already proved through daily use, not the ones a central team designs from outside. The organization's job is to identify, capture, and systematize the kits champions have already built and to wait for variation to express itself before committing to a standard. Where premature optimization closes the kit phase before its work is done, kit harvesting closes it on the basis of evidence.
+**Kit harvesting over central design.** *Wait for variation to express itself before standardizing.* The protocols worth formalizing are the ones domain experts have already proved through daily use, not the ones a central team designs from outside. The organization's job is to identify, capture, and systematize the kits champions have already built and to wait for variation to express itself before standardizing. Where premature optimization closes the kit phase before its work is done, kit harvesting closes it on the basis of evidence.
 
 **Planning after production.** *Plan from observed reality, not from intention.* AI-mediated work produces commitments at a tempo that traditional upfront planning cannot keep up with — the plan is permanently behind the work. The mitigation is to invert the planning order: let production run at its native speed, then plan continuously from the observed state. The deployment lead's quarterly plan becomes a rolling synthesis built from what the function has actually produced, not from what it intended to produce.
 
