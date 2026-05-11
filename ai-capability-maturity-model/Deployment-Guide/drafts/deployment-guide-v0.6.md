@@ -375,10 +375,10 @@ The AI Adoption Guide is one of four publications by the Protocols for Business 
 
 ### Source materials
 
-- *[AI, tractors, and the productivity paradox](https://read.technically.dev/p/the-ai-productivity-paradox)* — Sachin Benny. Summer Lightning, 2026.
+- *[AI, tractors, and the productivity paradox](https://read.technically.dev/p/the-ai-productivity-paradox)* — Sachin Benny. Technically, 2026.
 - *[Finding Fault Lines within the Firm](https://protocolized.summerofprotocols.com/p/finding-fault-lines-within-the-firm)* — Protocols for Business SIG. Protocolized, January 2026.
 - *[Have Your Factory Call My Factory](https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory)* — Venkatesh Rao. Protocolized, March 2026.
-- *[Introducing the Protocol Institute](https://protocolized.summerofprotocols.com/p/introducing-the-protocol-institute)* — Timber Stinson-Schroff. Protocolized, 2025.
+- *[Introducing the Protocol Institute](https://protocolized.summerofprotocols.com/p/introducing-the-protocol-institute)* — Timber Stinson-Schroff. Protocolized, April 2026.
 - *[Protocol Fiction Aesthetics](https://protocolized.summerofprotocols.com/p/protocol-fiction-aesthetics)* — James Langdon. Protocolized, November 2025.
 
 ### Engage
