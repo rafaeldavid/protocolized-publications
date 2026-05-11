@@ -274,8 +274,6 @@ Three things have shifted. First, AI adoption inside the SIG is now visible. Sec
 
 The SIG expects new norms to continue emerging, some of which may become standards or protocols. Some early examples include using formal ontologies for research and GitHub as a center for collaboration.
 
-> The SIG never decided to "build kits." It decided to make AI use visible to itself. The kits were the residue of that visibility.
-
 The case study illustrates the cheapest viable Level 1 → Level 2 transition: a recurring meeting, a no-judgment posture, and a willingness to wait for the patterns to emerge from practice rather than to legislate them in advance.
 
 ### Case study 2 — *Protocolized* visual identity
