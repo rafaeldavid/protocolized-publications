@@ -901,6 +901,59 @@
       margin-bottom: 8pt;
     }
 
+    /* ─── Levels overview (5 circular badges, Ch2 at-a-glance) ── */
+    .levels-overview {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14pt;
+      margin-top: 14pt;
+    }
+    .level-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4pt;
+    }
+    .level-badge-image {
+      width: 1.35in;
+      height: 1.35in;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      margin-bottom: 4pt;
+    }
+    .level-badge-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .level-badge-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    .level-badge-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .level-badge-desc {
+      font-family: var(--font-sans);
+      font-size: var(--fs-caption);
+      line-height: 1.4;
+      color: var(--text-secondary);
+      margin-top: 2pt;
+    }
+
     /* ─── Pre-pilot checklist cards (Ch3) ────────────────────── */
     .checklist-grid {
       display: grid;
@@ -1340,12 +1393,12 @@
     <li><span class="contents-num">00</span><span class="contents-name">Foreword: Everywhere you look, AI is already there</span><span class="contents-page">03</span></li>
     <li><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">05</span></li>
     <li><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">07</span></li>
-    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">13</span></li>
-    <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">17</span></li>
-    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">20</span></li>
-    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">23</span></li>
-    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">26</span></li>
-    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">28</span></li>
+    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">14</span></li>
+    <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">18</span></li>
+    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">21</span></li>
+    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">24</span></li>
+    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">27</span></li>
+    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">29</span></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -1471,62 +1524,100 @@
   <span class="slide-page">06</span>
 </section>
 
-<!-- ─── 07 — Ch2 levels overview (4-col table from index.html) -->
+<!-- ─── 07 — Ch2 levels at a glance (5 circular badges) ──────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
   </header>
-  <h2 class="slide-h1">Five levels at a glance</h2>
+  <h2 class="slide-h1">Five AI adoption maturity levels at a glance</h2>
   <main class="slide-body">
-    <p>AI adoption follows a path that other general-purpose technologies have already traveled: email, EDI, the personal computer. Each stage along the path represents a different protocol regime: invisible personal use, encoded workflows, designed processes, sector infrastructure, civilization-scale systems. Most organizations don't know which stage they're at, and nobody is expected to skip ahead. The most useful first step is to locate yourself on the path.</p>
+    <p class="lead-p">AI adoption follows a path that other general-purpose technologies have already traveled: email, EDI, the personal computer. Each stage along the path represents a different protocol regime. Most organizations don't know which stage they're at, and nobody is expected to skip ahead. The most useful first step is to locate yourself on the path.</p>
+    <div class="levels-overview">
+      <div class="level-badge">
+        <div class="level-badge-image"><img src="./images/faithful-channel.png" alt=""></div>
+        <span class="level-badge-num">Level 01</span>
+        <span class="level-badge-name">Shadow</span>
+        <p class="level-badge-desc">AI in use through personal accounts; no monitoring, no governing policy.</p>
+      </div>
+      <div class="level-badge">
+        <div class="level-badge-image"><img src="./images/primordial-soup.png" alt=""></div>
+        <span class="level-badge-num">Level 02</span>
+        <span class="level-badge-name">Kit</span>
+        <p class="level-badge-desc">Access policy in place; users encoding workflows into reusable kits.</p>
+      </div>
+      <div class="level-badge">
+        <div class="level-badge-image"><img src="./images/last-mile-optimism.png" alt=""></div>
+        <span class="level-badge-num">Level 03</span>
+        <span class="level-badge-name">Designed</span>
+        <p class="level-badge-desc">Workflows built around AI with named owners and quality metrics.</p>
+      </div>
+      <div class="level-badge">
+        <div class="level-badge-image"><img src="./images/open-protocols-government.png" alt=""></div>
+        <span class="level-badge-num">Level 04</span>
+        <span class="level-badge-name">Infrastructural</span>
+        <p class="level-badge-desc">AI is a sector baseline; coordination challenge crosses organizational boundaries.</p>
+      </div>
+      <div class="level-badge">
+        <div class="level-badge-image"><img src="./images/protocols-for-the-long-now.png" alt=""></div>
+        <span class="level-badge-num">Level 05</span>
+        <span class="level-badge-name">Planetary</span>
+        <p class="level-badge-desc">AI integrated into civilization-scale systems; legibility is the governance challenge.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">07</span>
+</section>
+
+<!-- ─── 08 — Ch2 examples and historical parallels ──────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+  </header>
+  <h2 class="slide-h1">Examples and historical parallels for each adoption level</h2>
+  <main class="slide-body">
+    <p class="lead-p">Each level has a documented anchor case and a historical parallel that hints at the protocol regime behind it.</p>
     <table class="slide-table">
       <colgroup>
-        <col style="width:11%">
-        <col style="width:24%">
-        <col style="width:38%">
-        <col style="width:27%">
+        <col style="width:13%">
+        <col style="width:51%">
+        <col style="width:36%">
       </colgroup>
       <thead>
-        <tr><th>Level</th><th>What it looks like</th><th>Example</th><th>Historical parallel</th></tr>
+        <tr><th>Level</th><th>Example</th><th>Historical parallel</th></tr>
       </thead>
       <tbody>
         <tr>
           <td><span class="level-num">01</span><span class="level-name">Shadow</span></td>
-          <td>AI in use through personal accounts; no monitoring, no governing policy.</td>
           <td>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — banned enterprise-wide after discovery.</td>
           <td>Late 1990s — personal Hotmail and Yahoo accounts for business before corporate email was ubiquitous.</td>
         </tr>
         <tr>
           <td><span class="level-num">02</span><span class="level-name">Kit</span></td>
-          <td>Access policy in place; users encoding workflows into reusable kits; productivity invisible to dashboards.</td>
           <td>Klarna's 2023–25 deployment reached 90% daily adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 over output quality.</td>
           <td>Early 20th century — rural users repurposed Ford automobiles as corn shellers, washing machines, and water pumps.</td>
         </tr>
         <tr>
           <td><span class="level-num">03</span><span class="level-name">Designed</span></td>
-          <td>Workflows built around AI with named owners, quality metrics, and escalation paths.</td>
           <td>Uber engineering, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review.</td>
           <td>2008–2015 — software teams redesigned workflows around git and CI/CD. Domain expertise became the limit.</td>
         </tr>
         <tr>
           <td><span class="level-num">04</span><span class="level-name">Infrastructural</span></td>
-          <td>AI is a sector baseline; coordination challenge crosses organizational boundaries.</td>
           <td>Walmart's 1990s EDI mandate for all suppliers — not adopting meant not participating; one failure could propagate across hundreds of trading partners.</td>
           <td>Late 1980s–1990s — EDI in retail and SWIFT in finance. Each became table stakes for the sector.</td>
         </tr>
         <tr>
           <td><span class="level-num">05</span><span class="level-name">Planetary</span></td>
-          <td>AI integrated into civilization-scale systems; legibility is the governance challenge.</td>
           <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.</td>
           <td>1980s–present — TCP/IP and BGP, designed for cooperative use among a small number of operators, hit planetary scale.</td>
         </tr>
       </tbody>
     </table>
   </main>
-  <span class="slide-page">07</span>
+  <span class="slide-page">08</span>
 </section>
 
-<!-- ─── 08 — L1 Shadow ──────────────────────────────────────── -->
+<!-- ─── 09 — L1 Shadow ──────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band">
     <img src="./images/faithful-channel.png" alt="">
@@ -1559,10 +1650,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">08</span>
+  <span class="slide-page">09</span>
 </section>
 
-<!-- ─── 09 — L2 Kit ─────────────────────────────────────────── -->
+<!-- ─── 10 — L2 Kit ─────────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band">
     <img src="./images/primordial-soup.png" alt="">
@@ -1595,10 +1686,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">09</span>
+  <span class="slide-page">10</span>
 </section>
 
-<!-- ─── 10 — L3 Designed ────────────────────────────────────── -->
+<!-- ─── 11 — L3 Designed ────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band">
     <img src="./images/last-mile-optimism.png" alt="">
@@ -1631,10 +1722,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">10</span>
+  <span class="slide-page">11</span>
 </section>
 
-<!-- ─── 11 — L4 Infrastructural ─────────────────────────────── -->
+<!-- ─── 12 — L4 Infrastructural ─────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band">
     <img src="./images/open-protocols-government.png" alt="">
@@ -1667,10 +1758,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">11</span>
+  <span class="slide-page">12</span>
 </section>
 
-<!-- ─── 12 — L5 Planetary ───────────────────────────────────── -->
+<!-- ─── 13 — L5 Planetary ───────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band">
     <img src="./images/protocols-for-the-long-now.png" alt="">
@@ -1703,10 +1794,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">12</span>
+  <span class="slide-page">13</span>
 </section>
 
-<!-- ─── 13 — Ch3 section title ──────────────────────────────── -->
+<!-- ─── 14 — Ch3 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-3">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 3</span>
@@ -1715,10 +1806,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/mechanical-currents.jpeg" alt="">
   </div>
-  <span class="slide-page">13</span>
+  <span class="slide-page">14</span>
 </section>
 
-<!-- ─── 14 — Ch3 readiness check ────────────────────────────── -->
+<!-- ─── 15 — Ch3 readiness check ────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
@@ -1758,10 +1849,10 @@
     </div>
     <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
   </main>
-  <span class="slide-page">14</span>
+  <span class="slide-page">15</span>
 </section>
 
-<!-- ─── 15 — Ch3 surface what is already happening ─────────── -->
+<!-- ─── 16 — Ch3 surface what is already happening ─────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
@@ -1788,10 +1879,10 @@
     </div>
     <p>The output of the audit is a short list of four to six candidate use cases, surfaced by each function's own champions. The deployment lead uncovers the list; the function chooses what to run.</p>
   </main>
-  <span class="slide-page">15</span>
+  <span class="slide-page">16</span>
 </section>
 
-<!-- ─── 16 — Ch3 evaluation criteria + what not to do ──────── -->
+<!-- ─── 17 — Ch3 evaluation criteria + what not to do ──────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
@@ -1820,10 +1911,10 @@
     <h3>What not to do</h3>
     <p>The pattern that fails reliably is to pick the first use case from a vendor case study, a competitor announcement, or a framework like this one. Each is an artifact from a different organization, with a different fault-line, talent layer, and stakes. The right question is <em>whose unwritten process in this organization does AI most cleanly encode?</em></p>
   </main>
-  <span class="slide-page">16</span>
+  <span class="slide-page">17</span>
 </section>
 
-<!-- ─── 17 — Ch4 section title ──────────────────────────────── -->
+<!-- ─── 18 — Ch4 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-4">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 4</span>
@@ -1832,10 +1923,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/have-your-factory-call-my-factory.png" alt="">
   </div>
-  <span class="slide-page">17</span>
+  <span class="slide-page">18</span>
 </section>
 
-<!-- ─── 18 — Ch4 three-phase framework ──────────────────────── -->
+<!-- ─── 19 — Ch4 three-phase framework ──────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
@@ -1882,10 +1973,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">18</span>
+  <span class="slide-page">19</span>
 </section>
 
-<!-- ─── 19 — Ch4 named roles ────────────────────────────────── -->
+<!-- ─── 20 — Ch4 named roles ────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
@@ -1920,10 +2011,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">19</span>
+  <span class="slide-page">20</span>
 </section>
 
-<!-- ─── 19 — Ch5 section title ──────────────────────────────── -->
+<!-- ─── 20 — Ch5 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-5">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 5</span>
@@ -1932,10 +2023,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/theorizing-protocolization-ii.png" alt="">
   </div>
-  <span class="slide-page">20</span>
+  <span class="slide-page">21</span>
 </section>
 
-<!-- ─── 21 — Case study 01: SIGBIZ ──────────────────────────── -->
+<!-- ─── 22 — Case study 01: SIGBIZ ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
@@ -1972,10 +2063,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">21</span>
+  <span class="slide-page">22</span>
 </section>
 
-<!-- ─── 22 — Case study 02: Visual identity ────────────────── -->
+<!-- ─── 23 — Case study 02: Visual identity ────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
@@ -2009,10 +2100,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">22</span>
+  <span class="slide-page">23</span>
 </section>
 
-<!-- ─── 23 — Ch7 section title ──────────────────────────────── -->
+<!-- ─── 24 — Ch7 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-7">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 7</span>
@@ -2021,10 +2112,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/strangeness-legibility-hardness.png" alt="">
   </div>
-  <span class="slide-page">23</span>
+  <span class="slide-page">24</span>
 </section>
 
-<!-- ─── 24 — Ch7 success patterns ───────────────────────────── -->
+<!-- ─── 25 — Ch7 success patterns ───────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
@@ -2058,10 +2149,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">24</span>
+  <span class="slide-page">25</span>
 </section>
 
-<!-- ─── 25 — Ch7 failure modes ──────────────────────────────── -->
+<!-- ─── 26 — Ch7 failure modes ──────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
@@ -2111,10 +2202,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">25</span>
+  <span class="slide-page">26</span>
 </section>
 
-<!-- ─── 25 — Ch8 section title ──────────────────────────────── -->
+<!-- ─── 26 — Ch8 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-8">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 8</span>
@@ -2123,10 +2214,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/constructing-the-evil-twin-of-ai.png" alt="">
   </div>
-  <span class="slide-page">26</span>
+  <span class="slide-page">27</span>
 </section>
 
-<!-- ─── 27 — Ch8 body ───────────────────────────────────────── -->
+<!-- ─── 28 — Ch8 body ───────────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 8 · The new nature of work</span>
@@ -2141,10 +2232,10 @@
       <p>The job is not to finish a platform deployment; it is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies. It is a function whose people know how to work in this new nature, and whose managers know how to keep it inhabitable. The terrain will keep shifting, fast.</p>
     </div>
   </main>
-  <span class="slide-page">27</span>
+  <span class="slide-page">28</span>
 </section>
 
-<!-- ─── 28 — About & Resources (split slide) ────────────────── -->
+<!-- ─── 29 — About & Resources (split slide) ────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">About &amp; Resources</span>
@@ -2181,7 +2272,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">29</span>
 </section>
 
 </div><!-- /.deck -->
