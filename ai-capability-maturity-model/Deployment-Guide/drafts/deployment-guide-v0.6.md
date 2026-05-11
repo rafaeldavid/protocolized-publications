@@ -75,8 +75,8 @@ Each level has a governing protocol, a blind spot that protocol creates, and a f
 | ----- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | 1     | Shadow          | None               | AI in use through personal accounts; no monitoring; no governing policy                                 | Samsung                             |
 | 2     | Kit             | Access scope       | Access policy in place; users encoding workflows as reusable kits; productivity invisible to dashboards | Klarna · Shopify · Anthropic Legal  |
-| 3     | Designed        | Workflow scope     | Workflows built around AI with named owners, quality metrics, and escalation paths                      | Uber · Boom Supersonic              |
-| 4     | Infrastructural | Sector scope       | AI is a sector baseline; coordination challenge crosses organizational boundaries                       | EDI in retail (Walmart, late 1980s) |
+| 3     | Engine          | Workflow scope     | Workflows built around AI with named owners, quality metrics, and escalation paths                      | Uber · Boom Supersonic              |
+| 4     | Infrastructure  | Sector scope       | AI is a sector baseline; coordination challenge crosses organizational boundaries                       | EDI in retail (Walmart, late 1980s) |
 | 5     | Planetary       | Civilization scope | AI is integrated into civilization-scale systems; legibility is the governance challenge                | Internet protocols (TCP/IP, BGP)    |
 
 
@@ -100,7 +100,7 @@ The failure mode is access-without-output-governance. As AI becomes entrenched a
 
 *Historical parallel — early 20th century.* Rural users repurposed automobiles as general-purpose power sources from 1903 to 1950, driving corn shellers, washing machines, and water pumps from jacked-up rear wheels. Their interpretive flexibility (Kline and Pinch, in the SCOT tradition) eventually drove Ford to release dedicated trucks in 1916 and the industry to produce specialized tractors. The kit phase of a technology produces the human capital that later integration machinery capitalizes on (Sachin Benny, 2026).
 
-### Level 3 — Designed
+### Level 3 — Engine
 
 AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past *how can I increase productivity* to *which parts of our competitive model only exist because of AI affordances.*
 
@@ -110,7 +110,7 @@ The failure mode is temporal divergence. AI accelerates some workflows while ext
 
 *Historical parallel — 2008–2015.* Software teams redesigned workflows around git and CI/CD. Competitive output depended on how well the deployment workflow was designed. Domain expertise — what a good code review looks like, how to structure a release strategy — became the limiting constraint.
 
-### Level 4 — Infrastructural
+### Level 4 — Infrastructure
 
 AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards.
 
@@ -199,7 +199,7 @@ The pattern unfolds across three phases. Each phase has an approach (the work to
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | Forage  | Find champions among people already experimenting on their own time. Install missing prerequisites and connect data sources so they move past plain chatbots.                             | Month 1    | Champions identified — 2–3 motivated practitioners running real workflows on real data.                      | Each champion team has produced a real deliverable on a real use case the champion chose.  |
 | Seed    | Champions demonstrate AI-assisted workflows on real work. Skeptics convert by seeing four-hour reviews compress to forty-five minutes — not by argument. Track champion-authored kit count. | Months 2–6 | Champions reach Level 2 (Kit) — encoding their workflows into reusable, shareable components.                | At least three named, owned, shared kits per pilot team.                                   |
-| Harvest | Promote pilot-built kits company-wide. The adoption lead paves the upward path — failure to harvest leaves gains personal and temporary.                                                  | Months 6+  | Department reaches Level 3 (Designed) — kits promoted to shared infrastructure with named owners.            | Kit reuse measurable across teams; new hires inheriting workflows on day one.              |
+| Harvest | Promote pilot-built kits company-wide. The adoption lead paves the upward path — failure to harvest leaves gains personal and temporary.                                                  | Months 6+  | Department reaches Level 3 (Engine) — kits promoted to shared infrastructure with named owners.            | Kit reuse measurable across teams; new hires inheriting workflows on day one.              |
 
 
 #### Phase 1 — Forage
@@ -250,7 +250,7 @@ The most consequential boundary is between **platform operations** and **risk st
 
 The Protocol Institute is the home of *Protocolized* magazine and the successor to the Summer of Protocols program (2023–2025). Its mission is to advance the theory and practice of protocol design across domains, and to build the field and community capable of stewarding the planetary-scale process of *protocolization* — the slow, largely invisible means by which human behaviors become standardized into the coordinating infrastructure of civilization.
 
-The Institute is organized as a small core team and several Special Interest Groups (SIGs), each focused on a different research or practice area. Two of those working patterns illustrate the model in practice — one at the Level 1 → Level 2 (Kit) transition inside a SIG, and one at Level 3 (Designed) in the magazine's visual production pipeline.
+The Institute is organized as a small core team and several Special Interest Groups (SIGs), each focused on a different research or practice area. Two of those working patterns illustrate the model in practice — one at the Level 1 → Level 2 (Kit) transition inside a SIG, and one at Level 3 (Engine) in the magazine's visual production pipeline.
 
 ### Case study 1 — SIGBIZ AI Discovery Acceleration
 
