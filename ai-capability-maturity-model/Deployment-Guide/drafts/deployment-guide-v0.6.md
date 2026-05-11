@@ -157,11 +157,11 @@ Notice what is not on the readiness checklist: a list of approved use cases, a f
 
 ### Surface what is already happening
 
-The half-day audit per function surfaces three things: where AI is already running unsupervised, which unwritten processes are worth encoding, and which function is the bottleneck.
+The half-day audit per function surfaces three things: where AI is already running unsupervised, which implicit protocols are quietly producing non-events, and which function is the adoption bottleneck.
 
 1. First, *find the shadow workflows.* Ask each function lead, separately and informally: who on your team is already using AI for work, and on what? The answers — usually a handful of names per function — are your champion shortlist. These are people who have absorbed early failure on their own time and learned where AI helps and where it does not.
-2. Second, *find the unwritten processes.* Ask each function lead: what does your most experienced person do that no one has written down? Where does the "I just know how" knowledge live? These are the candidate kits — work that follows a knowable pattern, has a clear quality bar, and runs often enough to repay encoding. The unwritten process is the protocol; AI is the thing that lets the protocol scale beyond the one person who carries it.
-3. Third, *find the bottleneck.* Per Chapter 2, the function that matters for adoption priority is not the one with the most AI excitement but the one where AI exposure × stakes is highest and protocol precision is lowest. The bottleneck is usually visible to the people downstream of it: ask what work consistently arrives late, in the wrong format, or with insufficient context, and the upstream function is your candidate.
+2. Second, *find the protocols already at work.* Some protocols already operate inside the function, expressed not by what they produce but by what they prevent — non-events. The judgment that didn't bind the company; the escalation that didn't get filed; the brief that didn't go out unreviewed. Ask each lead: what failures should we expect here that we don't see? Who quietly catches issues before they propagate? Those people are running implicit protocols, usually carried in their heads — the candidates worth encoding. (See SIGBIZ, *Finding Fault Lines within the Firm*, January 2026.)
+3. Third, *find the adoption bottleneck.* Per Chapter 2, the function that matters for adoption priority is not the one with the most AI excitement but the one where AI exposure × stakes is highest and protocol precision is lowest. The bottleneck is usually visible to the people downstream of it: ask what work consistently arrives late, in the wrong format, or with insufficient context, and the upstream function is your candidate.
 
 The output of the audit is a short list of four to six candidate use cases, surfaced by each function's own champions. The deployment lead uncovers the list; the function chooses what to run.
 
