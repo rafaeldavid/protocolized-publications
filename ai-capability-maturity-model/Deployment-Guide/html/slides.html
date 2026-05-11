@@ -1391,6 +1391,111 @@
     @media screen {
       body { background: #d4d4d8; }
     }
+
+    /* ─── Yin-Yang framework (slide 07) ──────────────────────── */
+    .track-bar {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      align-items: center;
+      margin-bottom: 10pt;
+    }
+    .track-pill {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3pt 10pt;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .track-pill-finite {
+      background: var(--text);
+      color: #fafafa;
+      justify-self: start;
+    }
+    .track-pill-infinite {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+      justify-self: end;
+    }
+    .track-bar-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .yy-svg {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 4px rgba(168,136,191,0.22));
+    }
+    .yy-level-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 7pt;
+      flex: 1;
+    }
+    .yy-level-row {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      align-items: center;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 7pt;
+    }
+    .yy-level-row:first-child { border-top: none; padding-top: 0; }
+    .finite-side, .infinite-side {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+    }
+    .finite-side { justify-content: flex-end; }
+    .infinite-side { justify-content: flex-start; }
+    .yy-badge {
+      width: 0.9in;
+      height: 0.9in;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .yy-badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .finite-side .yy-badge { border-color: #9b9ba8; filter: saturate(0.75); }
+    .yy-level-text { display: flex; flex-direction: column; gap: 1pt; }
+    .finite-side .yy-level-text { text-align: right; }
+    .infinite-side .yy-level-text { text-align: left; }
+    .yy-level-name {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .yy-level-desc {
+      font-size: 8.5pt;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      max-width: 2.8in;
+    }
+    .finite-side .yy-level-desc { align-self: flex-end; }
+    .yy-level-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2pt;
+    }
+    .yy-level-n {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .yy-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
   </style>
 </head>
 <body>
@@ -1561,95 +1666,164 @@
   <span class="slide-page">06</span>
 </section>
 
-<!-- ─── 07 — Ch2 levels at a glance (5 circular badges) ──────── -->
+<!-- ─── 07 — Ch2 yin-yang framework ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
   </header>
-  <h2 class="slide-h1">Five AI adoption maturity levels at a glance</h2>
-  <main class="slide-body" style="display: flex; flex-direction: column;">
-    <p class="lead-p">AI adoption follows a path that other general-purpose technologies have already traveled: email, EDI, the personal computer. Each stage along the path represents a different protocol regime. Most organizations don't know which stage they're at, and nobody is expected to skip ahead. The most useful first step is to locate yourself on the path.</p>
-    <div class="levels-overview" style="margin-top: auto; margin-bottom: auto;">
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/faithful-channel.png" alt=""></div>
-        <span class="level-badge-num">Level 01</span>
-        <span class="level-badge-name">Shadow</span>
-        <p class="level-badge-desc">AI in use through personal accounts; no monitoring, no governing policy.</p>
+  <h2 class="slide-h1">Two paths of AI adoption</h2>
+  <p class="slide-subtitle">Most organizations default to the governed mode of adoption they know from other technologies. This falls short because AI also demands individual-level change, something governed frameworks alone cannot produce. Durable adoption requires both.</p>
+  <div class="track-bar">
+    <span class="track-pill track-pill-finite">Governed</span>
+    <div class="track-bar-center">
+      <svg class="yy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,5 A45,45 0 0,0 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#1a1a2e"/>
+        <path d="M50,5 A45,45 0 0,1 50,95 A22.5,22.5 0 0,1 50,50 A22.5,22.5 0 0,0 50,5 Z" fill="#e9e1f2"/>
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#a888bf" stroke-width="1.5"/>
+        <circle cx="50" cy="27.5" r="7" fill="#e9e1f2"/>
+        <circle cx="50" cy="72.5" r="7" fill="#2e2040"/>
+      </svg>
+    </div>
+    <span class="track-pill track-pill-infinite">Cultivated</span>
+  </div>
+  <main class="slide-body" style="display:flex;flex-direction:column;">
+    <div class="yy-level-rows">
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Shadow</span>
+            <span class="yy-level-desc">AI in use through personal accounts; no monitoring, no governing policy.</span>
+          </div>
+          <div class="yy-badge"><img src="./images/faithful-channel.png" alt="Shadow"></div>
+        </div>
+        <div class="yy-level-center"><span class="yy-level-n">L·01</span><div class="yy-dot"></div></div>
+        <div class="infinite-side">
+          <div class="yy-badge"><img src="./images/constructing-the-evil-twin-of-ai.png" alt="Homo Ludens"></div>
+          <div class="yy-level-text">
+            <span class="yy-level-name">Homo Ludens</span>
+            <span class="yy-level-desc">Curiosity-driven exploration; AI encountered as a medium for deep play and discovery.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/primordial-soup.png" alt=""></div>
-        <span class="level-badge-num">Level 02</span>
-        <span class="level-badge-name">Kit</span>
-        <p class="level-badge-desc">Access policy in place; users encoding workflows into reusable kits.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Sanctioned</span>
+            <span class="yy-level-desc">Access policy in place; tools approved, use tracked, risk contained within boundaries.</span>
+          </div>
+          <div class="yy-badge"><img src="./images/primordial-soup.png" alt="Sanctioned"></div>
+        </div>
+        <div class="yy-level-center"><span class="yy-level-n">L·02</span><div class="yy-dot"></div></div>
+        <div class="infinite-side">
+          <div class="yy-badge"><img src="./images/theorizing-protocolization.png" alt="Kit"></div>
+          <div class="yy-level-text">
+            <span class="yy-level-name">Kit</span>
+            <span class="yy-level-desc">Users encoding personal workflows into reusable, shareable protocols of their own design.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/last-mile-optimism.png" alt=""></div>
-        <span class="level-badge-num">Level 03</span>
-        <span class="level-badge-name">Engine</span>
-        <p class="level-badge-desc">Workflows built around AI with named owners and quality metrics.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Engine</span>
+            <span class="yy-level-desc">Workflows built around AI with named owners and quality metrics; output is optimized.</span>
+          </div>
+          <div class="yy-badge"><img src="./images/last-mile-optimism.png" alt="Engine"></div>
+        </div>
+        <div class="yy-level-center"><span class="yy-level-n">L·03</span><div class="yy-dot"></div></div>
+        <div class="infinite-side">
+          <div class="yy-badge"><img src="./images/have-your-factory-call-my-factory.png" alt="AI Native"></div>
+          <div class="yy-level-text">
+            <span class="yy-level-name">AI Native</span>
+            <span class="yy-level-desc">New forms of work emerge that were not possible before AI; roles and practices are redefined.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/open-protocols-government.png" alt=""></div>
-        <span class="level-badge-num">Level 04</span>
-        <span class="level-badge-name">Infrastructure</span>
-        <p class="level-badge-desc">AI is a sector baseline; coordination challenge crosses organizational boundaries.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Infrastructure</span>
+            <span class="yy-level-desc">AI is a sector baseline; coordination challenge crosses organizational boundaries.</span>
+          </div>
+          <div class="yy-badge"><img src="./images/open-protocols-government.png" alt="Infrastructure"></div>
+        </div>
+        <div class="yy-level-center"><span class="yy-level-n">L·04</span><div class="yy-dot"></div></div>
+        <div class="infinite-side">
+          <div class="yy-badge"><img src="./images/strangeness-legibility-hardness.png" alt="Vernacular"></div>
+          <div class="yy-level-text">
+            <span class="yy-level-name">Vernacular</span>
+            <span class="yy-level-desc">AI practices absorbed into culture; tacit knowledge spreads without mandates or policies.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/protocols-for-the-long-now.png" alt=""></div>
-        <span class="level-badge-num">Level 05</span>
-        <span class="level-badge-name">Planetary</span>
-        <p class="level-badge-desc">AI integrated into civilization-scale systems; legibility is the governance challenge.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Planetary</span>
+            <span class="yy-level-desc">AI integrated into civilization-scale systems; coordination and legibility are the governance challenge.</span>
+          </div>
+          <div class="yy-badge"><img src="./images/protocols-for-the-long-now.png" alt="Planetary"></div>
+        </div>
+        <div class="yy-level-center"><span class="yy-level-n">L·05</span><div class="yy-dot"></div></div>
+        <div class="infinite-side">
+          <div class="yy-badge"><img src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency"></div>
+          <div class="yy-level-text">
+            <span class="yy-level-name">Fluency</span>
+            <span class="yy-level-desc">AI fully absorbed into how people think and work; second nature, no longer named.</span>
+          </div>
+        </div>
       </div>
     </div>
   </main>
   <span class="slide-page">07</span>
 </section>
 
-<!-- ─── 08 — Ch2 examples and historical parallels ──────────── -->
+<!-- ─── 08 — Ch2 examples across both paths ──────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
   </header>
-  <h2 class="slide-h1">Examples and historical parallels for each adoption level</h2>
+  <h2 class="slide-h1">Examples across both paths of adoption</h2>
   <main class="slide-body">
-    <p class="lead-p">Each level has a documented anchor case and a historical parallel that hints at the protocol regime behind it.</p>
+    <p class="lead-p">Each level looks different depending on which path an organization is on. Durable adoption draws on both.</p>
     <table class="slide-table">
       <colgroup>
-        <col style="width:13%">
-        <col style="width:51%">
-        <col style="width:36%">
+        <col style="width:14%">
+        <col style="width:43%">
+        <col style="width:43%">
       </colgroup>
       <thead>
-        <tr><th>Level</th><th>Example</th><th>Historical parallel</th></tr>
+        <tr><th>Level</th><th>Governed</th><th>Cultivated</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="level-num">01</span><span class="level-name">Shadow</span></td>
-          <td>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — banned enterprise-wide after discovery.</td>
-          <td>Late 1990s — personal Hotmail and Yahoo accounts for business before corporate email was ubiquitous.</td>
+          <td><span class="level-num">01</span><span class="level-name">Shadow / Homo Ludens</span></td>
+          <td>Samsung, April 2023: three engineers submitted proprietary source code via personal ChatGPT accounts within one month, banned enterprise-wide after discovery. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).</td>
+          <td>SIGBIZ, 2025: members running AI workflows in personal repos and vaults in parallel, learning the same early lessons privately. A fortnightly show-and-tell surfaced what curiosity had already produced.</td>
         </tr>
         <tr>
-          <td><span class="level-num">02</span><span class="level-name">Kit</span></td>
-          <td>Klarna's 2023–25 deployment reached 90% daily adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 over output quality.</td>
-          <td>Early 20th century — rural users repurposed Ford automobiles as corn shellers, washing machines, and water pumps.</td>
+          <td><span class="level-num">02</span><span class="level-name">Sanctioned / Kit</span></td>
+          <td>Klarna 2023–25: enterprise rollout reached 90% daily adoption and two-thirds of customer-service chats automated, then a CEO reversal citing outputs "generic, repetitive, insufficiently nuanced."</td>
+          <td>Anthropic's legal team: extended capability through a plugin built on the team's own memos and risk frameworks — kit as encoded domain expertise rather than vendor-supplied workflow.</td>
         </tr>
         <tr>
-          <td><span class="level-num">03</span><span class="level-name">Engine</span></td>
-          <td>Uber engineering, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review.</td>
-          <td>2008–2015 — software teams redesigned workflows around git and CI/CD. Domain expertise became the limit.</td>
+          <td><span class="level-num">03</span><span class="level-name">Engine / AI Native</span></td>
+          <td>Uber engineering, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review to absorb the new tempo.</td>
+          <td>Boom Aerospace: software engineers embedded in hardware teams invented mkBoom together — parametric aircraft analysis in minutes, full-mission simulation overnight. XB-1 built by 50 people. 1,000+ miles of range recovered in two weeks through engine/airframe co-design impossible in siloed development.</td>
         </tr>
         <tr>
-          <td><span class="level-num">04</span><span class="level-name">Infrastructure</span></td>
-          <td>Walmart's 1990s EDI mandate for all suppliers — not adopting meant not participating; one failure could propagate across hundreds of trading partners.</td>
-          <td>Late 1980s–1990s — EDI in retail and SWIFT in finance. Each became table stakes for the sector.</td>
+          <td><span class="level-num">04</span><span class="level-name">Infrastructure / Vernacular*</span></td>
+          <td>Walmart's 1990s EDI mandate: not adopting meant not participating in the market; one supply-chain failure could cascade across hundreds of trading partners.</td>
+          <td>Excel became the universal vernacular of business analysis without mandate — formulas, models, and conventions spread person to person faster than any IT program could have designed.</td>
         </tr>
         <tr>
-          <td><span class="level-num">05</span><span class="level-name">Planetary</span></td>
+          <td><span class="level-num">05</span><span class="level-name">Planetary / Fluency*</span></td>
           <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.</td>
-          <td>1980s–present — TCP/IP and BGP, designed for cooperative use among a small number of operators, hit planetary scale.</td>
+          <td>Autocorrect: implemented at OS level by Apple, Google, and Microsoft, then absorbed into how billions of people write. Users unconsciously adapted their typing patterns to it. Nobody calls it AI. That is fluency.</td>
         </tr>
       </tbody>
     </table>
+    <p style="font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-tertiary);margin-top:7pt;">* AI adoption at most organizations has not yet reached levels 4 and 5 of cultivated adoption.</p>
   </main>
   <span class="slide-page">08</span>
 </section>
