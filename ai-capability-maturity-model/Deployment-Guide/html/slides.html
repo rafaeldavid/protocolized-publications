@@ -886,19 +886,36 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.35);
     }
 
-    /* ─── Level cards (Ch2 level slides — 2x2 grid) ──────────── */
+    /* ─── Level cards (Ch2 level slides — 3x2 grid, column-major) ── */
     .level-card-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12pt;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-auto-flow: column;
+      gap: 10pt;
       margin-top: 10pt;
     }
     .level-card {
       background: var(--surface);
       border-left: 3px solid var(--accent);
       border-radius: 0 8px 8px 0;
-      padding: 12pt 16pt;
+      padding: 10pt 12pt;
     }
+    .level-card.col-blue {
+      background: #eaf0f7;
+      border-left-color: #4a6fa5;
+    }
+    .level-card.col-blue .level-card-label { color: #345889; }
+    .level-card.col-red {
+      background: #faf0ec;
+      border-left-color: #c07458;
+    }
+    .level-card.col-red .level-card-label { color: #a35f48; }
+    .level-card.col-purple {
+      background: var(--accent-light);
+      border-left-color: var(--accent);
+    }
+    .level-card.col-purple .level-card-label { color: var(--accent-dark); }
     .level-card-label {
       font-family: var(--font-mono);
       font-size: var(--fs-caption);
@@ -910,8 +927,8 @@
       margin-bottom: 5pt;
     }
     .level-card p {
-      font-size: var(--fs-body);
-      line-height: 1.5;
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
       margin: 0;
       color: var(--text);
     }
@@ -1652,19 +1669,27 @@
   <main class="slide-body">
     <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
     <div class="level-card-grid">
-      <div class="level-card">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI as personal cognitive amplifier. Every employee with a personal account has on-demand access to drafting, summarization, translation, code-writing, structured extraction. Same affordance for everyone; what varies is the workflow each person plugs it into.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Tolerance for early experimentation, awareness of who's using AI for what, and an audit pathway (Ch3) that surfaces practice without policing it. The aim is visibility, not suppression.</p>
+      </div>
+      <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
         <p>No coordination mechanism specifies what tools may be used, what data may be submitted, what outputs require review, or who is accountable. The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines; both are invisible.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
         <p>Unaccountable AI access. AI systems operate with organizational data and produce outputs entering organizational decisions without any protocol governing accountability.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
         <p>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — discovered after the fact, banned enterprise-wide. Reco.ai (2025): 71% of enterprise employees use unauthorized AI tools, with a 400-day average discovery lag.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Historical parallel · late 1990s</span>
         <p>Personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous. Resolved through IT-provisioned corporate email with governance.</p>
       </div>
@@ -1688,19 +1713,27 @@
   <main class="slide-body">
     <p class="lead-p">Leadership has decided AI adoption is strategically necessary and granted broad access. Enterprise licenses are in place; an access policy exists; integration accelerates. Underneath the policy, users are encoding workflows into <em>kits</em> — reusable components (markdown skills, prompt templates, scheduled jobs, shared notebooks) that make AI behave the same way the same time on the same task.</p>
     <div class="level-card-grid">
-      <div class="level-card">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI affordances shaped to recurring work. A kit (skill, prompt template, scheduled job, custom GPT) ties the model to a specific task with known input, output, and quality bar. AI is now operable by a second user.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>A kit registry with named owners, verification checkpoints at each kit's output, embedded protocol designers (FDE-style) inside functions, and tolerance for variation to play out before standardizing.</p>
+      </div>
+      <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
         <p>The kit layer itself. Dashboards measure license utilization, not the user-encoded components doing the actual productivity work. Two organizations with identical license utilization but different kit layers underneath end up at different places.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
         <p>Access-without-output-governance. As AI becomes entrenched in customer communications, financial models, meeting notes, and contracting, output quality is determined by individual judgment.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
         <p>Klarna's 2023–2025 deployment hit 90% daily AI adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 citing outputs "generic, repetitive, insufficiently nuanced." Anthropic's legal team self-reports the inverse: extended capability through a plugin built on the team's actual memos and risk frameworks.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Historical parallel · early 20th century</span>
         <p>Rural users repurposed automobiles as corn shellers, washing machines, and water pumps from 1903 to 1950. Their interpretive flexibility (Kline and Pinch) drove Ford to release dedicated trucks. The kit phase produced the human capital later integration capitalized on.</p>
       </div>
@@ -1724,19 +1757,27 @@
   <main class="slide-body">
     <p class="lead-p">AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em> Workflows have defined input standards, output verification checkpoints, escalation triggers, and feedback loops.</p>
     <div class="level-card-grid">
-      <div class="level-card">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI as workflow engine. Specific workflows are rebuilt around what AI uniquely does well — tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI would require rebuilding the workflow.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Defined input standards, output verification checkpoints, escalation triggers, and feedback loops per workflow. Named owners. Coordination layers that buffer AI-paced work against external dependencies on different tempos.</p>
+      </div>
+      <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
         <p>Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, with external partners, or with regulators operating at different speeds.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
         <p>Temporal divergence. AI accelerates some workflows while external dependencies — client review cycles, regulatory response, cross-functional handoffs — remain at a different pace.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
         <p>Uber engineering, March 2026: 84% agentic-coding adoption, 65–72% of code AI-generated, 11% of pull requests opened by agents. The bottleneck shifted from coding to review; Uber built two protocol systems — Code Inbox and U Review — to absorb the new tempo. Boom Supersonic illustrates the same pattern in a safety-critical domain.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Historical parallel · 2008–2015</span>
         <p>Software teams redesigned workflows around git and CI/CD. Domain expertise — what a good code review looks like — became the limiting constraint.</p>
       </div>
@@ -1760,19 +1801,27 @@
   <main class="slide-body">
     <p class="lead-p">AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards. Trading partners, regulators, and competitors operate within shared interfaces.</p>
     <div class="level-card-grid">
-      <div class="level-card">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI affordances as shared sector interface. The same model and protocols are baseline across an industry. Inter-organizational handoffs run on AI-mediated protocols at sector scale, across competitive boundaries.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Participation in industry standards bodies, interoperability commitments with partners, multi-org governance of the shared risk surface, and visibility into how decisions cascade across boundaries.</p>
+      </div>
+      <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
         <p>What an organization cannot see beyond its own boundary: second-order effects of sector-wide adoption, the shared attack surface, cascading failures when several organizations' protocols rest on a common assumption.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
         <p>Sector fragility. The protocol that made the sector work also makes the sector vulnerable to a single point of failure.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
         <p>Walmart's 1990s mandate of EDI for all suppliers — not adopting meant not participating in the market; one supply-chain failure could propagate across hundreds of trading partners. The 2017 NotPetya attack exploited the same shared-protocol surface in containerized shipping. Sector-scale AI adoption is at the equivalent of EDI's mandate phase.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Historical parallel · late 1980s–1990s</span>
         <p>EDI in retail, SWIFT in finance. Each became table stakes; each created the failure modes that follow from shared infrastructure.</p>
       </div>
@@ -1796,19 +1845,27 @@
   <main class="slide-body">
     <p class="lead-p">AI is embedded within civilization-scale coordination systems: supply chains, financial infrastructure, public health surveillance, energy grids. The governance challenge is legibility — understanding what the systems are doing well enough to intervene when they fail. No single actor controls the full system; coordination happens through layers of inherited protocol now operating at scales its designers did not anticipate.</p>
     <div class="level-card-grid">
-      <div class="level-card">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI as planetary coordination fabric. AI is embedded in systems that route global capital, optimize multi-continent supply chains, surveil public health, balance energy grids. Coordination through layered AI-mediated protocols at unprecedented scale.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Legibility tools (inspect what civilization-scale AI systems are doing), multi-stakeholder governance, intervention capability when systems fail, and recognition that decisions made at this layer affect billions.</p>
+      </div>
+      <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
         <p>Systemic. The failure modes are emergent properties of protocol interaction, not properties of any one component.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
         <p>Legibility collapse. The system continues to function — most of the time — but no one can fully describe what it is doing or why.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
         <p>The 2021 Facebook BGP misconfiguration took multiple platforms offline globally before any organization could respond. Internet protocols (TCP/IP, BGP) are the present-day case: trillion-dollar coordination flows, no actor controls them, the people who could explain how they work are aging out.</p>
       </div>
-      <div class="level-card">
+      <div class="level-card col-purple">
         <span class="level-card-label">Historical parallel · 1980s to present</span>
         <p>TCP/IP and BGP were designed for cooperative use among a small number of well-resourced operators. Their use at planetary scale produced the legibility problem they were not designed to handle.</p>
       </div>
