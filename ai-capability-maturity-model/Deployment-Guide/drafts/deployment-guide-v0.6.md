@@ -40,7 +40,7 @@ Realizing this, the Protocols for Business Special Interest Group of the Protoco
 
 Most enterprises are discussing and planning for AI as if it were a next enterprise software productivity solution. It is not, and the failure modes that follow from that assumption are predictable.
 
-AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance. Deterministic software has bugs whose modes are, at least in principle, enumerable. AI failures are not, because the distribution shifts with every model update, input domain, context length, and tooling configuration. The correct response to AI uncertainty is protocol design to manage the new problems that come hand-in-hand with AI affordances.
+AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance.
 
 This property breaks the conventional governance model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. They ask how to prevent misuse rather than how to specify the coordination rules that make AI output reliable in production. The right framing is thinking in protocols: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.
 
