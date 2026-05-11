@@ -510,6 +510,148 @@
       letter-spacing: 0.01em;
     }
 
+    /* ─── Foreword grid (2-col w/ controllable v-align for matrix) ── */
+    .foreword-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30pt;
+      height: 100%;
+      position: relative;
+    }
+    .foreword-grid::before {
+      content: "";
+      position: absolute;
+      left: calc(50% - 0.5px);
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border-soft);
+    }
+    .foreword-col-left,
+    .foreword-col-right {
+      display: flex;
+      flex-direction: column;
+    }
+    .foreword-col-left p,
+    .foreword-col-right p {
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      margin-bottom: 8pt;
+    }
+    .foreword-col-left p:first-child::first-line {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .matrix-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Paradigm 2×2 matrix (Tool/Paradigm × Local/Planetary) ── */
+    .paradigm-matrix {
+      display: grid;
+      grid-template-columns: 56pt 1fr 1fr;
+      grid-template-rows: auto auto 1fr 1fr;
+      gap: 4pt;
+      width: 100%;
+      max-width: 4.5in;
+      height: 2.35in;
+      break-inside: avoid;
+    }
+    .matrix-title {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 2pt;
+    }
+    .matrix-corner { }
+    .matrix-col-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-align: center;
+      padding-bottom: 4pt;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4pt;
+    }
+    .matrix-row-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-right: 8pt;
+      gap: 5pt;
+    }
+    .matrix-col-label.wrong,
+    .matrix-row-label.wrong { color: #c07458; }
+    .matrix-col-label.right,
+    .matrix-row-label.right { color: #5a8a73; }
+    .matrix-mark { font-size: 11pt; line-height: 1; font-weight: 700; }
+    .matrix-cell {
+      border-radius: 4px;
+      padding: 8pt 10pt;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2pt;
+      position: relative;
+    }
+    .matrix-cell.muted {
+      background: var(--surface);
+      border-left: 3px solid var(--border);
+    }
+    .matrix-cell.muted .matrix-artifact { color: var(--text-secondary); }
+    .matrix-cell.focus {
+      background: #eef3ef;
+      border-left: 3px solid #5a8a73;
+    }
+    .matrix-artifact {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body-sm);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .matrix-example {
+      font-family: var(--font-sans);
+      font-size: var(--fs-caption);
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+    .matrix-ai-example {
+      font-family: var(--font-sans);
+      font-size: var(--fs-caption);
+      line-height: 1.3;
+      color: var(--text-tertiary);
+    }
+    .matrix-cell.focus .matrix-ai-example {
+      color: #2d5e44;
+      font-weight: 600;
+    }
+    .matrix-ai-label {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-right: 3pt;
+    }
+
     /* ─── Level callout (legacy, kept for fallback) ──────────── */
     .level-callout {
       background: var(--surface);
@@ -1142,12 +1284,48 @@
   <h2 class="slide-h1">Everywhere you look, AI is already there</h2>
   <p class="slide-subtitle">Most organizations crossed every boundary of AI at work without a framework of orientation.</p>
   <main class="slide-body">
-    <div class="slide-body-cols-2">
-      <p>AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.</p>
-      <p>The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.</p>
-      <p>AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.</p>
-      <p style="break-after: column;">A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <em>deployment</em> is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.</p>
-      <p>Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.</p>
+    <div class="foreword-grid">
+      <div class="foreword-col-left">
+        <p>AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.</p>
+        <p>The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.</p>
+        <p>AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.</p>
+        <p>A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <em>deployment</em> is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.</p>
+      </div>
+      <div class="foreword-col-right">
+        <p>Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.</p>
+        <div class="matrix-wrap">
+          <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
+            <div class="matrix-title">Finding the right artifact for a given technology</div>
+            <div class="matrix-corner"></div>
+            <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
+            <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
+
+            <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
+            <div class="matrix-cell muted">
+              <div class="matrix-artifact">Implementation Roadmap</div>
+              <div class="matrix-example">e.g., AutoCAD</div>
+              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
+            </div>
+            <div class="matrix-cell muted">
+              <div class="matrix-artifact">Deployment Plan</div>
+              <div class="matrix-example">e.g., Microsoft Office</div>
+              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
+            </div>
+
+            <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
+            <div class="matrix-cell muted">
+              <div class="matrix-artifact">Practice Playbook</div>
+              <div class="matrix-example">e.g., MRI</div>
+              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
+            </div>
+            <div class="matrix-cell focus">
+              <div class="matrix-artifact">Adoption Guide</div>
+              <div class="matrix-example">e.g., electricity, the internet</div>
+              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
+            </div>
+          </aside>
+        </div>
+      </div>
     </div>
   </main>
   <span class="slide-page">03</span>
