@@ -30,9 +30,9 @@ The workforce is discovering new coordination patterns faster than organizations
 
 AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.
 
-Over the last year, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. The patterns are field-tested and meant to be lifted into your own context.
+A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While *deployment* is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.
 
-> **Before you dive in.** AI is commonly confused for a product or a software platform. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While *deployment* is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself. This guide is about *adoption*.
+Over the last year, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. The patterns are field-tested and meant to be lifted into your own context.
 
 ---
 
