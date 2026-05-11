@@ -45,7 +45,7 @@ AI systems are probabilistic. The same input can produce different outputs, and 
 This property breaks the conventional governance model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. They ask how to prevent misuse rather than how to specify the coordination rules that make AI output reliable in production. The right framing is thinking in protocols: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.
 
 A useful frame from the Protocol Institute's launch essay: protocols are *infrastructural technologies for producing non-events*. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.
-The capability maturity of an AI-adopting organization is the precision with which its protocols produce those non-events. Precision is uneven across functions, and the function with the largest gap between AI exposure and protocol precision is the bottleneck for the whole organization. The chapters that follow trace the five levels along which precision grows, the patterns that drive it, and the failure modes that recur when an organization tries to skip a level.
+Following this insight, the capability maturity of an organization adopting AI is the precision with which its protocols produce those non-events.
 
 ### Key Terms
 
