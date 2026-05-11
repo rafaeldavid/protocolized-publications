@@ -28,7 +28,7 @@ AI-enabled workflows and tools are appearing all around you, multiplying outputs
 
 The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.
 
-In just a few years, AI has evolved from a chat window to agentic tools moved into developer workflows. Now, the same pattern reached every other function — analysts, lawyers, marketers, account executives — moving from a chatbot you ask a question to an agent that delegates work end to end. Most organizations crossed those boundaries without a framework of orientation. Most of us have been unsure if we're getting better at adoption or just busier.
+AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.
 
 Over the last year, the Protocols for Business Special Interest Group of the Protocol Institute has been building that orientation framework. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. The patterns are field-tested and meant to be lifted into your own context.
 
