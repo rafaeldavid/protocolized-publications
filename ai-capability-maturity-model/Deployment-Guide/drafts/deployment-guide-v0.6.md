@@ -24,7 +24,9 @@ v0.6 | May 2026
 
 ## Foreword: Everywhere you look, AI is already there
 
-AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours. The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.
+AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.
+
+The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.
 
 In just a few years, AI has evolved from a chat window to agentic tools moved into developer workflows. Now, the same pattern reached every other function — analysts, lawyers, marketers, account executives — moving from a chatbot you ask a question to an agent that delegates work end to end. Most organizations crossed those boundaries without a framework of orientation. Most of us have been unsure if we're getting better at adoption or just busier.
 
