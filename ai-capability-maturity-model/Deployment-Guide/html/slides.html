@@ -1063,6 +1063,79 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.35);
     }
 
+    /* ─── Split level band (two-image yin/yang header for deep dives) ── */
+    .slide-level .level-band-split { background: var(--text); }
+    .slide-level .level-band-split .band-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .slide-level .level-band-split .band-img.governed {
+      clip-path: polygon(0 0, 65% 0, 35% 100%, 0 100%);
+    }
+    .slide-level .level-band-split .band-img.cultivated {
+      clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
+    }
+    /* Override the single bottom gradient with corner gradients for both titles */
+    .slide-level .level-band-split::after {
+      background:
+        linear-gradient(to top right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%),
+        linear-gradient(to bottom left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+    }
+    .slide-level .level-band-split .band-slash {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Center the chapter pill over the band instead of left-aligning */
+    .slide-level .level-band-split .slide-header {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .slide-level .level-band-split .band-level-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5pt 12pt;
+      border-radius: 999px;
+      z-index: 4;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .slide-level .level-band-split .band-title-governed,
+    .slide-level .level-band-split .band-title-cultivated {
+      position: absolute;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+      z-index: 3;
+    }
+    .slide-level .level-band-split .band-title-governed {
+      bottom: 0.28in;
+      left: 0.7in;
+    }
+    .slide-level .level-band-split .band-title-cultivated {
+      top: 0.28in;
+      right: 0.7in;
+    }
+
     /* ─── Level cards (Ch2 level slides — 3x2 grid, column-major) ── */
     .level-card-grid {
       display: grid;
@@ -2274,15 +2347,18 @@
 
 <!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/faithful-channel.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/faithful-channel.png" alt="Shadow">
+    <img class="band-img cultivated" src="./images/constructing-the-evil-twin-of-ai.png" alt="Homo Ludens">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 01</span>
-      <span class="level-band-name">Shadow</span>
-    </div>
+    <div class="band-level-badge">L · 01</div>
+    <div class="band-title-governed">Shadow</div>
+    <div class="band-title-cultivated">Homo Ludens</div>
   </div>
   <main class="slide-body">
     <p class="lead-p">AI tools enter through individual initiative, not organizational decision. Exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
@@ -2318,15 +2394,18 @@
 
 <!-- ─── 13 — L2 Sanctioned ────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/primordial-soup.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/primordial-soup.png" alt="Sanctioned">
+    <img class="band-img cultivated" src="./images/theorizing-protocolization.png" alt="Kit">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 02</span>
-      <span class="level-band-name">Sanctioned</span>
-    </div>
+    <div class="band-level-badge">L · 02</div>
+    <div class="band-title-governed">Sanctioned</div>
+    <div class="band-title-cultivated">Kit</div>
   </div>
   <main class="slide-body">
     <p class="lead-p">Leadership has granted broad access. Enterprise licenses are in place, an access policy defines approved tools and data boundaries, and integration accelerates under governance.</p>
@@ -2362,15 +2441,18 @@
 
 <!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/last-mile-optimism.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/last-mile-optimism.png" alt="Engine">
+    <img class="band-img cultivated" src="./images/have-your-factory-call-my-factory.png" alt="AI Native">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 03</span>
-      <span class="level-band-name">Engine</span>
-    </div>
+    <div class="band-level-badge">L · 03</div>
+    <div class="band-title-governed">Engine</div>
+    <div class="band-title-cultivated">AI Native</div>
   </div>
   <main class="slide-body">
     <p class="lead-p">AI is now the engine within core workflows. The question has shifted from <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em></p>
@@ -2406,15 +2488,18 @@
 
 <!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/open-protocols-government.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/open-protocols-government.png" alt="Infrastructure">
+    <img class="band-img cultivated" src="./images/strangeness-legibility-hardness.png" alt="Vernacular">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 04</span>
-      <span class="level-band-name">Infrastructure</span>
-    </div>
+    <div class="band-level-badge">L · 04</div>
+    <div class="band-title-governed">Infrastructure</div>
+    <div class="band-title-cultivated">Vernacular</div>
   </div>
   <main class="slide-body">
     <p class="lead-p">AI capability is a sector baseline. Individual organizational advantage has mostly dissipated; the governance challenge is now collective.</p>
@@ -2450,15 +2535,18 @@
 
 <!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/protocols-for-the-long-now.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/protocols-for-the-long-now.png" alt="Planetary">
+    <img class="band-img cultivated" src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 05</span>
-      <span class="level-band-name">Planetary</span>
-    </div>
+    <div class="band-level-badge">L · 05</div>
+    <div class="band-title-governed">Planetary</div>
+    <div class="band-title-cultivated">Fluency</div>
   </div>
   <main class="slide-body">
     <p class="lead-p">AI is embedded within civilization-scale coordination systems. The governance challenge is legibility: understanding what the systems are doing well enough to intervene when they fail.</p>
