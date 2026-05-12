@@ -1080,11 +1080,12 @@
     .slide-level .level-band-split .band-img.cultivated {
       clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
     }
-    /* Override the single bottom gradient with corner gradients for both titles */
+    /* Both titles now sit at the bottom; keep the bottom darkening from the base
+       .level-band::after but make it a bit stronger for the wider title row. */
     .slide-level .level-band-split::after {
-      background:
-        linear-gradient(to top right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%),
-        linear-gradient(to bottom left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.6) 0%,
+        rgba(0,0,0,0) 45%);
     }
     .slide-level .level-band-split .band-slash {
       position: absolute;
@@ -1132,7 +1133,7 @@
       left: 0.7in;
     }
     .slide-level .level-band-split .band-title-cultivated {
-      top: 0.28in;
+      bottom: 0.28in;
       right: 0.7in;
     }
 
