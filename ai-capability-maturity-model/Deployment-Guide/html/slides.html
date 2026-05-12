@@ -1213,6 +1213,85 @@
       max-width: 62px;
     }
 
+    /* ─── Cultivated / Governed duality layout (slide 19) ────── */
+    .duality-wrap {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: stretch;
+      flex: 1;
+    }
+    .duality-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6pt;
+    }
+    .duality-col-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3pt;
+      margin-bottom: 2pt;
+    }
+    .duality-col-sub {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+    }
+    .duality-card {
+      display: flex;
+      flex-direction: column;
+      gap: 3pt;
+      padding: 9pt 12pt;
+      border-radius: 6px;
+      background: var(--accent-light);
+      border-top: 2.5px solid var(--accent);
+      flex: 1;
+    }
+    .duality-card.governed {
+      background: var(--surface);
+      border-top-color: var(--text);
+    }
+    .duality-act-num {
+      font-family: var(--font-mono);
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .duality-act-name {
+      font-family: var(--font-mono);
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 1pt;
+    }
+    .duality-act-body {
+      font-size: 8.5pt;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .duality-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6pt;
+    }
+    .duality-divider-rule {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+    .duality-divider-badge {
+      font-family: var(--font-mono);
+      font-size: 12pt;
+      color: var(--accent);
+      line-height: 1;
+    }
+
     /* ─── Roles grid (Ch4, 2x3) ──────────────────────────────── */
     .roles-grid {
       display: grid;
@@ -2276,51 +2355,69 @@
   <span class="slide-page">18</span>
 </section>
 
-<!-- ─── 19 — Ch4 three-phase framework ──────────────────────── -->
+<!-- ─── 19 — Ch4 cultivated/governed duality ─────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
   <h2 class="slide-h1">Bottom-up discovery, top-down scale</h2>
-  <main class="slide-body">
-    <p class="lead-p">The pattern that produces durable adoption is <em>bottom-up discovery, top-down scale.</em> Champions discover the workflows that matter; the organization promotes what worked so that the next user inherits it. The two halves are not interchangeable.</p>
-    <div class="phase-grid">
-      <div class="phase-card">
-        <div class="phase-num">Phase 01</div>
-        <div class="phase-name">Forage</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Find champions among people already experimenting on their own time. Install missing prerequisites and connect data sources so they move past plain chatbots.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Month 1</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Champions identified — 2–3 motivated practitioners running real workflows on real data.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">Each champion team has produced a real deliverable on a real use case the champion chose.</div>
+  <p class="slide-subtitle">Discovery is cultivated. Scale is governed. The organization's job is to make the handoff between them deliberate.</p>
+  <main class="slide-body" style="display:flex;flex-direction:column;">
+    <div class="duality-wrap">
+
+      <!-- Cultivated column -->
+      <div class="duality-col">
+        <div class="duality-col-header">
+          <span class="track-pill track-pill-infinite">Cultivated</span>
+          <span class="duality-col-sub">What champions do · Months 1–5</span>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">01</span>
+          <div class="duality-act-name">Discover</div>
+          <p class="duality-act-body">Find people already experimenting on their own time. Give them a venue with no required tools, no prescribed use cases, no output metrics. Let play surface what AI makes possible in their domain.</p>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">02</span>
+          <div class="duality-act-name">Encode</div>
+          <p class="duality-act-body">Champions write down the steps. Tacit expertise becomes a reusable kit. The value is the encoding itself. Someone else can now inherit what took months to discover.</p>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">03</span>
+          <div class="duality-act-name">Prove</div>
+          <p class="duality-act-body">The kit runs on real work in a low-stakes context. A bad output must be recoverable. Someone external can verify the result improved. This is the gate before the handoff.</p>
+        </div>
       </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 02</div>
-        <div class="phase-name">Seed</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Champions demonstrate AI-assisted workflows on real work. Skeptics convert by seeing four-hour reviews compress to forty-five minutes — not by argument. Track champion-authored kit count.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Months 2–6</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Champions reach Level 2 (Kit) — encoding their workflows into reusable, shareable components.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">At least three named, owned, shared kits per pilot team.</div>
+
+      <!-- Divider -->
+      <div class="duality-divider">
+        <div class="duality-divider-rule"></div>
+        <span class="duality-divider-badge">→</span>
+        <div class="duality-divider-rule"></div>
       </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 03</div>
-        <div class="phase-name">Harvest</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Promote pilot-built kits company-wide. The adoption lead paves the upward path — failure to harvest leaves gains personal and temporary.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Months 6+</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Department reaches Level 3 (Engine) — kits promoted to shared infrastructure with named owners.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">Kit reuse measurable across teams; new hires inheriting workflows on day one.</div>
+
+      <!-- Governed column -->
+      <div class="duality-col">
+        <div class="duality-col-header">
+          <span class="track-pill track-pill-finite">Governed</span>
+          <span class="duality-col-sub">What the organization does · Months 1–6+</span>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">01</span>
+          <div class="duality-act-name">Sanction</div>
+          <p class="duality-act-body">Set access policy in parallel with Discover. Approve tools, track use, contain risk. This creates the conditions for legitimate play without prescribing what that play looks like.</p>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">02</span>
+          <div class="duality-act-name">Promote</div>
+          <p class="duality-act-body">Harvest proven kits into shared infrastructure. Assign named owners. Skeptics convert by seeing workflows proved on real work, not by policy announcement.</p>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">03</span>
+          <div class="duality-act-name">Scale</div>
+          <p class="duality-act-body">Kits deployed across the department. New hires inherit workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.</p>
+        </div>
       </div>
+
     </div>
   </main>
   <span class="slide-page">19</span>
