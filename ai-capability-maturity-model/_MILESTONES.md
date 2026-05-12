@@ -5,7 +5,7 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ## Current Status (as of 2026-05-12)
 
-**Active work:** Deployment Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. Full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract.
+**Active work:** Deployment Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. v0.5 ships full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract, light-geometric chapter intros, level-image cover collage. Legacy `protocolized.dev/` redirects here.
 **Blocking items:** None.
 **Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24).
 **Versioning:** Slide deck at v0.5; markdown draft at v0.6 in `Deployment-Guide/drafts/`.
@@ -15,6 +15,15 @@ Append-only record of completed work, key decisions, and current status. Newest 
 ---
 
 ## Milestone Log
+
+### 2026-05-12 (end of day) | Deployment Guide v0.5 polish — cover, chapter aesthetic, mobile, redirect
+
+- **Legacy homepage retired.** Archived `homepage/` source to `_Deploy-Archive/2026-05-12-homepage/` (incl. team photos). Replaced `homepage/index.html` with a 337-byte redirect that fires `location.replace('https://ai.protocolized.dev/' + (location.hash || ''))` from `<head>` — preserves hash fragments for deep links and avoids any visible flash. Deployed to slug `gleaming-sketch-5q8b` (the slug mounted at `protocolized.dev/`). Other sub-paths (assessment, case-studies, levels, blog, litepaper, ai-maturity-model) untouched.
+- **Cover slash + corner pills removed.** The duality vocabulary was distracting. Cover collage rebuilt from the 10 maturity-level images (5 governed + 5 cultivated, with 4 strong anchors repeated to fill the 14-cell quilt). Duality now reads through medallion-vs-gestural contrast rather than an explicit label. OG card (`images/og-cover.png`) regenerated to match via headless Chrome.
+- **Chapter intros: retro-pulp sci-fi → light geometric aesthetic.** All 8 chapter intro images swapped to a coherent enterprise-appropriate family (clean isometric models, mountain/topography forms, minimal geometric shapes): `protocol-fiction-aesthetics`, `what-is-formal-protocol-theory`, `a-very-short-introduction-to-memory`, `drift-stacking` (fetched fresh from the SIGP4B drift-stacking essay), `strangeness-legibility-hardness`, `images-of-memory`, `brackish-strategy`, `mechanical-currents`. The retired sci-fi set stays in `html/images/` for future reuse.
+- **Mobile bug fixes.** (1) Removed a legacy head script that forced `viewport=width=1100` on narrow loads — it was overriding the device viewport, so `@media (max-width: 768px)` never matched on real phones and the sidebar never collapsed to a header. (2) Un-nested the mobile media query (was inside `@media screen`; some browsers parsed inconsistently) — now a top-level `@media screen and (max-width: 768px)`. (3) Fixed mobile body height conflict (was `height: auto / min-height: 100vh` which broke deck snap-scroll); now preserves `height: 100vh / overflow: hidden` from the desktop rule and only overrides `flex-direction: column`.
+- **Assessment mobile width.** The `.slide-content` base padding (0.55in × 0.7in = ~67px each side) was eating mobile width; zeroed out for `.slide.slide-assessment` on ≤ 768px and gave the header its own 14px inline padding. The `.assessment-slide` now handles content padding (16px × 10px). Inner result cards stack the tarot/badge above text content; tension poles collapse to one column; step actions go column-stacked with full-width buttons.
+- **Status:** Live at https://ai.protocolized.dev/. README and Deployment-Guide/README.md refreshed for current state. Commits f765448 → 089e6d9 on `main`.
 
 ### 2026-05-12 | Deployment Guide shipped at ai.protocolized.dev — navigation, scaling, appendix, assessment, mobile
 
