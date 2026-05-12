@@ -672,6 +672,141 @@
       margin-right: 3pt;
     }
 
+    /* ─── Foreword callout (purple-tinted emphasis paragraph) ── */
+    .foreword-callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 9pt 13pt;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 8pt;
+    }
+    .foreword-callout p { margin: 0; }
+
+    /* ─── Matrix-feature slide (matrix centered on its own slide) ── */
+    .matrix-feature-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .matrix-feature-wrap .paradigm-matrix {
+      max-width: 7.5in;
+      height: 4.5in;
+      /* 3-row template: 2 equal-height data rows on top, col-labels row at bottom.
+         Top-right cell is the "winning" quadrant (Adoption Guide) per the standard
+         2x2 reading. */
+      grid-template-rows: 1fr 1fr auto;
+    }
+    .matrix-feature-wrap .paradigm-matrix .matrix-artifact { font-size: var(--fs-body); }
+    .matrix-feature-wrap .paradigm-matrix .matrix-example,
+    .matrix-feature-wrap .paradigm-matrix .matrix-ai-example { font-size: var(--fs-body-sm); }
+    /* Column labels sit BELOW the cells on this slide, so flip the rule */
+    .matrix-feature-wrap .paradigm-matrix .matrix-col-label {
+      border-bottom: none;
+      border-top: 1px solid var(--border);
+      padding-bottom: 0;
+      padding-top: 4pt;
+    }
+
+    /* ─── AI Evolution diagonal (foreword slide visual) ──────── */
+    .evo {
+      position: relative;
+      width: 9.6in;
+      height: 5.5in;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .evo svg.evo-line {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .cat-pill {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 3pt 10pt;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      z-index: 3;
+    }
+    .cat-pill.cultivated {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+      top: 14pt;
+      left: 14pt;
+    }
+    .cat-pill.governed {
+      background: var(--text);
+      color: #fafafa;
+      bottom: 14pt;
+      right: 14pt;
+    }
+    .ms-label {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 4pt 10pt;
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6pt;
+      border: 1px solid var(--text);
+      border-radius: 999px;
+      white-space: nowrap;
+      z-index: 4;
+    }
+    .ms-num {
+      font-size: var(--fs-caption);
+      color: var(--text-tertiary);
+      letter-spacing: 0.10em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .ms-name {
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .ms-year {
+      font-size: var(--fs-caption);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .evo-cluster {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 2.4in;
+      z-index: 2;
+    }
+    .evo-cluster ul { list-style: none; padding: 0; margin: 0; }
+    .evo-cluster li {
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      line-height: 1.4;
+      padding-left: 9pt;
+      position: relative;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .evo-cluster li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-tertiary);
+    }
+
     /* ─── Journey arc (3-step horizontal preview of chapters) ── */
     .journey-arc {
       display: grid;
@@ -743,6 +878,48 @@
       background: var(--accent-light);
       padding: 3pt 9pt;
       border-radius: 999px;
+      margin-top: 4pt;
+    }
+
+    /* ─── Chapter map (full guide preview, 2×4 grid) ─────────── */
+    .chapter-map {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 14pt;
+      margin-top: 14pt;
+    }
+    .chapter-card {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 10pt 12pt;
+      display: flex;
+      flex-direction: column;
+      gap: 4pt;
+    }
+    .chapter-card-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--accent-dark);
+      line-height: 1;
+      margin-bottom: 4pt;
+    }
+    .chapter-card-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .chapter-card-body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.35;
+      color: var(--text-secondary);
       margin-top: 4pt;
     }
 
@@ -884,6 +1061,80 @@
       letter-spacing: -0.02em;
       line-height: 1;
       text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+
+    /* ─── Split level band (two-image yin/yang header for deep dives) ── */
+    .slide-level .level-band-split { background: var(--text); }
+    .slide-level .level-band-split .band-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .slide-level .level-band-split .band-img.governed {
+      clip-path: polygon(0 0, 65% 0, 35% 100%, 0 100%);
+    }
+    .slide-level .level-band-split .band-img.cultivated {
+      clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
+    }
+    /* Both titles now sit at the bottom; keep the bottom darkening from the base
+       .level-band::after but make it a bit stronger for the wider title row. */
+    .slide-level .level-band-split::after {
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.6) 0%,
+        rgba(0,0,0,0) 45%);
+    }
+    .slide-level .level-band-split .band-slash {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Center the chapter pill over the band instead of left-aligning */
+    .slide-level .level-band-split .slide-header {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .slide-level .level-band-split .band-level-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5pt 12pt;
+      border-radius: 999px;
+      z-index: 4;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .slide-level .level-band-split .band-title-governed,
+    .slide-level .level-band-split .band-title-cultivated {
+      position: absolute;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+      z-index: 3;
+    }
+    .slide-level .level-band-split .band-title-governed {
+      bottom: 0.28in;
+      left: 0.7in;
+    }
+    .slide-level .level-band-split .band-title-cultivated {
+      bottom: 0.28in;
+      right: 0.7in;
     }
 
     /* ─── Level cards (Ch2 level slides — 3x2 grid, column-major) ── */
@@ -1144,6 +1395,155 @@
       color: var(--text);
     }
 
+    /* ─── From play to protocol flow (slide 17) ─────────────── */
+    .protocol-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      gap: 0;
+      margin: 8pt 0 8pt;
+    }
+    .protocol-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 5pt;
+      padding: 12pt 14pt;
+      border-radius: 8px;
+      border-top: 3px solid var(--accent);
+      background: var(--accent-light);
+    }
+    .protocol-stage.governed {
+      background: var(--surface);
+      border-top-color: var(--text);
+    }
+    .protocol-stage-track {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-dark);
+    }
+    .protocol-stage.governed .protocol-stage-track {
+      color: var(--text-secondary);
+    }
+    .protocol-stage-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 2pt;
+    }
+    .protocol-stage-body {
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .protocol-gate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: start;
+      padding: 14pt 6pt 0;
+      gap: 5pt;
+    }
+    .protocol-gate-arrow {
+      font-family: var(--font-mono);
+      font-size: 14pt;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .protocol-gate-label {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      color: var(--text-tertiary);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      max-width: 62px;
+    }
+
+    /* ─── Cultivated / Governed duality layout (slide 19) ────── */
+    .duality-wrap {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: stretch;
+      flex: 1;
+    }
+    .duality-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6pt;
+    }
+    .duality-col-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3pt;
+      margin-bottom: 2pt;
+    }
+    .duality-col-sub {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+    }
+    .duality-card {
+      display: flex;
+      flex-direction: column;
+      gap: 3pt;
+      padding: 9pt 12pt;
+      border-radius: 6px;
+      background: var(--accent-light);
+      border-top: 2.5px solid var(--accent);
+      flex: 1;
+    }
+    .duality-card.governed {
+      background: var(--surface);
+      border-top-color: var(--text);
+    }
+    .duality-act-num {
+      font-family: var(--font-mono);
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .duality-act-name {
+      font-family: var(--font-mono);
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 1pt;
+    }
+    .duality-act-body {
+      font-size: 8.5pt;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .duality-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6pt;
+    }
+    .duality-divider-rule {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+    .duality-divider-badge {
+      font-family: var(--font-mono);
+      font-size: 12pt;
+      color: var(--accent);
+      line-height: 1;
+    }
+
     /* ─── Roles grid (Ch4, 2x3) ──────────────────────────────── */
     .roles-grid {
       display: grid;
@@ -1391,6 +1791,133 @@
     @media screen {
       body { background: #d4d4d8; }
     }
+
+    /* ─── Yin-Yang framework (slide 07) ──────────────────────── */
+    .track-bar {
+      display: grid;
+      grid-template-columns: 1fr 64px 1fr;
+      align-items: center;
+      margin-bottom: 6pt;
+    }
+    .track-pill {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3pt 10pt;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .track-pill-finite {
+      background: var(--text);
+      color: #fafafa;
+      justify-self: start;
+    }
+    .track-pill-infinite {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+      justify-self: end;
+    }
+    .track-bar-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .yy-svg {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 4px rgba(168,136,191,0.22));
+    }
+    .yy-level-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 3pt;
+      flex: 1;
+    }
+    .yy-level-row {
+      display: grid;
+      grid-template-columns: 1fr 0.95in 1fr;
+      align-items: center;
+      column-gap: 10pt;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 4pt;
+    }
+    .yy-level-row:first-child { border-top: none; padding-top: 0; }
+    .finite-side, .infinite-side {
+      display: flex;
+      align-items: center;
+    }
+    .finite-side { justify-content: flex-end; }
+    .infinite-side { justify-content: flex-start; }
+    .yy-level-text { display: flex; flex-direction: column; gap: 1pt; }
+    .finite-side .yy-level-text { text-align: right; }
+    .infinite-side .yy-level-text { text-align: left; }
+    .yy-level-name {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .yy-level-desc {
+      font-size: 8.5pt;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      max-width: 2.8in;
+    }
+    .finite-side .yy-level-desc { align-self: flex-end; }
+    .yy-level-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .yy-split-circle {
+      position: relative;
+      width: 0.82in;
+      height: 0.82in;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .yy-split-circle .half {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .yy-split-circle .half.left  { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); filter: saturate(0.7); }
+    .yy-split-circle .half.right { clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
+    .yy-split-circle::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 3px;
+      background: #fff;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .yy-split-circle .yy-num {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-mono);
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 2pt 7pt;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+      z-index: 3;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -1428,14 +1955,14 @@
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
     <li><span class="contents-num">00</span><span class="contents-name">Foreword: Everywhere you look, AI is already there</span><span class="contents-page">03</span></li>
-    <li><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">05</span></li>
-    <li><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">07</span></li>
-    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">14</span></li>
-    <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">18</span></li>
-    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">21</span></li>
-    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">24</span></li>
-    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">27</span></li>
-    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">29</span></li>
+    <li><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">07</span></li>
+    <li><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">10</span></li>
+    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">17</span></li>
+    <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">21</span></li>
+    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">24</span></li>
+    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">27</span></li>
+    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span></li>
+    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -1456,46 +1983,134 @@
         <p>A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <em>deployment</em> is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.</p>
       </div>
       <div class="foreword-col-right">
+        <p>That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout.</p>
+        <div class="foreword-callout"><p><strong>AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.</strong></p></div>
         <p>Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.</p>
-        <div class="matrix-wrap">
-          <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
-            <div class="matrix-title">Finding the right artifact for a given technology</div>
-            <div class="matrix-corner"></div>
-            <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
-            <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
-
-            <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
-            <div class="matrix-cell muted">
-              <div class="matrix-artifact">Implementation Roadmap</div>
-              <div class="matrix-example">e.g., Figma</div>
-              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
-            </div>
-            <div class="matrix-cell muted">
-              <div class="matrix-artifact">Deployment Plan</div>
-              <div class="matrix-example">e.g., Microsoft Office</div>
-              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
-            </div>
-
-            <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
-            <div class="matrix-cell muted">
-              <div class="matrix-artifact">Practice Playbook</div>
-              <div class="matrix-example">e.g., MRI</div>
-              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
-            </div>
-            <div class="matrix-cell focus">
-              <div class="matrix-artifact">Adoption Guide</div>
-              <div class="matrix-example">e.g., electricity, the internet</div>
-              <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
-            </div>
-          </aside>
-        </div>
       </div>
     </div>
   </main>
   <span class="slide-page">03</span>
 </section>
 
-<!-- ─── 04 — Ch1 section title ──────────────────────────────── -->
+<!-- ─── 04 — AI Evolution diagonal (two parallel tracks) ───── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Foreword · The path so far</span>
+  </header>
+  <h2 class="slide-h1">AI has evolved across two parallel tracks</h2>
+  <p class="slide-subtitle">Each milestone needed both an individual practice and an organizational response. The cultivated track is what people invent; the governed track is what organizations approve.</p>
+  <main class="slide-body">
+    <div class="evo">
+      <svg class="evo-line" viewBox="0 0 960 550" preserveAspectRatio="none">
+        <polygon points="0,0 960,0 0,550" fill="#e9e1f2"/>
+        <line x1="0" y1="550" x2="960" y2="0" stroke="#1a1a2e" stroke-width="2"/>
+      </svg>
+
+      <span class="cat-pill cultivated">Cultivated</span>
+      <span class="cat-pill governed">Governed</span>
+
+      <span class="ms-label" style="left: 2.40in; top: 4.125in;">
+        <span class="ms-num">01</span><span class="ms-name">Chat</span><span class="ms-year">2022–23</span>
+      </span>
+      <div class="evo-cluster" style="left: 1.90in; top: 3.26in;">
+        <ul>
+          <li>Everyday use of ChatGPT</li>
+          <li>Personal-account exploration</li>
+          <li>Prompt experimentation</li>
+        </ul>
+      </div>
+      <div class="evo-cluster" style="left: 2.90in; top: 4.99in;">
+        <ul>
+          <li>Acceptable-use policies</li>
+          <li>Blanket bans (Samsung)</li>
+          <li>First enterprise licenses</li>
+        </ul>
+      </div>
+
+      <span class="ms-label" style="left: 4.80in; top: 2.75in;">
+        <span class="ms-num">02</span><span class="ms-name">Tools</span><span class="ms-year">2023–24</span>
+      </span>
+      <div class="evo-cluster" style="left: 4.30in; top: 1.88in;">
+        <ul>
+          <li>Custom GPTs and skills</li>
+          <li>Prompt libraries and kits</li>
+          <li>Team-authored workflows</li>
+        </ul>
+      </div>
+      <div class="evo-cluster" style="left: 5.30in; top: 3.62in;">
+        <ul>
+          <li>Sanctioned tool lists</li>
+          <li>Enterprise vendor deals</li>
+          <li>Verification checkpoints</li>
+        </ul>
+      </div>
+
+      <span class="ms-label" style="left: 7.20in; top: 1.375in;">
+        <span class="ms-num">03</span><span class="ms-name">Agents</span><span class="ms-year">2024–26</span>
+      </span>
+      <div class="evo-cluster" style="left: 6.70in; top: 0.51in;">
+        <ul>
+          <li>Vibe-coding, agentic IDEs</li>
+          <li>Individual agent experiments</li>
+          <li>AI-native function workflows</li>
+        </ul>
+      </div>
+      <div class="evo-cluster" style="left: 7.70in; top: 2.24in;">
+        <ul>
+          <li>Forward Deployed Engineers</li>
+          <li>Agent governance protocols</li>
+          <li>Model risk frameworks</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">04</span>
+</section>
+
+<!-- ─── 05 — Finding the right artifact (matrix in full) ───── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Foreword · The right artifact</span>
+  </header>
+  <h2 class="slide-h1">Finding the right artifact for a given technology</h2>
+  <p class="slide-subtitle">The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.</p>
+  <main class="slide-body">
+    <div class="matrix-feature-wrap">
+      <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
+        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Practice Playbook</div>
+          <div class="matrix-example">e.g., MRI</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
+        </div>
+        <div class="matrix-cell focus">
+          <div class="matrix-artifact">Adoption Guide</div>
+          <div class="matrix-example">e.g., electricity, the internet</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
+        </div>
+
+        <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Implementation Roadmap</div>
+          <div class="matrix-example">e.g., Figma</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
+        </div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Deployment Plan</div>
+          <div class="matrix-example">e.g., Microsoft Office</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
+        </div>
+
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
+        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
+      </aside>
+    </div>
+  </main>
+  <span class="slide-page">05</span>
+</section>
+
+<!-- ─── 06 — Ch1 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-1">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 1</span>
@@ -1504,52 +2119,83 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/theorizing-protocolization.png" alt="">
   </div>
-  <span class="slide-page">04</span>
+  <span class="slide-page">06</span>
 </section>
 
-<!-- ─── 05 — Ch1 body ───────────────────────────────────────── -->
+<!-- ─── 07 — Ch1 body ───────────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 1 · Introducing the AI Adoption Guide</span>
   </header>
   <h2 class="slide-h1">Introducing the AI Adoption Guide</h2>
-  <p class="slide-subtitle">The key to success in AI adoption is thinking in protocols.</p>
+  <p class="slide-subtitle">Durable AI Adoption is what happens when governance enables cultivation.</p>
   <main class="slide-body">
     <div class="slide-body-cols-2">
-      <p>Most enterprises are discussing and planning for <span class="term">AI</span> as if it were a next enterprise software productivity solution. It is not, and the failure modes that follow from that assumption are predictable.</p>
-      <p>AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance.</p>
-      <p>This property breaks the conventional <span class="term">governance</span> model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. The right framing is thinking in <span class="term">protocols</span>: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.</p>
+      <p>This guide is about <span class="term">AI</span> adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.</p>
+      <p>Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, set data boundaries. This approach works when failure modes are knowable in advance, as with deterministic software. It fails with AI, whose outputs are probabilistic and whose failure distribution shifts with every model update. Prohibition cannot keep up. The cultivated track routes around it, and the failures the policies were meant to prevent happen anyway.</p>
+      <p>The shift is not to <em>less</em> <span class="term">governance</span> but to a different <em>kind</em> of governance. Instead of governing what people may do with AI, the organization governs what AI's outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These rules are <span class="term">protocols</span>. They govern coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the system moving.</p>
       <p>A useful frame from the Protocol Institute's launch essay: protocols are <em>infrastructural technologies for producing non-events</em>. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.</p>
-      <p>Following this insight, the capability <span class="term">maturity</span> of an organization adopting AI is the precision with which its protocols produce those non-events.</p>
+      <p>The capability <span class="term">maturity</span> of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.</p>
     </div>
-    <div class="journey-arc" aria-label="The path through this guide">
-      <div class="journey-arc-title">The path through this guide</div>
-      <div class="journey-step">
-        <span class="journey-step-num">Chapter 02</span>
-        <span class="journey-step-name">Understanding your maturity</span>
-        <span class="journey-step-body">Locate where your organization sits on the five levels.</span>
-        <span class="journey-step-pill">See Protocols</span>
+  </main>
+  <span class="slide-page">07</span>
+</section>
+
+<!-- ─── 08 — The path through this guide (full chapter map) ── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 1 · Introducing the AI Adoption Guide</span>
+  </header>
+  <h2 class="slide-h1">The path through this guide</h2>
+  <p class="slide-subtitle">How the chapters develop the model, from the framing argument through the maturity ladder, the pilot work, the cases, and the patterns.</p>
+  <main class="slide-body">
+    <div class="chapter-map">
+      <div class="chapter-card">
+        <span class="chapter-card-num">00</span>
+        <span class="chapter-card-name">Everywhere you look, AI is already there</span>
+        <span class="chapter-card-body">Understand why AI is a paradigm, not a software upgrade, and why durable adoption needs both governed and cultivated tracks.</span>
       </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step">
-        <span class="journey-step-num">Chapter 03</span>
-        <span class="journey-step-name">Getting started with your first pilot</span>
-        <span class="journey-step-body">Surface what's already happening; find your first pilot.</span>
-        <span class="journey-step-pill">Adapt Protocols</span>
+      <div class="chapter-card">
+        <span class="chapter-card-num">01</span>
+        <span class="chapter-card-name">Introducing the AI Adoption Guide</span>
+        <span class="chapter-card-body">Discover how governance enables cultivation through protocols, and what maturity actually measures.</span>
       </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step">
-        <span class="journey-step-num">Chapter 04</span>
-        <span class="journey-step-name">Driving durable adoption</span>
-        <span class="journey-step-body">Bottom-up discovery, top-down scale.</span>
-        <span class="journey-step-pill">Build New Protocols</span>
+      <div class="chapter-card">
+        <span class="chapter-card-num">02</span>
+        <span class="chapter-card-name">Adoption Maturity Levels</span>
+        <span class="chapter-card-body">Locate your organization on the five maturity levels, from invisible personal use to civilization-scale infrastructure.</span>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-card-num">03</span>
+        <span class="chapter-card-name">Getting started with AI adoption</span>
+        <span class="chapter-card-body">Run the pre-pilot readiness check, conduct the half-day audit, and learn how to evaluate candidate use cases.</span>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-card-num">04</span>
+        <span class="chapter-card-name">The path to durable AI adoption</span>
+        <span class="chapter-card-body">Trace how bottom-up discovery becomes top-down scale, with the handoff between the cultivated and governed tracks as the central job.</span>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-card-num">05</span>
+        <span class="chapter-card-name">How the Protocol Institute adopts AI</span>
+        <span class="chapter-card-body">Dive into two AI adoption case studies from inside the Protocol Institute.</span>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-card-num">07</span>
+        <span class="chapter-card-name">Success patterns and failure modes</span>
+        <span class="chapter-card-body">Learn the four emerging success patterns and the four failure modes they mitigate.</span>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-card-num">08</span>
+        <span class="chapter-card-name">The new nature of work</span>
+        <span class="chapter-card-body">See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.</span>
       </div>
     </div>
   </main>
-  <span class="slide-page">05</span>
+  <span class="slide-page">08</span>
 </section>
 
-<!-- ─── 06 — Ch2 section title ──────────────────────────────── -->
+<!-- ─── 10 — Ch2 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-2">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 2</span>
@@ -1558,323 +2204,427 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/fabric-and-brain.png" alt="">
   </div>
-  <span class="slide-page">06</span>
-</section>
-
-<!-- ─── 07 — Ch2 levels at a glance (5 circular badges) ──────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Five AI adoption maturity levels at a glance</h2>
-  <main class="slide-body" style="display: flex; flex-direction: column;">
-    <p class="lead-p">AI adoption follows a path that other general-purpose technologies have already traveled: email, EDI, the personal computer. Each stage along the path represents a different protocol regime. Most organizations don't know which stage they're at, and nobody is expected to skip ahead. The most useful first step is to locate yourself on the path.</p>
-    <div class="levels-overview" style="margin-top: auto; margin-bottom: auto;">
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/faithful-channel.png" alt=""></div>
-        <span class="level-badge-num">Level 01</span>
-        <span class="level-badge-name">Shadow</span>
-        <p class="level-badge-desc">AI in use through personal accounts; no monitoring, no governing policy.</p>
-      </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/primordial-soup.png" alt=""></div>
-        <span class="level-badge-num">Level 02</span>
-        <span class="level-badge-name">Kit</span>
-        <p class="level-badge-desc">Access policy in place; users encoding workflows into reusable kits.</p>
-      </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/last-mile-optimism.png" alt=""></div>
-        <span class="level-badge-num">Level 03</span>
-        <span class="level-badge-name">Engine</span>
-        <p class="level-badge-desc">Workflows built around AI with named owners and quality metrics.</p>
-      </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/open-protocols-government.png" alt=""></div>
-        <span class="level-badge-num">Level 04</span>
-        <span class="level-badge-name">Infrastructure</span>
-        <p class="level-badge-desc">AI is a sector baseline; coordination challenge crosses organizational boundaries.</p>
-      </div>
-      <div class="level-badge">
-        <div class="level-badge-image"><img src="./images/protocols-for-the-long-now.png" alt=""></div>
-        <span class="level-badge-num">Level 05</span>
-        <span class="level-badge-name">Planetary</span>
-        <p class="level-badge-desc">AI integrated into civilization-scale systems; legibility is the governance challenge.</p>
-      </div>
-    </div>
-  </main>
-  <span class="slide-page">07</span>
-</section>
-
-<!-- ─── 08 — Ch2 examples and historical parallels ──────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-  </header>
-  <h2 class="slide-h1">Examples and historical parallels for each adoption level</h2>
-  <main class="slide-body">
-    <p class="lead-p">Each level has a documented anchor case and a historical parallel that hints at the protocol regime behind it.</p>
-    <table class="slide-table">
-      <colgroup>
-        <col style="width:13%">
-        <col style="width:51%">
-        <col style="width:36%">
-      </colgroup>
-      <thead>
-        <tr><th>Level</th><th>Example</th><th>Historical parallel</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="level-num">01</span><span class="level-name">Shadow</span></td>
-          <td>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — banned enterprise-wide after discovery.</td>
-          <td>Late 1990s — personal Hotmail and Yahoo accounts for business before corporate email was ubiquitous.</td>
-        </tr>
-        <tr>
-          <td><span class="level-num">02</span><span class="level-name">Kit</span></td>
-          <td>Klarna's 2023–25 deployment reached 90% daily adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 over output quality.</td>
-          <td>Early 20th century — rural users repurposed Ford automobiles as corn shellers, washing machines, and water pumps.</td>
-        </tr>
-        <tr>
-          <td><span class="level-num">03</span><span class="level-name">Engine</span></td>
-          <td>Uber engineering, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review.</td>
-          <td>2008–2015 — software teams redesigned workflows around git and CI/CD. Domain expertise became the limit.</td>
-        </tr>
-        <tr>
-          <td><span class="level-num">04</span><span class="level-name">Infrastructure</span></td>
-          <td>Walmart's 1990s EDI mandate for all suppliers — not adopting meant not participating; one failure could propagate across hundreds of trading partners.</td>
-          <td>Late 1980s–1990s — EDI in retail and SWIFT in finance. Each became table stakes for the sector.</td>
-        </tr>
-        <tr>
-          <td><span class="level-num">05</span><span class="level-name">Planetary</span></td>
-          <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.</td>
-          <td>1980s–present — TCP/IP and BGP, designed for cooperative use among a small number of operators, hit planetary scale.</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
-  <span class="slide-page">08</span>
-</section>
-
-<!-- ─── 09 — L1 Shadow ──────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/faithful-channel.png" alt="">
-    <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-    </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 01</span>
-      <span class="level-band-name">Shadow</span>
-    </div>
-  </div>
-  <main class="slide-body">
-    <p class="lead-p">AI tools entered through individual initiative rather than organizational decision. Employees use personal accounts for work tasks, no policy governs what data leaves the organization, and exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
-    <div class="level-card-grid">
-      <div class="level-card col-blue">
-        <span class="level-card-label">Defining capability</span>
-        <p>AI as the return of play to work. The personal account is a "magic circle" (Huizinga, <em>Homo Ludens</em>): a low-stakes, voluntary space where employees explore what AI does for their job without organizational permission.</p>
-      </div>
-      <div class="level-card col-blue">
-        <span class="level-card-label">What it requires</span>
-        <p>Tolerance for early experimentation, awareness of who's using AI for what, and an audit pathway (Ch3) that surfaces practice without policing it. The aim is visibility, not suppression.</p>
-      </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Blind spot</span>
-        <p>No coordination mechanism specifies what tools may be used, what data may be submitted, what outputs require review, or who is accountable. The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines; both are invisible.</p>
-      </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Failure mode</span>
-        <p>Unaccountable AI access. AI systems operate with organizational data and produce outputs entering organizational decisions without any protocol governing accountability.</p>
-      </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Anchor case</span>
-        <p>April 2023: three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within one month — discovered after the fact, banned enterprise-wide. Reco.ai (2025): 71% of enterprise employees use unauthorized AI tools, with a 400-day average discovery lag.</p>
-      </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Historical parallel · late 1990s</span>
-        <p>Personal Hotmail and Yahoo accounts for business communication before corporate email was ubiquitous. Resolved through IT-provisioned corporate email with governance.</p>
-      </div>
-    </div>
-  </main>
   <span class="slide-page">09</span>
 </section>
 
-<!-- ─── 10 — L2 Kit ─────────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/primordial-soup.png" alt="">
-    <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-    </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 02</span>
-      <span class="level-band-name">Kit</span>
+<!-- ─── 10 — Ch2 yin-yang framework ──────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+  </header>
+  <h2 class="slide-h1">Two paths of AI adoption</h2>
+  <p class="slide-subtitle">Most organizations default to the governed mode of adoption they know from other technologies. This falls short because AI also demands individual-level change, something governed frameworks alone cannot produce. Durable adoption requires both.</p>
+  <div class="track-bar">
+    <span class="track-pill track-pill-finite">Governed</span>
+    <div class="track-bar-center">
+      <svg class="yy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,5 A45,45 0 0,0 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#1a1a2e"/>
+        <path d="M50,5 A45,45 0 0,1 50,95 A22.5,22.5 0 0,1 50,50 A22.5,22.5 0 0,0 50,5 Z" fill="#e9e1f2"/>
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#a888bf" stroke-width="1.5"/>
+        <circle cx="50" cy="27.5" r="7" fill="#e9e1f2"/>
+        <circle cx="50" cy="72.5" r="7" fill="#2e2040"/>
+      </svg>
     </div>
+    <span class="track-pill track-pill-infinite">Cultivated</span>
   </div>
-  <main class="slide-body">
-    <p class="lead-p">Leadership has decided AI adoption is strategically necessary and granted broad access. Enterprise licenses are in place; an access policy exists; integration accelerates. Underneath the policy, users are encoding workflows into <em>kits</em> — reusable components (markdown skills, prompt templates, scheduled jobs, shared notebooks) that make AI behave the same way the same time on the same task.</p>
-    <div class="level-card-grid">
-      <div class="level-card col-blue">
-        <span class="level-card-label">Defining capability</span>
-        <p>AI affordances shaped to recurring work. A kit (skill, prompt template, scheduled job, custom GPT) ties the model to a specific task with known input, output, and quality bar. AI is now operable by a second user.</p>
+  <main class="slide-body" style="display:flex;flex-direction:column;">
+    <div class="yy-level-rows">
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Shadow</span>
+            <span class="yy-level-desc">AI in use through personal accounts; no monitoring, no governing policy.</span>
+          </div>
+        </div>
+        <div class="yy-level-center">
+          <div class="yy-split-circle">
+            <img class="half left"  src="./images/faithful-channel.png" alt="Shadow">
+            <img class="half right" src="./images/constructing-the-evil-twin-of-ai.png" alt="Play">
+            <span class="yy-num">L·01</span>
+          </div>
+        </div>
+        <div class="infinite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Play</span>
+            <span class="yy-level-desc">Curiosity-driven exploration; AI encountered as a medium for deep play and discovery.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-card col-blue">
-        <span class="level-card-label">What it requires</span>
-        <p>A kit registry with named owners, verification checkpoints at each kit's output, embedded protocol designers (FDE-style) inside functions, and tolerance for variation to play out before standardizing.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Sanctioned</span>
+            <span class="yy-level-desc">Access policy in place; tools approved, use tracked, risk contained within boundaries.</span>
+          </div>
+        </div>
+        <div class="yy-level-center">
+          <div class="yy-split-circle">
+            <img class="half left"  src="./images/primordial-soup.png" alt="Sanctioned">
+            <img class="half right" src="./images/theorizing-protocolization.png" alt="Kit">
+            <span class="yy-num">L·02</span>
+          </div>
+        </div>
+        <div class="infinite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Kit</span>
+            <span class="yy-level-desc">Users encoding personal workflows into reusable, shareable protocols of their own design.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Blind spot</span>
-        <p>The kit layer itself. Dashboards measure license utilization, not the user-encoded components doing the actual productivity work. Two organizations with identical license utilization but different kit layers underneath end up at different places.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Engine</span>
+            <span class="yy-level-desc">Workflows built around AI with named owners and quality metrics; output is optimized.</span>
+          </div>
+        </div>
+        <div class="yy-level-center">
+          <div class="yy-split-circle">
+            <img class="half left"  src="./images/last-mile-optimism.png" alt="Engine">
+            <img class="half right" src="./images/have-your-factory-call-my-factory.png" alt="AI Native">
+            <span class="yy-num">L·03</span>
+          </div>
+        </div>
+        <div class="infinite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">AI Native</span>
+            <span class="yy-level-desc">New forms of work emerge that were not possible before AI; roles and practices are redefined.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Failure mode</span>
-        <p>Access-without-output-governance. As AI becomes entrenched in customer communications, financial models, meeting notes, and contracting, output quality is determined by individual judgment.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Infrastructure</span>
+            <span class="yy-level-desc">AI is a sector baseline; coordination challenge crosses organizational boundaries.</span>
+          </div>
+        </div>
+        <div class="yy-level-center">
+          <div class="yy-split-circle">
+            <img class="half left"  src="./images/open-protocols-government.png" alt="Infrastructure">
+            <img class="half right" src="./images/strangeness-legibility-hardness.png" alt="Vernacular">
+            <span class="yy-num">L·04</span>
+          </div>
+        </div>
+        <div class="infinite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Vernacular</span>
+            <span class="yy-level-desc">AI practices absorbed into culture; tacit knowledge spreads without mandates or policies.</span>
+          </div>
+        </div>
       </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Anchor case</span>
-        <p>Klarna's 2023–2025 deployment hit 90% daily AI adoption and two-thirds of customer-service chats automated, then a public CEO reversal in May 2025 citing outputs "generic, repetitive, insufficiently nuanced." Anthropic's legal team self-reports the inverse: extended capability through a plugin built on the team's actual memos and risk frameworks.</p>
-      </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Historical parallel · early 20th century</span>
-        <p>Rural users repurposed automobiles as corn shellers, washing machines, and water pumps from 1903 to 1950. Their interpretive flexibility (Kline and Pinch) drove Ford to release dedicated trucks. The kit phase produced the human capital later integration capitalized on.</p>
+      <div class="yy-level-row">
+        <div class="finite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Planetary</span>
+            <span class="yy-level-desc">AI integrated into civilization-scale systems; coordination and legibility are the governance challenge.</span>
+          </div>
+        </div>
+        <div class="yy-level-center">
+          <div class="yy-split-circle">
+            <img class="half left"  src="./images/protocols-for-the-long-now.png" alt="Planetary">
+            <img class="half right" src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency">
+            <span class="yy-num">L·05</span>
+          </div>
+        </div>
+        <div class="infinite-side">
+          <div class="yy-level-text">
+            <span class="yy-level-name">Fluency</span>
+            <span class="yy-level-desc">AI fully absorbed into how people think and work; second nature, no longer named.</span>
+          </div>
+        </div>
       </div>
     </div>
   </main>
   <span class="slide-page">10</span>
 </section>
 
-<!-- ─── 11 — L3 Engine ─────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/last-mile-optimism.png" alt="">
-    <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
-    </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 03</span>
-      <span class="level-band-name">Engine</span>
-    </div>
-  </div>
+<!-- ─── 11 — Ch2 examples across both paths ──────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+  </header>
+  <h2 class="slide-h1">Examples across both paths of adoption</h2>
   <main class="slide-body">
-    <p class="lead-p">AI serves as an engine within core workflows. Removing it would require rebuilding the workflow. The organization has moved past <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em> Workflows have defined input standards, output verification checkpoints, escalation triggers, and feedback loops.</p>
-    <div class="level-card-grid">
-      <div class="level-card col-blue">
-        <span class="level-card-label">Defining capability</span>
-        <p>AI as workflow engine. Specific workflows are rebuilt around what AI uniquely does well — tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI would require rebuilding the workflow.</p>
-      </div>
-      <div class="level-card col-blue">
-        <span class="level-card-label">What it requires</span>
-        <p>Defined input standards, output verification checkpoints, escalation triggers, and feedback loops per workflow. Named owners. Coordination layers that buffer AI-paced work against external dependencies on different tempos.</p>
-      </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Blind spot</span>
-        <p>Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, with external partners, or with regulators operating at different speeds.</p>
-      </div>
-      <div class="level-card col-red">
-        <span class="level-card-label">Failure mode</span>
-        <p>Temporal divergence. AI accelerates some workflows while external dependencies — client review cycles, regulatory response, cross-functional handoffs — remain at a different pace.</p>
-      </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Anchor case</span>
-        <p>Uber engineering, March 2026: 84% agentic-coding adoption, 65–72% of code AI-generated, 11% of pull requests opened by agents. The bottleneck shifted from coding to review; Uber built two protocol systems — Code Inbox and U Review — to absorb the new tempo. Boom Supersonic illustrates the same pattern in a safety-critical domain.</p>
-      </div>
-      <div class="level-card col-purple">
-        <span class="level-card-label">Historical parallel · 2008–2015</span>
-        <p>Software teams redesigned workflows around git and CI/CD. Domain expertise — what a good code review looks like — became the limiting constraint.</p>
-      </div>
-    </div>
+    <p class="lead-p">Each level looks different depending on which path an organization is on. Durable adoption draws on both.</p>
+    <table class="slide-table" style="font-size:var(--fs-body-sm);">
+      <colgroup>
+        <col style="width:13%">
+        <col style="width:43.5%">
+        <col style="width:43.5%">
+      </colgroup>
+      <thead>
+        <tr><th>Level</th><th>Governed</th><th>Cultivated</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="level-num">01</span><span class="level-name">Shadow / Play</span></td>
+          <td>Samsung, April 2023: three engineers submitted proprietary source code via personal ChatGPT accounts, banned enterprise-wide after discovery. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).</td>
+          <td>SIGBIZ, 2025: members running AI workflows in personal repos and vaults in parallel. A fortnightly show-and-tell surfaced what curiosity had already produced.</td>
+        </tr>
+        <tr>
+          <td><span class="level-num">02</span><span class="level-name">Sanctioned / Kit</span></td>
+          <td>Klarna 2023–25: 90% daily AI adoption and two-thirds of customer-service chats automated, then a CEO reversal citing outputs "generic, repetitive, insufficiently nuanced."</td>
+          <td>Anthropic's legal team: built a plugin on the team's own memos and risk frameworks. Kit as encoded domain expertise rather than vendor-supplied workflow.</td>
+        </tr>
+        <tr>
+          <td><span class="level-num">03</span><span class="level-name">Engine / AI Native</span></td>
+          <td>Uber, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review to absorb the new tempo.</td>
+          <td>Boom Aerospace: curious software engineers embedded in hardware teams invented mkBoom — parametric aircraft analysis in minutes. XB-1 built by 50 people; 1,000+ miles of range recovered in two weeks through co-design impossible in siloed development.</td>
+        </tr>
+        <tr>
+          <td><span class="level-num">04</span><span class="level-name">Infrastructure / Vernacular*</span></td>
+          <td>Walmart's 1990s EDI mandate: not adopting meant not participating; one failure cascaded across hundreds of trading partners.</td>
+          <td>Excel became the universal vernacular of business analysis without mandate — models and conventions spread person to person faster than any IT program could have designed.</td>
+        </tr>
+        <tr>
+          <td><span class="level-num">05</span><span class="level-name">Planetary / Fluency*</span></td>
+          <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.</td>
+          <td>Autocorrect: implemented at OS level, then absorbed into how billions of people write. Users adapted their typing patterns to it unconsciously. Nobody calls it AI.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-tertiary);margin-top:6pt;">* AI adoption at most organizations has not yet reached levels 4 and 5 of cultivated adoption.</p>
   </main>
   <span class="slide-page">11</span>
 </section>
 
-<!-- ─── 12 — L4 Infrastructure ──────────────────────────────── -->
+<!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/open-protocols-government.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/faithful-channel.png" alt="Shadow">
+    <img class="band-img cultivated" src="./images/constructing-the-evil-twin-of-ai.png" alt="Play">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 04</span>
-      <span class="level-band-name">Infrastructure</span>
-    </div>
+    <div class="band-level-badge">L · 01</div>
+    <div class="band-title-governed">Shadow</div>
+    <div class="band-title-cultivated">Play</div>
   </div>
   <main class="slide-body">
-    <p class="lead-p">AI capability has become a sector baseline. Individual organizational advantage has mostly dissipated. The governance challenge is now collective: how the industry coordinates AI use, handles shared risks, and establishes interoperability standards. Trading partners, regulators, and competitors operate within shared interfaces.</p>
+    <p class="lead-p">AI tools enter through individual initiative, not organizational decision. Exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.</p>
     <div class="level-card-grid">
       <div class="level-card col-blue">
         <span class="level-card-label">Defining capability</span>
-        <p>AI affordances as shared sector interface. The same model and protocols are baseline across an industry. Inter-organizational handoffs run on AI-mediated protocols at sector scale, across competitive boundaries.</p>
+        <p>The personal account as magic circle (Huizinga, <em>Homo Ludens</em>): a low-stakes, voluntary space where employees explore what AI does for their job without organizational permission.</p>
       </div>
       <div class="level-card col-blue">
         <span class="level-card-label">What it requires</span>
-        <p>Participation in industry standards bodies, interoperability commitments with partners, multi-org governance of the shared risk surface, and visibility into how decisions cascade across boundaries.</p>
+        <p>Visibility without suppression. An audit pathway (Ch3) that surfaces who is using AI for what without policing it.</p>
       </div>
       <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
-        <p>What an organization cannot see beyond its own boundary: second-order effects of sector-wide adoption, the shared attack surface, cascading failures when several organizations' protocols rest on a common assumption.</p>
+        <p>The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines. Both are invisible.</p>
       </div>
       <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
-        <p>Sector fragility. The protocol that made the sector work also makes the sector vulnerable to a single point of failure.</p>
+        <p>Unaccountable AI access. AI operates with organizational data and produces outputs entering decisions without any protocol governing accountability.</p>
       </div>
       <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
-        <p>Walmart's 1990s mandate of EDI for all suppliers — not adopting meant not participating in the market; one supply-chain failure could propagate across hundreds of trading partners. The 2017 NotPetya attack exploited the same shared-protocol surface in containerized shipping. Sector-scale AI adoption is at the equivalent of EDI's mandate phase.</p>
+        <p>Samsung, April 2023: three engineers submitted proprietary source code to ChatGPT through personal accounts within one month, banned enterprise-wide. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).</p>
       </div>
       <div class="level-card col-purple">
-        <span class="level-card-label">Historical parallel · late 1980s–1990s</span>
-        <p>EDI in retail, SWIFT in finance. Each became table stakes; each created the failure modes that follow from shared infrastructure.</p>
+        <span class="level-card-label">Cultivated counterpart · Play</span>
+        <p>The same individual impulse channeled through curiosity rather than convenience. Where Shadow use is invisible to the organization, Play produces kits, practices, and champions worth surfacing.</p>
       </div>
     </div>
   </main>
   <span class="slide-page">12</span>
 </section>
 
-<!-- ─── 13 — L5 Planetary ───────────────────────────────────── -->
+<!-- ─── 13 — L2 Sanctioned ────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
-  <div class="level-band">
-    <img src="./images/protocols-for-the-long-now.png" alt="">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/primordial-soup.png" alt="Sanctioned">
+    <img class="band-img cultivated" src="./images/theorizing-protocolization.png" alt="Kit">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
     <header class="slide-header">
       <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
     </header>
-    <div class="level-band-title">
-      <span class="level-band-eyebrow">Level 05</span>
-      <span class="level-band-name">Planetary</span>
-    </div>
+    <div class="band-level-badge">L · 02</div>
+    <div class="band-title-governed">Sanctioned</div>
+    <div class="band-title-cultivated">Kit</div>
   </div>
   <main class="slide-body">
-    <p class="lead-p">AI is embedded within civilization-scale coordination systems: supply chains, financial infrastructure, public health surveillance, energy grids. The governance challenge is legibility — understanding what the systems are doing well enough to intervene when they fail. No single actor controls the full system; coordination happens through layers of inherited protocol now operating at scales its designers did not anticipate.</p>
+    <p class="lead-p">Leadership has granted broad access. Enterprise licenses are in place, an access policy defines approved tools and data boundaries, and integration accelerates under governance.</p>
     <div class="level-card-grid">
       <div class="level-card col-blue">
         <span class="level-card-label">Defining capability</span>
-        <p>AI as planetary coordination fabric. AI is embedded in systems that route global capital, optimize multi-continent supply chains, surveil public health, balance energy grids. Coordination through layered AI-mediated protocols at unprecedented scale.</p>
+        <p>Approved tools, defined data boundaries, tracked usage. The organization can now answer: which AI tools are in use, on what data, by whom.</p>
       </div>
       <div class="level-card col-blue">
         <span class="level-card-label">What it requires</span>
-        <p>Legibility tools (inspect what civilization-scale AI systems are doing), multi-stakeholder governance, intervention capability when systems fail, and recognition that decisions made at this layer affect billions.</p>
+        <p>Named approved tools, data boundary definitions, a security review, audit trails, and tolerance for variation before standardizing.</p>
       </div>
       <div class="level-card col-red">
         <span class="level-card-label">Blind spot</span>
-        <p>Systemic. The failure modes are emergent properties of protocol interaction, not properties of any one component.</p>
+        <p>Policy governs access, not output. Dashboards measure license utilization, not whether outputs are good. Two organizations at identical utilization but with different practices underneath end up in different places.</p>
       </div>
       <div class="level-card col-red">
         <span class="level-card-label">Failure mode</span>
-        <p>Legibility collapse. The system continues to function — most of the time — but no one can fully describe what it is doing or why.</p>
+        <p>Access without output governance. As AI becomes entrenched in customer communications, financial models, and contracting, output quality is determined by individual judgment alone.</p>
       </div>
       <div class="level-card col-purple">
         <span class="level-card-label">Anchor case</span>
-        <p>The 2021 Facebook BGP misconfiguration took multiple platforms offline globally before any organization could respond. Internet protocols (TCP/IP, BGP) are the present-day case: trillion-dollar coordination flows, no actor controls them, the people who could explain how they work are aging out.</p>
+        <p>Klarna 2023–25: enterprise rollout reached 90% daily AI adoption and two-thirds of customer-service chats automated, then a CEO reversal citing outputs "generic, repetitive, insufficiently nuanced." Sanctioned access without output governance.</p>
       </div>
       <div class="level-card col-purple">
-        <span class="level-card-label">Historical parallel · 1980s to present</span>
-        <p>TCP/IP and BGP were designed for cooperative use among a small number of well-resourced operators. Their use at planetary scale produced the legibility problem they were not designed to handle.</p>
+        <span class="level-card-label">Cultivated counterpart · Kit</span>
+        <p>Where Sanctioned adoption controls which tools are used, Kit shapes how they are used. The best kits emerge from practitioners who learned through Play and encoded what worked.</p>
       </div>
     </div>
   </main>
   <span class="slide-page">13</span>
 </section>
 
-<!-- ─── 14 — Ch3 section title ──────────────────────────────── -->
+<!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
+<section class="slide slide-content slide-level">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/last-mile-optimism.png" alt="Engine">
+    <img class="band-img cultivated" src="./images/have-your-factory-call-my-factory.png" alt="AI Native">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="band-level-badge">L · 03</div>
+    <div class="band-title-governed">Engine</div>
+    <div class="band-title-cultivated">AI Native</div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI is now the engine within core workflows. The question has shifted from <em>how can I increase productivity</em> to <em>which parts of our competitive model only exist because of AI affordances.</em></p>
+    <div class="level-card-grid">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>Specific workflows rebuilt around what AI uniquely does well: tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI requires rebuilding the workflow.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Input standards, output verification checkpoints, escalation triggers, and feedback loops per workflow. Named owners. Buffers that absorb AI-paced work hitting external dependencies at different speeds.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Blind spot</span>
+        <p>Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, external partners, or regulators operating at different speeds.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Failure mode</span>
+        <p>Temporal divergence. AI accelerates internal workflows while client review cycles, regulatory response, and cross-functional handoffs remain at a different pace.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Anchor case</span>
+        <p>Uber, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review to absorb the new tempo.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Cultivated counterpart · AI Native</span>
+        <p>Where Engine optimizes existing workflows, AI Native invents workflows that could not have existed before the technology. Boom Aerospace's mkBoom recovered 1,000+ miles of range in two weeks through co-design impossible in siloed development.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">14</span>
+</section>
+
+<!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
+<section class="slide slide-content slide-level">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/open-protocols-government.png" alt="Infrastructure">
+    <img class="band-img cultivated" src="./images/strangeness-legibility-hardness.png" alt="Vernacular">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="band-level-badge">L · 04</div>
+    <div class="band-title-governed">Infrastructure</div>
+    <div class="band-title-cultivated">Vernacular</div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI capability is a sector baseline. Individual organizational advantage has mostly dissipated; the governance challenge is now collective.</p>
+    <div class="level-card-grid">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>The same models and protocols are baseline across the industry. Inter-organizational handoffs run on AI-mediated protocols at sector scale, across competitive boundaries.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Participation in industry standards bodies, interoperability commitments, multi-org governance of the shared risk surface, and visibility into how decisions cascade across boundaries.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Blind spot</span>
+        <p>Second-order effects of sector-wide adoption: the shared attack surface, cascading failures when multiple organizations' protocols rest on a common assumption.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Failure mode</span>
+        <p>Sector fragility. The protocol that made the sector work also makes it vulnerable to a single point of failure.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Anchor case</span>
+        <p>Walmart's 1990s EDI mandate: not adopting meant not participating. One supply-chain failure could cascade across hundreds of trading partners. The 2017 NotPetya attack exploited the same shared-protocol surface in containerized shipping.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Cultivated counterpart · Vernacular</span>
+        <p>Where Infrastructure creates formal interoperability standards, Vernacular adoption spreads AI practices through culture without mandates. Excel became the universal language of business analysis the same way.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">15</span>
+</section>
+
+<!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
+<section class="slide slide-content slide-level">
+  <div class="level-band level-band-split">
+    <img class="band-img governed" src="./images/protocols-for-the-long-now.png" alt="Planetary">
+    <img class="band-img cultivated" src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency">
+    <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <header class="slide-header">
+      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    </header>
+    <div class="band-level-badge">L · 05</div>
+    <div class="band-title-governed">Planetary</div>
+    <div class="band-title-cultivated">Fluency</div>
+  </div>
+  <main class="slide-body">
+    <p class="lead-p">AI is embedded within civilization-scale coordination systems. The governance challenge is legibility: understanding what the systems are doing well enough to intervene when they fail.</p>
+    <div class="level-card-grid">
+      <div class="level-card col-blue">
+        <span class="level-card-label">Defining capability</span>
+        <p>AI embedded in systems that route global capital, optimize supply chains, surveil public health, balance energy grids. Coordination through layered AI-mediated protocols at unprecedented scale.</p>
+      </div>
+      <div class="level-card col-blue">
+        <span class="level-card-label">What it requires</span>
+        <p>Legibility tools, multi-stakeholder governance, intervention capability when systems fail, and recognition that decisions at this layer affect billions.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Blind spot</span>
+        <p>Emergent. Failure modes are properties of protocol interaction, not of any one component.</p>
+      </div>
+      <div class="level-card col-red">
+        <span class="level-card-label">Failure mode</span>
+        <p>Legibility collapse. The system functions most of the time, but no one can fully describe what it is doing or why.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Anchor case</span>
+        <p>2021 Facebook BGP misconfiguration: multiple platforms offline globally before any organization could respond. TCP/IP and BGP are the present-day case: trillion-dollar coordination flows, no actor controls them, the people who could explain how they work are aging out.</p>
+      </div>
+      <div class="level-card col-purple">
+        <span class="level-card-label">Cultivated counterpart · Fluency</span>
+        <p>Where Planetary adoption produces legibility challenges at scale, Fluency is AI so absorbed into how people live and work that it no longer requires a name. Autocorrect is already there.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">16</span>
+</section>
+
+<!-- ─── 17 — Ch3 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-3">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 3</span>
@@ -1883,10 +2633,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/mechanical-currents.jpeg" alt="">
   </div>
-  <span class="slide-page">14</span>
+  <span class="slide-page">17</span>
 </section>
 
-<!-- ─── 15 — Ch3 readiness check ────────────────────────────── -->
+<!-- ─── 18 — Ch3 readiness check ────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
@@ -1926,72 +2676,102 @@
     </div>
     <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
   </main>
-  <span class="slide-page">15</span>
+  <span class="slide-page">18</span>
 </section>
 
-<!-- ─── 16 — Ch3 surface what is already happening ─────────── -->
+<!-- ─── 19 — Ch3 plan after play ─────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
   </header>
-  <h2 class="slide-h1">Surface what is already happening</h2>
+  <h2 class="slide-h1">Plan After Play</h2>
   <main class="slide-body">
-    <p class="lead-p">The half-day audit per function surfaces three things: where AI is already running unsupervised, which implicit protocols are quietly producing non-events, and which function is the adoption bottleneck.</p>
+    <p class="lead-p">Before you can plan AI adoption well, you need to let play happen first. These three moves create the conditions for cultivated practice to surface.</p>
     <div class="audit-steps">
       <div class="audit-step">
         <span class="audit-step-num">Step 01</span>
-        <div class="audit-step-title">Find the shadow workflows</div>
-        <p class="audit-step-body">Ask each function lead, separately and informally: who on your team is already using AI for work, and on what? The answers — usually a handful of names per function — are your champion shortlist. These are people who have absorbed early failure on their own time.</p>
+        <div class="audit-step-title">Create a venue for play</div>
+        <p class="audit-step-body">Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible. Deep play comes before useful practice.</p>
       </div>
       <div class="audit-step">
         <span class="audit-step-num">Step 02</span>
-        <div class="audit-step-title">Find the protocols already at work</div>
-        <p class="audit-step-body">Some protocols already operate, expressed by what they prevent — non-events. The judgment that didn't bind the company; the escalation that didn't get filed; the brief that didn't go out unreviewed. Ask each lead: what failures should we expect here that we don't see?</p>
+        <div class="audit-step-title">Bespokify, not scale</div>
+        <p class="audit-step-body">Resist the pull toward uniform adoption. Experiment with tools that solve problems at the individual or two-pizza team level first. The workflows worth formalizing are the ones practitioners have already proved through daily use, not the ones a vendor case study or competitor announcement suggested.</p>
       </div>
       <div class="audit-step">
         <span class="audit-step-num">Step 03</span>
-        <div class="audit-step-title">Find the adoption bottleneck</div>
-        <p class="audit-step-body">The function that matters is not the one with the most AI excitement but the one where AI exposure × stakes is highest and protocol precision is lowest. Usually visible to the people downstream of it.</p>
+        <div class="audit-step-title">Build mnemonic strategies</div>
+        <p class="audit-step-body">What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice walks out the door.</p>
       </div>
     </div>
-    <p>The output of the audit is a short list of four to six candidate use cases, surfaced by each function's own champions. The deployment lead uncovers the list; the function chooses what to run.</p>
+    <p>Play surfaces the workflows worth planning around. The governed track inherits what the cultivated track discovers — the moves above are how you make that handoff deliberate.</p>
   </main>
-  <span class="slide-page">16</span>
+  <span class="slide-page">19</span>
 </section>
 
-<!-- ─── 17 — Ch3 evaluation criteria + what not to do ──────── -->
+<!-- ─── 20 — From play to protocol ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
   </header>
-  <h2 class="slide-h1">Evaluating potential pilot use cases</h2>
+  <h2 class="slide-h1">From play to protocol</h2>
+  <p class="slide-subtitle">A workflow earns its way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in play.</p>
   <main class="slide-body">
-    <p class="lead-p">Not every shadow workflow is a good first pilot. A candidate is worth running when it meets all four conditions. Use cases that meet three or fewer should be parked.</p>
-    <div class="criteria-grid">
-      <div class="criteria-card">
-        <div class="criteria-name">Recurring</div>
-        <p>The work happens often enough — weekly or more — that a kit produced this quarter pays back this quarter.</p>
+    <div class="protocol-flow">
+
+      <!-- Stage 1: Discover -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Discover</div>
+        <p class="protocol-stage-body">Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The goal is to find out what AI actually makes possible in this person's domain.</p>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Encodes tacit expertise</div>
-        <p>A domain expert can describe the steps if asked, but no one has written them down. Encoding the steps is the value, not speeding them up.</p>
+
+      <!-- Gate 1 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Is it recurring?</span>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Observable result</div>
-        <p>The deliverable is concrete. Someone external can tell whether it improved. <em>Time from input to a draft the manager will accept</em> beats <em>more writing produced</em>.</p>
+
+      <!-- Stage 2: Encode -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Encode</div>
+        <p class="protocol-stage-body">The practitioner writes down the steps. Tacit expertise becomes a reusable kit. The value here is the encoding itself, not the speed gain — someone else can now inherit what took months to discover.</p>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Bounded blast radius</div>
-        <p>A bad output during the pilot is recoverable. The first kit is not the contract that goes to the regulator or the customer email that goes out automatically.</p>
+
+      <!-- Gate 2 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Encodes real expertise? Result observable?</span>
       </div>
+
+      <!-- Stage 3: Prove -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Prove</div>
+        <p class="protocol-stage-body">The kit runs on real work in a low-stakes context. A bad output must be recoverable. This is where the governed track takes custody: someone external can verify the result improved.</p>
+      </div>
+
+      <!-- Gate 3 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Blast radius bounded?</span>
+      </div>
+
+      <!-- Stage 4: Harvest -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Harvest</div>
+        <p class="protocol-stage-body">The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns what the individual found.</p>
+      </div>
+
     </div>
-    <h3>What not to do</h3>
-    <p>The pattern that fails reliably is to pick the first use case from a vendor case study, a competitor announcement, or a framework like this one. Each is an artifact from a different organization, with a different fault-line, talent layer, and stakes. The right question is <em>whose unwritten process in this organization does AI most cleanly encode?</em></p>
+    <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">If a gate fails, the workflow stays in play. That is the cultivated track doing its job. The wrong move is to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
   </main>
-  <span class="slide-page">17</span>
+  <span class="slide-page">20</span>
 </section>
 
-<!-- ─── 18 — Ch4 section title ──────────────────────────────── -->
+<!-- ─── 21 — Ch4 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-4">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 4</span>
@@ -2000,60 +2780,78 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/have-your-factory-call-my-factory.png" alt="">
   </div>
-  <span class="slide-page">18</span>
+  <span class="slide-page">21</span>
 </section>
 
-<!-- ─── 19 — Ch4 three-phase framework ──────────────────────── -->
+<!-- ─── 22 — Ch4 cultivated/governed duality ─────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
   <h2 class="slide-h1">Bottom-up discovery, top-down scale</h2>
-  <main class="slide-body">
-    <p class="lead-p">The pattern that produces durable adoption is <em>bottom-up discovery, top-down scale.</em> Champions discover the workflows that matter; the organization promotes what worked so that the next user inherits it. The two halves are not interchangeable.</p>
-    <div class="phase-grid">
-      <div class="phase-card">
-        <div class="phase-num">Phase 01</div>
-        <div class="phase-name">Forage</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Find champions among people already experimenting on their own time. Install missing prerequisites and connect data sources so they move past plain chatbots.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Month 1</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Champions identified — 2–3 motivated practitioners running real workflows on real data.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">Each champion team has produced a real deliverable on a real use case the champion chose.</div>
+  <p class="slide-subtitle">Discovery is cultivated. Scale is governed. The organization's job is to make the handoff between them deliberate.</p>
+  <main class="slide-body" style="display:flex;flex-direction:column;">
+    <div class="duality-wrap">
+
+      <!-- Cultivated column -->
+      <div class="duality-col">
+        <div class="duality-col-header">
+          <span class="track-pill track-pill-infinite">Cultivated</span>
+          <span class="duality-col-sub">What champions do · Months 1–5</span>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">01</span>
+          <div class="duality-act-name">Discover</div>
+          <p class="duality-act-body">Find people already experimenting on their own time. Give them a venue with no required tools, no prescribed use cases, no output metrics. Let play surface what AI makes possible in their domain.</p>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">02</span>
+          <div class="duality-act-name">Encode</div>
+          <p class="duality-act-body">Champions write down the steps. Tacit expertise becomes a reusable kit. The value is the encoding itself. Someone else can now inherit what took months to discover.</p>
+        </div>
+        <div class="duality-card">
+          <span class="duality-act-num">03</span>
+          <div class="duality-act-name">Prove</div>
+          <p class="duality-act-body">The kit runs on real work in a low-stakes context. A bad output must be recoverable. Someone external can verify the result improved. This is the gate before the handoff.</p>
+        </div>
       </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 02</div>
-        <div class="phase-name">Seed</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Champions demonstrate AI-assisted workflows on real work. Skeptics convert by seeing four-hour reviews compress to forty-five minutes — not by argument. Track champion-authored kit count.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Months 2–6</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Champions reach Level 2 (Kit) — encoding their workflows into reusable, shareable components.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">At least three named, owned, shared kits per pilot team.</div>
+
+      <!-- Divider -->
+      <div class="duality-divider">
+        <div class="duality-divider-rule"></div>
+        <span class="duality-divider-badge">→</span>
+        <div class="duality-divider-rule"></div>
       </div>
-      <div class="phase-card">
-        <div class="phase-num">Phase 03</div>
-        <div class="phase-name">Harvest</div>
-        <div class="phase-meta">Approach</div>
-        <div class="phase-content">Promote pilot-built kits company-wide. The adoption lead paves the upward path — failure to harvest leaves gains personal and temporary.</div>
-        <div class="phase-meta">Timeline</div>
-        <div class="phase-content">Months 6+</div>
-        <div class="phase-meta">Target</div>
-        <div class="phase-content">Department reaches Level 3 (Engine) — kits promoted to shared infrastructure with named owners.</div>
-        <div class="phase-meta">Exit signal</div>
-        <div class="phase-content">Kit reuse measurable across teams; new hires inheriting workflows on day one.</div>
+
+      <!-- Governed column -->
+      <div class="duality-col">
+        <div class="duality-col-header">
+          <span class="track-pill track-pill-finite">Governed</span>
+          <span class="duality-col-sub">What the organization does · Months 1–6+</span>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">01</span>
+          <div class="duality-act-name">Sanction</div>
+          <p class="duality-act-body">Set access policy in parallel with Discover. Approve tools, track use, contain risk. This creates the conditions for legitimate play without prescribing what that play looks like.</p>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">02</span>
+          <div class="duality-act-name">Promote</div>
+          <p class="duality-act-body">Harvest proven kits into shared infrastructure. Assign named owners. Skeptics convert by seeing workflows proved on real work, not by policy announcement.</p>
+        </div>
+        <div class="duality-card governed">
+          <span class="duality-act-num">03</span>
+          <div class="duality-act-name">Scale</div>
+          <p class="duality-act-body">Kits deployed across the department. New hires inherit workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.</p>
+        </div>
       </div>
+
     </div>
   </main>
-  <span class="slide-page">19</span>
+  <span class="slide-page">22</span>
 </section>
 
-<!-- ─── 20 — Ch4 named roles ────────────────────────────────── -->
+<!-- ─── 23 — Ch4 named roles ────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
@@ -2088,10 +2886,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">20</span>
+  <span class="slide-page">23</span>
 </section>
 
-<!-- ─── 20 — Ch5 section title ──────────────────────────────── -->
+<!-- ─── 23 — Ch5 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-5">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 5</span>
@@ -2100,10 +2898,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/theorizing-protocolization-ii.png" alt="">
   </div>
-  <span class="slide-page">21</span>
+  <span class="slide-page">24</span>
 </section>
 
-<!-- ─── 22 — Case study 01: SIGBIZ ──────────────────────────── -->
+<!-- ─── 25 — Case study 01: SIGBIZ ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
@@ -2139,10 +2937,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">22</span>
+  <span class="slide-page">25</span>
 </section>
 
-<!-- ─── 23 — Case study 02: Visual identity ────────────────── -->
+<!-- ─── 26 — Case study 02: Visual identity ────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 5 · How the Protocol Institute adopts AI</span>
@@ -2176,10 +2974,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">23</span>
+  <span class="slide-page">26</span>
 </section>
 
-<!-- ─── 24 — Ch7 section title ──────────────────────────────── -->
+<!-- ─── 27 — Ch7 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-7">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 7</span>
@@ -2188,10 +2986,10 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/strangeness-legibility-hardness.png" alt="">
   </div>
-  <span class="slide-page">24</span>
+  <span class="slide-page">27</span>
 </section>
 
-<!-- ─── 25 — Ch7 success patterns ───────────────────────────── -->
+<!-- ─── 28 — Ch7 success patterns ───────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
@@ -2225,10 +3023,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">25</span>
+  <span class="slide-page">28</span>
 </section>
 
-<!-- ─── 26 — Ch7 failure modes ──────────────────────────────── -->
+<!-- ─── 29 — Ch7 failure modes ──────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 7 · Success patterns and failure modes</span>
@@ -2278,10 +3076,10 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">26</span>
+  <span class="slide-page">29</span>
 </section>
 
-<!-- ─── 26 — Ch8 section title ──────────────────────────────── -->
+<!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-8">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 8</span>
@@ -2290,28 +3088,28 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/constructing-the-evil-twin-of-ai.png" alt="">
   </div>
-  <span class="slide-page">27</span>
+  <span class="slide-page">30</span>
 </section>
 
-<!-- ─── 28 — Ch8 body ───────────────────────────────────────── -->
+<!-- ─── 31 — Ch8 body ───────────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 8 · The new nature of work</span>
   </header>
   <h2 class="slide-h1">The new nature of work</h2>
-  <p class="slide-subtitle">AI-mediated work is here to stay.</p>
+  <p class="slide-subtitle">AI-mediated work is the operating condition of today's enterprises.</p>
   <main class="slide-body">
     <div class="slide-body-cols-2">
-      <p>AI-mediated tools and workflows are no longer features of the workplace; they have become part of the workplace itself — closer to weather or terrain than to thermostats. This is <em>new nature</em>: technologically mediated conditions that have become immutable and indefinitely persistent. The dominant posture becomes foraging and adapting in a landscape rather than top-down planning with a blueprint. The work environment is increasingly something that cannot be engineered. It is the world your team inhabits.</p>
-      <p>The shift changes what the deployment lead's job actually is. Older models defined SOPs, enforced compliance, adjusted when the metric drifted. Now the volume of AI-assisted output is too high to inspect case-by-case. New kits surface from the floor faster than any central process can catalogue them. The tools themselves shift behavior on every model update. The job becomes making the new landscape navigable — providing the maps, keeping the trails open, keeping the lighthouse lit, helping re-orient when a team starts moving toward a pattern that compounds risk.</p>
-      <p>Hiring, performance, and onboarding follow. The candidate who follows an SOP rigorously is no longer the central hire; the candidate who finds their way through unfamiliar terrain is. The scarce skill is closer to applied curiosity than to AI literacy — building an internal map fast, noticing what works, sharing it with the team.</p>
-      <p>The job is not to finish a platform deployment; it is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies. It is a function whose people know how to work in this new nature, and whose managers know how to keep it inhabitable. The terrain will keep shifting, fast.</p>
+      <p>AI-mediated tools and workflows are no longer features of the workplace; they are part of the workplace itself, closer to weather or terrain than to thermostats. This is the <em>new nature</em> of work: technologically mediated conditions that have become immutable and indefinitely persistent. It is also the reason a single governed rollout has stopped being enough. If the terrain were stable, top-down deployment could finish the job; because it is not, the cultivated track has to remain productive alongside the governed one. Durable adoption depends on governance enabling cultivation rather than displacing it: the terrain keeps moving, and only the cultivated track keeps finding what works in it.</p>
+      <p>Inside that environment, the deployment lead's job becomes keeping the handoff between the two tracks alive. The volume of AI-assisted output is too high to inspect case by case; new kits surface from the floor faster than any central process can catalogue them; the tools themselves shift behavior on every model update.</p>
+      <p style="break-before: column;">The work is maintaining a productive cultivated track and a legible governed one: providing maps through what people are discovering, keeping the gates honest about which kits earned their way across, re-orienting when a team starts moving toward a pattern that compounds risk. The scarce skill is closer to applied curiosity than to AI literacy. The candidate who finds their way through unfamiliar terrain is the person to hire, because that is who keeps the cultivated side feeding the governed one.</p>
+      <p>The work, then, is not to finish a platform deployment. It is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is a function whose people know how to work in this new nature, and whose managers know how to keep the handoff between cultivation and governance working as the terrain keeps changing.</p>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">31</span>
 </section>
 
-<!-- ─── 29 — About & Resources (split slide) ────────────────── -->
+<!-- ─── 32 — About & Resources (split slide) ────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">About &amp; Resources</span>
@@ -2348,7 +3146,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">29</span>
+  <span class="slide-page">32</span>
 </section>
 
 </div><!-- /.deck -->

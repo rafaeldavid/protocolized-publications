@@ -32,20 +32,27 @@ AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflo
 
 A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While *deployment* is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.
 
+That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout.
+
+> **AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.**
+
 Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.
 
 ---
 
 ## Chapter 1 — Introducing the AI Adoption Guide
 
-Most enterprises are discussing and planning for AI as if it were a next enterprise software productivity solution. It is not, and the failure modes that follow from that assumption are predictable.
+*Durable AI Adoption is what happens when governance enables cultivation.*
 
-AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance.
+This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.
 
-This property breaks the conventional governance model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. They ask how to prevent misuse rather than how to specify the coordination rules that make AI output reliable in production. The right framing is thinking in protocols: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.
+Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, set data boundaries. This approach works when failure modes are knowable in advance, as with deterministic software. It fails with AI, whose outputs are probabilistic and whose failure distribution shifts with every model update. Prohibition cannot keep up. The cultivated track routes around it, and the failures the policies were meant to prevent happen anyway.
+
+The shift is not to *less* governance but to a different *kind* of governance. Instead of governing what people may do with AI, the organization governs what AI's outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These rules are *protocols*. They govern coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the system moving.
 
 A useful frame from the Protocol Institute's launch essay: protocols are *infrastructural technologies for producing non-events*. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.
-Following this insight, the capability maturity of an organization adopting AI is the precision with which its protocols produce those non-events.
+
+The capability *maturity* of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.
 
 ### Key Terms
 
@@ -343,15 +350,15 @@ Four emerging failure modes and four emerging success patterns recur across orga
 
 ## Chapter 8 — The new nature of work
 
-*AI-mediated work is here to stay.*
+*AI-mediated work is the operating condition of today's enterprises.*
 
-AI-mediated tools and workflows are no longer features of the workplace; they have become part of the workplace itself — closer to weather or terrain than to thermostats or leather. This is *new nature*: technologically mediated conditions that have become immutable and indefinitely persistent. The dominant posture then becomes foraging, adapting behavior of someone inhabiting a landscape rather than the top-down planning of an architect with a blueprint. In short: the work environment is increasingly something that cannot be engineered. Instead, the AI-mediated work environment is the world your team inhabits.
+AI-mediated tools and workflows are no longer features of the workplace; they are part of the workplace itself, closer to weather or terrain than to thermostats. This is the *new nature* of work: technologically mediated conditions that have become immutable and indefinitely persistent. It is also the reason a single governed rollout has stopped being enough. If the terrain were stable, top-down deployment could finish the job; because it is not, the cultivated track has to remain productive alongside the governed one. Durable adoption depends on governance enabling cultivation rather than displacing it: the terrain keeps moving, and only the cultivated track keeps finding what works in it.
 
-The shift changes what the deployment should focus on. Older models focused on defining standard operating procedures, enforcing compliance, adjusting when the metric drifts. Now, the volume of AI-assisted output is too high to inspect case-by-case. New kits surface from the floor faster than any central process can catalogue them. The tools themselves shift behavior on every model update. Teams exposed to all of this no longer calibrate replicable outputs like a controlled system. The AI deployment lead's job under those conditions is to make the new landscape navigable, and survivable — to provide the maps, keep the trails open, keep the lighthouse lit, and help re-orient when a team starts moving toward a pattern that compounds risk.
+Inside that environment, the deployment lead's job becomes keeping the handoff between the two tracks alive. The volume of AI-assisted output is too high to inspect case by case; new kits surface from the floor faster than any central process can catalogue them; the tools themselves shift behavior on every model update.
 
-Hiring, performance, and onboarding follow. The candidate who follows an SOP rigorously is no longer the central hire; the candidate who finds their way through unfamiliar terrain is. The scarce skill is closer to applied curiosity than to AI literacy — building an internal map fast, noticing what works, sharing it with the team.
+The work is maintaining a productive cultivated track and a legible governed one: providing maps through what people are discovering, keeping the gates honest about which kits earned their way across, re-orienting when a team starts moving toward a pattern that compounds risk. The scarce skill is closer to applied curiosity than to AI literacy. The candidate who finds their way through unfamiliar terrain is the person to hire, because that is who keeps the cultivated side feeding the governed one.
 
-We are entering a new nature of work. The job is not to finish a platform deployment; it is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies. It is a function whose people know how to work in this new nature, and whose managers know how to keep it inhabitable. The terrain will keep shifting, fast.
+The work, then, is not to finish a platform deployment. It is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is a function whose people know how to work in this new nature, and whose managers know how to keep the handoff between cultivation and governance working as the terrain keeps changing.
 
 ---
 
