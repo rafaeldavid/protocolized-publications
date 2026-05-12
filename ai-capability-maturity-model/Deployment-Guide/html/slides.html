@@ -1144,6 +1144,75 @@
       color: var(--text);
     }
 
+    /* ─── From play to protocol flow (slide 17) ─────────────── */
+    .protocol-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      align-items: start;
+      gap: 0;
+      margin: 8pt 0 8pt;
+    }
+    .protocol-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 5pt;
+      padding: 12pt 14pt;
+      border-radius: 8px;
+      border-top: 3px solid var(--accent);
+      background: var(--accent-light);
+    }
+    .protocol-stage.governed {
+      background: var(--surface);
+      border-top-color: var(--text);
+    }
+    .protocol-stage-track {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-dark);
+    }
+    .protocol-stage.governed .protocol-stage-track {
+      color: var(--text-secondary);
+    }
+    .protocol-stage-name {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-2);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 2pt;
+    }
+    .protocol-stage-body {
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .protocol-gate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14pt 6pt 0;
+      gap: 5pt;
+    }
+    .protocol-gate-arrow {
+      font-family: var(--font-mono);
+      font-size: 14pt;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .protocol-gate-label {
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      color: var(--text-tertiary);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      max-width: 62px;
+    }
+
     /* ─── Roles grid (Ch4, 2x3) ──────────────────────────────── */
     .roles-grid {
       display: grid;
@@ -2133,34 +2202,64 @@
   <span class="slide-page">16</span>
 </section>
 
-<!-- ─── 17 — Ch3 evaluation criteria + what not to do ──────── -->
+<!-- ─── 17 — From play to protocol ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
   </header>
-  <h2 class="slide-h1">Evaluating potential pilot use cases</h2>
+  <h2 class="slide-h1">From play to protocol</h2>
+  <p class="slide-subtitle">A workflow earns its way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in play.</p>
   <main class="slide-body">
-    <p class="lead-p">Not every shadow workflow is a good first pilot. A candidate is worth running when it meets all four conditions. Use cases that meet three or fewer should be parked.</p>
-    <div class="criteria-grid">
-      <div class="criteria-card">
-        <div class="criteria-name">Recurring</div>
-        <p>The work happens often enough — weekly or more — that a kit produced this quarter pays back this quarter.</p>
+    <div class="protocol-flow">
+
+      <!-- Stage 1: Discover -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Discover</div>
+        <p class="protocol-stage-body">Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The goal is to find out what AI actually makes possible in this person's domain.</p>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Encodes tacit expertise</div>
-        <p>A domain expert can describe the steps if asked, but no one has written them down. Encoding the steps is the value, not speeding them up.</p>
+
+      <!-- Gate 1 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Is it recurring?</span>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Observable result</div>
-        <p>The deliverable is concrete. Someone external can tell whether it improved. <em>Time from input to a draft the manager will accept</em> beats <em>more writing produced</em>.</p>
+
+      <!-- Stage 2: Encode -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Encode</div>
+        <p class="protocol-stage-body">The practitioner writes down the steps. Tacit expertise becomes a reusable kit. The value here is the encoding itself, not the speed gain — someone else can now inherit what took months to discover.</p>
       </div>
-      <div class="criteria-card">
-        <div class="criteria-name">Bounded blast radius</div>
-        <p>A bad output during the pilot is recoverable. The first kit is not the contract that goes to the regulator or the customer email that goes out automatically.</p>
+
+      <!-- Gate 2 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Encodes real expertise? Result observable?</span>
       </div>
+
+      <!-- Stage 3: Prove -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Prove</div>
+        <p class="protocol-stage-body">The kit runs on real work in a low-stakes context. A bad output must be recoverable. This is where the governed track takes custody: someone external can verify the result improved.</p>
+      </div>
+
+      <!-- Gate 3 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Blast radius bounded?</span>
+      </div>
+
+      <!-- Stage 4: Harvest -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Harvest</div>
+        <p class="protocol-stage-body">The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns what the individual found.</p>
+      </div>
+
     </div>
-    <h3>What not to do</h3>
-    <p>The pattern that fails reliably is to pick the first use case from a vendor case study, a competitor announcement, or a framework like this one. Each is an artifact from a different organization, with a different fault-line, talent layer, and stakes. The right question is <em>whose unwritten process in this organization does AI most cleanly encode?</em></p>
+    <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">If a gate fails, the workflow stays in play. That is the cultivated track doing its job. The wrong move is to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
   </main>
   <span class="slide-page">17</span>
 </section>
