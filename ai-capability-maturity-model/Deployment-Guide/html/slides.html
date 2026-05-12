@@ -693,13 +693,21 @@
     .matrix-feature-wrap .paradigm-matrix {
       max-width: 7.5in;
       height: 4.5in;
-      /* 3-row template (col-labels + 2 equal-height data rows) since the
-         feature slide does not include the in-matrix title */
-      grid-template-rows: auto 1fr 1fr;
+      /* 3-row template: 2 equal-height data rows on top, col-labels row at bottom.
+         Top-right cell is the "winning" quadrant (Adoption Guide) per the standard
+         2x2 reading. */
+      grid-template-rows: 1fr 1fr auto;
     }
     .matrix-feature-wrap .paradigm-matrix .matrix-artifact { font-size: var(--fs-body); }
     .matrix-feature-wrap .paradigm-matrix .matrix-example,
     .matrix-feature-wrap .paradigm-matrix .matrix-ai-example { font-size: var(--fs-body-sm); }
+    /* Column labels sit BELOW the cells on this slide, so flip the rule */
+    .matrix-feature-wrap .paradigm-matrix .matrix-col-label {
+      border-bottom: none;
+      border-top: 1px solid var(--border);
+      padding-bottom: 0;
+      padding-top: 4pt;
+    }
 
     /* ─── AI Evolution diagonal (foreword slide visual) ──────── */
     .evo {
@@ -1930,9 +1938,17 @@
   <main class="slide-body">
     <div class="matrix-feature-wrap">
       <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
-        <div class="matrix-corner"></div>
-        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
-        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
+        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Practice Playbook</div>
+          <div class="matrix-example">e.g., MRI</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
+        </div>
+        <div class="matrix-cell focus">
+          <div class="matrix-artifact">Adoption Guide</div>
+          <div class="matrix-example">e.g., electricity, the internet</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
+        </div>
 
         <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
         <div class="matrix-cell muted">
@@ -1946,17 +1962,9 @@
           <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
         </div>
 
-        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Practice Playbook</div>
-          <div class="matrix-example">e.g., MRI</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
-        </div>
-        <div class="matrix-cell focus">
-          <div class="matrix-artifact">Adoption Guide</div>
-          <div class="matrix-example">e.g., electricity, the internet</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
-        </div>
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
+        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
       </aside>
     </div>
   </main>
