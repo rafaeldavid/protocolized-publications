@@ -693,6 +693,9 @@
     .matrix-feature-wrap .paradigm-matrix {
       max-width: 7.5in;
       height: 4.5in;
+      /* 3-row template (col-labels + 2 equal-height data rows) since the
+         feature slide does not include the in-matrix title */
+      grid-template-rows: auto 1fr 1fr;
     }
     .matrix-feature-wrap .paradigm-matrix .matrix-artifact { font-size: var(--fs-body); }
     .matrix-feature-wrap .paradigm-matrix .matrix-example,
@@ -1842,50 +1845,7 @@
   <span class="slide-page">03</span>
 </section>
 
-<!-- ─── 04 — Finding the right artifact (matrix in full) ───── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Foreword · The right artifact</span>
-  </header>
-  <h2 class="slide-h1">Finding the right artifact for a given technology</h2>
-  <p class="slide-subtitle">The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.</p>
-  <main class="slide-body">
-    <div class="matrix-feature-wrap">
-      <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
-        <div class="matrix-corner"></div>
-        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
-        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
-
-        <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Implementation Roadmap</div>
-          <div class="matrix-example">e.g., Figma</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
-        </div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Deployment Plan</div>
-          <div class="matrix-example">e.g., Microsoft Office</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
-        </div>
-
-        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Practice Playbook</div>
-          <div class="matrix-example">e.g., MRI</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
-        </div>
-        <div class="matrix-cell focus">
-          <div class="matrix-artifact">Adoption Guide</div>
-          <div class="matrix-example">e.g., electricity, the internet</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
-        </div>
-      </aside>
-    </div>
-  </main>
-  <span class="slide-page">04</span>
-</section>
-
-<!-- ─── 05 — AI Evolution diagonal (two parallel tracks) ───── -->
+<!-- ─── 04 — AI Evolution diagonal (two parallel tracks) ───── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Foreword · The path so far</span>
@@ -1955,6 +1915,49 @@
           <li>Model risk frameworks</li>
         </ul>
       </div>
+    </div>
+  </main>
+  <span class="slide-page">04</span>
+</section>
+
+<!-- ─── 05 — Finding the right artifact (matrix in full) ───── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Foreword · The right artifact</span>
+  </header>
+  <h2 class="slide-h1">Finding the right artifact for a given technology</h2>
+  <p class="slide-subtitle">The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.</p>
+  <main class="slide-body">
+    <div class="matrix-feature-wrap">
+      <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
+        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
+
+        <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Implementation Roadmap</div>
+          <div class="matrix-example">e.g., Figma</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
+        </div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Deployment Plan</div>
+          <div class="matrix-example">e.g., Microsoft Office</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
+        </div>
+
+        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Practice Playbook</div>
+          <div class="matrix-example">e.g., MRI</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
+        </div>
+        <div class="matrix-cell focus">
+          <div class="matrix-artifact">Adoption Guide</div>
+          <div class="matrix-example">e.g., electricity, the internet</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
+        </div>
+      </aside>
     </div>
   </main>
   <span class="slide-page">05</span>
