@@ -3,17 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    // Fit-to-width on mobile: when the device is narrower than the slide canvas
-    // (~1056px), switch viewport to a fixed 1100px so the browser scales the
-    // whole page down to fit. Pinch-to-zoom remains enabled.
-    (function() {
-      if (window.innerWidth < 1100) {
-        var v = document.querySelector('meta[name="viewport"]');
-        if (v) v.setAttribute('content', 'width=1100, user-scalable=yes');
-      }
-    })();
-  </script>
   <title>Durable AI Adoption — Slides</title>
   <meta name="description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
 
@@ -2245,43 +2234,48 @@
       }
       .side-nav-toggle:hover { border-color: var(--accent); }
 
-      /* ─── Mobile: sidebar → top header bar with hamburger ─── */
-      @media (max-width: 768px) {
-        body { flex-direction: column; height: auto; min-height: 100vh; }
-        .side-nav {
-          width: 100%;
-          height: auto;
-          max-height: 56px;
-          flex-direction: column;
-          padding: 0;
-          overflow: hidden;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-          transition: max-height 0.3s ease;
-          position: sticky;
-          top: 0;
-          z-index: 100;
-        }
-        .side-nav.open { max-height: 100vh; overflow-y: auto; }
-        .side-nav-header {
-          height: 56px;
-          padding: 0 14pt;
-          flex-shrink: 0;
-          align-items: center;
-        }
-        .side-nav-title { margin: 0 !important; font-size: 10pt; }
-        .side-nav-toggle { display: inline-flex; align-items: center; }
-        .side-nav-main { padding: 8pt 0; }
-        .side-nav a { padding: 8pt 14pt; font-size: 10pt; }
-        .side-nav-section { padding: 12pt 14pt 6pt; font-size: 7.5pt; }
-        .side-nav-footer { padding: 10pt 14pt 14pt; }
-        .side-nav-foot { font-size: 8pt; }
-        .deck {
-          height: calc(100vh - 56px);
-          width: 100%;
-        }
-        .slide-frame { height: calc(100vh - 56px); }
-        .slide.slide-assessment { height: calc(100vh - 56px); }
+    }
+
+    /* ─── Mobile: sidebar → top header bar with hamburger ─── */
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
       }
+      .side-nav {
+        width: 100% !important;
+        height: auto;
+        max-height: 56px;
+        flex-direction: column;
+        padding: 0;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        transition: max-height 0.3s ease;
+        flex-shrink: 0;
+      }
+      .side-nav.open { max-height: calc(100vh); overflow-y: auto; }
+      .side-nav-header {
+        height: 56px;
+        padding: 0 14pt;
+        flex-shrink: 0;
+        align-items: center;
+      }
+      .side-nav-title { margin: 0 !important; font-size: 10pt; }
+      .side-nav-toggle { display: inline-flex !important; align-items: center; }
+      .side-nav-main { padding: 8pt 0; }
+      .side-nav a { padding: 8pt 14pt; font-size: 10pt; }
+      .side-nav-section { padding: 12pt 14pt 6pt; font-size: 7.5pt; }
+      .side-nav-footer { padding: 10pt 14pt 14pt; }
+      .side-nav-foot { font-size: 8pt; }
+      .deck {
+        flex: 1;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+      }
+      .slide-frame { height: calc(100vh - 56px); }
+      .slide.slide-assessment { height: calc(100vh - 56px); }
     }
 
     /* ─── Yin-Yang framework (slide 07) ──────────────────────── */
