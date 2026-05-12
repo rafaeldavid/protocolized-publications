@@ -42,14 +42,17 @@ Realizing this, the Protocols for Business Special Interest Group of the Protoco
 
 ## Chapter 1 — Introducing the AI Adoption Guide
 
-Most enterprises are discussing and planning for AI as if it were a next enterprise software productivity solution. It is not, and the failure modes that follow from that assumption are predictable.
+*Durable AI Adoption is what happens when governance enables cultivation.*
 
-AI systems are probabilistic. The same input can produce different outputs, and the failure distribution cannot be characterized in advance.
+This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.
 
-This property breaks the conventional governance model. Acceptable use policies, approved tool lists, and data boundaries are necessary but address the wrong question. They ask how to prevent misuse rather than how to specify the coordination rules that make AI output reliable in production. The right framing is thinking in protocols: rules governing how human and artificial agents coordinate at the handoff points where AI output becomes an organizational accountability.
+Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, set data boundaries. This approach works when failure modes are knowable in advance, as with deterministic software. It fails with AI, whose outputs are probabilistic and whose failure distribution shifts with every model update. Prohibition cannot keep up. The cultivated track routes around it, and the failures the policies were meant to prevent happen anyway.
+
+The shift is not to *less* governance but to a different *kind* of governance. Instead of governing what people may do with AI, the organization governs what AI's outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These rules are *protocols*. They govern coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the system moving.
 
 A useful frame from the Protocol Institute's launch essay: protocols are *infrastructural technologies for producing non-events*. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.
-Following this insight, the capability maturity of an organization adopting AI is the precision with which its protocols produce those non-events.
+
+The capability *maturity* of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.
 
 ### Key Terms
 
