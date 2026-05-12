@@ -22,23 +22,25 @@
   <meta property="og:site_name" content="The Protocol Institute">
   <meta property="og:title" content="Durable AI Adoption">
   <meta property="og:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
-  <meta property="og:url" content="https://protocolized.dev/aiadoptionguide/">
-  <meta property="og:image" content="https://protocolized.dev/aiadoptionguide/images/the-last-archive.png">
+  <meta property="og:url" content="https://ai.protocolized.dev/">
+  <meta property="og:image" content="https://ai.protocolized.dev/images/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
+  <meta property="og:image:alt" content="Durable AI Adoption — cover collage divided by a diagonal slash, Cultivated above and Governed below">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Durable AI Adoption">
   <meta name="twitter:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
-  <meta name="twitter:image" content="https://protocolized.dev/aiadoptionguide/images/the-last-archive.png">
-  <meta name="twitter:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
+  <meta name="twitter:image" content="https://ai.protocolized.dev/images/og-cover.png">
+  <meta name="twitter:image:alt" content="Durable AI Adoption — cover collage divided by a diagonal slash, Cultivated above and Governed below">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assessment.css">
+  <script src="./assessment.js" defer></script>
 
   <style>
     :root {
@@ -189,6 +191,41 @@
     .cover-img-12 { grid-area: 4 / 5 / 6 / 6; clip-path: polygon(0 4%, 100% 0, 95% 100%, 5% 96%); }
     .cover-img-13 { grid-area: 4 / 6 / 6 / 7; clip-path: polygon(4% 0, 100% 5%, 96% 100%, 0 95%); }
     .cover-img-14 { grid-area: 5 / 1 / 6 / 4; clip-path: polygon(0 0, 96% 4%, 100% 100%, 5% 95%); }
+
+    .cover-slash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4.5in;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .cover-slash svg { width: 100%; height: 100%; display: block; }
+    .cover-slash-pill {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4pt 12pt;
+      border-radius: 100px;
+      z-index: 6;
+    }
+    .cover-slash-pill.cultivated {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border: 1px solid var(--accent);
+      top: 0.35in;
+      left: 0.55in;
+    }
+    .cover-slash-pill.governed {
+      background: var(--text);
+      color: #fafafa;
+      top: 3.7in;
+      right: 0.55in;
+    }
 
     .cover-text {
       position: absolute;
@@ -2094,6 +2131,12 @@
         letter-spacing: 0.04em;
         text-align: center;
       }
+      .side-nav-foot-link {
+        color: #9b9ba8;
+        text-decoration: none;
+        border-bottom: 1px dotted #6b6b7b;
+      }
+      .side-nav-foot-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
       .side-nav-title {
         font-size: 8.5pt;
         font-weight: 700;
@@ -2163,6 +2206,81 @@
         transform: scale(var(--slide-scale, 1));
         transform-origin: center center;
         margin: 0;
+      }
+      /* Assessment slide opts out of scaling — fills the frame at native size */
+      .slide.slide-assessment {
+        width: 100%;
+        height: 100vh;
+        transform: none !important;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: none;
+        background: var(--bg);
+      }
+      .slide.slide-assessment .slide-header { flex-shrink: 0; }
+      .slide.slide-assessment > .assessment-slide { flex: 1; min-height: 0; }
+      .slide.slide-assessment .slide-page { display: none; }
+
+      /* Side-nav header (visible on all viewports; hamburger only on mobile) */
+      .side-nav-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16pt;
+        gap: 12pt;
+        flex-shrink: 0;
+      }
+      .side-nav-title { padding: 0 !important; margin: 0 0 6pt !important; }
+      .side-nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fafafa;
+        padding: 4pt 10pt;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14pt;
+        line-height: 1;
+      }
+      .side-nav-toggle:hover { border-color: var(--accent); }
+
+      /* ─── Mobile: sidebar → top header bar with hamburger ─── */
+      @media (max-width: 768px) {
+        body { flex-direction: column; height: auto; min-height: 100vh; }
+        .side-nav {
+          width: 100%;
+          height: auto;
+          max-height: 56px;
+          flex-direction: column;
+          padding: 0;
+          overflow: hidden;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+          transition: max-height 0.3s ease;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+        .side-nav.open { max-height: 100vh; overflow-y: auto; }
+        .side-nav-header {
+          height: 56px;
+          padding: 0 14pt;
+          flex-shrink: 0;
+          align-items: center;
+        }
+        .side-nav-title { margin: 0 !important; font-size: 10pt; }
+        .side-nav-toggle { display: inline-flex; align-items: center; }
+        .side-nav-main { padding: 8pt 0; }
+        .side-nav a { padding: 8pt 14pt; font-size: 10pt; }
+        .side-nav-section { padding: 12pt 14pt 6pt; font-size: 7.5pt; }
+        .side-nav-footer { padding: 10pt 14pt 14pt; }
+        .side-nav-foot { font-size: 8pt; }
+        .deck {
+          height: calc(100vh - 56px);
+          width: 100%;
+        }
+        .slide-frame { height: calc(100vh - 56px); }
+        .slide.slide-assessment { height: calc(100vh - 56px); }
       }
     }
 
@@ -2297,7 +2415,12 @@
 <body>
 
 <nav class="side-nav" aria-label="Slide navigation">
-  <div class="side-nav-title">Durable AI Adoption</div>
+  <div class="side-nav-header">
+    <div class="side-nav-title">Durable AI Adoption</div>
+    <button class="side-nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
+      <span class="side-nav-toggle-bars" aria-hidden="true">☰</span>
+    </button>
+  </div>
   <ul class="side-nav-main">
     <li><a href="#cover"><span class="side-nav-num">—</span>Cover</a></li>
     <li><a href="#contents"><span class="side-nav-num">—</span>Contents</a></li>
@@ -2312,10 +2435,11 @@
     <li><a href="#about"><span class="side-nav-num">—</span>About &amp; Resources</a></li>
     <li class="side-nav-section">Appendix</li>
     <li><a href="#appendix"><span class="side-nav-num">—</span>Case Studies</a></li>
+    <li><a href="#assessment"><span class="side-nav-num">—</span>Assessment</a></li>
   </ul>
   <div class="side-nav-footer">
     <button type="button" class="side-nav-cta" onclick="toggleSchedule()">Schedule a Call</button>
-    <div class="side-nav-foot">Protocol Institute · May 2026</div>
+    <div class="side-nav-foot">Protocol Institute · May 2026 · <a href="./llms.txt" target="_blank" rel="noopener" class="side-nav-foot-link">llms.txt</a></div>
   </div>
 </nav>
 
@@ -2358,6 +2482,14 @@
     <img class="cover-img-13" src="./images/open-protocols-government.png" alt="">
     <img class="cover-img-14" src="./images/the-last-archive.png" alt="">
   </div>
+  <div class="cover-slash" aria-hidden="true">
+    <svg viewBox="0 0 1100 432" preserveAspectRatio="none">
+      <line x1="80" y1="412" x2="1020" y2="20" stroke="#ffffff" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity="0.92"/>
+      <line x1="80" y1="412" x2="1020" y2="20" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity="0.55"/>
+    </svg>
+  </div>
+  <span class="cover-slash-pill cultivated">Cultivated</span>
+  <span class="cover-slash-pill governed">Governed</span>
   <div class="cover-text">
     <div class="cover-eyebrow"><a href="https://protocol-institute.org/" target="_blank" rel="noopener">The Protocol Institute</a> · Protocols for Business Practice</div>
     <h1 class="cover-title">Durable AI Adoption</h1>
@@ -3921,6 +4053,75 @@
   <span class="slide-page">43</span>
 </section>
 
+<!-- ─── 44 — Appendix · AI Adoption Assessment ──────────────── -->
+<section class="slide slide-content slide-assessment" id="assessment">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · AI Adoption Assessment</span>
+  </header>
+  <div class="assessment-slide">
+    <h2 class="assessment-h1">Where is your organization?</h2>
+    <p class="assessment-subtitle">A 2-minute diagnostic that places you on the maturity ladder and identifies your dominant archetype.</p>
+
+    <div id="scope-step" class="step active">
+      <div class="quiz-progress">
+        <span class="quiz-counter">Question 1 of 25</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:0%"></div></div>
+      </div>
+      <div class="quiz-prompt">What scope are you answering for?</div>
+      <div class="radio-options">
+        <div class="radio-option" onclick="Assessment.selectScope(this, 'small-org')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A small organization (under 200 people)</div>
+        </div>
+        <div class="radio-option" onclick="Assessment.selectScope(this, 'business-unit')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A business unit or division of a larger enterprise</div>
+        </div>
+        <div class="radio-option" onclick="Assessment.selectScope(this, 'function')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A specific function (engineering, product, operations, sales, support, etc.)</div>
+        </div>
+        <div class="radio-option" onclick="Assessment.selectScope(this, 'team')">
+          <div class="radio-dot"></div>
+          <div class="radio-text">A specific team or workstream</div>
+        </div>
+      </div>
+      <div class="step-actions">
+        <button id="scope-next" class="btn btn-primary" onclick="Assessment.startQuiz()" style="display:none">Continue →</button>
+      </div>
+    </div>
+
+    <div id="quiz-step" class="step">
+      <div class="quiz-progress">
+        <span class="quiz-counter" id="quiz-counter">Question 2 of 25</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+      </div>
+      <div class="quiz-prompt">Choose the statement that better describes your team, function, or company.</div>
+      <div class="option-cards">
+        <div class="option-card quiz-option" id="quiz-option-a" onclick="Assessment.pickOption('A')">
+          <div class="option-letter">Option A</div>
+          <div class="option-text" id="quiz-text-a"></div>
+        </div>
+        <div class="option-card quiz-option" id="quiz-option-b" onclick="Assessment.pickOption('B')">
+          <div class="option-letter">Option B</div>
+          <div class="option-text" id="quiz-text-b"></div>
+        </div>
+      </div>
+      <div class="step-actions quiz-actions">
+        <button class="btn-link" id="quiz-back" onclick="Assessment.goBack()" style="visibility:hidden">← Back</button>
+        <span class="calculating" id="calc-final">Placing your organization…</span>
+      </div>
+    </div>
+
+    <div id="result-step" class="step">
+      <div id="result-cards" class="assessment-result-cards"></div>
+      <div class="output-actions" id="result-actions" style="display:none;">
+        <button class="btn btn-secondary" onclick="Assessment.retake()">Retake the assessment</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div><!-- /.deck -->
 
 <script>
@@ -3931,12 +4132,38 @@
 
   function updateScale() {
     var nav = document.querySelector('.side-nav');
-    var navW = nav ? nav.offsetWidth : 0;
-    var availW = window.innerWidth - navW;
-    var availH = window.innerHeight;
+    var isMobile = window.innerWidth <= 768;
+    var availW, availH;
+    if (isMobile) {
+      availW = window.innerWidth;
+      availH = window.innerHeight - 56;
+    } else {
+      availW = window.innerWidth - (nav ? nav.offsetWidth : 0);
+      availH = window.innerHeight;
+    }
     var scale = Math.min(availW / SLIDE_W, availH / SLIDE_H) * MARGIN;
     document.documentElement.style.setProperty('--slide-scale', scale);
   }
+
+  window.toggleNav = function (btn) {
+    var nav = document.querySelector('.side-nav');
+    if (!nav) return;
+    var isOpen = nav.classList.toggle('open');
+    if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+
+  // Auto-close mobile nav after clicking a link
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth > 768) return;
+    var link = e.target.closest('.side-nav a');
+    if (!link) return;
+    var nav = document.querySelector('.side-nav');
+    var toggle = document.querySelector('.side-nav-toggle');
+    if (nav && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   function wrapSlides() {
     var slides = document.querySelectorAll('.deck > .slide');

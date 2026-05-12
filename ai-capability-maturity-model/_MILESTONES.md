@@ -3,18 +3,40 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ---
 
-## Current Status (as of 2026-05-11)
+## Current Status (as of 2026-05-12)
 
-**Active work:** Deployment Guide slide deck — *Durable AI Adoption*. Markdown v0.6 + HTML web rendition + printable letter-landscape slide deck all in `Deployment-Guide/`. Foreword and Ch1 prose polish in flight; not yet published to protocolized.dev.
+**Active work:** Deployment Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. Full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract.
 **Blocking items:** None.
 **Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24).
-**Versioning:** v1.0 is the deployed baseline. Future artifact changes tracked as v1.1, v1.2, etc. (incremental) or v2.0 (major model update). New versions saved as separate files before promoting to deployment.
+**Versioning:** Slide deck at v0.5; markdown draft at v0.6 in `Deployment-Guide/drafts/`.
 
 ---
 
 ---
 
 ## Milestone Log
+
+### 2026-05-12 | Deployment Guide shipped at ai.protocolized.dev — navigation, scaling, appendix, assessment, mobile
+
+- **Live at custom subdomain.** `ai.protocolized.dev` (Cloudflare-fronted, SSL active) now serves the slide deck as primary entry (slug `plush-muse-q9bz`). Previous mount paths `protocolized.dev/aiadoptionguide/` and `/deploymentplaybook/` unmounted.
+- **Cover slash visual.** Cover collage gains an SVG diagonal slash overlay foreshadowing the dual track, with corner pills (Cultivated top-left, Governed bottom-right) — same vocabulary as slide 04's AI-evolution diagonal.
+- **OG social card.** Rendered a static 1200×630 social card via headless Chrome (`Deployment-Guide/html/_og-cover.html` → `images/og-cover.png`); replaces the prior `the-last-archive.png` reference in `og:image`/`twitter:image`.
+- **Assessment ported in-deck.** The full `/assessment/` (~3,400-line standalone) ported into the appendix as a single slide (`#assessment`). New scoped files: `assessment.css` (prefixed under `.assessment-slide`) and `assessment.js` (IIFE-wrapped, exposes `window.Assessment`). 24 binary questions + scope step; hierarchical archetype classification (10 archetypes: Vanguard/Traveller/Architect/Integrator/Tinkerer/Ratifier/Warden/Broker/Folkway/Guild); deployment-density × governance-density maturity scoring (L1, L2, L2→3, L3, L3→4). Result renders archetype tarot + maturity badge with expand-in-place details (failure modes, actions, arc, tension, historical parallels). Level names aligned to deck: Engine (was Designed), Infrastructure (was Infrastructural).
+- **Sidebar navigation.** Fixed 295px-wide left rail with: title, scrollable nav list with active-section highlight (IntersectionObserver-driven), Appendix section with Case Studies + Assessment links, Schedule-a-Call modal trigger, llms.txt link, footer "Protocol Institute · May 2026".
+- **Mobile-responsive nav.** Below 768px viewport, sidebar collapses to a 56px sticky top header bar with a hamburger button. Tap to expand; auto-closes on link click. Slide deck takes full available height/width; scale recomputes for mobile.
+- **Viewport-scaled slides.** Slides wrapped in `.slide-frame` (100vh) with `scroll-snap-type: y mandatory`; each slide transform-scaled to fit available space via JS (`updateScale` reads sidebar width). Assessment slide opts out (`transform: none !important`) — fills frame at native size for usability.
+- **Deep-link anchors.** Cover, contents, foreword, ch-1..ch-8, about, appendix, case-* (10 cases), assessment — all addressable via URL hash. Slide 02 TOC + slide 08 chapter cards both clickable.
+- **Image overhaul.** Pulled ~100 hero images from the Protocolized archive via an extraction agent. New aesthetic mapping: governed track = medallion family (`primordial-soup`, `fabric-and-brain`, `have-your-factory-call-my-factory`, `from-destination-ai-to-intelligence-media`) + `introducing-the-protocol-institute` at L1. Cultivated track = dense gestural line-art (`theorizing-protocolization*`, `how-to-protocol-watch`, `finding-fault-lines-within-the-firm`, `faithful-channel`). Chapter intros use distinct retro-pulp-painted set (`the-last-archive`, `sop-2025-accelerating-order`, `dirt-simple`, `to-share-and-remember`, `the-40-hour-work-week`, `tension-landscapes`, `the-whimsy-index`).
+- **Appendix · Case Studies (slides 33–43).** One overview slide (two columns: 5 contemporary + 5 historical) + 10 case study slides in Protocol-Institute layout (`The problem` / `The approach` / `The impact`), each with external source link. Cases: Samsung, Klarna, Shopify, Air Canada chatbot, Boom Supersonic, Visicalc & Excel, Gates's Internet Tidal Wave memo, Git & GitHub PRs, Walmart EDI, McLean container.
+- **Slide 04 redesign.** Added Factories (2026–28) as 4th milestone on the AI-evolution diagonal; tightened horizontal spacing; cluster headers now read `01 · Cultivated` / `01 · Governed` so each bullet block ties to its milestone explicitly.
+- **Slide 08 redesign.** Chapter map cards now use chapter tints (per intro-slide colorway) + 0.55in image bands + superimposed translucent-pill number tags. Cards are clickable anchor links into each chapter.
+- **Slide 10 redesign.** Two-paths yin-yang framework: 5 split-circle badges (governed half left, cultivated half right) with level numbers superimposed. Yin-yang SVG fixed (S-curve sweep flags + dot color contrast). L5 Planetary description trimmed to fit two lines.
+- **Slide 31 (Ch8) rewrite.** Three-paragraph close threading the governance-enables-cultivation thesis through to "the work is keeping the handoff alive between the two tracks." Subtitle: "AI-mediated work is the operating condition of today's enterprises."
+- **Slide 11 polish.** Examples table forced to equal row heights; cultivated-asterisk caveat (about L4/L5 cultivated being aspirational) removed.
+- **Cover + About link to https://protocol-institute.org/.** Subtle dotted-underline anchor on "The Protocol Institute" eyebrow + About title + first prose mention.
+- **Schedule-a-Call modal.** Sidebar footer button opens a full-viewport modal that posts to the existing Cloudflare Worker (`protocolized-inbox.rafaeldf2.workers.dev/contact`); closes via Cancel / backdrop / Escape. Matches the case-studies-page implementation exactly.
+- **llms.txt extract.** Python script extracts plain-text content from `slides.html` into `Deployment-Guide/html/llms.txt` (~1,300 lines). Header includes navigation links + level/archetype summary. Linked from sidebar footer.
+- **Status:** Live at https://ai.protocolized.dev/. Source committed to GitHub `main` branch.
 
 ### 2026-05-11 | Deployment Guide slide deck — foreword/Ch1/Ch2 polish pass
 

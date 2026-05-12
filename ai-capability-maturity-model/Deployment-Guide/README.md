@@ -1,30 +1,70 @@
-# AI Deployment Guide
+# Deployment Guide — *Durable AI Adoption*
 
-A single-landing-page, tool-agnostic handbook for deploying AI across an organization, informed by the AI Capability Maturity Model. Companion to the litepaper, blog post, and artifact.
+A single slide deck handbook for deploying AI across an organization, informed by the AI Capability Maturity Model. Threads the dual-track thesis (**Governed enables Cultivated**) across 8 chapters with an interactive assessment in the appendix.
 
-**Status:** Pre-draft — content scaffolding underway (v0.1)
+**Status:** v0.5 · May 2026 — live at https://ai.protocolized.dev/ (slug `plush-muse-q9bz`).
 
-## Read first
+## Quick links
 
-| Document | Purpose |
-|----------|---------|
-| [_DEPLOYMENT-GUIDE-BRIEF.md](_DEPLOYMENT-GUIDE-BRIEF.md) | Project brief — hero, audience, structure, length, voice |
-| [level-2-kit-respec.md](level-2-kit-respec.md) | Locked spec for the new Level 2 framing (Kit, replacing Sanctioned) for this sub-project only |
-| [deployment-guide-v0.1-outline.md](deployment-guide-v0.1-outline.md) | Chapter-by-chapter outline with key beats, evidence, and length budget |
+- **Live deck:** https://ai.protocolized.dev/
+- **Plain-text extract for LLMs:** https://ai.protocolized.dev/llms.txt
+- **Take the assessment:** https://ai.protocolized.dev/#assessment
 
-## Drafts
+## Canonical source
 
-`drafts/` — drafts of the markdown content draft will go here once the outline is approved.
+| Path | Purpose |
+|------|---------|
+| `html/slides.html` | The slide deck (canonical source) — single-page HTML, ~4000 lines |
+| `html/assessment.css`, `html/assessment.js` | Ported assessment (archetype + maturity diagnostic), scoped to `.assessment-slide` |
+| `html/llms.txt` | Plain-text extract of deck content for LLM consumption |
+| `html/_og-cover.html` | 1200×630 standalone cover used to render the OG/Twitter social card |
+| `html/images/` | Hero/level/chapter images sourced from the Protocolized archive |
+| `drafts/deployment-guide-v0.6.md` | Long-form markdown draft mirroring the deck prose |
 
-## Source set (read order)
+## Build / deploy
 
-1. [Claude Cowork Deployment Handbook](../Resources/claude-cowork-deployment-handbook.pdf) — structural model
-2. [AI, tractors, and the productivity paradox](../Resources/AI,%20tractors,%20and%20the%20productivity%20paradox%20-%20by%20Sachin.pdf) — Kit framing
-3. [Have Your Factory Call My Factory](../Resources/Have%20Your%20Factory%20Call%20My%20Factory.pdf) — magazine editorial case study (Rao/Dixon)
-4. [Introducing the Protocol Institute](../Resources/Introducing%20the%20Protocol%20Institute.pdf) — institutional context
-5. [Litepaper draft v7](../Litepaper/litepaper-draft-v7.md) — prior-art for voice and substance
-6. [Blog post v1.1](../Blog-Post/SIG-update/the-missing-protocol-layer-v1.1.md) — prior-art for hook and framing
+The deck is deployed to here.now via:
 
-## Scope decision
+```bash
+./scripts/publish.sh html --slug plush-muse-q9bz --client claude-code
+```
 
-This sub-project amends Level 2 from "Sanctioned" to "Kit" *for this guide only*. The canonical model in `Model-Development/ai-cmm-v3.yaml` is unchanged. If the Kit framing proves out, the canonical model can be updated in a future v4 pass.
+(Excluding `_archive/` and substituting `slides.html` → `index.html` so the slide deck is the homepage.)
+
+OG card regenerated from `_og-cover.html` via headless Chrome:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu \
+  --hide-scrollbars --window-size=1200,630 \
+  --screenshot=html/images/og-cover.png "file://$(pwd)/html/_og-cover.html"
+```
+
+## Deck structure
+
+- **Foreword** (Ch0) — Everywhere you look, AI is already there
+- **Ch1** — Introducing the Adoption Guide (governance-enables-cultivation thesis)
+- **Ch2** — Adoption Maturity Levels (5 levels, yin-yang framing, 5 level deep-dives)
+- **Ch3** — Getting started (readiness check, plan after play, play→protocol)
+- **Ch4** — Path to durable adoption (cultivated→governed handoff)
+- **Ch5** — How the Protocol Institute adopts AI (SIGBIZ + visual identity case studies)
+- **Ch7** — Success patterns & failure modes
+- **Ch8** — The new nature of work
+- **About & Resources**
+- **Appendix · Case Studies** — 10 cases (5 contemporary, 5 historical analogues)
+- **Appendix · Assessment** — 24-question diagnostic → archetype + maturity level
+
+## Sibling sub-projects
+
+- `../assessment/` — standalone assessment page (https://protocolized.dev/assessment/)
+- `../case-studies/` — standalone case studies page (https://protocolized.dev/case-studies/)
+- `../levels/` — standalone levels page (https://protocolized.dev/levels/)
+- `../Litepaper/` — companion litepaper
+
+## Background reading
+
+| Source | Why |
+|--------|-----|
+| [Claude Cowork Deployment Handbook](../Resources/claude-cowork-deployment-handbook.pdf) | Structural model |
+| [AI, tractors, and the productivity paradox](../Resources/AI,%20tractors,%20and%20the%20productivity%20paradox%20-%20by%20Sachin.pdf) | Kit framing |
+| [Have Your Factory Call My Factory](../Resources/Have%20Your%20Factory%20Call%20My%20Factory.pdf) | Magazine editorial case study (Rao/Dixon) |
+| [Introducing the Protocol Institute](../Resources/Introducing%20the%20Protocol%20Institute.pdf) | Institutional context |

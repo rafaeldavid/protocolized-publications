@@ -1,0 +1,1327 @@
+# Durable AI Adoption — AI Capability Maturity Model
+
+> Practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
+
+Site: https://ai.protocolized.dev/
+Publisher: The Protocol Institute (https://protocol-institute.org/)
+Version: v0.5 · May 2026
+Source: https://github.com/rafaeldavid/protocolized-publications
+
+## Quick navigation
+
+- Cover: https://ai.protocolized.dev/#cover
+- Contents: https://ai.protocolized.dev/#contents
+- Foreword (Everywhere you look): https://ai.protocolized.dev/#foreword
+- Chapter 1 (Introducing the Guide): https://ai.protocolized.dev/#ch-1
+- Chapter 2 (Maturity Levels): https://ai.protocolized.dev/#ch-2
+- Chapter 3 (Getting started): https://ai.protocolized.dev/#ch-3
+- Chapter 4 (Path to durable adoption): https://ai.protocolized.dev/#ch-4
+- Chapter 5 (Protocol Institute case studies): https://ai.protocolized.dev/#ch-5
+- Chapter 7 (Success patterns & failure modes): https://ai.protocolized.dev/#ch-7
+- Chapter 8 (New nature of work): https://ai.protocolized.dev/#ch-8
+- About & Resources: https://ai.protocolized.dev/#about
+- Appendix · Case Studies: https://ai.protocolized.dev/#appendix
+- Appendix · Assessment: https://ai.protocolized.dev/#assessment
+
+## Five maturity levels
+
+- L1 Shadow / Play — AI in use through personal accounts; no monitoring, no governing policy.
+- L2 Sanctioned / Kit — Access policy in place; tools approved, use tracked, risk contained.
+- L3 Engine / AI Native — Workflows built around AI with named owners and quality metrics.
+- L4 Infrastructure / Vernacular — AI as sector baseline; coordination across organizational boundaries.
+- L5 Planetary / Fluency — Civilization-scale AI; coordination and legibility are the governance challenge.
+
+## Ten archetypes (from the assessment)
+
+Strategic posture: Vanguard, Traveller, Architect, Integrator, Tinkerer, Ratifier, Warden, Broker.
+Emergent posture: Folkway, Guild.
+
+---
+
+# Full deck text
+## Schedule a call
+
+Leave a note and we'll set up a 30-minute conversation.
+
+Leave empty
+
+Prefer email? Reach us at team@protocol-institute.org.
+
+Cancel
+Send
+
+[SLIDE]
+
+Cultivated
+Governed
+
+The Protocol Institute · Protocols for Business Practice
+
+## Durable AI Adoption
+
+A practical guide to learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
+
+v0.5 · May 2026
+
+[SLIDE]
+
+## Contents
+
+00Foreword: Everywhere you look, AI is already there03
+
+01Introducing the AI Adoption Guide07
+
+02Adoption Maturity Levels10
+
+03Getting started with AI adoption17
+
+04The path to durable AI adoption21
+
+05How the Protocol Institute adopts AI24
+
+07Success patterns and failure modes27
+
+08The new nature of work30
+
+09About & Resources32
+
+02
+
+[SLIDE]
+
+Foreword · Everywhere you look, AI is already there
+
+## Everywhere you look, AI is already there
+
+Most organizations are treating AI capabilities as the latest bundle of software upgrades.
+
+AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.
+
+The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.
+
+AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.
+
+A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While deployment is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.
+
+That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout.
+
+AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.
+
+Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.
+
+03
+
+[SLIDE]
+
+Foreword · The path so far
+
+## AI has evolved across two parallel tracks
+
+Each milestone needed both an individual practice and an organizational response. The cultivated track is what people invent; the governed track is what organizations approve.
+
+Cultivated
+Governed
+
+01Chat2022–23
+
+01 · Cultivated
+
+Everyday use of ChatGPT
+
+Personal-account exploration
+
+Prompt experimentation
+
+01 · Governed
+
+Acceptable-use policies
+
+Blanket bans (Samsung)
+
+First enterprise licenses
+
+02Tools2023–24
+
+02 · Cultivated
+
+Custom GPTs and skills
+
+Prompt libraries and kits
+
+Team-authored workflows
+
+02 · Governed
+
+Sanctioned tool lists
+
+Enterprise vendor deals
+
+Verification checkpoints
+
+03Agents2024–26
+
+03 · Cultivated
+
+Vibe-coding, agentic IDEs
+
+Individual agent experiments
+
+AI-native function workflows
+
+03 · Governed
+
+Forward Deployed Engineers
+
+Agent governance protocols
+
+Model risk frameworks
+
+04Factories2026–28
+
+04 · Cultivated
+
+One-person agent fleets
+
+Always-on personal pipelines
+
+Archival Self
+
+04 · Governed
+
+Compute and token budgets
+
+Fleet-level observability
+
+Output-quality contracts
+
+04
+
+[SLIDE]
+
+Foreword · The right artifact
+
+## Finding the right artifact for a given technology
+
+The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.
+
+05
+
+[SLIDE]
+
+Chapter 1
+
+## Introducing the AI Adoption Guide
+
+06
+
+[SLIDE]
+
+Chapter 1 · Introducing the AI Adoption Guide
+
+## Introducing the AI Adoption Guide
+
+Durable AI Adoption is what happens when governance enables cultivation.
+
+This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.
+
+Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, set data boundaries. This approach works when failure modes are knowable in advance, as with deterministic software. It fails with AI, whose outputs are probabilistic and whose failure distribution shifts with every model update. Prohibition cannot keep up. The cultivated track routes around it, and the failures the policies were meant to prevent happen anyway.
+
+The shift is not to less governance but to a different kind of governance. Instead of governing what people may do with AI, the organization governs what AI's outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These rules are protocols. They govern coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the system moving.
+
+A useful frame from the Protocol Institute's launch essay: protocols are infrastructural technologies for producing non-events. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.
+
+The capability maturity of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.
+
+07
+
+[SLIDE]
+
+Chapter 1 · Introducing the AI Adoption Guide
+
+## The path through this guide
+
+How the chapters develop the model, from the framing argument through the maturity ladder, the pilot work, the cases, and the patterns.
+
+00
+Everywhere you look, AI is already there
+Understand why AI is a paradigm, not a software upgrade, and why durable adoption needs both governed and cultivated tracks.
+
+01
+Introducing the AI Adoption Guide
+Discover how governance enables cultivation through protocols, and what maturity actually measures.
+
+02
+Adoption Maturity Levels
+Locate your organization on the five maturity levels, from invisible personal use to civilization-scale infrastructure.
+
+03
+Getting started with AI adoption
+Run the pre-pilot readiness check, conduct the half-day audit, and learn how to evaluate candidate use cases.
+
+04
+The path to durable AI adoption
+Trace how bottom-up discovery becomes top-down scale, with the handoff between the cultivated and governed tracks as the central job.
+
+05
+How the Protocol Institute adopts AI
+Dive into two AI adoption case studies from inside the Protocol Institute.
+
+07
+Success patterns and failure modes
+Learn the four emerging success patterns and the four failure modes they mitigate.
+
+08
+The new nature of work
+See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.
+
+08
+
+[SLIDE]
+
+Chapter 2
+
+## Adoption Maturity Levels
+
+09
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+## Two paths of AI adoption
+
+Most organizations default to the governed mode of adoption they know from other technologies. This falls short because AI also demands individual-level change, something governed frameworks alone cannot produce. Durable adoption requires both.
+
+Governed
+
+Cultivated
+
+Shadow
+AI in use through personal accounts; no monitoring, no governing policy.
+
+L·01
+
+Play
+Curiosity-driven exploration; AI encountered as a medium for deep play and discovery.
+
+Sanctioned
+Access policy in place; tools approved, use tracked, risk contained within boundaries.
+
+L·02
+
+Kit
+Users encoding personal workflows into reusable, shareable protocols of their own design.
+
+Engine
+Workflows built around AI with named owners and quality metrics; output is optimized.
+
+L·03
+
+AI Native
+New forms of work emerge that were not possible before AI; roles and practices are redefined.
+
+Infrastructure
+AI is a sector baseline; coordination challenge crosses organizational boundaries.
+
+L·04
+
+Vernacular
+AI practices absorbed into culture; tacit knowledge spreads without mandates or policies.
+
+Planetary
+Civilization-scale AI; coordination and legibility are the governance challenge.
+
+L·05
+
+Fluency
+AI fully absorbed into how people think and work; second nature, no longer named.
+
+10
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+## Examples across both paths of adoption
+
+Each level looks different depending on which path an organization is on. Durable adoption draws on both.
+
+LevelGovernedCultivated
+
+01Shadow / Play
+Samsung, April 2023: three engineers submitted proprietary source code via personal ChatGPT accounts, banned enterprise-wide after discovery. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).
+SIGBIZ, 2025: members running AI workflows in personal repos and vaults in parallel. A fortnightly show-and-tell surfaced what curiosity had already produced.
+
+02Sanctioned / Kit
+Klarna 2023–25: 90% daily AI adoption and two-thirds of customer-service chats automated, then a CEO reversal citing outputs "generic, repetitive, insufficiently nuanced."
+Anthropic's legal team: built a plugin on the team's own memos and risk frameworks. Kit as encoded domain expertise rather than vendor-supplied workflow.
+
+03Engine / AI Native
+Uber, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review to absorb the new tempo.
+Boom Aerospace: curious software engineers embedded in hardware teams invented mkBoom — parametric aircraft analysis in minutes. XB-1 built by 50 people; 1,000+ miles of range recovered in two weeks through co-design impossible in siloed development.
+
+04Infrastructure / Vernacular
+Walmart's 1990s EDI mandate: not adopting meant not participating; one failure cascaded across hundreds of trading partners.
+Excel became the universal vernacular of business analysis without mandate — models and conventions spread person to person faster than any IT program could have designed.
+
+05Planetary / Fluency
+2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.
+Autocorrect: implemented at OS level, then absorbed into how billions of people write. Users adapted their typing patterns to it unconsciously. Nobody calls it AI.
+
+11
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+L · 01
+
+Shadow
+
+Play
+
+AI tools enter through individual initiative, not organizational decision. Exposure is invisible until a leak, a regulatory inquiry, or a quality failure surfaces it.
+
+Defining capability
+
+The personal account as magic circle (Huizinga, Homo Ludens): a low-stakes, voluntary space where employees explore what AI does for their job without organizational permission.
+
+What it requires
+
+Visibility without suppression. An audit pathway (Ch3) that surfaces who is using AI for what without policing it.
+
+Blind spot
+
+The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines. Both are invisible.
+
+Failure mode
+
+Unaccountable AI access. AI operates with organizational data and produces outputs entering decisions without any protocol governing accountability.
+
+Anchor case
+
+Samsung, April 2023: three engineers submitted proprietary source code to ChatGPT through personal accounts within one month, banned enterprise-wide. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).
+
+Cultivated counterpart · Play
+
+The same individual impulse channeled through curiosity rather than convenience. Where Shadow use is invisible to the organization, Play produces kits, practices, and champions worth surfacing.
+
+12
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+L · 02
+
+Sanctioned
+
+Kit
+
+Leadership has granted broad access. Enterprise licenses are in place, an access policy defines approved tools and data boundaries, and integration accelerates under governance.
+
+Defining capability
+
+Approved tools, defined data boundaries, tracked usage. The organization can now answer: which AI tools are in use, on what data, by whom.
+
+What it requires
+
+Named approved tools, data boundary definitions, a security review, audit trails, and tolerance for variation before standardizing.
+
+Blind spot
+
+Policy governs access, not output. Dashboards measure license utilization, not whether outputs are good. Two organizations at identical utilization but with different practices underneath end up in different places.
+
+Failure mode
+
+Access without output governance. As AI becomes entrenched in customer communications, financial models, and contracting, output quality is determined by individual judgment alone.
+
+Anchor case
+
+Klarna 2023–25: enterprise rollout reached 90% daily AI adoption and two-thirds of customer-service chats automated, then a CEO reversal citing outputs "generic, repetitive, insufficiently nuanced." Sanctioned access without output governance.
+
+Cultivated counterpart · Kit
+
+Where Sanctioned adoption controls which tools are used, Kit shapes how they are used. The best kits emerge from practitioners who learned through Play and encoded what worked.
+
+13
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+L · 03
+
+Engine
+
+AI Native
+
+AI is now the engine within core workflows. The question has shifted from how can I increase productivity to which parts of our competitive model only exist because of AI affordances.
+
+Defining capability
+
+Specific workflows rebuilt around what AI uniquely does well: tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI requires rebuilding the workflow.
+
+What it requires
+
+Input standards, output verification checkpoints, escalation triggers, and feedback loops per workflow. Named owners. Buffers that absorb AI-paced work hitting external dependencies at different speeds.
+
+Blind spot
+
+Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, external partners, or regulators operating at different speeds.
+
+Failure mode
+
+Temporal divergence. AI accelerates internal workflows while client review cycles, regulatory response, and cross-functional handoffs remain at a different pace.
+
+Anchor case
+
+Uber, March 2026: 84% agentic-coding adoption, 11% of PRs opened by agents. Bottleneck shifted from coding to review; Uber built Code Inbox and U Review to absorb the new tempo.
+
+Cultivated counterpart · AI Native
+
+Where Engine optimizes existing workflows, AI Native invents workflows that could not have existed before the technology. Boom Aerospace's mkBoom recovered 1,000+ miles of range in two weeks through co-design impossible in siloed development.
+
+14
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+L · 04
+
+Infrastructure
+
+Vernacular
+
+AI capability is a sector baseline. Individual organizational advantage has mostly dissipated; the governance challenge is now collective.
+
+Defining capability
+
+The same models and protocols are baseline across the industry. Inter-organizational handoffs run on AI-mediated protocols at sector scale, across competitive boundaries.
+
+What it requires
+
+Participation in industry standards bodies, interoperability commitments, multi-org governance of the shared risk surface, and visibility into how decisions cascade across boundaries.
+
+Blind spot
+
+Second-order effects of sector-wide adoption: the shared attack surface, cascading failures when multiple organizations' protocols rest on a common assumption.
+
+Failure mode
+
+Sector fragility. The protocol that made the sector work also makes it vulnerable to a single point of failure.
+
+Anchor case
+
+Walmart's 1990s EDI mandate: not adopting meant not participating. One supply-chain failure could cascade across hundreds of trading partners. The 2017 NotPetya attack exploited the same shared-protocol surface in containerized shipping.
+
+Cultivated counterpart · Vernacular
+
+Where Infrastructure creates formal interoperability standards, Vernacular adoption spreads AI practices through culture without mandates. Excel became the universal language of business analysis the same way.
+
+15
+
+[SLIDE]
+
+Chapter 2 · Adoption Maturity Levels
+
+L · 05
+
+Planetary
+
+Fluency
+
+AI is embedded within civilization-scale coordination systems. The governance challenge is legibility: understanding what the systems are doing well enough to intervene when they fail.
+
+Defining capability
+
+AI embedded in systems that route global capital, optimize supply chains, surveil public health, balance energy grids. Coordination through layered AI-mediated protocols at unprecedented scale.
+
+What it requires
+
+Legibility tools, multi-stakeholder governance, intervention capability when systems fail, and recognition that decisions at this layer affect billions.
+
+Blind spot
+
+Emergent. Failure modes are properties of protocol interaction, not of any one component.
+
+Failure mode
+
+Legibility collapse. The system functions most of the time, but no one can fully describe what it is doing or why.
+
+Anchor case
+
+2021 Facebook BGP misconfiguration: multiple platforms offline globally before any organization could respond. TCP/IP and BGP are the present-day case: trillion-dollar coordination flows, no actor controls them, the people who could explain how they work are aging out.
+
+Cultivated counterpart · Fluency
+
+Where Planetary adoption produces legibility challenges at scale, Fluency is AI so absorbed into how people live and work that it no longer requires a name. Autocorrect is already there.
+
+16
+
+[SLIDE]
+
+Chapter 3
+
+## Getting started with AI adoption
+
+17
+
+[SLIDE]
+
+Chapter 3 · Getting started with AI adoption
+
+## Pre-pilot readiness check
+
+Before identifying a use case, run a quick readiness check with the executive sponsor. The check is not about which use case is right; it is about whether the organization can support a real pilot at all.
+
+01
+
+Has the organization completed a security and legal review of the most likely AI tools and data?
+
+Pass: Data boundaries, connector permissions, legal alignment, and auditability documented.
+
+02
+
+Does an executive sponsor exist with budget authority for the pilot?
+
+Pass: Named individual; budget approved through Phase 2 (Months 2–3).
+
+03
+
+Have two or three pilot teams been identified with motivated leads?
+
+Pass: Champions named; their function leads aware and supportive.
+
+04
+
+Are success metrics defined for the pilot itself — not the use case?
+
+Pass: Specific, baselined, observable in weekly check-ins.
+
+If any answer is no, address it before committing to a pilot timeline. Notice what is not on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.
+
+18
+
+[SLIDE]
+
+Chapter 3 · Getting started with AI adoption
+
+## Plan After Play
+
+Before you can plan AI adoption well, you need to let play happen first. These three moves create the conditions for cultivated practice to surface.
+
+Step 01
+
+Create a venue for play
+
+Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible. Deep play comes before useful practice.
+
+Step 02
+
+Bespokify, not scale
+
+Resist the pull toward uniform adoption. Experiment with tools that solve problems at the individual or two-pizza team level first. The workflows worth formalizing are the ones practitioners have already proved through daily use, not the ones a vendor case study or competitor announcement suggested.
+
+Step 03
+
+Build mnemonic strategies
+
+What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice walks out the door.
+
+Play surfaces the workflows worth planning around. The governed track inherits what the cultivated track discovers — the moves above are how you make that handoff deliberate.
+
+19
+
+[SLIDE]
+
+Chapter 3 · Getting started with AI adoption
+
+## From play to protocol
+
+A workflow earns its way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in play.
+
+Cultivated
+
+Discover
+
+Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The goal is to find out what AI actually makes possible in this person's domain.
+
+→
+Is it recurring?
+
+Cultivated
+
+Encode
+
+The practitioner writes down the steps. Tacit expertise becomes a reusable kit. The value here is the encoding itself, not the speed gain — someone else can now inherit what took months to discover.
+
+→
+Encodes real expertise? Result observable?
+
+Governed
+
+Prove
+
+The kit runs on real work in a low-stakes context. A bad output must be recoverable. This is where the governed track takes custody: someone external can verify the result improved.
+
+→
+Blast radius bounded?
+
+Governed
+
+Harvest
+
+The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns what the individual found.
+
+If a gate fails, the workflow stays in play. That is the cultivated track doing its job. The wrong move is to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.
+
+20
+
+[SLIDE]
+
+Chapter 4
+
+## The path to durable AI adoption
+
+21
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Bottom-up discovery, top-down scale
+
+Discovery is cultivated. Scale is governed. The organization's job is to make the handoff between them deliberate.
+
+Cultivated
+What champions do · Months 1–5
+
+01
+
+Discover
+
+Find people already experimenting on their own time. Give them a venue with no required tools, no prescribed use cases, no output metrics. Let play surface what AI makes possible in their domain.
+
+02
+
+Encode
+
+Champions write down the steps. Tacit expertise becomes a reusable kit. The value is the encoding itself. Someone else can now inherit what took months to discover.
+
+03
+
+Prove
+
+The kit runs on real work in a low-stakes context. A bad output must be recoverable. Someone external can verify the result improved. This is the gate before the handoff.
+
+→
+
+Governed
+What the organization does · Months 1–6+
+
+01
+
+Sanction
+
+Set access policy in parallel with Discover. Approve tools, track use, contain risk. This creates the conditions for legitimate play without prescribing what that play looks like.
+
+02
+
+Promote
+
+Harvest proven kits into shared infrastructure. Assign named owners. Skeptics convert by seeing workflows proved on real work, not by policy announcement.
+
+03
+
+Scale
+
+Kits deployed across the department. New hires inherit workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.
+
+22
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Six categories of new work in AI-native organizations
+
+These categories of work appear across mature AI-adopting organizations regardless of size or sector. Titles vary; the work is the same.
+
+Kit Harvesting
+
+Surfacing the AI workflows people are already running on their own — in personal repos, vaults, scripts, custom GPTs — and promoting the best into shared infrastructure with named owners. Composed of a per-function audit, a promotion review, and the engineering to make a kit operable by another user.
+
+Evals
+
+Defining what "good" means for each AI workflow and building the test harness that measures it. Composed of golden datasets, rubrics co-authored with domain experts, and a scoring runner that fires on every prompt or model change. Maintenance grows as failure modes surface and feed back into the suite.
+
+Forward Deployment
+
+Embedding engineers inside functions — alongside lawyers, sales reps, analysts — to build the AI workflows that function depends on. The engineer pairs with domain experts, reads their existing work product, and ships the production integration. Each engagement is project-shaped and closes when the loop runs end-to-end.
+
+Platform Operations
+
+Operating the shared AI infrastructure domain teams build on: model gateway (routing across providers), versioned prompt and skill registries, eval pipelines in CI, observability (latency, cost, quality, drift), cost controls, and vendor management. A 24/7 system; major upgrades quarterly.
+
+Risk Stewardship
+
+Maintaining the AI risk register and the technical interlocks that bound what AI is allowed to do. Composed of the register (models, data, blast radius), permission boundaries (autonomous vs human-approved vs forbidden), constitutional infrastructure (sandboxes, planning-only modes, write-locks, rollback paths), and the audit trail.
+
+Context Stabilization
+
+Curating the context AI systems depend on and keeping it stable across models, tools, and agents. Composed of context gathering, curation (authoritative sources, current versions), ontology work (entity definitions and category boundaries), and stabilization so the legal team's "contract" and the agent's "contract" don't silently diverge.
+
+23
+
+[SLIDE]
+
+Chapter 5
+
+## How the Protocol Institute adopts AI
+
+24
+
+[SLIDE]
+
+Chapter 5 · How the Protocol Institute adopts AI
+
+Case study 01
+
+## SIGBIZ AI Discovery Acceleration
+
+Level 1 → Level 2 (Kit) transition inside a Special Interest Group.
+
+## The problem
+
+Throughout 2025, most members of the Protocols for Business Special Interest Group were using AI tools for their own work, and almost none of that work was visible to anyone else in the SIG. Members were collecting their own prompts, scripting small workflows in personal repos, learning the same early lessons in parallel. The cost was learning loss. The community of practice was running in private.
+
+The challenge was the standard L1 → L2 transition: make shadow use visible, encourage further adoption without prescribing tools, and harvest what members had discovered before it was forgotten.
+
+## The approach
+
+The SIG settled on three lightweight moves rather than a formal program.
+
+Encourage basic AI tools, not common stacks. Members used whatever AI tool they were already using. The SIG explicitly avoided sanctioning a single tool.
+
+Avoid optimization; embrace customization. No one was told their workflow was wrong. Interpretive flexibility is the engine of the transition.
+
+Fortnightly show-and-tell. Every two weeks, members brought workflows, kits, and failures to the meeting.
+
+## The impact
+
+Three things have shifted. First, AI adoption inside the SIG is now visible. Second, mutual discussion improved: members are collaborating on kits. Lastly, ambitions have expanded. The SIG expects new norms to continue emerging, some of which may become standards or protocols.
+
+The case study illustrates the cheapest viable Level 1 → Level 2 transition: a recurring meeting, a no-judgment posture, and a willingness to wait for the patterns to emerge from practice rather than to legislate them in advance.
+
+25
+
+[SLIDE]
+
+Chapter 5 · How the Protocol Institute adopts AI
+
+Case study 02
+
+## Protocolized visual identity
+
+Level 3 (Engine) in the magazine's visual production pipeline.
+
+## The problem
+
+Protocolized needed a visual language for a magazine whose editorial method openly integrates LLM-assisted writing. Off-the-shelf image generators produce a generic AI aesthetic that locates the magazine in the same trough every other AI-assisted publication occupies. Commissioned human illustration would not scale to a weekly cadence. Aesthetic nostalgia (mid-century pulp, Astounding-era revival) was the wrong move on principle: Astounding's original power came from embracing the contemporary art of its time.
+
+## The approach
+
+The magazine commissioned two narrowly-defined image generation models, each developed in collaboration with a named artist and hosted on the TITLES platform.
+
+The Hyperpress model, by artist Darius Ou, trained on art derived from 3D-printed structures sliced into 2D cross-sections — what Ou calls Spaceland Trees.
+
+The Langdon model, trained by editor James Langdon on neumorphic interface elements combined with archaeological mark-making.
+
+Both deliberately narrow: "not primed by their training art to resolve figurative prompts." TITLES handles attribution and royalties as protocol; image metadata stored onchain.
+
+## The impact
+
+The visual production pipeline meets the Level 3 criteria. Named owners (Langdon as editor, Ou and Langdon as model artists), a verification checkpoint built into the model itself (the abstraction constraint that fails figurative prompts), and a designed coordination layer between participating roles. The output is a coherent visual identity that holds across issues without each cover requiring an art-direction debate. Choosing to train narrow models on commissioned training art rather than to use stock generators is the same kind of move SIGBIZ made when it harvested its own kits — designing the kit rather than inheriting one designed by a vendor whose interests are not the publication's.
+
+26
+
+[SLIDE]
+
+Chapter 7
+
+## Success patterns and failure modes
+
+27
+
+[SLIDE]
+
+Chapter 7 · Success patterns and failure modes
+
+## Four emerging success patterns
+
+▦→▣
+
+Kit harvesting over central design
+
+Wait for variation to express itself before standardizing.
+
+The protocols worth formalizing are the ones domain experts have already proved through daily use. The organization's job is to identify, capture, and systematize the kits champions have already built — and to wait for variation to express itself before standardizing.
+
+▶↻
+
+Plan after play
+
+Plan from what play surfaces, not from intention.
+
+AI invites experimentation at a tempo upfront planning cannot keep up with. Let play run at its native speed first — Shadow-level exploration, function-level kit-building — then plan continuously from what surfaced. Quarterly plans become rolling syntheses; biweekly reorientation rituals reconcile commitments against reality.
+
+◐◑
+
+Differential gear trains
+
+Buffer the tempo mismatch instead of throttling either side.
+
+Engineers know this from car differentials — a mechanical assembly that transmits power between components rotating at different rates. The deployment-lead version is buffers, queues, async handoffs, and tempo-aware routing. Uber's Code Inbox is the canonical case.
+
+</>
+
+Constitutional software
+
+Compile governance constraints into code that runs.
+
+Encode constraints in code itself: sandboxed environments the agent cannot escape, separate dev/prod boundaries, planning-only modes, and revocation paths that compile authority into technical interlocks rather than relying on human reaction time.
+
+28
+
+[SLIDE]
+
+Chapter 7 · Success patterns and failure modes
+
+## Four emerging failure modes
+
+⊘
+
+Premature optimization
+
+Standardizing before the kit phase has done its work.
+
+Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: premature consolidation (collapsing kits into a single platform) and premature procurement (vendor stack before need is known).
+
+Mitigated via
+▦→▣Kit harvesting over central design
+
+?↺
+
+Disorientation
+
+Commitments outpace shared understanding; exposure accumulates invisibly.
+
+The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as psychological debt.
+
+Mitigated via
+▶↻Plan after play
+
+≠
+
+Tempo misalignment
+
+Output stacks up at the slowest neighbor.
+
+AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.
+
+Mitigated via
+◐◑Differential gear trains
+
+◉○○
+
+Extended blast radius
+
+Permissions outpace judgment, faster than humans can intervene.
+
+Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).
+
+Mitigated via
+</>Constitutional software
+
+29
+
+[SLIDE]
+
+Chapter 8
+
+## The new nature of work
+
+30
+
+[SLIDE]
+
+Chapter 8 · The new nature of work
+
+## The new nature of work
+
+AI-mediated work is the operating condition of today's enterprises.
+
+AI-mediated tools and workflows are no longer features of the workplace; they are part of the workplace itself, closer to weather or terrain than to thermostats. This is the new nature of work: technologically mediated conditions that have become immutable and indefinitely persistent. It is also the reason a single governed rollout has stopped being enough. If the terrain were stable, top-down deployment could finish the job; because it is not, the cultivated track has to remain productive alongside the governed one. Durable adoption depends on governance enabling cultivation rather than displacing it: the terrain keeps moving, and only the cultivated track keeps finding what works in it.
+
+Inside that environment, the deployment lead's job becomes keeping the handoff between the two tracks alive. The volume of AI-assisted output is too high to inspect case by case; new kits surface from the floor faster than any central process can catalogue them; the tools themselves shift behavior on every model update.
+
+The work is maintaining a productive cultivated track and a legible governed one: providing maps through what people are discovering, keeping the gates honest about which kits earned their way across, re-orienting when a team starts moving toward a pattern that compounds risk. The scarce skill is closer to applied curiosity than to AI literacy. The candidate who finds their way through unfamiliar terrain is the person to hire, because that is who keeps the cultivated side feeding the governed one.
+
+The work, then, is not to finish a platform deployment. It is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is a function whose people know how to work in this new nature, and whose managers know how to keep the handoff between cultivation and governance working as the terrain keeps changing.
+
+31
+
+[SLIDE]
+
+About & Resources
+
+## About the Protocol Institute
+
+The Protocol Institute is an independent research organization studying protocols — the rules and coordination structures that shape interaction across diplomacy, software, medicine, governance, and beyond. Evolved from the Ethereum Foundation-funded Summer of Protocols program (2023–2025), it continues that work through research, publishing, and community building across organizational theory, infrastructure studies, and governance design.
+
+Protocolized is its flagship publication; the AI Capability Maturity Model is one of its practitioner-facing frameworks, produced by the Protocols for Business leads.
+
+Reach us at team@protocol-institute.org
+
+## Additional resources
+
+## Source materials
+
+AI, tractors, and the productivity paradox — Sachin Benny. Technically, 2026.
+
+Finding Fault Lines within the Firm — Protocols for Business SIG. Protocolized, January 2026.
+
+Have Your Factory Call My Factory — Venkatesh Rao. Protocolized, March 2026.
+
+Introducing the Protocol Institute — Timber Stinson-Schroff. Protocolized, April 2026.
+
+Protocol Fiction Aesthetics — James Langdon. Protocolized, November 2025.
+
+## Engage
+
+Protocolized magazine — protocolized.summerofprotocols.com
+
+Protocols for Business Special Interest Group (SIGBIZ). Contact: team@protocol-institute.org
+
+32
+
+[SLIDE]
+
+Appendix · Case Studies
+
+## Case Studies
+
+Ten organizations across five maturity levels. Five contemporary AI adoptions and five historical analogues showing the same patterns at earlier paradigm shifts.
+
+## Today's AI adoption stories
+
+01Samsung ElectronicsL1 · Shadow
+02KlarnaL2 · Sanctioned
+03ShopifyL2 · Sanctioned
+04Air Canada chatbotL2 · Sanctioned
+05Boom SupersonicL3 · Engine
+
+## Lessons from the past
+
+06Visicalc & ExcelL1 · Shadow
+07Gates's Internet Tidal Wave memoL2 · Sanctioned
+08Git & GitHub pull requestsL3 · Engine
+09Walmart's EDI mandateL4 · Infrastructure
+10McLean's container protocolL5 · Planetary
+
+33
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 01 of 10
+
+## Samsung Electronics
+
+Level 1 (Shadow) exit pathway: containment and re-admission over two years.
+
+CIO Dive · Samsung Electronics ChatGPT leak ↗
+
+## The problem
+
+In April 2023, three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within a single month — to debug, optimize, and summarize. No policy existed, no monitoring was in place, and no record of which AI tools employees were using on what data. By the time exposure surfaced, the code had left the organization. The exposure pattern was structural, not malicious.
+
+## The approach
+
+Samsung responded in two phases. First, containment: a ban on all generative AI on company devices, paired with an accelerated internal LLM (Samsung Gauss). Second, deliberate re-admission over eighteen months — approved tool list, data-classification policy, prompt-filtering middleware, audit pipeline. By late 2025 employees could again use external AI, but only inside the gates Samsung had not built the first time.
+
+## The impact
+
+Samsung's exit from Shadow is the most documented in the public record. The L1 → L2 transition is rarely one policy action; it is a containment phase followed by a re-admission phase, with the latter taking longer than the former. Organizations that skip containment risk repeating the leak. Organizations that skip re-admission find their workforce running shadow workflows again through different channels.
+
+34
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 02 of 10
+
+## Klarna
+
+Level 2 (Sanctioned) failure mode: access governance without output governance.
+
+Tech.co · Klarna reverses AI overhaul ↗
+
+## The problem
+
+In early 2024 Klarna announced its AI customer-service assistant was doing the work of 700 full-time agents, with 90% daily AI adoption and two-thirds of customer-service chats automated. The narrative was category-defining productivity, backed by leading indicators: tool adoption, automation share, cost-per-resolution. Trailing indicators — satisfaction, repeat contacts, resolution durability — were not yet visible in the same dashboards.
+
+## The approach
+
+Klarna's governance focused on access. Tools were sanctioned, employees encouraged, adoption tracked. The company did not build comparable governance for the quality of AI output reaching customers. When trailing indicators began surfacing through escalations and external reporting, the failure mode was the one access-governance is structurally unable to catch: the outputs were technically allowed, but they were not good.
+
+## The impact
+
+In May 2025 CEO Sebastian Siemiatkowski reversed course publicly, describing AI customer interactions as "generic, repetitive, and insufficiently nuanced," and announced Klarna would rehire human agents. The reversal is the cleanest documented example of L2 access governance running into its ceiling: governing which tools are used cannot, by itself, govern whether the output is good enough. The transition to L3 Engine requires named output owners and verifiable quality gates, not dashboards of utilization.
+
+35
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 03 of 10
+
+## Shopify
+
+Level 2 (Sanctioned) mandate: adoption signals without acceptable-use standards.
+
+The Verge · Shopify AI memo ↗
+
+## The problem
+
+In April 2025 Shopify CEO Tobi Lütke published an internal memo declaring AI use "non-optional" for all employees. Managers requesting additional headcount were to first demonstrate why AI could not do the work. The intent was clear: accelerate AI adoption company-wide and shift the default from human-first to AI-first across the organization.
+
+## The approach
+
+The mandate did not define what constituted "AI use." Was a single weekly prompt enough? Was a manager required to demonstrate AI had been seriously evaluated, or just that it had been tried? Different teams interpreted differently. The infrastructure of governance — what tools, what data, what quality bar, what audit pathway — was not specified at the same level of force as the requirement itself.
+
+## The impact
+
+Adoption rates can be mandated. Outcomes cannot. Without protocols on what counts as acceptable use and quality gates on what the AI produces, the visible metric is occupancy of an activity, not value created. The Shopify case illustrates the gap between Level 2 access governance and Level 3 Engine: the former produces a number; the latter produces a measurable quality of work.
+
+36
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 04 of 10
+
+## Air Canada chatbot
+
+Level 2 (Sanctioned) accountability test: chatbots as legal subjects.
+
+BBC · Air Canada chatbot misinformation ↗
+
+## The problem
+
+In November 2023, Jake Moffatt asked Air Canada's customer-service chatbot whether bereavement-fare discounts could be claimed retroactively. The chatbot told him yes, citing a policy that did not exist. Moffatt booked a full-price flight to attend his grandmother's funeral. When he submitted the retroactive claim, Air Canada refused. The dispute reached the British Columbia Civil Resolution Tribunal in February 2024.
+
+## The approach
+
+Air Canada's defense argued the chatbot was a "separate legal entity" responsible for its own statements, and that Moffatt should have verified the answer against the policy page hosted elsewhere on the airline's website. The argument was novel and it failed. The Tribunal held that Air Canada was responsible for all information on its website, including chatbot-generated information, and ordered the airline to pay the difference plus tribunal fees.
+
+## The impact
+
+The ruling established the first widely-cited precedent that organizations cannot offload accountability for AI output to the tool itself. For organizations operating at Level 2 — sanctioned tools, no output governance — this is the structural exposure: every AI-generated statement to a customer is an unchecked commitment of the firm. Output governance — verification checkpoints, escalation paths, named owners for AI-customer interfaces — is not optional once a chatbot is producing legally consequential statements.
+
+37
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 05 of 10
+
+## Boom Supersonic
+
+Level 3 (Engine) success pattern: protocols designed alongside capabilities.
+
+Blake Scholl · Move fast and don't break safety-critical ↗
+
+## The problem
+
+Boom was developing the XB-1 demonstrator under aviation-safety expectations that allow zero tolerance for unexamined design changes. Each iteration on the structural model required stress, fatigue, aerodynamic, and material-tolerance validation before fabrication clearance. Boom needed to accelerate the loop without weakening the verification stack — and to explore hundreds of structural variants in the time conventional methods explore tens.
+
+## The approach
+
+Boom built mkBoom, an internal tool that wrapped AI-assisted structural analysis around the existing verification stack. The AI did not replace any verification step; it accelerated the iteration loop feeding into it. The governance protocols — who owns which analysis, which checks must pass before fabrication, what evidence is preserved for certification — were designed alongside the capability, not added after a near-miss.
+
+## The impact
+
+Boom's XB-1 reached supersonic flight in January 2025 with zero safety incidents across the program. The mkBoom workflow also surfaced Boomless Cruise — a flight regime in which the supersonic boom does not reach the ground under specific atmospheric conditions, recovered through AI-accelerated exploration of the structural envelope. When the blast radius is real hardware, protocols-with-capability is the only viable order: designing them after a failure costs more than the failure itself.
+
+38
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 06 of 10
+
+## Visicalc & Excel
+
+Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.
+
+Backchannel · A spreadsheet way of knowledge ↗
+
+## The problem
+
+By the late 1970s, business analysts performed structured calculations on paper, on calculators, or on bespoke mainframe programs maintained by IT departments with weeks-long lead times. The analyst who could think the model was rarely the one able to build it. Visicalc launched in 1979 as the first recalculating spreadsheet — written by Dan Bricklin and Bob Frankston for the Apple II — introducing a grid of cells with formulas referring to other cells.
+
+## The approach
+
+Through three commercial transitions — Visicalc, Lotus 1-2-3, Excel — the file format evolved but the conceptual model did not. Rows, columns, cells, formulas, references: the vocabulary held. No central authority defined or governed it. Practitioners taught each other peer-to-peer; business schools wrote textbooks; managers hired analysts who knew the vernacular without specifying which product. The tool taught the method, and the method outlived three products.
+
+## The impact
+
+By 2026 over a billion people operate through spreadsheet logic that nobody designed and no central authority approved. The L1 Shadow analogue is exact: an immensely productive substrate built by users for users, never sanctioned, never standardized at the top, but absorbed so completely into how work is done that it became invisible. The lesson for AI: substrates of this kind emerge through artifacts that teach the method, not through mandates that prescribe it.
+
+39
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 07 of 10
+
+## Gates's Internet Tidal Wave memo
+
+Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.
+
+The Internet Tidal Wave (Gates, 1995) ↗
+
+## The problem
+
+By early 1995, Microsoft was the dominant force in personal computing, organized around Windows, Office, and a vertically integrated server stack. The Internet — open protocols, browsers, hypertext — was not part of its product roadmap. Inside Microsoft, however, developer interest had been building for over a year: small teams were experimenting with web servers, browser prototypes, and TCP/IP-native tools, mostly outside official product lines. Without executive sanction, the projects could not draw the resources to ship.
+
+## The approach
+
+On May 26, 1995, Bill Gates issued an internal memo titled "The Internet Tidal Wave" to senior staff, declaring "I assign the Internet the highest level of importance." The memo did not invent Microsoft's Internet capability — it ratified work that had been happening unofficially for fifteen months. Attached were specific product directives: a browser shipped with Windows, mail integrated with TCP/IP, a re-architected server stack. The force came from naming what was already happening.
+
+## The impact
+
+Within two years Internet Explorer 1.0 shipped with Windows 95, Outlook and Exchange were repositioned around Internet protocols, and Microsoft was a credible Internet platform company. The case shows what effective Level 2 Sanctioned action looks like: it codifies what cultivation has already proved, channeling existing energy into formal direction. Sanction works when it ratifies; it fails when it mandates without underlying practice.
+
+40
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 08 of 10
+
+## Git & GitHub pull requests
+
+Level 3 (Engine) protocol: a designed workflow that outgrew its host.
+
+Git kernel docs · BitKeeper usage history ↗
+
+## The problem
+
+In April 2005, BitKeeper — the proprietary version-control system the Linux kernel team had been using under a free-of-charge license — revoked the license after a reverse-engineering dispute. The kernel team needed a replacement that matched BitKeeper's distributed-workflow properties; nothing on the market did. Beyond Linux, the software industry ran on a patchwork of centralized version-control systems whose mental models did not match how distributed teams actually worked.
+
+## The approach
+
+Linus Torvalds wrote Git in two weeks, optimizing for performance, distributed branching, and verifiable history. Git itself was a powerful but austere substrate — capable of any workflow but prescribing none. Three years later, GitHub introduced the pull request: a branch wrapped in a discussion thread with inline code review, status checks, and eventually CI/CD integration. The PR was not part of Git's specification; it was a designed protocol layered on top — a workflow people could see, comment on, approve, and audit.
+
+## The impact
+
+By 2026 the PR workflow is the assumed professional standard for roughly 100 million developers across essentially every development environment, including ones that do not run on GitHub. The case shows the L3 Engine pattern at scale: a designed coordination protocol on top of a generic substrate, optimized to the point of becoming invisible. It also shows the cultivated-governed handoff working as intended — Git the open substrate, PRs the designed protocol; both necessary, neither sufficient.
+
+41
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 09 of 10
+
+## Walmart's EDI mandate
+
+Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.
+
+Crstl · Walmart EDI requirements guide ↗
+
+## The problem
+
+By the mid-1980s, retailers managed thousands of supplier relationships through paper purchase orders, faxed invoices, and phone-confirmed shipment notifications. Error rates at the supplier-retailer interface — wrong quantities, late shipments, duplicate invoices — were a significant fraction of margin. Each retailer had its own document formats; each supplier maintained custom paperwork per customer. Walmart, growing rapidly, found that coordination overhead capped its expansion rate.
+
+## The approach
+
+In 1988, Walmart mandated EDI compliance using the X12 transaction set: adopt it, or lose Walmart's business. The mandate was paired with Walmart's own Bentonville distribution infrastructure, redesigned around the Advance Shipment Notification — a specific X12 message type that allowed receiving docks to plan for incoming shipments before they arrived. Walmart did not invent EDI; it required it, and made compliance valuable to suppliers (faster receiving, fewer disputes) rather than merely costly to refuse.
+
+## The impact
+
+The protocol cascaded across retail within a decade. Suppliers required to use EDI for Walmart began using it elsewhere; competitor retailers added EDI requirements; ERP vendors built EDI tooling into their software. By 2026, roughly 95% of US B2B supply-chain document exchange runs on EDI variants. The case shows the L4 Infrastructure pattern: protocols at this level spread when one dominant actor enforces them against its trading partners, and the rest of the ecosystem follows because the cost of two standards is higher than the cost of one.
+
+42
+
+[SLIDE]
+
+Appendix · Case Studies
+
+Case study 10 of 10
+
+## McLean's container protocol
+
+Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.
+
+## The problem
+
+Through the 1950s, freight moved between ship, rail, and truck through "break-bulk" handling — workers physically transferring barrels, crates, bales, and boxes at every transition point. Loading a ship took days; unloading at the destination port took days more. Theft was endemic, damage frequent, and the dwell time of a single shipment measured in weeks. The bottleneck was not transportation but the handoff between modes.
+
+## The approach
+
+On April 26, 1956, trucker Malcolm McLean sailed the SS Ideal X from Newark to Houston with 33 standardized metal boxes — containers — lifted directly from trucks onto the ship and back. The container itself was the protocol: fixed-dimension, lockable, stackable, reusable, designed so cargo never had to be touched between origin and destination. The standard hardened in stages: McLean's company published dimensions; competitors adopted them; ISO 668 codified 20- and 40-foot TEU dimensions in 1968.
+
+## The impact
+
+By 2026 approximately 90% of non-bulk world trade moves via containers. The protocol made coordination cheap and uniform across every jurisdiction and mode. It also concentrated the failures: the system depends on five geographic chokepoints — Suez, Panama, Malacca, Hormuz, Bab el-Mandeb — whose vulnerability was made visible by events like the 2021 Suez Canal blockade. The L5 Planetary lesson: when a protocol becomes infrastructure for the world, coordination is cheap and legibility becomes the new governance challenge.
+
+43
+
+[SLIDE]
+
+Appendix · AI Adoption Assessment
+
+## Where is your organization?
+
+A 2-minute diagnostic that places you on the maturity ladder and identifies your dominant archetype.
+
+Question 1 of 25
+
+What scope are you answering for?
+
+A small organization (under 200 people)
+
+A business unit or division of a larger enterprise
+
+A specific function (engineering, product, operations, sales, support, etc.)
+
+A specific team or workstream
+
+Continue →
+
+Question 2 of 25
+
+Choose the statement that better describes your team, function, or company.
+
+Option A
+
+Option B
+
+← Back
+Placing your organization…
+
+Retake the assessment
