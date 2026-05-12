@@ -23,7 +23,7 @@
   <meta property="og:title" content="Durable AI Adoption">
   <meta property="og:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
   <meta property="og:url" content="https://protocolized.dev/aiadoptionguide/">
-  <meta property="og:image" content="https://protocolized.dev/aiadoptionguide/images/protocols-for-the-long-now.png">
+  <meta property="og:image" content="https://protocolized.dev/aiadoptionguide/images/the-last-archive.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Durable AI Adoption">
   <meta name="twitter:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
-  <meta name="twitter:image" content="https://protocolized.dev/aiadoptionguide/images/protocols-for-the-long-now.png">
+  <meta name="twitter:image" content="https://protocolized.dev/aiadoptionguide/images/the-last-archive.png">
   <meta name="twitter:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -252,6 +252,24 @@
       border-bottom: 1px solid var(--border-soft);
       font-size: var(--fs-body);
       line-height: 1.4;
+      transition: background 0.15s;
+    }
+    .contents-list li:hover { background: var(--accent-light); }
+    .contents-list li a {
+      display: contents;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a.chapter-card {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    a.chapter-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
     }
     .contents-num {
       font-family: var(--font-mono);
@@ -436,6 +454,7 @@
       border-bottom: 1px solid var(--border-soft);
     }
     .slide-table tr:last-child td { border-bottom: none; }
+    .slide-table.equal-rows tbody tr { height: 1.10in; }
     .slide-table th {
       font-family: var(--font-mono);
       font-weight: 600;
@@ -790,6 +809,26 @@
       width: 2.4in;
       z-index: 2;
     }
+    .evo-cluster-num {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding-bottom: 3pt;
+      margin-bottom: 4pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .evo-cluster.cultivated .evo-cluster-num {
+      color: var(--accent-dark);
+      border-bottom-color: var(--accent);
+    }
+    .evo-cluster.governed .evo-cluster-num {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
     .evo-cluster ul { list-style: none; padding: 0; margin: 0; }
     .evo-cluster li {
       font-family: var(--font-sans);
@@ -890,22 +929,45 @@
       margin-top: 14pt;
     }
     .chapter-card {
+      position: relative;
       background: var(--surface);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 6px 6px 0;
-      padding: 10pt 12pt;
+      border-radius: 6px;
+      padding: 0 11pt 7pt 11pt;
       display: flex;
       flex-direction: column;
-      gap: 4pt;
+      gap: 2pt;
+      overflow: hidden;
+    }
+    .chapter-card.ch-foreword { background: var(--tint-foreword); }
+    .chapter-card.ch-1 { background: var(--tint-ch1); }
+    .chapter-card.ch-2 { background: var(--tint-ch2); }
+    .chapter-card.ch-3 { background: var(--tint-ch3); }
+    .chapter-card.ch-4 { background: var(--tint-ch4); }
+    .chapter-card.ch-5 { background: var(--tint-ch5); }
+    .chapter-card.ch-7 { background: var(--tint-ch7); }
+    .chapter-card.ch-8 { background: var(--tint-ch8); }
+    .chapter-card-image {
+      display: block;
+      width: calc(100% + 22pt);
+      height: 0.55in;
+      margin: 0 -11pt 5pt -11pt;
+      object-fit: cover;
+      object-position: center;
     }
     .chapter-card-num {
+      position: absolute;
+      top: 5pt;
+      right: 7pt;
       font-family: var(--font-mono);
-      font-size: var(--fs-display-2);
+      font-size: 13pt;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--accent-dark);
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 2pt 7pt;
+      border-radius: 999px;
       line-height: 1;
-      margin-bottom: 4pt;
+      z-index: 2;
     }
     .chapter-card-name {
       font-family: var(--font-mono);
@@ -917,10 +979,10 @@
     }
     .chapter-card-body {
       font-family: var(--font-sans);
-      font-size: var(--fs-body-sm);
-      line-height: 1.35;
+      font-size: 8.5pt;
+      line-height: 1.3;
       color: var(--text-secondary);
-      margin-top: 4pt;
+      margin-top: 2pt;
     }
 
     /* ─── Level callout (legacy, kept for fallback) ──────────── */
@@ -1187,6 +1249,66 @@
       font-size: var(--fs-body);
       line-height: 1.5;
       margin-bottom: 8pt;
+    }
+
+    /* ─── Appendix · Case studies ────────────────────────────── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12pt;
+      margin-top: 12pt;
+    }
+    .case-overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18pt;
+      margin-top: 10pt;
+    }
+    .case-overview-heading {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 6pt;
+      padding-bottom: 4pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .case-link {
+      display: grid;
+      grid-template-columns: 24pt 1fr auto;
+      align-items: baseline;
+      gap: 8pt;
+      padding: 7pt 10pt;
+      border-left: 3px solid var(--accent);
+      background: var(--surface);
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 5pt;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .case-link:hover { background: var(--accent-light); transform: translateX(2px); }
+    .case-link-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.04em;
+    }
+    .case-link-name {
+      font-size: var(--fs-body-sm);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .case-link-level {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
     }
 
     /* ─── Levels overview (5 circular badges, Ch2 at-a-glance) ── */
@@ -1773,23 +1895,275 @@
       line-height: 1.4;
     }
     .case-slide-section.span-2 { grid-column: 1 / span 2; }
+    .case-slide-source {
+      display: inline-block;
+      margin-top: 6pt;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--accent-dark);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent);
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .case-slide-source:hover { color: var(--accent); }
+    .cover-eyebrow a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+      transition: border-color 0.15s;
+    }
+    .cover-eyebrow a:hover { border-bottom-color: var(--accent); }
+    .split-col-title a,
+    .split-col p a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent);
+      transition: border-color 0.15s;
+    }
+    .split-col-title a:hover,
+    .split-col p a:hover { border-bottom-color: var(--accent-dark); }
+
+    /* ─── Schedule-a-call modal ───────────────────────────── */
+    .schedule-panel {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 28, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 24px;
+    }
+    .schedule-panel.open { display: flex; }
+    .schedule-panel-inner {
+      background: #fff;
+      border: 1px solid rgba(168, 136, 191, 0.25);
+      border-radius: 12px;
+      padding: 24px 24px 20px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    }
+    .schedule-panel h3 {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    .schedule-intro {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+    .schedule-panel input,
+    .schedule-panel textarea {
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .schedule-panel textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .schedule-panel input:focus,
+    .schedule-panel textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(168, 136, 191, 0.18);
+    }
+    .contact-hp-scp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .panel-alt {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 14px 0 8px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .panel-alt a { color: var(--accent-dark); font-weight: 600; }
+    .panel-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+    .panel-actions .btn-link {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      cursor: pointer;
+      padding: 10px 14px;
+    }
+    .panel-actions .btn-link:hover { color: var(--text); }
+    .panel-actions .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .panel-actions .btn-primary:hover { background: var(--accent-dark); }
+    .panel-status {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      min-height: 1.2em;
+    }
+    .panel-status.error { color: #c0392b; }
+    .panel-status.success { color: #2d7a45; }
+    @media print { .schedule-panel, .side-nav-footer { display: none !important; } }
 
     /* ─── Print rules ────────────────────────────────────────── */
     @media print {
       html, body { background: white; }
-      body { margin: 0; padding: 0; }
+      body { margin: 0; padding: 0; display: block; overflow: visible; }
       .deck { gap: 0; padding: 0; }
+      .side-nav { display: none; }
+      .slide-frame { width: auto; height: auto; display: block; overflow: visible; page-break-after: always; break-after: page; }
       .slide {
         margin: 0;
         box-shadow: none;
+        transform: none;
         page-break-after: always;
         break-after: page;
       }
       .slide:last-child { page-break-after: avoid; break-after: auto; }
     }
 
+    /* ─── Screen layout: sidebar + snap-scrolled scaled slides ── */
     @media screen {
-      body { background: #d4d4d8; }
+      body {
+        background: #d4d4d8;
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+      }
+      .side-nav {
+        width: 295px;
+        height: 100vh;
+        overflow-y: auto;
+        background: #18182a;
+        color: #fafafa;
+        flex-shrink: 0;
+        padding: 18pt 0 0;
+        font-family: var(--font-mono);
+        font-size: 10.5pt;
+        line-height: 1.35;
+        display: flex;
+        flex-direction: column;
+      }
+      .side-nav-main { flex: 1; list-style: none; padding: 0; margin: 0; }
+      .side-nav-footer {
+        padding: 12pt 16pt 14pt;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+        background: #18182a;
+      }
+      .side-nav-cta {
+        width: 100%;
+        display: block;
+        padding: 9pt 12pt;
+        background: var(--accent);
+        color: #fff;
+        font-family: var(--font-mono);
+        font-size: 10pt;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 10pt;
+        transition: background 0.15s, transform 0.15s;
+      }
+      .side-nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+      .side-nav-foot {
+        font-size: 8pt;
+        color: #6b6b7b;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+      .side-nav-title {
+        font-size: 8.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9b9ba8;
+        padding: 0 16pt;
+        margin-bottom: 10pt;
+      }
+      .side-nav-section {
+        font-size: 8pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9b9ba8;
+        padding: 14pt 16pt 6pt;
+        margin-top: 8pt;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        list-style: none;
+      }
+      .side-nav ul { list-style: none; padding: 0; margin: 0; }
+      .side-nav a {
+        display: block;
+        padding: 6pt 16pt;
+        color: #fafafa;
+        text-decoration: none;
+        border-left: 3px solid transparent;
+        transition: background 0.15s, border-color 0.15s;
+      }
+      .side-nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-left-color: var(--accent);
+      }
+      .side-nav a.active {
+        background: rgba(168, 136, 191, 0.18);
+        border-left-color: var(--accent);
+        color: #fff;
+      }
+      .side-nav-num {
+        display: inline-block;
+        width: 2.4em;
+        color: #9b9ba8;
+        font-weight: 700;
+      }
+      .side-nav a.active .side-nav-num { color: var(--accent); }
+      .deck {
+        flex: 1;
+        height: 100vh;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        padding: 0;
+        gap: 0;
+        align-items: stretch;
+      }
+      .slide-frame {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: start;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .slide {
+        transform: scale(var(--slide-scale, 1));
+        transform-origin: center center;
+        margin: 0;
+      }
     }
 
     /* ─── Yin-Yang framework (slide 07) ──────────────────────── */
@@ -1922,10 +2296,52 @@
 </head>
 <body>
 
+<nav class="side-nav" aria-label="Slide navigation">
+  <div class="side-nav-title">Durable AI Adoption</div>
+  <ul class="side-nav-main">
+    <li><a href="#cover"><span class="side-nav-num">—</span>Cover</a></li>
+    <li><a href="#contents"><span class="side-nav-num">—</span>Contents</a></li>
+    <li><a href="#foreword"><span class="side-nav-num">00</span>Foreword</a></li>
+    <li><a href="#ch-1"><span class="side-nav-num">01</span>Guide Overview</a></li>
+    <li><a href="#ch-2"><span class="side-nav-num">02</span>Maturity Levels</a></li>
+    <li><a href="#ch-3"><span class="side-nav-num">03</span>Getting Started</a></li>
+    <li><a href="#ch-4"><span class="side-nav-num">04</span>Durable Adoption</a></li>
+    <li><a href="#ch-5"><span class="side-nav-num">05</span>Adoption at the Institute</a></li>
+    <li><a href="#ch-7"><span class="side-nav-num">07</span>Patterns for Success</a></li>
+    <li><a href="#ch-8"><span class="side-nav-num">08</span>New Nature of Work</a></li>
+    <li><a href="#about"><span class="side-nav-num">—</span>About &amp; Resources</a></li>
+    <li class="side-nav-section">Appendix</li>
+    <li><a href="#appendix"><span class="side-nav-num">—</span>Case Studies</a></li>
+  </ul>
+  <div class="side-nav-footer">
+    <button type="button" class="side-nav-cta" onclick="toggleSchedule()">Schedule a Call</button>
+    <div class="side-nav-foot">Protocol Institute · May 2026</div>
+  </div>
+</nav>
+
+<div class="schedule-panel" id="schedule-panel" aria-hidden="true" role="dialog" aria-labelledby="schedule-panel-title">
+  <div class="schedule-panel-inner">
+    <h3 id="schedule-panel-title">Schedule a call</h3>
+    <p class="schedule-intro">Leave a note and we'll set up a 30-minute conversation.</p>
+    <form id="schedule-form" autocomplete="on">
+      <input type="text" name="name" placeholder="Name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Email" required autocomplete="email">
+      <textarea name="message" placeholder="Brief context — industry, role, what you'd like to discuss" required></textarea>
+      <div class="contact-hp-scp" aria-hidden="true"><label>Leave empty <input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>
+      <div class="panel-alt">Prefer email? Reach us at <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</div>
+      <div class="panel-actions">
+        <button type="button" class="btn-link" onclick="toggleSchedule()">Cancel</button>
+        <button type="submit" class="btn-primary">Send</button>
+      </div>
+      <p class="panel-status" id="schedule-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
 <div class="deck">
 
 <!-- ─── 01 — Cover ──────────────────────────────────────────── -->
-<section class="slide slide-cover">
+<section class="slide slide-cover" id="cover">
   <div class="cover-collage" aria-hidden="true">
     <img class="cover-img-1"  src="./images/theorizing-protocolization.png" alt="">
     <img class="cover-img-2"  src="./images/from-destination-ai-to-intelligence-media.png" alt="">
@@ -1940,10 +2356,10 @@
     <img class="cover-img-11" src="./images/primordial-soup.png" alt="">
     <img class="cover-img-12" src="./images/last-mile-optimism.png" alt="">
     <img class="cover-img-13" src="./images/open-protocols-government.png" alt="">
-    <img class="cover-img-14" src="./images/protocols-for-the-long-now.png" alt="">
+    <img class="cover-img-14" src="./images/the-last-archive.png" alt="">
   </div>
   <div class="cover-text">
-    <div class="cover-eyebrow">The Protocol Institute · Protocols for Business Practice</div>
+    <div class="cover-eyebrow"><a href="https://protocol-institute.org/" target="_blank" rel="noopener">The Protocol Institute</a> · Protocols for Business Practice</div>
     <h1 class="cover-title">Durable AI Adoption</h1>
     <p class="cover-sub">A practical guide to learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
     <div class="cover-meta">v0.5 · May 2026</div>
@@ -1951,24 +2367,24 @@
 </section>
 
 <!-- ─── 02 — Contents ───────────────────────────────────────── -->
-<section class="slide slide-contents">
+<section class="slide slide-contents" id="contents">
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
-    <li><span class="contents-num">00</span><span class="contents-name">Foreword: Everywhere you look, AI is already there</span><span class="contents-page">03</span></li>
-    <li><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">07</span></li>
-    <li><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">10</span></li>
-    <li><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">17</span></li>
-    <li><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">21</span></li>
-    <li><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">24</span></li>
-    <li><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">27</span></li>
-    <li><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span></li>
-    <li><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span></li>
+    <li><a href="#foreword"><span class="contents-num">00</span><span class="contents-name">Foreword: Everywhere you look, AI is already there</span><span class="contents-page">03</span></a></li>
+    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">07</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">10</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">17</span></a></li>
+    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">21</span></a></li>
+    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">24</span></a></li>
+    <li><a href="#ch-7"><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">27</span></a></li>
+    <li><a href="#ch-8"><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span></a></li>
+    <li><a href="#about"><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
 
 <!-- ─── 03 — Foreword body ──────────────────────────────────── -->
-<section class="slide slide-content">
+<section class="slide slide-content" id="foreword">
   <header class="slide-header">
     <span class="slide-header-pill">Foreword · Everywhere you look, AI is already there</span>
   </header>
@@ -2012,14 +2428,16 @@
       <span class="ms-label" style="left: 2.40in; top: 4.125in;">
         <span class="ms-num">01</span><span class="ms-name">Chat</span><span class="ms-year">2022–23</span>
       </span>
-      <div class="evo-cluster" style="left: 1.90in; top: 3.26in;">
+      <div class="evo-cluster cultivated" style="left: 1.90in; top: 3.26in;">
+        <span class="evo-cluster-num">01 · Cultivated</span>
         <ul>
           <li>Everyday use of ChatGPT</li>
           <li>Personal-account exploration</li>
           <li>Prompt experimentation</li>
         </ul>
       </div>
-      <div class="evo-cluster" style="left: 2.90in; top: 4.99in;">
+      <div class="evo-cluster governed" style="left: 2.90in; top: 4.99in;">
+        <span class="evo-cluster-num">01 · Governed</span>
         <ul>
           <li>Acceptable-use policies</li>
           <li>Blanket bans (Samsung)</li>
@@ -2027,17 +2445,19 @@
         </ul>
       </div>
 
-      <span class="ms-label" style="left: 4.80in; top: 2.75in;">
+      <span class="ms-label" style="left: 4.00in; top: 3.208in;">
         <span class="ms-num">02</span><span class="ms-name">Tools</span><span class="ms-year">2023–24</span>
       </span>
-      <div class="evo-cluster" style="left: 4.30in; top: 1.88in;">
+      <div class="evo-cluster cultivated" style="left: 3.50in; top: 2.343in;">
+        <span class="evo-cluster-num">02 · Cultivated</span>
         <ul>
           <li>Custom GPTs and skills</li>
           <li>Prompt libraries and kits</li>
           <li>Team-authored workflows</li>
         </ul>
       </div>
-      <div class="evo-cluster" style="left: 5.30in; top: 3.62in;">
+      <div class="evo-cluster governed" style="left: 4.50in; top: 4.073in;">
+        <span class="evo-cluster-num">02 · Governed</span>
         <ul>
           <li>Sanctioned tool lists</li>
           <li>Enterprise vendor deals</li>
@@ -2045,21 +2465,43 @@
         </ul>
       </div>
 
-      <span class="ms-label" style="left: 7.20in; top: 1.375in;">
+      <span class="ms-label" style="left: 5.60in; top: 2.292in;">
         <span class="ms-num">03</span><span class="ms-name">Agents</span><span class="ms-year">2024–26</span>
       </span>
-      <div class="evo-cluster" style="left: 6.70in; top: 0.51in;">
+      <div class="evo-cluster cultivated" style="left: 5.10in; top: 1.427in;">
+        <span class="evo-cluster-num">03 · Cultivated</span>
         <ul>
           <li>Vibe-coding, agentic IDEs</li>
           <li>Individual agent experiments</li>
           <li>AI-native function workflows</li>
         </ul>
       </div>
-      <div class="evo-cluster" style="left: 7.70in; top: 2.24in;">
+      <div class="evo-cluster governed" style="left: 6.10in; top: 3.157in;">
+        <span class="evo-cluster-num">03 · Governed</span>
         <ul>
           <li>Forward Deployed Engineers</li>
           <li>Agent governance protocols</li>
           <li>Model risk frameworks</li>
+        </ul>
+      </div>
+
+      <span class="ms-label" style="left: 7.20in; top: 1.375in;">
+        <span class="ms-num">04</span><span class="ms-name">Factories</span><span class="ms-year">2026–28</span>
+      </span>
+      <div class="evo-cluster cultivated" style="left: 6.70in; top: 0.51in;">
+        <span class="evo-cluster-num">04 · Cultivated</span>
+        <ul>
+          <li>One-person agent fleets</li>
+          <li>Always-on personal pipelines</li>
+          <li>Archival Self</li>
+        </ul>
+      </div>
+      <div class="evo-cluster governed" style="left: 7.70in; top: 2.24in;">
+        <span class="evo-cluster-num">04 · Governed</span>
+        <ul>
+          <li>Compute and token budgets</li>
+          <li>Fleet-level observability</li>
+          <li>Output-quality contracts</li>
         </ul>
       </div>
     </div>
@@ -2111,13 +2553,13 @@
 </section>
 
 <!-- ─── 06 — Ch1 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-1">
+<section class="slide slide-section ch-1" id="ch-1">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 1</span>
     <h1 class="slide-section-title">Introducing the AI Adoption Guide</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/theorizing-protocolization.png" alt="">
+    <img src="./images/the-last-archive.png" alt="">
   </div>
   <span class="slide-page">06</span>
 </section>
@@ -2150,59 +2592,67 @@
   <p class="slide-subtitle">How the chapters develop the model, from the framing argument through the maturity ladder, the pilot work, the cases, and the patterns.</p>
   <main class="slide-body">
     <div class="chapter-map">
-      <div class="chapter-card">
+      <a class="chapter-card ch-foreword" href="#foreword">
+        <img class="chapter-card-image" src="./images/strange-new-rules.png" alt="">
         <span class="chapter-card-num">00</span>
         <span class="chapter-card-name">Everywhere you look, AI is already there</span>
         <span class="chapter-card-body">Understand why AI is a paradigm, not a software upgrade, and why durable adoption needs both governed and cultivated tracks.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-1" href="#ch-1">
+        <img class="chapter-card-image" src="./images/the-last-archive.png" alt="">
         <span class="chapter-card-num">01</span>
         <span class="chapter-card-name">Introducing the AI Adoption Guide</span>
         <span class="chapter-card-body">Discover how governance enables cultivation through protocols, and what maturity actually measures.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-2" href="#ch-2">
+        <img class="chapter-card-image" src="./images/sop-2025-accelerating-order.png" alt="">
         <span class="chapter-card-num">02</span>
         <span class="chapter-card-name">Adoption Maturity Levels</span>
         <span class="chapter-card-body">Locate your organization on the five maturity levels, from invisible personal use to civilization-scale infrastructure.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-3" href="#ch-3">
+        <img class="chapter-card-image" src="./images/dirt-simple.png" alt="">
         <span class="chapter-card-num">03</span>
         <span class="chapter-card-name">Getting started with AI adoption</span>
         <span class="chapter-card-body">Run the pre-pilot readiness check, conduct the half-day audit, and learn how to evaluate candidate use cases.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-4" href="#ch-4">
+        <img class="chapter-card-image" src="./images/to-share-and-remember.png" alt="">
         <span class="chapter-card-num">04</span>
         <span class="chapter-card-name">The path to durable AI adoption</span>
         <span class="chapter-card-body">Trace how bottom-up discovery becomes top-down scale, with the handoff between the cultivated and governed tracks as the central job.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-5" href="#ch-5">
+        <img class="chapter-card-image" src="./images/the-40-hour-work-week.png" alt="">
         <span class="chapter-card-num">05</span>
         <span class="chapter-card-name">How the Protocol Institute adopts AI</span>
         <span class="chapter-card-body">Dive into two AI adoption case studies from inside the Protocol Institute.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-7" href="#ch-7">
+        <img class="chapter-card-image" src="./images/tension-landscapes.png" alt="">
         <span class="chapter-card-num">07</span>
         <span class="chapter-card-name">Success patterns and failure modes</span>
         <span class="chapter-card-body">Learn the four emerging success patterns and the four failure modes they mitigate.</span>
-      </div>
-      <div class="chapter-card">
+      </a>
+      <a class="chapter-card ch-8" href="#ch-8">
+        <img class="chapter-card-image" src="./images/the-whimsy-index.jpeg" alt="">
         <span class="chapter-card-num">08</span>
         <span class="chapter-card-name">The new nature of work</span>
         <span class="chapter-card-body">See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.</span>
-      </div>
+      </a>
     </div>
   </main>
   <span class="slide-page">08</span>
 </section>
 
 <!-- ─── 10 — Ch2 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-2">
+<section class="slide slide-section ch-2" id="ch-2">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 2</span>
     <h1 class="slide-section-title">Adoption Maturity Levels</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/fabric-and-brain.png" alt="">
+    <img src="./images/sop-2025-accelerating-order.png" alt="">
   </div>
   <span class="slide-page">09</span>
 </section>
@@ -2219,10 +2669,10 @@
     <div class="track-bar-center">
       <svg class="yy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <path d="M50,5 A45,45 0 0,0 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#1a1a2e"/>
-        <path d="M50,5 A45,45 0 0,1 50,95 A22.5,22.5 0 0,1 50,50 A22.5,22.5 0 0,0 50,5 Z" fill="#e9e1f2"/>
+        <path d="M50,5 A45,45 0 0,1 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#e9e1f2"/>
         <circle cx="50" cy="50" r="45" fill="none" stroke="#a888bf" stroke-width="1.5"/>
-        <circle cx="50" cy="27.5" r="7" fill="#e9e1f2"/>
-        <circle cx="50" cy="72.5" r="7" fill="#2e2040"/>
+        <circle cx="50" cy="27.5" r="7" fill="#1a1a2e"/>
+        <circle cx="50" cy="72.5" r="7" fill="#e9e1f2"/>
       </svg>
     </div>
     <span class="track-pill track-pill-infinite">Cultivated</span>
@@ -2238,8 +2688,8 @@
         </div>
         <div class="yy-level-center">
           <div class="yy-split-circle">
-            <img class="half left"  src="./images/faithful-channel.png" alt="Shadow">
-            <img class="half right" src="./images/constructing-the-evil-twin-of-ai.png" alt="Play">
+            <img class="half left"  src="./images/introducing-the-protocol-institute.png" alt="Shadow">
+            <img class="half right" src="./images/theorizing-protocolization-ii.png" alt="Play">
             <span class="yy-num">L·01</span>
           </div>
         </div>
@@ -2280,8 +2730,8 @@
         </div>
         <div class="yy-level-center">
           <div class="yy-split-circle">
-            <img class="half left"  src="./images/last-mile-optimism.png" alt="Engine">
-            <img class="half right" src="./images/have-your-factory-call-my-factory.png" alt="AI Native">
+            <img class="half left"  src="./images/have-your-factory-call-my-factory.png" alt="Engine">
+            <img class="half right" src="./images/how-to-protocol-watch.png" alt="AI Native">
             <span class="yy-num">L·03</span>
           </div>
         </div>
@@ -2301,8 +2751,8 @@
         </div>
         <div class="yy-level-center">
           <div class="yy-split-circle">
-            <img class="half left"  src="./images/open-protocols-government.png" alt="Infrastructure">
-            <img class="half right" src="./images/strangeness-legibility-hardness.png" alt="Vernacular">
+            <img class="half left"  src="./images/fabric-and-brain.png" alt="Infrastructure">
+            <img class="half right" src="./images/finding-fault-lines-within-the-firm.png" alt="Vernacular">
             <span class="yy-num">L·04</span>
           </div>
         </div>
@@ -2317,13 +2767,13 @@
         <div class="finite-side">
           <div class="yy-level-text">
             <span class="yy-level-name">Planetary</span>
-            <span class="yy-level-desc">AI integrated into civilization-scale systems; coordination and legibility are the governance challenge.</span>
+            <span class="yy-level-desc">Civilization-scale AI; coordination and legibility are the governance challenge.</span>
           </div>
         </div>
         <div class="yy-level-center">
           <div class="yy-split-circle">
-            <img class="half left"  src="./images/protocols-for-the-long-now.png" alt="Planetary">
-            <img class="half right" src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency">
+            <img class="half left"  src="./images/from-destination-ai-to-intelligence-media.png" alt="Planetary">
+            <img class="half right" src="./images/faithful-channel.png" alt="Fluency">
             <span class="yy-num">L·05</span>
           </div>
         </div>
@@ -2347,7 +2797,7 @@
   <h2 class="slide-h1">Examples across both paths of adoption</h2>
   <main class="slide-body">
     <p class="lead-p">Each level looks different depending on which path an organization is on. Durable adoption draws on both.</p>
-    <table class="slide-table" style="font-size:var(--fs-body-sm);">
+    <table class="slide-table equal-rows" style="font-size:var(--fs-body-sm);">
       <colgroup>
         <col style="width:13%">
         <col style="width:43.5%">
@@ -2373,18 +2823,17 @@
           <td>Boom Aerospace: curious software engineers embedded in hardware teams invented mkBoom — parametric aircraft analysis in minutes. XB-1 built by 50 people; 1,000+ miles of range recovered in two weeks through co-design impossible in siloed development.</td>
         </tr>
         <tr>
-          <td><span class="level-num">04</span><span class="level-name">Infrastructure / Vernacular*</span></td>
+          <td><span class="level-num">04</span><span class="level-name">Infrastructure / Vernacular</span></td>
           <td>Walmart's 1990s EDI mandate: not adopting meant not participating; one failure cascaded across hundreds of trading partners.</td>
           <td>Excel became the universal vernacular of business analysis without mandate — models and conventions spread person to person faster than any IT program could have designed.</td>
         </tr>
         <tr>
-          <td><span class="level-num">05</span><span class="level-name">Planetary / Fluency*</span></td>
+          <td><span class="level-num">05</span><span class="level-name">Planetary / Fluency</span></td>
           <td>2021 Facebook BGP misconfiguration took multiple platforms offline globally; the protocol stack had grown opaque to its own operators.</td>
           <td>Autocorrect: implemented at OS level, then absorbed into how billions of people write. Users adapted their typing patterns to it unconsciously. Nobody calls it AI.</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-tertiary);margin-top:6pt;">* AI adoption at most organizations has not yet reached levels 4 and 5 of cultivated adoption.</p>
   </main>
   <span class="slide-page">11</span>
 </section>
@@ -2392,8 +2841,8 @@
 <!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band level-band-split">
-    <img class="band-img governed" src="./images/faithful-channel.png" alt="Shadow">
-    <img class="band-img cultivated" src="./images/constructing-the-evil-twin-of-ai.png" alt="Play">
+    <img class="band-img governed" src="./images/introducing-the-protocol-institute.png" alt="Shadow">
+    <img class="band-img cultivated" src="./images/theorizing-protocolization-ii.png" alt="Play">
     <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
@@ -2486,8 +2935,8 @@
 <!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band level-band-split">
-    <img class="band-img governed" src="./images/last-mile-optimism.png" alt="Engine">
-    <img class="band-img cultivated" src="./images/have-your-factory-call-my-factory.png" alt="AI Native">
+    <img class="band-img governed" src="./images/have-your-factory-call-my-factory.png" alt="Engine">
+    <img class="band-img cultivated" src="./images/how-to-protocol-watch.png" alt="AI Native">
     <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
@@ -2533,8 +2982,8 @@
 <!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band level-band-split">
-    <img class="band-img governed" src="./images/open-protocols-government.png" alt="Infrastructure">
-    <img class="band-img cultivated" src="./images/strangeness-legibility-hardness.png" alt="Vernacular">
+    <img class="band-img governed" src="./images/fabric-and-brain.png" alt="Infrastructure">
+    <img class="band-img cultivated" src="./images/finding-fault-lines-within-the-firm.png" alt="Vernacular">
     <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
@@ -2580,8 +3029,8 @@
 <!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
 <section class="slide slide-content slide-level">
   <div class="level-band level-band-split">
-    <img class="band-img governed" src="./images/protocols-for-the-long-now.png" alt="Planetary">
-    <img class="band-img cultivated" src="./images/from-destination-ai-to-intelligence-media.png" alt="Fluency">
+    <img class="band-img governed" src="./images/from-destination-ai-to-intelligence-media.png" alt="Planetary">
+    <img class="band-img cultivated" src="./images/faithful-channel.png" alt="Fluency">
     <svg class="band-slash" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
@@ -2625,13 +3074,13 @@
 </section>
 
 <!-- ─── 17 — Ch3 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-3">
+<section class="slide slide-section ch-3" id="ch-3">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 3</span>
     <h1 class="slide-section-title">Getting started with AI adoption</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/mechanical-currents.jpeg" alt="">
+    <img src="./images/dirt-simple.png" alt="">
   </div>
   <span class="slide-page">17</span>
 </section>
@@ -2772,13 +3221,13 @@
 </section>
 
 <!-- ─── 21 — Ch4 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-4">
+<section class="slide slide-section ch-4" id="ch-4">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 4</span>
     <h1 class="slide-section-title">The path to durable AI adoption</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/have-your-factory-call-my-factory.png" alt="">
+    <img src="./images/to-share-and-remember.png" alt="">
   </div>
   <span class="slide-page">21</span>
 </section>
@@ -2890,13 +3339,13 @@
 </section>
 
 <!-- ─── 23 — Ch5 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-5">
+<section class="slide slide-section ch-5" id="ch-5">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 5</span>
     <h1 class="slide-section-title">How the Protocol Institute adopts AI</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/theorizing-protocolization-ii.png" alt="">
+    <img src="./images/the-40-hour-work-week.png" alt="">
   </div>
   <span class="slide-page">24</span>
 </section>
@@ -2978,13 +3427,13 @@
 </section>
 
 <!-- ─── 27 — Ch7 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-7">
+<section class="slide slide-section ch-7" id="ch-7">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 7</span>
     <h1 class="slide-section-title">Success patterns and failure modes</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/strangeness-legibility-hardness.png" alt="">
+    <img src="./images/tension-landscapes.png" alt="">
   </div>
   <span class="slide-page">27</span>
 </section>
@@ -3080,13 +3529,13 @@
 </section>
 
 <!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-8">
+<section class="slide slide-section ch-8" id="ch-8">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 8</span>
     <h1 class="slide-section-title">The new nature of work</h1>
   </div>
   <div class="slide-section-image-diagonal">
-    <img src="./images/constructing-the-evil-twin-of-ai.png" alt="">
+    <img src="./images/the-whimsy-index.jpeg" alt="">
   </div>
   <span class="slide-page">30</span>
 </section>
@@ -3110,23 +3559,17 @@
 </section>
 
 <!-- ─── 32 — About & Resources (split slide) ────────────────── -->
-<section class="slide slide-content">
+<section class="slide slide-content" id="about">
   <header class="slide-header">
     <span class="slide-header-pill">About &amp; Resources</span>
   </header>
   <main class="slide-body">
     <div class="split-grid">
       <div class="split-col">
-        <h2 class="split-col-title">About the Protocol Institute</h2>
-        <p>The Protocol Institute is an independent research organization studying protocols — the rules and coordination structures that shape interaction across diplomacy, software, medicine, governance, and beyond. Evolved from the Ethereum Foundation-funded Summer of Protocols program (2023–2025), it continues that work through research, publishing, and community building across organizational theory, infrastructure studies, and governance design.</p>
+        <h2 class="split-col-title">About <a href="https://protocol-institute.org/" target="_blank" rel="noopener">the Protocol Institute</a></h2>
+        <p><a href="https://protocol-institute.org/" target="_blank" rel="noopener">The Protocol Institute</a> is an independent research organization studying protocols — the rules and coordination structures that shape interaction across diplomacy, software, medicine, governance, and beyond. Evolved from the Ethereum Foundation-funded Summer of Protocols program (2023–2025), it continues that work through research, publishing, and community building across organizational theory, infrastructure studies, and governance design.</p>
         <p><em>Protocolized</em> is its flagship publication; the AI Capability Maturity Model is one of its practitioner-facing frameworks, produced by the Protocols for Business leads.</p>
         <p>Reach us at <strong>team@protocol-institute.org</strong></p>
-        <h3>Companion outputs from this project</h3>
-        <ul>
-          <li><em>The AI Capability Maturity Assessment</em> — protocolized.dev/assessment</li>
-          <li><em>The AI Capability Maturity Model: Litepaper</em> — protocolized.dev/litepaper-ai-protocols</li>
-          <li><em>The Missing Protocol Layer</em> — protocolized.dev/blog-the-missing-layer</li>
-        </ul>
       </div>
       <div class="split-col">
         <h2 class="split-col-title">Additional resources</h2>
@@ -3149,7 +3592,476 @@
   <span class="slide-page">32</span>
 </section>
 
+<!-- ─── 33 — Appendix · Case studies overview ──────────────── -->
+<section class="slide slide-content" id="appendix">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <h2 class="slide-h1">Case Studies</h2>
+  <p class="slide-subtitle">Ten organizations across five maturity levels. Five contemporary AI adoptions and five historical analogues showing the same patterns at earlier paradigm shifts.</p>
+  <main class="slide-body">
+    <div class="case-overview">
+      <div class="case-overview-col">
+        <h3 class="case-overview-heading">Today's AI adoption stories</h3>
+        <a class="case-link" href="#case-samsung"><span class="case-link-num">01</span><span class="case-link-name">Samsung Electronics</span><span class="case-link-level">L1 · Shadow</span></a>
+        <a class="case-link" href="#case-klarna"><span class="case-link-num">02</span><span class="case-link-name">Klarna</span><span class="case-link-level">L2 · Sanctioned</span></a>
+        <a class="case-link" href="#case-shopify"><span class="case-link-num">03</span><span class="case-link-name">Shopify</span><span class="case-link-level">L2 · Sanctioned</span></a>
+        <a class="case-link" href="#case-air-canada"><span class="case-link-num">04</span><span class="case-link-name">Air Canada chatbot</span><span class="case-link-level">L2 · Sanctioned</span></a>
+        <a class="case-link" href="#case-boom"><span class="case-link-num">05</span><span class="case-link-name">Boom Supersonic</span><span class="case-link-level">L3 · Engine</span></a>
+      </div>
+      <div class="case-overview-col">
+        <h3 class="case-overview-heading">Lessons from the past</h3>
+        <a class="case-link" href="#case-visicalc"><span class="case-link-num">06</span><span class="case-link-name">Visicalc &amp; Excel</span><span class="case-link-level">L1 · Shadow</span></a>
+        <a class="case-link" href="#case-gates-memo"><span class="case-link-num">07</span><span class="case-link-name">Gates's Internet Tidal Wave memo</span><span class="case-link-level">L2 · Sanctioned</span></a>
+        <a class="case-link" href="#case-github-pr"><span class="case-link-num">08</span><span class="case-link-name">Git &amp; GitHub pull requests</span><span class="case-link-level">L3 · Engine</span></a>
+        <a class="case-link" href="#case-walmart-edi"><span class="case-link-num">09</span><span class="case-link-name">Walmart's EDI mandate</span><span class="case-link-level">L4 · Infrastructure</span></a>
+        <a class="case-link" href="#case-container"><span class="case-link-num">10</span><span class="case-link-name">McLean's container protocol</span><span class="case-link-level">L5 · Planetary</span></a>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">33</span>
+</section>
+
+<!-- ─── 34 — Case 01 · Samsung ──────────────────────────────── -->
+<section class="slide slide-content" id="case-samsung">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 01 of 10</span>
+        <h4 class="case-slide-name">Samsung Electronics</h4>
+        <p class="case-slide-frame-line">Level 1 (Shadow) exit pathway: containment and re-admission over two years.</p>
+        <a class="case-slide-source" href="https://www.ciodive.com/news/Samsung-Electronics-ChatGPT-leak-data-privacy/647137/" target="_blank" rel="noopener">CIO Dive · Samsung Electronics ChatGPT leak ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>In April 2023, three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within a single month — to debug, optimize, and summarize. No policy existed, no monitoring was in place, and no record of which AI tools employees were using on what data. By the time exposure surfaced, the code had left the organization. The exposure pattern was structural, not malicious.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Samsung responded in two phases. First, containment: a ban on all generative AI on company devices, paired with an accelerated internal LLM (Samsung Gauss). Second, deliberate re-admission over eighteen months — approved tool list, data-classification policy, prompt-filtering middleware, audit pipeline. By late 2025 employees could again use external AI, but only inside the gates Samsung had not built the first time.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>Samsung's exit from Shadow is the most documented in the public record. The L1 → L2 transition is rarely one policy action; it is a containment phase followed by a re-admission phase, with the latter taking longer than the former. Organizations that skip containment risk repeating the leak. Organizations that skip re-admission find their workforce running shadow workflows again through different channels.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">34</span>
+</section>
+
+<!-- ─── 35 — Case 02 · Klarna ───────────────────────────────── -->
+<section class="slide slide-content" id="case-klarna">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 02 of 10</span>
+        <h4 class="case-slide-name">Klarna</h4>
+        <p class="case-slide-frame-line">Level 2 (Sanctioned) failure mode: access governance without output governance.</p>
+        <a class="case-slide-source" href="https://tech.co/news/klarna-reverses-ai-overhaul" target="_blank" rel="noopener">Tech.co · Klarna reverses AI overhaul ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>In early 2024 Klarna announced its AI customer-service assistant was doing the work of 700 full-time agents, with 90% daily AI adoption and two-thirds of customer-service chats automated. The narrative was category-defining productivity, backed by leading indicators: tool adoption, automation share, cost-per-resolution. Trailing indicators — satisfaction, repeat contacts, resolution durability — were not yet visible in the same dashboards.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Klarna's governance focused on access. Tools were sanctioned, employees encouraged, adoption tracked. The company did not build comparable governance for the quality of AI output reaching customers. When trailing indicators began surfacing through escalations and external reporting, the failure mode was the one access-governance is structurally unable to catch: the outputs were technically allowed, but they were not good.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>In May 2025 CEO Sebastian Siemiatkowski reversed course publicly, describing AI customer interactions as "generic, repetitive, and insufficiently nuanced," and announced Klarna would rehire human agents. The reversal is the cleanest documented example of L2 access governance running into its ceiling: governing which tools are used cannot, by itself, govern whether the output is good enough. The transition to L3 Engine requires named output owners and verifiable quality gates, not dashboards of utilization.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">35</span>
+</section>
+
+<!-- ─── 36 — Case 03 · Shopify ──────────────────────────────── -->
+<section class="slide slide-content" id="case-shopify">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 03 of 10</span>
+        <h4 class="case-slide-name">Shopify</h4>
+        <p class="case-slide-frame-line">Level 2 (Sanctioned) mandate: adoption signals without acceptable-use standards.</p>
+        <a class="case-slide-source" href="https://www.theverge.com/news/644943/shopify-tobi-lutke-ai-memo-developers-engineers" target="_blank" rel="noopener">The Verge · Shopify AI memo ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>In April 2025 Shopify CEO Tobi Lütke published an internal memo declaring AI use "non-optional" for all employees. Managers requesting additional headcount were to first demonstrate why AI could not do the work. The intent was clear: accelerate AI adoption company-wide and shift the default from human-first to AI-first across the organization.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>The mandate did not define what constituted "AI use." Was a single weekly prompt enough? Was a manager required to demonstrate AI had been seriously evaluated, or just that it had been tried? Different teams interpreted differently. The infrastructure of governance — what tools, what data, what quality bar, what audit pathway — was not specified at the same level of force as the requirement itself.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>Adoption rates can be mandated. Outcomes cannot. Without protocols on what counts as acceptable use and quality gates on what the AI produces, the visible metric is occupancy of an activity, not value created. The Shopify case illustrates the gap between Level 2 access governance and Level 3 Engine: the former produces a number; the latter produces a measurable quality of work.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">36</span>
+</section>
+
+<!-- ─── 37 — Case 04 · Air Canada ───────────────────────────── -->
+<section class="slide slide-content" id="case-air-canada">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 04 of 10</span>
+        <h4 class="case-slide-name">Air Canada chatbot</h4>
+        <p class="case-slide-frame-line">Level 2 (Sanctioned) accountability test: chatbots as legal subjects.</p>
+        <a class="case-slide-source" href="https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know" target="_blank" rel="noopener">BBC · Air Canada chatbot misinformation ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>In November 2023, Jake Moffatt asked Air Canada's customer-service chatbot whether bereavement-fare discounts could be claimed retroactively. The chatbot told him yes, citing a policy that did not exist. Moffatt booked a full-price flight to attend his grandmother's funeral. When he submitted the retroactive claim, Air Canada refused. The dispute reached the British Columbia Civil Resolution Tribunal in February 2024.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Air Canada's defense argued the chatbot was a "separate legal entity" responsible for its own statements, and that Moffatt should have verified the answer against the policy page hosted elsewhere on the airline's website. The argument was novel and it failed. The Tribunal held that Air Canada was responsible for all information on its website, including chatbot-generated information, and ordered the airline to pay the difference plus tribunal fees.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>The ruling established the first widely-cited precedent that organizations cannot offload accountability for AI output to the tool itself. For organizations operating at Level 2 — sanctioned tools, no output governance — this is the structural exposure: every AI-generated statement to a customer is an unchecked commitment of the firm. Output governance — verification checkpoints, escalation paths, named owners for AI-customer interfaces — is not optional once a chatbot is producing legally consequential statements.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">37</span>
+</section>
+
+<!-- ─── 38 — Case 05 · Boom Supersonic ──────────────────────── -->
+<section class="slide slide-content" id="case-boom">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 05 of 10</span>
+        <h4 class="case-slide-name">Boom Supersonic</h4>
+        <p class="case-slide-frame-line">Level 3 (Engine) success pattern: protocols designed alongside capabilities.</p>
+        <a class="case-slide-source" href="https://bscholl.substack.com/p/move-fast-and-dont-break-safety-critical" target="_blank" rel="noopener">Blake Scholl · Move fast and don't break safety-critical ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>Boom was developing the XB-1 demonstrator under aviation-safety expectations that allow zero tolerance for unexamined design changes. Each iteration on the structural model required stress, fatigue, aerodynamic, and material-tolerance validation before fabrication clearance. Boom needed to accelerate the loop without weakening the verification stack — and to explore hundreds of structural variants in the time conventional methods explore tens.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Boom built mkBoom, an internal tool that wrapped AI-assisted structural analysis around the existing verification stack. The AI did not replace any verification step; it accelerated the iteration loop feeding into it. The governance protocols — who owns which analysis, which checks must pass before fabrication, what evidence is preserved for certification — were designed alongside the capability, not added after a near-miss.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>Boom's XB-1 reached supersonic flight in January 2025 with zero safety incidents across the program. The mkBoom workflow also surfaced Boomless Cruise — a flight regime in which the supersonic boom does not reach the ground under specific atmospheric conditions, recovered through AI-accelerated exploration of the structural envelope. When the blast radius is real hardware, protocols-with-capability is the only viable order: designing them after a failure costs more than the failure itself.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">38</span>
+</section>
+
+<!-- ─── 39 — Case 06 · Visicalc / Excel ─────────────────────── -->
+<section class="slide slide-content" id="case-visicalc">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 06 of 10</span>
+        <h4 class="case-slide-name">Visicalc &amp; Excel</h4>
+        <p class="case-slide-frame-line">Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.</p>
+        <a class="case-slide-source" href="https://medium.com/backchannel/a-spreadsheet-way-of-knowledge-8de60af7146e" target="_blank" rel="noopener">Backchannel · A spreadsheet way of knowledge ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>By the late 1970s, business analysts performed structured calculations on paper, on calculators, or on bespoke mainframe programs maintained by IT departments with weeks-long lead times. The analyst who could think the model was rarely the one able to build it. Visicalc launched in 1979 as the first recalculating spreadsheet — written by Dan Bricklin and Bob Frankston for the Apple II — introducing a grid of cells with formulas referring to other cells.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Through three commercial transitions — Visicalc, Lotus 1-2-3, Excel — the file format evolved but the conceptual model did not. Rows, columns, cells, formulas, references: the vocabulary held. No central authority defined or governed it. Practitioners taught each other peer-to-peer; business schools wrote textbooks; managers hired analysts who knew the vernacular without specifying which product. The tool taught the method, and the method outlived three products.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>By 2026 over a billion people operate through spreadsheet logic that nobody designed and no central authority approved. The L1 Shadow analogue is exact: an immensely productive substrate built by users for users, never sanctioned, never standardized at the top, but absorbed so completely into how work is done that it became invisible. The lesson for AI: substrates of this kind emerge through artifacts that teach the method, not through mandates that prescribe it.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">39</span>
+</section>
+
+<!-- ─── 40 — Case 07 · Gates's Internet Tidal Wave memo ─────── -->
+<section class="slide slide-content" id="case-gates-memo">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 07 of 10</span>
+        <h4 class="case-slide-name">Gates's Internet Tidal Wave memo</h4>
+        <p class="case-slide-frame-line">Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.</p>
+        <a class="case-slide-source" href="https://www.justice.gov/sites/default/files/atr/legacy/2006/03/03/20.pdf" target="_blank" rel="noopener">The Internet Tidal Wave (Gates, 1995) ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>By early 1995, Microsoft was the dominant force in personal computing, organized around Windows, Office, and a vertically integrated server stack. The Internet — open protocols, browsers, hypertext — was not part of its product roadmap. Inside Microsoft, however, developer interest had been building for over a year: small teams were experimenting with web servers, browser prototypes, and TCP/IP-native tools, mostly outside official product lines. Without executive sanction, the projects could not draw the resources to ship.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>On May 26, 1995, Bill Gates issued an internal memo titled "The Internet Tidal Wave" to senior staff, declaring "I assign the Internet the highest level of importance." The memo did not invent Microsoft's Internet capability — it ratified work that had been happening unofficially for fifteen months. Attached were specific product directives: a browser shipped with Windows, mail integrated with TCP/IP, a re-architected server stack. The force came from naming what was already happening.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>Within two years Internet Explorer 1.0 shipped with Windows 95, Outlook and Exchange were repositioned around Internet protocols, and Microsoft was a credible Internet platform company. The case shows what effective Level 2 Sanctioned action looks like: it codifies what cultivation has already proved, channeling existing energy into formal direction. Sanction works when it ratifies; it fails when it mandates without underlying practice.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">40</span>
+</section>
+
+<!-- ─── 41 — Case 08 · Git &amp; GitHub PRs ─────────────────────── -->
+<section class="slide slide-content" id="case-github-pr">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 08 of 10</span>
+        <h4 class="case-slide-name">Git &amp; GitHub pull requests</h4>
+        <p class="case-slide-frame-line">Level 3 (Engine) protocol: a designed workflow that outgrew its host.</p>
+        <a class="case-slide-source" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/BK-usage/bk-kernel-howto.txt?id=1da177e4c3f41524e886b7f1b8a0c1fc7321cac2" target="_blank" rel="noopener">Git kernel docs · BitKeeper usage history ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>In April 2005, BitKeeper — the proprietary version-control system the Linux kernel team had been using under a free-of-charge license — revoked the license after a reverse-engineering dispute. The kernel team needed a replacement that matched BitKeeper's distributed-workflow properties; nothing on the market did. Beyond Linux, the software industry ran on a patchwork of centralized version-control systems whose mental models did not match how distributed teams actually worked.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>Linus Torvalds wrote Git in two weeks, optimizing for performance, distributed branching, and verifiable history. Git itself was a powerful but austere substrate — capable of any workflow but prescribing none. Three years later, GitHub introduced the pull request: a branch wrapped in a discussion thread with inline code review, status checks, and eventually CI/CD integration. The PR was not part of Git's specification; it was a designed protocol layered on top — a workflow people could see, comment on, approve, and audit.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>By 2026 the PR workflow is the assumed professional standard for roughly 100 million developers across essentially every development environment, including ones that do not run on GitHub. The case shows the L3 Engine pattern at scale: a designed coordination protocol on top of a generic substrate, optimized to the point of becoming invisible. It also shows the cultivated-governed handoff working as intended — Git the open substrate, PRs the designed protocol; both necessary, neither sufficient.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">41</span>
+</section>
+
+<!-- ─── 42 — Case 09 · Walmart EDI ──────────────────────────── -->
+<section class="slide slide-content" id="case-walmart-edi">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 09 of 10</span>
+        <h4 class="case-slide-name">Walmart's EDI mandate</h4>
+        <p class="case-slide-frame-line">Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.</p>
+        <a class="case-slide-source" href="https://www.crstl.ai/blog/walmart-edi-requirements-the-complete-2026-guide" target="_blank" rel="noopener">Crstl · Walmart EDI requirements guide ↗</a>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>By the mid-1980s, retailers managed thousands of supplier relationships through paper purchase orders, faxed invoices, and phone-confirmed shipment notifications. Error rates at the supplier-retailer interface — wrong quantities, late shipments, duplicate invoices — were a significant fraction of margin. Each retailer had its own document formats; each supplier maintained custom paperwork per customer. Walmart, growing rapidly, found that coordination overhead capped its expansion rate.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>In 1988, Walmart mandated EDI compliance using the X12 transaction set: adopt it, or lose Walmart's business. The mandate was paired with Walmart's own Bentonville distribution infrastructure, redesigned around the Advance Shipment Notification — a specific X12 message type that allowed receiving docks to plan for incoming shipments before they arrived. Walmart did not invent EDI; it required it, and made compliance valuable to suppliers (faster receiving, fewer disputes) rather than merely costly to refuse.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>The protocol cascaded across retail within a decade. Suppliers required to use EDI for Walmart began using it elsewhere; competitor retailers added EDI requirements; ERP vendors built EDI tooling into their software. By 2026, roughly 95% of US B2B supply-chain document exchange runs on EDI variants. The case shows the L4 Infrastructure pattern: protocols at this level spread when one dominant actor enforces them against its trading partners, and the rest of the ecosystem follows because the cost of two standards is higher than the cost of one.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">42</span>
+</section>
+
+<!-- ─── 43 — Case 10 · McLean container ─────────────────────── -->
+<section class="slide slide-content" id="case-container">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Case Studies</span>
+  </header>
+  <main class="slide-body">
+    <div class="case-slide-wrapper">
+      <div class="case-slide-header">
+        <span class="case-slide-label">Case study 10 of 10</span>
+        <h4 class="case-slide-name">McLean's container protocol</h4>
+        <p class="case-slide-frame-line">Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The problem</h5>
+        <p>Through the 1950s, freight moved between ship, rail, and truck through "break-bulk" handling — workers physically transferring barrels, crates, bales, and boxes at every transition point. Loading a ship took days; unloading at the destination port took days more. Theft was endemic, damage frequent, and the dwell time of a single shipment measured in weeks. The bottleneck was not transportation but the handoff between modes.</p>
+      </div>
+      <div class="case-slide-section">
+        <h5>The approach</h5>
+        <p>On April 26, 1956, trucker Malcolm McLean sailed the SS Ideal X from Newark to Houston with 33 standardized metal boxes — containers — lifted directly from trucks onto the ship and back. The container itself was the protocol: fixed-dimension, lockable, stackable, reusable, designed so cargo never had to be touched between origin and destination. The standard hardened in stages: McLean's company published dimensions; competitors adopted them; ISO 668 codified 20- and 40-foot TEU dimensions in 1968.</p>
+      </div>
+      <div class="case-slide-section span-2">
+        <h5>The impact</h5>
+        <p>By 2026 approximately 90% of non-bulk world trade moves via containers. The protocol made coordination cheap and uniform across every jurisdiction and mode. It also concentrated the failures: the system depends on five geographic chokepoints — Suez, Panama, Malacca, Hormuz, Bab el-Mandeb — whose vulnerability was made visible by events like the 2021 Suez Canal blockade. The L5 Planetary lesson: when a protocol becomes infrastructure for the world, coordination is cheap and legibility becomes the new governance challenge.</p>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">43</span>
+</section>
+
 </div><!-- /.deck -->
+
+<script>
+(function () {
+  var SLIDE_W = 11 * 96;   // 1056
+  var SLIDE_H = 8.5 * 96;  // 816
+  var MARGIN  = 0.94;      // leave a little breathing room
+
+  function updateScale() {
+    var nav = document.querySelector('.side-nav');
+    var navW = nav ? nav.offsetWidth : 0;
+    var availW = window.innerWidth - navW;
+    var availH = window.innerHeight;
+    var scale = Math.min(availW / SLIDE_W, availH / SLIDE_H) * MARGIN;
+    document.documentElement.style.setProperty('--slide-scale', scale);
+  }
+
+  function wrapSlides() {
+    var slides = document.querySelectorAll('.deck > .slide');
+    slides.forEach(function (slide) {
+      var frame = document.createElement('div');
+      frame.className = 'slide-frame';
+      if (slide.id) {
+        frame.id = slide.id;
+        slide.removeAttribute('id');
+      }
+      slide.parentNode.insertBefore(frame, slide);
+      frame.appendChild(slide);
+    });
+  }
+
+  function wireNavHighlight() {
+    var deck = document.querySelector('.deck');
+    var navLinks = document.querySelectorAll('.side-nav a');
+    if (!deck || !navLinks.length) return;
+    var byHref = {};
+    navLinks.forEach(function (a) { byHref[a.getAttribute('href')] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+          var id = e.target.id;
+          navLinks.forEach(function (a) { a.classList.remove('active'); });
+          if (byHref['#' + id]) byHref['#' + id].classList.add('active');
+        }
+      });
+    }, { root: deck, threshold: [0.5] });
+    document.querySelectorAll('.slide-frame[id]').forEach(function (f) { io.observe(f); });
+  }
+
+  function init() {
+    wrapSlides();
+    updateScale();
+    wireNavHighlight();
+    // If page loaded with a hash, scroll to it after wrap
+    if (window.location.hash) {
+      var target = document.querySelector(window.location.hash);
+      if (target) target.scrollIntoView();
+    }
+  }
+
+  window.addEventListener('resize', updateScale);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<script>
+function toggleSchedule() {
+  var panel = document.getElementById('schedule-panel');
+  if (!panel) return;
+  var isOpen = panel.classList.toggle('open');
+  panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  if (isOpen) {
+    setTimeout(function () {
+      var first = panel.querySelector('input[name="name"]');
+      if (first) first.focus({ preventScroll: true });
+    }, 100);
+  }
+}
+document.addEventListener('click', function (e) {
+  var panel = document.getElementById('schedule-panel');
+  if (panel && e.target === panel) toggleSchedule();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape') return;
+  var panel = document.getElementById('schedule-panel');
+  if (panel && panel.classList.contains('open')) toggleSchedule();
+});
+document.getElementById('schedule-form')?.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var form = e.target;
+  var status = document.getElementById('schedule-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var name = form.name.value.trim();
+  var email = form.email.value.trim();
+  var message = form.message.value.trim();
+  var hp = form._hp.value;
+  if (hp) {
+    status.textContent = 'Request sent. Thank you.';
+    status.className = 'panel-status success';
+    form.reset();
+    return;
+  }
+  if (!name || !email || !message) {
+    status.textContent = 'Name, email, and message are required.';
+    status.className = 'panel-status error';
+    return;
+  }
+  submitBtn.disabled = true;
+  status.textContent = 'Sending…';
+  status.className = 'panel-status';
+
+  var pageLabel = (document.title || '').split(' — ')[0] || location.pathname;
+  var messageWithPage = 'Page: ' + pageLabel + ' (' + location.pathname + ')\n\n' + message;
+
+  try {
+    var res = await fetch('https://protocolized-inbox.rafaeldf2.workers.dev/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: messageWithPage, subject: 'Schedule a Call', _hp: hp })
+    });
+    if (res.ok) {
+      status.textContent = "Request sent. We'll be in touch.";
+      status.className = 'panel-status success';
+      form.reset();
+      setTimeout(toggleSchedule, 1500);
+    } else {
+      status.textContent = 'Something went wrong. Please email team@protocol-institute.org directly.';
+      status.className = 'panel-status error';
+    }
+  } catch (_err) {
+    status.textContent = 'Could not send. Please email team@protocol-institute.org directly.';
+    status.className = 'panel-status error';
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>
 
 </body>
 </html>
