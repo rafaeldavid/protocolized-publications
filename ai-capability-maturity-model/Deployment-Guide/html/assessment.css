@@ -553,3 +553,48 @@
   align-items: center;
   margin-top: 14px;
 }
+
+/* ─── Mobile: tighten padding, stack result cards ─────────── */
+@media (max-width: 768px) {
+  .assessment-slide {
+    padding: 18px 16px 24px;
+  }
+  .assessment-h1 { font-size: 1.3rem; }
+  .assessment-subtitle { font-size: 0.85rem; margin-bottom: 14px; }
+  .assessment-slide .quiz-prompt { font-size: 0.9rem; }
+  .assessment-slide .option-card { padding: 14px 16px; }
+  .assessment-slide .quiz-option .option-text { font-size: 0.92rem; }
+  .assessment-slide .radio-option { padding: 12px 14px; gap: 10px; }
+  .assessment-slide .radio-text { font-size: 0.85rem; }
+
+  /* Result cards — stack tarot/badge above text content */
+  .assessment-slide .result-card { padding: 18px 18px; }
+  .assessment-slide .archetype-card-body {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .assessment-slide .archetype-info { width: 100%; }
+  .assessment-slide .archetype-tarot,
+  .assessment-slide .maturity-badge {
+    width: 160px;
+  }
+  .assessment-slide .result-card-title { font-size: 1.2rem; text-align: center; }
+  .assessment-slide .result-card-tagline { text-align: center; }
+  .assessment-slide .result-card-meta { justify-content: center; }
+
+  .assessment-slide .tension-poles {
+    grid-template-columns: 1fr;
+  }
+
+  .assessment-slide .step-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .assessment-slide .quiz-actions { flex-direction: row; }
+  .assessment-slide .btn { width: 100%; }
+  .assessment-slide .quiz-actions .btn-link { width: auto; }
+
+  .assessment-slide .output-actions { flex-direction: column; align-items: stretch; }
+}
