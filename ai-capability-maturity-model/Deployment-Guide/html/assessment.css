@@ -557,18 +557,24 @@
 /* ─── Mobile: tighten padding, stack result cards ─────────── */
 @media (max-width: 768px) {
   .assessment-slide {
-    padding: 18px 16px 24px;
+    padding: 16px 10px 22px;
   }
-  .assessment-h1 { font-size: 1.3rem; }
+  .assessment-h1 { font-size: 1.25rem; }
   .assessment-subtitle { font-size: 0.85rem; margin-bottom: 14px; }
   .assessment-slide .quiz-prompt { font-size: 0.9rem; }
-  .assessment-slide .option-card { padding: 14px 16px; }
+  .assessment-slide .option-card { padding: 12px 14px; }
   .assessment-slide .quiz-option .option-text { font-size: 0.92rem; }
-  .assessment-slide .radio-option { padding: 12px 14px; gap: 10px; }
+  .assessment-slide .radio-option { padding: 11px 12px; gap: 10px; }
   .assessment-slide .radio-text { font-size: 0.85rem; }
 
   /* Result cards — stack tarot/badge above text content */
-  .assessment-slide .result-card { padding: 18px 18px; }
+  .assessment-slide .result-card { padding: 14px 14px; }
+  .assessment-slide .failure-mode-item,
+  .assessment-slide .action-item,
+  .assessment-slide .strength-item,
+  .assessment-slide .challenge-item,
+  .assessment-slide .tension-pole { padding: 10px 12px; }
+  .assessment-slide .historical-item { padding-left: 10px; }
   .assessment-slide .archetype-card-body {
     flex-direction: column;
     align-items: center;
