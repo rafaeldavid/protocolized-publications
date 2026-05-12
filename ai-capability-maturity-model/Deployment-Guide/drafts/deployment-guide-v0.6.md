@@ -32,6 +32,8 @@ AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflo
 
 A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While *deployment* is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.
 
+That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout. AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.
+
 Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.
 
 ---
