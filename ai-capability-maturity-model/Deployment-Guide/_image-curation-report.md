@@ -160,7 +160,7 @@ Grouped by visual cluster. Filename is the on-disk filename in `html/images/`.
 
 ## 2 · Proposed mappings
 
-Levels: **L1 Shadow/Play · L2 Sanctioned/Kit · L3 Engine/AI Native · L4 Infrastructure/Vernacular · L5 Planetary/Fluency.**
+Levels: **L1 Shadow/Play · L2 Sanctioned/Kit · L3 Engine/Practice · L4 Infrastructure/Vernacular · L5 Planetary/Fluency.**
 
 ### Governed track (Cluster A — TITLES Model #1 medallion)
 
@@ -170,7 +170,7 @@ Only 4 medallion images exist. Recommendation: use them at L2-L5 (the "real" gov
 |---|---|---|
 | **L1 Shadow / Play** | `introducing-the-protocol-institute.png` | Concentric-wheel emblem reads as the founding medallion — institutional, contained, "first stamp." Closest match to medallion family without being one. |
 | **L2 Sanctioned / Kit** | `primordial-soup.png` | Marbled fluid contained inside the ring — sanctioned chaos, the controlled vessel of early supervised use. |
-| **L3 Engine / AI Native** | `have-your-factory-call-my-factory.png` | Cross-section of a fruit — internal mechanics revealed, seeds + chambers; the "engine" made legible inside the disc. |
+| **L3 Engine / Practice** | `have-your-factory-call-my-factory.png` | Cross-section of a fruit — internal mechanics revealed, seeds + chambers; the "engine" made legible inside the disc. |
 | **L4 Infrastructure / Vernacular** | `fabric-and-brain.png` | Dense forest canopy as woven fabric — infrastructural substrate, the world-as-medium. |
 | **L5 Planetary / Fluency** | `from-destination-ai-to-intelligence-media.png` | Reflective sphere holding the whole landscape — planetary horizon, intelligence as ambient medium. |
 
@@ -180,7 +180,7 @@ Only 4 medallion images exist. Recommendation: use them at L2-L5 (the "real" gov
 |---|---|---|
 | **L1 Shadow / Play** | `theorizing-protocolization-ii.png` | A single tight node spreading nascent tendrils — first sprouts, individual experimentation. |
 | **L2 Sanctioned / Kit** | `theorizing-protocolization.png` | The same organism now branching through a city grid — informal practice gaining shape inside structured space. |
-| **L3 Engine / AI Native** | `how-to-protocol-watch.png` | Continuous coral-relief contours — fluent, self-organizing flow without grid; the autonomous engine. |
+| **L3 Engine / Practice** | `how-to-protocol-watch.png` | Continuous coral-relief contours — fluent, self-organizing flow without grid; the autonomous engine. |
 | **L4 Infrastructure / Vernacular** | `finding-fault-lines-within-the-firm.png` | High-resolution full topographic continent map — vernacular landscape, mature substrate. |
 | **L5 Planetary / Fluency** | `faithful-channel.png` | Long horizontal flowing creature spanning the frame — planetary signal-carrier, full-grown nervous system. |
 
