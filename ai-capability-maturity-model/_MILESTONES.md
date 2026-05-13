@@ -3,12 +3,12 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ---
 
-## Current Status (as of 2026-05-12)
+## Current Status (as of 2026-05-13)
 
-**Active work:** Deployment Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. v0.5 ships full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract, light-geometric chapter intros, level-image cover collage. Legacy `protocolized.dev/` redirects here.
+**Active work:** AI Adoption Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. v0.5 ships full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract, light-geometric chapter intros, level-image cover collage. Legacy `protocolized.dev/` redirects here. Sub-project directory renamed `Deployment-Guide/` → `AI-Adoption-Guide/`. Companion blog post drafted at `AI-Adoption-Guide/blog/we-are-in-1908-with-ai.md`.
 **Blocking items:** None.
-**Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24).
-**Versioning:** Slide deck at v0.5; markdown draft at v0.6 in `Deployment-Guide/drafts/`.
+**Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24). Blog post first draft awaiting editorial pass.
+**Versioning:** Slide deck at v0.5; markdown draft at v0.6 in `AI-Adoption-Guide/drafts/`; companion blog post v0.1 draft.
 
 ---
 
@@ -16,20 +16,25 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ## Milestone Log
 
-### 2026-05-12 (end of day) | Deployment Guide v0.5 polish — cover, chapter aesthetic, mobile, redirect
+### 2026-05-13 | Sub-project renamed; companion blog post drafted
+
+- **Directory rename.** `Deployment-Guide/` → `AI-Adoption-Guide/` to reflect that the deliverable is an adoption framework, not a procurement/rollout document. All git-tracked paths moved via `git mv`. References in top-level `README.md` and `_MILESTONES.md` updated. Internal historical docs (`_image-curation-report.md`, `workpackets-analysis.md`, `drafts/deployment-guide-v0.6.md`) retain old-path references as time-stamped artifacts.
+- **Companion blog post drafted (v0.1).** `AI-Adoption-Guide/blog/we-are-in-1908-with-ai.md` (~2,700 words). Anchors the deployment-vs-adoption thesis in the 30-year gap between factory electrification (1899–1919) and the unit-drive / assembly-line redesign that produced the 1920s productivity boom. Pulls Paul David's 1990 *Dynamo and the Computer* paper as the academic anchor; adds Bradshaw's railway timetable + Chandler's managerial revolution + Brunelleschi as confirming patterns. Then runs the 11-bullet logical argument as flowing prose, lands the case file (Samsung, Klarna, Amazon/MeshClaw, Boom), and closes with Rao's *Inventing New Nature* + the AI Evolution Arc (Chat → Tools → Agents → Factories) framing the present as the moment when the software and knowledge factories themselves get reinvented. Sources list grounds it in the deck's About-page bibliography.
+
+### 2026-05-12 (end of day) | AI Adoption Guide v0.5 polish — cover, chapter aesthetic, mobile, redirect
 
 - **Legacy homepage retired.** Archived `homepage/` source to `_Deploy-Archive/2026-05-12-homepage/` (incl. team photos). Replaced `homepage/index.html` with a 337-byte redirect that fires `location.replace('https://ai.protocolized.dev/' + (location.hash || ''))` from `<head>` — preserves hash fragments for deep links and avoids any visible flash. Deployed to slug `gleaming-sketch-5q8b` (the slug mounted at `protocolized.dev/`). Other sub-paths (assessment, case-studies, levels, blog, litepaper, ai-maturity-model) untouched.
 - **Cover slash + corner pills removed.** The duality vocabulary was distracting. Cover collage rebuilt from the 10 maturity-level images (5 governed + 5 cultivated, with 4 strong anchors repeated to fill the 14-cell quilt). Duality now reads through medallion-vs-gestural contrast rather than an explicit label. OG card (`images/og-cover.png`) regenerated to match via headless Chrome.
 - **Chapter intros: retro-pulp sci-fi → light geometric aesthetic.** All 8 chapter intro images swapped to a coherent enterprise-appropriate family (clean isometric models, mountain/topography forms, minimal geometric shapes): `protocol-fiction-aesthetics`, `what-is-formal-protocol-theory`, `a-very-short-introduction-to-memory`, `drift-stacking` (fetched fresh from the SIGP4B drift-stacking essay), `strangeness-legibility-hardness`, `images-of-memory`, `brackish-strategy`, `mechanical-currents`. The retired sci-fi set stays in `html/images/` for future reuse.
 - **Mobile bug fixes.** (1) Removed a legacy head script that forced `viewport=width=1100` on narrow loads — it was overriding the device viewport, so `@media (max-width: 768px)` never matched on real phones and the sidebar never collapsed to a header. (2) Un-nested the mobile media query (was inside `@media screen`; some browsers parsed inconsistently) — now a top-level `@media screen and (max-width: 768px)`. (3) Fixed mobile body height conflict (was `height: auto / min-height: 100vh` which broke deck snap-scroll); now preserves `height: 100vh / overflow: hidden` from the desktop rule and only overrides `flex-direction: column`.
 - **Assessment mobile width.** The `.slide-content` base padding (0.55in × 0.7in = ~67px each side) was eating mobile width; zeroed out for `.slide.slide-assessment` on ≤ 768px and gave the header its own 14px inline padding. The `.assessment-slide` now handles content padding (16px × 10px). Inner result cards stack the tarot/badge above text content; tension poles collapse to one column; step actions go column-stacked with full-width buttons.
-- **Status:** Live at https://ai.protocolized.dev/. README and Deployment-Guide/README.md refreshed for current state. Commits f765448 → 089e6d9 on `main`.
+- **Status:** Live at https://ai.protocolized.dev/. README and AI-Adoption-Guide/README.md refreshed for current state. Commits f765448 → 089e6d9 on `main`.
 
 ### 2026-05-12 | Deployment Guide shipped at ai.protocolized.dev — navigation, scaling, appendix, assessment, mobile
 
 - **Live at custom subdomain.** `ai.protocolized.dev` (Cloudflare-fronted, SSL active) now serves the slide deck as primary entry (slug `plush-muse-q9bz`). Previous mount paths `protocolized.dev/aiadoptionguide/` and `/deploymentplaybook/` unmounted.
 - **Cover slash visual.** Cover collage gains an SVG diagonal slash overlay foreshadowing the dual track, with corner pills (Cultivated top-left, Governed bottom-right) — same vocabulary as slide 04's AI-evolution diagonal.
-- **OG social card.** Rendered a static 1200×630 social card via headless Chrome (`Deployment-Guide/html/_og-cover.html` → `images/og-cover.png`); replaces the prior `the-last-archive.png` reference in `og:image`/`twitter:image`.
+- **OG social card.** Rendered a static 1200×630 social card via headless Chrome (`AI-Adoption-Guide/html/_og-cover.html` → `images/og-cover.png`); replaces the prior `the-last-archive.png` reference in `og:image`/`twitter:image`.
 - **Assessment ported in-deck.** The full `/assessment/` (~3,400-line standalone) ported into the appendix as a single slide (`#assessment`). New scoped files: `assessment.css` (prefixed under `.assessment-slide`) and `assessment.js` (IIFE-wrapped, exposes `window.Assessment`). 24 binary questions + scope step; hierarchical archetype classification (10 archetypes: Vanguard/Traveller/Architect/Integrator/Tinkerer/Ratifier/Warden/Broker/Folkway/Guild); deployment-density × governance-density maturity scoring (L1, L2, L2→3, L3, L3→4). Result renders archetype tarot + maturity badge with expand-in-place details (failure modes, actions, arc, tension, historical parallels). Level names aligned to deck: Engine (was Designed), Infrastructure (was Infrastructural).
 - **Sidebar navigation.** Fixed 295px-wide left rail with: title, scrollable nav list with active-section highlight (IntersectionObserver-driven), Appendix section with Case Studies + Assessment links, Schedule-a-Call modal trigger, llms.txt link, footer "Protocol Institute · May 2026".
 - **Mobile-responsive nav.** Below 768px viewport, sidebar collapses to a 56px sticky top header bar with a hamburger button. Tap to expand; auto-closes on link click. Slide deck takes full available height/width; scale recomputes for mobile.
@@ -44,7 +49,7 @@ Append-only record of completed work, key decisions, and current status. Newest 
 - **Slide 11 polish.** Examples table forced to equal row heights; cultivated-asterisk caveat (about L4/L5 cultivated being aspirational) removed.
 - **Cover + About link to https://protocol-institute.org/.** Subtle dotted-underline anchor on "The Protocol Institute" eyebrow + About title + first prose mention.
 - **Schedule-a-Call modal.** Sidebar footer button opens a full-viewport modal that posts to the existing Cloudflare Worker (`protocolized-inbox.rafaeldf2.workers.dev/contact`); closes via Cancel / backdrop / Escape. Matches the case-studies-page implementation exactly.
-- **llms.txt extract.** Python script extracts plain-text content from `slides.html` into `Deployment-Guide/html/llms.txt` (~1,300 lines). Header includes navigation links + level/archetype summary. Linked from sidebar footer.
+- **llms.txt extract.** Python script extracts plain-text content from `slides.html` into `AI-Adoption-Guide/html/llms.txt` (~1,300 lines). Header includes navigation links + level/archetype summary. Linked from sidebar footer.
 - **Status:** Live at https://ai.protocolized.dev/. Source committed to GitHub `main` branch.
 
 ### 2026-05-11 | Deployment Guide slide deck — foreword/Ch1/Ch2 polish pass
@@ -61,8 +66,8 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ### 2026-05-10 | Deployment Guide — *Durable AI Adoption* slide deck created
 
-- **New deliverable scaffolded.** `Deployment-Guide/` folder: `_DEPLOYMENT-GUIDE-BRIEF.md` (single-landing-page handbook for deployment managers, modeled on Anthropic's *Claude Cowork Deployment Handbook* eight-section structure, lifted out of vendor specifics and grounded in the CMM); `deployment-guide-v0.1-outline.md`; `framework-success-and-failure.md` (framework synthesis); `level-2-kit-respec.md` (Level 2 reframed as *Kit* for this guide only — productivity artifact vs. policy artifact); `workpackets-analysis.md`; `drafts/deployment-guide-v0.1.md` through `v0.6.md`; `drafts/chapter-8-rewrite.md`.
-- **HTML rendition built.** `Deployment-Guide/html/index.html` (single-landing-page web view) + `slides.html` (printable letter-landscape slide deck). Favicon, apple-touch-icon, OG image assets added.
+- **New deliverable scaffolded.** `AI-Adoption-Guide/` folder: `_DEPLOYMENT-GUIDE-BRIEF.md` (single-landing-page handbook for deployment managers, modeled on Anthropic's *Claude Cowork Deployment Handbook* eight-section structure, lifted out of vendor specifics and grounded in the CMM); `deployment-guide-v0.1-outline.md`; `framework-success-and-failure.md` (framework synthesis); `level-2-kit-respec.md` (Level 2 reframed as *Kit* for this guide only — productivity artifact vs. policy artifact); `workpackets-analysis.md`; `drafts/deployment-guide-v0.1.md` through `v0.6.md`; `drafts/chapter-8-rewrite.md`.
+- **HTML rendition built.** `AI-Adoption-Guide/html/index.html` (single-landing-page web view) + `slides.html` (printable letter-landscape slide deck). Favicon, apple-touch-icon, OG image assets added.
 - **14 images bundled locally** in `html/images/` — remote-image dependencies dropped from both the web rendition and the slide deck so the deck renders offline and survives source rot.
 - **Mobile rendering:** viewport-meta swap so the slide deck fits to width on mobile.
 - **Cover retitled** to *Durable AI Adoption*; subtitle updated. Chapter 4 renamed to "The path to durable AI adoption". Contents list "Adoption Maturity Level" → "Levels" (plural). Ch2 intro rewritten as a path metaphor with historical analogues. Chapter 2 pluralized to "Adoption Maturity Levels" everywhere.
@@ -70,7 +75,7 @@ Append-only record of completed work, key decisions, and current status. Newest 
 - **Level slides 08–12 redesigned** with image-as-band header treatment.
 - **Ch4 structural change:** Phase detail merged into the framework cards; standalone phase slide dropped.
 - **Resources:** Rao, Sachin, and Timber source articles saved to `Resources/` for citation/grounding.
-- **Status:** Local only — `Deployment-Guide/html/` is the canonical source. Not yet copied to a here.now slug.
+- **Status:** Local only — `AI-Adoption-Guide/html/` is the canonical source. Not yet copied to a here.now slug.
 
 ### 2026-04-26 (latest) | Homepage redesign — explore section rebuilt around 3 preview cards
 

@@ -1,8 +1,8 @@
 # AI Capability Maturity Model — Project Portal
 
-**Project:** Desk research, blog post, litepaper, interactive diagnostic, archetype assessment, case-studies library, and deployment-guide slide deck on a capability maturity model for organizational AI adoption
+**Project:** Desk research, blog post, litepaper, interactive diagnostic, archetype assessment, case-studies library, and an AI-adoption-guide slide deck on a capability maturity model for organizational AI adoption
 **Practice:** Protocolized — Protocols for Business Practice
-**Status:** Deployment Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/ (slug `plush-muse-q9bz`). Artifact (v1.12) + Blog post (v1.2) + Litepaper (v5 HTML) + Assessment (v0.9) + Case Studies Library remain at their existing `protocolized.dev/*` sub-paths. The legacy homepage at `protocolized.dev/` now redirects to `ai.protocolized.dev`.
+**Status:** AI Adoption Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/ (slug `plush-muse-q9bz`). Artifact (v1.12) + Blog post (v1.2) + Litepaper (v5 HTML) + Assessment (v0.9) + Case Studies Library remain at their existing `protocolized.dev/*` sub-paths. The legacy homepage at `protocolized.dev/` now redirects to `ai.protocolized.dev`.
 
 ---
 
@@ -17,12 +17,12 @@
 
 | Output | Format | Audience | Status |
 |--------|--------|----------|--------|
-| [Deployment Guide](Deployment-Guide/README.md) | Interactive slide deck — *Durable AI Adoption* — 8 chapters, 10-case study appendix, embedded assessment | Deployment managers, ops VPs, AI champions | **v0.5 live** — [ai.protocolized.dev](https://ai.protocolized.dev/) |
+| [AI Adoption Guide](AI-Adoption-Guide/README.md) | Interactive slide deck — *Durable AI Adoption* — 8 chapters, 10-case study appendix, embedded assessment | Deployment managers, ops VPs, AI champions | **v0.5 live** — [ai.protocolized.dev](https://ai.protocolized.dev/) |
 | [Blog post](Blog-Post/README.md) | ~1,500 words, Protocolized publication | Practitioners, managers | **v1.2 live** — [protocolized.dev/blog-the-missing-layer](https://protocolized.dev/blog-the-missing-layer/) |
 | [Litepaper](Litepaper/README.md) | 8–12 pages, downloadable | Deployment managers, executives | **v5 HTML live** — [protocolized.dev/litepaper-ai-protocols](https://protocolized.dev/litepaper-ai-protocols/). Drafts up to v7; irony/humor pass pending. |
 | [Interactive HTML artifact](Artifact/publish/index.html) | Public web artifact | All audiences | **v1.12 live** — [protocolized.dev/ai-maturity-model](https://protocolized.dev/ai-maturity-model/) |
-| [Assessment](assessment/index.html) | 24-question typological quiz, 10 archetypes × maturity level | All audiences | **v0.9 live** — [protocolized.dev/assessment](https://protocolized.dev/assessment/) — also embedded in the Deployment Guide |
-| [Case Studies Library](case-studies/index.html) | 10-card library (Today's Stories / Lessons from the Past) | All audiences | **Live** — [protocolized.dev/case-studies](https://protocolized.dev/case-studies/) — also embedded in the Deployment Guide appendix |
+| [Assessment](assessment/index.html) | 24-question typological quiz, 10 archetypes × maturity level | All audiences | **v0.9 live** — [protocolized.dev/assessment](https://protocolized.dev/assessment/) — also embedded in the AI Adoption Guide |
+| [Case Studies Library](case-studies/index.html) | 10-card library (Today's Stories / Lessons from the Past) | All audiences | **Live** — [protocolized.dev/case-studies](https://protocolized.dev/case-studies/) — also embedded in the AI Adoption Guide appendix |
 | [Homepage (redirect)](homepage/index.html) | Minimal redirect page | — | `protocolized.dev/` now bounces to `ai.protocolized.dev/`. Source archived in `_Deploy-Archive/2026-05-12-homepage/` |
 
 ---
@@ -104,7 +104,7 @@ Cards are collapsed-by-default with 2-level disclosure. Design lineage and proto
 
 ---
 
-## Deployment Guide (v0.5 live — 2026-05-12)
+## AI Adoption Guide (v0.5 live — 2026-05-12)
 
 **Live URL:** https://ai.protocolized.dev/ (here.now slug: `plush-muse-q9bz`, custom subdomain)
 
@@ -112,13 +112,13 @@ Interactive slide deck — *Durable AI Adoption* — threading the dual-track th
 
 | Document | Purpose |
 |----------|---------|
-| [html/slides.html](Deployment-Guide/html/slides.html) | **Canonical source** — the slide deck (~4,000 lines, single-page HTML) |
-| [html/assessment.css](Deployment-Guide/html/assessment.css), [html/assessment.js](Deployment-Guide/html/assessment.js) | Ported assessment scoped under `.assessment-slide` (IIFE-wrapped, exposes `window.Assessment`) |
-| [html/llms.txt](Deployment-Guide/html/llms.txt) | Plain-text extract of deck content for LLM consumption |
-| [html/_og-cover.html](Deployment-Guide/html/_og-cover.html) | 1200×630 standalone cover used to render the OG/Twitter social card |
-| [Deployment-Guide/README.md](Deployment-Guide/README.md) | Sub-project README with build/deploy commands and deck structure |
-| [drafts/deployment-guide-v0.6.md](Deployment-Guide/drafts/deployment-guide-v0.6.md) | Long-form markdown draft mirroring the deck prose |
-| [_DEPLOYMENT-GUIDE-BRIEF.md](Deployment-Guide/_DEPLOYMENT-GUIDE-BRIEF.md) | Project brief, hero, thesis, *Kit* respec rationale |
+| [html/slides.html](AI-Adoption-Guide/html/slides.html) | **Canonical source** — the slide deck (~4,000 lines, single-page HTML) |
+| [html/assessment.css](AI-Adoption-Guide/html/assessment.css), [html/assessment.js](AI-Adoption-Guide/html/assessment.js) | Ported assessment scoped under `.assessment-slide` (IIFE-wrapped, exposes `window.Assessment`) |
+| [html/llms.txt](AI-Adoption-Guide/html/llms.txt) | Plain-text extract of deck content for LLM consumption |
+| [html/_og-cover.html](AI-Adoption-Guide/html/_og-cover.html) | 1200×630 standalone cover used to render the OG/Twitter social card |
+| [AI-Adoption-Guide/README.md](AI-Adoption-Guide/README.md) | Sub-project README with build/deploy commands and deck structure |
+| [drafts/deployment-guide-v0.6.md](AI-Adoption-Guide/drafts/deployment-guide-v0.6.md) | Long-form markdown draft mirroring the deck prose |
+| [_DEPLOYMENT-GUIDE-BRIEF.md](AI-Adoption-Guide/_DEPLOYMENT-GUIDE-BRIEF.md) | Project brief, hero, thesis, *Kit* respec rationale |
 
 ---
 

@@ -1,6 +1,6 @@
-# Deployment Guide — *Durable AI Adoption*
+# AI Adoption Guide — *Durable AI Adoption*
 
-A single slide deck handbook for deploying AI across an organization, informed by the AI Capability Maturity Model. Threads the dual-track thesis (**Governed enables Cultivated**) across 8 chapters with an interactive assessment in the appendix.
+A single slide deck handbook for adopting AI across an organization, informed by the AI Capability Maturity Model. Threads the dual-track thesis (**Governed enables Cultivated**) across 8 chapters with an interactive assessment in the appendix.
 
 **Status:** v0.5 · May 2026 — live at https://ai.protocolized.dev/ (slug `plush-muse-q9bz`).
 
@@ -9,6 +9,7 @@ A single slide deck handbook for deploying AI across an organization, informed b
 - **Live deck:** https://ai.protocolized.dev/
 - **Plain-text extract for LLMs:** https://ai.protocolized.dev/llms.txt
 - **Take the assessment:** https://ai.protocolized.dev/#assessment
+- **Companion blog post (draft):** [blog/we-are-in-1908-with-ai.md](blog/we-are-in-1908-with-ai.md)
 
 ## Canonical source
 
@@ -20,6 +21,7 @@ A single slide deck handbook for deploying AI across an organization, informed b
 | `html/_og-cover.html` | 1200×630 standalone cover used to render the OG/Twitter social card |
 | `html/images/` | Hero/level/chapter images sourced from the Protocolized archive |
 | `drafts/deployment-guide-v0.6.md` | Long-form markdown draft mirroring the deck prose |
+| `blog/we-are-in-1908-with-ai.md` | Companion blog post — uses the 1908 electrification anchor to land the deployment-vs-adoption thesis |
 
 ## Build / deploy
 
