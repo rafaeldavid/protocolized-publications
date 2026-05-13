@@ -1,10 +1,12 @@
+![Hero collage — twelve images from the AI Capability Maturity Model deck, mixing medallion-style governed-track images, dense gestural cultivated-track images, and the lighter geometric chapter-intro family.](./we-are-in-1908-with-ai-hero.png)
+
 # We are in 1908 with AI
 
 *Why deployment is not adoption, what the electrification of the factory taught us, and what your AI strategy is missing.*
 
-Most enterprise AI strategies right now are governance dressed as adoption. The acceptable-use policy, the approved tool list, the data-boundary memo, the procurement contract with the preferred LLM vendor — together they cover roughly half of what AI adoption actually is. The other half is already happening inside the organization, on a track the policy book has no name for: people inventing how to work with AI before anyone authorized it.
+Most enterprise AI strategies right now are governance theater dressed as adoption. The acceptable-use policy, the approved tool list, the data-boundary memo, the procurement contract with the preferred LLM vendor — together they cover roughly half of what AI adoption actually is. The other half is already happening inside the organization, on a track the policy book has no name for: people inventing how to work with AI before anyone authorized it.
 
-This essay argues that the difference between the two halves is what is going to separate the companies that get a productivity payoff from this generation of AI from the companies that do not. And to make the argument, we are going to spend the first part of it in 1908.
+The difference between the two halves is what is going to separate the companies that get thrive with AI from the companies that barely survive, or fail altogether.
 
 ## The thirty-year gap
 
@@ -24,17 +26,17 @@ The thirty-year gap between deployment and adoption was the cost of needing to r
 
 In 1990, the economist Paul David published a paper called *The Dynamo and the Computer*. He pointed out that the US economy in the 1980s was doing the same thing again with information technology — computers everywhere, productivity nowhere — and predicted that the productivity gains would arrive only when organizations redesigned themselves around the new unit, the way Ford had redesigned the factory around the unit motor. He was off by about a decade. American productivity caught fire from 1995 to 2005, after enterprises had spent ten years reorganizing around ERP, lean manufacturing, supply-chain integration, and just-in-time inventory — all of which were *adoptions*, not deployments, of computing.
 
-Electrification is not the only history that tells this story. The railway timetable did the same work in the 1830s: locomotives had been deployed for a decade with no national integration until Bradshaw's published timetable became the protocol that turned isolated lines into a network. The American managerial revolution did the same work after the Civil War: Alfred Chandler showed in *The Visible Hand* that the late-19th-century productivity wave came not from railways and the telegraph themselves but from the new managerial hierarchies that *adopted* what those technologies made possible. Even Brunelleschi's dome belongs in the file — a master builder solving on-site problems no one could solve from a blueprint, the kind of integrated practice that the Industrial Revolution would later split apart and that AI is now beginning to recombine. The pattern is durable: the deployment of a paradigm technology arrives first, and the adoption of it lags by a generation while organizations learn that the new thing is not a better version of the old thing.
+Electrification is not the only history that tells this story. The railway timetable did the same work in the 1830s: locomotives had been deployed for a decade with no national integration until Bradshaw's published timetable became the protocol that turned isolated lines into a network. The American managerial revolution did the same work after the Civil War: Alfred Chandler showed in *The Visible Hand* that the late-19th-century productivity wave came not from railways and the telegraph themselves but from the new managerial hierarchies that *adopted* what those technologies made possible. Even Brunelleschi's dome belongs in the file — a master builder solving on-site problems no one could solve from a blueprint, the kind of integrated practice that the Industrial Revolution would later split apart and that AI is now beginning to recombine. The pattern is persistent: the deployment of a paradigm technology arrives first, and the adoption of it lags by a generation while organizations learn that the new thing is not a better version of the old thing.
 
 ## Today's 1908
 
 We are in 1908 with AI.
 
-The technology has been deployed almost completely. The most capable language models in the world are reachable from a browser tab. The most capable coding agents from an `npm install`. Some 80% of knowledge workers report using AI at work in some form. The vendor contracts have been signed. The acceptable-use policies have been published. The dashboards are lit.
+The technology has been deployed almost completely. The most capable language models in the world are reachable from a browser tab. The most capable coding agents from single terminal commands like `npm install`. Some 80% of knowledge workers report using AI at work in some form. The vendor contracts have been signed. The acceptable-use policies have been published. The dashboards are humming with token usage data.
 
 And the productivity bump everyone is forecasting has not arrived.
 
-The reason — same as in 1908 — is that the modal enterprise is running an LLM the way a 1908 factory ran an electric motor: bolted into a workflow built for the prior power source. The central shaft we have not yet replaced is the organizational assumption that work moves *down* through a hierarchy — leadership decides, IT procures, employees use. AI does not behave that way. It bubbles *up* through individual practice before it can be governed. Until the organization is redesigned around that fact, the deployment is just expensive electricity.
+What's the root cause? You can't deploy your way into a new model of work. We're repeating the same story, where an enterprise is running an LLM the way a 1908 factory ran an electric motor: bolted into a workflow built for the prior power source. The central shaft we have not yet replaced is the organizational assumption that work moves *down* through a hierarchy — leadership decides, IT procures, employees use. AI does not behave that way. It bubbles *up* through individual practice before it can be governed. Until the organization is redesigned around that fact, the deployment is just expensive electricity.
 
 ## The dual nature of AI adoption
 
@@ -50,15 +52,13 @@ The right mental model is not a choice between tracks. It is the *duality* — t
 
 Maturity, in this frame, is not how much AI an organization has deployed. It is the precision with which the handoff between Cultivation and Governance works. The AI Capability Maturity Model splits that precision into five levels — **Shadow → Sanctioned → Engine → Infrastructure → Planetary**, paired with **Play → Kit → Practice → Vernacular → Fluency** — and the levels measure the precision of the handoff, not the size of either side's investment.
 
-## The medium of the handoff
-
-The medium of the handoff is the protocol.
+## The medium is the protocol
 
 A protocol is the traffic light at the intersection, not the blockade across the road. The first enables flow; the second routes around itself. Most AI strategies today are blockades — prohibitions on what employees may *not* do — and the routing around is already in progress. A protocol, by contrast, is a coordination instrument that runs at the moment of handoff: when something practiced needs to become something dependable, when a kit needs to become a workflow, when an experiment needs to be ratified into shared practice.
 
 Protocols are, in the Protocol Institute's framing, *infrastructural technologies for producing non-events*. Their value lies in the failures that do not happen: the data leak that did not occur because the prompt-filter middleware caught it; the chatbot judgment that did not bind the company because the escalation pathway intercepted it; the AI-generated brief that did not get filed without verification because the review protocol named who reviews and against what standard.
 
-This is why measuring AI adoption success is genuinely hard. You cannot count the non-events directly. The deeper measure of adoption is not productivity alone. It is what one might call *software-abundance safety*: the precision with which a workforce can deploy enormous AI capability without imposing enormous unmanaged risk on its customers, its regulators, its markets, and itself.
+This is why measuring AI adoption success is genuinely hard. You cannot count the non-events directly. The deeper measure of adoption is not productivity alone. It is what one might call *software-abundance safety*: the precision with which a workforce can deploy enormous AI capability (cognition, intelligence, processing) without imposing enormous unmanaged risk on its customers, its regulators, its markets, and itself.
 
 ## What the case file shows
 
@@ -70,21 +70,26 @@ Klarna in 2024–25: 90% daily AI adoption, two-thirds of customer-service chats
 
 Amazon in 2026: an 80%-of-developers-must-use-AI mandate, token-consumption leaderboards, an in-house agent tool called MeshClaw, and — as the *Financial Times* reported — employees automating non-essential work specifically to inflate their token counts. Goodhart's Law applied to AI adoption.
 
-Boom Supersonic, by contrast, paired the AI capability with the protocol from the start: mkBoom wrapped AI-assisted structural analysis around the existing verification stack, with governance protocols designed alongside the capability rather than after a near-miss. XB-1 reached supersonic flight in January 2025 with zero safety incidents across the program.
+In each of these cases, the deployment ran ahead of the adoption. The organizations that struggled treated AI as a procurement event when it was a paradigm event. The organization that succeeded treated the protocol as part of the capability:
 
-In each of these cases, the deployment ran ahead of the adoption. The organizations that struggled treated AI as a procurement event when it was a paradigm event. The organization that succeeded treated the protocol as part of the capability.
+Boom Supersonic paired the AI capability with the protocol from the start: mkBoom wrapped AI-assisted structural analysis around the existing verification stack, with governance protocols designed alongside the capability rather than after a near-miss. XB-1 reached supersonic flight in January 2025 with zero safety incidents across the program.
 
 ## The new nature of work
 
 In his recent essay *Inventing New Nature*, Venkat Rao names what this paradigm actually is. "New Nature," he writes, is "regimes of reality governed by technologically mediated laws that are nearly as inviolable, immutable, and persistent as those of nature." AI is not a tool layered on top of existing work. It is a new operating environment — terrain rather than blueprint. You discover New Nature, Rao says, by inventing it, by being it.
 
-The job of the AI adoption lead under those conditions is not to finish a rollout. It is to keep the function navigable as the terrain keeps shifting. The work environment is increasingly something that cannot be engineered. It is the world the team inhabits.
+The job of the AI adoption lead under those conditions is not to finish a rollout. It is to keep the function navigable as the production refactors around the new capabilities. The work environment is increasingly something that cannot be engineered. It is the world the team inhabits.
 
-The field has already lived through three phases of the new terrain and is entering the fourth. **Chat** (2022–23) was individual prompting under blanket policies, with cultivated practice running through personal accounts and governance responding mostly with bans. **Tools** (2023–24) was custom GPTs, prompt kits, team-authored workflows on the cultivated side, with sanctioned tool lists and verification checkpoints on the governed side. **Agents** (2024–26) was agentic IDEs, individual agent experiments, the Forward Deployed Engineer pattern, agent governance protocols, model-risk frameworks. **Factories** (2026–28) is the phase we are entering now — the moment when the unit of work shifts from "agents doing tasks" to "production lines producing outcomes continuously." The governance instruments change with it: compute and token budgets as the throughput lever, fleet-level observability, output-quality contracts, agent identity protocols.
+The field has already lived through three phases of the new terrain and is entering the fourth. 
 
-This is the moment when the software factory and the knowledge factory themselves get reinvented. Not because the tools changed, but because the *unit* did. In 1908 the unit changed from "horsepower-at-the-shaft" to "horsepower-at-the-machine," and the factory floor had to be redrawn around the new unit. In 2026 the unit is changing from "person-hour of skilled output" to "continuously-running fleet of skilled output," and the organization will have to be redrawn around the new unit.
+- **Chat** (2022–23) was individual prompting under blanket policies, with cultivated practice running through personal accounts and governance responding mostly with bans. 
+- **Tools** (2023–24) was custom GPTs, prompt kits, team-authored workflows on the cultivated side, with sanctioned tool lists and verification checkpoints on the governed side. 
+- **Agents** (2024–26) was agentic IDEs, individual agent experiments, the Forward Deployed Engineer pattern, agent governance protocols, model-risk frameworks. 
+- **Factories** (2026–28) is the phase we are entering now. Now is when the unit of work shifts from "agents doing tasks" to "continuous runtime production lines." The governance instruments change with it: compute and token budgets as the throughput lever, fleet-level observability, output-quality contracts, agent identity protocols.
 
-The redrawing will not arrive through deployment. It will arrive through adoption — Cultivated practice surfacing what works, Governed protocols making what works dependable, and the handoff between them tightening into a discipline.
+This is the moment when the software factory and the knowledge factory themselves get reinvented. In 1908 the *unit* changed from "horsepower-at-the-shaft" to "horsepower-at-the-machine," and the factory floor had to be redrawn around the new unit. In 2026 the unit is changing from "person-hour of skilled output" to "continuously-running fleet of skilled output," and the organization will have to be redrawn around the new unit.
+
+The redrawing will not arrive through tool deployment. It will arrive through adoption — Cultivated practice surfacing what works, Governed protocols making what works dependable, and the handoff between them tightening into a discipline.
 
 ## What to do
 
