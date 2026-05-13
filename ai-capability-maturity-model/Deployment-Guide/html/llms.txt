@@ -1016,7 +1016,7 @@ Ten organizations across five maturity levels. Five contemporary AI adoptions an
 
 01Samsung ElectronicsL1 · Shadow
 02KlarnaL2 · Sanctioned
-03ShopifyL2 · Sanctioned
+03Amazon & MeshClawL2 · Sanctioned
 04Air Canada chatbotL2 · Sanctioned
 05Boom SupersonicL3 · Engine
 
@@ -1088,23 +1088,23 @@ Appendix · Case Studies
 
 Case study 03 of 10
 
-## Shopify
+## Amazon & MeshClaw
 
-Level 2 (Sanctioned) mandate: adoption signals without acceptable-use standards.
+Level 2 (Sanctioned) measurement failure: tracking adoption without governing outcomes.
 
-The Verge · Shopify AI memo ↗
+Financial Times · Amazon staff inflate AI usage scores ↗
 
 ## The problem
 
-In April 2025 Shopify CEO Tobi Lütke published an internal memo declaring AI use "non-optional" for all employees. Managers requesting additional headcount were to first demonstrate why AI could not do the work. The intent was clear: accelerate AI adoption company-wide and shift the default from human-first to AI-first across the organization.
+In 2026, against a backdrop of $200B in AI-related capital expenditure, Amazon introduced internal targets requiring more than 80% of developers to use AI each week. It began tracking AI token consumption — units of data processed by models — on internal leaderboards. The mandate was clear: prove the AI investment is being absorbed by the workforce and embed the technology into day-to-day work. Adoption was sanctioned, mandated, and measured.
 
 ## The approach
 
-The mandate did not define what constituted "AI use." Was a single weekly prompt enough? Was a manager required to demonstrate AI had been seriously evaluated, or just that it had been tried? Different teams interpreted differently. The infrastructure of governance — what tools, what data, what quality bar, what audit pathway — was not specified at the same level of force as the requirement itself.
+Token consumption became the proxy metric for adoption. Official communications stated the stats would not factor into performance evaluations — but managers retained visibility, and employees believed they were being watched. The in-house MeshClaw tool, which lets users create AI agents that automate workplace tasks, was deployed widely. Staff began using MeshClaw to automate non-essential work specifically to inflate their token counts — a practice nicknamed "tokenmaxxing" (also documented at Meta).
 
 ## The impact
 
-Adoption rates can be mandated. Outcomes cannot. Without protocols on what counts as acceptable use and quality gates on what the AI produces, the visible metric is occupancy of an activity, not value created. The Shopify case illustrates the gap between Level 2 access governance and Level 3 Engine: the former produces a number; the latter produces a measurable quality of work.
+Adoption rates can be mandated and tokens can be counted; neither is the same as governing whether AI is producing good work. The Amazon case is a textbook L2 measurement failure: when the visible metric is occupancy, employees optimize for occupancy. Tokens consumed become a Goodhart's Law artifact, and the agentic security risk grows alongside the inflated numbers ("the default security posture terrifies me," one employee told the FT). Transitioning to L3 Engine requires named output owners and verifiable quality gates — what the work produced, not how much of it ran.
 
 36
 
