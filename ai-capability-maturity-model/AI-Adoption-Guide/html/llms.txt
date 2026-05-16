@@ -11,16 +11,16 @@ Source: https://github.com/rafaeldavid/protocolized-publications
 
 - Cover: https://ai.protocolized.dev/#cover
 - Contents: https://ai.protocolized.dev/#contents
-- Foreword (Everywhere you look): https://ai.protocolized.dev/#foreword
-- Chapter 1 (Introducing the Guide): https://ai.protocolized.dev/#ch-1
+- Chapter 1 (More than a tool): https://ai.protocolized.dev/#ch-1
 - Chapter 2 (Maturity Levels): https://ai.protocolized.dev/#ch-2
 - Chapter 3 (Getting started): https://ai.protocolized.dev/#ch-3
 - Chapter 4 (Path to durable adoption): https://ai.protocolized.dev/#ch-4
 - Chapter 5 (Protocol Institute case studies): https://ai.protocolized.dev/#ch-5
-- Chapter 7 (Success patterns & failure modes): https://ai.protocolized.dev/#ch-7
-- Chapter 8 (New nature of work): https://ai.protocolized.dev/#ch-8
+- Chapter 6 (Success patterns & failure modes): https://ai.protocolized.dev/#ch-6
+- Chapter 7 (New nature of work): https://ai.protocolized.dev/#ch-7
 - About & Resources: https://ai.protocolized.dev/#about
 - Appendix · Case Studies: https://ai.protocolized.dev/#appendix
+- Appendix · Frameworks: https://ai.protocolized.dev/#frameworks-matrix
 - Appendix · Assessment: https://ai.protocolized.dev/#assessment
 
 ## Five maturity levels
@@ -56,7 +56,7 @@ The Protocol Institute · Protocols for Business Practice
 
 ## Durable AI Adoption
 
-A practical guide to learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
+A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
 
 v0.5 · May 2026
 
@@ -64,55 +64,65 @@ v0.5 · May 2026
 
 ## Contents
 
-00Foreword: Everywhere you look, AI is already there03
+01More than a tool03
 
-01Introducing the AI Adoption Guide07
+02Adoption Maturity Levels09
 
-02Adoption Maturity Levels10
+03Getting started with AI adoption16
 
-03Getting started with AI adoption17
+04The path to durable AI adoption20
 
-04The path to durable AI adoption21
+05How the Protocol Institute adopts AI23
 
-05How the Protocol Institute adopts AI24
+06Success patterns and failure modes26
 
-07Success patterns and failure modes27
+07The new nature of work29
 
-08The new nature of work30
-
-09About & Resources32
+08About & Resources31
 
 02
 
 [SLIDE]
 
-Foreword · Everywhere you look, AI is already there
+Chapter 1
 
-## Everywhere you look, AI is already there
-
-Most organizations are treating AI capabilities as the latest bundle of software upgrades.
-
-AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.
-
-The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.
-
-AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.
-
-A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While deployment is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.
-
-That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout.
-
-AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.
-
-Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.
+## More than a tool
 
 03
 
 [SLIDE]
 
-Foreword · The path so far
+Chapter 1 · More than a tool
 
-## AI has evolved across two parallel tracks
+## AI capabilities are more than another app subscription
+
+Everywhere you look, AI is already there
+
+Agents, AI-enabled workflows, and tools are seemingly everywhere. It can be surprising, and a little strange, when they sometimes collapse production cycles from months to days or even hours.
+
+Alongside AI, a new wave of top performers are appearing. They discover (and enact!) operational improvements faster than average organizations can integrate them at scale. Employers and managers alike report feelings of overload, disorientation, mania, and fear of being left behind. Whether by choice or by necessity, your organization is adopting AI. The question now is: **can your organization describe what good adoption looks like, including the *opportunities* to prioritize and *blunders* to avoid?**
+
+AI has evolved rapidly, from a chat window to autonomous software factories. And yet, most of us are unsure – are we getting better at adoption? Or are we just getting busier?
+
+A key driver of this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer.
+
+Paradigms are like waves – powerful, dangerous, and hard to surf. They reshape individuals and identities, not just technical systems.
+
+AI is a new type of software with unique properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While ***deployment*** is the action of standing up a particular tool, policy, or workflow, ***adoption*** names the long arc of an organization's integration with the paradigm itself.
+
+Treating AI like a bundle of products has a second consequence. AI is unlike enterprise tooling. There, a deployment plan can run on a planned sequence of procurement, policy, and rollout.
+
+To catch the wave early, AI adopters must run a parallel track: bottom-up exploration, individual play, and vernacular practice. Both planned deployment and organic discovery are required. It isn't hyperbolic to say that AI is creating new types of people, just as cars and modern medicine have created new types of people, who would have a difficult time communicating with someone from the past.
+
+Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute collects insights on AI technology adoption. Every few months, we create a new version of this orientation framework. It includes new concepts, case studies, an organizational self-assessment, as well as common success and failure modes. Let's dive into our latest findings.
+
+04
+
+[SLIDE]
+
+Chapter 1 · The path so far
+
+## The AI paradigm unfolds in two parallel tracks
 
 Each milestone needed both an individual practice and an organizational response. The cultivated track is what people invent; the governed track is what organizations approve.
 
@@ -161,7 +171,7 @@ Verification checkpoints
 
 Vibe-coding, agentic IDEs
 
-Individual agent experiments
+Agents with wallets
 
 AI-native function workflows
 
@@ -181,7 +191,7 @@ One-person agent fleets
 
 Always-on personal pipelines
 
-Archival Self
+Second brains
 
 04 · Governed
 
@@ -195,57 +205,31 @@ Output-quality contracts
 
 [SLIDE]
 
-Foreword · The right artifact
+Chapter 1 · More than a tool
 
-## Finding the right artifact for a given technology
+## Durable AI Adoption needs governance ***and*** cultivation
 
-The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.
+A short introduction to the AI Adoption Guide
 
-05
+This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.
 
-[SLIDE]
+Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, and set data boundaries. This approach works when failure modes – like memory limits or data format consistency – are known in advance and can be examined forensically, as with deterministic software. This approach fails with AI, because outputs are probabilistic and whose failure distribution shifts with every model update. Tightly-defined safety and security measures cannot keep up. Good workers will route around those measures, and many of the failures that the policies were meant to prevent will happen anyway.
 
-Chapter 1
-
-## Introducing the AI Adoption Guide
+You should not shift to less governance but to a different kind of governance. Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.
 
 06
 
 [SLIDE]
 
-Chapter 1 · Introducing the AI Adoption Guide
-
-## Introducing the AI Adoption Guide
-
-Durable AI Adoption is what happens when governance enables cultivation.
-
-This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.
-
-Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, set data boundaries. This approach works when failure modes are knowable in advance, as with deterministic software. It fails with AI, whose outputs are probabilistic and whose failure distribution shifts with every model update. Prohibition cannot keep up. The cultivated track routes around it, and the failures the policies were meant to prevent happen anyway.
-
-The shift is not to less governance but to a different kind of governance. Instead of governing what people may do with AI, the organization governs what AI's outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These rules are protocols. They govern coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the system moving.
-
-A useful frame from the Protocol Institute's launch essay: protocols are infrastructural technologies for producing non-events. Their value lies in the failures that do not happen: the data leak that did not occur, the chatbot judgment that did not bind the company, the AI-generated brief that did not get filed without verification.
-
-The capability maturity of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.
-
-07
-
-[SLIDE]
-
-Chapter 1 · Introducing the AI Adoption Guide
+Chapter 1 · More than a tool
 
 ## The path through this guide
 
 How the chapters develop the model, from the framing argument through the maturity ladder, the pilot work, the cases, and the patterns.
 
-00
-Everywhere you look, AI is already there
-Understand why AI is a paradigm, not a software upgrade, and why durable adoption needs both governed and cultivated tracks.
-
 01
-Introducing the AI Adoption Guide
-Discover how governance enables cultivation through protocols, and what maturity actually measures.
+More than a tool
+Why AI is a paradigm shift, not a software upgrade — and why durable adoption needs both governed and cultivated tracks.
 
 02
 Adoption Maturity Levels
@@ -263,15 +247,15 @@ Trace how bottom-up discovery becomes top-down scale, with the handoff between t
 How the Protocol Institute adopts AI
 Dive into two AI adoption case studies from inside the Protocol Institute.
 
-07
+06
 Success patterns and failure modes
 Learn the four emerging success patterns and the four failure modes they mitigate.
 
-08
+07
 The new nature of work
 See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.
 
-08
+07
 
 [SLIDE]
 
@@ -341,12 +325,12 @@ Chapter 2 · Adoption Maturity Levels
 
 ## Examples across both paths of adoption
 
-Each level looks different depending on which path an organization is on. Durable adoption draws on both.
+The levels are informed by recent and historical case studies. Durable adopters use tactics and strategies from both paths.
 
 LevelGovernedCultivated
 
 01Shadow / Play
-Samsung, April 2023: three engineers submitted proprietary source code via personal ChatGPT accounts, banned enterprise-wide after discovery. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).
+Samsung, April 2023: three engineers submitted proprietary source code via personal ChatGPT accounts, banned enterprise-wide after discovery. 71% of enterprise employees use unauthorized AI tools.
 SIGBIZ, 2025: members running AI workflows in personal repos and vaults in parallel. A fortnightly show-and-tell surfaced what curiosity had already produced.
 
 02Sanctioned / Kit
@@ -381,23 +365,23 @@ AI tools enter through individual initiative, not organizational decision. Expos
 
 Defining capability
 
-The personal account as magic circle (Huizinga, Homo Ludens): a low-stakes, voluntary space where employees explore what AI does for their job without organizational permission.
+The personal account is a "magic circle" – a low-stakes, voluntary space where employees explore what AI does for their job without organizational permission.
 
 What it requires
 
-Visibility without suppression. An audit pathway (Ch3) that surfaces who is using AI for what without policing it.
+Visibility without suppression. Try to make experiments legible through show and tells or hackathons. An audit pathway (Ch3) that surfaces who is using AI for what without policing it.
 
 Blind spot
 
-The organization cannot distinguish reckless personal use from sophisticated bilateral pipelines. Both are invisible.
+The organization cannot distinguish reckless personal use from early use cases that could become sophisticated pipelines. Both are invisible.
 
 Failure mode
 
-Unaccountable AI access. AI operates with organizational data and produces outputs entering decisions without any protocol governing accountability.
+Unaccountable AI access. AI operates with organizational data and produces outputs entering decisions without any protocol governing accountability, security or quality.
 
 Anchor case
 
-Samsung, April 2023: three engineers submitted proprietary source code to ChatGPT through personal accounts within one month, banned enterprise-wide. 71% of enterprise employees use unauthorized AI tools; average discovery lag 400 days (Reco.ai, 2025).
+Samsung, April 2023: three engineers submitted proprietary source code to ChatGPT through personal accounts within one month, banned enterprise-wide. 71% of enterprise employees use unauthorized AI tools.
 
 Cultivated counterpart · Play
 
@@ -419,19 +403,19 @@ Leadership has granted broad access. Enterprise licenses are in place, an access
 
 Defining capability
 
-Approved tools, defined data boundaries, tracked usage. The organization can now answer: which AI tools are in use, on what data, by whom.
+Approved tools, defined data boundaries, tracked usage. The organization can now answer: which AI tools are in use, on what data, by whom. AI output handoffs are a major focus.
 
 What it requires
 
-Named approved tools, data boundary definitions, a security review, audit trails, and tolerance for variation before standardizing.
+Named approved tools, data boundary definitions, a security review, audit trails, and tolerance for variation before standardizing. Attention to questions of accountability for AI outputs.
 
 Blind spot
 
-Policy governs access, not output. Dashboards measure license utilization, not whether outputs are good. Two organizations at identical utilization but with different practices underneath end up in different places.
+Policy governs access, not output. Dashboards measure license utilization, not whether outputs are good. Two organizations at identical utilization but with different quality assurance practices end up in different places.
 
 Failure mode
 
-Access without output governance. As AI becomes entrenched in customer communications, financial models, and contracting, output quality is determined by individual judgment alone.
+Access without output governance. As AI becomes entrenched in customer communications, financial models, and contracting, output quality is determined by individual judgment alone. Output volume scales exponentially faster than review capacity.
 
 Anchor case
 
@@ -439,7 +423,7 @@ Klarna 2023–25: enterprise rollout reached 90% daily AI adoption and two-third
 
 Cultivated counterpart · Kit
 
-Where Sanctioned adoption controls which tools are used, Kit shapes how they are used. The best kits emerge from practitioners who learned through Play and encoded what worked.
+Where Sanctioned adoption controls which tools are used, Kit shapes how they are used. The best kits emerge from practitioners who learned through Play and encoded what worked into repeatable projects.
 
 13
 
@@ -453,11 +437,11 @@ Engine
 
 Practice
 
-AI is now the engine within core workflows. The question has shifted from how can I increase productivity to which parts of our competitive model only exist because of AI affordances.
+AI is now the engine within core workflows. The question has shifted from "How can I increase productivity?" to "Which parts of our competitive model only exist because of AI affordances?"
 
 Defining capability
 
-Specific workflows rebuilt around what AI uniquely does well: tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI requires rebuilding the workflow.
+Specific workflows rebuilt around what AIs do uniquely well: tireless drafting, structured extraction at scale, agentic multi-step execution. Removing AI requires rebuilding the workflow.
 
 What it requires
 
@@ -465,11 +449,11 @@ Input standards, output verification checkpoints, escalation triggers, and feedb
 
 Blind spot
 
-Temporal. Workflow-level protocols govern internal operations but cannot coordinate across functions, external partners, or regulators operating at different speeds.
+Coordination. Workflow-level protocols govern internal operations but cannot coordinate across functions, external partners, or regulators operating at different speeds.
 
 Failure mode
 
-Temporal divergence. AI accelerates internal workflows while client review cycles, regulatory response, and cross-functional handoffs remain at a different pace.
+Schedule dislocation. AI accelerates internal workflows while client review cycles, regulatory response, and cross-functional handoffs remain at a different pace.
 
 Anchor case
 
@@ -495,7 +479,7 @@ AI capability is a sector baseline. Individual organizational advantage has most
 
 Defining capability
 
-The same models and protocols are baseline across the industry. Inter-organizational handoffs run on AI-mediated protocols at sector scale, across competitive boundaries.
+The same models and protocols are baseline across the industry. Inter-organizational handoffs start to run on AI-mediated protocols at sector scale, across competitive boundaries.
 
 What it requires
 
@@ -507,7 +491,7 @@ Second-order effects of sector-wide adoption: the shared attack surface, cascadi
 
 Failure mode
 
-Sector fragility. The protocol that made the sector work also makes it vulnerable to a single point of failure.
+Sector fragility. The protocol that made the handoffs work also makes its adopters vulnerable with a new single point of failure.
 
 Anchor case
 
@@ -541,11 +525,11 @@ Legibility tools, multi-stakeholder governance, intervention capability when sys
 
 Blind spot
 
-Emergent. Failure modes are properties of protocol interaction, not of any one component.
+Strange accidents. Failure modes are properties of protocol interaction, not of any one component, and thus require emergency response capabilities.
 
 Failure mode
 
-Legibility collapse. The system functions most of the time, but no one can fully describe what it is doing or why.
+Black boxification. The system functions most of the time, but no one can fully describe why or what is going on under the hood.
 
 Anchor case
 
@@ -571,31 +555,31 @@ Chapter 3 · Getting started with AI adoption
 
 ## Pre-pilot readiness check
 
-Before identifying a use case, run a quick readiness check with the executive sponsor. The check is not about which use case is right; it is about whether the organization can support a real pilot at all.
+Before identifying a use case, run a quick readiness check with your organization's AI adoption leaders. Ask the questions then assess if the answer met the criteria provided. This readiness check is not about which use case is right; it is about whether the organization can support a real pilot at all.
 
 01
 
 Has the organization completed a security and legal review of the most likely AI tools and data?
 
-Pass: Data boundaries, connector permissions, legal alignment, and auditability documented.
+Pass if: Data boundaries, connector permissions, legal alignment, and auditability documented.
 
 02
 
 Does an executive sponsor exist with budget authority for the pilot?
 
-Pass: Named individual; budget approved through Phase 2 (Months 2–3).
+Pass: Named individual; budget approved through at least 3 months.
 
 03
 
 Have two or three pilot teams been identified with motivated leads?
 
-Pass: Champions named; their function leads aware and supportive.
+Pass: Champions named; their direct reports (function leads) are aware and supportive.
 
 04
 
 Are success metrics defined for the pilot itself — not the use case?
 
-Pass: Specific, baselined, observable in weekly check-ins.
+Pass: Specific, baselines measured already, and changes are observable in weekly check-ins.
 
 If any answer is no, address it before committing to a pilot timeline. Notice what is not on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.
 
@@ -613,7 +597,7 @@ Step 01
 
 Create a venue for play
 
-Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible. Deep play comes before useful practice.
+Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible – but make sure outputs are shared in some way. Deep play comes before useful practice.
 
 Step 02
 
@@ -623,11 +607,11 @@ Resist the pull toward uniform adoption. Experiment with tools that solve proble
 
 Step 03
 
-Build mnemonic strategies
+Build soundbite strategies
 
-What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice walks out the door.
+What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice does not.
 
-Play surfaces the workflows worth planning around. The governed track inherits what the cultivated track discovers — the moves above are how you make that handoff deliberate.
+Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.
 
 19
 
@@ -637,13 +621,13 @@ Chapter 3 · Getting started with AI adoption
 
 ## From play to protocol
 
-A workflow earns its way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in play.
+"Toy" workflows earn their way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in the sandbox.
 
 Cultivated
 
 Discover
 
-Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The goal is to find out what AI actually makes possible in this person's domain.
+Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The player's goal is to find out what AI actually makes possible in their domain.
 
 →
 Is it recurring?
@@ -661,7 +645,7 @@ Governed
 
 Prove
 
-The kit runs on real work in a low-stakes context. A bad output must be recoverable. This is where the governed track takes custody: someone external can verify the result improved.
+The kit runs on real work in a low-stakes context. A bad output is recoverable. Here, the governed track takes custody: someone external can prove that the process result has improved.
 
 →
 Blast radius bounded?
@@ -670,9 +654,9 @@ Governed
 
 Harvest
 
-The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns what the individual found.
+The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns and scales what was first independently found through play.
 
-If a gate fails, the workflow stays in play. That is the cultivated track doing its job. The wrong move is to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.
+The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.
 
 20
 
@@ -690,7 +674,7 @@ Chapter 4 · The path to durable AI adoption
 
 ## Bottom-up discovery, top-down scale
 
-Discovery is cultivated. Scale is governed. The organization's job is to make the handoff between them deliberate.
+Discovery is cultivated. Scale is governed. The organization's job is to invest in both and make the handoff between them deliberate.
 
 Cultivated
 What champions do · Months 1–5
@@ -734,7 +718,7 @@ Harvest proven kits into shared infrastructure. Assign named owners. Skeptics co
 
 Scale
 
-Kits deployed across the department. New hires inherit workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.
+Kits deployed across the organization so it can bind with compatible workflows. New hires inherit AI-enabled workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.
 
 22
 
@@ -742,33 +726,33 @@ Kits deployed across the department. New hires inherit workflows on day one. Kit
 
 Chapter 4 · The path to durable AI adoption
 
-## Six categories of new work in AI-native organizations
+## Six new business activities in AI-native organizations
 
-These categories of work appear across mature AI-adopting organizations regardless of size or sector. Titles vary; the work is the same.
+These categories of work appear across mature AI-adopting organizations. Jargon may vary, but the work is the same.
 
 Kit Harvesting
 
-Surfacing the AI workflows people are already running on their own — in personal repos, vaults, scripts, custom GPTs — and promoting the best into shared infrastructure with named owners. Composed of a per-function audit, a promotion review, and the engineering to make a kit operable by another user.
+Find the AI workflows people are already running on their own — in personal repos, vaults, scripts, and custom GPTs. Promote the best ones into shared infrastructure with named owners so others can reuse them. The work includes a per-function audit, a promotion review, and the engineering to make a kit operable by a second person.
 
 Evals
 
-Defining what "good" means for each AI workflow and building the test harness that measures it. Composed of golden datasets, rubrics co-authored with domain experts, and a scoring runner that fires on every prompt or model change. Maintenance grows as failure modes surface and feed back into the suite.
+Define what "good" means for each AI workflow and build the test harness that measures it. The harness usually includes golden datasets, rubrics co-authored with domain experts, and a scoring runner that fires on every prompt or model change. Maintenance grows over time as new failure modes surface and feed back into the suite.
 
 Forward Deployment
 
-Embedding engineers inside functions — alongside lawyers, sales reps, analysts — to build the AI workflows that function depends on. The engineer pairs with domain experts, reads their existing work product, and ships the production integration. Each engagement is project-shaped and closes when the loop runs end-to-end.
+Engineers are embedded inside functions — alongside lawyers, sales reps, and analysts — to build the AI workflows each function depends on. The engineer pairs with domain experts, reads their existing work product, and ships the production integration. Each engagement is project-shaped and closes when the workflow runs end-to-end.
 
 Platform Operations
 
-Operating the shared AI infrastructure domain teams build on: model gateway (routing across providers), versioned prompt and skill registries, eval pipelines in CI, observability (latency, cost, quality, drift), cost controls, and vendor management. A 24/7 system; major upgrades quarterly.
+Run the shared AI infrastructure that domain teams build on. The platform usually includes a model gateway, versioned prompt and skill registries, eval pipelines in CI, observability (latency, cost, quality, drift), and cost controls. It runs continuously; major upgrades land on a quarterly cadence.
 
 Risk Stewardship
 
-Maintaining the AI risk register and the technical interlocks that bound what AI is allowed to do. Composed of the register (models, data, blast radius), permission boundaries (autonomous vs human-approved vs forbidden), constitutional infrastructure (sandboxes, planning-only modes, write-locks, rollback paths), and the audit trail.
+Maintain the AI risk register and the technical interlocks that bound what AI is allowed to do. The register tracks models, data, and blast radius. The interlocks include permission boundaries, sandboxes, planning-only modes, write-locks, rollback paths, and the audit trail.
 
 Context Stabilization
 
-Curating the context AI systems depend on and keeping it stable across models, tools, and agents. Composed of context gathering, curation (authoritative sources, current versions), ontology work (entity definitions and category boundaries), and stabilization so the legal team's "contract" and the agent's "contract" don't silently diverge.
+Curate the context AI systems depend on and keep it stable across models, tools, and agents. The work involves context gathering, curation of authoritative sources and current versions, and ontology work — entity definitions and category boundaries. The goal is to keep the legal team's "contract" and the agent's "contract" from silently diverging.
 
 23
 
@@ -846,7 +830,7 @@ The visual production pipeline meets the Level 3 criteria. Named owners (Langdon
 
 [SLIDE]
 
-Chapter 7
+Chapter 6
 
 ## Success patterns and failure modes
 
@@ -854,7 +838,7 @@ Chapter 7
 
 [SLIDE]
 
-Chapter 7 · Success patterns and failure modes
+Chapter 6 · Success patterns and failure modes
 
 ## Four emerging success patterns
 
@@ -894,7 +878,7 @@ Encode constraints in code itself: sandboxed environments the agent cannot escap
 
 [SLIDE]
 
-Chapter 7 · Success patterns and failure modes
+Chapter 6 · Success patterns and failure modes
 
 ## Four emerging failure modes
 
@@ -946,7 +930,7 @@ Mitigated via
 
 [SLIDE]
 
-Chapter 8
+Chapter 7
 
 ## The new nature of work
 
@@ -954,19 +938,23 @@ Chapter 8
 
 [SLIDE]
 
-Chapter 8 · The new nature of work
+Chapter 7 · The new nature of work
 
 ## The new nature of work
 
-AI-mediated work is the operating condition of today's enterprises.
+AI-mediated operations aren't the backbone of today's enterprises, but they are changing the shape of organizations everywhere.
 
-AI-mediated tools and workflows are no longer features of the workplace; they are part of the workplace itself, closer to weather or terrain than to thermostats. This is the new nature of work: technologically mediated conditions that have become immutable and indefinitely persistent. It is also the reason a single governed rollout has stopped being enough. If the terrain were stable, top-down deployment could finish the job; because it is not, the cultivated track has to remain productive alongside the governed one. Durable adoption depends on governance enabling cultivation rather than displacing it: the terrain keeps moving, and only the cultivated track keeps finding what works in it.
+AI-mediated tools and workflows are no longer features of the workplace; they are part of the workplace itself, closer to weather or terrain than to thermostats.
 
-Inside that environment, the deployment lead's job becomes keeping the handoff between the two tracks alive. The volume of AI-assisted output is too high to inspect case by case; new kits surface from the floor faster than any central process can catalogue them; the tools themselves shift behavior on every model update.
+This is the new nature of work. It is also the reason a single, planned rollout is certainly not enough. If the terrain were stable, top-down deployment could finish the job; because it is not, the cultivated track has to remain productive alongside the governed one. Durable adoption depends on governance enabling cultivation rather than displacing it: the terrain keeps moving, and it will remain moving for years, and only the cultivated track can keep finding what works in it.
 
-The work is maintaining a productive cultivated track and a legible governed one: providing maps through what people are discovering, keeping the gates honest about which kits earned their way across, re-orienting when a team starts moving toward a pattern that compounds risk. The scarce skill is closer to applied curiosity than to AI literacy. The candidate who finds their way through unfamiliar terrain is the person to hire, because that is who keeps the cultivated side feeding the governed one.
+Inside the new work environment, the deployment lead's job becomes keeping the handoff between the two tracks alive. The volume of AI-assisted output is too high to inspect case by case; new kits surface from the floor faster than any central process can catalogue them; the tools themselves shift behavior on every model update.
 
-The work, then, is not to finish a platform deployment. It is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is a function whose people know how to work in this new nature, and whose managers know how to keep the handoff between cultivation and governance working as the terrain keeps changing.
+The work is maintaining a productive cultivated track and a legible governed one: providing maps through what people are discovering, keeping the gates honest about which kits earned their way across, re-orienting when a team starts moving toward a pattern that compounds risk.
+
+The scarce skill is applied curiosity. The candidate who finds their way through unfamiliar terrain is the person to hire, because that is who keeps the cultivated side feeding the governed one.
+
+The work, then, is not to finish a platform deployment. It is to make deployment a core capability, as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is people. People who know how to work in this new nature, and managers who know how to keep the handoff between cultivation and governance working as the terrain keeps changing.
 
 31
 
@@ -1285,6 +1273,21 @@ On April 26, 1956, trucker Malcolm McLean sailed the SS Ideal X from Newark to H
 ## The impact
 
 By 2026 approximately 90% of non-bulk world trade moves via containers. The protocol made coordination cheap and uniform across every jurisdiction and mode. It also concentrated the failures: the system depends on five geographic chokepoints — Suez, Panama, Malacca, Hormuz, Bab el-Mandeb — whose vulnerability was made visible by events like the 2021 Suez Canal blockade. The L5 Planetary lesson: when a protocol becomes infrastructure for the world, coordination is cheap and legibility becomes the new governance challenge.
+
+42
+
+[SLIDE]
+
+Appendix · Frameworks
+
+## Finding the right artifact for a given technology
+
+The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.
+
+Paradigm × Local — Practice Playbook (e.g., MRI); AI counterpart: Vibe-Coding.
+Paradigm × Planetary — Adoption Guide (e.g., electricity, the internet); AI counterpart: Commoditized Generative Software.
+Tool × Local — Implementation Roadmap (e.g., Figma); AI counterpart: Helpdesk Chatbot.
+Tool × Planetary — Deployment Plan (e.g., Microsoft Office); AI counterpart: Claude Code.
 
 43
 
