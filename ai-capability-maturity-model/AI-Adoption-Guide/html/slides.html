@@ -937,6 +937,52 @@
     .chapter-card.ch-5 { background: var(--tint-ch5); }
     .chapter-card.ch-6 { background: var(--tint-ch6); }
     .chapter-card.ch-7 { background: var(--tint-ch7); }
+    .chapter-card.ch-about { background: var(--tint-foreword); }
+    .appendix-link {
+      display: inline-block;
+      margin-top: 12pt;
+      padding-top: 8pt;
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-top: 1px solid var(--border, rgba(0,0,0,0.12));
+      letter-spacing: -0.005em;
+    }
+    .appendix-link:hover { color: var(--accent); }
+
+    /* ─── Governed / Cultivated two-card row (slide 06) ──────── */
+    .govcult-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14pt;
+      margin-top: 10pt;
+    }
+    .govcult-card {
+      border-radius: 6px;
+      padding: 10pt 12pt;
+      border-left: 3px solid;
+    }
+    .govcult-card.govcult-governed {
+      background: var(--tint-ch6);
+      border-left-color: #4f5d75;
+    }
+    .govcult-card.govcult-cultivated {
+      background: var(--tint-ch1);
+      border-left-color: var(--accent);
+    }
+    .govcult-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      margin-bottom: 5pt;
+      letter-spacing: -0.005em;
+    }
+    .govcult-card p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      margin: 0;
+    }
     .chapter-card-image {
       display: block;
       width: calc(100% + 22pt);
@@ -2342,6 +2388,7 @@
     }
     .yy-split-circle {
       position: relative;
+      display: block;
       width: 0.82in;
       height: 0.82in;
       border-radius: 50%;
@@ -2349,6 +2396,14 @@
       border: 2px solid var(--accent);
       box-shadow: 0 2px 8px rgba(0,0,0,0.12);
       flex-shrink: 0;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    a.yy-split-circle { cursor: pointer; }
+    a.yy-split-circle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
     }
     .yy-split-circle .half {
       position: absolute;
@@ -2630,8 +2685,18 @@
   <main class="slide-body">
     <div class="slide-body-cols-2">
       <p>This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.</p>
-      <p>Most organizations approach AI the way they approach software, by defining what their people may and may not do with it. They publish acceptable-use policies, approve a list of tools, and set data boundaries. This approach works when failure modes – like memory limits or data format consistency – are known in advance and can be examined forensically, as with deterministic software. This approach fails with AI, because outputs are probabilistic and whose failure distribution shifts with every model update. Tightly-defined safety and security measures cannot keep up. Good workers will route around those measures, and many of the failures that the policies were meant to prevent will happen anyway.</p>
-      <p>You should not shift to less governance but to a different kind of governance. Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.</p>
+      <p><strong>Most organizations approach AI the way they approach software, by defining what their people may and may not do with it.</strong> They publish acceptable-use policies, approve a list of tools, and set data boundaries. This approach works when failure modes – like memory limits or data format consistency – are known in advance and can be examined forensically, as with deterministic software. This approach fails with AI, because outputs are probabilistic and whose failure distribution shifts with every model update. Tightly-defined safety and security measures cannot keep up. Good workers will route around those measures, and many of the failures that the policies were meant to prevent will happen anyway.</p>
+      <p>You should not shift to less governance but to a different kind of governance. <strong>Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential</strong>: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.</p>
+    </div>
+    <div class="govcult-grid">
+      <div class="govcult-card govcult-governed">
+        <span class="govcult-label">Governed track</span>
+        <p>Top-down: policy, procurement, rollout. The formal apparatus an organization approves in advance — and the output-level guardrails that decide how each AI result gets verified, escalated, and made someone's accountability.</p>
+      </div>
+      <div class="govcult-card govcult-cultivated">
+        <span class="govcult-label">Cultivated track</span>
+        <p>Bottom-up: exploration, individual play, vernacular practice. The workflows people invent on their own as they use AI — surfaced, encoded into reusable kits, and proved on real work before the governed track promotes them.</p>
+      </div>
     </div>
   </main>
   <span class="slide-page">06</span>
@@ -2688,7 +2753,14 @@
         <span class="chapter-card-name">The new nature of work</span>
         <span class="chapter-card-body">See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.</span>
       </a>
+      <a class="chapter-card ch-about" href="#about">
+        <img class="chapter-card-image" src="./images/protocol-fiction-aesthetics.jpeg" alt="">
+        <span class="chapter-card-num">08</span>
+        <span class="chapter-card-name">About &amp; Resources</span>
+        <span class="chapter-card-body">Learn about the Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span>
+      </a>
     </div>
+    <a class="appendix-link" href="#appendix">→ Appendix: case studies, frameworks, and the AI Adoption Assessment</a>
   </main>
   <span class="slide-page">07</span>
 </section>
@@ -2735,11 +2807,11 @@
           </div>
         </div>
         <div class="yy-level-center">
-          <div class="yy-split-circle">
+          <a class="yy-split-circle" href="#level-1" aria-label="Jump to Level 1 deep dive">
             <img class="half left"  src="./images/inventing-new-nature.png" alt="Shadow">
             <img class="half right" src="./images/theorizing-protocolization-ii.png" alt="Play">
             <span class="yy-num">L·01</span>
-          </div>
+          </a>
         </div>
         <div class="infinite-side">
           <div class="yy-level-text">
@@ -2756,11 +2828,11 @@
           </div>
         </div>
         <div class="yy-level-center">
-          <div class="yy-split-circle">
+          <a class="yy-split-circle" href="#level-2" aria-label="Jump to Level 2 deep dive">
             <img class="half left"  src="./images/primordial-soup.png" alt="Sanctioned">
             <img class="half right" src="./images/theorizing-protocolization.png" alt="Kit">
             <span class="yy-num">L·02</span>
-          </div>
+          </a>
         </div>
         <div class="infinite-side">
           <div class="yy-level-text">
@@ -2777,11 +2849,11 @@
           </div>
         </div>
         <div class="yy-level-center">
-          <div class="yy-split-circle">
+          <a class="yy-split-circle" href="#level-3" aria-label="Jump to Level 3 deep dive">
             <img class="half left"  src="./images/have-your-factory-call-my-factory.png" alt="Engine">
             <img class="half right" src="./images/how-to-protocol-watch.png" alt="Practice">
             <span class="yy-num">L·03</span>
-          </div>
+          </a>
         </div>
         <div class="infinite-side">
           <div class="yy-level-text">
@@ -2798,11 +2870,11 @@
           </div>
         </div>
         <div class="yy-level-center">
-          <div class="yy-split-circle">
+          <a class="yy-split-circle" href="#level-4" aria-label="Jump to Level 4 deep dive">
             <img class="half left"  src="./images/fabric-and-brain.png" alt="Infrastructure">
             <img class="half right" src="./images/finding-fault-lines-within-the-firm.png" alt="Vernacular">
             <span class="yy-num">L·04</span>
-          </div>
+          </a>
         </div>
         <div class="infinite-side">
           <div class="yy-level-text">
@@ -2819,11 +2891,11 @@
           </div>
         </div>
         <div class="yy-level-center">
-          <div class="yy-split-circle">
+          <a class="yy-split-circle" href="#level-5" aria-label="Jump to Level 5 deep dive">
             <img class="half left"  src="./images/from-destination-ai-to-intelligence-media.png" alt="Planetary">
             <img class="half right" src="./images/faithful-channel.png" alt="Fluency">
             <span class="yy-num">L·05</span>
-          </div>
+          </a>
         </div>
         <div class="infinite-side">
           <div class="yy-level-text">
@@ -2887,7 +2959,7 @@
 </section>
 
 <!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
+<section class="slide slide-content slide-level" id="level-1">
   <div class="level-band level-band-split">
     <img class="band-img governed" src="./images/inventing-new-nature.png" alt="Shadow">
     <img class="band-img cultivated" src="./images/theorizing-protocolization-ii.png" alt="Play">
@@ -2934,7 +3006,7 @@
 </section>
 
 <!-- ─── 13 — L2 Sanctioned ────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
+<section class="slide slide-content slide-level" id="level-2">
   <div class="level-band level-band-split">
     <img class="band-img governed" src="./images/primordial-soup.png" alt="Sanctioned">
     <img class="band-img cultivated" src="./images/theorizing-protocolization.png" alt="Kit">
@@ -2981,7 +3053,7 @@
 </section>
 
 <!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
-<section class="slide slide-content slide-level">
+<section class="slide slide-content slide-level" id="level-3">
   <div class="level-band level-band-split">
     <img class="band-img governed" src="./images/have-your-factory-call-my-factory.png" alt="Engine">
     <img class="band-img cultivated" src="./images/how-to-protocol-watch.png" alt="Practice">
@@ -3028,7 +3100,7 @@
 </section>
 
 <!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
-<section class="slide slide-content slide-level">
+<section class="slide slide-content slide-level" id="level-4">
   <div class="level-band level-band-split">
     <img class="band-img governed" src="./images/fabric-and-brain.png" alt="Infrastructure">
     <img class="band-img cultivated" src="./images/finding-fault-lines-within-the-firm.png" alt="Vernacular">
@@ -3075,7 +3147,7 @@
 </section>
 
 <!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
-<section class="slide slide-content slide-level">
+<section class="slide slide-content slide-level" id="level-5">
   <div class="level-band level-band-split">
     <img class="band-img governed" src="./images/from-destination-ai-to-intelligence-media.png" alt="Planetary">
     <img class="band-img cultivated" src="./images/faithful-channel.png" alt="Fluency">
