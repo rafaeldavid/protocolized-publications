@@ -1678,11 +1678,12 @@
     }
     .role-name {
       font-family: var(--font-mono);
-      font-size: var(--fs-body);
+      font-size: var(--fs-heading-1);
       font-weight: 700;
-      margin-bottom: 6pt;
+      margin-bottom: 8pt;
       line-height: 1.2;
       color: var(--text);
+      letter-spacing: -0.005em;
     }
     .role-body {
       font-size: var(--fs-body-sm);
@@ -3352,33 +3353,33 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
-  <h2 class="slide-h1">Six categories of new work in AI-native organizations</h2>
+  <h2 class="slide-h1">Six new business activities in AI-native organizations</h2>
   <main class="slide-body">
-    <p class="lead-p">These categories of work appear across mature AI-adopting organizations regardless of size or sector. Titles vary; the work is the same.</p>
+    <p class="lead-p">These categories of work appear across mature AI-adopting organizations regardless of size or sector. Jargon may vary, but the work is the same.</p>
     <div class="roles-grid">
       <div class="role-card">
         <div class="role-name">Kit Harvesting</div>
-        <p class="role-body">Surfacing the AI workflows people are already running on their own — in personal repos, vaults, scripts, custom GPTs — and promoting the best into shared infrastructure with named owners. Composed of a per-function audit, a promotion review, and the engineering to make a kit operable by another user.</p>
+        <p class="role-body">Surfacing the AI workflows people already run on their own time and promoting the best into shared infrastructure with named owners.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Evals</div>
-        <p class="role-body">Defining what "good" means for each AI workflow and building the test harness that measures it. Composed of golden datasets, rubrics co-authored with domain experts, and a scoring runner that fires on every prompt or model change. Maintenance grows as failure modes surface and feed back into the suite.</p>
+        <p class="role-body">Defining what "good" means for each AI workflow and building the test harness that measures it on every prompt or model change.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Forward Deployment</div>
-        <p class="role-body">Embedding engineers inside functions — alongside lawyers, sales reps, analysts — to build the AI workflows that function depends on. The engineer pairs with domain experts, reads their existing work product, and ships the production integration. Each engagement is project-shaped and closes when the loop runs end-to-end.</p>
+        <p class="role-body">Engineers embedded inside functions — alongside lawyers, sales reps, analysts — to build the AI workflows each function depends on. Each engagement closes when the loop runs end-to-end.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Platform Operations</div>
-        <p class="role-body">Operating the shared AI infrastructure domain teams build on: model gateway (routing across providers), versioned prompt and skill registries, eval pipelines in CI, observability (latency, cost, quality, drift), cost controls, and vendor management. A 24/7 system; major upgrades quarterly.</p>
+        <p class="role-body">Running the shared AI infrastructure domain teams build on: model gateway, prompt and skill registries, eval pipelines, observability, and cost controls.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Risk Stewardship</div>
-        <p class="role-body">Maintaining the AI risk register and the technical interlocks that bound what AI is allowed to do. Composed of the register (models, data, blast radius), permission boundaries (autonomous vs human-approved vs forbidden), constitutional infrastructure (sandboxes, planning-only modes, write-locks, rollback paths), and the audit trail.</p>
+        <p class="role-body">Maintaining the AI risk register and the technical interlocks that bound what AI is allowed to do — permission boundaries, sandboxes, write-locks, and audit trails.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Context Stabilization</div>
-        <p class="role-body">Curating the context AI systems depend on and keeping it stable across models, tools, and agents. Composed of context gathering, curation (authoritative sources, current versions), ontology work (entity definitions and category boundaries), and stabilization so the legal team's "contract" and the agent's "contract" don't silently diverge.</p>
+        <p class="role-body">Curating the context AI systems depend on so the legal team's "contract" and the agent's "contract" don't silently diverge.</p>
       </div>
     </div>
   </main>
