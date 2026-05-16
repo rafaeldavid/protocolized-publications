@@ -950,17 +950,37 @@
     }
     .appendix-link:hover { color: var(--accent); }
 
-    /* ─── Governed / Cultivated two-card row (slide 06) ──────── */
+    /* ─── Slide 06 explicit 2-column grid (text left, text+cards right) ─ */
+    .ch1-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24pt;
+      height: 100%;
+    }
+    .ch1-body-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+    .ch1-body-grid p {
+      font-size: var(--fs-body);
+      line-height: 1.55;
+      margin: 0 0 8pt 0;
+    }
+
+    /* ─── Governed / Cultivated compact card pair ────────────── */
     .govcult-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14pt;
-      margin-top: 10pt;
+      gap: 10pt;
+      margin-top: auto;
+      padding-top: 8pt;
     }
     .govcult-card {
-      border-radius: 6px;
-      padding: 10pt 12pt;
-      border-left: 3px solid;
+      border-radius: 4px;
+      padding: 6pt 8pt 7pt 8pt;
+      border-left: 2px solid;
+      display: flex;
+      flex-direction: column;
     }
     .govcult-card.govcult-governed {
       background: var(--tint-ch6);
@@ -970,17 +990,25 @@
       background: var(--tint-ch1);
       border-left-color: var(--accent);
     }
+    .govcult-img {
+      display: block;
+      width: 100%;
+      height: 0.5in;
+      object-fit: cover;
+      border-radius: 3px;
+      margin-bottom: 5pt;
+    }
     .govcult-label {
       display: block;
       font-family: var(--font-mono);
-      font-size: var(--fs-body);
+      font-size: var(--fs-body-sm);
       font-weight: 700;
-      margin-bottom: 5pt;
+      margin-bottom: 3pt;
       letter-spacing: -0.005em;
     }
     .govcult-card p {
-      font-size: var(--fs-body-sm);
-      line-height: 1.5;
+      font-size: 8.5pt;
+      line-height: 1.4;
       margin: 0;
     }
     .chapter-card-image {
@@ -2683,19 +2711,25 @@
   <h2 class="slide-h1">Durable AI Adoption needs governance <strong><em>and</em></strong> cultivation</h2>
   <p class="slide-subtitle">A short introduction to the AI Adoption Guide</p>
   <main class="slide-body">
-    <div class="slide-body-cols-2">
-      <p>This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.</p>
-      <p><strong>Most organizations approach AI the way they approach software, by defining what their people may and may not do with it.</strong> They publish acceptable-use policies, approve a list of tools, and set data boundaries. This approach works when failure modes – like memory limits or data format consistency – are known in advance and can be examined forensically, as with deterministic software. This approach fails with AI, because outputs are probabilistic and whose failure distribution shifts with every model update. Tightly-defined safety and security measures cannot keep up. Good workers will route around those measures, and many of the failures that the policies were meant to prevent will happen anyway.</p>
-      <p>You should not shift to less governance but to a different kind of governance. <strong>Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential</strong>: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.</p>
-    </div>
-    <div class="govcult-grid">
-      <div class="govcult-card govcult-governed">
-        <span class="govcult-label">Governed track</span>
-        <p>Top-down: policy, procurement, rollout. The formal apparatus an organization approves in advance — and the output-level guardrails that decide how each AI result gets verified, escalated, and made someone's accountability.</p>
+    <div class="ch1-body-grid">
+      <div class="ch1-col-left">
+        <p>This guide is about AI adoption: the long arc through which an organization integrates with AI. Adoption runs along two tracks. One is governed, made up of the formal apparatus the organization approves in advance: policy, procurement, rollout. The other is cultivated, made up of the practice its people invent on their own as they use AI: bottom-up exploration, individual play, and vernacular practice. Durable adoption requires both.</p>
+        <p><strong>Most organizations approach AI the way they approach software, by defining what their people may and may not do with it.</strong> They publish acceptable-use policies, approve a list of tools, and set data boundaries. This approach works when failure modes – like memory limits or data format consistency – are known in advance and can be examined forensically, as with deterministic software. This approach fails with AI, because outputs are probabilistic and whose failure distribution shifts with every model update. Tightly-defined safety and security measures cannot keep up. Good workers will route around those measures, and many of the failures that the policies were meant to prevent will happen anyway.</p>
       </div>
-      <div class="govcult-card govcult-cultivated">
-        <span class="govcult-label">Cultivated track</span>
-        <p>Bottom-up: exploration, individual play, vernacular practice. The workflows people invent on their own as they use AI — surfaced, encoded into reusable kits, and proved on real work before the governed track promotes them.</p>
+      <div class="ch1-col-right">
+        <p>You should not shift to less governance but to a different kind of governance. <strong>Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential</strong>: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.</p>
+        <div class="govcult-grid">
+          <div class="govcult-card govcult-governed">
+            <img class="govcult-img" src="./images/fabric-and-brain.png" alt="">
+            <span class="govcult-label">Governed track</span>
+            <p>Top-down: policy, procurement, and output-level guardrails for how each AI result gets verified and escalated.</p>
+          </div>
+          <div class="govcult-card govcult-cultivated">
+            <img class="govcult-img" src="./images/how-to-protocol-watch.png" alt="">
+            <span class="govcult-label">Cultivated track</span>
+            <p>Bottom-up: exploration, play, and the kits people invent and prove on their own before the organization promotes them.</p>
+          </div>
+        </div>
       </div>
     </div>
   </main>
