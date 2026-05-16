@@ -2402,6 +2402,7 @@
     <li><a href="#about"><span class="side-nav-num">—</span>About &amp; Resources</a></li>
     <li class="side-nav-section">Appendix</li>
     <li><a href="#appendix"><span class="side-nav-num">—</span>Case Studies</a></li>
+    <li><a href="#frameworks-matrix"><span class="side-nav-num">—</span>Frameworks</a></li>
     <li><a href="#assessment"><span class="side-nav-num">—</span>Assessment</a></li>
   </ul>
   <div class="side-nav-footer">
@@ -2452,7 +2453,7 @@
   <div class="cover-text">
     <div class="cover-eyebrow"><a href="https://protocol-institute.org/" target="_blank" rel="noopener">The Protocol Institute</a> · Protocols for Business Practice</div>
     <h1 class="cover-title">Durable AI Adoption</h1>
-    <p class="cover-sub">A practical guide to learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
+    <p class="cover-sub">A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
     <div class="cover-meta">v0.5 · May 2026</div>
   </div>
 </section>
@@ -2462,14 +2463,14 @@
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
     <li><a href="#foreword"><span class="contents-num">00</span><span class="contents-name">Foreword: Everywhere you look, AI is already there</span><span class="contents-page">03</span></a></li>
-    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">07</span></a></li>
-    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">10</span></a></li>
-    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">17</span></a></li>
-    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">21</span></a></li>
-    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">24</span></a></li>
-    <li><a href="#ch-7"><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">27</span></a></li>
-    <li><a href="#ch-8"><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span></a></li>
-    <li><a href="#about"><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span></a></li>
+    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">Introducing the AI Adoption Guide</span><span class="contents-page">06</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">09</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span></a></li>
+    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span></a></li>
+    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">23</span></a></li>
+    <li><a href="#ch-7"><span class="contents-num">07</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">26</span></a></li>
+    <li><a href="#ch-8"><span class="contents-num">08</span><span class="contents-name">The new nature of work</span><span class="contents-page">29</span></a></li>
+    <li><a href="#about"><span class="contents-num">09</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">31</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -2480,19 +2481,21 @@
     <span class="slide-header-pill">Foreword · Everywhere you look, AI is already there</span>
   </header>
   <h2 class="slide-h1">Everywhere you look, AI is already there</h2>
-  <p class="slide-subtitle">Most organizations are treating AI capabilities as the latest bundle of software upgrades.</p>
+  <p class="slide-subtitle">AI capabilities are more than a subscription to another app.</p>
   <main class="slide-body">
     <div class="foreword-grid">
       <div class="foreword-col-left">
-        <p>AI-enabled workflows and tools are appearing all around you, multiplying outputs and collapsing production cycles from months to days or even hours.</p>
-        <p>The workforce is discovering new coordination patterns faster than organizations can integrate them. Overload, disorientation, mania, and fear of being left behind, is what it feels like from the inside. The question now is whether anyone in your organization can describe what good adoption looks like, and the opportunities and failure modes likely to emerge.</p>
-        <p>AI has evolved rapidly, from a chat window to agentic tools in arbitrary workflows. And yet, most of us have been unsure if we're getting better at adoption or just busier.</p>
-        <p>A key driver in this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer. In other words, it is a class of systems with structural properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <em>deployment</em> is the action of standing up a particular tool, policy, or workflow, adoption names the long arc of an organization's integration with the paradigm itself.</p>
+        <p>Agents, AI-enabled workflows, and tools are seemingly everywhere. It can be surprising, and a little strange, when they sometimes collapse production cycles from months to days or even hours.</p>
+        <p>Alongside AI, a new wave of top performers are appearing. They discover (and enact!) operational improvements faster than average organizations can integrate them at scale. Employers and managers alike report feelings of overload, disorientation, mania, and fear of being left behind. Whether by choice or by necessity, your organization is adopting AI. The question now is: <strong>can your organization describe what good adoption looks like, including the <em>opportunities</em> to prioritize and <em>blunders</em> to avoid?</strong></p>
+        <p>AI has evolved rapidly, from a chat window to autonomous software factories. And yet, most of us are unsure – are we getting better at adoption? Or are we just getting busier?</p>
+        <p>A key driver of this confusion is that AI is being treated as a bundle of software products. It is better understood as a technology paradigm like the steam engine, car, or personal computer.</p>
+        <p>Paradigms are like waves – powerful, dangerous, and hard to surf. They reshape individuals and identities, not just technical systems.</p>
       </div>
       <div class="foreword-col-right">
-        <p>That misclassification has a second consequence. AI is unlike enterprise tooling where a deployment plan can run mostly on a governed track of procurement, policy, and rollout.</p>
-        <div class="foreword-callout"><p><strong>AI adoption requires the governed track to be complemented by a cultivated one: bottom-up exploration, individual play, and vernacular practice. Both are required because the paradigm reshapes individuals and identities, not just technical systems.</strong></p></div>
-        <p>Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute has been building an orientation framework for AI technology adoption. This guide, a tool-agnostic adoption model, is the executive-facing distillation of it. It includes new concepts, case studies, a diagnostic, as well as common success and failure modes. Let's dive in.</p>
+        <p>AI is a new type of software with unique properties (probabilistic outputs, generative capacity, indeterminate failure distributions) that an organization integrates into its operating model. While <strong><em>deployment</em></strong> is the action of standing up a particular tool, policy, or workflow, <strong><em>adoption</em></strong> names the long arc of an organization's integration with the paradigm itself.</p>
+        <p>Treating AI like a bundle of products has a second consequence. AI is unlike enterprise tooling. There, a deployment plan can run on a planned sequence of procurement, policy, and rollout.</p>
+        <p>To catch the wave early, AI adopters must run a parallel track: bottom-up exploration, individual play, and vernacular practice. Both planned deployment and organic discovery are required. It isn't hyperbolic to say that AI is creating new types of people, just as cars and modern medicine have created new types of people, who would have a difficult time communicating with someone from the past.</p>
+        <p>Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute collects insights on AI technology adoption. Every few months, we create a new version of this orientation framework. It includes new concepts, case studies, an organizational self-assessment, as well as common success and failure modes. Let's dive into our latest findings.</p>
       </div>
     </div>
   </main>
@@ -2504,7 +2507,7 @@
   <header class="slide-header">
     <span class="slide-header-pill">Foreword · The path so far</span>
   </header>
-  <h2 class="slide-h1">AI has evolved across two parallel tracks</h2>
+  <h2 class="slide-h1">The AI paradigm unfolds in two parallel tracks</h2>
   <p class="slide-subtitle">Each milestone needed both an individual practice and an organizational response. The cultivated track is what people invent; the governed track is what organizations approve.</p>
   <main class="slide-body">
     <div class="evo">
@@ -2563,7 +2566,7 @@
         <span class="evo-cluster-num">03 · Cultivated</span>
         <ul>
           <li>Vibe-coding, agentic IDEs</li>
-          <li>Individual agent experiments</li>
+          <li>Agents with wallets</li>
           <li>AI-native function workflows</li>
         </ul>
       </div>
@@ -2584,7 +2587,7 @@
         <ul>
           <li>One-person agent fleets</li>
           <li>Always-on personal pipelines</li>
-          <li>Archival Self</li>
+          <li>Second brains</li>
         </ul>
       </div>
       <div class="evo-cluster governed" style="left: 7.70in; top: 2.24in;">
@@ -2600,50 +2603,7 @@
   <span class="slide-page">04</span>
 </section>
 
-<!-- ─── 05 — Finding the right artifact (matrix in full) ───── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Foreword · The right artifact</span>
-  </header>
-  <h2 class="slide-h1">Finding the right artifact for a given technology</h2>
-  <p class="slide-subtitle">The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.</p>
-  <main class="slide-body">
-    <div class="matrix-feature-wrap">
-      <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
-        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Practice Playbook</div>
-          <div class="matrix-example">e.g., MRI</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
-        </div>
-        <div class="matrix-cell focus">
-          <div class="matrix-artifact">Adoption Guide</div>
-          <div class="matrix-example">e.g., electricity, the internet</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
-        </div>
-
-        <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Implementation Roadmap</div>
-          <div class="matrix-example">e.g., Figma</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
-        </div>
-        <div class="matrix-cell muted">
-          <div class="matrix-artifact">Deployment Plan</div>
-          <div class="matrix-example">e.g., Microsoft Office</div>
-          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
-        </div>
-
-        <div class="matrix-corner"></div>
-        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
-        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
-      </aside>
-    </div>
-  </main>
-  <span class="slide-page">05</span>
-</section>
-
-<!-- ─── 06 — Ch1 section title ──────────────────────────────── -->
+<!-- ─── 05 — Ch1 section title ──────────────────────────────── -->
 <section class="slide slide-section ch-1" id="ch-1">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 1</span>
@@ -2652,7 +2612,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/what-is-formal-protocol-theory.png" alt="">
   </div>
-  <span class="slide-page">06</span>
+  <span class="slide-page">05</span>
 </section>
 
 <!-- ─── 07 — Ch1 body ───────────────────────────────────────── -->
@@ -2671,7 +2631,7 @@
       <p>The capability <span class="term">maturity</span> of an organization adopting AI is the precision with which its protocols produce those non-events. The chapters that follow trace that precision across five levels.</p>
     </div>
   </main>
-  <span class="slide-page">07</span>
+  <span class="slide-page">06</span>
 </section>
 
 <!-- ─── 08 — The path through this guide (full chapter map) ── -->
@@ -2733,7 +2693,7 @@
       </a>
     </div>
   </main>
-  <span class="slide-page">08</span>
+  <span class="slide-page">07</span>
 </section>
 
 <!-- ─── 10 — Ch2 section title ──────────────────────────────── -->
@@ -2745,7 +2705,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/a-very-short-introduction-to-memory.png" alt="">
   </div>
-  <span class="slide-page">09</span>
+  <span class="slide-page">08</span>
 </section>
 
 <!-- ─── 10 — Ch2 yin-yang framework ──────────────────────────── -->
@@ -2877,7 +2837,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">10</span>
+  <span class="slide-page">09</span>
 </section>
 
 <!-- ─── 11 — Ch2 examples across both paths ──────────────────── -->
@@ -2926,7 +2886,7 @@
       </tbody>
     </table>
   </main>
-  <span class="slide-page">11</span>
+  <span class="slide-page">10</span>
 </section>
 
 <!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
@@ -2973,7 +2933,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">12</span>
+  <span class="slide-page">11</span>
 </section>
 
 <!-- ─── 13 — L2 Sanctioned ────────────────────────────────────── -->
@@ -3020,7 +2980,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">13</span>
+  <span class="slide-page">12</span>
 </section>
 
 <!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
@@ -3067,7 +3027,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">14</span>
+  <span class="slide-page">13</span>
 </section>
 
 <!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
@@ -3114,7 +3074,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">15</span>
+  <span class="slide-page">14</span>
 </section>
 
 <!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
@@ -3161,7 +3121,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">16</span>
+  <span class="slide-page">15</span>
 </section>
 
 <!-- ─── 17 — Ch3 section title ──────────────────────────────── -->
@@ -3173,7 +3133,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/drift-stacking.jpeg" alt="">
   </div>
-  <span class="slide-page">17</span>
+  <span class="slide-page">16</span>
 </section>
 
 <!-- ─── 18 — Ch3 readiness check ────────────────────────────── -->
@@ -3216,7 +3176,7 @@
     </div>
     <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
   </main>
-  <span class="slide-page">18</span>
+  <span class="slide-page">17</span>
 </section>
 
 <!-- ─── 19 — Ch3 plan after play ─────────────────────────────── -->
@@ -3246,7 +3206,7 @@
     </div>
     <p>Play surfaces the workflows worth planning around. The governed track inherits what the cultivated track discovers — the moves above are how you make that handoff deliberate.</p>
   </main>
-  <span class="slide-page">19</span>
+  <span class="slide-page">18</span>
 </section>
 
 <!-- ─── 20 — From play to protocol ──────────────────────────── -->
@@ -3308,7 +3268,7 @@
     </div>
     <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">If a gate fails, the workflow stays in play. That is the cultivated track doing its job. The wrong move is to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
   </main>
-  <span class="slide-page">20</span>
+  <span class="slide-page">19</span>
 </section>
 
 <!-- ─── 21 — Ch4 section title ──────────────────────────────── -->
@@ -3320,7 +3280,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/strangeness-legibility-hardness.png" alt="">
   </div>
-  <span class="slide-page">21</span>
+  <span class="slide-page">20</span>
 </section>
 
 <!-- ─── 22 — Ch4 cultivated/governed duality ─────────────────── -->
@@ -3388,7 +3348,7 @@
 
     </div>
   </main>
-  <span class="slide-page">22</span>
+  <span class="slide-page">21</span>
 </section>
 
 <!-- ─── 23 — Ch4 named roles ────────────────────────────────── -->
@@ -3426,7 +3386,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">23</span>
+  <span class="slide-page">22</span>
 </section>
 
 <!-- ─── 23 — Ch5 section title ──────────────────────────────── -->
@@ -3438,7 +3398,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/images-of-memory.png" alt="">
   </div>
-  <span class="slide-page">24</span>
+  <span class="slide-page">23</span>
 </section>
 
 <!-- ─── 25 — Case study 01: SIGBIZ ──────────────────────────── -->
@@ -3477,7 +3437,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">25</span>
+  <span class="slide-page">24</span>
 </section>
 
 <!-- ─── 26 — Case study 02: Visual identity ────────────────── -->
@@ -3514,7 +3474,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">26</span>
+  <span class="slide-page">25</span>
 </section>
 
 <!-- ─── 27 — Ch7 section title ──────────────────────────────── -->
@@ -3526,7 +3486,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/brackish-strategy.png" alt="">
   </div>
-  <span class="slide-page">27</span>
+  <span class="slide-page">26</span>
 </section>
 
 <!-- ─── 28 — Ch7 success patterns ───────────────────────────── -->
@@ -3563,7 +3523,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">27</span>
 </section>
 
 <!-- ─── 29 — Ch7 failure modes ──────────────────────────────── -->
@@ -3616,7 +3576,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">29</span>
+  <span class="slide-page">28</span>
 </section>
 
 <!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
@@ -3628,7 +3588,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/mechanical-currents.jpeg" alt="">
   </div>
-  <span class="slide-page">30</span>
+  <span class="slide-page">29</span>
 </section>
 
 <!-- ─── 31 — Ch8 body ───────────────────────────────────────── -->
@@ -3646,7 +3606,7 @@
       <p>The work, then, is not to finish a platform deployment. It is to keep the function navigable as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is a function whose people know how to work in this new nature, and whose managers know how to keep the handoff between cultivation and governance working as the terrain keeps changing.</p>
     </div>
   </main>
-  <span class="slide-page">31</span>
+  <span class="slide-page">30</span>
 </section>
 
 <!-- ─── 32 — About & Resources (split slide) ────────────────── -->
@@ -3680,7 +3640,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">32</span>
+  <span class="slide-page">31</span>
 </section>
 
 <!-- ─── 33 — Appendix · Case studies overview ──────────────── -->
@@ -3710,7 +3670,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">33</span>
+  <span class="slide-page">32</span>
 </section>
 
 <!-- ─── 34 — Case 01 · Samsung ──────────────────────────────── -->
@@ -3740,7 +3700,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">34</span>
+  <span class="slide-page">33</span>
 </section>
 
 <!-- ─── 35 — Case 02 · Klarna ───────────────────────────────── -->
@@ -3770,7 +3730,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">35</span>
+  <span class="slide-page">34</span>
 </section>
 
 <!-- ─── 36 — Case 03 · Amazon &amp; MeshClaw ──────────────────────── -->
@@ -3800,7 +3760,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">36</span>
+  <span class="slide-page">35</span>
 </section>
 
 <!-- ─── 37 — Case 04 · Air Canada ───────────────────────────── -->
@@ -3830,7 +3790,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">37</span>
+  <span class="slide-page">36</span>
 </section>
 
 <!-- ─── 38 — Case 05 · Boom Supersonic ──────────────────────── -->
@@ -3860,7 +3820,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">38</span>
+  <span class="slide-page">37</span>
 </section>
 
 <!-- ─── 39 — Case 06 · Visicalc / Excel ─────────────────────── -->
@@ -3890,7 +3850,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">39</span>
+  <span class="slide-page">38</span>
 </section>
 
 <!-- ─── 40 — Case 07 · Gates's Internet Tidal Wave memo ─────── -->
@@ -3920,7 +3880,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">40</span>
+  <span class="slide-page">39</span>
 </section>
 
 <!-- ─── 41 — Case 08 · Git &amp; GitHub PRs ─────────────────────── -->
@@ -3950,7 +3910,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">41</span>
+  <span class="slide-page">40</span>
 </section>
 
 <!-- ─── 42 — Case 09 · Walmart EDI ──────────────────────────── -->
@@ -3980,7 +3940,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">42</span>
+  <span class="slide-page">41</span>
 </section>
 
 <!-- ─── 43 — Case 10 · McLean container ─────────────────────── -->
@@ -4007,6 +3967,49 @@
         <h5>The impact</h5>
         <p>By 2026 approximately 90% of non-bulk world trade moves via containers. The protocol made coordination cheap and uniform across every jurisdiction and mode. It also concentrated the failures: the system depends on five geographic chokepoints — Suez, Panama, Malacca, Hormuz, Bab el-Mandeb — whose vulnerability was made visible by events like the 2021 Suez Canal blockade. The L5 Planetary lesson: when a protocol becomes infrastructure for the world, coordination is cheap and legibility becomes the new governance challenge.</p>
       </div>
+    </div>
+  </main>
+  <span class="slide-page">42</span>
+</section>
+
+<!-- ─── 43 — Appendix · Frameworks · The right artifact ──────── -->
+<section class="slide slide-content" id="frameworks-matrix">
+  <header class="slide-header">
+    <span class="slide-header-pill">Appendix · Frameworks</span>
+  </header>
+  <h2 class="slide-h1">Finding the right artifact for a given technology</h2>
+  <p class="slide-subtitle">The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.</p>
+  <main class="slide-body">
+    <div class="matrix-feature-wrap">
+      <aside class="paradigm-matrix" aria-label="Tool vs Paradigm matrix">
+        <div class="matrix-row-label right"><span class="matrix-mark">✓</span>Paradigm</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Practice Playbook</div>
+          <div class="matrix-example">e.g., MRI</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Vibe-Coding</div>
+        </div>
+        <div class="matrix-cell focus">
+          <div class="matrix-artifact">Adoption Guide</div>
+          <div class="matrix-example">e.g., electricity, the internet</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Commoditized Generative Software</div>
+        </div>
+
+        <div class="matrix-row-label wrong"><span class="matrix-mark">✗</span>Tool</div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Implementation Roadmap</div>
+          <div class="matrix-example">e.g., Figma</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Helpdesk Chatbot</div>
+        </div>
+        <div class="matrix-cell muted">
+          <div class="matrix-artifact">Deployment Plan</div>
+          <div class="matrix-example">e.g., Microsoft Office</div>
+          <div class="matrix-ai-example"><span class="matrix-ai-label">AI:</span>Claude Code</div>
+        </div>
+
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label wrong"><span class="matrix-mark">✗</span>Local</div>
+        <div class="matrix-col-label right"><span class="matrix-mark">✓</span>Planetary</div>
+      </aside>
     </div>
   </main>
   <span class="slide-page">43</span>
