@@ -123,8 +123,8 @@
     color: var(--text-secondary);
   }
   .ctx-left { color: var(--text); }
-  .ctx-right { text-align: right; color: white; }
-  .ctx-right em { color: rgba(255,255,255,0.8); }
+  .ctx-right { text-align: right; color: var(--text); }
+  .ctx-right em { color: var(--text-secondary); }
 
   /* Intake column — two boxes stacked, matching .role-card sizing from the deck */
   .intake-stack {
@@ -267,7 +267,7 @@
       <div class="ctx-labels">
         <span class="ctx-label ctx-left">
           <strong>Soft context</strong>
-          <em>vernacular, drifting, the wild</em>
+          <em>vernacular, drifting</em>
         </span>
         <span class="ctx-label ctx-right">
           <strong>Hard context</strong>
@@ -313,8 +313,6 @@
         <span class="loop-arrow a-right">→</span>
         <span class="loop-arrow a-bottom">→</span>
         <span class="loop-arrow a-left">→</span>
-
-        <span class="loop-output">Output</span>
       </div>
 
     </div>
