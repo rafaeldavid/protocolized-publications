@@ -826,7 +826,7 @@ Mitigated via: </> Constitutional software
 
 Chapter 4 · The path to durable AI adoption
 
-## Six new business activities in AI-native organizations
+## Six new business activities in AI-native organizations (overview)
 
 These categories of work appear across mature AI-adopting organizations. Jargon may vary, but the work is the same.
 
@@ -854,7 +854,45 @@ Context Stabilization
 
 Curate the context AI systems depend on and keep it stable across models, tools, and agents. The work involves context gathering, curation of authoritative sources and current versions, and ontology work — entity definitions and category boundaries. The goal is to keep the legal team's "contract" and the agent's "contract" from silently diverging.
 
-23
+25
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Two intake roles carry capability from the wild into a governed loop
+
+The whole slide sits inside a shared field of Context, rendered as a horizontal gradient: soft context on the left (vernacular, drifting, the wild) hardening to dark on the right (authoritative, versioned, governed). The six business activities split into two groups inside this field.
+
+Two intake roles span the gradient left-to-right, carrying capability from the wild into governed context:
+
+Kit Harvesting
+Carries proven workflows from personal vaults across to shared, supported infrastructure with a named owner.
+
+Forward Deployment
+Embeds inside the function to build the AI workflow soaked in that function's own context. Sits lower and reaches noticeably further right into the hard zone than Kit Harvesting.
+
+Both hand off into the Governed Loop on the hard-right side.
+
+Governed Loop — four nodes in a vertical feedback loop, anchored on the hard-right side:
+
+Context Stabilization (setpoint)
+Defines and curates what "good" means for each workflow.
+
+Evals (sensor)
+Measures the gap between output and "good" on every prompt or model change.
+
+Risk Stewardship (limiter)
+Holds the technical interlocks that bound what AI is allowed to do.
+
+Platform Operations (plant)
+Runs the shared infrastructure continuously: gateway, registries, observability, cost.
+
+Feedback arrow from Platform Operations back up to Context Stabilization: compare and feed back.
+
+Output arrow leaves the panel.
+
+26
 
 [SLIDE]
 
@@ -862,7 +900,7 @@ Chapter 5
 
 ## How the Protocol Institute adopts AI
 
-24
+27
 
 [SLIDE]
 
