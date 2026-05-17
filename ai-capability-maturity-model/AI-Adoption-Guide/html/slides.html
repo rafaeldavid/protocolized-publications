@@ -1826,6 +1826,54 @@
       border-top: 1px solid var(--border-soft);
     }
 
+    /* ─── Trilemma triangle + definitions (Ch6) ──────────────── */
+    .trilemma-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22pt;
+      height: 100%;
+      align-items: center;
+    }
+    .trilemma-triangle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trilemma-svg {
+      width: 100%;
+      max-width: 3.6in;
+      height: auto;
+    }
+    .trilemma-defs {
+      display: flex;
+      flex-direction: column;
+      gap: 10pt;
+    }
+    .trilemma-def {
+      border-radius: 6px;
+      padding: 9pt 12pt;
+      border-left: 3px solid;
+      background: var(--surface);
+    }
+    .trilemma-def.trilemma-velocity     { border-left-color: #1a1a2e; }
+    .trilemma-def.trilemma-assurance    { border-left-color: #7d5a96; }
+    .trilemma-def.trilemma-legibility   { border-left-color: #4f5d75; }
+    .trilemma-def-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-body);
+      font-weight: 700;
+      margin-bottom: 4pt;
+      letter-spacing: -0.005em;
+      text-transform: uppercase;
+    }
+    .trilemma-def p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      margin: 0;
+      color: var(--text);
+    }
+
     /* ─── Pattern cards (Ch7) ────────────────────────────────── */
     .slide-pattern-grid {
       display: grid;
@@ -2563,8 +2611,8 @@
     <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span></a></li>
     <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">23</span></a></li>
     <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">Success patterns and failure modes</span><span class="contents-page">26</span></a></li>
-    <li><a href="#ch-7"><span class="contents-num">07</span><span class="contents-name">The new nature of work</span><span class="contents-page">29</span></a></li>
-    <li><a href="#about"><span class="contents-num">08</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">31</span></a></li>
+    <li><a href="#ch-7"><span class="contents-num">07</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span></a></li>
+    <li><a href="#about"><span class="contents-num">08</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -3606,7 +3654,54 @@
   <span class="slide-page">26</span>
 </section>
 
-<!-- ─── 28 — Ch7 success patterns ───────────────────────────── -->
+<!-- ─── 27 — Ch6 AI Adoption Trilemma ───────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 6 · Success patterns and failure modes</span>
+  </header>
+  <h2 class="slide-h1">Operational leads will need to manage tensions between velocity, assurance, and legibility</h2>
+  <main class="slide-body">
+    <div class="trilemma-layout">
+      <div class="trilemma-triangle">
+        <svg class="trilemma-svg" viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" aria-label="The AI Adoption Trilemma">
+          <polygon points="200,80 80,300 320,300" fill="rgba(168,136,191,0.06)" stroke="none"/>
+          <line x1="200" y1="80"  x2="80"  y2="300" stroke="#a888bf" stroke-width="2"/>
+          <line x1="200" y1="80"  x2="320" y2="300" stroke="#a888bf" stroke-width="2"/>
+          <line x1="80"  y1="300" x2="320" y2="300" stroke="#a888bf" stroke-width="2"/>
+          <circle cx="200" cy="80"  r="26" fill="#1a1a2e"/>
+          <circle cx="80"  cy="300" r="26" fill="#7d5a96"/>
+          <circle cx="320" cy="300" r="26" fill="#4f5d75"/>
+          <text x="200" y="86"  text-anchor="middle" fill="#fff" font-family="Menlo, monospace" font-size="14" font-weight="700">V</text>
+          <text x="80"  y="306" text-anchor="middle" fill="#fff" font-family="Menlo, monospace" font-size="14" font-weight="700">A</text>
+          <text x="320" y="306" text-anchor="middle" fill="#fff" font-family="Menlo, monospace" font-size="14" font-weight="700">L</text>
+          <text x="200" y="40"  text-anchor="middle" font-family="Menlo, monospace" font-size="14" font-weight="700" fill="#1a1a2e">Velocity</text>
+          <text x="60"  y="345" text-anchor="middle" font-family="Menlo, monospace" font-size="14" font-weight="700" fill="#7d5a96">Assurance</text>
+          <text x="340" y="345" text-anchor="middle" font-family="Menlo, monospace" font-size="14" font-weight="700" fill="#4f5d75">Legibility</text>
+          <text x="125" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6b6b75" font-style="italic">controls slow speed</text>
+          <text x="275" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6b6b75" font-style="italic">speed obscures the why</text>
+          <text x="200" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6b6b75" font-style="italic">gates without observability are theater</text>
+        </svg>
+      </div>
+      <div class="trilemma-defs">
+        <div class="trilemma-def trilemma-velocity">
+          <span class="trilemma-def-label">Velocity</span>
+          <p>How quickly the organization discovers, ships, and iterates on what AI makes possible — the throughput of the cultivated track. Measured in time-to-pilot, cycle time on workflow changes, and the rate at which proven kits move into shared infrastructure.</p>
+        </div>
+        <div class="trilemma-def trilemma-assurance">
+          <span class="trilemma-def-label">Assurance</span>
+          <p>The degree to which AI outputs are verified, bounded, and tied to a named accountability before they reach a consequential handoff — the controls, gates, and audit trails the governed track maintains.</p>
+        </div>
+        <div class="trilemma-def trilemma-legibility">
+          <span class="trilemma-def-label">Legibility</span>
+          <p>The degree to which the system remains understandable to operators — observable not just in what it outputs but in why, and from what context — the telemetry, lineage, and operator-readable state behind every action.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <span class="slide-page">27</span>
+</section>
+
+<!-- ─── 28 — Ch6 success patterns ───────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 6 · Success patterns and failure modes</span>
@@ -3640,7 +3735,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">27</span>
+  <span class="slide-page">28</span>
 </section>
 
 <!-- ─── 29 — Ch7 failure modes ──────────────────────────────── -->
@@ -3693,7 +3788,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">29</span>
 </section>
 
 <!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
@@ -3705,7 +3800,7 @@
   <div class="slide-section-image-diagonal">
     <img src="./images/mechanical-currents.jpeg" alt="">
   </div>
-  <span class="slide-page">29</span>
+  <span class="slide-page">30</span>
 </section>
 
 <!-- ─── 31 — Ch8 body ───────────────────────────────────────── -->
@@ -3725,7 +3820,7 @@
       <p>The work, then, is not to finish a platform deployment. It is to make deployment a core capability, as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is people. People who know how to work in this new nature, and managers who know how to keep the handoff between cultivation and governance working as the terrain keeps changing.</p>
     </div>
   </main>
-  <span class="slide-page">30</span>
+  <span class="slide-page">31</span>
 </section>
 
 <!-- ─── 32 — About & Resources (split slide) ────────────────── -->
@@ -3759,7 +3854,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">31</span>
+  <span class="slide-page">32</span>
 </section>
 
 <!-- ─── 33 — Appendix · Case studies overview ──────────────── -->
@@ -3789,7 +3884,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">32</span>
+  <span class="slide-page">33</span>
 </section>
 
 <!-- ─── 34 — Case 01 · Samsung ──────────────────────────────── -->
@@ -3819,7 +3914,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">33</span>
+  <span class="slide-page">34</span>
 </section>
 
 <!-- ─── 35 — Case 02 · Klarna ───────────────────────────────── -->
@@ -3849,7 +3944,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">34</span>
+  <span class="slide-page">35</span>
 </section>
 
 <!-- ─── 36 — Case 03 · Amazon &amp; MeshClaw ──────────────────────── -->
@@ -3879,7 +3974,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">35</span>
+  <span class="slide-page">36</span>
 </section>
 
 <!-- ─── 37 — Case 04 · Air Canada ───────────────────────────── -->
@@ -3909,7 +4004,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">36</span>
+  <span class="slide-page">37</span>
 </section>
 
 <!-- ─── 38 — Case 05 · Boom Supersonic ──────────────────────── -->
@@ -3939,7 +4034,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">37</span>
+  <span class="slide-page">38</span>
 </section>
 
 <!-- ─── 39 — Case 06 · Visicalc / Excel ─────────────────────── -->
@@ -3969,7 +4064,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">38</span>
+  <span class="slide-page">39</span>
 </section>
 
 <!-- ─── 40 — Case 07 · Gates's Internet Tidal Wave memo ─────── -->
@@ -3999,7 +4094,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">39</span>
+  <span class="slide-page">40</span>
 </section>
 
 <!-- ─── 41 — Case 08 · Git &amp; GitHub PRs ─────────────────────── -->
@@ -4029,7 +4124,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">40</span>
+  <span class="slide-page">41</span>
 </section>
 
 <!-- ─── 42 — Case 09 · Walmart EDI ──────────────────────────── -->
@@ -4059,7 +4154,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">41</span>
+  <span class="slide-page">42</span>
 </section>
 
 <!-- ─── 43 — Case 10 · McLean container ─────────────────────── -->
@@ -4088,7 +4183,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">42</span>
+  <span class="slide-page">43</span>
 </section>
 
 <!-- ─── 43 — Appendix · Frameworks · The right artifact ──────── -->
@@ -4131,7 +4226,7 @@
       </aside>
     </div>
   </main>
-  <span class="slide-page">43</span>
+  <span class="slide-page">44</span>
 </section>
 
 <!-- ─── 44 — Appendix · AI Adoption Assessment ──────────────── -->
