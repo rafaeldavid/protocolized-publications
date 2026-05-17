@@ -2448,6 +2448,7 @@
       }
       .side-nav-foot-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
       .side-nav-title {
+        display: block;
         font-size: 8.5pt;
         font-weight: 700;
         text-transform: uppercase;
@@ -2455,7 +2456,11 @@
         color: #9b9ba8;
         padding: 0 16pt;
         margin-bottom: 10pt;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.15s;
       }
+      a.side-nav-title:hover { color: var(--accent); }
       .side-nav-section {
         font-size: 8pt;
         font-weight: 700;
@@ -2747,25 +2752,23 @@
 
 <nav class="side-nav" aria-label="Slide navigation">
   <div class="side-nav-header">
-    <div class="side-nav-title">Durable AI Adoption</div>
+    <a class="side-nav-title" href="#cover" aria-label="Back to cover">Durable AI Adoption</a>
     <button class="side-nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
       <span class="side-nav-toggle-bars" aria-hidden="true">☰</span>
     </button>
   </div>
   <ul class="side-nav-main">
-    <li><a href="#cover"><span class="side-nav-num">—</span>Cover</a></li>
-    <li><a href="#contents"><span class="side-nav-num">—</span>Contents</a></li>
     <li><a href="#ch-1"><span class="side-nav-num">01</span>More than a tool</a></li>
     <li><a href="#ch-2"><span class="side-nav-num">02</span>Maturity Levels</a></li>
     <li><a href="#ch-3"><span class="side-nav-num">03</span>Run your first pilot</a></li>
     <li><a href="#ch-4"><span class="side-nav-num">04</span>Long-Term Adoption</a></li>
     <li><a href="#ch-5"><span class="side-nav-num">05</span>Adoption at the Institute</a></li>
     <li><a href="#ch-6"><span class="side-nav-num">06</span>New Nature of Work</a></li>
-    <li><a href="#about"><span class="side-nav-num">—</span>About &amp; Resources</a></li>
     <li class="side-nav-section">Appendix</li>
     <li><a href="#appendix"><span class="side-nav-num">—</span>Case Studies</a></li>
     <li><a href="#frameworks-matrix"><span class="side-nav-num">—</span>Frameworks</a></li>
     <li><a href="#assessment"><span class="side-nav-num">—</span>Assessment</a></li>
+    <li><a href="#about"><span class="side-nav-num">—</span>About &amp; Resources</a></li>
   </ul>
   <div class="side-nav-footer">
     <button type="button" class="side-nav-cta" onclick="toggleSchedule()">Schedule a Call</button>
