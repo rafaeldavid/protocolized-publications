@@ -967,49 +967,55 @@
       margin: 0 0 8pt 0;
     }
 
-    /* ─── Governed / Cultivated compact card pair ────────────── */
-    .govcult-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10pt;
-      margin-top: auto;
-      padding-top: 8pt;
+    /* ─── Durable AI dual-track yin-yang visual (slide 06) ───── */
+    .dual-track-yy {
+      margin-top: 10pt;
+      padding: 12pt 10pt 10pt 10pt;
+      background: linear-gradient(135deg, rgba(26,26,46,0.04) 0%, rgba(168,136,191,0.08) 100%);
+      border-radius: 8px;
     }
-    .govcult-card {
-      border-radius: 4px;
-      padding: 6pt 8pt 7pt 8pt;
-      border-left: 2px solid;
+    .dt-title {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: var(--fs-heading-2);
+      letter-spacing: -0.005em;
+      margin-bottom: 8pt;
+      color: var(--text);
+    }
+    .dt-frame {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10pt;
+      align-items: center;
+    }
+    .dt-yy {
+      width: 1.1in;
+      height: 1.1in;
+      flex-shrink: 0;
+    }
+    .dt-side {
       display: flex;
       flex-direction: column;
     }
-    .govcult-card.govcult-governed {
-      background: var(--tint-ch6);
-      border-left-color: #4f5d75;
-    }
-    .govcult-card.govcult-cultivated {
-      background: var(--tint-ch1);
-      border-left-color: var(--accent);
-    }
-    .govcult-img {
-      display: block;
-      width: 100%;
-      height: 0.5in;
-      object-fit: cover;
-      border-radius: 3px;
-      margin-bottom: 5pt;
-    }
-    .govcult-label {
+    .dt-side.dt-governed { text-align: right; }
+    .dt-side.dt-cultivated { text-align: left; }
+    .dt-label {
       display: block;
       font-family: var(--font-mono);
-      font-size: var(--fs-body-sm);
       font-weight: 700;
-      margin-bottom: 3pt;
+      font-size: var(--fs-body-sm);
       letter-spacing: -0.005em;
+      margin-bottom: 3pt;
+      color: var(--text);
     }
-    .govcult-card p {
+    .dt-side.dt-governed .dt-label { color: #1a1a2e; }
+    .dt-side.dt-cultivated .dt-label { color: var(--accent); }
+    .dt-side p {
       font-size: 8.5pt;
       line-height: 1.4;
       margin: 0;
+      color: var(--text-secondary);
     }
     .chapter-card-image {
       display: block;
@@ -2718,16 +2724,24 @@
       </div>
       <div class="ch1-col-right">
         <p>You should not shift to less governance but to a different kind of governance. <strong>Instead of governing what people may or may not do with AI, govern what AI outputs must do at the points where they become consequential</strong>: how each output gets verified, how it gets escalated, how it becomes someone's accountability when it crosses from machine to human or from one team to another. These output-based rules guide coordination at handoff points rather than restrict activity at access points. A traffic light is a protocol; a blockade is not. Both are rules, but only one keeps the goods moving through the system.</p>
-        <div class="govcult-grid">
-          <div class="govcult-card govcult-governed">
-            <img class="govcult-img" src="./images/fabric-and-brain.png" alt="">
-            <span class="govcult-label">Governed track</span>
-            <p>Top-down: policy, procurement, and output-level guardrails for how each AI result gets verified and escalated.</p>
-          </div>
-          <div class="govcult-card govcult-cultivated">
-            <img class="govcult-img" src="./images/how-to-protocol-watch.png" alt="">
-            <span class="govcult-label">Cultivated track</span>
-            <p>Bottom-up: exploration, play, and the kits people invent and prove on their own before the organization promotes them.</p>
+        <div class="dual-track-yy">
+          <div class="dt-title">Durable AI</div>
+          <div class="dt-frame">
+            <div class="dt-side dt-governed">
+              <span class="dt-label">Governed</span>
+              <p>Top-down: policy, procurement, and output-level guardrails for how each AI result gets verified and escalated.</p>
+            </div>
+            <svg class="dt-yy" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Durable AI: governed and cultivated tracks">
+              <path d="M50,5 A45,45 0 0,0 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#1a1a2e"/>
+              <path d="M50,5 A45,45 0 0,1 50,95 A22.5,22.5 0 0,0 50,50 A22.5,22.5 0 0,1 50,5 Z" fill="#e9e1f2"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#a888bf" stroke-width="1.5"/>
+              <circle cx="50" cy="27.5" r="7" fill="#1a1a2e"/>
+              <circle cx="50" cy="72.5" r="7" fill="#e9e1f2"/>
+            </svg>
+            <div class="dt-side dt-cultivated">
+              <span class="dt-label">Cultivated</span>
+              <p>Bottom-up: exploration, play, and the kits people invent and prove on their own before the organization promotes them.</p>
+            </div>
           </div>
         </div>
       </div>
