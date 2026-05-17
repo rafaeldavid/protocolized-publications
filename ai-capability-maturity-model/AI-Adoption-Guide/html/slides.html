@@ -1925,21 +1925,22 @@
       margin-top: 7pt;
       padding-top: 6pt;
       border-top: 1px dashed var(--border-soft);
+      display: flex;
+      align-items: baseline;
+      gap: 6pt;
+      font-size: var(--fs-caption);
+      line-height: 1.3;
     }
     .tension-label {
-      display: block;
       font-family: var(--font-mono);
-      font-size: var(--fs-caption);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 600;
       color: var(--text-tertiary);
-      margin-bottom: 3pt;
+      white-space: nowrap;
     }
-    .slide-pattern-card-tension p {
+    .tension-text {
       font-size: var(--fs-body-sm);
-      line-height: 1.4;
-      margin: 0;
       color: var(--text);
     }
     .tl-v { color: #1a1a2e; font-weight: 700; }
@@ -3739,8 +3740,8 @@
         <div class="slide-pattern-card-tag">Wait for variation to express itself before standardizing.</div>
         <div class="slide-pattern-card-body"><p>The protocols worth formalizing are the ones domain experts have already proved through daily use. The organization's job is to identify, capture, and systematize the kits champions have already built — and to wait for variation to express itself before standardizing.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Holds the tension</span>
-          <p>Practitioners run at full <span class="tl-v">V</span>elocity in their own vaults; only the kits that earn <span class="tl-a">A</span>ssurance and become <span class="tl-l">L</span>egible to the org get promoted into shared infrastructure.</p>
+          <span class="tension-label">Holds</span>
+          <span class="tension-text"><span class="tl-v">V</span> at the vault · <span class="tl-a">A</span>+<span class="tl-l">L</span> on promotion</span>
         </div>
       </div>
       <div class="slide-pattern-card success">
@@ -3749,8 +3750,8 @@
         <div class="slide-pattern-card-tag">Plan from what play surfaces, not from intention.</div>
         <div class="slide-pattern-card-body"><p>AI invites experimentation at a tempo upfront planning cannot keep up with. Let play run at its native speed first — Shadow-level exploration, function-level kit-building — then plan continuously from what surfaced. Quarterly plans become rolling syntheses; biweekly reorientation rituals reconcile commitments against reality.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Holds the tension</span>
-          <p>Exploration runs at full <span class="tl-v">V</span>elocity; the plan that emerges is <span class="tl-l">L</span>egible because it documents what worked, which is what the firm can credibly <span class="tl-a">A</span>ssure against.</p>
+          <span class="tension-label">Holds</span>
+          <span class="tension-text"><span class="tl-v">V</span> during play · <span class="tl-l">L</span>+<span class="tl-a">A</span> in the plan</span>
         </div>
       </div>
       <div class="slide-pattern-card success">
@@ -3759,8 +3760,8 @@
         <div class="slide-pattern-card-tag">Buffer the tempo mismatch instead of throttling either side.</div>
         <div class="slide-pattern-card-body"><p>Engineers know this from car differentials — a mechanical assembly that transmits power between components rotating at different rates. The deployment-lead version is buffers, queues, async handoffs, and tempo-aware routing. Uber's Code Inbox is the canonical case.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Holds the tension</span>
-          <p>AI keeps its <span class="tl-v">V</span>elocity; the buffer absorbs the tempo mismatch so downstream <span class="tl-a">A</span>ssurance and queue <span class="tl-l">L</span>egibility don't collapse under volume.</p>
+          <span class="tension-label">Holds</span>
+          <span class="tension-text"><span class="tl-v">V</span> on the fast side · <span class="tl-a">A</span>+<span class="tl-l">L</span> on the slow side</span>
         </div>
       </div>
       <div class="slide-pattern-card success">
@@ -3769,8 +3770,8 @@
         <div class="slide-pattern-card-tag">Compile governance constraints into code that runs.</div>
         <div class="slide-pattern-card-body"><p>Encode constraints in code itself: sandboxed environments the agent cannot escape, separate dev/prod boundaries, planning-only modes, and revocation paths that compile authority into technical interlocks rather than relying on human reaction time.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Holds the tension</span>
-          <p>Agents run at full <span class="tl-v">V</span>elocity inside a sandbox whose <span class="tl-a">A</span>ssurance is compiled into the runtime; every action is <span class="tl-l">L</span>egible because the runtime mediates it.</p>
+          <span class="tension-label">Holds</span>
+          <span class="tension-text"><span class="tl-v">V</span> inside the sandbox · <span class="tl-a">A</span>+<span class="tl-l">L</span> from the runtime</span>
         </div>
       </div>
     </div>
@@ -3792,8 +3793,8 @@
         <div class="slide-pattern-card-tag">Standardizing before the kit phase has done its work.</div>
         <div class="slide-pattern-card-body"><p>Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: <em>premature consolidation</em> (collapsing kits into a single platform) and <em>premature procurement</em> (vendor stack before need is known).</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Collapses the tension</span>
-          <p>Trades practitioner <span class="tl-v">V</span>elocity for paper <span class="tl-a">A</span>ssurance — real workflows move to the shadows, where they become <span class="tl-l">L</span>egible to no one.</p>
+          <span class="tension-label">Collapses</span>
+          <span class="tension-text"><span class="tl-v">V</span> traded for paper <span class="tl-a">A</span> · <span class="tl-l">L</span> lost to shadows</span>
         </div>
         <div class="slide-pattern-card-mitigation">
           <span class="mitigation-label">Mitigated via</span>
@@ -3806,8 +3807,8 @@
         <div class="slide-pattern-card-tag">Commitments outpace shared understanding; exposure accumulates invisibly.</div>
         <div class="slide-pattern-card-body"><p>The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as <em>psychological debt</em>.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Collapses the tension</span>
-          <p><span class="tl-v">V</span>elocity outruns <span class="tl-l">L</span>egibility — commitments accumulate faster than anyone can read the state of the system, and <span class="tl-a">A</span>ssurance erodes silently underneath.</p>
+          <span class="tension-label">Collapses</span>
+          <span class="tension-text"><span class="tl-v">V</span> outruns <span class="tl-l">L</span> · <span class="tl-a">A</span> erodes silently</span>
         </div>
         <div class="slide-pattern-card-mitigation">
           <span class="mitigation-label">Mitigated via</span>
@@ -3820,8 +3821,8 @@
         <div class="slide-pattern-card-tag">Output stacks up at the slowest neighbor.</div>
         <div class="slide-pattern-card-body"><p>AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Collapses the tension</span>
-          <p>One side's <span class="tl-v">V</span>elocity becomes another side's bottleneck — without a buffer, downstream <span class="tl-a">A</span>ssurance fails and the queue becomes <span class="tl-l">L</span>egible to no one.</p>
+          <span class="tension-label">Collapses</span>
+          <span class="tension-text"><span class="tl-v">V</span> upstream · <span class="tl-a">A</span>+<span class="tl-l">L</span> collapse downstream</span>
         </div>
         <div class="slide-pattern-card-mitigation">
           <span class="mitigation-label">Mitigated via</span>
@@ -3834,8 +3835,8 @@
         <div class="slide-pattern-card-tag">Permissions outpace judgment, faster than humans can intervene.</div>
         <div class="slide-pattern-card-body"><p>Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).</p></div>
         <div class="slide-pattern-card-tension">
-          <span class="tension-label">Collapses the tension</span>
-          <p>Agent <span class="tl-v">V</span>elocity outruns <span class="tl-a">A</span>ssurance — permissions exceed what human review or rollback can keep up with, and the resulting damage stays <span class="tl-l">L</span>egible only after the fact.</p>
+          <span class="tension-label">Collapses</span>
+          <span class="tension-text"><span class="tl-v">V</span> outruns <span class="tl-a">A</span> · <span class="tl-l">L</span> arrives only after the fact</span>
         </div>
         <div class="slide-pattern-card-mitigation">
           <span class="mitigation-label">Mitigated via</span>
