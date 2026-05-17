@@ -155,8 +155,7 @@
   }
   .intake-gloss {
     display: block;
-    font-style: italic;
-    font-size: var(--fs-body-sm);      /* 10pt — matches deck card body */
+    font-size: var(--fs-body-sm);
     line-height: var(--lh-body);
     color: var(--text-secondary);
   }
@@ -184,7 +183,7 @@
     grid-column: 3;
     grid-row: 2;
     position: relative;
-    background: #1a1a2e;
+    background: var(--text);
     color: white;
     border-radius: 10px;
     padding: 14pt;
@@ -195,8 +194,9 @@
     gap: 12pt 26pt;
   }
   .loop-node {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 6px;
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
     padding: 10pt 12pt;
     display: flex;
     flex-direction: column;
@@ -205,18 +205,17 @@
     display: block;
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: var(--fs-heading-2);    /* 13pt — same as intake-name */
-    color: white;
+    font-size: var(--fs-heading-2);
+    color: var(--text);
     line-height: var(--lh-heading);
     letter-spacing: -0.005em;
     margin-bottom: 5pt;
   }
   .node-gloss {
     display: block;
-    font-style: italic;
-    font-size: var(--fs-body-sm);      /* 10pt — same as intake-gloss */
+    font-size: var(--fs-body-sm);
     line-height: var(--lh-body);
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--text-secondary);
   }
 
   /* Perimeter cycle arrows */

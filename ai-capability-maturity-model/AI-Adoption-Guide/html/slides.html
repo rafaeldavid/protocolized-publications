@@ -54,6 +54,11 @@
       --tint-ch5:       #f0d9d8;
       --tint-ch6:       #cfe0e2;
 
+      /* Trilemma vocabulary — shared across Ch4 slides 22, 23, 24, 26 */
+      --tone-velocity:   #1a1a2e;   /* alias of --text; kept for semantic clarity */
+      --tone-assurance:  #7d5a96;   /* alias of --accent-dark */
+      --tone-legibility: #4f5d75;   /* new — completes the V/A/L palette */
+
       /* ── Type scale ───────────────────────────────────────────
          8 sizes total, ratio ≈ 1.4 between display steps,
          ≈ 1.2 between heading/body steps. Mono for display
@@ -1919,7 +1924,6 @@
     }
     .intake-gloss {
       display: block;
-      font-style: italic;
       font-size: var(--fs-body-sm);
       line-height: var(--lh-body);
       color: var(--text-secondary);
@@ -1946,7 +1950,7 @@
       grid-column: 3;
       grid-row: 2;
       position: relative;
-      background: #1a1a2e;
+      background: var(--text);
       color: white;
       border-radius: 10px;
       padding: 14pt;
@@ -1956,9 +1960,12 @@
       grid-template-rows: 1fr 1fr;
       gap: 12pt 26pt;
     }
+    /* Loop nodes match the deck's .role-card pattern (light bg + accent border-left)
+       so they read as deck cards rather than bespoke dark-panel tiles. */
     .loop-node {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 6px;
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
       padding: 10pt 12pt;
       display: flex;
       flex-direction: column;
@@ -1968,24 +1975,23 @@
       font-family: var(--font-mono);
       font-weight: 700;
       font-size: var(--fs-heading-2);
-      color: white;
+      color: var(--text);
       line-height: var(--lh-heading);
       letter-spacing: -0.005em;
       margin-bottom: 5pt;
     }
     .node-gloss {
       display: block;
-      font-style: italic;
       font-size: var(--fs-body-sm);
       line-height: var(--lh-body);
-      color: rgba(255, 255, 255, 0.78);
+      color: var(--text-secondary);
     }
     .loop-arrow {
       position: absolute;
       font-family: var(--font-mono);
       font-size: var(--fs-heading-1);
       line-height: 1;
-      color: rgba(168, 136, 191, 0.95);
+      color: var(--accent);
       font-weight: 700;
     }
     .loop-arrow.a-top    { top: 36%; left: 50%; transform: translate(-50%, -50%); }
@@ -2000,7 +2006,7 @@
       font-size: var(--fs-caption);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(26, 26, 46, 0.75);
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 4pt;
@@ -2008,7 +2014,7 @@
     .loop-output::before {
       content: '↓';
       font-size: var(--fs-heading-2);
-      color: rgba(26, 26, 46, 0.5);
+      color: var(--text-tertiary);
     }
 
     /* ─── Trilemma triangle + definitions (Ch6) ──────────────── */
@@ -2040,9 +2046,9 @@
       border-left: 3px solid;
       background: var(--surface);
     }
-    .trilemma-def.trilemma-velocity     { border-left-color: #1a1a2e; }
-    .trilemma-def.trilemma-assurance    { border-left-color: #7d5a96; }
-    .trilemma-def.trilemma-legibility   { border-left-color: #4f5d75; }
+    .trilemma-def.trilemma-velocity     { border-left-color: var(--tone-velocity); }
+    .trilemma-def.trilemma-assurance    { border-left-color: var(--tone-assurance); }
+    .trilemma-def.trilemma-legibility   { border-left-color: var(--tone-legibility); }
     .trilemma-def-label {
       display: block;
       font-family: var(--font-mono);
@@ -2137,9 +2143,9 @@
       font-size: var(--fs-body-sm);
       color: var(--text);
     }
-    .tl-v { color: #1a1a2e; font-weight: 700; }
-    .tl-a { color: #7d5a96; font-weight: 700; }
-    .tl-l { color: #4f5d75; font-weight: 700; }
+    .tl-v { color: var(--tone-velocity); font-weight: 700; }
+    .tl-a { color: var(--tone-assurance); font-weight: 700; }
+    .tl-l { color: var(--tone-legibility); font-weight: 700; }
     .slide-pattern-card-mitigation {
       grid-column: 1 / -1;
       margin-top: 8pt;
