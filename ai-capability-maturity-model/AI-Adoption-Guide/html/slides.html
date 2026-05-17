@@ -1846,180 +1846,164 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to right,
-        #f4ecd8 0%,
+        var(--tint-foreword) 0%,
         rgba(168, 136, 191, 0.10) 45%,
-        rgba(26, 26, 46, 0.18) 75%,
-        rgba(26, 26, 46, 0.35) 100%);
-      border-radius: 8px;
-      overflow: hidden;
+        rgba(26, 26, 46, 0.16) 75%,
+        rgba(26, 26, 46, 0.30) 100%);
+      border-radius: 10px;
+      padding: 26pt 24pt;
+      display: grid;
+      grid-template-columns: 1fr 40pt 1.1fr;
+      grid-template-rows: auto 1fr;
+      row-gap: 10pt;
+    }
+    .ctx-labels {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 4pt;
     }
     .ctx-label {
-      position: absolute;
-      top: 10pt;
       font-family: var(--font-mono);
-      font-size: 8.5pt;
-      letter-spacing: 0.04em;
+      font-size: var(--fs-caption);
       line-height: 1.3;
-      max-width: 2.6in;
     }
     .ctx-label strong {
       display: block;
       text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      font-size: 9pt;
+      letter-spacing: 0.1em;
     }
     .ctx-label em {
+      font-family: var(--font-sans);
       font-style: italic;
-      font-size: 7.5pt;
+      font-size: var(--fs-body-sm);
+      font-weight: 400;
       color: var(--text-secondary);
     }
-    .ctx-left {
-      left: 12pt;
-      color: var(--text);
-    }
-    .ctx-right {
-      right: 12pt;
-      text-align: right;
-      color: rgba(255, 255, 255, 0.95);
-    }
-    .ctx-right em { color: rgba(255, 255, 255, 0.75); }
+    .ctx-left { color: var(--text); }
+    .ctx-right { text-align: right; color: white; }
+    .ctx-right em { color: rgba(255,255,255,0.8); }
 
-    .intake-box {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(168, 136, 191, 0.4);
-      border-left: 3px solid var(--accent);
-      border-radius: 6px;
-      padding: 9pt 14pt;
+    .intake-stack {
+      grid-column: 1;
+      grid-row: 2;
       display: flex;
       flex-direction: column;
-      gap: 2pt;
-      box-shadow: 0 2px 6px rgba(26, 26, 46, 0.08);
+      gap: 18pt;
+      justify-content: center;
     }
-    .intake-box::after {
-      content: '→';
+    .intake-box {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 11pt 14pt;
+      box-shadow: 0 2px 6px rgba(26, 26, 46, 0.06);
+    }
+    .intake-name {
+      display: block;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: var(--fs-heading-2);
+      letter-spacing: -0.005em;
+      line-height: var(--lh-heading);
+      color: var(--text);
+      margin-bottom: 5pt;
+    }
+    .intake-gloss {
+      display: block;
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      line-height: var(--lh-body);
+      color: var(--text-secondary);
+    }
+
+    .handoff {
+      grid-column: 2;
+      grid-row: 2;
+      position: relative;
+    }
+    .handoff-arrow {
       position: absolute;
-      right: -18pt;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16pt;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
       color: rgba(168, 136, 191, 0.95);
       font-weight: 700;
     }
-    .intake-name {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 12pt;
-      letter-spacing: -0.005em;
-      color: var(--text);
-    }
-    .intake-gloss {
-      font-style: italic;
-      font-size: 9pt;
-      line-height: 1.4;
-      color: var(--text-secondary);
-    }
-    .intake-harvest {
-      top: 0.55in;
-      left: 0.3in;
-      right: 4.0in;
-    }
-    .intake-deploy {
-      top: 1.85in;
-      left: 0.3in;
-      right: 3.7in;
-    }
+    .handoff-arrow.h-top { top: 28%; }
+    .handoff-arrow.h-bot { top: 72%; }
 
     .governed-loop {
-      position: absolute;
-      top: 0.55in;
-      right: 0.3in;
-      bottom: 0.55in;
-      width: 3.3in;
+      grid-column: 3;
+      grid-row: 2;
+      position: relative;
       background: #1a1a2e;
       color: white;
-      border-radius: 8px;
-      padding: 10pt 12pt 12pt 12pt;
-      display: flex;
-      flex-direction: column;
-      gap: 3pt;
-      box-shadow: 0 3px 12px rgba(26, 26, 46, 0.3);
-    }
-    .loop-title {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 9pt;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(168, 136, 191, 0.92);
-      margin-bottom: 4pt;
+      border-radius: 10px;
+      padding: 14pt;
+      box-shadow: 0 4px 14px rgba(26, 26, 46, 0.32);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12pt 26pt;
     }
     .loop-node {
       background: rgba(255, 255, 255, 0.06);
-      border-left: 2px solid rgba(168, 136, 191, 0.55);
-      border-radius: 3px;
-      padding: 5pt 8pt;
-    }
-    .node-role {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 7pt;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(168, 136, 191, 0.85);
+      border-radius: 6px;
+      padding: 10pt 12pt;
+      display: flex;
+      flex-direction: column;
     }
     .node-name {
       display: block;
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 10pt;
+      font-size: var(--fs-heading-2);
       color: white;
-      margin-top: 1pt;
+      line-height: var(--lh-heading);
+      letter-spacing: -0.005em;
+      margin-bottom: 5pt;
     }
     .node-gloss {
       display: block;
       font-style: italic;
-      font-size: 8pt;
-      line-height: 1.35;
-      color: rgba(255, 255, 255, 0.72);
-      margin-top: 2pt;
+      font-size: var(--fs-body-sm);
+      line-height: var(--lh-body);
+      color: rgba(255, 255, 255, 0.78);
     }
     .loop-arrow {
-      text-align: center;
-      font-size: 11pt;
-      line-height: 1;
-      color: rgba(168, 136, 191, 0.6);
-    }
-    .loop-feedback {
-      text-align: center;
+      position: absolute;
       font-family: var(--font-mono);
-      font-size: 8pt;
-      letter-spacing: 0.04em;
-      color: rgba(168, 136, 191, 0.85);
-      margin-top: 4pt;
-      padding-top: 5pt;
-      border-top: 1px dashed rgba(168, 136, 191, 0.3);
+      font-size: var(--fs-heading-1);
+      line-height: 1;
+      color: rgba(168, 136, 191, 0.95);
+      font-weight: 700;
     }
+    .loop-arrow.a-top    { top: 36%; left: 50%; transform: translate(-50%, -50%); }
+    .loop-arrow.a-right  { top: 50%; right: 6pt; transform: translate(50%, -50%) rotate(90deg); }
+    .loop-arrow.a-bottom { bottom: 30%; left: 50%; transform: translate(-50%, 50%) rotate(180deg); }
+    .loop-arrow.a-left   { top: 50%; left: 6pt; transform: translate(-50%, -50%) rotate(-90deg); }
     .loop-output {
       position: absolute;
-      right: 0.3in;
-      bottom: 0.18in;
-      width: 3.3in;
-      text-align: center;
+      bottom: -22pt;
+      right: 12pt;
       font-family: var(--font-mono);
-      font-size: 8pt;
-      letter-spacing: 0.08em;
+      font-size: var(--fs-caption);
       text-transform: uppercase;
-      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      color: rgba(26, 26, 46, 0.75);
+      display: flex;
+      align-items: center;
+      gap: 4pt;
     }
-    .loop-output-arrow {
-      display: block;
-      font-size: 12pt;
-      line-height: 0.8;
-      margin-bottom: 2pt;
-      color: rgba(26, 26, 46, 0.55);
+    .loop-output::before {
+      content: '↓';
+      font-size: var(--fs-heading-2);
+      color: rgba(26, 26, 46, 0.5);
     }
 
     /* ─── Trilemma triangle + definitions (Ch6) ──────────────── */
@@ -3948,54 +3932,63 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
-  <h2 class="slide-h1">Two intake roles carry capability from the wild into a governed loop</h2>
+  <h2 class="slide-h1">Staffing AI adoption means standing up a continuous operating loop and a continuous promotion pipeline that feeds it</h2>
   <main class="slide-body">
     <div class="biz-flow">
-      <span class="ctx-label ctx-left"><strong>Soft context</strong><em>vernacular, drifting, the wild</em></span>
-      <span class="ctx-label ctx-right"><strong>Hard context</strong><em>authoritative, versioned, governed</em></span>
 
-      <div class="intake-box intake-harvest">
-        <span class="intake-name">Kit Harvesting</span>
-        <span class="intake-gloss"><em>Carries proven workflows from personal vaults across to shared, supported infrastructure with a named owner.</em></span>
+      <div class="ctx-labels">
+        <span class="ctx-label ctx-left">
+          <strong>Soft context</strong>
+          <em>vernacular, drifting, the wild</em>
+        </span>
+        <span class="ctx-label ctx-right">
+          <strong>Hard context</strong>
+          <em>authoritative, versioned, governed</em>
+        </span>
       </div>
 
-      <div class="intake-box intake-deploy">
-        <span class="intake-name">Forward Deployment</span>
-        <span class="intake-gloss"><em>Embeds inside the function to build the AI workflow soaked in that function's own context.</em></span>
+      <div class="intake-stack">
+        <div class="intake-box">
+          <span class="intake-name">Kit Harvesting</span>
+          <span class="intake-gloss">Carries proven workflows from personal vaults across to shared, supported infrastructure with a named owner.</span>
+        </div>
+        <div class="intake-box">
+          <span class="intake-name">Forward Deployment</span>
+          <span class="intake-gloss">Embeds inside the function to build the AI workflow soaked in that function's own context.</span>
+        </div>
+      </div>
+
+      <div class="handoff">
+        <span class="handoff-arrow h-top">→</span>
+        <span class="handoff-arrow h-bot">→</span>
       </div>
 
       <div class="governed-loop">
-        <span class="loop-title">Governed Loop</span>
         <div class="loop-node">
-          <span class="node-role">setpoint</span>
           <span class="node-name">Context Stabilization</span>
-          <span class="node-gloss"><em>Defines and curates what "good" means for each workflow.</em></span>
+          <span class="node-gloss">Curates the context AI systems depend on and keeps it stable across models, tools, and agents.</span>
         </div>
-        <div class="loop-arrow">↓</div>
         <div class="loop-node">
-          <span class="node-role">sensor</span>
-          <span class="node-name">Evals</span>
-          <span class="node-gloss"><em>Measures the gap between output and "good" on every prompt or model change.</em></span>
-        </div>
-        <div class="loop-arrow">↓</div>
-        <div class="loop-node">
-          <span class="node-role">limiter</span>
           <span class="node-name">Risk Stewardship</span>
-          <span class="node-gloss"><em>Holds the technical interlocks that bound what AI is allowed to do.</em></span>
+          <span class="node-gloss">Holds the technical interlocks that bound what AI is allowed to do.</span>
         </div>
-        <div class="loop-arrow">↓</div>
         <div class="loop-node">
-          <span class="node-role">plant</span>
-          <span class="node-name">Platform Operations</span>
-          <span class="node-gloss"><em>Runs the shared infrastructure continuously: gateway, registries, observability, cost.</em></span>
+          <span class="node-name">Evals</span>
+          <span class="node-gloss">Measures the gap between output and "good" on every prompt or model change.</span>
         </div>
-        <div class="loop-feedback">↑ compare · feed back</div>
+        <div class="loop-node">
+          <span class="node-name">Platform Operations</span>
+          <span class="node-gloss">Runs the shared infrastructure continuously: gateway, registries, observability, cost.</span>
+        </div>
+
+        <span class="loop-arrow a-top">→</span>
+        <span class="loop-arrow a-right">→</span>
+        <span class="loop-arrow a-bottom">→</span>
+        <span class="loop-arrow a-left">→</span>
+
+        <span class="loop-output">Output</span>
       </div>
 
-      <div class="loop-output">
-        <span class="loop-output-arrow">↓</span>
-        Output
-      </div>
     </div>
   </main>
   <span class="slide-page">26</span>
