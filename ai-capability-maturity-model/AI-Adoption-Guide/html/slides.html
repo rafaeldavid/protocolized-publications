@@ -290,7 +290,11 @@
       grid-area: desc;
       font-size: var(--fs-body-sm);
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.45;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
 
     /* ─── Section title slide ────────────────────────────────── */
@@ -952,6 +956,7 @@
     .chapter-card.ch-5 { background: var(--tint-ch5); }
     .chapter-card.ch-6 { background: var(--tint-ch6); }
     .chapter-card.ch-about { background: var(--tint-foreword); }
+    .chapter-card.ch-assessment { background: var(--tint-ch3); }
     .appendix-link {
       display: inline-block;
       margin-top: 12pt;
@@ -2819,13 +2824,13 @@
 <section class="slide slide-contents" id="contents">
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
-    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span><span class="contents-desc">AI is a paradigm shift, not a software upgrade. Durable adoption needs both a governed track (top-down policy and rollout) and a cultivated track (bottom-up exploration and practice).</span></a></li>
-    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span><span class="contents-desc">Five levels from Shadow to Planetary, paired with cultivated counterparts from Play to Fluency. Use the ladder to locate your organization and see what good adoption looks like at each step.</span></a></li>
-    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span><span class="contents-desc">Run a pre-pilot readiness check with your AI adoption leaders. Make room for play first, then plan from what surfaces. Each workflow earns its way into the governed track through four gated stages.</span></a></li>
-    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span><span class="contents-desc">Manage the velocity, assurance, and legibility trade-offs as bottom-up discovery becomes top-down scale. Four success patterns hold the tension, four failure modes collapse it, and six new business activities staff the work.</span></a></li>
-    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">27</span><span class="contents-desc">Two case studies from inside the Protocol Institute: the SIGBIZ AI Discovery Acceleration as a Level 1 to Level 2 transition, and the Protocolized visual identity pipeline at Level 3 Engine.</span></a></li>
-    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span><span class="contents-desc">AI-mediated workflows are part of the workplace itself, closer to terrain than to thermostats. The deployment lead's job becomes maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
-    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span><span class="contents-desc">About the Protocol Institute, the Protocols for Business Special Interest Group, the source materials behind this guide, and ways to engage.</span></a></li>
+    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span><span class="contents-desc">Why AI is a paradigm shift, not a software upgrade, and why adoption needs both tracks.</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span><span class="contents-desc">Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span><span class="contents-desc">Readiness check, plan after play, and the four-stage path workflows take into governance.</span></a></li>
+    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span><span class="contents-desc">Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.</span></a></li>
+    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">27</span><span class="contents-desc">Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.</span></a></li>
+    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span><span class="contents-desc">Maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
+    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -3062,8 +3067,14 @@
         <span class="chapter-card-name">About &amp; Resources</span>
         <span class="chapter-card-body">Learn about the Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span>
       </a>
+      <a class="chapter-card ch-assessment" href="#assessment">
+        <img class="chapter-card-image" src="./images/brackish-strategy.png" alt="">
+        <span class="chapter-card-num">08</span>
+        <span class="chapter-card-name">AI Adoption Assessment</span>
+        <span class="chapter-card-body">A 24-question diagnostic that places your organization on the maturity ladder and surfaces your dominant archetype.</span>
+      </a>
     </div>
-    <a class="appendix-link" href="#appendix">→ Appendix: case studies, frameworks, and the AI Adoption Assessment</a>
+    <a class="appendix-link" href="#appendix">→ Appendix: case studies and frameworks</a>
   </main>
   <span class="slide-page">07</span>
 </section>
