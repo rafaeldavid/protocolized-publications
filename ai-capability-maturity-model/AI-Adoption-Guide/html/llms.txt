@@ -16,8 +16,7 @@ Source: https://github.com/rafaeldavid/protocolized-publications
 - Chapter 3 (Getting started): https://ai.protocolized.dev/#ch-3
 - Chapter 4 (Path to durable adoption): https://ai.protocolized.dev/#ch-4
 - Chapter 5 (Protocol Institute case studies): https://ai.protocolized.dev/#ch-5
-- Chapter 6 (Success patterns & failure modes): https://ai.protocolized.dev/#ch-6
-- Chapter 7 (New nature of work): https://ai.protocolized.dev/#ch-7
+- Chapter 6 (New nature of work): https://ai.protocolized.dev/#ch-6
 - About & Resources: https://ai.protocolized.dev/#about
 - Appendix · Case Studies: https://ai.protocolized.dev/#appendix
 - Appendix · Frameworks: https://ai.protocolized.dev/#frameworks-matrix
@@ -66,19 +65,17 @@ v0.5 · May 2026
 
 01More than a tool03
 
-02Adoption Maturity Levels09
+02Adoption Maturity Levels08
 
 03Getting started with AI adoption16
 
 04The path to durable AI adoption20
 
-05How the Protocol Institute adopts AI23
+05How the Protocol Institute adopts AI26
 
-06Success patterns and failure modes26
+06The new nature of work29
 
-07The new nature of work29
-
-08About & Resources31
+07About & Resources31
 
 02
 
@@ -241,19 +238,19 @@ Run the pre-pilot readiness check, conduct the half-day audit, and learn how to 
 
 04
 The path to durable AI adoption
-Trace how bottom-up discovery becomes top-down scale, with the handoff between the cultivated and governed tracks as the central job.
+Manage the velocity, assurance, and legibility trade-offs as bottom-up discovery becomes top-down scale. Four success patterns hold the tension, four failure modes collapse it, and six new business activities staff the work.
 
 05
 How the Protocol Institute adopts AI
 Dive into two AI adoption case studies from inside the Protocol Institute.
 
 06
-Success patterns and failure modes
-Learn the four emerging success patterns and the four failure modes they mitigate.
-
-07
 The new nature of work
 See why durable adoption is never finished, and how the deployment lead's work becomes keeping the cultivated and governed tracks in handoff as the terrain shifts.
+
+07
+About & Resources
+Learn about the Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.
 
 07
 
@@ -720,7 +717,110 @@ Scale
 
 Kits deployed across the organization so it can bind with compatible workflows. New hires inherit AI-enabled workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.
 
+21
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Operational leads will need to manage tensions between velocity, assurance, and legibility
+
+The AI Adoption Trilemma: Velocity (top), Assurance (lower-left), Legibility (lower-right).
+
+Velocity
+Velocity is how quickly the organization can discover, ship, and iterate on what AI makes possible. It is the throughput of the cultivated track, and operators measure it through time-to-pilot, cycle time on workflow changes, and the rate at which proven kits move into shared infrastructure.
+
+Assurance
+Assurance is the degree to which AI outputs are verified, bounded, and tied to a named accountability before they reach a consequential handoff. The governed track maintains it through a stack of controls, gates, and audit trails.
+
+Legibility
+Legibility is the degree to which the system remains understandable to its operators. They need to see not only what it outputs but why and from what context, which requires telemetry, lineage, and operator-readable state behind every action.
+
 22
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Success patterns hold the tension between AI adoption tradeoffs
+
+▦→▣
+Kit harvesting over central design
+Wait for variation before standardizing.
+
+The protocols worth formalizing are the ones domain experts have already proved through daily use. The organization's job is to identify, capture, and systematize the kits champions have already built — and to wait for variation to express itself before standardizing.
+
+Holds: Local Velocity without sacrificing downstream Assurance or Legibility
+
+▶↻
+Plan after play
+Plan from what play surfaces.
+
+AI invites experimentation at a tempo upfront planning cannot keep up with. Let play run at its native speed first — Shadow-level exploration, function-level kit-building — then plan continuously from what surfaced. Quarterly plans become rolling syntheses; biweekly reorientation rituals reconcile commitments against reality.
+
+Holds: Velocity in play without losing Legibility or Assurance in the plan
+
+◐◑
+Differential gear trains
+Buffer the mismatch instead of throttling.
+
+Engineers know this from car differentials — a mechanical assembly that transmits power between components rotating at different rates. The deployment-lead version is buffers, queues, async handoffs, and tempo-aware routing. Uber's Code Inbox is the canonical case.
+
+Holds: Upstream Velocity without breaking downstream Assurance or Legibility
+
+</>
+Constitutional software
+Compile constraints into the runtime.
+
+Encode constraints in code itself: sandboxed environments the agent cannot escape, separate dev/prod boundaries, planning-only modes, and revocation paths that compile authority into technical interlocks rather than relying on human reaction time.
+
+Holds: Agent Velocity without weakening runtime Assurance or Legibility
+
+23
+
+[SLIDE]
+
+Chapter 4 · The path to durable AI adoption
+
+## Failures collapse the tensions, losing the balance between operational needs
+
+⊘
+Premature optimization
+Standardize before practice earns it.
+
+Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: premature consolidation (collapsing kits into a single platform) and premature procurement (vendor stack before need is known).
+
+Collapses: Paper Assurance at the cost of Velocity and Legibility
+Mitigated via: ▦→▣ Kit harvesting over central design
+
+?↺
+Disorientation
+Production outpaces understanding.
+
+The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as psychological debt.
+
+Collapses: Velocity outruns Legibility; Assurance erodes
+Mitigated via: ▶↻ Plan after play
+
+≠
+Tempo misalignment
+Output stacks at the slowest neighbor.
+
+AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.
+
+Collapses: Upstream Velocity breaks downstream Assurance and Legibility
+Mitigated via: ◐◑ Differential gear trains
+
+◉○○
+Extended blast radius
+Permissions and interventions lag production.
+
+Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).
+
+Collapses: Velocity outruns Assurance; Legibility arrives too late
+Mitigated via: </> Constitutional software
+
+24
 
 [SLIDE]
 
@@ -832,113 +932,13 @@ The visual production pipeline meets the Level 3 criteria. Named owners (Langdon
 
 Chapter 6
 
-## Success patterns and failure modes
-
-27
-
-[SLIDE]
-
-Chapter 6 · Success patterns and failure modes
-
-## Four emerging success patterns
-
-▦→▣
-
-Kit harvesting over central design
-
-Wait for variation to express itself before standardizing.
-
-The protocols worth formalizing are the ones domain experts have already proved through daily use. The organization's job is to identify, capture, and systematize the kits champions have already built — and to wait for variation to express itself before standardizing.
-
-▶↻
-
-Plan after play
-
-Plan from what play surfaces, not from intention.
-
-AI invites experimentation at a tempo upfront planning cannot keep up with. Let play run at its native speed first — Shadow-level exploration, function-level kit-building — then plan continuously from what surfaced. Quarterly plans become rolling syntheses; biweekly reorientation rituals reconcile commitments against reality.
-
-◐◑
-
-Differential gear trains
-
-Buffer the tempo mismatch instead of throttling either side.
-
-Engineers know this from car differentials — a mechanical assembly that transmits power between components rotating at different rates. The deployment-lead version is buffers, queues, async handoffs, and tempo-aware routing. Uber's Code Inbox is the canonical case.
-
-</>
-
-Constitutional software
-
-Compile governance constraints into code that runs.
-
-Encode constraints in code itself: sandboxed environments the agent cannot escape, separate dev/prod boundaries, planning-only modes, and revocation paths that compile authority into technical interlocks rather than relying on human reaction time.
-
-28
-
-[SLIDE]
-
-Chapter 6 · Success patterns and failure modes
-
-## Four emerging failure modes
-
-⊘
-
-Premature optimization
-
-Standardizing before the kit phase has done its work.
-
-Centrally designing the official AI workflow before users have iterated through enough kit forms; the published standard is rejected, users keep their kits in the shadows. Variants: premature consolidation (collapsing kits into a single platform) and premature procurement (vendor stack before need is known).
-
-Mitigated via
-▦→▣Kit harvesting over central design
-
-?↺
-
-Disorientation
-
-Commitments outpace shared understanding; exposure accumulates invisibly.
-
-The organization's commitments accumulate faster than its ability to update shared understanding. The gap is structural: imbalance between commitment speed and reorientation speed. HBR (May 2026) documents the worker-level signal as psychological debt.
-
-Mitigated via
-▶↻Plan after play
-
-≠
-
-Tempo misalignment
-
-Output stacks up at the slowest neighbor.
-
-AI accelerates different pieces of a workflow at different paces. Output stacks up at the slowest process or partner. Uber's response: with 65–72% of code AI-generated and 11% of PRs opened by agents, the bottleneck shifted from coding to review — Code Inbox and U Review absorbed the new tempo.
-
-Mitigated via
-◐◑Differential gear trains
-
-◉○○
-
-Extended blast radius
-
-Permissions outpace judgment, faster than humans can intervene.
-
-Replit's July 2025 incident: during a code freeze, the agent ignored explicit instructions, deleted a production database with records of 1,206 executives and 1,196 companies, then misled the user about recoverability. External version: Air Canada (BC Civil Resolution Tribunal, 2024).
-
-Mitigated via
-</>Constitutional software
+## The new nature of work
 
 29
 
 [SLIDE]
 
-Chapter 7
-
-## The new nature of work
-
-30
-
-[SLIDE]
-
-Chapter 7 · The new nature of work
+Chapter 6 · The new nature of work
 
 ## The new nature of work
 

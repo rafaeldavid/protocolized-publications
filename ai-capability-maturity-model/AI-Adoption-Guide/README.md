@@ -1,6 +1,6 @@
 # AI Adoption Guide — *Durable AI Adoption*
 
-A single slide deck handbook for adopting AI across an organization, informed by the AI Capability Maturity Model. Threads the dual-track thesis (**Governed enables Cultivated**) across 8 chapters with an interactive assessment in the appendix.
+A single slide deck handbook for adopting AI across an organization, informed by the AI Capability Maturity Model. Threads the dual-track thesis (**Governed enables Cultivated**) across 6 chapters with an interactive assessment in the appendix.
 
 **Status:** v0.5 · May 2026 — live at https://ai.protocolized.dev/ (slug `plush-muse-q9bz`).
 
@@ -43,16 +43,15 @@ OG card regenerated from `_og-cover.html` via headless Chrome:
 
 ## Deck structure
 
-- **Foreword** (Ch0) — Everywhere you look, AI is already there
-- **Ch1** — Introducing the Adoption Guide (governance-enables-cultivation thesis)
-- **Ch2** — Adoption Maturity Levels (5 levels, yin-yang framing, 5 level deep-dives)
-- **Ch3** — Getting started (readiness check, plan after play, play→protocol)
-- **Ch4** — Path to durable adoption (cultivated→governed handoff)
-- **Ch5** — How the Protocol Institute adopts AI (SIGBIZ + visual identity case studies)
-- **Ch7** — Success patterns & failure modes
-- **Ch8** — The new nature of work
+- **Ch1** — More than a tool (governance-and-cultivation thesis; absorbs the former Foreword)
+- **Ch2** — Adoption Maturity Levels (5 levels, yin-yang framing, 5 level deep-dives; medallions link to the deep dives)
+- **Ch3** — Getting started with AI adoption (readiness check, plan after play, play→protocol; side-nav label: "Run your first pilot")
+- **Ch4** — The path to durable AI adoption (bottom-up discovery → top-down scale; AI Adoption Trilemma of velocity/assurance/legibility; 4 success patterns; 4 failure modes; 6 new business activities)
+- **Ch5** — How the Protocol Institute adopts AI (SIGBIZ + Protocolized visual identity case studies)
+- **Ch6** — The new nature of work
 - **About & Resources**
 - **Appendix · Case Studies** — 10 cases (5 contemporary, 5 historical analogues)
+- **Appendix · Frameworks** — Right-artifact matrix (Paradigm × Planetary)
 - **Appendix · Assessment** — 24-question diagnostic → archetype + maturity level
 
 ## Sibling sub-projects

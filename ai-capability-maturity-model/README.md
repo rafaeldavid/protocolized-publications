@@ -17,7 +17,7 @@
 
 | Output | Format | Audience | Status |
 |--------|--------|----------|--------|
-| [AI Adoption Guide](AI-Adoption-Guide/README.md) | Interactive slide deck — *Durable AI Adoption* — 8 chapters, 10-case study appendix, embedded assessment | Deployment managers, ops VPs, AI champions | **v0.5 live** — [ai.protocolized.dev](https://ai.protocolized.dev/) |
+| [AI Adoption Guide](AI-Adoption-Guide/README.md) | Interactive slide deck — *Durable AI Adoption* — 6 chapters, 10-case study appendix, frameworks appendix, embedded assessment | Deployment managers, ops VPs, AI champions | **v0.5 live** — [ai.protocolized.dev](https://ai.protocolized.dev/) |
 | [Blog post](Blog-Post/README.md) | ~1,500 words, Protocolized publication | Practitioners, managers | **v1.2 live** — [protocolized.dev/blog-the-missing-layer](https://protocolized.dev/blog-the-missing-layer/) |
 | [Litepaper](Litepaper/README.md) | 8–12 pages, downloadable | Deployment managers, executives | **v5 HTML live** — [protocolized.dev/litepaper-ai-protocols](https://protocolized.dev/litepaper-ai-protocols/). Drafts up to v7; irony/humor pass pending. |
 | [Interactive HTML artifact](Artifact/publish/index.html) | Public web artifact | All audiences | **v1.12 live** — [protocolized.dev/ai-maturity-model](https://protocolized.dev/ai-maturity-model/) |
@@ -108,7 +108,7 @@ Cards are collapsed-by-default with 2-level disclosure. Design lineage and proto
 
 **Live URL:** https://ai.protocolized.dev/ (here.now slug: `plush-muse-q9bz`, custom subdomain)
 
-Interactive slide deck — *Durable AI Adoption* — threading the dual-track thesis (**Governed enables Cultivated**) across 8 chapters with sidebar navigation, snap-scrolled viewport-scaled slides, a 10-case-study appendix, and an embedded 24-question assessment. Mobile-responsive (sidebar collapses to header bar ≤ 768px). LLM-friendly plain-text extract at `ai.protocolized.dev/llms.txt`.
+Interactive slide deck — *Durable AI Adoption* — threading the dual-track thesis (**Governed enables Cultivated**) across 6 chapters with sidebar navigation, snap-scrolled viewport-scaled slides, a 10-case-study appendix, a frameworks appendix, and an embedded 24-question assessment. Mobile-responsive (sidebar collapses to header bar ≤ 768px). LLM-friendly plain-text extract at `ai.protocolized.dev/llms.txt`.
 
 | Document | Purpose |
 |----------|---------|

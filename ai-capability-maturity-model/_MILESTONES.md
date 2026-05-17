@@ -3,9 +3,9 @@ Append-only record of completed work, key decisions, and current status. Newest 
 
 ---
 
-## Current Status (as of 2026-05-13)
+## Current Status (as of 2026-05-17)
 
-**Active work:** AI Adoption Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. v0.5 ships full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, 8 chapters, two-section appendix (10 case studies + interactive assessment), mobile hamburger nav, llms.txt extract, light-geometric chapter intros, level-image cover collage. Legacy `protocolized.dev/` redirects here. Sub-project directory renamed `Deployment-Guide/` → `AI-Adoption-Guide/`. Companion blog post drafted at `AI-Adoption-Guide/blog/we-are-in-1908-with-ai.md`.
+**Active work:** AI Adoption Guide slide deck — *Durable AI Adoption* — live at https://ai.protocolized.dev/. v0.5 ships full sidebar navigation, snap-scrolled viewport-scaled slides, dual-track yin-yang framing, **6 chapters** (consolidated from 8 — former Foreword absorbed into Ch1 "More than a tool"; former Ch6 "Patterns for Success" retired, with Trilemma + success patterns + failure modes absorbed into Ch4; Ch7 "The new nature of work" renumbered to Ch6), three-section appendix (10 case studies + frameworks matrix + interactive assessment), mobile hamburger nav, llms.txt extract, light-geometric chapter intros, level-image cover collage. Legacy `protocolized.dev/` redirects here. Sub-project directory renamed `Deployment-Guide/` → `AI-Adoption-Guide/`. Companion blog post drafted at `AI-Adoption-Guide/blog/we-are-in-1908-with-ai.md`.
 **Blocking items:** None.
 **Open backlog:** Irony/humor pass on litepaper per `_VOICE-FEEDBACK.md` (carried from 2026-03-24). Blog post first draft awaiting editorial pass.
 **Versioning:** Slide deck at v0.5; markdown draft at v0.6 in `AI-Adoption-Guide/drafts/`; companion blog post v0.1 draft.
@@ -15,6 +15,18 @@ Append-only record of completed work, key decisions, and current status. Newest 
 ---
 
 ## Milestone Log
+
+### 2026-05-17 | AI Adoption Guide structural consolidation: 8 chapters → 6
+
+- **Foreword absorbed into Ch1 "More than a tool".** What was Ch0 "Everywhere you look, AI is already there" became the first content slide of Ch1, with the title/subtitle swapped ("AI capabilities are more than another app subscription" as title; old title becomes subtitle). The AI evolution slide moved under Ch1 too. Ch1 body slide is now "Durable AI Adoption needs governance ***and*** cultivation" — bold+italic on "and" — with a new yin-yang visual replacing the prior two-card row.
+- **Trilemma + Success patterns + Failure modes moved from Ch6 (Patterns for Success) into Ch4 (The path to durable AI adoption).** New slide 22 "AI Adoption Trilemma" — Velocity / Assurance / Legibility triangle with three definition cards anchored in operating language (time-to-pilot / cycle time / kit-promotion rate for V; controls, gates, audit trails for A; telemetry, lineage, operator-readable state for L). Slide 23 retitled "Success patterns hold the tension between AI adoption tradeoffs"; slide 24 retitled "Failures collapse the tensions, losing the balance between operational needs". Every card on 23/24 gained a one-line V/A/L tension annotation (e.g., "Local Velocity without sacrificing downstream Assurance or Legibility"; "Paper Assurance at the cost of Velocity and Legibility"). Card layout restructured: icon and title share a row (2-col grid), tag/body/tension/mitigation span both columns.
+- **Ch6 "Patterns for Success" section title slide retired entirely.**
+- **Ch7 → Ch6.** "The new nature of work" renumbered: HTML id/class/href (ch-7 → ch-6), section/header pills, CSS variable (--tint-ch7 → --tint-ch6), CSS selectors. Stale --tint-ch6 and .ch-6 CSS for the retired Patterns chapter dropped.
+- **Side-nav.** Removed "Patterns for Success" entry; renamed "Getting Started" → "Run your first pilot"; "New Nature of Work" num 07 → 06.
+- **Contents page.** Removed Patterns entry; renamed New nature → Ch6 (page 29); About → 07 (page 31). Also fixed two pre-existing page-number drifts (Ch2 09→08, Ch5 23→26) so every entry matches the actual slide-page label. Added 2–3-sentence prose description under each chapter entry via new `.contents-desc` grid area (no em dashes).
+- **Slide 07 (The path through this guide).** Brackish-strategy chapter card for Patterns removed; New Nature card renumbered 07→06; About card renumbered 08→07. Ch4 card description rewritten to reflect the absorbed content: "Manage the velocity, assurance, and legibility trade-offs as bottom-up discovery becomes top-down scale. Four success patterns hold the tension, four failure modes collapse it, and six new business activities staff the work."
+- **Appendix · Frameworks.** New appendix slot for the Tool × Paradigm right-artifact matrix (previously in the foreword as slide 05 before its first move). Side-nav and contents updated to surface it as a third appendix section.
+- **Slide-page renumbering.** All 42 labels regenerated via intermediate sed marker; deck now sequential 02–43.
 
 ### 2026-05-13 | Sub-project renamed; companion blog post drafted
 

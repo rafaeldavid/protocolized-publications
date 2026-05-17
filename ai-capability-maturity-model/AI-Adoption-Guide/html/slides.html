@@ -233,12 +233,16 @@
       letter-spacing: -0.02em;
       margin-bottom: 0.4in;
     }
-    .contents-list { list-style: none; max-width: 8in; }
+    .contents-list { list-style: none; max-width: 8.5in; }
     .contents-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      padding: 8pt 0;
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      grid-template-areas:
+        "num name page"
+        ".   desc desc";
+      column-gap: 14px;
+      row-gap: 3pt;
+      padding: 9pt 0;
       border-bottom: 1px solid var(--border-soft);
       font-size: var(--fs-body);
       line-height: 1.4;
@@ -262,18 +266,31 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.10);
     }
     .contents-num {
+      grid-area: num;
       font-family: var(--font-mono);
       font-size: var(--fs-caption);
       color: var(--text-tertiary);
-      width: 28px;
-      flex-shrink: 0;
+      align-self: baseline;
     }
-    .contents-name { flex: 1; color: var(--text); }
+    .contents-name {
+      grid-area: name;
+      color: var(--text);
+      font-weight: 500;
+      align-self: baseline;
+    }
     .contents-page {
+      grid-area: page;
       font-family: var(--font-mono);
       font-size: var(--fs-caption);
       color: var(--text-secondary);
       letter-spacing: 0.04em;
+      align-self: baseline;
+    }
+    .contents-desc {
+      grid-area: desc;
+      font-size: var(--fs-body-sm);
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
 
     /* ─── Section title slide ────────────────────────────────── */
@@ -2569,7 +2586,7 @@
     <li><a href="#contents"><span class="side-nav-num">—</span>Contents</a></li>
     <li><a href="#ch-1"><span class="side-nav-num">01</span>More than a tool</a></li>
     <li><a href="#ch-2"><span class="side-nav-num">02</span>Maturity Levels</a></li>
-    <li><a href="#ch-3"><span class="side-nav-num">03</span>Getting Started</a></li>
+    <li><a href="#ch-3"><span class="side-nav-num">03</span>Run your first pilot</a></li>
     <li><a href="#ch-4"><span class="side-nav-num">04</span>Durable Adoption</a></li>
     <li><a href="#ch-5"><span class="side-nav-num">05</span>Adoption at the Institute</a></li>
     <li><a href="#ch-6"><span class="side-nav-num">06</span>New Nature of Work</a></li>
@@ -2636,13 +2653,13 @@
 <section class="slide slide-contents" id="contents">
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
-    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span></a></li>
-    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span></a></li>
-    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span></a></li>
-    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span></a></li>
-    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">26</span></a></li>
-    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">29</span></a></li>
-    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">31</span></a></li>
+    <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span><span class="contents-desc">AI is a paradigm shift, not a software upgrade. Durable adoption needs both a governed track (top-down policy and rollout) and a cultivated track (bottom-up exploration and practice).</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span><span class="contents-desc">Five levels from Shadow to Planetary, paired with cultivated counterparts from Play to Fluency. Use the ladder to locate your organization and see what good adoption looks like at each step.</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span><span class="contents-desc">Run a pre-pilot readiness check with your AI adoption leaders. Make room for play first, then plan from what surfaces. Each workflow earns its way into the governed track through four gated stages.</span></a></li>
+    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span><span class="contents-desc">Manage the velocity, assurance, and legibility trade-offs as bottom-up discovery becomes top-down scale. Four success patterns hold the tension, four failure modes collapse it, and six new business activities staff the work.</span></a></li>
+    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">26</span><span class="contents-desc">Two case studies from inside the Protocol Institute: the SIGBIZ AI Discovery Acceleration as a Level 1 to Level 2 transition, and the Protocolized visual identity pipeline at Level 3 Engine.</span></a></li>
+    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">29</span><span class="contents-desc">AI-mediated workflows are part of the workplace itself, closer to terrain than to thermostats. The deployment lead's job becomes maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
+    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">31</span><span class="contents-desc">About the Protocol Institute, the Protocols for Business Special Interest Group, the source materials behind this guide, and ways to engage.</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -2859,7 +2876,7 @@
         <img class="chapter-card-image" src="./images/strangeness-legibility-hardness.png" alt="">
         <span class="chapter-card-num">04</span>
         <span class="chapter-card-name">The path to durable AI adoption</span>
-        <span class="chapter-card-body">Trace how bottom-up discovery becomes top-down scale, with the handoff between the cultivated and governed tracks as the central job.</span>
+        <span class="chapter-card-body">Manage the velocity, assurance, and legibility trade-offs as bottom-up discovery becomes top-down scale. Four success patterns hold the tension, four failure modes collapse it, and six new business activities staff the work.</span>
       </a>
       <a class="chapter-card ch-5" href="#ch-5">
         <img class="chapter-card-image" src="./images/images-of-memory.png" alt="">
