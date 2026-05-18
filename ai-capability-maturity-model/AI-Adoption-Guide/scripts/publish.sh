@@ -31,6 +31,29 @@ echo "→ Regenerating LLM/agent artifacts from slides.html …"
 (cd "$SCRIPT_DIR" && node generate.mjs)
 
 echo ""
+echo "→ Rendering slide deck PDF via headless Chrome …"
+CHROME="${CHROME_BIN:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
+PDF_OUT="$HTML_DIR/durable-ai-adoption.pdf"
+if [[ -x "$CHROME" ]]; then
+  "$CHROME" \
+    --headless=new \
+    --disable-gpu \
+    --hide-scrollbars \
+    --no-pdf-header-footer \
+    --virtual-time-budget=8000 \
+    --print-to-pdf="$PDF_OUT" \
+    "file://$HTML_DIR/slides.html" 2>&1 | sed 's/^/    /' || true
+  if [[ -f "$PDF_OUT" ]]; then
+    SIZE_KB=$(du -k "$PDF_OUT" | cut -f1)
+    echo "  ✓ wrote durable-ai-adoption.pdf (${SIZE_KB} KB)"
+  else
+    echo "  ⚠ PDF was not written — skipping. Live deploy will use the previous PDF if present."
+  fi
+else
+  echo "  ⚠ Chrome not found at $CHROME — skipping PDF render. Set CHROME_BIN to override."
+fi
+
+echo ""
 echo "→ Staging html/ for publish (slides.html → index.html) …"
 STAGE_DIR="$(mktemp -d -t ai-adoption-publish-XXXXXX)"
 trap "rm -rf '$STAGE_DIR'" EXIT

@@ -2385,21 +2385,37 @@
     .panel-status.success { color: #2d7a45; }
     @media print { .schedule-panel, .side-nav-footer { display: none !important; } }
 
-    /* ─── Print rules ────────────────────────────────────────── */
+    /* ─── Print rules (also used by headless-Chrome PDF render) ─── */
+    @page {
+      size: 13.33in 7.5in;
+      margin: 0;
+    }
     @media print {
       html, body { background: white; }
-      body { margin: 0; padding: 0; display: block; overflow: visible; }
-      .deck { gap: 0; padding: 0; }
-      .side-nav { display: none; }
-      .slide-frame { width: auto; height: auto; display: block; overflow: visible; page-break-after: always; break-after: page; }
-      .slide {
-        margin: 0;
-        box-shadow: none;
-        transform: none;
+      body { margin: 0; padding: 0; display: block; overflow: visible; height: auto; }
+      .deck { gap: 0; padding: 0; display: block; width: 100%; height: auto; overflow: visible; }
+      .side-nav { display: none !important; }
+      .schedule-panel { display: none !important; }
+      .slide-frame {
+        width: 13.33in;
+        height: 7.5in;
+        display: block;
+        overflow: hidden;
         page-break-after: always;
         break-after: page;
       }
+      .slide {
+        width: 13.33in;
+        height: 7.5in;
+        margin: 0;
+        box-shadow: none;
+        transform: none !important;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
       .slide:last-child { page-break-after: avoid; break-after: auto; }
+      .slide.slide-assessment { width: 13.33in; height: 7.5in; }
     }
 
     /* ─── Screen layout: sidebar + snap-scrolled scaled slides ── */
@@ -2807,7 +2823,7 @@
   </ul>
   <div class="side-nav-footer">
     <button type="button" class="side-nav-cta" onclick="toggleSchedule()">Schedule a Call</button>
-    <div class="side-nav-foot">Protocol Institute · May 2026 · <a href="./llms.txt" target="_blank" rel="noopener" class="side-nav-foot-link">llms.txt</a></div>
+    <div class="side-nav-foot">Protocol Institute · May 2026 · <a href="./durable-ai-adoption.pdf" download class="side-nav-foot-link">Download slides (PDF)</a></div>
   </div>
 </nav>
 
