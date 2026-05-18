@@ -2386,11 +2386,14 @@
     @media print { .schedule-panel, .side-nav-footer { display: none !important; } }
 
     /* ─── Print rules (also used by headless-Chrome PDF render) ───
-       Page: A4 landscape (11.69in × 8.27in).
-       Slide canvas: 13.33in × 7.5in (16:9 widescreen).
-       Strategy: keep slide internals at native size, scale the whole slide
-       to A4 width (factor = 11.69/13.33 ≈ 0.877), center it vertically with
-       letterbox whitespace (~0.84in top + bottom). No content distortion. */
+       Page: A4 landscape (11.69in × 8.27in, aspect 1.414).
+       Slide native canvas: 11in × 8.5in (the size every slide was authored for).
+       Aspect 11/8.5 = 1.294 — slightly taller than A4 landscape.
+       Strategy: keep the slide at its native 11 × 8.5in dimensions so internal
+       layout matches the website 1:1 (no overflow/clipping anywhere), then
+       scale the whole slide by 0.973 to fit A4 *height* (8.27/8.5). Result:
+       slide fills the full vertical space, ≈0.50in of whitespace appears on
+       each side (the unavoidable gap between A4 and slide aspect ratios). */
     @page {
       size: A4 landscape;
       margin: 0;
@@ -2412,11 +2415,11 @@
         break-after: page;
       }
       .slide {
-        width: 13.33in;
-        height: 7.5in;
+        width: 11in;
+        height: 8.5in;
         margin: 0;
         box-shadow: none;
-        transform: scale(0.877) !important;
+        transform: scale(0.973) !important;
         transform-origin: center center;
         page-break-after: always;
         break-after: page;
@@ -2424,7 +2427,7 @@
         flex-shrink: 0;
       }
       .slide:last-child { page-break-after: avoid; break-after: auto; }
-      .slide.slide-assessment { width: 13.33in; height: 7.5in; }
+      .slide.slide-assessment { width: 11in; height: 8.5in; }
     }
 
     /* ─── Screen layout: sidebar + snap-scrolled scaled slides ── */
