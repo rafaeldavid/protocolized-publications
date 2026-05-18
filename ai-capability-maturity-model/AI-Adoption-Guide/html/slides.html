@@ -2385,9 +2385,14 @@
     .panel-status.success { color: #2d7a45; }
     @media print { .schedule-panel, .side-nav-footer { display: none !important; } }
 
-    /* ─── Print rules (also used by headless-Chrome PDF render) ─── */
+    /* ─── Print rules (also used by headless-Chrome PDF render) ───
+       Page: A4 landscape (11.69in × 8.27in).
+       Slide canvas: 13.33in × 7.5in (16:9 widescreen).
+       Strategy: keep slide internals at native size, scale the whole slide
+       to A4 width (factor = 11.69/13.33 ≈ 0.877), center it vertically with
+       letterbox whitespace (~0.84in top + bottom). No content distortion. */
     @page {
-      size: 13.33in 7.5in;
+      size: A4 landscape;
       margin: 0;
     }
     @media print {
@@ -2397,9 +2402,11 @@
       .side-nav { display: none !important; }
       .schedule-panel { display: none !important; }
       .slide-frame {
-        width: 13.33in;
-        height: 7.5in;
-        display: block;
+        width: 11.69in;
+        height: 8.27in;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         overflow: hidden;
         page-break-after: always;
         break-after: page;
@@ -2409,10 +2416,12 @@
         height: 7.5in;
         margin: 0;
         box-shadow: none;
-        transform: none !important;
+        transform: scale(0.877) !important;
+        transform-origin: center center;
         page-break-after: always;
         break-after: page;
         overflow: hidden;
+        flex-shrink: 0;
       }
       .slide:last-child { page-break-after: avoid; break-after: auto; }
       .slide.slide-assessment { width: 13.33in; height: 7.5in; }

@@ -35,6 +35,9 @@ echo "→ Rendering slide deck PDF via headless Chrome …"
 CHROME="${CHROME_BIN:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 PDF_OUT="$HTML_DIR/durable-ai-adoption.pdf"
 if [[ -x "$CHROME" ]]; then
+  # Page size A4 landscape (11.69in × 8.27in). The CSS @page in slides.html
+  # also declares A4 landscape so the two stay aligned; explicit flags ensure
+  # the result regardless of Chrome's @page-handling version differences.
   "$CHROME" \
     --headless=new \
     --disable-gpu \
@@ -42,6 +45,8 @@ if [[ -x "$CHROME" ]]; then
     --no-pdf-header-footer \
     --virtual-time-budget=8000 \
     --print-to-pdf="$PDF_OUT" \
+    --print-to-pdf-no-header \
+    --no-margins \
     "file://$HTML_DIR/slides.html" 2>&1 | sed 's/^/    /' || true
   if [[ -f "$PDF_OUT" ]]; then
     SIZE_KB=$(du -k "$PDF_OUT" | cut -f1)
