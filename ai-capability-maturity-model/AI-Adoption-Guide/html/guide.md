@@ -353,7 +353,7 @@ The work, then, is not to finish a platform deployment. It is to make deployment
 
 ### Case Studies
 
-*Ten organizations across five maturity levels. Five contemporary AI adoptions and five historical analogues showing the same patterns at earlier paradigm shifts.*
+*Thirteen cases across five maturity levels. Five contemporary AI adoptions, five historical operational analogues, and three foundational research papers, all showing the same patterns at earlier paradigm shifts.*
 
 #### Today's AI adoption stories
 - 01. **Samsung Electronics** — L1 · Shadow
@@ -368,6 +368,9 @@ The work, then, is not to finish a platform deployment. It is to make deployment
 - 08. **Git & GitHub pull requests** — L3 · Engine
 - 09. **Walmart's EDI mandate** — L4 · Infrastructure
 - 10. **McLean's container protocol** — L5 · Planetary
+- 11. **Rural users and the Model T** — L1 · Shadow
+- 12. **Factory electrification, 1880–1930** — L2 → L3
+- 13. **Harpers Ferry and the American System** — L3 → L4
 
 
 ### Finding the right artifact for a given technology
