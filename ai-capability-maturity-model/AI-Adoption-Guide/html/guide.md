@@ -673,6 +673,8 @@ Merritt Roe Smith's history of Harpers Ferry Armory (1798–1860s) documents a l
 Industry-scale uniformity required the full institutional substrate to mature, not just the technical capability. The same is operative for L4 Infrastructure today: stating a standard isn't the same as having the inspection regimes, training systems, and shared assumptions that make the standard actually hold. Organizations claiming AI standardization without that institutional substrate are repeating Whitney's marketing claim, not Harpers Ferry's actual practice.
 
 
+### Every node and every edge of how work moves is now AI-mediated
+
 ### Finding the right artifact for a given technology
 
 *The artifact that matches the framing. AI sits in the Paradigm × Planetary quadrant — the artifact that fits it is an Adoption Guide.*
