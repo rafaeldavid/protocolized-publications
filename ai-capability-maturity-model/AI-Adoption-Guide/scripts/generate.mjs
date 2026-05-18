@@ -148,6 +148,15 @@ function parseSlides() {
       subtitle = clean($sec.find('.cover-sub').text());
     } else if (id === 'contents') {
       title = clean($sec.find('.contents-title').text());
+    } else if (id === 'assessment') {
+      // Assessment slide has no static title (rendered by JS) — synthesize one
+      title = 'AI Adoption Assessment';
+      subtitle = '24-question diagnostic that places your organization on the maturity ladder and surfaces your dominant archetype.';
+    } else if ($sec.find('h4.case-slide-name').length) {
+      // Case-study slides title is in h4.case-slide-name, with a frame-line subtitle
+      title = clean($sec.find('h4.case-slide-name').text());
+      const fl = $sec.find('.case-slide-frame-line').text();
+      if (fl) subtitle = clean(fl);
     } else {
       title = clean($sec.find('h2.slide-h1').text());
     }
@@ -517,11 +526,13 @@ function extractBody($, $sec, id, classes) {
     const cells = [];
     $sec.find('.matrix-cell').each((_, c) => {
       const $c = $(c);
+      const example = clean($c.find('.matrix-example').text()).replace(/^e\.g\.,?\s*/, '');
+      const aiExample = clean($c.find('.matrix-ai-example').text()).replace(/^AI:\s*/, '');
       cells.push({
         kind: 'matrix-cell',
         artifact: clean($c.find('.matrix-artifact').text()),
-        example: clean($c.find('.matrix-example').text()),
-        aiExample: clean($c.find('.matrix-ai-example').text()),
+        example,
+        aiExample,
       });
     });
     return cells;
