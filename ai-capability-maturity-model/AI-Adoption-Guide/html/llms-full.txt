@@ -1,9 +1,9 @@
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-18. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
 # Durable AI Adoption — AI Capability Maturity Model
 
 > A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
 
-Version: v0.5 · May 2026 · Generated: 2026-05-18
+Version: v0.5 · May 2026 · Generated: 2026-05-19
 
 ═══════════════════════════════════════════════════════════════
   DECK CONTENT
@@ -481,7 +481,7 @@ The work, then, is not to finish a platform deployment. It is to make deployment
 
 ## Case Studies
 
-Thirteen cases across five maturity levels. Five contemporary AI adoptions, five historical operational analogues, and three foundational research papers, all showing the same patterns at earlier paradigm shifts.
+Fourteen cases across five maturity levels. Five contemporary AI adoptions, five historical operational analogues, and four foundational research papers, all showing the same patterns at earlier paradigm shifts.
 
   Today's AI adoption stories:
     01. Samsung Electronics — L1 · Shadow
@@ -497,8 +497,9 @@ Thirteen cases across five maturity levels. Five contemporary AI adoptions, five
     09. Walmart's EDI mandate — L4 · Infrastructure
     10. McLean's container protocol — L5 · Planetary
     11. Rural users and the Model T — L1 · Shadow
-    12. Factory electrification, 1880–1930 — L2 → L3
-    13. Harpers Ferry and the American System — L3 → L4
+    12. American steam adoption, 1820–1900 — L2 → L3
+    13. Factory electrification, 1880–1930 — L2 → L3
+    14. Harpers Ferry and the American System — L3 → L4
 
 
 ── Slide 34 · Appendix · Case Studies ──
@@ -507,7 +508,7 @@ Thirteen cases across five maturity levels. Five contemporary AI adoptions, five
 
 Level 1 (Shadow) exit pathway: containment and re-admission over two years.
 
-  Case study 01 of 13: Samsung Electronics
+  Case study 01 of 14: Samsung Electronics
   Level 1 (Shadow) exit pathway: containment and re-admission over two years.
 
   The problem: In April 2023, three Samsung engineers submitted proprietary source code to ChatGPT through personal accounts within a single month — to debug, optimize, and summarize. No policy existed, no monitoring was in place, and no record of which AI tools employees were using on what data. By the time exposure surfaced, the code had left the organization. The exposure pattern was structural, not malicious.
@@ -523,7 +524,7 @@ Level 1 (Shadow) exit pathway: containment and re-admission over two years.
 
 Level 2 (Sanctioned) failure mode: access governance without output governance.
 
-  Case study 02 of 13: Klarna
+  Case study 02 of 14: Klarna
   Level 2 (Sanctioned) failure mode: access governance without output governance.
 
   The problem: In early 2024 Klarna announced its AI customer-service assistant was doing the work of 700 full-time agents, with 90% daily AI adoption and two-thirds of customer-service chats automated. The narrative was category-defining productivity, backed by leading indicators: tool adoption, automation share, cost-per-resolution. Trailing indicators — satisfaction, repeat contacts, resolution durability — were not yet visible in the same dashboards.
@@ -539,7 +540,7 @@ Level 2 (Sanctioned) failure mode: access governance without output governance.
 
 Level 2 (Sanctioned) measurement failure: tracking adoption without governing outcomes.
 
-  Case study 03 of 13: Amazon & MeshClaw
+  Case study 03 of 14: Amazon & MeshClaw
   Level 2 (Sanctioned) measurement failure: tracking adoption without governing outcomes.
 
   The problem: In 2026, against a backdrop of $200B in AI-related capital expenditure, Amazon introduced internal targets requiring more than 80% of developers to use AI each week. It began tracking AI token consumption — units of data processed by models — on internal leaderboards. The mandate was clear: prove the AI investment is being absorbed by the workforce and embed the technology into day-to-day work. Adoption was sanctioned, mandated, and measured.
@@ -555,7 +556,7 @@ Level 2 (Sanctioned) measurement failure: tracking adoption without governing ou
 
 Level 2 (Sanctioned) accountability test: chatbots as legal subjects.
 
-  Case study 04 of 13: Air Canada chatbot
+  Case study 04 of 14: Air Canada chatbot
   Level 2 (Sanctioned) accountability test: chatbots as legal subjects.
 
   The problem: In November 2023, Jake Moffatt asked Air Canada's customer-service chatbot whether bereavement-fare discounts could be claimed retroactively. The chatbot told him yes, citing a policy that did not exist. Moffatt booked a full-price flight to attend his grandmother's funeral. When he submitted the retroactive claim, Air Canada refused. The dispute reached the British Columbia Civil Resolution Tribunal in February 2024.
@@ -571,7 +572,7 @@ Level 2 (Sanctioned) accountability test: chatbots as legal subjects.
 
 Level 3 (Engine) success pattern: protocols designed alongside capabilities.
 
-  Case study 05 of 13: Boom Supersonic
+  Case study 05 of 14: Boom Supersonic
   Level 3 (Engine) success pattern: protocols designed alongside capabilities.
 
   The problem: Boom was developing the XB-1 demonstrator under aviation-safety expectations that allow zero tolerance for unexamined design changes. Each iteration on the structural model required stress, fatigue, aerodynamic, and material-tolerance validation before fabrication clearance. Boom needed to accelerate the loop without weakening the verification stack — and to explore hundreds of structural variants in the time conventional methods explore tens.
@@ -587,7 +588,7 @@ Level 3 (Engine) success pattern: protocols designed alongside capabilities.
 
 Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.
 
-  Case study 06 of 13: Visicalc & Excel
+  Case study 06 of 14: Visicalc & Excel
   Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.
 
   The problem: By the late 1970s, business analysts performed structured calculations on paper, on calculators, or on bespoke mainframe programs maintained by IT departments with weeks-long lead times. The analyst who could think the model was rarely the one able to build it. Visicalc launched in 1979 as the first recalculating spreadsheet — written by Dan Bricklin and Bob Frankston for the Apple II — introducing a grid of cells with formulas referring to other cells.
@@ -603,7 +604,7 @@ Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mand
 
 Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.
 
-  Case study 07 of 13: Gates's Internet Tidal Wave memo
+  Case study 07 of 14: Gates's Internet Tidal Wave memo
   Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.
 
   The problem: By early 1995, Microsoft was the dominant force in personal computing, organized around Windows, Office, and a vertically integrated server stack. The Internet — open protocols, browsers, hypertext — was not part of its product roadmap. Inside Microsoft, however, developer interest had been building for over a year: small teams were experimenting with web servers, browser prototypes, and TCP/IP-native tools, mostly outside official product lines. Without executive sanction, the projects could not draw the resources to ship.
@@ -619,7 +620,7 @@ Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.
 
 Level 3 (Engine) protocol: a designed workflow that outgrew its host.
 
-  Case study 08 of 13: Git & GitHub pull requests
+  Case study 08 of 14: Git & GitHub pull requests
   Level 3 (Engine) protocol: a designed workflow that outgrew its host.
 
   The problem: In April 2005, BitKeeper — the proprietary version-control system the Linux kernel team had been using under a free-of-charge license — revoked the license after a reverse-engineering dispute. The kernel team needed a replacement that matched BitKeeper's distributed-workflow properties; nothing on the market did. Beyond Linux, the software industry ran on a patchwork of centralized version-control systems whose mental models did not match how distributed teams actually worked.
@@ -635,7 +636,7 @@ Level 3 (Engine) protocol: a designed workflow that outgrew its host.
 
 Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.
 
-  Case study 09 of 13: Walmart's EDI mandate
+  Case study 09 of 14: Walmart's EDI mandate
   Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.
 
   The problem: By the mid-1980s, retailers managed thousands of supplier relationships through paper purchase orders, faxed invoices, and phone-confirmed shipment notifications. Error rates at the supplier-retailer interface — wrong quantities, late shipments, duplicate invoices — were a significant fraction of margin. Each retailer had its own document formats; each supplier maintained custom paperwork per customer. Walmart, growing rapidly, found that coordination overhead capped its expansion rate.
@@ -651,7 +652,7 @@ Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry b
 
 Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.
 
-  Case study 10 of 13: McLean's container protocol
+  Case study 10 of 14: McLean's container protocol
   Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.
 
   The problem: Through the 1950s, freight moved between ship, rail, and truck through "break-bulk" handling — workers physically transferring barrels, crates, bales, and boxes at every transition point. Loading a ship took days; unloading at the destination port took days more. Theft was endemic, damage frequent, and the dwell time of a single shipment measured in weeks. The bottleneck was not transportation but the handoff between modes.
@@ -667,7 +668,7 @@ Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.
 
 Level 1 (Shadow): when users invent uses the manufacturer never imagined.
 
-  Case study 11 of 13: Rural users and the Model T
+  Case study 11 of 14: Rural users and the Model T
   Level 1 (Shadow): when users invent uses the manufacturer never imagined.
 
   The problem: When Ford launched the Model T in 1908, it was designed as urban transportation. Rural America had a different problem: small farms needed power for threshing, sawing, water-pumping, washing, and churning. Buying a dedicated stationary engine for each task was prohibitively expensive. The technology was widely available; the use case that mattered to half of Ford's customers wasn't visible to the manufacturer.
@@ -679,11 +680,27 @@ Level 1 (Shadow): when users invent uses the manufacturer never imagined.
 
 ── Slide 45 · Appendix · Case Studies ──
 
+## American steam adoption, 1820–1900
+
+Level 2 → Level 3: firms make the architectural commitment to a new paradigm for what it enables, not for what it makes cheaper.
+
+  Case study 12 of 14: American steam adoption, 1820–1900
+  Level 2 → Level 3: firms make the architectural commitment to a new paradigm for what it enables, not for what it makes cheaper.
+
+  The problem: American factories in the 19th century had a recurring choice between two prime movers. Water power had been the standard since the early industrial period — abundant, well understood, and, in most parts of the country, measurably cheaper per horsepower than steam. Cost simulations by Atack, Bateman, and Weiss show that water was the lower-cost option in New England, the Middle Atlantic, and the South for most of the century. Yet steam adoption climbed steadily anyway. By 1900, steam engines outnumbered water sources four to one. The cost ledger and the adoption pattern were pointing in opposite directions, and the gap held for decades.
+
+  The approach: Atack and his coauthors traced what firms actually chose, region by region, between the 1820s and the 1890s. The pull toward steam, they found, was not its operating cost — it was its locational freedom. A water-powered factory had to be where the water was: usually rural, often seasonal, always with limited room to scale. A steam-powered factory could sit anywhere, including next to railroads and urban labor pools. Pittsburgh and Cincinnati moved on steam earlier than Boston, even though Boston was a larger industrial center, because the eastern rivers were already worked while the inland economies needed power they could place where they wanted it. Augusta, Georgia, had over 13,000 horsepower of water available, and the census of the time described its transport facilities as "of the best" — but Augusta was still more than 100 rail miles from the major urban markets, and it never became a manufacturing center. Having the input wasn't enough; firms were choosing based on what the input let them do next.
+
+  The impact: American manufacturers paid a premium for steam for most of a century. They were paying for capabilities the cost-per-horsepower table didn't capture: where a factory could sit, how large it could grow, who it could hire, how it could ship. There's a recognizable echo here for organizations evaluating AI adoption now. When teams compare AI's cost to the cost of the work it might replace, the math often looks marginal or worse, and the natural conclusion is to wait. The historical pattern suggests a complementary question worth asking alongside the cost one: what becomes newly possible? Work that was previously out of economic reach, problems that couldn't be attempted at all, customers or markets that weren't addressable at the firm's prior scale. Adoption often makes sense when the answer to that question is concrete, even in cases where the cost comparison on its own doesn't make the case.
+
+
+── Slide 46 · Appendix · Case Studies ──
+
 ## Factory electrification, 1880–1930
 
 Level 2 → Level 3: the 30-year lag between substitution and architectural redesign.
 
-  Case study 12 of 13: Factory electrification, 1880–1930
+  Case study 13 of 14: Factory electrification, 1880–1930
   Level 2 → Level 3: the 30-year lag between substitution and architectural redesign.
 
   The problem: Through the 19th century, factories were powered by central steam engines driving overhead line shafts and belt drives to each machine. The architecture imposed constraints: machine placement followed shaft geometry, multi-story buildings minimized shaft runs, whole-plant on/off operation, 25–40% friction losses, blocked windows from overhead shafts. When electric motors became commercially available in the 1880s, the obvious move was to swap the prime mover.
@@ -693,13 +710,13 @@ Level 2 → Level 3: the 30-year lag between substitution and architectural rede
   The impact: US manufacturing TFP grew under 1% per year through the group-drive era (1899–1919) and ~5% per year in the unit-drive era (1919–1929). The productivity boom of the 1920s was the payoff of architectural redesign, not of electrification per se. Substituting the power source without redesigning the layout captured almost none of the available gains. Most current AI deployments are at the equivalent of group drive — the technology is installed, the workflow is unchanged, and the productivity hasn't materialized. The L2 → L3 transition is what closes the gap.
 
 
-── Slide 46 · Appendix · Case Studies ──
+── Slide 47 · Appendix · Case Studies ──
 
 ## Harpers Ferry and the American System
 
 Level 3 → Level 4: the institutional substrate behind "interchangeable parts."
 
-  Case study 13 of 13: Harpers Ferry and the American System
+  Case study 14 of 14: Harpers Ferry and the American System
   Level 3 → Level 4: the institutional substrate behind "interchangeable parts."
 
   The problem: Eli Whitney's 1798 federal contract for muskets promised interchangeable parts — pull any lock, any barrel, any stock from a pile and they fit. The marketing claim was repeated through the early 19th century. The actual practice was different: parts were fitted individually by skilled file-and-fitter armorers, and each musket was effectively bespoke. The technology label existed; the operating practice didn't.
@@ -709,12 +726,12 @@ Level 3 → Level 4: the institutional substrate behind "interchangeable parts."
   The impact: Industry-scale uniformity required the full institutional substrate to mature, not just the technical capability. The same is operative for L4 Infrastructure today: stating a standard isn't the same as having the inspection regimes, training systems, and shared assumptions that make the standard actually hold. Organizations claiming AI standardization without that institutional substrate are repeating Whitney's marketing claim, not Harpers Ferry's actual practice.
 
 
-── Slide 47 · Appendix · Frameworks ──
+── Slide 48 · Appendix · Frameworks ──
 
 ## Every node and every edge of how work moves is now AI-mediated
 
 
-── Slide 48 · Appendix · Frameworks ──
+── Slide 49 · Appendix · Frameworks ──
 
 ## Finding the right artifact for a given technology
 

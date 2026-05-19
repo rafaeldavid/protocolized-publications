@@ -1,9 +1,9 @@
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-18. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
 # Durable AI Adoption — AI Capability Maturity Model
 
 *A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.*
 
-Version: v0.5 · May 2026 · Generated: 2026-05-18
+Version: v0.5 · May 2026 · Generated: 2026-05-19
 
 Live interactive deck: <https://ai.protocolized.dev/>
 
@@ -393,7 +393,7 @@ The work, then, is not to finish a platform deployment. It is to make deployment
 
 ### Case Studies
 
-*Thirteen cases across five maturity levels. Five contemporary AI adoptions, five historical operational analogues, and three foundational research papers, all showing the same patterns at earlier paradigm shifts.*
+*Fourteen cases across five maturity levels. Five contemporary AI adoptions, five historical operational analogues, and four foundational research papers, all showing the same patterns at earlier paradigm shifts.*
 
 #### Today's AI adoption stories
 - 01. **Samsung Electronics** — L1 · Shadow
@@ -409,15 +409,16 @@ The work, then, is not to finish a platform deployment. It is to make deployment
 - 09. **Walmart's EDI mandate** — L4 · Infrastructure
 - 10. **McLean's container protocol** — L5 · Planetary
 - 11. **Rural users and the Model T** — L1 · Shadow
-- 12. **Factory electrification, 1880–1930** — L2 → L3
-- 13. **Harpers Ferry and the American System** — L3 → L4
+- 12. **American steam adoption, 1820–1900** — L2 → L3
+- 13. **Factory electrification, 1880–1930** — L2 → L3
+- 14. **Harpers Ferry and the American System** — L3 → L4
 
 
 ### Samsung Electronics
 
 *Level 1 (Shadow) exit pathway: containment and re-admission over two years.*
 
-**Case study 01 of 13: Samsung Electronics**
+**Case study 01 of 14: Samsung Electronics**
 *Level 1 (Shadow) exit pathway: containment and re-admission over two years.*
 
 **The problem**
@@ -437,7 +438,7 @@ Samsung's exit from Shadow is the most documented in the public record. The L1 �
 
 *Level 2 (Sanctioned) failure mode: access governance without output governance.*
 
-**Case study 02 of 13: Klarna**
+**Case study 02 of 14: Klarna**
 *Level 2 (Sanctioned) failure mode: access governance without output governance.*
 
 **The problem**
@@ -457,7 +458,7 @@ In May 2025 CEO Sebastian Siemiatkowski reversed course publicly, describing AI 
 
 *Level 2 (Sanctioned) measurement failure: tracking adoption without governing outcomes.*
 
-**Case study 03 of 13: Amazon & MeshClaw**
+**Case study 03 of 14: Amazon & MeshClaw**
 *Level 2 (Sanctioned) measurement failure: tracking adoption without governing outcomes.*
 
 **The problem**
@@ -477,7 +478,7 @@ Adoption rates can be mandated and tokens can be counted; neither is the same as
 
 *Level 2 (Sanctioned) accountability test: chatbots as legal subjects.*
 
-**Case study 04 of 13: Air Canada chatbot**
+**Case study 04 of 14: Air Canada chatbot**
 *Level 2 (Sanctioned) accountability test: chatbots as legal subjects.*
 
 **The problem**
@@ -497,7 +498,7 @@ The ruling established the first widely-cited precedent that organizations canno
 
 *Level 3 (Engine) success pattern: protocols designed alongside capabilities.*
 
-**Case study 05 of 13: Boom Supersonic**
+**Case study 05 of 14: Boom Supersonic**
 *Level 3 (Engine) success pattern: protocols designed alongside capabilities.*
 
 **The problem**
@@ -517,7 +518,7 @@ Boom's XB-1 reached supersonic flight in January 2025 with zero safety incidents
 
 *Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.*
 
-**Case study 06 of 13: Visicalc & Excel**
+**Case study 06 of 14: Visicalc & Excel**
 *Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mandate.*
 
 **The problem**
@@ -537,7 +538,7 @@ By 2026 over a billion people operate through spreadsheet logic that nobody desi
 
 *Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.*
 
-**Case study 07 of 13: Gates's Internet Tidal Wave memo**
+**Case study 07 of 14: Gates's Internet Tidal Wave memo**
 *Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.*
 
 **The problem**
@@ -557,7 +558,7 @@ Within two years Internet Explorer 1.0 shipped with Windows 95, Outlook and Exch
 
 *Level 3 (Engine) protocol: a designed workflow that outgrew its host.*
 
-**Case study 08 of 13: Git & GitHub pull requests**
+**Case study 08 of 14: Git & GitHub pull requests**
 *Level 3 (Engine) protocol: a designed workflow that outgrew its host.*
 
 **The problem**
@@ -577,7 +578,7 @@ By 2026 the PR workflow is the assumed professional standard for roughly 100 mil
 
 *Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.*
 
-**Case study 09 of 13: Walmart's EDI mandate**
+**Case study 09 of 14: Walmart's EDI mandate**
 *Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry baseline.*
 
 **The problem**
@@ -597,7 +598,7 @@ The protocol cascaded across retail within a decade. Suppliers required to use E
 
 *Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.*
 
-**Case study 10 of 13: McLean's container protocol**
+**Case study 10 of 14: McLean's container protocol**
 *Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.*
 
 **The problem**
@@ -617,7 +618,7 @@ By 2026 approximately 90% of non-bulk world trade moves via containers. The prot
 
 *Level 1 (Shadow): when users invent uses the manufacturer never imagined.*
 
-**Case study 11 of 13: Rural users and the Model T**
+**Case study 11 of 14: Rural users and the Model T**
 *Level 1 (Shadow): when users invent uses the manufacturer never imagined.*
 
 **The problem**
@@ -633,11 +634,31 @@ Rural users improvised. Owners jacked Model Ts onto blocks and ran belts off the
 The kit-phase pattern Kline & Pinch document is structural: user adaptation precedes manufacturer recognition by years. Value is generated by users in ways the supplier doesn't anticipate; the supplier's eventual job is to harvest and standardize what users invented. The same pattern is operating today around AI — practitioners are using AI for purposes their employers haven't sanctioned. The organizational job is to surface those uses (Kit Harvesting), not suppress them.
 
 
+### American steam adoption, 1820–1900
+
+*Level 2 → Level 3: firms make the architectural commitment to a new paradigm for what it enables, not for what it makes cheaper.*
+
+**Case study 12 of 14: American steam adoption, 1820–1900**
+*Level 2 → Level 3: firms make the architectural commitment to a new paradigm for what it enables, not for what it makes cheaper.*
+
+**The problem**
+
+American factories in the 19th century had a recurring choice between two prime movers. Water power had been the standard since the early industrial period — abundant, well understood, and, in most parts of the country, measurably cheaper per horsepower than steam. Cost simulations by Atack, Bateman, and Weiss show that water was the lower-cost option in New England, the Middle Atlantic, and the South for most of the century. Yet steam adoption climbed steadily anyway. By 1900, steam engines outnumbered water sources four to one. The cost ledger and the adoption pattern were pointing in opposite directions, and the gap held for decades.
+
+**The approach**
+
+Atack and his coauthors traced what firms actually chose, region by region, between the 1820s and the 1890s. The pull toward steam, they found, was not its operating cost — it was its locational freedom. A water-powered factory had to be where the water was: usually rural, often seasonal, always with limited room to scale. A steam-powered factory could sit anywhere, including next to railroads and urban labor pools. Pittsburgh and Cincinnati moved on steam earlier than Boston, even though Boston was a larger industrial center, because the eastern rivers were already worked while the inland economies needed power they could place where they wanted it. Augusta, Georgia, had over 13,000 horsepower of water available, and the census of the time described its transport facilities as "of the best" — but Augusta was still more than 100 rail miles from the major urban markets, and it never became a manufacturing center. Having the input wasn't enough; firms were choosing based on what the input let them do next.
+
+**The impact**
+
+American manufacturers paid a premium for steam for most of a century. They were paying for capabilities the cost-per-horsepower table didn't capture: where a factory could sit, how large it could grow, who it could hire, how it could ship. There's a recognizable echo here for organizations evaluating AI adoption now. When teams compare AI's cost to the cost of the work it might replace, the math often looks marginal or worse, and the natural conclusion is to wait. The historical pattern suggests a complementary question worth asking alongside the cost one: what becomes newly possible? Work that was previously out of economic reach, problems that couldn't be attempted at all, customers or markets that weren't addressable at the firm's prior scale. Adoption often makes sense when the answer to that question is concrete, even in cases where the cost comparison on its own doesn't make the case.
+
+
 ### Factory electrification, 1880–1930
 
 *Level 2 → Level 3: the 30-year lag between substitution and architectural redesign.*
 
-**Case study 12 of 13: Factory electrification, 1880–1930**
+**Case study 13 of 14: Factory electrification, 1880–1930**
 *Level 2 → Level 3: the 30-year lag between substitution and architectural redesign.*
 
 **The problem**
@@ -657,7 +678,7 @@ US manufacturing TFP grew under 1% per year through the group-drive era (1899–
 
 *Level 3 → Level 4: the institutional substrate behind "interchangeable parts."*
 
-**Case study 13 of 13: Harpers Ferry and the American System**
+**Case study 14 of 14: Harpers Ferry and the American System**
 *Level 3 → Level 4: the institutional substrate behind "interchangeable parts."*
 
 **The problem**

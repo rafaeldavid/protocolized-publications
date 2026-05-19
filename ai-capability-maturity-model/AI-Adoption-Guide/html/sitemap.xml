@@ -1,184 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-18. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ai.protocolized.dev/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#cover</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#contents</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-1</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#foreword</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-2</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#level-1</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#level-2</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#level-3</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#level-4</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#level-5</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-3</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-4</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-5</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#ch-6</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#about</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#appendix</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-samsung</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-klarna</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-amazon</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-air-canada</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-boom</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-visicalc</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-gates-memo</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-github-pr</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-walmart-edi</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-container</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-kline-pinch</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai.protocolized.dev/#case-atack-steam</loc>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-devine-electrification</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#case-harpers-ferry</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#frameworks-medium</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#frameworks-matrix</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/#assessment</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/llms.txt</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/llms-full.txt</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ai.protocolized.dev/guide.md</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

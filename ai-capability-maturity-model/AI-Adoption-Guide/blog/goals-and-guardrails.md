@@ -1,6 +1,6 @@
 # Goals and Guardrails
 
-*Agentic engineering is converging on two primitives. The historical precedent is sharper than the tooling discourse suggests.*
+*Coding is converging on two primitives.*
 
 On 30 April 2026 OpenAI shipped Codex CLI v0.128.0 with a `/goal` command: a completion condition specified upfront — *all tests passing*, *the vulnerability patched* — after which the agent iterates plan / act / test / review across many turns until the goal is met or the token budget is exhausted. Two weeks later Anthropic shipped the same primitive in Claude Code 2.1.139. OpenClaw and Hermes followed within the month. Within a single release cycle, the frontier coalesced on it.
 
