@@ -647,7 +647,7 @@ American factories in the 19th century had a recurring choice between two prime 
 
 **The approach**
 
-Atack and his coauthors traced what firms actually chose, region by region, between the 1820s and the 1890s. The pull toward steam, they found, was not its operating cost — it was its locational freedom. A water-powered factory had to be where the water was: usually rural, often seasonal, always with limited room to scale. A steam-powered factory could sit anywhere, including next to railroads and urban labor pools. Pittsburgh and Cincinnati moved on steam earlier than Boston, even though Boston was a larger industrial center, because the eastern rivers were already worked while the inland economies needed power they could place where they wanted it. Augusta, Georgia, had over 13,000 horsepower of water available, and the census of the time described its transport facilities as "of the best" — but Augusta was still more than 100 rail miles from the major urban markets, and it never became a manufacturing center. Having the input wasn't enough; firms were choosing based on what the input let them do next.
+Atack and his coauthors traced what firms actually chose, region by region, between the 1820s and the 1890s. The pull toward steam wasn't operating cost — it was locational freedom. A water-powered factory had to sit by the water; a steam-powered one could sit anywhere, including next to railroads and urban labor pools. Pittsburgh and Cincinnati adopted steam earlier than Boston because the eastern rivers were already worked. Augusta, Georgia, had ample water power but was over 100 rail miles from major urban markets, and never became a manufacturing center. Having the input wasn't enough.
 
 **The impact**
 
