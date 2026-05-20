@@ -14,26 +14,26 @@
       }
     })();
   </script>
-  <title>Durable AI Adoption — Slides</title>
+  <title>Terraforming the Org — Slides</title>
   <meta name="description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="The Protocol Institute">
-  <meta property="og:title" content="Durable AI Adoption">
+  <meta property="og:title" content="Terraforming the Org">
   <meta property="og:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
   <meta property="og:url" content="https://protocolized.dev/aiadoptionguide/">
   <meta property="og:image" content="https://protocolized.dev/aiadoptionguide/images/protocols-for-the-long-now.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
+  <meta property="og:image:alt" content="Theorizing Protocolization — cover image for Terraforming the Org">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Durable AI Adoption">
+  <meta name="twitter:title" content="Terraforming the Org">
   <meta name="twitter:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
   <meta name="twitter:image" content="https://protocolized.dev/aiadoptionguide/images/protocols-for-the-long-now.png">
-  <meta name="twitter:image:alt" content="Theorizing Protocolization — cover image for Durable AI Adoption">
+  <meta name="twitter:image:alt" content="Theorizing Protocolization — cover image for Terraforming the Org">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
@@ -1644,6 +1644,54 @@
       text-transform: uppercase;
     }
     .yy-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+
+    /* ─── Terraforming history slide (three-col narrative) ──── */
+    .terraform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      height: 100%;
+    }
+    .terraform-col {
+      padding: 0 22pt;
+      border-right: 1px solid var(--border-soft);
+    }
+    .terraform-col:first-child { padding-left: 0; }
+    .terraform-col:last-child { border-right: none; padding-right: 0; }
+    .terraform-era {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 6pt;
+    }
+    .terraform-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 5pt;
+      color: var(--text);
+    }
+    .terraform-headline {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 8pt;
+      color: var(--text-secondary);
+      padding-bottom: 6pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .terraform-col p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.55;
+      margin-bottom: 6pt;
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -1670,10 +1718,44 @@
   </div>
   <div class="cover-text">
     <div class="cover-eyebrow">The Protocol Institute · Protocols for Business Practice</div>
-    <h1 class="cover-title">Durable AI Adoption</h1>
-    <p class="cover-sub">A practical guide to learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
+    <h1 class="cover-title">Terraforming the Org</h1>
+    <p class="cover-sub">AI is not a software upgrade. It is remaking the environment of work — the third time industry has been rebuilt from scratch. A guide to navigating the transition.</p>
     <div class="cover-meta">v0.5 · May 2026</div>
   </div>
+</section>
+
+<!-- ─── 01b — Three industrial terraformings ────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Preface · Three industrial terraformings</span>
+  </header>
+  <h2 class="slide-h1">Before AI, industry was remade from scratch — three times</h2>
+  <p class="slide-subtitle">Each time, the first adopters bolted the new technology onto the old architecture. The real gains only came after a complete redesign of the environment around the new capability.</p>
+  <main class="slide-body">
+    <div class="terraform-grid">
+      <div class="terraform-col">
+        <div class="terraform-era">I · 1830–1870</div>
+        <h3 class="terraform-label">Water → Steam</h3>
+        <p class="terraform-headline">Geographic liberation of the factory</p>
+        <p>Mills ran on water wheels, which meant factories had to sit on fast-moving rivers. The steam engine severed that tether. Factories could move inland, to labor markets and raw materials rather than river banks.</p>
+        <p>This wasn't just an operational change — it terraformed cities. Industrial centers no longer needed to be riverside. New inland factory towns emerged; entire urban geographies reorganized around rail and coal, not water. The city itself was a side effect of the technology transition.</p>
+      </div>
+      <div class="terraform-col">
+        <div class="terraform-era">II · 1890–1920</div>
+        <h3 class="terraform-label">Steam → Electricity</h3>
+        <p class="terraform-headline">The floor redesign that unlocked 30 years of gains</p>
+        <p>The first wave simply swapped the steam engine for an electric motor — same central line shaft, same belts and pulleys radiating out to every machine. Output barely improved. The form of power delivery was new; the factory floor was not.</p>
+        <p>The transformation came with <em>unit drive</em>: one motor per machine. That required scrapping the factory floor and redesigning it around the new capability. Only then did manufacturing output per man-hour jump from 1.3%/yr to 3.1%/yr — a gain that defined the entire 20th-century economy.</p>
+      </div>
+      <div class="terraform-col">
+        <div class="terraform-era">III · 1960–1990</div>
+        <h3 class="terraform-label">Container shipping</h3>
+        <p class="terraform-headline">Tokenizing international trade into the global factory</p>
+        <p>Container shipping standardized the unit of international trade — a fixed, stackable, interoperable box. This tokenization of cargo made global supply chains predictable enough to coordinate across continents at scale.</p>
+        <p>The factory stopped being a building and became a global entity: design here, components there, final assembly elsewhere. Ports, cities, and logistics networks were rebuilt around this distributed architecture. The container didn't just move goods — it remade the geography of production.</p>
+      </div>
+    </div>
+  </main>
 </section>
 
 <!-- ─── 02 — Contents ───────────────────────────────────────── -->
