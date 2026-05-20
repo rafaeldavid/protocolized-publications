@@ -1863,24 +1863,26 @@
       position: relative;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to right,
-        var(--tint-foreword) 0%,
-        rgba(168, 136, 191, 0.10) 45%,
-        rgba(26, 26, 46, 0.16) 75%,
-        rgba(26, 26, 46, 0.30) 100%);
+      background:
+        linear-gradient(to right,
+          rgba(240, 232, 212, 0.45) 0%,
+          rgba(243, 238, 247, 0.55) 50%,
+          rgba(168, 136, 191, 0.12) 100%);
+      border: 1px solid var(--border-soft);
       border-radius: 10px;
-      padding: 26pt 24pt;
+      padding: 22pt 24pt;
       display: grid;
-      grid-template-columns: 1fr 40pt 1.1fr;
+      grid-template-columns: 0.85fr 56pt 1.25fr;
       grid-template-rows: auto 1fr;
-      row-gap: 10pt;
+      row-gap: 12pt;
+      column-gap: 4pt;
     }
     .ctx-labels {
       grid-column: 1 / -1;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 0 4pt;
+      padding: 0 2pt;
     }
     .ctx-label {
       font-family: var(--font-mono);
@@ -1892,6 +1894,7 @@
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.1em;
+      color: var(--text);
     }
     .ctx-label em {
       font-family: var(--font-sans);
@@ -1909,16 +1912,16 @@
       grid-row: 2;
       display: flex;
       flex-direction: column;
-      gap: 18pt;
+      gap: 16pt;
       justify-content: center;
     }
     .intake-box {
-      background: var(--surface);
+      background: #fff;
       border: 1px solid var(--border-soft);
       border-left: 3px solid var(--accent);
       border-radius: 6px;
       padding: 11pt 14pt;
-      box-shadow: 0 2px 6px rgba(26, 26, 46, 0.06);
+      box-shadow: 0 2px 8px rgba(26, 26, 46, 0.05);
     }
     .intake-name {
       display: block;
@@ -1933,7 +1936,7 @@
     .intake-gloss {
       display: block;
       font-size: var(--fs-body-sm);
-      line-height: var(--lh-body);
+      line-height: 1.45;
       color: var(--text-secondary);
     }
 
@@ -1942,34 +1945,51 @@
       grid-row: 2;
       position: relative;
     }
-    .handoff-arrow {
+    /* Single converging funnel: triangle whose left edge spans the right
+       edges of both intake boxes and whose apex points at the governed loop. */
+    .handoff-funnel {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-mono);
-      font-size: var(--fs-heading-1);
-      color: rgba(168, 136, 191, 0.95);
-      font-weight: 700;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
     }
-    .handoff-arrow.h-top { top: 28%; }
-    .handoff-arrow.h-bot { top: 72%; }
+    .handoff-funnel polygon {
+      fill: var(--accent-light);
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-linejoin: round;
+    }
 
     .governed-loop {
       grid-column: 3;
       grid-row: 2;
       position: relative;
-      background: var(--text);
-      color: white;
+      background: #fff;
+      border: 1px solid var(--accent);
       border-radius: 10px;
       padding: 14pt;
-      box-shadow: 0 4px 14px rgba(26, 26, 46, 0.32);
+      box-shadow: 0 4px 14px rgba(125, 90, 150, 0.10);
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 12pt 26pt;
+      gap: 14pt 30pt;
     }
-    /* Loop nodes match the deck's .role-card pattern (light bg + accent border-left)
-       so they read as deck cards rather than bespoke dark-panel tiles. */
+    .loop-panel-title {
+      position: absolute;
+      top: -10pt;
+      left: 14pt;
+      background: #fff;
+      padding: 0 8pt;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    /* Loop nodes match the deck's role-card pattern (surface bg + accent
+       border-left) so they read as deck cards. */
     .loop-node {
       background: var(--surface);
       border-left: 3px solid var(--accent);
@@ -1991,21 +2011,66 @@
     .node-gloss {
       display: block;
       font-size: var(--fs-body-sm);
-      line-height: var(--lh-body);
+      line-height: 1.45;
       color: var(--text-secondary);
     }
-    .loop-arrow {
-      position: absolute;
-      font-family: var(--font-mono);
-      font-size: var(--fs-heading-1);
-      line-height: 1;
-      color: var(--accent);
-      font-weight: 700;
+    /* Bottom-row cards (Evals, Platform Operations) anchor text to the
+       bottom so the centered medallion has clean breathing room above. */
+    .governed-loop .loop-node:nth-child(4),
+    .governed-loop .loop-node:nth-child(5) {
+      justify-content: flex-end;
     }
-    .loop-arrow.a-top    { top: 36%; left: 50%; transform: translate(-50%, -50%); }
-    .loop-arrow.a-right  { top: 50%; right: 6pt; transform: translate(50%, -50%) rotate(90deg); }
-    .loop-arrow.a-bottom { bottom: 30%; left: 50%; transform: translate(-50%, 50%) rotate(180deg); }
-    .loop-arrow.a-left   { top: 50%; left: 6pt; transform: translate(-50%, -50%) rotate(-90deg); }
+    /* Right-column cards mirror the accent treatment so the medallion
+       reads as the gravitational center: borders point outward, text
+       reads inward. */
+    .governed-loop .loop-node:nth-child(3),
+    .governed-loop .loop-node:nth-child(5) {
+      text-align: right;
+      border-left: none;
+      border-right: 3px solid var(--accent);
+      border-radius: 6px 0 0 6px;
+    }
+    .loop-medallion {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 92pt;
+      height: 92pt;
+      border-radius: 50%;
+      background: var(--text);
+      color: #fff;
+      box-shadow:
+        0 0 0 4pt #fff,
+        0 0 0 5.5pt var(--accent),
+        0 6px 16px rgba(26, 26, 46, 0.30);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4pt;
+      z-index: 3;
+    }
+    .loop-medallion .medallion-eyebrow {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4pt;
+    }
+    .loop-medallion .medallion-headline {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10.5pt;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
     .loop-output {
       position: absolute;
       bottom: -22pt;
@@ -4081,7 +4146,7 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 4 · The path to durable AI adoption</span>
   </header>
-  <h2 class="slide-h1">Staffing AI adoption means standing up a continuous operating loop and promotion pipeline</h2>
+  <h2 class="slide-h1">Staffing AI adoption means standing up a continuous token production pipeline</h2>
   <main class="slide-body">
     <div class="biz-flow">
 
@@ -4108,11 +4173,13 @@
       </div>
 
       <div class="handoff">
-        <span class="handoff-arrow h-top">→</span>
-        <span class="handoff-arrow h-bot">→</span>
+        <svg class="handoff-funnel" viewBox="0 0 56 100" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="0,24 0,76 56,50"/>
+        </svg>
       </div>
 
       <div class="governed-loop">
+        <span class="loop-panel-title">Governed production loop</span>
         <div class="loop-node">
           <span class="node-name">Context Stabilization</span>
           <span class="node-gloss">Curate the context AI systems depend on and keep it stable across models, tools, and agents.</span>
@@ -4130,10 +4197,10 @@
           <span class="node-gloss">Run the shared AI infrastructure that domain teams build on.</span>
         </div>
 
-        <span class="loop-arrow a-top">→</span>
-        <span class="loop-arrow a-right">→</span>
-        <span class="loop-arrow a-bottom">→</span>
-        <span class="loop-arrow a-left">→</span>
+        <div class="loop-medallion" aria-label="Continuous Tokenized Outputs">
+          <span class="medallion-eyebrow">Output</span>
+          <span class="medallion-headline">Continuous<br>tokenized<br>outputs</span>
+        </div>
       </div>
 
     </div>
