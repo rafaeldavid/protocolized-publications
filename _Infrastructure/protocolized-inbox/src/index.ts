@@ -46,6 +46,7 @@ interface EditRow {
 const ALLOWED_ORIGINS = [
   "https://protocolized.dev",
   "https://www.protocolized.dev",
+  "https://ai.protocolized.dev",
   // here.now staging mounts (so testing on slug URLs works too):
   "https://gleaming-sketch-5q8b.here.now",
   "https://humble-gorge-n5j4.here.now",
@@ -53,6 +54,7 @@ const ALLOWED_ORIGINS = [
   "https://eager-poplar-8bw6.here.now",
   "https://arctic-ribbon-7nvb.here.now",
   "https://witty-garnet-6k4f.here.now",
+  "https://plush-muse-q9bz.here.now",
   // local dev:
   "http://localhost:8000",
   "http://localhost:3000",
