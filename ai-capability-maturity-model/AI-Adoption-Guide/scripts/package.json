@@ -1,0 +1,14 @@
+{
+  "name": "ai-adoption-guide-scripts",
+  "version": "1.0.0",
+  "description": "Build scripts for the AI Adoption Guide — generates sitemap.xml, llms.txt, llms-full.txt, guide.md from slides.html",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.mjs",
+    "publish": "bash publish.sh"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

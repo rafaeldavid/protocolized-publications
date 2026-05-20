@@ -1,0 +1,33 @@
+# Goals and Guardrails
+
+*Coding is converging on two primitives.*
+
+On 30 April 2026 OpenAI shipped Codex CLI v0.128.0 with a `/goal` command: a completion condition specified upfront — *all tests passing*, *the vulnerability patched* — after which the agent iterates plan / act / test / review across many turns until the goal is met or the token budget is exhausted. Two weeks later Anthropic shipped the same primitive in Claude Code 2.1.139. OpenClaw and Hermes followed within the month. Within a single release cycle, the frontier coalesced on it.
+
+Goals are one half of the convergence. Guardrails are the other, and they are stacking in layers. Codex's recently-published production security architecture is the most explicit version: container-based **sandboxes** that bound what the agent technically *can* do, **approval workflows** that decide *when it must stop and ask* before crossing those boundaries, network policies and agent-native telemetry around the whole stack. Anthropic's *Constitutional AI* line of work — the direct lineage of the phrase **constitutional software** — operates a layer deeper, training refusal classes into the model itself so that behavioral limits hold regardless of how a goal is specified. Claude Code's permission system runs the layer in between, at action time: every new class of filesystem or shell operation is gated until the user grants it explicitly. Three layers, three vendors, one shape.
+
+Agentic engineering is converging on **goals + guardrails**: a completion condition plus a stacked set of constitutional, action-level, and spatial constraints inside which the agent can iterate freely.
+
+Once a firm executes faster than its board can supervise, governance has to be embedded into the same kinds of technical constraints — interlocks, circuit breakers, rate limits, fail-safe defaults — that run at machine speed. This is **constitutional software** at the enterprise scale: the firm's commitments instantiated as executable limits within the system itself, not as policies waiting for human enforcement. The manager's job migrates from supervising people to designing and maintaining the protocols that encode the organization's theory of responsibility.
+
+The unit of human work shifts from *doing the task* to ***specifying the goal and bounding the envelope***. The agent does the doing. The system enforces what the agent cannot do regardless of what the goal asks for. The human reviews the result and the protocol drift.
+
+This is not the first time work has restructured around the goal-plus-envelope split. The clearest parallel is **fly-by-wire envelope protection in commercial aviation**, mature by the early 1990s with the Airbus A320. The captain's job changed irreversibly. Where the prior generation of pilots manipulated control surfaces continuously, the A320 pilot specifies *intent* — a waypoint, an altitude, a descent rate — and the flight envelope protection system refuses any input that would enter an unrecoverable state regardless of the captain's command. Stall protection cannot be overridden in normal law. Bank-angle limits cannot be overridden. The system encodes what the airframe is constitutionally incapable of doing, and the pilot operates inside that envelope.
+
+The pilot's *unit* of contribution moved up the stack from actuator-level control to goal-level navigation and exception handling. This is the same migration that the emergence of *agentic engineering* represents. The pattern is one-way: once goal-specification and constitutional constraints can be made executable in a system, the layer above them stops being supervised and starts being directed. Codex's sandbox is the bank-angle limit. Anthropic's Constitutional AI is the stall-protection law. Codex's `/goal` is the waypoint. The manager's job is to set the destination and design the envelope.
+
+---
+
+## Sources & further reading
+
+- **OpenAI, Codex CLI v0.128.0 release (30 April 2026)** — `/goal` introduced as an experimental slash command for long-horizon autonomous coding. Coverage: [noqta.tn · long-horizon autonomous coding](https://noqta.tn/en/news/openai-codex-cli-goal-autonomous-agentic-coding-2026); [ralphable.com · the built-in Ralph Loop](https://ralphable.com/blog/codex-goal-command-ralph-loop-openai-built-in-autonomous-coding-agent-2026); primary changelog: [developers.openai.com/codex/changelog](https://developers.openai.com/codex/changelog).
+- **Anthropic, Claude Code 2.1.139 release notes (12 May 2026)** — `/goal` adopted two weeks later. Coverage: [explainx.ai · `/goal` command and long-running agents](https://explainx.ai/blog/claude-code-goal-command-long-running-agents-2026); broader convergence (OpenClaw, Hermes also adopting): [explainx.ai · goal mode for AI agents](https://explainx.ai/blog/goal-mode-ai-agents-complete-guide-2026).
+- **OpenAI, Codex production security architecture (April 2026)** — multi-layered: container sandboxing, approval workflows, network policies, agent-native telemetry. The spatial-guardrail layer. [Coverage at AI Herald](https://artificialintelligenceherald.com/news/openai-codex-security-architecture-sandboxing-telemetry-2026); primary docs: [developers.openai.com/codex/concepts/sandboxing](https://developers.openai.com/codex/concepts/sandboxing).
+- **Anthropic, *Constitutional AI: Harmlessness from AI Feedback*** (Bai et al., December 2022) — the behavioral-guardrail layer, and the direct lineage of "constitutional software." [arxiv.org/abs/2212.08073](https://arxiv.org/abs/2212.08073).
+- **Anthropic, Claude Code permission system** — action-time gating of filesystem and shell operations. [code.claude.com/docs](https://code.claude.com/docs/en/overview).
+- **NPC Memo, *Infrastructure of Firm Control*** — [npcmemo.substack.com](https://npcmemo.substack.com/p/infrastructure-of-firm-control). The constitutional-software argument: governance embedded as machine-speed technical constraint, not as supervised policy.
+- **NPC Memo, *Most Management Today Isn't Leadership*** — [npcmemo.substack.com](https://npcmemo.substack.com/p/most-management-today-isnt-leadership). Management as continuous protocol governance under persistent tensions.
+- **NPC Memo, *Liquid Services and Runtime Procurement*** — [npcmemo.substack.com](https://npcmemo.substack.com/p/liquid-services-and-runtime-procurement). The "Agent Capability Exchange" framing: governed runtime layer for agent service selection.
+- **Airbus A320 fly-by-wire envelope protection** — the canonical engineering precedent. Background: Wood & Sarter (1995), *Pilot Interaction with Cockpit Automation*; Bertin Croussette (2017), *Flight Envelope Protection in Airbus Aircraft*.
+
+— *Protocols for Business · The Protocol Institute · May 2026*

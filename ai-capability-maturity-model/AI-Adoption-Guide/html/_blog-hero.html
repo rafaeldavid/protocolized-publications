@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blog hero — We are in 1908 with AI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 600px; overflow: hidden; background: #1a1a2e; }
+  .hero {
+    position: relative;
+    width: 1600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr 1.1fr 1.0fr 0.95fr 1.15fr;
+    grid-template-rows: 1.0fr 1.05fr;
+    gap: 5px;
+    background: #1a1a2e;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.08);
+  }
+  /* Asymmetric polygon clips — same family as the deck cover */
+  .h1  { clip-path: polygon(0 0, 100% 4%, 96% 100%, 0 96%); }
+  .h2  { clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 95%); }
+  .h3  { clip-path: polygon(5% 4%, 95% 0, 100% 96%, 0 100%); }
+  .h4  { clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 95%); }
+  .h5  { clip-path: polygon(4% 0, 100% 5%, 96% 100%, 0 95%); }
+  .h6  { clip-path: polygon(0 5%, 96% 0, 100% 95%, 4% 100%); }
+  .h7  { clip-path: polygon(4% 0, 100% 0, 95% 95%, 0 100%); }
+  .h8  { clip-path: polygon(0 4%, 95% 0, 100% 96%, 5% 100%); }
+  .h9  { clip-path: polygon(5% 0, 100% 4%, 95% 100%, 0 96%); }
+  .h10 { clip-path: polygon(0 0, 96% 5%, 100% 100%, 4% 95%); }
+  .h11 { clip-path: polygon(4% 4%, 100% 0, 96% 100%, 0 96%); }
+  .h12 { clip-path: polygon(0 0, 95% 0, 100% 96%, 5% 100%); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="h1"  src="./images/inventing-new-nature.png" alt="">
+  <img class="h2"  src="./images/theorizing-protocolization.png" alt="">
+  <img class="h3"  src="./images/mechanical-currents.jpeg" alt="">
+  <img class="h4"  src="./images/primordial-soup.png" alt="">
+  <img class="h5"  src="./images/faithful-channel.png" alt="">
+  <img class="h6"  src="./images/drift-stacking.jpeg" alt="">
+  <img class="h7"  src="./images/fabric-and-brain.png" alt="">
+  <img class="h8"  src="./images/how-to-protocol-watch.png" alt="">
+  <img class="h9"  src="./images/what-is-formal-protocol-theory.png" alt="">
+  <img class="h10" src="./images/from-destination-ai-to-intelligence-media.png" alt="">
+  <img class="h11" src="./images/theorizing-protocolization-ii.png" alt="">
+  <img class="h12" src="./images/strangeness-legibility-hardness.png" alt="">
+</div>
+</body>
+</html>

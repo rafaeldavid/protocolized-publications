@@ -1,0 +1,7 @@
+# Durable AI Adoption — robots.txt
+# Sitemap: https://ai.protocolized.dev/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ai.protocolized.dev/sitemap.xml

@@ -1,0 +1,55 @@
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
+# Durable AI Adoption — AI Capability Maturity Model
+
+> A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
+
+**Version:** v0.5 · May 2026  
+**Last updated:** 2026-05-19  
+**Source repo:** https://github.com/rafaeldavid/protocolized-publications
+
+## Companion resources
+
+- [Live interactive deck](https://ai.protocolized.dev/) — slide-by-slide with sidebar nav and embedded assessment
+- [Full plain-text content](https://ai.protocolized.dev/llms-full.txt) — every slide as text, single file
+- [Markdown single-pager](https://ai.protocolized.dev/guide.md) — same content in markdown for ingestion
+- [Sitemap](https://ai.protocolized.dev/sitemap.xml) — anchor-level discovery
+
+## Chapters
+
+- [Chapter 1](https://ai.protocolized.dev/#ch-1) — More than a tool
+- [Chapter 2](https://ai.protocolized.dev/#ch-2) — Adoption Maturity Levels
+- [Chapter 3](https://ai.protocolized.dev/#ch-3) — Getting started with AI adoption
+- [Chapter 4](https://ai.protocolized.dev/#ch-4) — The path to durable AI adoption
+- [Chapter 5](https://ai.protocolized.dev/#ch-5) — How the Protocol Institute adopts AI
+- [Chapter 6](https://ai.protocolized.dev/#ch-6) — The new nature of work
+
+## Maturity levels (5)
+
+- **L1 Shadow** — AI is in use. The organization doesn't know how, by whom, or with what data.
+- **L2 Sanctioned** — The organization has granted AI access. It hasn't designed what to do with it.
+- **L3 Engine** — AI workflows are designed, not improvised. The business model depends on them.
+- **L2–3 Sanctioned → Engine** — You have the foundations of Level 3. Consistency and measurement are missing.
+- **L3–4 Engine → Infrastructure** — Your organization is at the leading edge. The next challenge is sector-level, not organizational.
+
+## Archetypes (10) from the assessment
+
+- **The Vanguard** — *"Someone has to go first. We'd rather learn hard than wait safe."*
+- **The Traveller** — *"We didn't add AI to our business. AI is why the business exists."*
+- **The Architect** — *"We're not chasing the latest model. We're building the platform our teams will run on for years."*
+- **The Integrator** — *"We're not first. We're not lost. We adopt where it pays and redesign when it matters."*
+- **The Tinkerer** — *"We don't know what will work until we try it. So we try a lot of things."*
+- **The Ratifier** — *"We don't surf the first wave. We ship the one that lasts."*
+- **The Warden** — *"Our industry doesn't move until the regulator does. That's the job."*
+- **The Broker** — *"We know what we need. Someone else is better at holding the tools."*
+- **The Folkway** — *"AI showed up through our teams before leadership noticed. We're still figuring out what that means."*
+- **The Guild** — *"Our best people figured it out themselves. The rest of the org doesn't know yet."*
+
+## Appendix
+
+- [Case studies](https://ai.protocolized.dev/#appendix) — 10 cases (5 contemporary, 5 historical analogues)
+- [Frameworks](https://ai.protocolized.dev/#frameworks-matrix) — the right-artifact matrix
+- [Assessment](https://ai.protocolized.dev/#assessment) — 24-question diagnostic
+
+---
+
+*Protocol Institute · Protocols for Business Practice*

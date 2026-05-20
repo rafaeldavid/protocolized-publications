@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OG cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --text: #1a1a2e;
+    --text-secondary: #6b6b7b;
+    --accent: #a888bf;
+    --accent-light: #f3eef7;
+    --accent-dark: #7d5a96;
+    --tint-foreword: #f0e8d4;
+    --font-mono: 'Roboto Mono', monospace;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; background: var(--tint-foreword); font-family: var(--font-sans); color: var(--text); overflow: hidden; }
+  .card { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+  .collage {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 380px;
+    display: grid;
+    grid-template-columns: 1.4fr 1.2fr 1.3fr 1.0fr 1.4fr 1.1fr;
+    grid-template-rows: 1.2fr 1.0fr 1.3fr 1.0fr 1.1fr;
+    gap: 5px;
+    background: var(--text);
+  }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05); }
+  .c1  { grid-area: 1 / 1 / 3 / 3; clip-path: polygon(4% 0, 100% 3%, 96% 100%, 0 95%); }
+  .c2  { grid-area: 1 / 3 / 2 / 5; clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 100%); }
+  .c3  { grid-area: 2 / 3 / 3 / 5; clip-path: polygon(5% 0, 95% 4%, 100% 100%, 0 96%); }
+  .c4  { grid-area: 3 / 1 / 5 / 2; clip-path: polygon(0 0, 100% 5%, 95% 100%, 0 96%); }
+  .c5  { grid-area: 1 / 5 / 2 / 6; clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 95%); }
+  .c6  { grid-area: 1 / 6 / 2 / 7; clip-path: polygon(0 4%, 95% 0, 100% 96%, 5% 100%); }
+  .c7  { grid-area: 2 / 5 / 3 / 7; clip-path: polygon(0 5%, 100% 0, 96% 100%, 4% 100%); }
+  .c8  { grid-area: 3 / 2 / 5 / 4; clip-path: polygon(3% 0, 100% 0, 96% 100%, 0 95%); }
+  .c9  { grid-area: 4 / 4 / 6 / 5; clip-path: polygon(0 5%, 95% 0, 100% 96%, 5% 100%); }
+  .c10 { grid-area: 3 / 6 / 4 / 7; clip-path: polygon(5% 0, 100% 5%, 95% 100%, 0 95%); }
+  .c11 { grid-area: 3 / 4 / 4 / 6; clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 95%); }
+  .c12 { grid-area: 4 / 5 / 6 / 6; clip-path: polygon(0 4%, 100% 0, 95% 100%, 5% 96%); }
+  .c13 { grid-area: 4 / 6 / 6 / 7; clip-path: polygon(4% 0, 100% 5%, 96% 100%, 0 95%); }
+  .c14 { grid-area: 5 / 1 / 6 / 4; clip-path: polygon(0 0, 96% 4%, 100% 100%, 5% 95%); }
+  .card-text {
+    position: absolute;
+    top: 380px;
+    left: 0; right: 0; bottom: 0;
+    padding: 30px 56px 36px;
+    background: linear-gradient(to top, var(--tint-foreword) 0%, var(--tint-foreword) 80%, rgba(240,232,212,0) 100%);
+    z-index: 10;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .title {
+    font-family: var(--font-mono);
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
+  .sub {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text);
+    max-width: 900px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="collage">
+    <img class="c1"  src="./images/theorizing-protocolization.png" alt="">
+    <img class="c2"  src="./images/from-destination-ai-to-intelligence-media.png" alt="">
+    <img class="c3"  src="./images/how-to-protocol-watch.png" alt="">
+    <img class="c4"  src="./images/have-your-factory-call-my-factory.png" alt="">
+    <img class="c5"  src="./images/theorizing-protocolization-ii.png" alt="">
+    <img class="c6"  src="./images/inventing-new-nature.png" alt="">
+    <img class="c7"  src="./images/fabric-and-brain.png" alt="">
+    <img class="c8"  src="./images/faithful-channel.png" alt="">
+    <img class="c9"  src="./images/finding-fault-lines-within-the-firm.png" alt="">
+    <img class="c10" src="./images/primordial-soup.png" alt="">
+    <img class="c11" src="./images/theorizing-protocolization.png" alt="">
+    <img class="c12" src="./images/how-to-protocol-watch.png" alt="">
+    <img class="c13" src="./images/faithful-channel.png" alt="">
+    <img class="c14" src="./images/fabric-and-brain.png" alt="">
+  </div>
+  <div class="card-text">
+    <div class="eyebrow">The Protocol Institute · Protocols for Business Practice</div>
+    <h1 class="title">Durable AI Adoption</h1>
+    <p class="sub">A practical guide to adopting AI across your organization: case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
+  </div>
+</div>
+</body>
+</html>
