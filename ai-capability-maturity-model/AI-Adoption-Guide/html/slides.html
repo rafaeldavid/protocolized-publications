@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Durable AI Adoption — Slides</title>
+  <title>Terraforming the Org — Slides</title>
   <meta name="description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="The Protocol Institute">
-  <meta property="og:title" content="Durable AI Adoption">
+  <meta property="og:title" content="Terraforming the Org">
   <meta property="og:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
   <meta property="og:url" content="https://ai.protocolized.dev/">
   <meta property="og:image" content="https://ai.protocolized.dev/images/og-cover.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Durable AI Adoption — cover collage divided by a diagonal slash, Cultivated above and Governed below">
+  <meta property="og:image:alt" content="Terraforming the Org — cover collage divided by a diagonal slash, Cultivated above and Governed below">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Durable AI Adoption">
+  <meta name="twitter:title" content="Terraforming the Org">
   <meta name="twitter:description" content="A practical guide to adopting AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.">
   <meta name="twitter:image" content="https://ai.protocolized.dev/images/og-cover.webp">
-  <meta name="twitter:image:alt" content="Durable AI Adoption — cover collage divided by a diagonal slash, Cultivated above and Governed below">
+  <meta name="twitter:image:alt" content="Terraforming the Org — cover collage divided by a diagonal slash, Cultivated above and Governed below">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
@@ -2947,21 +2947,69 @@
       fill: var(--text-tertiary);
       text-anchor: middle;
     }
+
+    /* ─── Terraforming history slide (three-col narrative) ──── */
+    .terraform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      height: 100%;
+    }
+    .terraform-col {
+      padding: 0 22pt;
+      border-right: 1px solid var(--border-soft);
+    }
+    .terraform-col:first-child { padding-left: 0; }
+    .terraform-col:last-child { border-right: none; padding-right: 0; }
+    .terraform-era {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 6pt;
+    }
+    .terraform-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 5pt;
+      color: var(--text);
+    }
+    .terraform-headline {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 8pt;
+      color: var(--text-secondary);
+      padding-bottom: 6pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .terraform-col p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.55;
+      margin-bottom: 6pt;
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
 
 <nav class="side-nav" aria-label="Slide navigation">
   <div class="side-nav-header">
-    <a class="side-nav-title" href="#cover" aria-label="Back to cover">Durable AI Adoption</a>
+    <a class="side-nav-title" href="#cover" aria-label="Back to cover">Terraforming the Org</a>
     <button class="side-nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
       <span class="side-nav-toggle-bars" aria-hidden="true">☰</span>
     </button>
   </div>
   <ul class="side-nav-main">
     <li><a href="#ch-1"><span class="side-nav-num">01</span>More than a tool</a></li>
-    <li><a href="#ch-2"><span class="side-nav-num">02</span>Maturity Levels</a></li>
-    <li><a href="#ch-3"><span class="side-nav-num">03</span>Run your first pilot</a></li>
+    <li><a href="#ch-3"><span class="side-nav-num">02</span>Taylorism to Tokenism</a></li>
+    <li><a href="#ch-2"><span class="side-nav-num">03</span>Maturity Levels</a></li>
     <li><a href="#ch-4"><span class="side-nav-num">04</span>Long-Term Adoption</a></li>
     <li><a href="#ch-5"><span class="side-nav-num">05</span>Adoption at the Institute</a></li>
     <li><a href="#ch-6"><span class="side-nav-num">06</span>New Nature of Work</a></li>
@@ -3018,8 +3066,8 @@
   </div>
   <div class="cover-text">
     <div class="cover-eyebrow"><a href="https://protocol-institute.org/" target="_blank" rel="noopener">The Protocol Institute</a> · Protocols for Business Practice</div>
-    <h1 class="cover-title">Durable AI Adoption</h1>
-    <p class="cover-sub">A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.</p>
+    <h1 class="cover-title">Terraforming the Org</h1>
+    <p class="cover-sub">AI is not a software upgrade. It is remaking the environment of work. A guide to navigating the transition.</p>
     <div class="cover-meta">v0.5 · May 2026</div>
   </div>
 </section>
@@ -3029,14 +3077,48 @@
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
     <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span><span class="contents-desc">Why AI is a paradigm shift, not a software upgrade, and why adoption needs two mirror tracks.</span></a></li>
-    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span><span class="contents-desc">Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.</span></a></li>
-    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span><span class="contents-desc">Readiness check, plan after play, and the four-stage path workflows take into governance.</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">02</span><span class="contents-name">Taylorism to Tokenism</span><span class="contents-page">08</span><span class="contents-desc">Plan after play, the four-stage path to governance, and the new management question: which problems deserve more tokens?</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">03</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">16</span><span class="contents-desc">Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.</span></a></li>
     <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span><span class="contents-desc">Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.</span></a></li>
     <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">27</span><span class="contents-desc">Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.</span></a></li>
     <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span><span class="contents-desc">Maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
     <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
   </ol>
   <span class="slide-page">02</span>
+</section>
+
+<!-- ─── 02b — Three industrial terraformings ────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Preface · Three industrial terraformings</span>
+  </header>
+  <h2 class="slide-h1">Three times, a new technology remade the environment of work</h2>
+  <p class="slide-subtitle">Each time, the first adopters bolted the new technology onto the old architecture. The real gains only came after a complete redesign of the environment around the new capability.</p>
+  <main class="slide-body">
+    <div class="terraform-grid">
+      <div class="terraform-col">
+        <div class="terraform-era">I · 1830–1870</div>
+        <h3 class="terraform-label">Water → Steam</h3>
+        <p class="terraform-headline">Geographic liberation of the factory</p>
+        <p>Mills ran on water wheels, which meant factories had to sit on fast-moving rivers. The steam engine severed that tether. Factories could move inland, to labor markets and raw materials rather than river banks.</p>
+        <p>This wasn't just an operational change — it terraformed cities. Industrial centers no longer needed to be riverside. New inland factory towns emerged; entire urban geographies reorganized around rail and coal, not water. The city itself was a side effect of the technology transition.</p>
+      </div>
+      <div class="terraform-col">
+        <div class="terraform-era">II · 1890–1920</div>
+        <h3 class="terraform-label">Steam → Electricity</h3>
+        <p class="terraform-headline">The floor redesign that unlocked 30 years of gains</p>
+        <p>The first wave simply swapped the steam engine for an electric motor — same central line shaft, same belts and pulleys radiating out to every machine. Output barely improved. The form of power delivery was new; the factory floor was not.</p>
+        <p>The transformation came with <em>unit drive</em>: one motor per machine. That required scrapping the factory floor and redesigning it around the new capability. Only then did manufacturing output per man-hour jump from 1.3%/yr to 3.1%/yr — a gain that defined the entire 20th-century economy.</p>
+      </div>
+      <div class="terraform-col">
+        <div class="terraform-era">III · 1960–1990</div>
+        <h3 class="terraform-label">Container shipping</h3>
+        <p class="terraform-headline">Tokenizing international trade into the global factory</p>
+        <p>Container shipping standardized the unit of international trade — a fixed, stackable, interoperable box. This tokenization of cargo made global supply chains predictable enough to coordinate across continents at scale.</p>
+        <p>The factory stopped being a building and became a global entity: design here, components there, final assembly elsewhere. Ports, cities, and logistics networks were rebuilt around this distributed architecture. The container didn't just move goods — it remade the geography of production.</p>
+      </div>
+    </div>
+  </main>
 </section>
 
 <!-- ─── 03 — Ch1 section title ──────────────────────────────── -->
@@ -3226,7 +3308,7 @@
     <span class="slide-header-pill">Chapter 1 · More than a tool</span>
   </header>
   <h2 class="slide-h1">The path through this guide</h2>
-  <p class="slide-subtitle">How the chapters develop the model, from the framing argument through the maturity ladder, the pilot work, the cases, and the patterns.</p>
+  <p class="slide-subtitle">How the chapters develop the model, from the framing argument through the management shift, the maturity ladder, the cases, and the patterns.</p>
   <main class="slide-body">
     <div class="chapter-map">
       <a class="chapter-card ch-1" href="#ch-1">
@@ -3235,17 +3317,17 @@
         <span class="chapter-card-name">More than a tool</span>
         <span class="chapter-card-body">Why AI is a paradigm shift, not a software upgrade — and why durable adoption needs both governed and cultivated tracks.</span>
       </a>
-      <a class="chapter-card ch-2" href="#ch-2">
-        <img loading="lazy" decoding="async" class="chapter-card-image" src="./images/a-very-short-introduction-to-memory.webp" alt="">
-        <span class="chapter-card-num">02</span>
-        <span class="chapter-card-name">Adoption Maturity Levels</span>
-        <span class="chapter-card-body">Locate your organization on the five maturity levels, from invisible personal use to civilization-scale infrastructure.</span>
-      </a>
       <a class="chapter-card ch-3" href="#ch-3">
         <img loading="lazy" decoding="async" class="chapter-card-image" src="./images/drift-stacking.webp" alt="">
+        <span class="chapter-card-num">02</span>
+        <span class="chapter-card-name">Taylorism to Tokenism</span>
+        <span class="chapter-card-body">Plan after play, the four-stage path from discovery to governance, and the new management question: which problems deserve more tokens?</span>
+      </a>
+      <a class="chapter-card ch-2" href="#ch-2">
+        <img loading="lazy" decoding="async" class="chapter-card-image" src="./images/a-very-short-introduction-to-memory.webp" alt="">
         <span class="chapter-card-num">03</span>
-        <span class="chapter-card-name">Getting started with AI adoption</span>
-        <span class="chapter-card-body">Run the pre-pilot readiness check, conduct the half-day audit, and learn how to evaluate candidate use cases.</span>
+        <span class="chapter-card-name">Adoption Maturity Levels</span>
+        <span class="chapter-card-body">Locate your organization on the five maturity levels, from invisible personal use to civilization-scale infrastructure.</span>
       </a>
       <a class="chapter-card ch-4" href="#ch-4">
         <img loading="lazy" decoding="async" class="chapter-card-image" src="./images/strangeness-legibility-hardness.webp" alt="">
@@ -3283,10 +3365,207 @@
   <span class="slide-page">07</span>
 </section>
 
-<!-- ─── 10 — Ch2 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-2" id="ch-2">
+<!-- ─── 10b — Ch2 (new) section title ─────────────────────────── -->
+<section class="slide slide-section ch-3" id="ch-3">
   <div class="slide-section-text">
     <span class="slide-section-pill">Chapter 2</span>
+    <h1 class="slide-section-title">Taylorism to Tokenism</h1>
+  </div>
+  <div class="slide-section-image-diagonal">
+    <img loading="lazy" decoding="async" src="./images/drift-stacking.webp" alt="">
+  </div>
+  <span class="slide-page">16</span>
+</section>
+
+<!-- ─── 18 — Ch3 readiness check ────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Taylorism to Tokenism</span>
+  </header>
+  <h2 class="slide-h1">Pre-adoption checklist</h2>
+  <main class="slide-body">
+    <p class="lead-p">Before committing to an AI adoption program, run a readiness check with your organization's leadership. Ask each question and assess whether the answer meets the criteria. This is not about which use case to start with — it is about whether the conditions for adoption exist at all.</p>
+    <div class="checklist-grid">
+      <div class="checklist-card">
+        <span class="checklist-num">01</span>
+        <div>
+          <div class="checklist-question">Has the organization completed a security and legal review of the most likely AI tools and data?</div>
+          <div class="checklist-pass">Pass if: Data boundaries, connector permissions, legal alignment, and auditability are documented.</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">02</span>
+        <div>
+          <div class="checklist-question">Does an executive sponsor exist with budget authority and a mandate to act?</div>
+          <div class="checklist-pass">Pass if: Named individual with approved budget and visible organizational support.</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">03</span>
+        <div>
+          <div class="checklist-question">Have teams been identified with motivated leads willing to explore and encode new workflows?</div>
+          <div class="checklist-pass">Pass if: Champions named; their function leads are aware and supportive.</div>
+        </div>
+      </div>
+      <div class="checklist-card">
+        <span class="checklist-num">04</span>
+        <div>
+          <div class="checklist-question">Are success criteria defined for the adoption program itself — not just individual tools?</div>
+          <div class="checklist-pass">Pass if: Baselines already measured; changes will be observable and attributable.</div>
+        </div>
+      </div>
+    </div>
+    <p>If any answer is no, address it before setting a timeline. Notice what is <em>not</em> on this checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the field, by the people doing the work.</p>
+  </main>
+  <span class="slide-page">17</span>
+</section>
+
+<!-- ─── 19 — Ch3 plan after play ─────────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Taylorism to Tokenism</span>
+  </header>
+  <h2 class="slide-h1">Plan After Play</h2>
+  <main class="slide-body">
+    <p class="lead-p">Before you can plan AI adoption well, you need to let play happen first. These three moves create the conditions for cultivated practice to surface.</p>
+    <div class="audit-steps">
+      <div class="audit-step">
+        <span class="audit-step-num">Step 01</span>
+        <div class="audit-step-title">Create a venue for play</div>
+        <p class="audit-step-body">Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible – but make sure outputs are shared in some way. Deep play comes before useful practice.</p>
+      </div>
+      <div class="audit-step">
+        <span class="audit-step-num">Step 02</span>
+        <div class="audit-step-title">Bespokify, not scale</div>
+        <p class="audit-step-body">Resist the pull toward uniform adoption. Experiment with tools that solve problems at the individual or two-pizza team level first. The workflows worth formalizing are the ones practitioners have already proved through daily use, not the ones a vendor case study or competitor announcement suggested.</p>
+      </div>
+      <div class="audit-step">
+        <span class="audit-step-num">Step 03</span>
+        <div class="audit-step-title">Build soundbite strategies</div>
+        <p class="audit-step-body">What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice does not.</p>
+      </div>
+    </div>
+    <p>Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.</p>
+  </main>
+  <span class="slide-page">18</span>
+</section>
+
+<!-- ─── 20 — From play to protocol ──────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Taylorism to Tokenism</span>
+  </header>
+  <h2 class="slide-h1">From play to protocol</h2>
+  <p class="slide-subtitle">“Toy” workflows earn their way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in the sandbox.</p>
+  <main class="slide-body">
+    <div class="protocol-flow">
+
+      <!-- Stage 1: Discover -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Discover</div>
+        <p class="protocol-stage-body">Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The player's goal is to find out what AI actually makes possible in their domain.</p>
+      </div>
+
+      <!-- Gate 1 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Is it recurring?</span>
+      </div>
+
+      <!-- Stage 2: Encode -->
+      <div class="protocol-stage">
+        <span class="protocol-stage-track">Cultivated</span>
+        <div class="protocol-stage-name">Encode</div>
+        <p class="protocol-stage-body">The practitioner writes down the steps. Tacit expertise becomes a reusable kit. The value here is the encoding itself, not the speed gain — someone else can now inherit what took months to discover.</p>
+      </div>
+
+      <!-- Gate 2 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Encodes real expertise? Result observable?</span>
+      </div>
+
+      <!-- Stage 3: Prove -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Prove</div>
+        <p class="protocol-stage-body">The kit runs on real work in a low-stakes context. A bad output is recoverable. Here, the governed track takes custody: someone external can prove that the process result has improved.</p>
+      </div>
+
+      <!-- Gate 3 -->
+      <div class="protocol-gate">
+        <span class="protocol-gate-arrow">→</span>
+        <span class="protocol-gate-label">Blast radius bounded?</span>
+      </div>
+
+      <!-- Stage 4: Harvest -->
+      <div class="protocol-stage governed">
+        <span class="protocol-stage-track">Governed</span>
+        <div class="protocol-stage-name">Harvest</div>
+        <p class="protocol-stage-body">The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns and scales what was first independently found through play.</p>
+      </div>
+
+    </div>
+    <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
+  </main>
+  <span class="slide-page">19</span>
+</section>
+
+<!-- ─── 20b — Protocol to factory ──────────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Taylorism to Tokenism</span>
+  </header>
+  <h2 class="slide-h1">Protocol to factory</h2>
+  <p class="slide-subtitle">Once protocols are adopted across the org, the unit of work changes. Each person becomes a factory of one — producing and consuming structured outputs rather than communicating through informal channels.</p>
+  <main class="slide-body">
+    <div class="split-grid">
+      <div class="split-col">
+        <h3 class="split-col-title">The Yegge mandate</h3>
+        <p>In 2002, Jeff Bezos issued an edict to Amazon's engineering org: all teams must expose their data and functionality through service interfaces. No direct database links, no internal shortcuts. Everything through APIs — and eventually, those APIs would be externalizable to the world.</p>
+        <p>The point wasn't speed or efficiency. It was <em>architecture</em>. By forcing every team to treat its own work as a product with a defined interface, Amazon built a platform almost by accident. Steve Yegge's leaked memo on Google's failure to do the same remains the clearest account of what this kind of discipline produces — and what its absence costs.</p>
+        <blockquote>"Bezos's Big Mandate transformed Amazon. [...] Every team in the company, from the smallest engineering skunkworks to the most mission-critical platform team, needs to interact with all other teams exclusively through these service interfaces."<br><span style="font-style:normal; font-size: 8pt; color: var(--text-tertiary);">— Steve Yegge, 2011</span></blockquote>
+      </div>
+      <div class="split-col">
+        <h3 class="split-col-title">AI protocols do the same for knowledge work</h3>
+        <p>When AI workflows are encoded as protocols — defined inputs, observable outputs, shareable kits — the org's communication structure begins to change. People stop collaborating through informal channels and start interacting through their protocols.</p>
+        <p>The analyst who encoded their research workflow into a kit is now a factory of one: anyone who needs that analysis consumes the output through the interface, not through a Slack thread. The meeting that used to coordinate two people's tacit processes becomes a protocol handoff.</p>
+        <p>At this stage, governance's job is not to manage individual workflows but to maintain the platform: keep the interfaces clean, encourage teams to expose what they've built, and ensure the protocols can compose. The org becomes a network of factories — each autonomous, each interoperable.</p>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ─── 20c — Taylorism to Tokenism ────────────────────── -->
+<section class="slide slide-content">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 2 · Taylorism to Tokenism</span>
+  </header>
+  <h2 class="slide-h1">Taylorism to Tokenism</h2>
+  <p class="slide-subtitle">Taylorism optimized motions. Tokenism optimizes representations. The shift is not one of degree — it is a change in the computational character of the organization itself.</p>
+  <main class="slide-body">
+    <div class="split-grid">
+      <div class="split-col">
+        <h3 class="split-col-title">Taylor's stopwatch and the limits of procedure</h3>
+        <p>Frederick Winslow Taylor spent the 1880s and 1890s on factory floors with a stopwatch. His <em>Principles of Scientific Management</em> (1911) decomposed labor into discrete measurable tasks and separated planning from execution. The manager's job was to study, standardize, and allocate. The central resource was time.</p>
+        <p>But Taylorism had low expressive bandwidth. It could encode a finite, brittle set of workflows. Whenever reality exceeded the schema — a novel situation, an edge case, a judgment call — managerial sovereignty returned. The foreman or executive still had to intervene because the system itself was not sufficiently programmable. Taylorism reduced dependence on situated judgment through rigid procedure; it could not eliminate it.</p>
+        <p>For a century, management science remained Taylorist at its core. Headcount, utilization, throughput per person-hour — all descendants of the stopwatch.</p>
+      </div>
+      <div class="split-col">
+        <h3 class="split-col-title">The programmable firm</h3>
+        <p>What changes in a tokenized org is the expressive capacity of the coordination system itself. Where Taylorism resembles fixed-purpose industrial machinery — powerful within a bounded domain, dependent on sovereign actors to adapt to novelty — a tokenized organization begins to resemble a general-purpose computer. The instruction set of the firm becomes linguistic rather than purely procedural.</p>
+        <p>This is why context windows, documentation culture, ticket hygiene, and knowledge structure suddenly matter organizationally. They are the infrastructure of a programmable firm, not ancillary tooling.</p>
+        <p>The central management question changes accordingly. Taylor asked: <em>how do we discipline bodies into efficient movement?</em> The tokenized org asks: <em>which problems deserve more tokens?</em> — and beneath that: <em>how do we structure symbolic flows so the organization remains computationally tractable?</em> Token allocation is resource allocation at the level of organizational attention. That is a strategy question, not an IT question.</p>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ─── 17b — Ch3 (new) section title ─────────────────────────── -->
+<section class="slide slide-section ch-2" id="ch-2">
+  <div class="slide-section-text">
+    <span class="slide-section-pill">Chapter 3</span>
     <h1 class="slide-section-title">Adoption Maturity Levels</h1>
   </div>
   <div class="slide-section-image-diagonal">
@@ -3298,7 +3577,7 @@
 <!-- ─── 10 — Ch2 yin-yang framework ──────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
   </header>
   <h2 class="slide-h1">The dual nature of AI adoption</h2>
   <p class="slide-subtitle">Most organizations default to the governed mode of adoption they know from other technologies. This falls short because AI also demands individual-level change, something governed frameworks alone cannot produce. Durable adoption also requires cultivation.</p>
@@ -3430,7 +3709,7 @@
 <!-- ─── 11 — Ch2 examples across both paths ──────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
-    <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+    <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
   </header>
   <h2 class="slide-h1">Examples across both paths of adoption</h2>
   <main class="slide-body">
@@ -3485,7 +3764,7 @@
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
     <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+      <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
     </header>
     <div class="band-level-badge">L · 01</div>
     <div class="band-title-governed">Shadow</div>
@@ -3532,7 +3811,7 @@
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
     <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+      <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
     </header>
     <div class="band-level-badge">L · 02</div>
     <div class="band-title-governed">Sanctioned</div>
@@ -3579,7 +3858,7 @@
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
     <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+      <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
     </header>
     <div class="band-level-badge">L · 03</div>
     <div class="band-title-governed">Engine</div>
@@ -3626,7 +3905,7 @@
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
     <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+      <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
     </header>
     <div class="band-level-badge">L · 04</div>
     <div class="band-title-governed">Infrastructure</div>
@@ -3673,7 +3952,7 @@
       <line x1="65" y1="0" x2="35" y2="100" stroke="white" stroke-width="2" stroke-opacity="0.9" vector-effect="non-scaling-stroke"/>
     </svg>
     <header class="slide-header">
-      <span class="slide-header-pill">Chapter 2 · Adoption Maturity Levels</span>
+      <span class="slide-header-pill">Chapter 3 · Adoption Maturity Levels</span>
     </header>
     <div class="band-level-badge">L · 05</div>
     <div class="band-title-governed">Planetary</div>
@@ -3709,153 +3988,6 @@
     </div>
   </main>
   <span class="slide-page">15</span>
-</section>
-
-<!-- ─── 17 — Ch3 section title ──────────────────────────────── -->
-<section class="slide slide-section ch-3" id="ch-3">
-  <div class="slide-section-text">
-    <span class="slide-section-pill">Chapter 3</span>
-    <h1 class="slide-section-title">Getting started with AI adoption</h1>
-  </div>
-  <div class="slide-section-image-diagonal">
-    <img loading="lazy" decoding="async" src="./images/drift-stacking.webp" alt="">
-  </div>
-  <span class="slide-page">16</span>
-</section>
-
-<!-- ─── 18 — Ch3 readiness check ────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
-  </header>
-  <h2 class="slide-h1">Pre-pilot readiness check</h2>
-  <main class="slide-body">
-    <p class="lead-p">Before identifying a use case, run a quick readiness check with your organization's AI adoption leaders. Ask the questions then assess if the answer met the criteria provided. This readiness check is not about which use case is right; it is about whether the organization can support a real pilot at all.</p>
-    <div class="checklist-grid">
-      <div class="checklist-card">
-        <span class="checklist-num">01</span>
-        <div>
-          <div class="checklist-question">Has the organization completed a security and legal review of the most likely AI tools and data?</div>
-          <div class="checklist-pass">Pass if: Data boundaries, connector permissions, legal alignment, and auditability documented.</div>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <span class="checklist-num">02</span>
-        <div>
-          <div class="checklist-question">Does an executive sponsor exist with budget authority for the pilot?</div>
-          <div class="checklist-pass">Pass: Named individual; budget approved through at least 3 months.</div>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <span class="checklist-num">03</span>
-        <div>
-          <div class="checklist-question">Have two or three pilot teams been identified with motivated leads?</div>
-          <div class="checklist-pass">Pass: Champions named; their direct reports (function leads) are aware and supportive.</div>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <span class="checklist-num">04</span>
-        <div>
-          <div class="checklist-question">Are success metrics defined for <em>the pilot itself</em> — not the use case?</div>
-          <div class="checklist-pass">Pass: Specific, baselines measured already, and changes are observable in weekly check-ins.</div>
-        </div>
-      </div>
-    </div>
-    <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
-  </main>
-  <span class="slide-page">17</span>
-</section>
-
-<!-- ─── 19 — Ch3 plan after play ─────────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
-  </header>
-  <h2 class="slide-h1">Plan After Play</h2>
-  <main class="slide-body">
-    <p class="lead-p">Before you can plan AI adoption well, you need to let play happen first. These three moves create the conditions for cultivated practice to surface.</p>
-    <div class="audit-steps">
-      <div class="audit-step">
-        <span class="audit-step-num">Step 01</span>
-        <div class="audit-step-title">Create a venue for play</div>
-        <p class="audit-step-body">Give people a permissive, low-stakes space to explore AI without agenda. No required tools, no prescribed use cases, no metrics on output. The goal is for people to discover, on their own terms, what working with AI actually makes possible – but make sure outputs are shared in some way. Deep play comes before useful practice.</p>
-      </div>
-      <div class="audit-step">
-        <span class="audit-step-num">Step 02</span>
-        <div class="audit-step-title">Bespokify, not scale</div>
-        <p class="audit-step-body">Resist the pull toward uniform adoption. Experiment with tools that solve problems at the individual or two-pizza team level first. The workflows worth formalizing are the ones practitioners have already proved through daily use, not the ones a vendor case study or competitor announcement suggested.</p>
-      </div>
-      <div class="audit-step">
-        <span class="audit-step-num">Step 03</span>
-        <div class="audit-step-title">Build soundbite strategies</div>
-        <p class="audit-step-body">What are your organization's agreed-upon design principles for working with AI? What should and should not be done? These need to be short enough to remember and specific enough to apply. Stable knowledge compounds; undocumented practice does not.</p>
-      </div>
-    </div>
-    <p>Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.</p>
-  </main>
-  <span class="slide-page">18</span>
-</section>
-
-<!-- ─── 20 — From play to protocol ──────────────────────────── -->
-<section class="slide slide-content">
-  <header class="slide-header">
-    <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
-  </header>
-  <h2 class="slide-h1">From play to protocol</h2>
-  <p class="slide-subtitle">“Toy” workflows earn their way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in the sandbox.</p>
-  <main class="slide-body">
-    <div class="protocol-flow">
-
-      <!-- Stage 1: Discover -->
-      <div class="protocol-stage">
-        <span class="protocol-stage-track">Cultivated</span>
-        <div class="protocol-stage-name">Discover</div>
-        <p class="protocol-stage-body">Someone explores a workflow on their own terms, without an agenda or prescribed tool. Play is the method. The player's goal is to find out what AI actually makes possible in their domain.</p>
-      </div>
-
-      <!-- Gate 1 -->
-      <div class="protocol-gate">
-        <span class="protocol-gate-arrow">→</span>
-        <span class="protocol-gate-label">Is it recurring?</span>
-      </div>
-
-      <!-- Stage 2: Encode -->
-      <div class="protocol-stage">
-        <span class="protocol-stage-track">Cultivated</span>
-        <div class="protocol-stage-name">Encode</div>
-        <p class="protocol-stage-body">The practitioner writes down the steps. Tacit expertise becomes a reusable kit. The value here is the encoding itself, not the speed gain — someone else can now inherit what took months to discover.</p>
-      </div>
-
-      <!-- Gate 2 -->
-      <div class="protocol-gate">
-        <span class="protocol-gate-arrow">→</span>
-        <span class="protocol-gate-label">Encodes real expertise? Result observable?</span>
-      </div>
-
-      <!-- Stage 3: Prove -->
-      <div class="protocol-stage governed">
-        <span class="protocol-stage-track">Governed</span>
-        <div class="protocol-stage-name">Prove</div>
-        <p class="protocol-stage-body">The kit runs on real work in a low-stakes context. A bad output is recoverable. Here, the governed track takes custody: someone external can prove that the process result has improved.</p>
-      </div>
-
-      <!-- Gate 3 -->
-      <div class="protocol-gate">
-        <span class="protocol-gate-arrow">→</span>
-        <span class="protocol-gate-label">Blast radius bounded?</span>
-      </div>
-
-      <!-- Stage 4: Harvest -->
-      <div class="protocol-stage governed">
-        <span class="protocol-stage-track">Governed</span>
-        <div class="protocol-stage-name">Harvest</div>
-        <p class="protocol-stage-body">The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns and scales what was first independently found through play.</p>
-      </div>
-
-    </div>
-    <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
-  </main>
-  <span class="slide-page">19</span>
 </section>
 
 <!-- ─── 21 — Ch4 section title ──────────────────────────────── -->
