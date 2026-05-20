@@ -71,6 +71,8 @@ rsync -a \
   --exclude '_blog-hero.html' \
   --exclude '_og-cover.html' \
   --exclude '_business-flow-test.html' \
+  --exclude '_executive-summary-test.html' \
+  --exclude '_unused' \
   --exclude 'index.html' \
   --exclude 'slides.html' \
   "$HTML_DIR/" "$STAGE_DIR/"
