@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New slide: From motions to tokens</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --text-tertiary:  #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+
+      --fs-display-3: 20pt;
+      --fs-heading-1: 16pt;
+      --fs-heading-2: 13pt;
+      --fs-body:      11pt;
+      --fs-body-sm:   10pt;
+      --fs-caption:   8pt;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 0 48px; }
+    .slide {
+      width: 11in; height: 8.5in;
+      position: relative; overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(26,26,46,0.10);
+      flex-shrink: 0;
+    }
+    .slide-content { padding: 0.55in 0.7in 0.55in; display: flex; flex-direction: column; }
+    .slide-page {
+      position: absolute; bottom: 0.4in; right: 0.7in;
+      font-family: var(--font-mono); font-size: var(--fs-caption);
+      font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.06em;
+    }
+    .slide-header { margin-bottom: 0.18in; padding-bottom: 6pt; border-bottom: 1px solid var(--border-soft); }
+    .slide-header-pill {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      font-family: var(--font-mono); font-size: var(--fs-caption);
+      font-weight: 500; letter-spacing: 0.06em; color: var(--text-secondary);
+    }
+    .slide-header-pill::before {
+      content: ''; display: inline-block;
+      width: 7px; height: 7px; background: var(--accent);
+      border-radius: 50%; transform: translateY(-1px);
+    }
+    .slide-h1 {
+      font-family: var(--font-mono); font-size: var(--fs-display-3);
+      font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
+      margin: 0.05in 0 0.06in; text-wrap: balance;
+    }
+    .slide-subtitle {
+      font-family: var(--font-sans); font-size: var(--fs-heading-2);
+      font-style: italic; line-height: 1.45;
+      color: var(--text-secondary);
+      margin: 0 0 14pt;
+      max-width: 9.5in; text-wrap: balance;
+      padding-bottom: 10pt; border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-body { flex: 1; overflow: hidden; padding-bottom: 0.4in; }
+
+    /* ─── Two-column observation/anchor layout (matches .factory-grid) ── */
+    .motion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36pt;
+      height: 100%;
+      position: relative;
+    }
+    .motion-grid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      background: var(--border-soft);
+    }
+    .motion-col { display: flex; flex-direction: column; }
+    .motion-col-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 4pt;
+    }
+    .motion-col-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10pt;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .motion-col p {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .motion-col p + p { margin-top: 7pt; }
+    .motion-col p em { font-style: italic; }
+    .motion-col p strong { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide slide-content">
+      <header class="slide-header">
+        <span class="slide-header-pill">Chapter 6 · The new nature of work</span>
+      </header>
+      <h2 class="slide-h1">From motions to tokens</h2>
+      <p class="slide-subtitle">For most of the twentieth century, the unit of management has been the worker's second. A new unit is emerging: the production token.</p>
+
+      <main class="slide-body">
+        <div class="motion-grid">
+
+          <article class="motion-col">
+            <div class="motion-col-eyebrow">Observation &middot; today</div>
+            <h3 class="motion-col-title">The token as accounting unit</h3>
+            <p>Organizations are beginning to <strong>measure and meter knowledge production work</strong>, which previously sat inside salaries, contractor invoices, and project budgets as an unaccounted ingredient. Per-token LLM billing is already an industry standard for those that have integrated AI tooling. Per-team and per-agent token budgets are emerging as spend lines.</p>
+            <p>That being said, <strong>tokens are not kWh</strong>. They behave more like grades of refined petroleum: each model's token does different work; a cached input token is roughly 90% cheaper than a fresh one. The unit remains the token, while the market supply remains differentiated.</p>
+            <p>The firm that runs on tokens becomes addressable through language, and in some real sense, programmable. The management question changes accordingly, mirroring computational resource allocation. While Taylor asked how to discipline bodies into efficient movement, the tokenized firm asks which problems deserve more tokens, and how to structure symbolic flows so the firm remains computationally tractable. <strong>Token allocation is resource allocation at the level of organizational attention.</strong></p>
+          </article>
+
+          <article class="motion-col">
+            <div class="motion-col-eyebrow">Historical anchor &middot; 1911</div>
+            <h3 class="motion-col-title">Taylor's stopwatch</h3>
+            <p>Frederick Winslow Taylor spent the 1880s and 1890s on factory floors with a stopwatch. His <em>Principles of Scientific Management</em> (1911) decomposed labor into discrete measurable tasks and separated planning from execution. The manager's job was to study, standardize, and allocate. <strong>The central resource was time, and the unit of measure was the worker's second.</strong></p>
+            <p>Taylorism had <strong>low expressive bandwidth</strong>. It could encode a finite, brittle set of workflows. Whenever reality exceeded the schema (a novel situation, an edge case, a judgment call), managerial sovereignty returned. The foreman still had to intervene because the system itself was not sufficiently programmable.</p>
+            <p>For a century, management science remained Taylorist at its core. Headcount, utilization, throughput per person-hour: <strong>all descendants of the stopwatch</strong>.</p>
+          </article>
+
+        </div>
+      </main>
+      <span class="slide-page">??</span>
+    </section>
+  </div>
+</body>
+</html>

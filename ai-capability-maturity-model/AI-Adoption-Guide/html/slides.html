@@ -736,6 +736,54 @@
       letter-spacing: 0.04em;
     }
 
+    /* ─── Motion grid (Ch6: observation + historical anchor; mirrors factory-grid) ── */
+    .motion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36pt;
+      height: 100%;
+      position: relative;
+    }
+    .motion-grid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      background: var(--border-soft);
+    }
+    .motion-col { display: flex; flex-direction: column; }
+    .motion-col-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 4pt;
+    }
+    .motion-col-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10pt;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .motion-col p {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .motion-col p + p { margin-top: 7pt; }
+    .motion-col p em { font-style: italic; }
+    .motion-col p strong { font-weight: 600; }
+
     /* ─── Paradigm 2×2 matrix (Tool/Paradigm × Local/Planetary) ── */
     .paradigm-matrix {
       display: grid;
@@ -3159,7 +3207,7 @@
     <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">22</span><span class="contents-desc">Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.</span></a></li>
     <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">29</span><span class="contents-desc">Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.</span></a></li>
     <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">32</span><span class="contents-desc">Maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
-    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">34</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
+    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">35</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -4515,6 +4563,38 @@
   <span class="slide-page">32</span>
 </section>
 
+<!-- ─── 33 — From motions to tokens ──────────────────────────── -->
+<section class="slide slide-content" id="motions-to-tokens">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 6 &middot; The new nature of work</span>
+  </header>
+  <h2 class="slide-h1">From motions to tokens</h2>
+  <p class="slide-subtitle">For most of the twentieth century, the unit of management has been the worker's second. A new unit is emerging: the production token.</p>
+  <main class="slide-body">
+    <div class="motion-grid">
+
+      <article class="motion-col">
+        <div class="motion-col-eyebrow">Observation &middot; today</div>
+        <h3 class="motion-col-title">The token as accounting unit</h3>
+        <p>Organizations are beginning to <strong>measure and meter knowledge production work</strong>, which previously sat inside salaries, contractor invoices, and project budgets as an unaccounted ingredient. Per-token LLM billing is already an industry standard for those that have integrated AI tooling. Per-team and per-agent token budgets are emerging as spend lines.</p>
+        <p>That being said, <strong>tokens are not kWh</strong>. They behave more like grades of refined petroleum: each model's token does different work; a cached input token is roughly 90% cheaper than a fresh one. The unit remains the token, while the market supply remains differentiated.</p>
+        <p>The firm that runs on tokens becomes addressable through language, and in some real sense, programmable. The management question changes accordingly, mirroring computational resource allocation. While Taylor asked how to discipline bodies into efficient movement, the tokenized firm asks which problems deserve more tokens, and how to structure symbolic flows so the firm remains computationally tractable. <strong>Token allocation is resource allocation at the level of organizational attention.</strong></p>
+      </article>
+
+      <article class="motion-col">
+        <div class="motion-col-eyebrow">Historical anchor &middot; 1911</div>
+        <h3 class="motion-col-title">Taylor's stopwatch</h3>
+        <p>Frederick Winslow Taylor spent the 1880s and 1890s on factory floors with a stopwatch. His <em>Principles of Scientific Management</em> (1911) decomposed labor into discrete measurable tasks and separated planning from execution. The manager's job was to study, standardize, and allocate. <strong>The central resource was time, and the unit of measure was the worker's second.</strong></p>
+        <p>Taylorism had <strong>low expressive bandwidth</strong>. It could encode a finite, brittle set of workflows. Whenever reality exceeded the schema (a novel situation, an edge case, a judgment call), managerial sovereignty returned. The foreman still had to intervene because the system itself was not sufficiently programmable.</p>
+        <p>For a century, management science remained Taylorist at its core. Headcount, utilization, throughput per person-hour: <strong>all descendants of the stopwatch</strong>.</p>
+      </article>
+
+    </div>
+  </main>
+  <span class="slide-page">33</span>
+</section>
+
+
 <!-- ─── 31 — Ch8 body ───────────────────────────────────────── -->
 <section class="slide slide-content">
   <header class="slide-header">
@@ -4532,7 +4612,7 @@
       <p>The work, then, is not to finish a platform deployment. It is to make deployment a core capability, as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is people. People who know how to work in this new nature, and managers who know how to keep the handoff between cultivation and governance working as the terrain keeps changing.</p>
     </div>
   </main>
-  <span class="slide-page">33</span>
+  <span class="slide-page">34</span>
 </section>
 
 <!-- ─── 32 — About & Resources (split slide) ────────────────── -->
@@ -4566,7 +4646,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">34</span>
+  <span class="slide-page">35</span>
 </section>
 
 <!-- ─── 33 — Appendix · Case studies overview ──────────────── -->
@@ -4600,7 +4680,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">35</span>
+  <span class="slide-page">36</span>
 </section>
 
 <!-- ─── 34 — Case 01 · Samsung ──────────────────────────────── -->
@@ -4630,7 +4710,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">36</span>
+  <span class="slide-page">37</span>
 </section>
 
 <!-- ─── 35 — Case 02 · Klarna ───────────────────────────────── -->
@@ -4660,7 +4740,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">37</span>
+  <span class="slide-page">38</span>
 </section>
 
 <!-- ─── 36 — Case 03 · Amazon &amp; MeshClaw ──────────────────────── -->
@@ -4690,7 +4770,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">38</span>
+  <span class="slide-page">39</span>
 </section>
 
 <!-- ─── 37 — Case 04 · Air Canada ───────────────────────────── -->
@@ -4720,7 +4800,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">39</span>
+  <span class="slide-page">40</span>
 </section>
 
 <!-- ─── 38 — Case 05 · Boom Supersonic ──────────────────────── -->
@@ -4750,7 +4830,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">40</span>
+  <span class="slide-page">41</span>
 </section>
 
 <!-- ─── 39 — Case 06 · Visicalc / Excel ─────────────────────── -->
@@ -4780,7 +4860,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">41</span>
+  <span class="slide-page">42</span>
 </section>
 
 <!-- ─── 40 — Case 07 · Gates's Internet Tidal Wave memo ─────── -->
@@ -4810,7 +4890,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">42</span>
+  <span class="slide-page">43</span>
 </section>
 
 <!-- ─── 41 — Case 08 · Git &amp; GitHub PRs ─────────────────────── -->
@@ -4840,7 +4920,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">43</span>
+  <span class="slide-page">44</span>
 </section>
 
 <!-- ─── 42 — Case 09 · Walmart EDI ──────────────────────────── -->
@@ -4870,7 +4950,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">44</span>
+  <span class="slide-page">45</span>
 </section>
 
 <!-- ─── 43 — Case 10 · McLean container ─────────────────────── -->
@@ -4899,7 +4979,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">45</span>
+  <span class="slide-page">46</span>
 </section>
 
 <!-- ─── 44 — Case 11 · Rural users and the Model T (Kline & Pinch 1996) ───── -->
@@ -4929,7 +5009,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">46</span>
+  <span class="slide-page">47</span>
 </section>
 
 <!-- ─── 45 — Case 12 · American steam adoption (Atack, Bateman, Weiss 1980) ───── -->
@@ -4962,7 +5042,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">47</span>
+  <span class="slide-page">48</span>
 </section>
 
 <!-- ─── 46 — Case 13 · Factory electrification (Devine 1983) ───── -->
@@ -4992,7 +5072,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">48</span>
+  <span class="slide-page">49</span>
 </section>
 
 <!-- ─── 47 — Case 14 · Harpers Ferry Armory (Smith / Simon) ───── -->
@@ -5022,7 +5102,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">49</span>
+  <span class="slide-page">50</span>
 </section>
 
 <!-- ─── 48 — Appendix · Frameworks · AI as medium ──────────── -->
@@ -5147,7 +5227,7 @@
     </svg>
 
   </main>
-  <span class="slide-page">50</span>
+  <span class="slide-page">51</span>
 </section>
 
 <!-- ─── 49 — Appendix · Frameworks · The right artifact ──────── -->
@@ -5190,7 +5270,7 @@
       </aside>
     </div>
   </main>
-  <span class="slide-page">51</span>
+  <span class="slide-page">52</span>
 </section>
 
 <!-- ─── 50 — Appendix · AI Adoption Assessment ──────────────── -->

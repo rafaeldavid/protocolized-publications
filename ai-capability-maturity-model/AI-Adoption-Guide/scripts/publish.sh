@@ -75,6 +75,7 @@ rsync -a \
   --exclude '_slide-26-redesign.html' \
   --exclude '_slide-three-times-test.html' \
   --exclude '_slide-network-of-factories-test.html' \
+  --exclude '_slide-motions-to-tokens-test.html' \
   --exclude '_unused' \
   --exclude 'index.html' \
   --exclude 'slides.html' \
