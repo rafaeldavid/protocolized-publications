@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New slide: A Network of Factories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --text-tertiary:  #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+
+      --fs-display-3: 20pt;
+      --fs-heading-1: 16pt;
+      --fs-heading-2: 13pt;
+      --fs-body:      11pt;
+      --fs-body-sm:   10pt;
+      --fs-caption:   8pt;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 0 48px; }
+    .slide {
+      width: 11in; height: 8.5in;
+      position: relative; overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(26,26,46,0.10);
+      flex-shrink: 0;
+    }
+    .slide-content { padding: 0.55in 0.7in 0.55in; display: flex; flex-direction: column; }
+    .slide-page {
+      position: absolute; bottom: 0.4in; right: 0.7in;
+      font-family: var(--font-mono); font-size: var(--fs-caption);
+      font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.06em;
+    }
+    .slide-header { margin-bottom: 0.18in; padding-bottom: 6pt; border-bottom: 1px solid var(--border-soft); }
+    .slide-header-pill {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      font-family: var(--font-mono); font-size: var(--fs-caption);
+      font-weight: 500; letter-spacing: 0.06em; color: var(--text-secondary);
+    }
+    .slide-header-pill::before {
+      content: ''; display: inline-block;
+      width: 7px; height: 7px; background: var(--accent);
+      border-radius: 50%; transform: translateY(-1px);
+    }
+    .slide-h1 {
+      font-family: var(--font-mono); font-size: var(--fs-display-3);
+      font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
+      margin: 0.05in 0 0.06in; text-wrap: balance;
+    }
+    .slide-subtitle {
+      font-family: var(--font-sans); font-size: var(--fs-heading-2);
+      font-style: italic; line-height: 1.45;
+      color: var(--text-secondary);
+      margin: 0 0 14pt;
+      max-width: 9.5in; text-wrap: balance;
+      padding-bottom: 10pt; border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-body { flex: 1; overflow: hidden; padding-bottom: 0.4in; }
+
+    /* ─── Two-column observation/anchor layout ───────────────── */
+    .factory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36pt;
+      height: 100%;
+      position: relative;
+    }
+    .factory-grid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      background: var(--border-soft);
+    }
+    .factory-col { display: flex; flex-direction: column; }
+
+    .factory-col-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 4pt;
+    }
+    .factory-col-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10pt;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .factory-col p {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .factory-col p + p { margin-top: 7pt; }
+    .factory-col p em { font-style: italic; }
+    .factory-col p strong { font-weight: 600; }
+
+    /* Pull-quote at the bottom of the right column */
+    .factory-quote {
+      margin-top: 10pt;
+      padding: 10pt 12pt;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent-dark);
+      border-radius: 0 6px 6px 0;
+    }
+    .factory-quote p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--text);
+    }
+    .factory-quote .quote-cite {
+      display: block;
+      margin-top: 6pt;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-style: normal;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide slide-content">
+      <header class="slide-header">
+        <span class="slide-header-pill">Chapter 3 · Getting started with AI adoption</span>
+      </header>
+      <h2 class="slide-h1">A network of factories</h2>
+      <p class="slide-subtitle">AI makes everyone a factory of one. Teams and individuals begin to produce and consume structured outputs.</p>
+
+      <main class="slide-body">
+        <div class="factory-grid">
+
+          <article class="factory-col">
+            <div class="factory-col-eyebrow">Observation · today</div>
+            <h3 class="factory-col-title">Knowledge work becomes software</h3>
+            <p>Once an AI workflow is encoded as a protocol with defined inputs, observable outputs, and a shareable kit, the way work moves through an organization starts to change. Coordination shifts from informal channels to the protocols themselves.</p>
+            <p>An analyst who encoded their research workflow into a kit is now a factory of one. Anyone who needs that analysis consumes the output through the kit's interface, not through a Slack thread. The meeting that used to align two people's tacit processes becomes a protocol handoff with a versioned input, an observable output, and a named owner.</p>
+            <p>Governance moves up a layer. Its job stops being the management of individual workflows and becomes the maintenance of the platform: keep the interfaces clean, encourage teams to expose what they have built, and make sure the protocols compose. The organization becomes a network of factories. Each is autonomous. Each is interoperable. Each is consumable by the rest of the network through its interface.</p>
+          </article>
+
+          <article class="factory-col">
+            <div class="factory-col-eyebrow">Historical anchor · 2002</div>
+            <h3 class="factory-col-title">The API Mandate</h3>
+            <p>In 2002, Jeff Bezos issued an internal edict to Amazon's engineering organization. Every team had to expose its data and functionality through service interfaces. No direct database links, no internal shortcuts. Everything went through APIs, and the APIs had to be designed as if they would eventually be exposed to the outside world.</p>
+            <p>The point was not speed or efficiency. It was architecture. By forcing every team to treat its own work as a product with a defined interface, Amazon built a platform almost by accident. Steve Yegge's 2011 memo, which contrasted Amazon's discipline with Google's lack of it, remains the clearest account of what the practice produces and what its absence costs.</p>
+
+            <figure class="factory-quote">
+              <p>"Bezos's Big Mandate transformed Amazon. Every team in the company, from the smallest engineering skunkworks to the most mission-critical platform team, needs to interact with all other teams exclusively through these service interfaces."
+              <span class="quote-cite">Steve Yegge · Google Platforms Rant · 2011</span></p>
+            </figure>
+          </article>
+
+        </div>
+      </main>
+      <span class="slide-page">??</span>
+    </section>
+  </div>
+</body>
+</html>
