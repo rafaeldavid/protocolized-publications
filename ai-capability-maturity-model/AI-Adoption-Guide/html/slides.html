@@ -611,6 +611,61 @@
       justify-content: center;
     }
 
+    /* ─── Era grid — three side-by-side cards (Ch1 historical parallel) ─ */
+    .era-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22pt;
+      height: 100%;
+    }
+    .era-card {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 16pt 18pt 18pt;
+      box-shadow: 0 2px 8px rgba(26, 26, 46, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .era-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 7pt;
+    }
+    .era-shift {
+      font-family: var(--font-mono);
+      font-size: var(--fs-heading-1);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 6pt;
+    }
+    .era-claim {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      font-weight: 500;
+      color: var(--accent-dark);
+      line-height: 1.4;
+      margin-bottom: 12pt;
+      padding-bottom: 10pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .era-body p {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .era-body p + p { margin-top: 7pt; }
+    .era-body em { font-style: italic; color: var(--text); }
+
     /* ─── Paradigm 2×2 matrix (Tool/Paradigm × Local/Planetary) ── */
     .paradigm-matrix {
       display: grid;
@@ -3029,12 +3084,12 @@
   <h2 class="contents-title">Contents</h2>
   <ol class="contents-list">
     <li><a href="#ch-1"><span class="contents-num">01</span><span class="contents-name">More than a tool</span><span class="contents-page">03</span><span class="contents-desc">Why AI is a paradigm shift, not a software upgrade, and why adoption needs two mirror tracks.</span></a></li>
-    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">08</span><span class="contents-desc">Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.</span></a></li>
-    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">16</span><span class="contents-desc">Readiness check, plan after play, and the four-stage path workflows take into governance.</span></a></li>
-    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">20</span><span class="contents-desc">Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.</span></a></li>
-    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">27</span><span class="contents-desc">Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.</span></a></li>
-    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">30</span><span class="contents-desc">Maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
-    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">32</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
+    <li><a href="#ch-2"><span class="contents-num">02</span><span class="contents-name">Adoption Maturity Levels</span><span class="contents-page">09</span><span class="contents-desc">Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.</span></a></li>
+    <li><a href="#ch-3"><span class="contents-num">03</span><span class="contents-name">Getting started with AI adoption</span><span class="contents-page">17</span><span class="contents-desc">Readiness check, plan after play, and the four-stage path workflows take into governance.</span></a></li>
+    <li><a href="#ch-4"><span class="contents-num">04</span><span class="contents-name">The path to durable AI adoption</span><span class="contents-page">21</span><span class="contents-desc">Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.</span></a></li>
+    <li><a href="#ch-5"><span class="contents-num">05</span><span class="contents-name">How the Protocol Institute adopts AI</span><span class="contents-page">28</span><span class="contents-desc">Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.</span></a></li>
+    <li><a href="#ch-6"><span class="contents-num">06</span><span class="contents-name">The new nature of work</span><span class="contents-page">31</span><span class="contents-desc">Maintaining the cultivated and governed handoff as the terrain keeps shifting.</span></a></li>
+    <li><a href="#about"><span class="contents-num">07</span><span class="contents-name">About &amp; Resources</span><span class="contents-page">33</span><span class="contents-desc">The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.</span></a></li>
   </ol>
   <span class="slide-page">02</span>
 </section>
@@ -3050,6 +3105,52 @@
   </div>
   <span class="slide-page">03</span>
 </section>
+
+<!-- ─── 04 — Ch1 historical parallel: three remakings of work ─── -->
+<section class="slide slide-content" id="three-remakings">
+  <header class="slide-header">
+    <span class="slide-header-pill">Chapter 1 · More than a tool</span>
+  </header>
+  <h2 class="slide-h1">Three times, a new technology remade the environment of work</h2>
+  <p class="slide-subtitle">Each time, the first adopters initially bolted the new technology onto the old architecture. But the real gains only came after a complete redesign of the production environment.</p>
+  <main class="slide-body">
+    <div class="era-grid">
+
+      <article class="era-card">
+        <div class="era-num">I &middot; 1830&ndash;1870</div>
+        <h3 class="era-shift">Water &rarr; Steam</h3>
+        <p class="era-claim">Geographic liberation of the factory</p>
+        <div class="era-body">
+          <p>Mills ran on water wheels, which meant factories had to sit on fast-moving rivers. The steam engine severed that tether. Factories could move inland, to labor markets and raw materials rather than river banks.</p>
+          <p>This wasn't just an operational change &mdash; it terraformed cities. Industrial centers no longer needed to be riverside. New inland factory towns emerged; entire urban geographies reorganized around rail and coal, not water. The city itself was a side effect of the technology transition.</p>
+        </div>
+      </article>
+
+      <article class="era-card">
+        <div class="era-num">II &middot; 1890&ndash;1920</div>
+        <h3 class="era-shift">Steam &rarr; Electricity</h3>
+        <p class="era-claim">The floor redesign that unlocked 30 years of gains</p>
+        <div class="era-body">
+          <p>The first wave simply swapped the steam engine for an electric motor &mdash; same central line shaft, same belts and pulleys radiating out to every machine. Output barely improved. The form of power delivery was new; the factory floor was not.</p>
+          <p>The transformation came with <em>unit drive</em>: one motor per machine. That required scrapping the factory floor and redesigning it around the new capability. Only then did manufacturing output per man-hour jump from 1.3%/yr to 3.1%/yr &mdash; a gain that defined the entire 20th-century economy.</p>
+        </div>
+      </article>
+
+      <article class="era-card">
+        <div class="era-num">III &middot; 1960&ndash;1990</div>
+        <h3 class="era-shift">Container shipping</h3>
+        <p class="era-claim">Tokenizing international trade into the global factory</p>
+        <div class="era-body">
+          <p>Container shipping standardized the unit of international trade &mdash; a fixed, stackable, interoperable box. This tokenization of cargo made global supply chains predictable enough to coordinate across continents at scale.</p>
+          <p>The factory stopped being a building and became a global entity: design here, components there, final assembly elsewhere. Ports, cities, and logistics networks were rebuilt around this distributed architecture. The container remade the global geography of production.</p>
+        </div>
+      </article>
+
+    </div>
+  </main>
+  <span class="slide-page">04</span>
+</section>
+
 
 <!-- ─── 04 — Ch1 first content (was foreword body) ──────────── -->
 <section class="slide slide-content" id="foreword">
@@ -3075,7 +3176,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">04</span>
+  <span class="slide-page">05</span>
 </section>
 
 <!-- ─── 05 — AI Evolution diagonal (two parallel tracks) ───── -->
@@ -3176,7 +3277,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">05</span>
+  <span class="slide-page">06</span>
 </section>
 
 <!-- ─── 06 — Ch1 body ───────────────────────────────────────── -->
@@ -3217,7 +3318,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">06</span>
+  <span class="slide-page">07</span>
 </section>
 
 <!-- ─── 07 — The path through this guide (full chapter map) ── -->
@@ -3280,7 +3381,7 @@
     </div>
     <a class="appendix-link" href="#appendix">→ Appendix: case studies and frameworks</a>
   </main>
-  <span class="slide-page">07</span>
+  <span class="slide-page">08</span>
 </section>
 
 <!-- ─── 10 — Ch2 section title ──────────────────────────────── -->
@@ -3292,7 +3393,7 @@
   <div class="slide-section-image-diagonal">
     <img loading="lazy" decoding="async" src="./images/a-very-short-introduction-to-memory.webp" alt="">
   </div>
-  <span class="slide-page">08</span>
+  <span class="slide-page">09</span>
 </section>
 
 <!-- ─── 10 — Ch2 yin-yang framework ──────────────────────────── -->
@@ -3424,7 +3525,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">09</span>
+  <span class="slide-page">10</span>
 </section>
 
 <!-- ─── 11 — Ch2 examples across both paths ──────────────────── -->
@@ -3473,7 +3574,7 @@
       </tbody>
     </table>
   </main>
-  <span class="slide-page">10</span>
+  <span class="slide-page">11</span>
 </section>
 
 <!-- ─── 12 — L1 Shadow ──────────────────────────────────────── -->
@@ -3520,7 +3621,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">11</span>
+  <span class="slide-page">12</span>
 </section>
 
 <!-- ─── 13 — L2 Sanctioned ────────────────────────────────────── -->
@@ -3567,7 +3668,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">12</span>
+  <span class="slide-page">13</span>
 </section>
 
 <!-- ─── 14 — L3 Engine ─────────────────────────────────────── -->
@@ -3614,7 +3715,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">13</span>
+  <span class="slide-page">14</span>
 </section>
 
 <!-- ─── 15 — L4 Infrastructure ──────────────────────────────── -->
@@ -3661,7 +3762,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">14</span>
+  <span class="slide-page">15</span>
 </section>
 
 <!-- ─── 16 — L5 Planetary ───────────────────────────────────── -->
@@ -3708,7 +3809,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">15</span>
+  <span class="slide-page">16</span>
 </section>
 
 <!-- ─── 17 — Ch3 section title ──────────────────────────────── -->
@@ -3720,7 +3821,7 @@
   <div class="slide-section-image-diagonal">
     <img loading="lazy" decoding="async" src="./images/drift-stacking.webp" alt="">
   </div>
-  <span class="slide-page">16</span>
+  <span class="slide-page">17</span>
 </section>
 
 <!-- ─── 18 — Ch3 readiness check ────────────────────────────── -->
@@ -3763,7 +3864,7 @@
     </div>
     <p>If any answer is no, address it before committing to a pilot timeline. Notice what is <em>not</em> on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.</p>
   </main>
-  <span class="slide-page">17</span>
+  <span class="slide-page">18</span>
 </section>
 
 <!-- ─── 19 — Ch3 plan after play ─────────────────────────────── -->
@@ -3793,7 +3894,7 @@
     </div>
     <p>Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.</p>
   </main>
-  <span class="slide-page">18</span>
+  <span class="slide-page">19</span>
 </section>
 
 <!-- ─── 20 — From play to protocol ──────────────────────────── -->
@@ -3855,7 +3956,7 @@
     </div>
     <p style="font-size: 8.5pt; color: var(--text-secondary); line-height: 1.55; margin-top: 4pt;">The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.</p>
   </main>
-  <span class="slide-page">19</span>
+  <span class="slide-page">20</span>
 </section>
 
 <!-- ─── 21 — Ch4 section title ──────────────────────────────── -->
@@ -3867,7 +3968,7 @@
   <div class="slide-section-image-diagonal">
     <img loading="lazy" decoding="async" src="./images/strangeness-legibility-hardness.webp" alt="">
   </div>
-  <span class="slide-page">20</span>
+  <span class="slide-page">21</span>
 </section>
 
 <!-- ─── 22 — Ch4 cultivated/governed duality ─────────────────── -->
@@ -3935,7 +4036,7 @@
 
     </div>
   </main>
-  <span class="slide-page">21</span>
+  <span class="slide-page">22</span>
 </section>
 
 <!-- ─── 22 — Ch4 AI Adoption Trilemma ──────────────────────── -->
@@ -3979,7 +4080,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">22</span>
+  <span class="slide-page">23</span>
 </section>
 
 <!-- ─── 23 — Ch4 success patterns ───────────────────────────── -->
@@ -4032,7 +4133,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">23</span>
+  <span class="slide-page">24</span>
 </section>
 
 <!-- ─── 24 — Ch4 failure modes ──────────────────────────────── -->
@@ -4101,7 +4202,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">24</span>
+  <span class="slide-page">25</span>
 </section>
 
 <!-- ─── 25 — Ch4 named roles ────────────────────────────────── -->
@@ -4138,7 +4239,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">25</span>
+  <span class="slide-page">26</span>
 </section>
 
 <!-- ─── 26 — Ch4 business activities flow ───────────────────── -->
@@ -4205,7 +4306,7 @@
 
     </div>
   </main>
-  <span class="slide-page">26</span>
+  <span class="slide-page">27</span>
 </section>
 
 <!-- ─── 27 — Ch5 section title ──────────────────────────────── -->
@@ -4217,7 +4318,7 @@
   <div class="slide-section-image-diagonal">
     <img loading="lazy" decoding="async" src="./images/images-of-memory.png" alt="">
   </div>
-  <span class="slide-page">27</span>
+  <span class="slide-page">28</span>
 </section>
 
 <!-- ─── 25 — Case study 01: SIGBIZ ──────────────────────────── -->
@@ -4256,7 +4357,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">28</span>
+  <span class="slide-page">29</span>
 </section>
 
 <!-- ─── 26 — Case study 02: Visual identity ────────────────── -->
@@ -4293,7 +4394,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">29</span>
+  <span class="slide-page">30</span>
 </section>
 
 <!-- ─── 29 — Ch8 section title ──────────────────────────────── -->
@@ -4305,7 +4406,7 @@
   <div class="slide-section-image-diagonal">
     <img loading="lazy" decoding="async" src="./images/mechanical-currents.webp" alt="">
   </div>
-  <span class="slide-page">30</span>
+  <span class="slide-page">31</span>
 </section>
 
 <!-- ─── 31 — Ch8 body ───────────────────────────────────────── -->
@@ -4325,7 +4426,7 @@
       <p>The work, then, is not to finish a platform deployment. It is to make deployment a core capability, as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is people. People who know how to work in this new nature, and managers who know how to keep the handoff between cultivation and governance working as the terrain keeps changing.</p>
     </div>
   </main>
-  <span class="slide-page">31</span>
+  <span class="slide-page">32</span>
 </section>
 
 <!-- ─── 32 — About & Resources (split slide) ────────────────── -->
@@ -4359,7 +4460,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">32</span>
+  <span class="slide-page">33</span>
 </section>
 
 <!-- ─── 33 — Appendix · Case studies overview ──────────────── -->
@@ -4393,7 +4494,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">33</span>
+  <span class="slide-page">34</span>
 </section>
 
 <!-- ─── 34 — Case 01 · Samsung ──────────────────────────────── -->
@@ -4423,7 +4524,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">34</span>
+  <span class="slide-page">35</span>
 </section>
 
 <!-- ─── 35 — Case 02 · Klarna ───────────────────────────────── -->
@@ -4453,7 +4554,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">35</span>
+  <span class="slide-page">36</span>
 </section>
 
 <!-- ─── 36 — Case 03 · Amazon &amp; MeshClaw ──────────────────────── -->
@@ -4483,7 +4584,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">36</span>
+  <span class="slide-page">37</span>
 </section>
 
 <!-- ─── 37 — Case 04 · Air Canada ───────────────────────────── -->
@@ -4513,7 +4614,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">37</span>
+  <span class="slide-page">38</span>
 </section>
 
 <!-- ─── 38 — Case 05 · Boom Supersonic ──────────────────────── -->
@@ -4543,7 +4644,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">38</span>
+  <span class="slide-page">39</span>
 </section>
 
 <!-- ─── 39 — Case 06 · Visicalc / Excel ─────────────────────── -->
@@ -4573,7 +4674,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">39</span>
+  <span class="slide-page">40</span>
 </section>
 
 <!-- ─── 40 — Case 07 · Gates's Internet Tidal Wave memo ─────── -->
@@ -4603,7 +4704,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">40</span>
+  <span class="slide-page">41</span>
 </section>
 
 <!-- ─── 41 — Case 08 · Git &amp; GitHub PRs ─────────────────────── -->
@@ -4633,7 +4734,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">41</span>
+  <span class="slide-page">42</span>
 </section>
 
 <!-- ─── 42 — Case 09 · Walmart EDI ──────────────────────────── -->
@@ -4663,7 +4764,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">42</span>
+  <span class="slide-page">43</span>
 </section>
 
 <!-- ─── 43 — Case 10 · McLean container ─────────────────────── -->
@@ -4692,7 +4793,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">43</span>
+  <span class="slide-page">44</span>
 </section>
 
 <!-- ─── 44 — Case 11 · Rural users and the Model T (Kline & Pinch 1996) ───── -->
@@ -4722,7 +4823,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">44</span>
+  <span class="slide-page">45</span>
 </section>
 
 <!-- ─── 45 — Case 12 · American steam adoption (Atack, Bateman, Weiss 1980) ───── -->
@@ -4755,7 +4856,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">45</span>
+  <span class="slide-page">46</span>
 </section>
 
 <!-- ─── 46 — Case 13 · Factory electrification (Devine 1983) ───── -->
@@ -4785,7 +4886,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">46</span>
+  <span class="slide-page">47</span>
 </section>
 
 <!-- ─── 47 — Case 14 · Harpers Ferry Armory (Smith / Simon) ───── -->
@@ -4815,7 +4916,7 @@
       </div>
     </div>
   </main>
-  <span class="slide-page">47</span>
+  <span class="slide-page">48</span>
 </section>
 
 <!-- ─── 48 — Appendix · Frameworks · AI as medium ──────────── -->
@@ -4940,7 +5041,7 @@
     </svg>
 
   </main>
-  <span class="slide-page">48</span>
+  <span class="slide-page">49</span>
 </section>
 
 <!-- ─── 49 — Appendix · Frameworks · The right artifact ──────── -->
@@ -4983,7 +5084,7 @@
       </aside>
     </div>
   </main>
-  <span class="slide-page">49</span>
+  <span class="slide-page">50</span>
 </section>
 
 <!-- ─── 50 — Appendix · AI Adoption Assessment ──────────────── -->

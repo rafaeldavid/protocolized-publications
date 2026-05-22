@@ -73,6 +73,7 @@ rsync -a \
   --exclude '_business-flow-test.html' \
   --exclude '_executive-summary-test.html' \
   --exclude '_slide-26-redesign.html' \
+  --exclude '_slide-three-times-test.html' \
   --exclude '_unused' \
   --exclude 'index.html' \
   --exclude 'slides.html' \
