@@ -34,27 +34,27 @@ Live interactive deck: <https://ai.protocolized.dev/>
 
 “Locational freedom was an unparalleled advantage of steam.”
 
-American manufacturers “preferred the waterwheel to the steam engine as the prime mover until some time in the middle of the last century. But by 1900 almost 156,000 steam engines were at work in American factories where they outnumbered waterwheels and water turbines by four to one.”
+“Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.”
 
-“One of the most frequently cited disadvantages of water power was that it dominated the firm’s location decision… Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.” The diffusion of steam “revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.”
+Steam diffusion “revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.” By 1900, steam engines “outnumbered waterwheels and water turbines by four to one” in American factories.
 
-Atack, Bateman & Weiss, “The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,” J. Econ. Hist. 40(2), 1980, pp. 281–308.
+Atack, Bateman & Weiss, “The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,” J. Econ. Hist. 40(2), 1980.
 
 Factories could minimize material handling instead of optimizing power distribution.
 
-The first wave just swapped the core power source: “Replacing a steam engine with one or more electric motors, leaving the power distribution system unchanged, appears to have been the usual juxtaposition of a new technology upon the framework of an old one… The only difference between direct drive and the earliest electric drive system was the type of machine used to turn the line shafts.”
+The first wave just swapped the core power source, “leaving the power distribution system unchanged” — “the usual juxtaposition of a new technology upon the framework of an old one.”
 
-The transformation came with the “ideal workshop — a shop with a motor driving each tool or machine,” which let “machinery be arranged on the factory floor according to the natural sequence of manufacturing operations, minimizing handling of material.” Baldwin Locomotive’s S. M. Vauclain: “I would have put in electric driving systems not only if they saved no power, but even if they required several times the power of a shaft and belting system to operate them.” Output per man-hour then jumped from “1.3 percent before 1919 and 3.1 percent after.”
+The transformation came with the “ideal workshop — a shop with a motor driving each tool or machine,” freeing the floor to follow the “natural sequence of manufacturing operations.” Output per man-hour then jumped from “1.3 percent before 1919 and 3.1 percent after.”
 
-Warren D. Devine, Jr., “From Shafts to Wires: Historical Perspective on Electrification,” J. Econ. Hist. 43(2), 1983, pp. 347–372.
+Warren D. Devine, Jr., “From Shafts to Wires: Historical Perspective on Electrification,” J. Econ. Hist. 43(2), 1983.
 
 “The container made shipping cheap, and by doing so changed the shape of the world economy.”
 
-On April 26, 1956, “a crane lifted fifty-eight aluminum truck bodies aboard an aging tanker ship moored in Newark, New Jersey… Such was the beginning of a revolution.” Levinson’s question and answer: “What is it about the container that is so important? Surely not the thing itself… The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
+“The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
 
-The floor of the world was then redesigned around the box: “Sprawling industrial complexes where armies of thousands manufactured products from start to finish gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.” Cities followed: “Cities that had been centers of maritime commerce for centuries, such as New York and Liverpool, saw their waterfronts decline with startling speed,” while “sleepy harbors such as Busan and Seattle moved into the front ranks of the world’s ports.”
+The world’s geography was then redesigned around the box: “Sprawling industrial complexes… gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.”
 
-Marc Levinson, The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger, Princeton University Press, 2006, Ch. 1.
+Marc Levinson, The Box, Princeton University Press, 2006, Ch. 1.
 
 
 ### AI capabilities are more than another app subscription
