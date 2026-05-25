@@ -1,10 +1,10 @@
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-25. -->
 # Durable AI Adoption — AI Capability Maturity Model
 
 > A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
 
 **Version:** v0.5 · May 2026  
-**Last updated:** 2026-05-19  
+**Last updated:** 2026-05-25  
 **Source repo:** https://github.com/rafaeldavid/protocolized-publications
 
 ## Companion resources

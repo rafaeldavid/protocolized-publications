@@ -1,9 +1,9 @@
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-25. -->
 # Durable AI Adoption — AI Capability Maturity Model
 
 *A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.*
 
-Version: v0.5 · May 2026 · Generated: 2026-05-19
+Version: v0.5 · May 2026 · Generated: 2026-05-25
 
 Live interactive deck: <https://ai.protocolized.dev/>
 
@@ -13,20 +13,49 @@ Live interactive deck: <https://ai.protocolized.dev/>
 
 - **01. [More than a tool](#ch-1)** (page 03)  
   Why AI is a paradigm shift, not a software upgrade, and why adoption needs two mirror tracks.
-- **02. [Adoption Maturity Levels](#ch-2)** (page 08)  
+- **02. [Adoption Maturity Levels](#ch-2)** (page 09)  
   Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.
-- **03. [Getting started with AI adoption](#ch-3)** (page 16)  
+- **03. [Getting started with AI adoption](#ch-3)** (page 17)  
   Readiness check, plan after play, and the four-stage path workflows take into governance.
-- **04. [The path to durable AI adoption](#ch-4)** (page 20)  
+- **04. [The path to durable AI adoption](#ch-4)** (page 22)  
   Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.
-- **05. [How the Protocol Institute adopts AI](#ch-5)** (page 27)  
+- **05. [How the Protocol Institute adopts AI](#ch-5)** (page 29)  
   Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.
-- **06. [The new nature of work](#ch-6)** (page 30)  
+- **06. [The new nature of work](#ch-6)** (page 32)  
   Maintaining the cultivated and governed handoff as the terrain keeps shifting.
-- **07. [About & Resources](#about)** (page 32)  
+- **07. [About & Resources](#about)** (page 35)  
   The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.
 
 ## More than a tool
+
+### Three times, a new technology remade the environment of work
+
+*Early adopters first bolt on the new technology onto the current production architecture. But meaningful gains only appear after a complete redesign of the production environment.*
+
+“Locational freedom was an unparalleled advantage of steam.”
+
+American manufacturers “preferred the waterwheel to the steam engine as the prime mover until some time in the middle of the last century. But by 1900 almost 156,000 steam engines were at work in American factories where they outnumbered waterwheels and water turbines by four to one.”
+
+“One of the most frequently cited disadvantages of water power was that it dominated the firm’s location decision… Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.” The diffusion of steam “revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.”
+
+Atack, Bateman & Weiss, “The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,” J. Econ. Hist. 40(2), 1980, pp. 281–308.
+
+Factories could minimize material handling instead of optimizing power distribution.
+
+The first wave just swapped the core power source: “Replacing a steam engine with one or more electric motors, leaving the power distribution system unchanged, appears to have been the usual juxtaposition of a new technology upon the framework of an old one… The only difference between direct drive and the earliest electric drive system was the type of machine used to turn the line shafts.”
+
+The transformation came with the “ideal workshop — a shop with a motor driving each tool or machine,” which let “machinery be arranged on the factory floor according to the natural sequence of manufacturing operations, minimizing handling of material.” Baldwin Locomotive’s S. M. Vauclain: “I would have put in electric driving systems not only if they saved no power, but even if they required several times the power of a shaft and belting system to operate them.” Output per man-hour then jumped from “1.3 percent before 1919 and 3.1 percent after.”
+
+Warren D. Devine, Jr., “From Shafts to Wires: Historical Perspective on Electrification,” J. Econ. Hist. 43(2), 1983, pp. 347–372.
+
+“The container made shipping cheap, and by doing so changed the shape of the world economy.”
+
+On April 26, 1956, “a crane lifted fifty-eight aluminum truck bodies aboard an aging tanker ship moored in Newark, New Jersey… Such was the beginning of a revolution.” Levinson’s question and answer: “What is it about the container that is so important? Surely not the thing itself… The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
+
+The floor of the world was then redesigned around the box: “Sprawling industrial complexes where armies of thousands manufactured products from start to finish gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.” Cities followed: “Cities that had been centers of maritime commerce for centuries, such as New York and Liverpool, saw their waterfronts decline with startling speed,” while “sleepy harbors such as Busan and Seattle moved into the front ranks of the world’s ports.”
+
+Marc Levinson, The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger, Princeton University Press, 2006, Ch. 1.
+
 
 ### AI capabilities are more than another app subscription
 
@@ -201,7 +230,7 @@ What are your organization's agreed-upon design principles for working with AI? 
 Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.
 
 
-### From play to protocol
+### From Play to Protocol
 
 *“Toy” workflows earn their way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in the sandbox.*
 
@@ -213,6 +242,23 @@ Play surfaces the workflows worth planning around. The governed track inherits a
   - *Gate: Blast radius bounded?*
 - **Governed → Harvest** — The proven kit is promoted to shared infrastructure. It becomes a resource others inherit rather than rediscover. The organization now owns and scales what was first independently found through play.
 The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.
+
+
+### A network of factories
+
+*AI makes everyone a factory of one. Teams and individuals begin to produce and consume structured outputs.*
+
+Once an AI workflow is encoded as a protocol with defined inputs, observable outputs, and a shareable kit, the way work moves through an organization starts to change. Coordination shifts from informal channels to the protocols themselves.
+
+An analyst who encoded their research workflow into a kit is now a factory of one. Anyone who needs that analysis consumes the output through the kit's interface, not through a Slack thread. The meeting that used to align two people's tacit processes becomes a protocol handoff with a versioned input, an observable output, and a named owner.
+
+Governance moves up a layer. Its job stops being the management of individual workflows and becomes the maintenance of the platform: keep the interfaces clean, encourage teams to expose what they have built, and make sure the protocols compose. The organization becomes a network of factories. Each is autonomous. Each is interoperable. Each is consumable by the rest of the network through its interface.
+
+In 2002, Jeff Bezos issued an internal edict to Amazon's engineering organization. Every team had to expose its data and functionality through service interfaces. No direct database links, no internal shortcuts. Everything went through APIs, and the APIs had to be designed as if they would eventually be exposed to the outside world.
+
+The point was not speed or efficiency. It was architecture. By forcing every team to treat its own work as a product with a defined interface, Amazon built a platform almost by accident. Steve Yegge's 2011 memo, which contrasted Amazon's discipline with Google's lack of it, remains the clearest account of what the practice produces and what its absence costs.
+
+"Bezos's Big Mandate transformed Amazon. Every team in the company, from the smallest engineering skunkworks to the most mission-critical platform team, needs to interact with all other teams exclusively through these service interfaces." Steve Yegge · Google Platforms Rant · 2011
 
 
 ## The path to durable AI adoption
@@ -313,7 +359,7 @@ Replit's July 2025 incident: during a code freeze, the agent ignored explicit in
 **Context Stabilization** — Curate the context AI systems depend on and keep it stable across models, tools, and agents. The work involves context gathering, curation of authoritative sources and current versions, and ontology work — entity definitions and category boundaries. The goal is to keep the legal team's "contract" and the agent's "contract" from silently diverging.
 
 
-### Staffing AI adoption means standing up a continuous operating loop and promotion pipeline
+### Staffing AI adoption means standing up a continuous token production pipeline
 
 - **Soft context** — vernacular, drifting
 - **Hard context** — authoritative, versioned, governed
@@ -374,7 +420,24 @@ The visual production pipeline meets the Level 3 criteria. Named owners (Langdon
 
 ## The new nature of work
 
-### The new nature of work
+### From motions to tokens
+
+*For most of the twentieth century, the unit of management has been the worker's second. A new unit is emerging: the production token.*
+
+Organizations are beginning to measure and meter knowledge production work, which previously sat inside salaries, contractor invoices, and project budgets as an unaccounted ingredient. Per-token LLM billing is already an industry standard for those that have integrated AI tooling. Per-team and per-agent token budgets are emerging as spend lines.
+
+That being said, tokens are not kWh. They behave more like grades of refined petroleum: each model's token does different work; a cached input token is roughly 90% cheaper than a fresh one. The unit remains the token, while the market supply remains differentiated.
+
+The firm that runs on tokens becomes addressable through language, and in some real sense, programmable. The management question changes accordingly, mirroring computational resource allocation. While Taylor asked how to discipline bodies into efficient movement, the tokenized firm asks which problems deserve more tokens, and how to structure symbolic flows so the firm remains computationally tractable. Token allocation is resource allocation at the level of organizational attention.
+
+Frederick Winslow Taylor spent the 1880s and 1890s on factory floors with a stopwatch. His Principles of Scientific Management (1911) decomposed labor into discrete measurable tasks and separated planning from execution. The manager's job was to study, standardize, and allocate. The central resource was time, and the unit of measure was the worker's second.
+
+Taylorism had low expressive bandwidth. It could encode a finite, brittle set of workflows. Whenever reality exceeded the schema (a novel situation, an edge case, a judgment call), managerial sovereignty returned. The foreman still had to intervene because the system itself was not sufficiently programmable.
+
+For a century, management science remained Taylorist at its core. Headcount, utilization, throughput per person-hour: all descendants of the stopwatch.
+
+
+### Working the frontier of the new nature
 
 *AI-mediated operations aren't the backbone of today's enterprises, but they are changing the shape of organizations everywhere.*
 

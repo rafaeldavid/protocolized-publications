@@ -1,9 +1,9 @@
-<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-19. -->
+<!-- Generated file — do not edit. Source of truth: AI-Adoption-Guide/html/slides.html. Regenerate via: cd AI-Adoption-Guide/scripts && npm run generate (or node generate.mjs). Last generated: 2026-05-25. -->
 # Durable AI Adoption — AI Capability Maturity Model
 
 > A practical AI adoption guide, written by practical AI adopters. Learn how to adopt AI across your organization, with case studies, maturity levels, and lessons from the Protocol Institute and other organizations.
 
-Version: v0.5 · May 2026 · Generated: 2026-05-19
+Version: v0.5 · May 2026 · Generated: 2026-05-25
 
 ═══════════════════════════════════════════════════════════════
   DECK CONTENT
@@ -24,22 +24,22 @@ A practical AI adoption guide, written by practical AI adopters. Learn how to ad
   01. More than a tool (page 03)
      Why AI is a paradigm shift, not a software upgrade, and why adoption needs two mirror tracks.
 
-  02. Adoption Maturity Levels (page 08)
+  02. Adoption Maturity Levels (page 09)
      Five maturity levels from Shadow to Planetary, each paired with its cultivated counterpart.
 
-  03. Getting started with AI adoption (page 16)
+  03. Getting started with AI adoption (page 17)
      Readiness check, plan after play, and the four-stage path workflows take into governance.
 
-  04. The path to durable AI adoption (page 20)
+  04. The path to durable AI adoption (page 22)
      Bottom-up discovery, top-down scale, and the six functions that hold the operating tension.
 
-  05. How the Protocol Institute adopts AI (page 27)
+  05. How the Protocol Institute adopts AI (page 29)
      Two case studies from inside the Protocol Institute, at Level 1→2 and at Level 3 Engine.
 
-  06. The new nature of work (page 30)
+  06. The new nature of work (page 32)
      Maintaining the cultivated and governed handoff as the terrain keeps shifting.
 
-  07. About & Resources (page 32)
+  07. About & Resources (page 35)
      The Protocol Institute, the Protocols for Business SIG, source materials, and ways to engage.
 
 
@@ -49,6 +49,37 @@ A practical AI adoption guide, written by practical AI adopters. Learn how to ad
 
 
 ── Slide 04 · Chapter 1 · More than a tool ──
+
+## Three times, a new technology remade the environment of work
+
+Early adopters first bolt on the new technology onto the current production architecture. But meaningful gains only appear after a complete redesign of the production environment.
+
+“Locational freedom was an unparalleled advantage of steam.”
+
+American manufacturers “preferred the waterwheel to the steam engine as the prime mover until some time in the middle of the last century. But by 1900 almost 156,000 steam engines were at work in American factories where they outnumbered waterwheels and water turbines by four to one.”
+
+“One of the most frequently cited disadvantages of water power was that it dominated the firm’s location decision… Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.” The diffusion of steam “revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.”
+
+Atack, Bateman & Weiss, “The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,” J. Econ. Hist. 40(2), 1980, pp. 281–308.
+
+Factories could minimize material handling instead of optimizing power distribution.
+
+The first wave just swapped the core power source: “Replacing a steam engine with one or more electric motors, leaving the power distribution system unchanged, appears to have been the usual juxtaposition of a new technology upon the framework of an old one… The only difference between direct drive and the earliest electric drive system was the type of machine used to turn the line shafts.”
+
+The transformation came with the “ideal workshop — a shop with a motor driving each tool or machine,” which let “machinery be arranged on the factory floor according to the natural sequence of manufacturing operations, minimizing handling of material.” Baldwin Locomotive’s S. M. Vauclain: “I would have put in electric driving systems not only if they saved no power, but even if they required several times the power of a shaft and belting system to operate them.” Output per man-hour then jumped from “1.3 percent before 1919 and 3.1 percent after.”
+
+Warren D. Devine, Jr., “From Shafts to Wires: Historical Perspective on Electrification,” J. Econ. Hist. 43(2), 1983, pp. 347–372.
+
+“The container made shipping cheap, and by doing so changed the shape of the world economy.”
+
+On April 26, 1956, “a crane lifted fifty-eight aluminum truck bodies aboard an aging tanker ship moored in Newark, New Jersey… Such was the beginning of a revolution.” Levinson’s question and answer: “What is it about the container that is so important? Surely not the thing itself… The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
+
+The floor of the world was then redesigned around the box: “Sprawling industrial complexes where armies of thousands manufactured products from start to finish gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.” Cities followed: “Cities that had been centers of maritime commerce for centuries, such as New York and Liverpool, saw their waterfronts decline with startling speed,” while “sleepy harbors such as Busan and Seattle moved into the front ranks of the world’s ports.”
+
+Marc Levinson, The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger, Princeton University Press, 2006, Ch. 1.
+
+
+── Slide 05 · Chapter 1 · More than a tool ──
 
 ## AI capabilities are more than another app subscription
 
@@ -73,7 +104,7 @@ To catch the wave early, AI adopters must run a parallel track: bottom-up explor
 Realizing this, the Protocols for Business Special Interest Group of the Protocol Institute collects insights on AI technology adoption. Every few months, we create a new version of this orientation framework. It includes new concepts, case studies, an organizational self-assessment, as well as common success and failure modes. Let's dive into our latest findings.
 
 
-── Slide 05 · Chapter 1 · The path so far ──
+── Slide 06 · Chapter 1 · The path so far ──
 
 ## The AI paradigm unfolds in two parallel tracks
 
@@ -128,7 +159,7 @@ Each milestone needed both an individual practice and an organizational response
     · Output-quality contracts
 
 
-── Slide 06 · Chapter 1 · More than a tool ──
+── Slide 07 · Chapter 1 · More than a tool ──
 
 ## Durable AI Adoption needs governance and cultivation
 
@@ -147,7 +178,7 @@ You should not shift to less governance but to a different kind of governance. I
   Cultivated: Bottom-up: exploration, play, and the kits people invent and prove on their own before the organization promotes them.
 
 
-── Slide 07 · Chapter 1 · More than a tool ──
+── Slide 08 · Chapter 1 · More than a tool ──
 
 ## The path through this guide
 
@@ -178,12 +209,12 @@ How the chapters develop the model, from the framing argument through the maturi
      A 24-question diagnostic that places your organization on the maturity ladder and surfaces your dominant archetype.
 
 
-── Slide 08 · Chapter 2 ──
+── Slide 09 · Chapter 2 ──
 
 # Adoption Maturity Levels
 
 
-── Slide 09 · Chapter 2 · Adoption Maturity Levels ──
+── Slide 10 · Chapter 2 · Adoption Maturity Levels ──
 
 ## The dual nature of AI adoption
 
@@ -215,7 +246,7 @@ Most organizations default to the governed mode of adoption they know from other
     AI fully absorbed into how people think and work; second nature, no longer named.
 
 
-── Slide 10 · Chapter 2 · Adoption Maturity Levels ──
+── Slide 11 · Chapter 2 · Adoption Maturity Levels ──
 
 ## Examples across both paths of adoption
 
@@ -224,12 +255,12 @@ The levels are informed by recent and historical case studies. Durable adopters 
 The levels are informed by recent and historical case studies. Durable adopters use tactics and strategies from both paths.
 
 
-── Slide 16 · Chapter 3 ──
+── Slide 17 · Chapter 3 ──
 
 # Getting started with AI adoption
 
 
-── Slide 17 · Chapter 3 · Getting started with AI adoption ──
+── Slide 18 · Chapter 3 · Getting started with AI adoption ──
 
 ## Pre-pilot readiness check
 
@@ -250,7 +281,7 @@ Before identifying a use case, run a quick readiness check with your organizatio
 If any answer is no, address it before committing to a pilot timeline. Notice what is not on the readiness checklist: a list of approved use cases, a function-by-function curriculum, a product roadmap. Those decisions get made in the next phase, by the people who will run the work.
 
 
-── Slide 18 · Chapter 3 · Getting started with AI adoption ──
+── Slide 19 · Chapter 3 · Getting started with AI adoption ──
 
 ## Plan After Play
 
@@ -268,9 +299,9 @@ Before you can plan AI adoption well, you need to let play happen first. These t
 Play surfaces the workflows worth planning around. The governed track inherits and scales what the cultivated track discovers.
 
 
-── Slide 19 · Chapter 3 · Getting started with AI adoption ──
+── Slide 20 · Chapter 3 · Getting started with AI adoption ──
 
-## From play to protocol
+## From Play to Protocol
 
 “Toy” workflows earn their way into the governed track by passing through four stages. Each gate is a question. If the answer is no, the workflow stays in the sandbox.
 
@@ -291,12 +322,31 @@ Play surfaces the workflows worth planning around. The governed track inherits a
 The cultivated track does its job by encouraging play and creating more challenging kinds of play. It's wrong to remove a candidate workflow too early and equally problematic to promote a workflow that has not earned its gates — the governed track then inherits noise, not signal.
 
 
-── Slide 20 · Chapter 4 ──
+── Slide 21 · Chapter 3 · Getting started with AI adoption ──
+
+## A network of factories
+
+AI makes everyone a factory of one. Teams and individuals begin to produce and consume structured outputs.
+
+Once an AI workflow is encoded as a protocol with defined inputs, observable outputs, and a shareable kit, the way work moves through an organization starts to change. Coordination shifts from informal channels to the protocols themselves.
+
+An analyst who encoded their research workflow into a kit is now a factory of one. Anyone who needs that analysis consumes the output through the kit's interface, not through a Slack thread. The meeting that used to align two people's tacit processes becomes a protocol handoff with a versioned input, an observable output, and a named owner.
+
+Governance moves up a layer. Its job stops being the management of individual workflows and becomes the maintenance of the platform: keep the interfaces clean, encourage teams to expose what they have built, and make sure the protocols compose. The organization becomes a network of factories. Each is autonomous. Each is interoperable. Each is consumable by the rest of the network through its interface.
+
+In 2002, Jeff Bezos issued an internal edict to Amazon's engineering organization. Every team had to expose its data and functionality through service interfaces. No direct database links, no internal shortcuts. Everything went through APIs, and the APIs had to be designed as if they would eventually be exposed to the outside world.
+
+The point was not speed or efficiency. It was architecture. By forcing every team to treat its own work as a product with a defined interface, Amazon built a platform almost by accident. Steve Yegge's 2011 memo, which contrasted Amazon's discipline with Google's lack of it, remains the clearest account of what the practice produces and what its absence costs.
+
+"Bezos's Big Mandate transformed Amazon. Every team in the company, from the smallest engineering skunkworks to the most mission-critical platform team, needs to interact with all other teams exclusively through these service interfaces." Steve Yegge · Google Platforms Rant · 2011
+
+
+── Slide 22 · Chapter 4 ──
 
 # The path to durable AI adoption
 
 
-── Slide 21 · Chapter 4 · The path to durable AI adoption ──
+── Slide 23 · Chapter 4 · The path to durable AI adoption ──
 
 ## Bottom-up discovery, top-down scale
 
@@ -313,7 +363,7 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
     03. Scale — Kits deployed across the organization so it can bind with compatible workflows. New hires inherit AI-enabled workflows on day one. Kit reuse measurable across teams. The department reaches Engine level.
 
 
-── Slide 22 · Chapter 4 · The path to durable AI adoption ──
+── Slide 24 · Chapter 4 · The path to durable AI adoption ──
 
 ## Operational leads will need to manage tensions between velocity, assurance, and legibility
 
@@ -324,7 +374,7 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
   Legibility: Legibility is the degree to which the system remains understandable to its operators. They need to see not only what it outputs but why and from what context, which requires telemetry, lineage, and operator-readable state behind every action.
 
 
-── Slide 23 · Chapter 4 · The path to durable AI adoption ──
+── Slide 25 · Chapter 4 · The path to durable AI adoption ──
 
 ## Success patterns hold the tension between AI adoption tradeoffs
 
@@ -349,7 +399,7 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
      Holds: Agent Velocity without weakening runtime Assurance or Legibility
 
 
-── Slide 24 · Chapter 4 · The path to durable AI adoption ──
+── Slide 26 · Chapter 4 · The path to durable AI adoption ──
 
 ## Failures collapse the tensions, losing the balance between operational needs
 
@@ -378,7 +428,7 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
      Mitigated via: Constitutional software
 
 
-── Slide 25 · Chapter 4 · The path to durable AI adoption ──
+── Slide 27 · Chapter 4 · The path to durable AI adoption ──
 
 ## Six business activities have emerged to capture AI opportunities, and manage its risks (Jargon may vary)
 
@@ -395,9 +445,9 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
   Context Stabilization: Curate the context AI systems depend on and keep it stable across models, tools, and agents. The work involves context gathering, curation of authoritative sources and current versions, and ontology work — entity definitions and category boundaries. The goal is to keep the legal team's "contract" and the agent's "contract" from silently diverging.
 
 
-── Slide 26 · Chapter 4 · The path to durable AI adoption ──
+── Slide 28 · Chapter 4 · The path to durable AI adoption ──
 
-## Staffing AI adoption means standing up a continuous operating loop and promotion pipeline
+## Staffing AI adoption means standing up a continuous token production pipeline
 
   Soft context: vernacular, drifting
 
@@ -416,12 +466,12 @@ Discovery is cultivated. Scale is governed. The organization's job is to invest 
   Loop node — Platform Operations: Run the shared AI infrastructure that domain teams build on.
 
 
-── Slide 27 · Chapter 5 ──
+── Slide 29 · Chapter 5 ──
 
 # How the Protocol Institute adopts AI
 
 
-── Slide 28 · Chapter 5 · How the Protocol Institute adopts AI ──
+── Slide 30 · Chapter 5 · How the Protocol Institute adopts AI ──
 
 ## SIGBIZ AI Discovery Acceleration
 
@@ -437,7 +487,7 @@ Level 1 → Level 2 (Kit) transition inside a Special Interest Group.
   The impact: Three things have shifted. First, AI adoption inside the SIG is now visible. Second, mutual discussion improved: members are collaborating on kits. Lastly, ambitions have expanded. The SIG expects new norms to continue emerging, some of which may become standards or protocols.The case study illustrates the cheapest viable Level 1 → Level 2 transition: a recurring meeting, a no-judgment posture, and a willingness to wait for the patterns to emerge from practice rather than to legislate them in advance.
 
 
-── Slide 29 · Chapter 5 · How the Protocol Institute adopts AI ──
+── Slide 31 · Chapter 5 · How the Protocol Institute adopts AI ──
 
 ## Protocolized visual identity
 
@@ -453,14 +503,33 @@ Level 3 (Engine) in the magazine's visual production pipeline.
   The impact: The visual production pipeline meets the Level 3 criteria. Named owners (Langdon as editor, Ou and Langdon as model artists), a verification checkpoint built into the model itself (the abstraction constraint that fails figurative prompts), and a designed coordination layer between participating roles. The output is a coherent visual identity that holds across issues without each cover requiring an art-direction debate. Choosing to train narrow models on commissioned training art rather than to use stock generators is the same kind of move SIGBIZ made when it harvested its own kits — designing the kit rather than inheriting one designed by a vendor whose interests are not the publication's.
 
 
-── Slide 30 · Chapter 6 ──
+── Slide 32 · Chapter 6 ──
 
 # The new nature of work
 
 
-── Slide 31 · Chapter 6 · The new nature of work ──
+── Slide 33 · Chapter 6 · The new nature of work ──
 
-## The new nature of work
+## From motions to tokens
+
+For most of the twentieth century, the unit of management has been the worker's second. A new unit is emerging: the production token.
+
+Organizations are beginning to measure and meter knowledge production work, which previously sat inside salaries, contractor invoices, and project budgets as an unaccounted ingredient. Per-token LLM billing is already an industry standard for those that have integrated AI tooling. Per-team and per-agent token budgets are emerging as spend lines.
+
+That being said, tokens are not kWh. They behave more like grades of refined petroleum: each model's token does different work; a cached input token is roughly 90% cheaper than a fresh one. The unit remains the token, while the market supply remains differentiated.
+
+The firm that runs on tokens becomes addressable through language, and in some real sense, programmable. The management question changes accordingly, mirroring computational resource allocation. While Taylor asked how to discipline bodies into efficient movement, the tokenized firm asks which problems deserve more tokens, and how to structure symbolic flows so the firm remains computationally tractable. Token allocation is resource allocation at the level of organizational attention.
+
+Frederick Winslow Taylor spent the 1880s and 1890s on factory floors with a stopwatch. His Principles of Scientific Management (1911) decomposed labor into discrete measurable tasks and separated planning from execution. The manager's job was to study, standardize, and allocate. The central resource was time, and the unit of measure was the worker's second.
+
+Taylorism had low expressive bandwidth. It could encode a finite, brittle set of workflows. Whenever reality exceeded the schema (a novel situation, an edge case, a judgment call), managerial sovereignty returned. The foreman still had to intervene because the system itself was not sufficiently programmable.
+
+For a century, management science remained Taylorist at its core. Headcount, utilization, throughput per person-hour: all descendants of the stopwatch.
+
+
+── Slide 34 · Chapter 6 · The new nature of work ──
+
+## Working the frontier of the new nature
 
 AI-mediated operations aren't the backbone of today's enterprises, but they are changing the shape of organizations everywhere.
 
@@ -477,7 +546,7 @@ The scarce skill is applied curiosity. The candidate who finds their way through
 The work, then, is not to finish a platform deployment. It is to make deployment a core capability, as the landscape shifts, again and again. The outcome of a successful adoption program is not the kits, the workflows, or the published policies; it is people. People who know how to work in this new nature, and managers who know how to keep the handoff between cultivation and governance working as the terrain keeps changing.
 
 
-── Slide 33 · Appendix · Case Studies ──
+── Slide 36 · Appendix · Case Studies ──
 
 ## Case Studies
 
@@ -502,7 +571,7 @@ Fourteen cases across five maturity levels. Five contemporary AI adoptions, five
     14. Harpers Ferry and the American System — L3 → L4
 
 
-── Slide 34 · Appendix · Case Studies ──
+── Slide 37 · Appendix · Case Studies ──
 
 ## Samsung Electronics
 
@@ -518,7 +587,7 @@ Level 1 (Shadow) exit pathway: containment and re-admission over two years.
   The impact: Samsung's exit from Shadow is the most documented in the public record. The L1 → L2 transition is rarely one policy action; it is a containment phase followed by a re-admission phase, with the latter taking longer than the former. Organizations that skip containment risk repeating the leak. Organizations that skip re-admission find their workforce running shadow workflows again through different channels.
 
 
-── Slide 35 · Appendix · Case Studies ──
+── Slide 38 · Appendix · Case Studies ──
 
 ## Klarna
 
@@ -534,7 +603,7 @@ Level 2 (Sanctioned) failure mode: access governance without output governance.
   The impact: In May 2025 CEO Sebastian Siemiatkowski reversed course publicly, describing AI customer interactions as "generic, repetitive, and insufficiently nuanced," and announced Klarna would rehire human agents. The reversal is the cleanest documented example of L2 access governance running into its ceiling: governing which tools are used cannot, by itself, govern whether the output is good enough. The transition to L3 Engine requires named output owners and verifiable quality gates, not dashboards of utilization.
 
 
-── Slide 36 · Appendix · Case Studies ──
+── Slide 39 · Appendix · Case Studies ──
 
 ## Amazon & MeshClaw
 
@@ -550,7 +619,7 @@ Level 2 (Sanctioned) measurement failure: tracking adoption without governing ou
   The impact: Adoption rates can be mandated and tokens can be counted; neither is the same as governing whether AI is producing good work. The Amazon case is a textbook L2 measurement failure: when the visible metric is occupancy, employees optimize for occupancy. Tokens consumed become a Goodhart's Law artifact, and the agentic security risk grows alongside the inflated numbers ("the default security posture terrifies me," one employee told the FT). Transitioning to L3 Engine requires named output owners and verifiable quality gates — what the work produced, not how much of it ran.
 
 
-── Slide 37 · Appendix · Case Studies ──
+── Slide 40 · Appendix · Case Studies ──
 
 ## Air Canada chatbot
 
@@ -566,7 +635,7 @@ Level 2 (Sanctioned) accountability test: chatbots as legal subjects.
   The impact: The ruling established the first widely-cited precedent that organizations cannot offload accountability for AI output to the tool itself. For organizations operating at Level 2 — sanctioned tools, no output governance — this is the structural exposure: every AI-generated statement to a customer is an unchecked commitment of the firm. Output governance — verification checkpoints, escalation paths, named owners for AI-customer interfaces — is not optional once a chatbot is producing legally consequential statements.
 
 
-── Slide 38 · Appendix · Case Studies ──
+── Slide 41 · Appendix · Case Studies ──
 
 ## Boom Supersonic
 
@@ -582,7 +651,7 @@ Level 3 (Engine) success pattern: protocols designed alongside capabilities.
   The impact: Boom's XB-1 reached supersonic flight in January 2025 with zero safety incidents across the program. The mkBoom workflow also surfaced Boomless Cruise — a flight regime in which the supersonic boom does not reach the ground under specific atmospheric conditions, recovered through AI-accelerated exploration of the structural envelope. When the blast radius is real hardware, protocols-with-capability is the only viable order: designing them after a failure costs more than the failure itself.
 
 
-── Slide 39 · Appendix · Case Studies ──
+── Slide 42 · Appendix · Case Studies ──
 
 ## Visicalc & Excel
 
@@ -598,7 +667,7 @@ Level 1 (Shadow) substrate: a vernacular that emerged through pedagogy, not mand
   The impact: By 2026 over a billion people operate through spreadsheet logic that nobody designed and no central authority approved. The L1 Shadow analogue is exact: an immensely productive substrate built by users for users, never sanctioned, never standardized at the top, but absorbed so completely into how work is done that it became invisible. The lesson for AI: substrates of this kind emerge through artifacts that teach the method, not through mandates that prescribe it.
 
 
-── Slide 40 · Appendix · Case Studies ──
+── Slide 43 · Appendix · Case Studies ──
 
 ## Gates's Internet Tidal Wave memo
 
@@ -614,7 +683,7 @@ Level 2 (Sanctioned) sanction: ratifying cultivated practice already underway.
   The impact: Within two years Internet Explorer 1.0 shipped with Windows 95, Outlook and Exchange were repositioned around Internet protocols, and Microsoft was a credible Internet platform company. The case shows what effective Level 2 Sanctioned action looks like: it codifies what cultivation has already proved, channeling existing energy into formal direction. Sanction works when it ratifies; it fails when it mandates without underlying practice.
 
 
-── Slide 41 · Appendix · Case Studies ──
+── Slide 44 · Appendix · Case Studies ──
 
 ## Git & GitHub pull requests
 
@@ -630,7 +699,7 @@ Level 3 (Engine) protocol: a designed workflow that outgrew its host.
   The impact: By 2026 the PR workflow is the assumed professional standard for roughly 100 million developers across essentially every development environment, including ones that do not run on GitHub. The case shows the L3 Engine pattern at scale: a designed coordination protocol on top of a generic substrate, optimized to the point of becoming invisible. It also shows the cultivated-governed handoff working as intended — Git the open substrate, PRs the designed protocol; both necessary, neither sufficient.
 
 
-── Slide 42 · Appendix · Case Studies ──
+── Slide 45 · Appendix · Case Studies ──
 
 ## Walmart's EDI mandate
 
@@ -646,7 +715,7 @@ Level 4 (Infrastructure) cascade: one big buyer's mandate becoming an industry b
   The impact: The protocol cascaded across retail within a decade. Suppliers required to use EDI for Walmart began using it elsewhere; competitor retailers added EDI requirements; ERP vendors built EDI tooling into their software. By 2026, roughly 95% of US B2B supply-chain document exchange runs on EDI variants. The case shows the L4 Infrastructure pattern: protocols at this level spread when one dominant actor enforces them against its trading partners, and the rest of the ecosystem follows because the cost of two standards is higher than the cost of one.
 
 
-── Slide 43 · Appendix · Case Studies ──
+── Slide 46 · Appendix · Case Studies ──
 
 ## McLean's container protocol
 
@@ -662,7 +731,7 @@ Level 5 (Planetary) coordination: an artifact-defined protocol no one owns.
   The impact: By 2026 approximately 90% of non-bulk world trade moves via containers. The protocol made coordination cheap and uniform across every jurisdiction and mode. It also concentrated the failures: the system depends on five geographic chokepoints — Suez, Panama, Malacca, Hormuz, Bab el-Mandeb — whose vulnerability was made visible by events like the 2021 Suez Canal blockade. The L5 Planetary lesson: when a protocol becomes infrastructure for the world, coordination is cheap and legibility becomes the new governance challenge.
 
 
-── Slide 44 · Appendix · Case Studies ──
+── Slide 47 · Appendix · Case Studies ──
 
 ## Rural users and the Model T
 
@@ -678,7 +747,7 @@ Level 1 (Shadow): when users invent uses the manufacturer never imagined.
   The impact: The kit-phase pattern Kline & Pinch document is structural: user adaptation precedes manufacturer recognition by years. Value is generated by users in ways the supplier doesn't anticipate; the supplier's eventual job is to harvest and standardize what users invented. The same pattern is operating today around AI — practitioners are using AI for purposes their employers haven't sanctioned. The organizational job is to surface those uses (Kit Harvesting), not suppress them.
 
 
-── Slide 45 · Appendix · Case Studies ──
+── Slide 48 · Appendix · Case Studies ──
 
 ## American steam adoption, 1820–1900
 
@@ -694,7 +763,7 @@ Level 2 → Level 3: firms make the architectural commitment to a new paradigm f
   The impact: American manufacturers paid a premium for steam for most of a century. They were paying for capabilities the cost-per-horsepower table didn't capture: where a factory could sit, how large it could grow, who it could hire, how it could ship. There's a recognizable echo here for organizations evaluating AI adoption now. When teams compare AI's cost to the cost of the work it might replace, the math often looks marginal or worse, and the natural conclusion is to wait. The historical pattern suggests a complementary question worth asking alongside the cost one: what becomes newly possible? Work that was previously out of economic reach, problems that couldn't be attempted at all, customers or markets that weren't addressable at the firm's prior scale. Adoption often makes sense when the answer to that question is concrete, even in cases where the cost comparison on its own doesn't make the case.
 
 
-── Slide 46 · Appendix · Case Studies ──
+── Slide 49 · Appendix · Case Studies ──
 
 ## Factory electrification, 1880–1930
 
@@ -710,7 +779,7 @@ Level 2 → Level 3: the 30-year lag between substitution and architectural rede
   The impact: US manufacturing TFP grew under 1% per year through the group-drive era (1899–1919) and ~5% per year in the unit-drive era (1919–1929). The productivity boom of the 1920s was the payoff of architectural redesign, not of electrification per se. Substituting the power source without redesigning the layout captured almost none of the available gains. Most current AI deployments are at the equivalent of group drive — the technology is installed, the workflow is unchanged, and the productivity hasn't materialized. The L2 → L3 transition is what closes the gap.
 
 
-── Slide 47 · Appendix · Case Studies ──
+── Slide 50 · Appendix · Case Studies ──
 
 ## Harpers Ferry and the American System
 
@@ -726,12 +795,12 @@ Level 3 → Level 4: the institutional substrate behind "interchangeable parts."
   The impact: Industry-scale uniformity required the full institutional substrate to mature, not just the technical capability. The same is operative for L4 Infrastructure today: stating a standard isn't the same as having the inspection regimes, training systems, and shared assumptions that make the standard actually hold. Organizations claiming AI standardization without that institutional substrate are repeating Whitney's marketing claim, not Harpers Ferry's actual practice.
 
 
-── Slide 48 · Appendix · Frameworks ──
+── Slide 51 · Appendix · Frameworks ──
 
 ## Every node and every edge of how work moves is now AI-mediated
 
 
-── Slide 49 · Appendix · Frameworks ──
+── Slide 52 · Appendix · Frameworks ──
 
 ## Finding the right artifact for a given technology
 
