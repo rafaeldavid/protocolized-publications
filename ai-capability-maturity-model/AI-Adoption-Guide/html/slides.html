@@ -411,6 +411,10 @@
       margin: 0.05in 0 0.18in;
       text-wrap: balance;
     }
+    .slide-h1.is-single-line {
+      text-wrap: auto;
+      white-space: nowrap;
+    }
 
     .slide-body {
       flex: 1;
@@ -628,24 +632,44 @@
       box-shadow: 0 2px 8px rgba(26, 26, 46, 0.05);
       display: flex;
       flex-direction: column;
+      min-width: 0;
+    }
+    .era-head {
+      display: flex;
+      align-items: baseline;
+      gap: 8pt;
+      margin-bottom: 4pt;
     }
     .era-num {
       font-family: var(--font-mono);
-      font-size: var(--fs-caption);
+      font-size: var(--fs-footnote);
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--accent-dark);
-      margin-bottom: 3pt;
+      flex-shrink: 0;
     }
     .era-shift {
       font-family: var(--font-mono);
-      font-size: var(--fs-heading-1);
+      font-size: var(--fs-heading-2);
       font-weight: 700;
       letter-spacing: -0.015em;
       line-height: 1.15;
       color: var(--text);
-      margin-bottom: 4pt;
+      white-space: nowrap;
+    }
+    .era-years {
+      font-family: var(--font-mono);
+      font-size: var(--fs-footnote);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 1pt 6pt;
+      border-radius: 9999px;
+      margin-left: auto;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .era-claim {
       font-family: var(--font-sans);
@@ -3245,14 +3269,17 @@
   <header class="slide-header">
     <span class="slide-header-pill">Chapter 1 · More than a tool</span>
   </header>
-  <h2 class="slide-h1">Three times, a new technology remade the environment of work</h2>
+  <h2 class="slide-h1 is-single-line">Three times, a new technology remade the environment of work</h2>
   <p class="slide-subtitle">Early adopters first bolt on the new technology onto the current production architecture. But meaningful gains only appear after a complete redesign of the production environment.</p>
   <main class="slide-body">
     <div class="era-grid">
 
       <article class="era-card">
-        <div class="era-num">I &middot; 1830&ndash;1870</div>
-        <h3 class="era-shift">Water &rarr; Steam</h3>
+        <div class="era-head">
+          <span class="era-num">I</span>
+          <h3 class="era-shift">Water &rarr; Steam</h3>
+          <span class="era-years">1830&ndash;1870</span>
+        </div>
         <p class="era-claim">&ldquo;Locational freedom was an unparalleled advantage of steam.&rdquo;</p>
         <div class="era-body">
           <p><em>&ldquo;Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.&rdquo;</em></p>
@@ -3262,8 +3289,11 @@
       </article>
 
       <article class="era-card">
-        <div class="era-num">II &middot; 1890&ndash;1920</div>
-        <h3 class="era-shift">Steam &rarr; Electricity</h3>
+        <div class="era-head">
+          <span class="era-num">II</span>
+          <h3 class="era-shift">Steam &rarr; Electricity</h3>
+          <span class="era-years">1890&ndash;1920</span>
+        </div>
         <p class="era-claim">Factories could minimize material handling instead of optimizing power distribution.</p>
         <div class="era-body">
           <p>The first wave just swapped the core power source, <em>&ldquo;leaving the power distribution system unchanged&rdquo;</em> &mdash; <em>&ldquo;the usual juxtaposition of a new technology upon the framework of an old one.&rdquo;</em></p>
@@ -3273,8 +3303,11 @@
       </article>
 
       <article class="era-card">
-        <div class="era-num">III &middot; 1956&ndash;1990</div>
-        <h3 class="era-shift">Break-bulk &rarr; Container</h3>
+        <div class="era-head">
+          <span class="era-num">III</span>
+          <h3 class="era-shift">Break-bulk &rarr; Container</h3>
+          <span class="era-years">1956&ndash;1990</span>
+        </div>
         <p class="era-claim">&ldquo;The container made shipping cheap, and by doing so changed the shape of the world economy.&rdquo;</p>
         <div class="era-body">
           <p><em>&ldquo;The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.&rdquo;</em></p>
