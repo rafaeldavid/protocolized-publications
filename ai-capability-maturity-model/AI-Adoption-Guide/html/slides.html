@@ -87,6 +87,7 @@
       --fs-body:      11pt;   /* Body paragraphs · card titles · contents list · table cells */
       --fs-body-sm:   10pt;   /* Compact body · card body */
       --fs-caption:   8pt;    /* Labels · page numbers · pills · meta */
+      --fs-footnote:  7pt;    /* Source citations · footnotes · fine print */
 
       --lh-display:   1.08;
       --lh-heading:   1.25;
@@ -667,11 +668,11 @@
     .era-body em { font-style: italic; color: var(--text); }
     .era-source {
       font-family: var(--font-mono);
-      font-size: var(--fs-caption);
-      line-height: 1.4;
+      font-size: var(--fs-footnote);
+      line-height: 1.35;
       color: var(--text-secondary);
       margin-top: auto;
-      padding-top: 7pt;
+      padding-top: 6pt;
       border-top: 1px solid var(--border-soft);
     }
     .era-source-link {
