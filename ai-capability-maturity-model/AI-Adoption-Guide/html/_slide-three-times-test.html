@@ -91,11 +91,12 @@
       height: 100%;
     }
     .era-card {
+      position: relative;
       background: #fff;
       border: 1px solid var(--border-soft);
       border-top: 3px solid var(--accent);
       border-radius: 6px;
-      padding: 9pt 18pt 12pt;
+      padding: 5pt 18pt 12pt;
       box-shadow: 0 2px 8px rgba(26, 26, 46, 0.05);
       display: flex;
       flex-direction: column;
@@ -126,16 +127,20 @@
       white-space: nowrap;
     }
     .era-years {
+      position: absolute;
+      top: -7pt;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
       font-family: var(--font-mono);
       font-size: var(--fs-footnote);
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.04em;
       color: var(--accent-dark);
-      background: var(--accent-light);
-      padding: 1pt 6pt;
+      background: #fff;
+      border: 1px solid var(--accent);
+      padding: 1pt 8pt;
       border-radius: 9999px;
-      margin-left: auto;
-      flex-shrink: 0;
       white-space: nowrap;
     }
     .era-claim {
@@ -167,10 +172,23 @@
       padding-top: 6pt;
       border-top: 1px solid var(--border-soft);
     }
-    .era-source-link {
-      color: inherit;
+    .era-cta {
+      font-family: var(--font-mono);
+      font-size: var(--fs-footnote);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: auto;
+      padding-top: 6pt;
+      border-top: 1px solid var(--border-soft);
+    }
+    .era-cta a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+    .era-cta a:hover {
       text-decoration: underline;
-      text-decoration-color: var(--border);
+      text-decoration-color: var(--accent);
       text-underline-offset: 2px;
     }
   </style>
@@ -188,45 +206,45 @@
         <div class="era-grid">
 
           <article class="era-card">
+            <span class="era-years">1830–1870</span>
             <div class="era-head">
               <span class="era-num">I</span>
               <h3 class="era-shift">Water → Steam</h3>
-              <span class="era-years">1830–1870</span>
             </div>
             <p class="era-claim">“Locational freedom was an unparalleled advantage of steam.”</p>
             <div class="era-body">
               <p><em>“Whereas a steam-powered plant could be located almost anywhere, the water-powered factory was tied to a non-transportable power source.”</em></p>
               <p>Steam diffusion <em>“revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.”</em> By 1900, steam engines <em>“outnumbered waterwheels and water turbines by four to one”</em> in American factories.</p>
             </div>
-            <p class="era-source">Atack, Bateman &amp; Weiss, <a class="era-source-link" href="https://www.cambridge.org/core/journals/journal-of-economic-history/article/abs/regional-diffusion-and-adoption-of-the-steam-engine-in-american-manufacturing/0775486E267FDDD67C6A3483C8BF9454" target="_blank" rel="noopener">“The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,”</a> <em>J. Econ. Hist.</em> 40(2), 1980.</p>
+            <p class="era-cta"><a href="#case-atack-steam">See full case study →</a></p>
           </article>
 
           <article class="era-card">
+            <span class="era-years">1890–1920</span>
             <div class="era-head">
               <span class="era-num">II</span>
               <h3 class="era-shift">Steam → Electricity</h3>
-              <span class="era-years">1890–1920</span>
             </div>
             <p class="era-claim">Factories could minimize material handling instead of optimizing power distribution.</p>
             <div class="era-body">
-              <p>The first wave just swapped the core power source, <em>“leaving the power distribution system unchanged”</em> — <em>“the usual juxtaposition of a new technology upon the framework of an old one.”</em></p>
+              <p>The first wave just swapped the core power source: <em>“the usual juxtaposition of a new technology upon the framework of an old one.”</em></p>
               <p>The transformation came with the <em>“ideal workshop — a shop with a motor driving each tool or machine,”</em> freeing the floor to follow the <em>“natural sequence of manufacturing operations.”</em> Output per man-hour then jumped from <em>“1.3 percent before 1919 and 3.1 percent after.”</em></p>
             </div>
-            <p class="era-source">Warren D. Devine, Jr., <a class="era-source-link" href="https://www.jstor.org/stable/2120827" target="_blank" rel="noopener">“From Shafts to Wires: Historical Perspective on Electrification,”</a> <em>J. Econ. Hist.</em> 43(2), 1983.</p>
+            <p class="era-cta"><a href="#case-devine-electrification">See full case study →</a></p>
           </article>
 
           <article class="era-card">
+            <span class="era-years">1956–1990</span>
             <div class="era-head">
               <span class="era-num">III</span>
               <h3 class="era-shift">Break-bulk → Container</h3>
-              <span class="era-years">1956–1990</span>
             </div>
             <p class="era-claim">“The container made shipping cheap, and by doing so changed the shape of the world economy.”</p>
             <div class="era-body">
-              <p><em>“The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”</em></p>
+              <p><em>“The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”</em></p>
               <p>The world&rsquo;s geography was then redesigned around the box: <em>“Sprawling industrial complexes… gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.”</em></p>
             </div>
-            <p class="era-source">Marc Levinson, <a class="era-source-link" href="https://assets.press.princeton.edu/chapters/s10724.pdf" target="_blank" rel="noopener"><em>The Box</em></a>, Princeton University Press, 2006, Ch. 1.</p>
+            <p class="era-cta"><a href="#case-container">See full case study →</a></p>
           </article>
 
         </div>

@@ -38,23 +38,23 @@ Live interactive deck: <https://ai.protocolized.dev/>
 
 Steam diffusion “revolutionized production by freeing manufacturers from the locational and seasonal constraints imposed by water power.” By 1900, steam engines “outnumbered waterwheels and water turbines by four to one” in American factories.
 
-Atack, Bateman & Weiss, “The Regional Diffusion and Adoption of the Steam Engine in American Manufacturing,” J. Econ. Hist. 40(2), 1980.
+See full case study →
 
 Factories could minimize material handling instead of optimizing power distribution.
 
-The first wave just swapped the core power source, “leaving the power distribution system unchanged” — “the usual juxtaposition of a new technology upon the framework of an old one.”
+The first wave just swapped the core power source: “the usual juxtaposition of a new technology upon the framework of an old one.”
 
 The transformation came with the “ideal workshop — a shop with a motor driving each tool or machine,” freeing the floor to follow the “natural sequence of manufacturing operations.” Output per man-hour then jumped from “1.3 percent before 1919 and 3.1 percent after.”
 
-Warren D. Devine, Jr., “From Shafts to Wires: Historical Perspective on Electrification,” J. Econ. Hist. 43(2), 1983.
+See full case study →
 
 “The container made shipping cheap, and by doing so changed the shape of the world economy.”
 
-“The value of this utilitarian object lies not in what it is, but in how it is used. The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
+“The container is at the core of a highly automated system for moving goods from anywhere, to anywhere, with a minimum of cost and complication on the way.”
 
 The world’s geography was then redesigned around the box: “Sprawling industrial complexes… gave way to smaller, more specialized plants that shipped components and half-finished goods to one another in ever lengthening supply chains.”
 
-Marc Levinson, The Box, Princeton University Press, 2006, Ch. 1.
+See full case study →
 
 
 ### AI capabilities are more than another app subscription
