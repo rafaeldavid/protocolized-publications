@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Hub 101 · Protocolized</title>
+  <meta name="description" content="A practical guide for operations leaders: how to collect, shape, and maintain the firm context that lets new AI tools work the way your firm already works.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --bg-white:       #ffffff;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --border-light:   #f0eaf6;
+      --text:           #1a1a2e;
+      --text-mid:       #4f5060;
+      --text-muted:     #6b6b7b;
+      --text-faint:     #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --accent-bg:      rgba(168,136,191,0.10);
+
+      --tint-1: #e9e1f2;  /* lavender */
+      --tint-2: #cfe0e2;  /* sky */
+      --tint-3: #d6e6dc;  /* sage */
+      --tint-4: #efe4cc;  /* cream */
+      --tint-5: #f0d9d8;  /* rose */
+
+      --topbar-h:    56px;
+      --content-max: 760px;
+
+      --font-head: 'Roboto Mono', 'Courier New', monospace;
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + 24px); }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); min-height: 100vh; }
+    a { color: var(--accent-dark); text-decoration: none; word-break: break-word; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Topbar ─────────────────────────────────────────────── */
+    #topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--topbar-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .topbar-inner {
+      max-width: 1180px; margin: 0 auto; height: 100%;
+      padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--text); cursor: pointer; white-space: nowrap;
+      text-decoration: none;
+    }
+    .brand::before {
+      content: ''; display: inline-block;
+      width: 22px; height: 2px; background: var(--accent);
+      border-radius: 1px; margin-right: 4px;
+      transform: translateY(-3px);
+    }
+    .brand:hover { color: var(--accent-dark); text-decoration: none; }
+    .brand-sub { color: var(--text-faint); font-weight: 600; font-size: 11px; }
+
+    .topnav { display: flex; align-items: center; gap: 4px; position: relative; }
+    .topnav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 12px; border-radius: 6px;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-mid); cursor: pointer; line-height: 1;
+      white-space: nowrap;
+      background: none; border: none;
+      font-family: var(--font-body);
+      transition: color .14s, background .14s;
+      text-decoration: none;
+    }
+    .topnav-link:hover { color: var(--text); background: var(--accent-light); text-decoration: none; }
+    .topnav-caret {
+      width: 7px; height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .14s;
+    }
+    .topnav-link[aria-expanded="true"] .topnav-caret { transform: translateY(1px) rotate(-135deg); }
+
+    .dropdown {
+      position: absolute; top: calc(var(--topbar-h) + 6px);
+      background: var(--bg-white);
+      border: 1px solid var(--border); border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(26,26,46,.10), 0 2px 8px rgba(26,26,46,.05);
+      padding: 8px; min-width: 320px;
+      display: none; z-index: 101;
+    }
+    .dropdown.open { display: block; }
+    .dropdown-item {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 10px 12px; border-radius: 6px;
+      font-size: 13.5px; color: var(--text); cursor: pointer;
+      text-decoration: none; line-height: 1.4;
+    }
+    .dropdown-item:hover { background: var(--accent-light); text-decoration: none; }
+    .dropdown-num {
+      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
+      color: var(--text-faint); letter-spacing: .04em; min-width: 18px;
+    }
+    .dropdown-meta { display: block; font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+
+    /* ── Floating gutter section nav ────────────────────────── */
+    .section-nav {
+      position: fixed; top: 50%;
+      left: max(20px, calc((100vw - var(--content-max)) / 2 - 230px));
+      transform: translateY(-50%);
+      z-index: 5; font-size: 12px; letter-spacing: .02em;
+      display: none; opacity: 0;
+      transition: opacity 0.4s ease; pointer-events: none;
+    }
+    .section-nav.visible { opacity: 1; pointer-events: auto; }
+    @media (min-width: 1120px) {
+      .section-nav { display: flex; flex-direction: column; gap: 4px; }
+    }
+    .section-nav a {
+      color: var(--text-faint); text-decoration: none;
+      padding: 6px 12px; border-left: 2px solid transparent;
+      transition: color .15s ease, border-color .15s ease;
+      line-height: 1.4; font-weight: 500; white-space: nowrap;
+    }
+    .section-nav a:hover { color: var(--text-muted); text-decoration: none; }
+    .section-nav a.active { color: var(--text); border-left-color: var(--accent); }
+    .section-nav .num {
+      font-family: var(--font-head); color: var(--text-faint);
+      margin-right: 8px; font-size: 11px; font-weight: 600;
+    }
+    .section-nav a.active .num { color: var(--accent); }
+
+    /* ── Main column ────────────────────────────────────────── */
+    main {
+      max-width: var(--content-max); margin: 0 auto;
+      padding: calc(var(--topbar-h) + 56px) 40px 120px;
+    }
+
+    /* ── Intro ──────────────────────────────────────────────── */
+    .intro {
+      padding-bottom: 52px; border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .intro-eyebrow {
+      font-family: var(--font-head); font-size: 10px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .intro h1 {
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 2rem; line-height: 1.18; color: var(--text); margin-bottom: 16px;
+    }
+    .intro-lede { font-size: 16px; line-height: 1.65; color: var(--text-mid); margin-bottom: 28px; }
+    .intro-meta {
+      display: flex; gap: 28px; flex-wrap: wrap; font-size: 12px;
+      color: var(--text-faint); padding-top: 18px; border-top: 1px solid var(--border-soft);
+    }
+    .intro-meta strong { display: block; color: var(--text); font-family: var(--font-head); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* ── Section ────────────────────────────────────────────── */
+    .case-section {
+      padding-top: 16px; padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: calc(var(--topbar-h) + 16px);
+    }
+    .case-section:last-of-type { border-bottom: none; }
+
+    .sec-hero {
+      border-radius: 10px; padding: 26px 28px; margin-bottom: 30px;
+    }
+    .case-section[data-tint="1"] .sec-hero { background: var(--tint-1); }
+    .case-section[data-tint="2"] .sec-hero { background: var(--tint-2); }
+    .case-section[data-tint="3"] .sec-hero { background: var(--tint-3); }
+    .case-section[data-tint="4"] .sec-hero { background: var(--tint-4); }
+    .case-section[data-tint="5"] .sec-hero { background: var(--tint-5); }
+    .sec-eyebrow {
+      font-family: var(--font-head); font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent-dark); margin-bottom: 10px;
+    }
+    .case-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .case-meta-info { font-size: 12px; color: var(--text-mid); }
+    .sec-hero h2 {
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 1.5rem; line-height: 1.22; color: var(--text); margin-bottom: 8px;
+    }
+    .case-subhead { font-size: 14.5px; color: #3a3a4e; line-height: 1.55; margin-bottom: 0; max-width: 600px; }
+
+    .case-section h3 {
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 1.0625rem; color: var(--text); margin: 2rem 0 .6rem;
+    }
+    .case-section h4 { font-size: 1rem; }
+
+    /* Tags */
+    .tag {
+      display: inline-block; font-family: var(--font-head);
+      font-size: 9.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+    }
+    .tag-1 { background: var(--accent-bg); color: var(--accent-dark); }
+    .tag-2 { background: #eef3f8; color: #3a6080; }
+    .tag-3 { background: #eef5f2; color: #3d7a60; }
+    .tag-4 { background: #fdf4e7; color: #a07030; }
+    .tag-5 { background: #fdf0f0; color: #b06060; }
+
+    /* Prose */
+    .prose p { font-size: 15px; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.2rem; }
+    .prose em { font-style: italic; }
+    .prose strong { color: var(--text); font-weight: 600; }
+    .prose > ul { margin: 0 0 1.2rem 1.1rem; }
+    .prose > ul li { font-size: 14.5px; line-height: 1.7; color: var(--text-mid); margin-bottom: 8px; }
+    .prose > ul li strong { color: var(--text); }
+
+    /* Numbered steps */
+    .steps { margin: 4px 0 1.4rem; padding: 0; counter-reset: step; list-style: none; }
+    .steps > li {
+      position: relative; padding-left: 40px; margin-bottom: 18px;
+      font-size: 14.5px; line-height: 1.7; color: var(--text-mid);
+    }
+    .steps > li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: -2px; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent-light); color: var(--accent-dark);
+      font-family: var(--font-head); font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps > li strong { color: var(--text); }
+
+    /* Callout */
+    .callout {
+      background: var(--accent-light); border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent); border-radius: 8px;
+      padding: 14px 18px; margin: 22px 0; font-size: 14px; line-height: 1.7; color: var(--text-mid);
+    }
+    .callout strong { color: var(--text); }
+    .callout .ic { font-style: normal; margin-right: 6px; }
+
+    /* Context / level cards */
+    .ctx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 14px; margin: 24px 0; }
+    .ctx-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .ctx-num { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+    .ctx-card h4 { font-family: var(--font-head); font-size: 13.5px; font-weight: 700; color: var(--text); margin: 5px 0 8px; }
+    .ctx-card > p { font-size: 13.5px; line-height: 1.55; color: var(--text-mid); margin: 0 0 10px; }
+    .ctx-card dl { font-size: 12.5px; line-height: 1.45; margin: 0; }
+    .ctx-card dt { font-family: var(--font-head); font-size: 9px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-top: 7px; }
+    .ctx-card dd { color: var(--text); margin: 1px 0 0; }
+
+    /* Two-column split (inferable vs non-inferable) */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+    @media (max-width: 600px) { .split { grid-template-columns: 1fr; } }
+    .split-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; background: var(--bg-white); }
+    .split-card.yes { border-left: 3px solid #3d7a60; }
+    .split-card.no  { border-left: 3px solid var(--accent); }
+    .split-card .split-label { font-family: var(--font-head); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    .split-card.yes .split-label { color: #3d7a60; }
+    .split-card.no  .split-label { color: var(--accent-dark); }
+    .split-card ul { list-style: none; margin: 0; padding: 0; }
+    .split-card li { font-size: 13px; line-height: 1.5; color: var(--text-mid); margin-bottom: 8px; padding-left: 14px; position: relative; }
+    .split-card li::before { content: '–'; position: absolute; left: 0; color: var(--text-faint); }
+
+    /* Checklist */
+    .checklist { list-style: none; margin: 14px 0 0; padding: 0; }
+    .checklist li { position: relative; padding-left: 30px; margin-bottom: 11px; font-size: 14.5px; line-height: 1.55; color: var(--text-mid); }
+    .checklist li::before { content: ''; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border: 1.5px solid var(--accent); border-radius: 4px; }
+    .check-head { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text); margin: 24px 0 6px; }
+
+    /* Code */
+    pre { background: var(--text); color: #e6e3f0; border-radius: 10px; padding: 16px 18px; overflow-x: auto; margin: 18px 0; }
+    pre, code { font-family: var(--font-head); }
+    pre code { font-size: 12.5px; line-height: 1.7; background: none; color: inherit; padding: 0; }
+    code { font-size: .88em; background: var(--accent-bg); color: var(--accent-dark); padding: 1px 5px; border-radius: 4px; }
+    .json-k { color: #b69ad6; }
+    .json-s { color: #b8d6b0; }
+    .json-n { color: #e0b878; }
+
+    /* Table */
+    .tbl { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 13.5px; }
+    .tbl th, .tbl td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-soft); vertical-align: top; line-height: 1.5; }
+    .tbl th { font-family: var(--font-head); font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+    .tbl td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .tbl td { color: var(--text-mid); }
+    @media (max-width: 600px) { .tbl td:first-child { white-space: normal; } }
+
+    /* Extend */
+    .extend-cta { margin: 30px 0 0; display: flex; align-items: center; justify-content: center; }
+    .extend-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-head); font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent-dark); background: var(--bg-white);
+      border: 1px solid var(--accent); border-radius: 6px;
+      padding: 12px 22px; cursor: pointer; transition: background .14s, color .14s;
+    }
+    .extend-btn:hover { background: var(--accent-light); }
+    .extend-btn .extend-icon {
+      width: 10px; height: 10px;
+      border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+      transform: translateY(-2px) rotate(45deg); transition: transform .2s;
+    }
+    .extend-btn[aria-expanded="true"] .extend-icon { transform: translateY(1px) rotate(-135deg); }
+    .case-extended { margin-top: 34px; padding-top: 34px; border-top: 1px dashed var(--border); }
+    .case-extended[hidden] { display: none; }
+    .extended-label {
+      font-family: var(--font-head); font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+
+    /* Sources */
+    .sources-list { margin: 16px 0; }
+    .source-item { padding: 12px 0; border-top: 1px solid var(--border-soft); font-size: 13px; line-height: 1.6; }
+    .source-item:first-child { border-top: none; padding-top: 0; }
+    .source-num { font-family: var(--font-head); font-weight: 700; font-size: 10.5px; color: var(--accent); margin-right: 8px; }
+    .source-title { color: var(--text); font-weight: 500; }
+    .source-meta { color: var(--text-muted); font-size: 12.5px; margin-top: 2px; }
+    .source-url { font-size: 11.5px; color: var(--accent-dark); display: inline-block; margin-top: 3px; }
+
+    /* About */
+    .about-section { padding-top: 52px; scroll-margin-top: calc(var(--topbar-h) + 16px); }
+    .about-section h2 { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; color: var(--text); margin-bottom: 8px; }
+    .about-section h3 { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--text); margin: 1.8rem 0 .6rem; }
+    .contact-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-top: 32px; }
+    .contact-label { font-family: var(--font-head); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .contact-card p { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin: 0 0 6px; }
+    .contact-card p:last-child { margin-bottom: 0; }
+
+    footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-faint); line-height: 1.7; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .topbar-inner { padding: 0 18px; }
+      main { padding: calc(var(--topbar-h) + 40px) 24px 96px; }
+      .intro h1 { font-size: 1.625rem; }
+      .sec-hero h2 { font-size: 1.3rem; }
+      .dropdown { left: 18px; right: 18px; min-width: 0; }
+    }
+    @media (max-width: 600px) {
+      .brand-sub { display: none; }
+      .topnav-link { padding: 7px 9px; font-size: 12px; }
+      main { padding: calc(var(--topbar-h) + 32px) 16px 80px; }
+      .sec-hero { padding: 20px 18px; }
+    }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header id="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" tabindex="0">
+      Protocolized<span class="brand-sub">· Context Hub 101</span>
+    </a>
+    <nav class="topnav" role="navigation" aria-label="Primary">
+      <button class="topnav-link" id="secs-trigger" aria-expanded="false" aria-controls="secs-dropdown" aria-haspopup="true">
+        Contents <span class="topnav-caret"></span>
+      </button>
+      <a class="topnav-link" data-target="about" href="#sec-about">About</a>
+    </nav>
+  </div>
+  <div class="dropdown" id="secs-dropdown" role="menu" aria-labelledby="secs-trigger">
+    <a class="dropdown-item" href="#sec-01" role="menuitem"><span class="dropdown-num">01</span><span>What a context hub is <span class="dropdown-meta">Concept · why AI tools need one</span></span></a>
+    <a class="dropdown-item" href="#sec-02" role="menuitem"><span class="dropdown-num">02</span><span>How it's built <span class="dropdown-meta">The layers · shared hub vs. a tool's own context</span></span></a>
+    <a class="dropdown-item" href="#sec-03" role="menuitem"><span class="dropdown-num">03</span><span>The seven kinds of context <span class="dropdown-meta">The inventory worksheet</span></span></a>
+    <a class="dropdown-item" href="#sec-04" role="menuitem"><span class="dropdown-num">04</span><span>Preparing documents for retrieval <span class="dropdown-meta">Chunk · overlap · enrich</span></span></a>
+    <a class="dropdown-item" href="#sec-05" role="menuitem"><span class="dropdown-num">05</span><span>The four readiness levels <span class="dropdown-meta">Scattered → governed</span></span></a>
+    <a class="dropdown-item" href="#sec-06" role="menuitem"><span class="dropdown-num">06</span><span>Setting it up <span class="dropdown-meta">Individual and firm tracks</span></span></a>
+    <a class="dropdown-item" href="#sec-07" role="menuitem"><span class="dropdown-num">07</span><span>Keeping it current <span class="dropdown-meta">Maintenance · anti-patterns</span></span></a>
+    <a class="dropdown-item" href="#sec-08" role="menuitem"><span class="dropdown-num">08</span><span>In practice <span class="dropdown-meta">A worked example · where to start</span></span></a>
+  </div>
+</header>
+
+<aside class="section-nav" id="section-nav" aria-label="Page sections">
+  <a href="#top" data-target="top"><span class="num">↑</span>Top</a>
+  <a href="#sec-01" data-target="sec-01"><span class="num">01</span>What it is</a>
+  <a href="#sec-02" data-target="sec-02"><span class="num">02</span>How it's built</a>
+  <a href="#sec-03" data-target="sec-03"><span class="num">03</span>What to collect</a>
+  <a href="#sec-04" data-target="sec-04"><span class="num">04</span>Prep your documents</a>
+  <a href="#sec-05" data-target="sec-05"><span class="num">05</span>How ready are you</a>
+  <a href="#sec-06" data-target="sec-06"><span class="num">06</span>How to set it up</a>
+  <a href="#sec-07" data-target="sec-07"><span class="num">07</span>Keep it current</a>
+  <a href="#sec-08" data-target="sec-08"><span class="num">08</span>See an example</a>
+  <a href="#sec-about" data-target="sec-about"><span class="num">·</span>About</a>
+</aside>
+
+<main id="top">
+
+  <!-- INTRO -->
+  <section class="intro" id="sec-intro">
+    <div class="intro-eyebrow">AI Readiness · For Operations Leaders</div>
+    <h1>Get your firm's context ready before you connect AI tools.</h1>
+    <p class="intro-lede">A context hub is the layer of firm information that lets new AI tools work the way your firm already works. This guide explains what a context hub is, what goes into one, and how to get yours ready — whether you are one advisor setting up your own tools or an operations team standing up shared infrastructure for the whole firm. Each section answers one question. Use "Extend" where it appears to read the deeper detail in place.</p>
+    <div class="intro-meta">
+      <div><strong>Audience</strong>Operations leaders &amp; advisors</div>
+      <div><strong>Covers</strong>Individual setup → firm-wide hub</div>
+      <div><strong>Levels</strong>L1 Scattered → L4 Governed</div>
+    </div>
+  </section>
+
+  <!-- 01 -->
+  <section class="case-section" id="sec-01" data-tint="1">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 01</div>
+      <div class="case-meta"><span class="tag tag-1">Concept</span><span class="case-meta-info">What it is · why one is needed</span></div>
+      <h2>What a context hub is</h2>
+      <p class="case-subhead">A context hub is the organized, trustworthy layer of firm information an AI tool reads to learn how your firm works and what it is allowed to do.</p>
+    </div>
+
+    <div class="prose">
+      <p>A <strong>context hub</strong> is the curated layer of information that sits between your raw systems (the CRM, custodian feeds — the firms that hold client assets — planning software, recorded client meetings, the email archive) and the AI tools you connect to them. It holds the operating context an AI tool needs to act correctly: who's who, how the firm communicates, how it produces client work, who the clients are, what has already happened with each household, and what the tool is allowed to touch.</p>
+      <p>The simplest way to understand it: a context hub is <strong>onboarding for AI tools, made machine-readable.</strong> A new client service associate reads the procedures manual, learns the firm's terminology, meets the advisors, and gets system access. An AI tool re-reads its equivalent from scratch on every session, at machine speed, so the hub has to be structured and stay current on its own.</p>
+
+      <h3>Why AI software needs one</h3>
+      <p>Without a hub, every AI tool starts cold. Someone pastes in context by hand, the tool guesses at the firm's conventions, and nothing it learns carries to the next session.</p>
+      <p>A hub changes what coordinates the work. The signals your team already watches all day are scattered across systems: a new-account application returned three days ago for a missing signature, an account transfer to another firm stalled while the other side holds it up, a client payout with a hard year-end deadline that still has not been processed, a billing run that did not reconcile, a service request that has aged past its turnaround target. When those signals are structured and trustworthy, AI tools can read them and act on them continuously rather than waiting for someone to notice and assign the work.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="case-section" id="sec-02" data-tint="2">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 02</div>
+      <div class="case-meta"><span class="tag tag-2">Architecture</span><span class="case-meta-info">Three layers · keep them separate</span></div>
+      <h2>The elements of a context hub</h2>
+      <p class="case-subhead">Most failures come from connecting AI tools to the wrong layer.</p>
+    </div>
+
+    <div class="ctx-grid">
+      <div class="ctx-card">
+        <div class="ctx-num">1 — Source systems</div>
+        <h4>Where your data lives today</h4>
+        <p>The CRM, custodian portals, planning software, recorded client meetings, the email archive, shared drives. High-volume, messy, and authoritative.</p>
+        <dl><dt>Rule</dt><dd>Tools do not read this directly. It stays where it is — you project from it.</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">2 — Context layer</div>
+        <h4>The hub itself</h4>
+        <p>A curated version of those source systems: structured, deduplicated, tagged with where it came from and how much to trust it, and registered so nothing is added ad hoc.</p>
+        <dl><dt>Rule</dt><dd>This is the layer you build. Everything downstream depends on its quality.</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">3 — Surfacing</div>
+        <h4>How a tool gets it</h4>
+        <p>The right slice at the right moment: live queries into the CRM and custodian feeds, retrieval over a knowledge corpus, standing instructions for stable rules, and memory for what the tool learns across sessions.</p>
+        <dl><dt>Rule</dt><dd>Different context reaches the tool different ways — see Section 03.</dd></dl>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Two kinds of context: the shared hub and a tool's own working notes</h3>
+      <p>The three layers above are the <strong>shared</strong> hub — durable, firm-wide, the same for everyone. A working AI tool also keeps a second kind of context that is entirely its own: its notes for the job in front of it. Keep the two apart.</p>
+    </div>
+
+    <div class="split">
+      <div class="split-card">
+        <div class="split-label" style="color:var(--accent-dark)">The shared hub</div>
+        <ul>
+          <li>Durable, firm-wide knowledge</li>
+          <li>Curated and governed</li>
+          <li>Read by every tool</li>
+        </ul>
+      </div>
+      <div class="split-card">
+        <div class="split-label" style="color:#3a6080">A tool's working context</div>
+        <ul>
+          <li>A scratchpad for one task</li>
+          <li>Its plan, progress, retries, intermediate output</li>
+          <li>Private to the run, ephemeral by design</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Most of a tool's moment-to-moment context is the second kind, and it should <strong>not</strong> flow back into the shared hub. Promoting half-finished reasoning or run-specific scratch would pollute the firm's knowledge the same way dumping raw documents does.</p>
+      <p>The exception is the <strong>durable lesson.</strong> When a tool resolves a recurring problem in a new way, or finds that a stated convention is wrong, that lesson should graduate into the shared hub so every other tool benefits. This is the grow-by-correction loop from Section 07, run as a one-way gate: the tool <em>proposes</em> the update, and it is promoted only after it is verified, in scope, and not already there — logged through the audit trail and the named owner. Run-specific scratch stays where it is.</p>
+    </div>
+
+    <div class="callout"><span class="ic">ℹ️</span> <strong>The test for what graduates:</strong> would another tool, on a different job next month, be helped by this — or is it only true for this run? The first belongs in the hub; the second stays local.</div>
+
+    <div class="extend-cta">
+      <button class="extend-btn" data-extend="ex-02" aria-expanded="false" aria-controls="ex-02">
+        Extend — what a tool's working context looks like today <span class="extend-icon"></span>
+      </button>
+    </div>
+
+    <div class="case-extended" id="ex-02" hidden>
+      <div class="extended-label">Worked example · local-context patterns from software teams</div>
+      <div class="prose">
+        <p>Software teams already run this split, and the patterns transfer directly. A coding agent's local context usually includes a few recognizable files:</p>
+        <ul>
+          <li><strong>A project instructions file</strong> (<code>CLAUDE.md</code> or <code>AGENTS.md</code>) — the repo's stable conventions and gotchas. <em>Mostly shared:</em> durable and hub-worthy. New gotchas it learns are promotion candidates.</li>
+          <li><strong>A status or progress tracker</strong> (a <code>MILESTONES.md</code>, a task board, a TODO list) — what is done and what is next. <em>Mixed:</em> this run's checkboxes are ephemeral; a finished decision recorded there may graduate.</li>
+          <li><strong>The repo <code>README</code></strong> — what the project is and how to run it. <em>Shared:</em> durable, belongs in the hub.</li>
+          <li><strong>A scratchpad or plan for the current task</strong> — the agent's working reasoning, intermediate output, and retries. <em>Local and ephemeral:</em> never promote this.</li>
+        </ul>
+        <p>The wealth-management parallel is exact. A tool working the exception queue keeps a private run list — "the items I touched today, what I tried, what failed." That is scratch; it disappears with the run. The new resolution it discovers ("a transfer rejected for a name mismatch is fixed by refiling with the corrected name") is the durable lesson that graduates into the shared hub.</p>
+      </div>
+      <div class="extend-cta">
+        <button class="extend-btn" data-extend="ex-02" aria-expanded="true" aria-controls="ex-02">Collapse <span class="extend-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="case-section" id="sec-03" data-tint="3">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 03</div>
+      <div class="case-meta"><span class="tag tag-3">Inventory</span><span class="case-meta-info">Seven types · the worksheet</span></div>
+      <h2>What kinds of context you collect</h2>
+      <p class="case-subhead">Each type has a different shape, a different home, a different path to the tool, and a different refresh rhythm. Do not treat them all as documents to upload.</p>
+    </div>
+
+    <div class="ctx-grid">
+      <div class="ctx-card">
+        <div class="ctx-num">1</div><h4>Identity &amp; structure</h4>
+        <p>Who's who: advisor-to-household assignments, team pods, branch structure, who can approve what.</p>
+        <dl><dt>Shape</dt><dd>Structured table or chart</dd><dt>Refresh</dt><dd>On change, ~monthly</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">2</div><h4>Voice &amp; lexicon</h4>
+        <p>How the firm communicates: client tone, required disclosures, your own terminology.</p>
+        <dl><dt>How tools get it</dt><dd>Written into standing instructions</dd><dt>Refresh</dt><dd>Rarely</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">3</div><h4>Craft &amp; patterns</h4>
+        <p>How you produce client work: plan templates, model portfolios, the review-meeting deck, approved email templates.</p>
+        <dl><dt>How tools get it</dt><dd>Loaded on demand</dd><dt>Refresh</dt><dd>Per engagement type</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">4</div><h4>Relationships &amp; state</h4>
+        <p>Who clients are and where things stand: records, balances, account status, open service requests, the pipeline.</p>
+        <dl><dt>How tools get it</dt><dd>Queried live — do not copy it</dd><dt>Refresh</dt><dd>Continuous</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">5</div><h4>Episodic memory</h4>
+        <p>What has already happened: recorded reviews, advisor notes, how past problems were resolved.</p>
+        <dl><dt>How tools get it</dt><dd>Retrieval</dd><dt>Refresh</dt><dd>Continuous ingest</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">6</div><h4>Procedural</h4>
+        <p>How work gets done: the onboarding checklist, the transfer runbook, the year-end payout process, the billing run, reconciliation steps.</p>
+        <dl><dt>Shape</dt><dd>Step-by-step playbooks</dd><dt>Refresh</dt><dd>When the process changes</dd></dl>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-num">7</div><h4>Permissions &amp; scope</h4>
+        <p>What a tool may touch: draft but never send; read holdings but never trade; flag a payment but never move funds.</p>
+        <dl><dt>How tools get it</dt><dd>Stated in instructions &amp; enforced in permissions</dd><dt>Refresh</dt><dd>Governed</dd></dl>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="ic">ℹ️</span><strong>Two rules apply to every type.</strong> <strong>Query the live, ingest the slow:</strong> query what changes often (account state), ingest what changes slowly (plans, decisions, procedures). <strong>Tier by trust:</strong> tag each source with its origin and a weight, so a ratified investment policy statement outranks an advisor's offhand note, which outranks a forwarded article.
+    </div>
+
+    <div class="extend-cta">
+      <button class="extend-btn" data-extend="ex-03" aria-expanded="false" aria-controls="ex-03">
+        Extend — see a brand &amp; design guardrail file <span class="extend-icon"></span>
+      </button>
+    </div>
+
+    <div class="case-extended" id="ex-03" hidden>
+      <div class="extended-label">Worked example · a brand &amp; front-end design guardrail</div>
+      <div class="prose">
+        <p>Voice (type 2) and craft (type 3) often live in one artifact: a <strong>brand and design guardrail file</strong>. The current convention is a single markdown file — machine-readable tokens at the top (exact colors, fonts, spacing) and plain-language rules below. The tokens tell a tool <em>what</em> your values are; the prose tells it <em>how</em> to apply them, which is what stops generic, off-brand output. The example below is generic — swap in your own values.</p>
+<pre><code>---
+brand: Northwind                 # replace with your own
+tokens:
+  color:
+    primary: "#1a4d8f"           # main actions and links only
+    accent:  "#e8a33d"           # small highlights, never body text
+    text:    "#1c1c24"
+    surface: "#ffffff"
+    border:  "#e5e5ea"
+  font:
+    heading: "Georgia, serif"
+    body:    "Inter, system-ui, sans-serif"
+  radius: 8px                    # one corner radius everywhere
+  space:  [4, 8, 16, 24, 40]     # use these spacing steps only
+---
+
+# Brand and design guardrails
+
+## Voice — restrained and editorial; plain words, short sentences, no hype
+- DO write:    "Track your spending in one place."
+- DON'T write: "Unlock powerful insights with our revolutionary platform!"
+- Never use exclamation points, or the words "delight", "seamless", "revolutionary".
+- Spell the product "Northwind", never "NorthWind" or "NW".
+
+## Layout
+- Favor whitespace over decoration. When unsure, remove an element.
+- One primary action per screen, in color.primary. Everything else is secondary.
+- Use only the spacing steps above for margin and padding. No arbitrary values.
+
+## Components
+- Buttons use the radius above, never a full pill. Primary is filled, secondary is outline.
+- color.accent is for small highlights only (a badge, an active tab). Never a background.
+- Body text is always color.text on color.surface, 16px minimum.
+
+## Sources — reuse these, never invent
+- Components: import from the @northwind/ui library. Don't hand-roll a button,
+  modal, or input that already exists there.
+- Icons: the Lucide set only, 1.5px stroke. No emoji, no mixed icon packs.
+- Logos and brand assets: /brand/assets/ (SVG only). Never recreate or recolor the logo.
+- Photography and illustration: the approved library at /brand/media/. No external stock.
+- Fonts: self-hosted from /brand/fonts/. Do not load fonts from a CDN.
+- When the right component or asset does not exist, ask — do not improvise one.
+
+## Never
+- Drop shadows heavier than 0 1px 3px rgba(0,0,0,.08).
+- More than two font families.
+- Gradients, unless explicitly requested.</code></pre>
+        <ul>
+          <li><strong>The tokens (top)</strong> give exact values, so a tool never invents a hex code, a font, or a spacing step.</li>
+          <li><strong>The voice do / don't pairs</strong> are the highest-signal part. Show the tool a good and a bad sentence rather than describing the tone in the abstract.</li>
+          <li><strong>The "Never" list</strong> encodes the specific mistakes you have seen before — the same grow-by-correction habit from Section 06, applied to design.</li>
+          <li><strong>The "Sources" list</strong> points the tool at your real component library, icon set, and asset paths, so it reuses what already exists instead of fabricating a button or recreating the logo.</li>
+          <li><strong>One file, versioned, one source of truth.</strong> Generate any tool-specific copies from it rather than maintaining several.</li>
+        </ul>
+      </div>
+      <div class="extend-cta">
+        <button class="extend-btn" data-extend="ex-03" aria-expanded="true" aria-controls="ex-03">Collapse <span class="extend-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="case-section" id="sec-04" data-tint="4">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 04</div>
+      <div class="case-meta"><span class="tag tag-4">Pipeline</span><span class="case-meta-info">Chunk · overlap · enrich</span></div>
+      <h2>Preparing a document for retrieval</h2>
+      <p class="case-subhead">A 40-page recorded review is useless as one blob. A tool needs the two minutes about the client's retirement date, not the whole meeting.</p>
+    </div>
+
+    <div class="prose">
+      <p>Corpus-style context (meeting notes, financial plans, past decisions) cannot go into a hub as whole files. Three steps turn a raw document into something a tool can retrieve precisely.</p>
+      <ul>
+        <li><strong>Chunk</strong> — split each document into passages small enough to retrieve on their own, a common default being roughly 512 tokens (about 350–400 words). Smaller chunks are more precise but lose context; larger chunks carry more context but return noise.</li>
+        <li><strong>Overlap</strong> — let neighboring chunks share about 64 tokens (30–40 words) at their edges, so a statement that lands on a boundary is never cut in half.</li>
+        <li><strong>Enrich</strong> — attach a generated summary, categories, and source fields to every chunk so retrieval can match on meaning, not just literal words.</li>
+      </ul>
+    </div>
+
+    <div class="extend-cta">
+      <button class="extend-btn" data-extend="ex-04" aria-expanded="false" aria-controls="ex-04">
+        Extend — see a worked example <span class="extend-icon"></span>
+      </button>
+    </div>
+
+    <div class="case-extended" id="ex-04" hidden>
+      <div class="extended-label">Worked example · a transfer-rejection note</div>
+      <div class="prose">
+        <h3>Why overlap matters</h3>
+        <p>Without overlap, a statement on a chunk boundary gets cut in half and neither chunk retrieves cleanly. A service note reads <em>"…so we cleared the rejected transfer by | refiling it with the corrected account name."</em> If the split (<code>|</code>) falls mid-sentence, one chunk says "we cleared the rejected transfer by" and the next says "refiling it with the corrected account name." Neither matches a query about how to fix a transfer rejected for a name mismatch. Overlap keeps the full statement inside at least one chunk.</p>
+
+        <h3>What enrichment adds</h3>
+        <p>On ingest, run each chunk through a fast, low-cost model to produce a summary, categories, and source fields. A raw chunk is just text:</p>
+        <p style="font-style:italic;color:var(--text-muted);font-size:14px;">"...the transfer was rejected because the name on the account did not match; we refiled with the corrected name and the required signature verification..."</p>
+        <p>The enriched record adds structure around it:</p>
+<pre><code>{
+  <span class="json-k">"title"</span>: <span class="json-s">"Transfer rejection — Patel retirement account"</span>,
+  <span class="json-k">"date"</span>: <span class="json-s">"2026-04-18"</span>,
+  <span class="json-k">"source_type"</span>: <span class="json-s">"service_request_note"</span>,
+  <span class="json-k">"summary"</span>: <span class="json-s">"An incoming account transfer was rejected because the
+             account name did not match; resolved by refiling with the
+             corrected name and the required signature verification."</span>,
+  <span class="json-k">"categories"</span>: [<span class="json-s">"account-transfer"</span>, <span class="json-s">"returned-paperwork"</span>, <span class="json-s">"rejections"</span>],
+  <span class="json-k">"owner"</span>: <span class="json-s">"Ops — J. Reyes"</span>,
+  <span class="json-k">"household_id"</span>: <span class="json-s">"H-4821"</span>,
+  <span class="json-k">"trust_weight"</span>: <span class="json-n">1.0</span>,
+  <span class="json-k">"text"</span>: <span class="json-s">"...the transfer was rejected because the name on the account
+          did not match; we refiled with..."</span>
+}</code></pre>
+        <ul>
+          <li>The <strong>summary</strong> and <strong>title</strong> are embedded alongside the body, so a query like <em>"how do we fix a transfer that was rejected because the name did not match?"</em> matches the gist even when the chunk never uses those exact words. This is the institutional memory that today lives only in the head of whoever handled it last.</li>
+          <li>The <strong>categories</strong> let you filter retrieval by topic, and <strong>trust_weight</strong> feeds the tiering from Section 03.</li>
+          <li>The <strong>household_id</strong> and <strong>owner</strong> let a tool pull only the records it is allowed to see for the household in front of it.</li>
+          <li>Use a <strong>shared category vocabulary</strong> across all sources so cross-source retrieval stays consistent.</li>
+        </ul>
+        <div class="callout"><span class="ic">ℹ️</span> One more trick: give each document a single "what is this about" summary chunk in addition to its body chunks. When that summary ranks high, run a second query to pull the matching body chunks, so the tool reads the actual notes rather than the abstract.</div>
+      </div>
+      <div class="extend-cta">
+        <button class="extend-btn" data-extend="ex-04" aria-expanded="true" aria-controls="ex-04">Collapse <span class="extend-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="case-section" id="sec-05" data-tint="5">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 05</div>
+      <div class="case-meta"><span class="tag tag-5">Maturity</span><span class="case-meta-info">Four levels · place yourself</span></div>
+      <h2>How ready your context is</h2>
+      <p class="case-subhead">As in any maturity model, your weakest type sets your level. A polished communication guide does not make up for ungoverned permissions.</p>
+    </div>
+
+    <div class="ctx-grid">
+      <div class="ctx-card"><div class="ctx-num">L1</div><h4>Scattered</h4><p>The CRM, custodian portals, and shared drives exist; AI tools get ad-hoc copy-paste each session.</p><dl><dt>Who</dt><dd>Where most firms start</dd></dl></div>
+      <div class="ctx-card"><div class="ctx-num">L2</div><h4>File-native</h4><p>A standing instructions file, a few curated reference docs, and per-user memory.</p><dl><dt>Who</dt><dd>A prepared advisor or analyst</dd></dl></div>
+      <div class="ctx-card"><div class="ctx-num">L3</div><h4>Curated hub</h4><p>A source registry, tiered retrieval, an ingest pipeline, and one source of truth that projects into tool-readable surfaces.</p><dl><dt>Who</dt><dd>An operations team</dd></dl></div>
+      <div class="ctx-card"><div class="ctx-num">L4</div><h4>Live &amp; governed</h4><p>Live connections into systems of record, tool memory with audit logs, an explicit permission policy, and a named owner.</p><dl><dt>Who</dt><dd>A firm running tools in production</dd></dl></div>
+    </div>
+
+    <div class="callout"><span class="ic">ℹ️</span> Individuals usually move L1 to L2. Operations teams move L2 to L3 to L4. Do the individual setup first even at firm scale — the hub is the same patterns at larger size.</div>
+  </section>
+
+  <!-- 06 -->
+  <section class="case-section" id="sec-06" data-tint="1">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 06</div>
+      <div class="case-meta"><span class="tag tag-1">Playbook</span><span class="case-meta-info">Individual &amp; firm tracks</span></div>
+      <h2>Setting it up</h2>
+      <p class="case-subhead">Five steps an individual can do in an afternoon — the highest-leverage work most people skip. The firm track adds a registry, a pipeline, and governance.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Individual setup (L1 → L2)</h3>
+      <ol class="steps">
+        <li><strong>Write a lean instructions file.</strong> Include only non-inferable facts — what a tool cannot work out by looking at the systems in front of it. Start with a few lines and one gotcha, and add a line each time the tool gets something wrong.</li>
+        <li><strong>Capture voice and lexicon</strong> in one short style-and-glossary doc, referenced from the instructions file. Define firm terms inline.</li>
+        <li><strong>Convert repeated workflows into saved playbooks.</strong> Anything explained more than twice (review-meeting prep, the onboarding steps) becomes a saved playbook: a short description, a few examples, the steps.</li>
+        <li><strong>Turn on memory</strong> so the tool keeps what it learns about how you work.</li>
+        <li><strong>Connect your live tools</strong> — calendar, CRM, planning software — through a secure connector, so the tool queries current state instead of pasted snapshots.</li>
+      </ol>
+
+      <div class="split">
+        <div class="split-card no">
+          <div class="split-label">Leave out — inferable</div>
+          <ul>
+            <li>Which CRM the firm uses</li>
+            <li>The list of clients</li>
+            <li>What account types a household holds</li>
+          </ul>
+        </div>
+        <div class="split-card yes">
+          <div class="split-label">Write down — non-inferable</div>
+          <ul>
+            <li>"Never state or imply a performance guarantee in any client-facing text."</li>
+            <li>"We say 'households,' not 'accounts.'"</li>
+            <li>"'Conservative Growth' is our name for the 40%-stock / 60%-bond portfolio, not the reverse."</li>
+            <li>"Branch 12 clients pay a flat advisory fee; never pitch commission-based products to them."</li>
+            <li>"All client email is drafted only — route it to the service team, never send."</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout"><span class="ic">ℹ️</span> More context is not better. Bloated, auto-generated instructions files often <em>degrade</em> a tool's performance. Keep yours short and human-written.</div>
+    </div>
+
+    <div class="extend-cta">
+      <button class="extend-btn" data-extend="ex-06" aria-expanded="false" aria-controls="ex-06">
+        Extend — build it for the firm <span class="extend-icon"></span>
+      </button>
+    </div>
+
+    <div class="case-extended" id="ex-06" hidden>
+      <div class="extended-label">Firm track · L2 → L3 → L4</div>
+      <div class="prose">
+        <p>The firm hub is the individual setup plus three additions: a <strong>registry</strong>, a <strong>pipeline</strong>, and <strong>governance</strong>.</p>
+        <h3>To reach a curated hub (L3)</h3>
+        <ul>
+          <li><strong>Stand up a source registry</strong> — one file listing every source (CRM, custodian feed, meeting archive, plan library), its type, its trust weight, and its sync cadence. New sources register here; nothing is added ad hoc.</li>
+          <li><strong>Pick one source of truth per asset and generate from it.</strong> Each asset has one canonical home, and tool-readable summaries are generated from it under a do-not-edit header.</li>
+          <li><strong>Build the ingest pipeline</strong> — chunk, overlap, and enrich each source (Section 04), then deduplicate so the same decision recorded in three places counts once.</li>
+          <li><strong>Tier and normalize at retrieval.</strong> Apply the registry's trust weights, and normalize every source into one shape so a CRM note, a plan, and a meeting transcript look identical downstream.</li>
+        </ul>
+        <h3>To reach live and governed (L4)</h3>
+        <ul>
+          <li><strong>Connect systems of record through a secure gateway</strong> with single sign-on, audit trails, and per-system permissions. Query live; do not copy.</li>
+          <li><strong>Declare scope explicitly and enforce it</strong> in both the instructions and the system permissions (draft-only on communications, read-only on positions).</li>
+          <li><strong>Give tools governed memory</strong> — persistent, with audit logs, so supervision and books-and-records obligations are met and one team's learnings can be shared safely.</li>
+          <li><strong>Name an owner</strong> for the registry and the refresh loop, working across operations, compliance, and IT. The single biggest predictor of a hub that stays useful is one accountable person.</li>
+        </ul>
+      </div>
+      <div class="extend-cta">
+        <button class="extend-btn" data-extend="ex-06" aria-expanded="true" aria-controls="ex-06">Collapse <span class="extend-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="case-section" id="sec-07" data-tint="2">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 07</div>
+      <div class="case-meta"><span class="tag tag-2">Maintenance</span><span class="case-meta-info">Discipline · anti-patterns</span></div>
+      <h2>Keeping it from going stale</h2>
+      <p class="case-subhead">A hub built once and never refreshed is worse than no hub, because tools trust it.</p>
+    </div>
+
+    <div class="prose">
+      <p>Context decays. Hold four disciplines.</p>
+      <ul>
+        <li><strong>Project from a single source of truth.</strong> Never let a tool-facing summary become a second place to edit.</li>
+        <li><strong>Sync incrementally.</strong> Each source tracks a timestamp so refreshes process only what changed: account state every few minutes, the plan library daily.</li>
+        <li><strong>Grow by correction.</strong> Add to the context each time a tool gets something wrong. Those corrections are the backlog.</li>
+        <li><strong>Curate down, not only up.</strong> Because volume degrades performance, cut on a schedule, not only when something breaks.</li>
+      </ul>
+
+      <h3>Anti-patterns to avoid</h3>
+      <ul>
+        <li><strong>The dump</strong> — pasting whole documents or wiring tools to raw systems.</li>
+        <li><strong>Copying live data</strong> — snapshotting the CRM into a static doc. It is wrong within a day. Query it.</li>
+        <li><strong>Auto-generated instructions</strong> — machine-written instruction files measurably hurt performance.</li>
+        <li><strong>No registry</strong> — ad-hoc sources rebuild the original scattered mess inside the hub.</li>
+        <li><strong>No owner</strong> — the hub silently goes stale and trust inverts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="case-section" id="sec-08" data-tint="3">
+    <div class="sec-hero">
+      <div class="sec-eyebrow">Section 08</div>
+      <div class="case-meta"><span class="tag tag-3">In practice</span><span class="case-meta-info">A worked example · where to start</span></div>
+      <h2>What a context hub looks like in practice</h2>
+      <p class="case-subhead">Picture a regional wealth-management firm with 40 advisors across six branches. Every piece it needs already exists, scattered across systems a new AI tool cannot see.</p>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Type</th><th>Where it lives at the firm today</th></tr></thead>
+      <tbody>
+        <tr><td>Identity &amp; structure</td><td>Advisor-to-household assignments and team pods in the CRM; the compliance org chart; who can approve money movement</td></tr>
+        <tr><td>Voice &amp; lexicon</td><td>The compliance-approved communication guide and disclosure language</td></tr>
+        <tr><td>Craft &amp; patterns</td><td>Financial-plan templates, the model portfolios, the review-meeting deck, the returned-paperwork follow-up email templates</td></tr>
+        <tr><td>Relationships &amp; state</td><td>Client records, balances, account status, the returned-paperwork and stalled-transfer queues, open service requests in the CRM and asset-holder feeds</td></tr>
+        <tr><td>Episodic memory</td><td>Transcribed client review meetings, advisor notes, and how past problems were resolved</td></tr>
+        <tr><td>Procedural</td><td>The onboarding checklist, the transfer runbook, the year-end payout process, the quarterly billing run, the reconciliation steps</td></tr>
+        <tr><td>Permissions &amp; scope</td><td>The standing rule that a tool may draft but never send client communications, read but never trade, and flag but never move client funds</td></tr>
+      </tbody>
+    </table>
+
+    <div class="prose">
+      <p>Now consider what the operations manager does with this. A new AI tool wired to the hub can watch the exception queues and, for each stalled item, retrieve the runbook, pull the household's state from the CRM, draft the corrective email or the next step for a person to approve, and note what it did. The tool does not approve money movement or send client mail; it clears the rote work up to the point a human is required.</p>
+      <p>The work to get there is to project each source into a layer the tool can read, tier the sources by trust, and keep them synced. The gap to a live, governed hub is the same at every firm: live connections into the CRM and custodian feeds, governed memory with an audit trail that compliance will require, and one accountable owner for the refresh loop.</p>
+    </div>
+
+    <div class="check-head">Where to start — as an individual, this week</div>
+    <ul class="checklist">
+      <li>Write a lean instructions file — non-inferable facts only</li>
+      <li>Capture voice and lexicon in one short doc</li>
+      <li>Convert your two most-repeated workflows into saved playbooks</li>
+      <li>Turn on memory and connect your live tools through a secure connector</li>
+    </ul>
+
+    <div class="check-head">Where to start — as an operations team, this quarter</div>
+    <ul class="checklist">
+      <li>Fill the seven-type inventory for the firm</li>
+      <li>Create the source registry with trust weights and sync cadences</li>
+      <li>Generate tool-readable summaries from one source of truth per asset</li>
+      <li>Put systems of record behind a secure gateway with auth and audit</li>
+      <li>Name the owner of the registry and the refresh loop</li>
+    </ul>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="sec-about">
+    <div class="intro-eyebrow">About</div>
+    <h2>About this guide</h2>
+    <div class="prose">
+      <h3>What this is</h3>
+      <p>A practitioner's introduction to building the context layer that lets AI tools integrate into a firm's existing operations. It is written for operations leaders and advisors at wealth-management firms, but the framework — three layers, seven context types, four readiness levels, and a maintenance discipline — transfers to any organization preparing to put AI tools to work alongside its people.</p>
+      <h3>How to use it</h3>
+      <p>Read top to bottom once to place your firm on the readiness ladder, then return to Section 06 to set up your own context and Section 08 for the starting checklists. The "Extend" panels hold the deeper mechanics for when you are ready to build.</p>
+      <h3>About the Protocol Institute</h3>
+      <p>The Protocol Institute is an independent research organization studying protocols — the rules and coordination structures that shape interaction across software, medicine, governance, and business. The AI Capability Maturity Model is one of its practitioner-facing frameworks, produced by the Protocols for Business leads.</p>
+
+      <h3>Notes &amp; sources</h3>
+      <div class="sources-list">
+        <div class="source-item"><span class="source-num">1</span><span class="source-title">The idea that environmental traces coordinate work, rather than direct instruction (stigmergy).</span><div class="source-meta">Tom Critchlow, "Of Termites &amp; Tokens" (2026).</div><a class="source-url" href="https://tomcritchlow.com/2026/06/08/termites-tokens/" target="_blank" rel="noopener">tomcritchlow.com</a></div>
+        <div class="source-item"><span class="source-num">2</span><span class="source-title">The chunking, overlap, tiering, and enrichment figures follow a documented reference implementation of a knowledge hub.</span><div class="source-meta">Protocol Institute, "C3PO — How it works" (2026).</div><a class="source-url" href="https://c3po.protocolized.io/how-it-works" target="_blank" rel="noopener">c3po.protocolized.io</a></div>
+        <div class="source-item"><span class="source-num">3</span><span class="source-title">Bloated and auto-generated instruction files often degrade agent performance; keep instructions to non-inferable details.</span><div class="source-meta">ETH Zurich study (2026), reported via InfoQ.</div></div>
+        <div class="source-item"><span class="source-num">4</span><span class="source-title">On progressive disclosure and persistent, auditable, shareable tool memory.</span><div class="source-meta">Anthropic, "Effective context engineering for AI agents" and Memory for Managed Agents (2026).</div></div>
+        <div class="source-item"><span class="source-num">5</span><span class="source-title">The single-file format pairing machine-readable design tokens with prose rules (Section 03 example).</span><div class="source-meta">Follows the emerging DESIGN.md convention, open-sourced by Google Labs (2026).</div></div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-label">Contact</div>
+      <p>Part of the <a href="https://protocolized.dev/" target="_blank" rel="noopener">Protocolized</a> AI Capability Maturity Model project.</p>
+      <p>More at <a href="https://ai.protocolized.dev/" target="_blank" rel="noopener">ai.protocolized.dev</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    Published by the Protocol Institute · June 2026 · Context Hub 101, an AI Capability Maturity Model practitioner guide.
+  </footer>
+
+</main>
+
+<script>
+  /* Contents dropdown */
+  const secsTrigger = document.getElementById('secs-trigger');
+  const secsDropdown = document.getElementById('secs-dropdown');
+  function openDropdown() { secsDropdown.classList.add('open'); secsTrigger.setAttribute('aria-expanded', 'true'); positionDropdown(); }
+  function closeDropdown() { secsDropdown.classList.remove('open'); secsTrigger.setAttribute('aria-expanded', 'false'); }
+  function positionDropdown() {
+    if (window.innerWidth <= 960) return;
+    const rect = secsTrigger.getBoundingClientRect();
+    secsDropdown.style.left = '';
+    secsDropdown.style.right = (window.innerWidth - rect.right) + 'px';
+  }
+  secsTrigger.addEventListener('click', (e) => { e.stopPropagation(); secsDropdown.classList.contains('open') ? closeDropdown() : openDropdown(); });
+  document.addEventListener('click', (e) => {
+    if (!secsDropdown.classList.contains('open')) return;
+    if (secsDropdown.contains(e.target) || secsTrigger.contains(e.target)) return;
+    closeDropdown();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDropdown(); });
+  window.addEventListener('resize', positionDropdown);
+
+  /* Extend / collapse */
+  document.querySelectorAll('.extend-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.dataset.extend;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const expanded = !target.hasAttribute('hidden');
+      if (expanded) {
+        const section = target.closest('.case-section');
+        target.setAttribute('hidden', '');
+        document.querySelectorAll(`[data-extend="${targetId}"]`).forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        target.removeAttribute('hidden');
+        document.querySelectorAll(`[data-extend="${targetId}"]`).forEach(b => b.setAttribute('aria-expanded', 'true'));
+      }
+    });
+  });
+
+  /* Section-nav visibility + scroll-spy */
+  const sectionNav = document.getElementById('section-nav');
+  const navLinks = sectionNav.querySelectorAll('a[data-target]');
+  const heroEl = document.getElementById('sec-intro');
+  const sections = Array.from(document.querySelectorAll('main > section[id]'));
+  function setActiveNav(id) { navLinks.forEach(link => link.classList.toggle('active', link.dataset.target === id)); }
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { entry.isIntersecting ? sectionNav.classList.remove('visible') : sectionNav.classList.add('visible'); });
+    }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 });
+    heroObserver.observe(heroEl);
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActiveNav(entry.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(s => spyObserver.observe(s));
+  }
+  document.querySelectorAll('.dropdown-item, .topnav-link[href^="#"]').forEach(a => a.addEventListener('click', closeDropdown));
+</script>
+</body>
+</html>
