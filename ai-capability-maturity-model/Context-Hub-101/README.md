@@ -14,6 +14,7 @@ Written for operations leaders and advisors at wealth-management firms, but the 
 | `context-readiness-playbook.md` | Canonical prose source — the full guide in markdown |
 | `site/index.html` | The deployed single-page HTML guide (design system adapted from the Protocolized publications chrome) |
 | `site/favicon.svg` | Site icon |
+| `_drafts/` | Working drafts not published (e.g. the Section 01 diagram explorations: SVG versions A/B/C + Mermaid). Kept for future edits. |
 
 The markdown and the HTML are kept in sync by hand; edit both when changing content.
 

@@ -252,6 +252,12 @@
     .callout strong { color: var(--text); }
     .callout .ic { font-style: normal; margin-right: 6px; }
 
+    /* Section 01 hub diagram */
+    .hub-diagram { margin: 4px 0 8px; }
+    .hub-diagram svg { display: block; width: 100%; height: auto; }
+    .hub-diagram figcaption { font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 10px; line-height: 1.5; }
+    .hub-diagram figcaption .lim { display: block; margin-top: 4px; }
+
     /* Context / level cards */
     .ctx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 14px; margin: 24px 0; }
     .ctx-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
@@ -420,6 +426,95 @@
       <h2>What a context hub is</h2>
       <p class="case-subhead">A context hub is the organized, trustworthy layer of firm information an AI tool reads to learn how your firm works and what it is allowed to do.</p>
     </div>
+
+    <figure class="hub-diagram">
+      <svg viewBox="0 0 820 470" role="img" aria-label="Source systems feed the context hub; each AI tool retrieves context from the hub two-way, reads and writes the source systems live, keeps a local context pool, and promotes verified lessons back through an owner review.">
+        <defs>
+          <marker id="b-arw" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a888bf"/></marker>
+          <marker id="b-arwm" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b6b6c2"/></marker>
+          <marker id="b-arwS" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7d9bb0"/></marker>
+          <marker id="b-arwSs" markerWidth="7" markerHeight="7" refX="5" refY="2.4" orient="auto"><path d="M0,0 L5,2.4 L0,4.8 Z" fill="#a08fb6"/></marker>
+        </defs>
+        <text x="116" y="24" text-anchor="middle" font-family="Roboto Mono,monospace" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#9b9ba8">SOURCE SYSTEMS</text>
+        <text x="695" y="24" text-anchor="middle" font-family="Roboto Mono,monospace" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#9b9ba8">AI TOOLS</text>
+        <text x="410" y="20" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="#6f8ea8">live read &amp; write · access-controlled</text>
+        <path d="M 206 58 C 340 34, 482 34, 606 58" fill="none" stroke="#9bb4c6" stroke-width="1.4" stroke-dasharray="5 3" marker-start="url(#b-arwS)" marker-end="url(#b-arwS)"/>
+        <g stroke="#cfcfd8" stroke-width="1.3" marker-end="url(#b-arwm)" fill="none">
+          <line x1="202" y1="83"  x2="294" y2="200"/>
+          <line x1="202" y1="131" x2="294" y2="204"/>
+          <line x1="202" y1="179" x2="294" y2="208"/>
+          <line x1="202" y1="227" x2="294" y2="212"/>
+          <line x1="202" y1="275" x2="294" y2="216"/>
+          <line x1="202" y1="323" x2="294" y2="220"/>
+        </g>
+        <text x="248" y="174" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#9b9ba8">ingest · slow-moving</text>
+        <g stroke="#a888bf" stroke-width="1.6" marker-start="url(#b-arw)" marker-end="url(#b-arw)" fill="none">
+          <line x1="608" y1="91"  x2="524" y2="206"/>
+          <line x1="608" y1="169" x2="524" y2="210"/>
+          <line x1="608" y1="247" x2="524" y2="214"/>
+        </g>
+        <text x="566" y="174" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#9b9ba8">retrieval (two-way)</text>
+        <g font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e">
+          <g><rect x="32" y="66"  width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="87" text-anchor="middle">CRM &amp; pipeline</text></g>
+          <g><rect x="32" y="114" width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="135" text-anchor="middle">Messaging (Slack/Teams)</text></g>
+          <g><rect x="32" y="162" width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="183" text-anchor="middle">Client meetings</text></g>
+          <g><rect x="32" y="210" width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="231" text-anchor="middle">Email archive</text></g>
+          <g><rect x="32" y="258" width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="279" text-anchor="middle">Shared drives</text></g>
+          <g><rect x="32" y="306" width="170" height="34" rx="8" fill="#fff" stroke="#e5e5e7"/><text x="117" y="327" text-anchor="middle">Plans &amp; procedures</text></g>
+        </g>
+        <rect x="300" y="84" width="220" height="252" rx="16" fill="#f3eef7" stroke="#a888bf" stroke-width="2"/>
+        <text x="410" y="116" text-anchor="middle" font-family="Roboto Mono,monospace" font-size="13" font-weight="700" fill="#7d5a96">CONTEXT HUB</text>
+        <line x1="328" y1="128" x2="492" y2="128" stroke="#e0d4ec" stroke-width="1"/>
+        <g font-family="Inter,sans-serif" font-size="11" fill="#4f5060" text-anchor="middle">
+          <text x="410" y="150">curated &amp; deduplicated</text>
+          <text x="410" y="170">tiered by trust</text>
+          <text x="410" y="190">optimized for machine retrieval</text>
+        </g>
+        <line x1="328" y1="206" x2="492" y2="206" stroke="#ece3f3" stroke-width="1"/>
+        <text x="410" y="222" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-style="italic" fill="#9b9ba8">holds durable context, e.g.</text>
+        <g font-family="Inter,sans-serif" font-size="8.5" fill="#4f5060" text-anchor="middle">
+          <text x="410" y="238">brand voice · design tokens</text>
+          <text x="410" y="252">model portfolios · disclosure rules</text>
+          <text x="410" y="266">meeting history · runbooks</text>
+          <text x="410" y="280">approval rules</text>
+        </g>
+        <text x="410" y="306" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="#9b9ba8">live state stays in the source, queried not stored</text>
+        <g font-family="Inter,sans-serif" fill="#1a1a2e">
+          <rect x="612" y="72" width="166" height="38" rx="10" fill="#e9eef2" stroke="#7d9bb0" stroke-width="1.3"/>
+          <text x="695" y="96" text-anchor="middle" font-size="11.5">Drafting assistant</text>
+          <line x1="695" y1="110" x2="695" y2="119" stroke="#a08fb6" stroke-width="1" marker-start="url(#b-arwSs)" marker-end="url(#b-arwSs)"/>
+          <rect x="642" y="119" width="106" height="15" rx="7.5" fill="#faf7fc" stroke="#cdbcdc" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="695" y="130" text-anchor="middle" font-size="8.5" font-style="italic" fill="#8a7a9b">local context</text>
+          <rect x="612" y="150" width="166" height="38" rx="10" fill="#e9eef2" stroke="#7d9bb0" stroke-width="1.3"/>
+          <text x="695" y="174" text-anchor="middle" font-size="11.5">Exception-queue agent</text>
+          <line x1="695" y1="188" x2="695" y2="197" stroke="#a08fb6" stroke-width="1" marker-start="url(#b-arwSs)" marker-end="url(#b-arwSs)"/>
+          <rect x="642" y="197" width="106" height="15" rx="7.5" fill="#faf7fc" stroke="#cdbcdc" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="695" y="208" text-anchor="middle" font-size="8.5" font-style="italic" fill="#8a7a9b">local context</text>
+          <rect x="612" y="228" width="166" height="38" rx="10" fill="#e9eef2" stroke="#7d9bb0" stroke-width="1.3"/>
+          <text x="695" y="252" text-anchor="middle" font-size="11.5">Research assistant</text>
+          <line x1="695" y1="266" x2="695" y2="275" stroke="#a08fb6" stroke-width="1" marker-start="url(#b-arwSs)" marker-end="url(#b-arwSs)"/>
+          <rect x="642" y="275" width="106" height="15" rx="7.5" fill="#faf7fc" stroke="#cdbcdc" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="695" y="286" text-anchor="middle" font-size="8.5" font-style="italic" fill="#8a7a9b">local context</text>
+        </g>
+        <path d="M 695 294 C 695 372, 410 372, 410 340" fill="none" stroke="#a888bf" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#b-arw)"/>
+        <rect x="506" y="363" width="92" height="17" rx="8.5" fill="#ffffff" stroke="#cdbcdc" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="552" y="375" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-style="italic" fill="#7d5a96">owner review</text>
+        <text x="552" y="398" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="#7d5a96">promote verified lessons — only after review (gated)</text>
+        <line x1="40" y1="430" x2="64" y2="430" stroke="#b6b6c2" stroke-width="1.3" marker-end="url(#b-arwm)"/>
+        <text x="70" y="433" font-family="Inter,sans-serif" font-size="9" fill="#6b6b7b">ingest (slow-moving)</text>
+        <line x1="250" y1="430" x2="274" y2="430" stroke="#a888bf" stroke-width="1.6" marker-start="url(#b-arw)" marker-end="url(#b-arw)"/>
+        <text x="280" y="433" font-family="Inter,sans-serif" font-size="9" fill="#6b6b7b">retrieval (two-way)</text>
+        <line x1="470" y1="430" x2="494" y2="430" stroke="#9bb4c6" stroke-width="1.4" stroke-dasharray="5 3" marker-start="url(#b-arwS)" marker-end="url(#b-arwS)"/>
+        <text x="500" y="433" font-family="Inter,sans-serif" font-size="9" fill="#6b6b7b">live read/write</text>
+        <line x1="40" y1="452" x2="64" y2="452" stroke="#a888bf" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#b-arw)"/>
+        <text x="70" y="455" font-family="Inter,sans-serif" font-size="9" fill="#6b6b7b">promote (gated)</text>
+        <rect x="250" y="446" width="26" height="13" rx="6.5" fill="#faf7fc" stroke="#cdbcdc" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="282" y="455" font-family="Inter,sans-serif" font-size="9" fill="#6b6b7b">local context (per agent)</text>
+      </svg>
+      <figcaption>Source systems feed the hub; each AI tool retrieves context from the hub, reads and writes the source systems live, keeps its own local context, and promotes verified lessons back through review.
+        <span class="lim">Live state stays in the source systems and is queried, not stored. The hub is access-partitioned, and agent writes are gated and audited.</span>
+      </figcaption>
+    </figure>
 
     <div class="prose">
       <p>A <strong>context hub</strong> is the curated layer of information that sits between your raw systems (the CRM, custodian feeds — the firms that hold client assets — planning software, recorded client meetings, the email archive) and the AI tools you connect to them. It holds the operating context an AI tool needs to act correctly: who's who, how the firm communicates, how it produces client work, who the clients are, what has already happened with each household, and what the tool is allowed to touch.</p>
