@@ -125,7 +125,7 @@ How work gets done: the new-client onboarding checklist, the account-transfer ru
 
 ### 7️⃣ Permissions and scope
 
-What a tool may touch: an AI tool may draft a client email but never send it; may read account holdings but never place a trade; may flag a payment request for review but never move client funds; must stay inside client-facing disclosure rules.
+What a tool may touch: an AI tool may draft a client email but never send it; may read account holdings but never place a trade; may flag a payment request for review but never move client funds; must stay inside client-facing disclosure rules. Access is partitioned, too: a tool sees only the households and records the person it acts for is allowed to see, and data behind a compliance wall stays there.
 
 - **Shape:** a policy, backed by real access control.
 - **How tools get it:** stated in the instructions **and** enforced in the system permissions. The two must agree.
