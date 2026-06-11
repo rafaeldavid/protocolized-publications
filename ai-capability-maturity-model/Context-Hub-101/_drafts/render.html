@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; background:#fafafa; font-family:system-ui, sans-serif; }
+  #status { padding:8px 12px; font-size:13px; color:#555; }
+  #out { display:block; margin:0 auto; }
+</style>
+</head>
+<body>
+<div id="status">loading…</div>
+<script type="module">
+const S = document.getElementById('status');
+try {
+  const mod = await import("https://esm.sh/@excalidraw/excalidraw@0.17.6?bundle");
+  const exportToSvg = mod.exportToSvg || (mod.default && mod.default.exportToSvg);
+  const data = await (await fetch("./context-hub.excalidraw")).json();
+  const svg = await exportToSvg({
+    elements: data.elements,
+    appState: Object.assign({}, data.appState || {}, {
+      exportBackground: false,
+      exportWithDarkMode: false,
+      exportPadding: 16,
+    }),
+    files: data.files || {},
+  });
+  svg.id = "out";
+  document.body.appendChild(svg);
+  window.__svg = new XMLSerializer().serializeToString(svg);
+  S.textContent = "RENDER_DONE";
+  window.__done = true;
+} catch (e) {
+  S.textContent = "RENDER_ERR: " + (e && e.message ? e.message : e);
+  window.__err = String(e && e.stack || e);
+}
+</script>
+</body>
+</html>
