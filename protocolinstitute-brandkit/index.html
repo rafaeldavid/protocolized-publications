@@ -125,9 +125,10 @@
   .logo .frame{height:120px;display:flex;align-items:center;justify-content:center;padding:18px}
   .logo .frame.dark{background:var(--ink-900)}
   .logo img{max-height:64px;max-width:80%;width:auto}
-  .logo.wide{grid-column:1/-1}
-  .logo.wide .frame{height:112px}
-  .logo.wide img{max-height:50px;max-width:46%}
+  .logo.wide{grid-column:span 3}
+  .logo.wide .frame{height:120px}
+  .logo.wide img{max-height:46px;max-width:64%}
+  @media(max-width:560px){ .logo.wide{grid-column:1/-1} }
   .logo .cap{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);padding:8px 12px;border-top:1px solid var(--hairline)}
   .never-label{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);margin:22px 0 8px}
   .never{margin:0;max-width:720px}
