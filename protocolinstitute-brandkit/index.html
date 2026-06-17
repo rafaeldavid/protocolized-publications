@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocol Institute — Brand Kit</title>
+<meta name="description" content="Everything you need to design in the Protocol Institute brand — tokens, type, logo, imagery, voice, and components, for humans and agents.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cobalt-600:#004fcc;--cobalt-500:#0064ff;--cobalt-050:#e6efff;
+    --forest-700:#085041;--forest-600:#0f6e56;--forest-050:#e1f5ee;
+    --rust-500:#d85a30;--rust-050:#faece7;
+    --paper:#f9f8f5;--white:#fff;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--ink-900:#2c2c2a;--ink-600:#5f5e5a;
+    --action:var(--cobalt-500);--action-pressed:var(--cobalt-600);--action-tint:var(--cobalt-050);
+    --canvas:var(--paper);--surface:var(--white);--muted:var(--gray-100);--hairline:var(--gray-200);
+    --ink:var(--ink-900);--ink-2:var(--ink-600);
+    --serif:"Computer Modern Serif","CMU Serif","Latin Modern Roman","Instrument Serif",Georgia,serif;
+    --body:"Computer Modern Serif","CMU Serif","Latin Modern Roman",Lora,Georgia,serif;
+    --sans:Outfit,system-ui,sans-serif;--mono:"JetBrains Mono","Courier New",monospace;
+    --topbar:60px;--max:1080px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:16px;scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar) + 20px)}
+  body{font-family:var(--body);background:var(--canvas);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--action);text-decoration:none}a:hover{text-decoration:underline}
+  code,.mono{font-family:var(--mono)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* topbar */
+  #top{position:fixed;inset:0 0 auto 0;height:var(--topbar);background:rgba(249,248,245,.9);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--hairline);z-index:100}
+  .top-in{max-width:1180px;margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--ink);white-space:nowrap}
+  .brand img{height:22px;width:auto;display:block}
+  .brand b{font-weight:700}.brand span{color:var(--ink-2);font-weight:500}
+  .topnav{display:none;gap:2px;align-items:center}
+  @media(min-width:1080px){.topnav{display:flex}}
+  .topnav a{font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink-2);padding:7px 10px;border-radius:6px}
+  .topnav a:hover{color:var(--ink);background:var(--action-tint);text-decoration:none}
+  .topnav a.gh{color:var(--ink);border:1px solid var(--hairline)}
+
+  /* gutter nav */
+  .gutter{position:fixed;top:50%;left:max(16px,calc((100vw - var(--max))/2 - 188px));transform:translateY(-50%);z-index:5;display:none;flex-direction:column;gap:2px;opacity:0;transition:opacity .3s;pointer-events:none}
+  .gutter.on{opacity:1;pointer-events:auto}
+  @media(min-width:1240px){.gutter{display:flex}}
+  .gutter a{font-family:var(--sans);font-size:12px;font-weight:500;color:#a3a3ab;padding:5px 12px;border-left:2px solid transparent;white-space:nowrap}
+  .gutter a:hover{color:var(--ink-2);text-decoration:none}
+  .gutter a.active{color:var(--ink);border-left-color:var(--action)}
+
+  main{max-width:var(--max);margin:0 auto;padding:calc(var(--topbar) + 8px) 28px 120px}
+  section{padding:56px 0;border-top:1px solid var(--hairline)}
+  section:first-of-type{border-top:none}
+  .eyebrow{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--action);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:18px}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.2;margin-bottom:10px}
+  h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin-bottom:6px}
+  .lead{font-family:var(--body);font-size:1.18rem;line-height:1.6;color:var(--ink-2);max-width:64ch}
+  p.body{font-size:1rem;line-height:1.7;color:var(--ink-2);max-width:68ch;margin-bottom:14px}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--action);margin:6px 0 22px}
+
+  /* hero */
+  .hero{padding-top:48px}
+  .hero-marks{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+  .hero-marks img{height:40px;width:auto}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .btn{font-family:var(--sans);font-size:15px;font-weight:500;padding:12px 22px;border-radius:8px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:background .14s,color .14s}
+  .btn.primary{background:var(--action);color:#fff}.btn.primary:hover{background:var(--action-pressed);text-decoration:none}
+  .btn.secondary{background:transparent;color:var(--action);border-color:var(--action)}.btn.secondary:hover{background:var(--action-tint);text-decoration:none}
+  .btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--hairline)}.btn.ghost:hover{background:var(--muted);text-decoration:none}
+
+  /* two-vein panel */
+  .veins{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  @media(max-width:760px){.veins{grid-template-columns:1fr}}
+  .vein{background:var(--surface);border:1px solid var(--hairline);border-radius:12px;padding:24px}
+  .vein.inst{border-top:3px solid var(--cobalt-500)}
+  .vein.mag{border-top:3px solid var(--forest-600)}
+  .vein h3{font-size:1.3rem;margin-bottom:4px}
+  .vein .who{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+  .vein dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;line-height:1.5}
+  .vein dt{font-family:var(--sans);font-weight:600;color:var(--ink);white-space:nowrap}
+  .vein dd{color:var(--ink-2)}
+
+  /* tabs */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0 18px}
+  .tab{font-family:var(--sans);font-size:13px;font-weight:500;padding:7px 14px;border-radius:9999px;border:1px solid var(--hairline);background:transparent;color:var(--ink-2);cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--action);color:#fff;border-color:var(--action)}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px}
+  .sw{border:1px solid var(--hairline);border-radius:10px;overflow:hidden;background:var(--surface);cursor:pointer;transition:box-shadow .14s}
+  .sw:hover{box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .sw .chip{height:74px}
+  .sw .meta{padding:9px 11px}
+  .sw .tok{font-family:var(--mono);font-size:11.5px;color:var(--ink);font-weight:600;display:block;word-break:break-all}
+  .sw .hex{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+  .sw .use{font-family:var(--sans);font-size:11px;color:var(--ink-2);margin-top:5px;line-height:1.35;display:block}
+  .copytag{font-family:var(--sans);font-size:10px;color:var(--action);opacity:0;transition:opacity .12s}
+  .sw:hover .copytag{opacity:1}
+
+  .note{background:var(--action-tint);border:1px solid #d7e4ff;border-radius:10px;padding:14px 18px;font-size:14px;line-height:1.6;color:var(--ink-2);margin-top:18px}
+  .note b{color:var(--ink)}
+
+  /* type specimens */
+  .spec{border:1px solid var(--hairline);border-radius:12px;padding:22px;background:var(--surface);margin-bottom:14px}
+  .spec .label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+  .spec .big{font-size:2rem;line-height:1.1}
+  .spec .stack{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:10px;word-break:break-all}
+  table.scale{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:16px}
+  table.scale th,table.scale td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  table.scale th{font-family:var(--sans);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+  table.scale td.r{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+
+  /* logo tiles */
+  .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:8px}
+  .logo{border:1px solid var(--hairline);border-radius:12px;overflow:hidden;background:var(--surface)}
+  .logo .frame{height:120px;display:flex;align-items:center;justify-content:center;padding:18px}
+  .logo .frame.dark{background:var(--ink-900)}
+  .logo img{max-height:64px;max-width:80%;width:auto}
+  .logo .cap{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);padding:8px 12px;border-top:1px solid var(--hairline)}
+  .never{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
+  .never li{list-style:none;font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:10px 14px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px}
+  .never li::before{content:"✕ ";color:var(--rust-500);font-weight:700}
+
+  /* imagery */
+  .igroups{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .ig{border:1px solid var(--hairline);border-radius:12px;background:var(--surface);padding:18px 20px}
+  .ig .head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .ig .head h3{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink)}
+  .veintag{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:9999px}
+  .veintag.inst{background:var(--cobalt-050);color:var(--cobalt-600)}
+  .veintag.mag{background:var(--forest-050);color:var(--forest-700)}
+  .ig .desc{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-bottom:12px}
+  .strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+  .strip a{display:block;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--muted)}
+  .strip img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* voice */
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  @media(max-width:760px){.voice{grid-template-columns:1fr}}
+  .vcol{border:1px solid var(--hairline);border-radius:12px;padding:22px;background:var(--surface)}
+  .traits{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+  .trait{font-family:var(--sans);font-size:12px;font-weight:600;padding:5px 12px;border-radius:9999px;background:var(--muted);color:var(--ink)}
+  .sd{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.sd{grid-template-columns:1fr}}
+  .sd h4{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+  .sd .say h4{color:var(--forest-700)}.sd .dont h4{color:var(--rust-500)}
+  .sd ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .sd li{font-size:13.5px;line-height:1.45;color:var(--ink-2);padding-left:18px;position:relative}
+  .sd .say li::before{content:"✓";position:absolute;left:0;color:var(--forest-600);font-weight:700}
+  .sd .dont li::before{content:"✕";position:absolute;left:0;color:var(--rust-500);font-weight:700}
+  .caveat{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin-top:14px;padding:10px 14px;border-left:3px solid var(--hairline);background:var(--muted);border-radius:0 8px 8px 0}
+
+  /* components demo */
+  .demo{border:1px solid var(--hairline);border-radius:12px;background:var(--surface);padding:22px;margin-bottom:14px}
+  .demo .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .badge{font-family:var(--sans);font-size:12px;font-weight:500;padding:2px 10px;border-radius:9999px;display:inline-block}
+  .badge.fw{background:var(--forest-050);color:var(--forest-700)}
+  .badge.ft{background:var(--rust-050);color:var(--rust-500)}
+  .chip{font-family:var(--sans);font-size:14px;padding:6px 12px;border-radius:9999px;background:var(--muted);color:var(--ink-2)}
+  .rescard{border:1px solid var(--hairline);border-radius:8px;padding:18px;max-width:340px;transition:box-shadow .14s}
+  .rescard:hover{box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .rescard .t{font-family:var(--serif);font-size:1.25rem;margin:8px 0 6px}
+  .rescard .d{font-size:14px;color:var(--ink-2);line-height:1.5}
+  .ctext{font-family:var(--sans);font-size:11px;color:var(--ink-2);margin-top:6px}
+
+  /* agents + code */
+  pre{background:var(--ink-900);color:#e8e8ea;border-radius:10px;padding:16px 18px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.6;position:relative}
+  pre .cp{position:absolute;top:8px;right:8px}
+  .copybtn{font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--hairline);border-radius:6px;padding:4px 9px;cursor:pointer}
+  .princ{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:8px 0 18px}
+  .princ .p{border:1px solid var(--hairline);border-radius:10px;padding:14px 16px;background:var(--surface)}
+  .princ .p b{font-family:var(--sans);font-size:13px;display:block;margin-bottom:5px}
+  .princ .p span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .file{display:flex;align-items:center;gap:12px;border:1px solid var(--hairline);border-radius:10px;padding:12px 14px;background:var(--surface);color:var(--ink)}
+  .file:hover{background:var(--muted);text-decoration:none}
+  .file .fn{font-family:var(--mono);font-size:13px;font-weight:600}
+  .file .fd{font-family:var(--sans);font-size:11.5px;color:var(--ink-2)}
+
+  footer{border-top:1px solid var(--hairline);padding:32px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.7}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink-900);color:#fff;font-family:var(--sans);font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;transition:.2s;z-index:200}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  :focus-visible{outline:2px solid var(--action);outline-offset:2px;border-radius:3px}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="top-in">
+    <a class="brand" href="#hero"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span><b>Protocol Institute</b> · Brand Kit</span></a>
+    <nav class="topnav">
+      <a href="#architecture">Architecture</a>
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#logo">Logo</a>
+      <a href="#imagery">Imagery</a>
+      <a href="#voice">Voice</a>
+      <a href="#components">Components</a>
+      <a href="#agents">For Agents</a>
+      <a class="gh" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<aside class="gutter" id="gutter">
+  <a href="#hero">Overview</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#color">Color</a>
+  <a href="#type">Type</a>
+  <a href="#logo">Logo</a>
+  <a href="#imagery">Imagery</a>
+  <a href="#voice">Voice</a>
+  <a href="#components">Components</a>
+  <a href="#agents">For Agents</a>
+  <a href="#get">Get the kit</a>
+</aside>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="border:none">
+    <div class="hero-marks">
+      <img src="assets/logos/protocolized_mark_black_v8.svg" alt="Protocolized mark" onerror="this.src='assets/logos/protocolized_mark_black_v6.png'">
+    </div>
+    <div class="eyebrow">Protocol Institute · Brand Kit v1.0</div>
+    <h1>Everything you need to design in the Protocol&nbsp;Institute brand, in one place.</h1>
+    <div class="tagline">Accelerating Order.</div>
+    <p class="lead">Tokens, type, logo, imagery, voice, and components — for the two veins of the
+      Institute (research &amp; SIGs) and its magazine, <em>Protocolized</em>. Built to be applied
+      by a person <em>or</em> an agent, with a single closed source of truth.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#get">Get the kit</a>
+      <a class="btn secondary" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture">
+    <div class="eyebrow">Brand Architecture</div>
+    <h2>One token system, two veins.</h2>
+    <p class="body">The Protocol Institute is “a research, education, media, and scene-making
+      organization dedicated to advancing protocols and protocolization worldwide.” Its work
+      lives in two registers. Decide which you’re in <em>first</em> — it sets your color, type,
+      and imagery emphasis.</p>
+    <div class="veins">
+      <div class="vein inst">
+        <h3>Protocol Institute</h3>
+        <div class="who">Research · Reports · SIGs · Challenges</div>
+        <dl>
+          <dt>Use when</dt><dd>Working-group outputs, SIG write-ups, research reports, challenges, institutional pages.</dd>
+          <dt>Color</dt><dd>Cobalt <code>--pi-action-primary</code>; restrained accent.</dd>
+          <dt>Type</dt><dd>Serif display (Computer Modern → Instrument Serif) + Lora. Precise, structured.</dd>
+          <dt>Imagery</dt><dd>technical-schematic, abstract-geometric.</dd>
+        </dl>
+      </div>
+      <div class="vein mag">
+        <h3>Protocolized</h3>
+        <div class="who">The Magazine of New Nature</div>
+        <dl>
+          <dt>Use when</dt><dd>Magazine pieces — Non-Fiction (Studies / Obliquities / Science) and Fiction. Cover-art-led.</dd>
+          <dt>Color</dt><dd>Forest green <code>--pi-action-secondary</code> (live); rust for “Featured”.</dd>
+          <dt>Type</dt><dd>Instrument Serif 400 + Lora. Literary, exploratory.</dd>
+          <dt>Imagery</dt><dd>painterly-illustration, retro-vintage, surreal-collage.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section id="color">
+    <div class="eyebrow">Color</div>
+    <h2>Decision tokens, not raw values.</h2>
+    <p class="body">Pick a token by <em>intent</em>. Click any swatch to copy its token name.
+      The set is closed — if you need something it doesn’t cover, extend <code>brand.json</code> first.</p>
+    <div class="tabs" role="tablist" id="colorTabs">
+      <button class="tab" role="tab" data-g="action" aria-selected="true">Action</button>
+      <button class="tab" role="tab" data-g="surface" aria-selected="false">Surface &amp; Border</button>
+      <button class="tab" role="tab" data-g="text" aria-selected="false">Text</button>
+    </div>
+    <div class="swatches" id="swatches"></div>
+    <div class="note"><b>Cobalt vs. green.</b> The brand-kit primary is electric cobalt
+      <code>#0064ff</code> (aspirational). The live <code>protocolized.io</code> still serves
+      forest green <code>#0f6e56</code> as <code>action-secondary</code>. Use cobalt for new
+      artifacts; use green to match the production site. White on cobalt, green, and rust meets
+      WCAG&nbsp;AA; never place <code>text-secondary</code> on an action fill.</div>
+  </section>
+
+  <!-- TYPE -->
+  <section id="type">
+    <div class="eyebrow">Typography</div>
+    <h2>Serif to think in; sans to operate.</h2>
+    <p class="body">Display and body are serif — the brand prefers <b>Computer Modern</b>, falling
+      back to the live <b>Instrument Serif</b> / <b>Lora</b>. UI is <b>Outfit</b>. Headlines are
+      weight <b>400</b> — never bold display.</p>
+    <div class="spec"><div class="label">Serif — display &amp; headings (Instrument Serif 400)</div>
+      <div class="big" style="font-family:var(--serif)">Accelerating Order — protocols as new nature</div>
+      <div class="stack">"Computer Modern Serif", "CMU Serif", "Latin Modern Roman", "Instrument Serif", Georgia, serif</div></div>
+    <div class="spec"><div class="label">Body — long-form prose (Lora)</div>
+      <div style="font-family:var(--body);font-size:1.05rem;line-height:1.6;max-width:62ch">A protocol is a coordination mechanism that governs behavior across actors without requiring central authority. The Institute studies how such mechanisms are designed, adopted, and maintained.</div>
+      <div class="stack">"Computer Modern Serif", "CMU Serif", "Latin Modern Roman", Lora, Georgia, serif</div></div>
+    <div class="spec"><div class="label">Sans — UI, buttons, badges, meta (Outfit)</div>
+      <div style="font-family:var(--sans);font-size:1.05rem">The quick brown fox · Researchers · Practitioners · 0123456789</div>
+      <div class="stack">Outfit, system-ui, sans-serif</div></div>
+    <table class="scale">
+      <thead><tr><th>Role</th><th>Family</th><th>Size / Weight</th></tr></thead>
+      <tbody>
+        <tr><td>Hero display</td><td class="r">serif</td><td class="r">72 / 400</td></tr>
+        <tr><td>Detail display</td><td class="r">serif</td><td class="r">48 / 400</td></tr>
+        <tr><td>Tagline (italic)</td><td class="r">serif italic</td><td class="r">30 / 400</td></tr>
+        <tr><td>Section H2</td><td class="r">serif</td><td class="r">24 / 400</td></tr>
+        <tr><td>Lead / dek</td><td class="r">body</td><td class="r">18 / 400</td></tr>
+        <tr><td>Body</td><td class="r">body</td><td class="r">16 / 400</td></tr>
+        <tr><td>Button</td><td class="r">sans</td><td class="r">16 / 500</td></tr>
+        <tr><td>Nav / meta</td><td class="r">sans</td><td class="r">14 / 400</td></tr>
+        <tr><td>Caption / badge</td><td class="r">sans</td><td class="r">12 / 500</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- LOGO -->
+  <section id="logo">
+    <div class="eyebrow">Logo &amp; Marks</div>
+    <h2>The Protocolized mark and P-mark.</h2>
+    <p class="body">Use the supplied vector marks. Keep clear-space of at least the height of the
+      “P” on all sides. Place the black mark on light surfaces, the white mark on
+      <code>--pi-text-heading</code> or imagery.</p>
+    <div class="logos">
+      <div class="logo"><div class="frame"><img src="assets/logos/protocolized_mark_black_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_black_v6.png'"></div><div class="cap">Full mark — black</div></div>
+      <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_mark_white_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_white_v4.png'"></div><div class="cap">Full mark — white</div></div>
+      <div class="logo"><div class="frame"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""></div><div class="cap">P-mark — black</div></div>
+      <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_Pmark_white_72ppi.png" alt=""></div><div class="cap">P-mark — white</div></div>
+      <div class="logo"><div class="frame"><img src="assets/logos/protocolized_wordmark.png" alt=""></div><div class="cap">Wordmark</div></div>
+      <div class="logo"><div class="frame"><img src="assets/logos/pi_newnature_1000x1000.png" alt=""></div><div class="cap">“New Nature” key art</div></div>
+    </div>
+    <ul class="never">
+      <li>Stretch, squash, or rotate the mark</li>
+      <li>Recolor outside the brand palette</li>
+      <li>Add shadows, outlines, or gradients</li>
+      <li>Place black mark on dark / busy imagery</li>
+      <li>Crop or crowd the clear-space</li>
+      <li>Rebuild the mark from system type</li>
+    </ul>
+  </section>
+
+  <!-- IMAGERY -->
+  <section id="imagery">
+    <div class="eyebrow">Imagery</div>
+    <h2>Seven aesthetic groups, two veins.</h2>
+    <p class="body">Brand imagery is the curated editorial artwork of <em>Protocolized</em> —
+      <b id="imgCount">111</b> pieces in <code>assets/images/</code>, each catalogued in
+      <a href="assets/images/metadata.json" target="_blank" rel="noopener">metadata.json</a> with a
+      description and a W3C-named color palette. Choose a group by vein; pull a piece’s palette to
+      tint layout accents. <b>Never</b> use real-person photos, headshots, event photos,
+      screenshots, charts, or data-visualizations.</p>
+    <div class="igroups" id="igroups"><p class="ctext">Loading the library…</p></div>
+  </section>
+
+  <!-- VOICE -->
+  <section id="voice">
+    <div class="eyebrow">Voice &amp; Tone</div>
+    <h2>Two registers, one institution.</h2>
+    <p class="body">Match the vein. The Institute writes like a research body; Protocolized
+      Non-Fiction writes like a magazine of ideas.</p>
+    <div class="voice">
+      <div class="vcol">
+        <h3>Protocol Institute — research</h3>
+        <div class="traits"><span class="trait">Precise</span><span class="trait">Grounded</span><span class="trait">Structured</span><span class="trait">Generative</span></div>
+        <div class="sd">
+          <div class="say"><h4>Say</h4><ul>
+            <li>Name the protocol and the coordination problem it solves.</li>
+            <li>Lead with the claim, then the evidence; cite sources.</li>
+            <li>Define terms once, plainly; reuse them.</li>
+            <li>Frame outputs as working-group findings.</li></ul></div>
+          <div class="dont"><h4>Don’t</h4><ul>
+            <li>Hype or absolutes (“revolutionary”).</li>
+            <li>Undefined jargon or acronym soup.</li>
+            <li>Marketing voice — this is a research institute.</li></ul></div>
+        </div>
+      </div>
+      <div class="vcol">
+        <h3>Protocolized — Non-Fiction</h3>
+        <div class="traits"><span class="trait">Literary</span><span class="trait">Curious</span><span class="trait">Rigorous-but-playful</span><span class="trait">World-building</span></div>
+        <div class="sd">
+          <div class="say"><h4>Say</h4><ul>
+            <li>Treat protocols as narrative &amp; philosophical instruments.</li>
+            <li>Earn the idea: vivid framing carried by real analysis.</li>
+            <li>Let a strong title and concept lead — it’s “New Nature”.</li>
+            <li>Be oblique where it illuminates, then land the point.</li></ul></div>
+          <div class="dont"><h4>Don’t</h4><ul>
+            <li>Dry institutional report voice (that’s the other vein).</li>
+            <li>Whimsy without substance.</li>
+            <li>Break character into press-release tone.</li></ul></div>
+        </div>
+        <div class="caveat"><b>Scope:</b> this voice covers Protocolized <b>Non-Fiction</b>
+          (Studies / Obliquities / Science). <b>Fiction</b> varies creatively by author and is
+          <b>not</b> constrained by brand voice.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section id="components">
+    <div class="eyebrow">Components</div>
+    <h2>A closed set — compose, don’t invent.</h2>
+    <p class="body">Buttons, badges, chips, and cards built from the tokens. Missing a component?
+      Derive it from decision tokens + the radius / hairline / type roles — as the download
+      button below is just a secondary button with a glyph.</p>
+    <div class="demo">
+      <div class="row">
+        <a class="btn primary">Primary action</a>
+        <a class="btn secondary">Secondary</a>
+        <a class="btn ghost">↓ Download (derived)</a>
+        <a class="btn" style="background:none;color:var(--action);padding-left:0">Inline link →</a>
+      </div>
+      <div class="row">
+        <span class="badge fw">Framework</span>
+        <span class="badge ft">Featured</span>
+        <span class="chip">protocols</span>
+        <span class="chip">theory</span>
+        <span class="chip">reference</span>
+      </div>
+      <div class="rescard">
+        <span class="badge fw">Framework</span>
+        <div class="t">Protocol Lexicon</div>
+        <div class="d">A card: 1px hairline border, 8px radius, hover shadow only. Badge → serif title → dek → meta.</div>
+      </div>
+    </div>
+    <div class="princ">
+      <div class="p"><b>Radius</b><span>Pills/badges/chips → <code>pill</code>. Cards/buttons → <code>md</code> (8px).</span></div>
+      <div class="p"><b>Borders</b><span>1px <code>--pi-border-hairline</code>; no resting shadow, hover only.</span></div>
+      <div class="p"><b>Derivation</b><span>New component = existing tokens + roles. No new colors, radii, or shadows.</span></div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section id="agents">
+    <div class="eyebrow">For Agents · LLM-safe</div>
+    <h2>Correct is the only expressible option.</h2>
+    <p class="body">This kit is built so an LLM can apply it without drifting off-brand —
+      following the “decisions over values” principle from
+      <a href="https://polar.sh/blog/orbit-llm-safe-design-system" target="_blank" rel="noopener">Polar’s Orbit</a>.</p>
+    <div class="princ">
+      <div class="p"><b>Decisions over values</b><span>Reference <code>--pi-action-primary</code>, never a raw hex.</span></div>
+      <div class="p"><b>Closed sets</b><span>The token &amp; component menus are exhaustive. Extend the source, don’t improvise.</span></div>
+      <div class="p"><b>Single source of truth</b><span><code>brand.json</code> + <code>brand.css</code> drive everything here.</span></div>
+      <div class="p"><b>Compose missing parts</b><span>Build from tokens + roles; keep radius, hairline, type consistent.</span></div>
+    </div>
+    <pre><span class="cp"><button class="copybtn" data-copy='&lt;link rel="stylesheet" href="brand.css"&gt;
+&lt;!-- then use decision tokens / classes --&gt;
+&lt;a class="pi-btn pi-btn--primary"&gt;Get the kit&lt;/a&gt;
+&lt;span class="pi-badge pi-badge--framework"&gt;Framework&lt;/span&gt;
+style="color:var(--pi-text-secondary); background:var(--pi-background-surface)"'>Copy</button></span>&lt;link rel="stylesheet" href="brand.css"&gt;
+&lt;!-- then use decision tokens / classes --&gt;
+&lt;a class="pi-btn pi-btn--primary"&gt;Get the kit&lt;/a&gt;
+&lt;span class="pi-badge pi-badge--framework"&gt;Framework&lt;/span&gt;
+style="color:var(--pi-text-secondary); background:var(--pi-background-surface)"</pre>
+  </section>
+
+  <!-- GET -->
+  <section id="get">
+    <div class="eyebrow">Get the kit</div>
+    <h2>Files for humans and agents.</h2>
+    <div class="files">
+      <a class="file" href="brand.json" download><span>🎟️</span><span><span class="fn">brand.json</span><br><span class="fd">Tokens, type, components, veins, voice</span></span></a>
+      <a class="file" href="brand.css" download><span>🎨</span><span><span class="fn">brand.css</span><br><span class="fd">--pi-* variables + .pi-* classes</span></span></a>
+      <a class="file" href="llms.txt" download><span>🤖</span><span><span class="fn">llms.txt</span><br><span class="fd">Agent entry point</span></span></a>
+      <a class="file" href="apply-protocol-institute-brand.md" download><span>📋</span><span><span class="fn">apply-…-brand.md</span><br><span class="fd">Step-by-step application</span></span></a>
+      <a class="file" href="DESIGN-protocolized.md" download><span>📐</span><span><span class="fn">DESIGN-protocolized.md</span><br><span class="fd">Full sampled spec</span></span></a>
+      <a class="file" href="assets/images/metadata.json" target="_blank" rel="noopener"><span>🖼️</span><span><span class="fn">image library</span><br><span class="fd">111 artworks + palettes</span></span></a>
+    </div>
+    <div class="cta-row" style="margin-top:18px">
+      <a class="btn secondary" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">View on GitHub ↗</a>
+      <a class="btn ghost" href="https://protocol-institute.org/" target="_blank" rel="noopener">protocol-institute.org ↗</a>
+      <a class="btn ghost" href="https://protocolized.summerofprotocols.com/" target="_blank" rel="noopener">Protocolized ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    Protocol Institute — Brand Kit v1.0 · Built from <code>DESIGN-protocolized.md</code> and the
+    live sites. Tokens encode decisions; the menu is closed. Imagery is the curated Protocolized
+    artwork — no real-person photos.
+  </footer>
+</main>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+/* ---- color data (closed decision set) ---- */
+const COLORS={
+  action:[
+    ["--pi-action-primary","#0064ff","Primary CTA, link emphasis (brand-kit primary, aspirational)"],
+    ["--pi-action-primary-pressed","#004fcc","Pressed/hover of primary"],
+    ["--pi-action-primary-tint","#e6efff","Pale highlight background"],
+    ["--pi-action-secondary","#0f6e56","Live-site CTA, tagline, Framework badge, focus ring"],
+    ["--pi-action-secondary-deep","#085041","Framework badge text"],
+    ["--pi-action-secondary-tint","#e1f5ee","Framework badge background"],
+    ["--pi-accent","#d85a30","'Featured' + rare emphasis only"],
+    ["--pi-accent-tint","#faece7","Featured badge background"],
+    ["--pi-on-action","#ffffff","Text on action fills"]
+  ],
+  surface:[
+    ["--pi-background-canvas","#f9f8f5","Page background — warm paper"],
+    ["--pi-background-surface","#ffffff","Cards, bands, nav, footer"],
+    ["--pi-background-muted","#f3f4f6","Chips, quiet dividers"],
+    ["--pi-border-hairline","#e5e7eb","1px borders / dividers"]
+  ],
+  text:[
+    ["--pi-text-heading","#2c2c2a","Headlines, emphasis"],
+    ["--pi-text-body","#2c2c2a","Default body"],
+    ["--pi-text-secondary","#5f5e5a","Dek, meta, captions, chips"]
+  ]
+};
+function light(hex){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return (0.299*r+0.587*g+0.114*b)>150;}
+function renderSwatches(g){
+  const el=document.getElementById('swatches');el.innerHTML='';
+  COLORS[g].forEach(([tok,hex,use])=>{
+    const d=document.createElement('div');d.className='sw';d.tabIndex=0;
+    d.innerHTML=`<div class="chip" style="background:${hex};${light(hex)?'box-shadow:inset 0 0 0 1px #e5e7eb':''}"></div>
+      <div class="meta"><span class="tok">${tok}</span><span class="hex">${hex}</span>
+      <span class="use">${use}</span><span class="copytag">click to copy token →</span></div>`;
+    d.addEventListener('click',()=>copy(tok));
+    d.addEventListener('keydown',e=>{if(e.key==='Enter')copy(tok)});
+    el.appendChild(d);
+  });
+}
+document.querySelectorAll('#colorTabs .tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('#colorTabs .tab').forEach(x=>x.setAttribute('aria-selected','false'));
+  t.setAttribute('aria-selected','true');renderSwatches(t.dataset.g);
+}));
+renderSwatches('action');
+
+/* ---- copy + toast ---- */
+let tt;
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1400);}
+function copy(text){navigator.clipboard.writeText(text).then(()=>toast('Copied  '+text)).catch(()=>toast('Copy failed'));}
+document.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy)));
+
+/* ---- imagery groups from metadata.json ---- */
+const GROUPS=[
+  ["painterly-illustration","Painted/illustrative scenes, interiors, narrative art.","mag"],
+  ["retro-vintage","Vintage & pulp sci-fi illustration; magazine covers and features.","mag"],
+  ["surreal-collage","Dreamlike juxtapositions and symbolic montage.","mag"],
+  ["abstract-geometric","Generative, non-representational fields. Bridges both veins.","both"],
+  ["technical-schematic","Stylized diagrams, line-art schematics, maps. Report/SIG-forward.","inst"],
+  ["figure-portrait","Illustrated characters — never real-person photos.","both"],
+  ["photographic","Artful, stylized photography only; no headshots or events.","mag"]
+];
+const VEINLABEL={mag:["mag","Protocolized"],inst:["inst","Institute"],both:["both","Both"]};
+fetch('assets/images/metadata.json').then(r=>r.json()).then(meta=>{
+  const items=Object.entries(meta);
+  document.getElementById('imgCount').textContent=items.length;
+  const byCat={};items.forEach(([fn,v])=>{(byCat[v.aesthetic_category]=byCat[v.aesthetic_category]||[]).push(fn);});
+  const host=document.getElementById('igroups');host.innerHTML='';
+  GROUPS.forEach(([cat,desc,vein])=>{
+    const files=(byCat[cat]||[]).slice(0,6);if(!files.length)return;
+    const tags=vein==='both'
+      ? `<span class="veintag inst">Institute</span><span class="veintag mag">Protocolized</span>`
+      : `<span class="veintag ${vein}">${VEINLABEL[vein][1]}</span>`;
+    const strip=files.map(fn=>{
+      const stem=fn.replace(/\.[^.]+$/,'');
+      return `<a href="assets/images/${fn}" target="_blank" rel="noopener" title="${cat}"><img loading="lazy" src="assets/thumbs/${stem}.jpg" alt=""></a>`;
+    }).join('');
+    const count=(byCat[cat]||[]).length;
+    const card=document.createElement('div');card.className='ig';
+    card.innerHTML=`<div class="head"><h3>${cat}</h3>${tags}<span class="ctext" style="margin:0">${count} in set</span></div>
+      <div class="desc">${desc}</div><div class="strip">${strip}</div>`;
+    host.appendChild(card);
+  });
+}).catch(()=>{document.getElementById('igroups').innerHTML='<p class="ctext">Image library loads on the deployed site (assets/images/metadata.json).</p>';});
+
+/* ---- gutter scrollspy ---- */
+const gutter=document.getElementById('gutter'),hero=document.getElementById('hero');
+const links=[...gutter.querySelectorAll('a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver'in window){
+  new IntersectionObserver(es=>es.forEach(e=>gutter.classList.toggle('on',!e.isIntersecting)),{rootMargin:'-70px 0 0 0'}).observe(hero);
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));}}),{rootMargin:'-45% 0 -50% 0'});
+  secs.forEach(s=>spy.observe(s));
+}
+</script>
+</body>
+</html>

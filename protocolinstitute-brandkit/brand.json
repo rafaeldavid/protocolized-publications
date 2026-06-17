@@ -1,0 +1,168 @@
+{
+  "name": "Protocol Institute Brand Kit",
+  "version": "1.0.0",
+  "summary": "Single source of truth for the Protocol Institute brand. Tokens encode DECISIONS (intent), not raw values — choose a decision token by context, never a bare hex or pixel. Two veins (institute, protocolized) share one token system and differ by typeface emphasis, color emphasis, and imagery.",
+  "principles": [
+    "Decisions over values: reference `color.decision.*`, not `color.primitive.*`, in product code.",
+    "Closed sets: the menus below are exhaustive. If a need is not covered, extend the system in this file first, then use it — do not invent ad-hoc values.",
+    "One surface family is light, paper-toned. Dark mode is not part of v1; do not invent dark variants.",
+    "When a component is missing, derive it from `components.rules` + existing decision tokens; keep radius, hairline, and type roles consistent."
+  ],
+  "veins": {
+    "institute": {
+      "label": "Protocol Institute — Research / Reports / SIGs",
+      "use_when": "Working-group outputs, SIG write-ups, research reports, challenges, formal institutional pages.",
+      "color_emphasis": "color.decision.action-primary (cobalt) for CTAs and emphasis; restrained accent use.",
+      "type_emphasis": "Serif display (Computer Modern preferred, Instrument Serif fallback) + Lora body; precise, structured.",
+      "imagery_emphasis": ["technical-schematic", "abstract-geometric", "figure-portrait"],
+      "voice": "voice.institute"
+    },
+    "protocolized": {
+      "label": "Protocolized — The Magazine of New Nature",
+      "use_when": "Magazine pieces: Non-Fiction (Studies / Obliquities / Science) and Fiction. Editorial, cover-art-led layouts.",
+      "color_emphasis": "color.decision.action-secondary (forest green) is the site-current live accent; accent rust for 'Featured'.",
+      "type_emphasis": "Instrument Serif display at weight 400 (never bold) + Lora body; literary, exploratory.",
+      "imagery_emphasis": ["painterly-illustration", "retro-vintage", "surreal-collage", "photographic"],
+      "voice": "voice.protocolized_nonfiction"
+    }
+  },
+  "color": {
+    "primitive": {
+      "cobalt-600": "#004fcc",
+      "cobalt-500": "#0064ff",
+      "cobalt-050": "#e6efff",
+      "forest-700": "#085041",
+      "forest-600": "#0f6e56",
+      "forest-050": "#e1f5ee",
+      "rust-500": "#d85a30",
+      "rust-050": "#faece7",
+      "paper": "#f9f8f5",
+      "white": "#ffffff",
+      "gray-100": "#f3f4f6",
+      "gray-200": "#e5e7eb",
+      "ink-900": "#2c2c2a",
+      "ink-600": "#5f5e5a"
+    },
+    "decision": {
+      "action-primary":        { "value": "#0064ff", "ref": "cobalt-500", "usage": "Primary CTA fill, link emphasis, brand-forward highlight. Brand-kit primary (aspirational; see note). Pair with on-action text." },
+      "action-primary-pressed":{ "value": "#004fcc", "ref": "cobalt-600", "usage": "Pressed/hover state of action-primary." },
+      "action-primary-tint":   { "value": "#e6efff", "ref": "cobalt-050", "usage": "Pale highlight background behind primary-colored elements." },
+      "action-secondary":      { "value": "#0f6e56", "ref": "forest-600", "usage": "What protocolized.io renders today for CTAs, the italic tagline, secondary CTA border, Framework badge, focus ring. Use to match the live site." },
+      "action-secondary-deep": { "value": "#085041", "ref": "forest-700", "usage": "Text on the Framework badge tint." },
+      "action-secondary-tint": { "value": "#e1f5ee", "ref": "forest-050", "usage": "Framework badge background; soft mint fill." },
+      "accent":                { "value": "#d85a30", "ref": "rust-500",  "usage": "Reserved emphasis: the 'Featured' badge and very limited inline accents only." },
+      "accent-tint":           { "value": "#faece7", "ref": "rust-050",  "usage": "Featured badge background." },
+      "background-canvas":     { "value": "#f9f8f5", "ref": "paper",     "usage": "Page background — warm paper." },
+      "background-surface":    { "value": "#ffffff", "ref": "white",     "usage": "Cards, section bands, top nav, footer." },
+      "background-muted":      { "value": "#f3f4f6", "ref": "gray-100",  "usage": "Chips, pills, quiet section dividers." },
+      "border-hairline":       { "value": "#e5e7eb", "ref": "gray-200",  "usage": "1px borders on cards, inputs, nav underline, footer top border." },
+      "text-heading":          { "value": "#2c2c2a", "ref": "ink-900",   "usage": "Headlines and body emphasis." },
+      "text-body":             { "value": "#2c2c2a", "ref": "ink-900",   "usage": "Default body text." },
+      "text-secondary":        { "value": "#5f5e5a", "ref": "ink-600",   "usage": "Dek, breadcrumb, meta, captions, chips, footer links." },
+      "on-action":             { "value": "#ffffff", "ref": "white",     "usage": "Text on action-primary / action-secondary / accent fills." }
+    },
+    "note": "The brand-kit PRIMARY is electric cobalt (#0064ff), aspirational and sourced from the Substack surface. The live protocolized.io still serves forest green (#0f6e56) as action-secondary. Use cobalt for new artifacts; use green to match the current production site.",
+    "accessibility": "on-action white meets WCAG AA on action-primary, action-secondary, and accent fills. text-secondary on background-canvas meets AA for body sizes. Do not place text-secondary on action fills."
+  },
+  "typography": {
+    "fonts": {
+      "serif":  { "stack": "\"Computer Modern Serif\", \"CMU Serif\", \"Latin Modern Roman\", \"Instrument Serif\", Georgia, serif", "role": "Display + all headings; the italic tagline. Brand-kit prefers Computer Modern; the live site serves Instrument Serif." },
+      "body":   { "stack": "\"Computer Modern Serif\", \"CMU Serif\", \"Latin Modern Roman\", Lora, Georgia, serif", "role": "Long-form prose, default body, dek." },
+      "sans":   { "stack": "Outfit, system-ui, sans-serif", "role": "UI labels, buttons, badges, chips, breadcrumbs, meta, nav." },
+      "mono":   { "stack": "\"JetBrains Mono\", \"Courier New\", monospace", "role": "Code and tokens." }
+    },
+    "scale": {
+      "hero-display":   { "font": "serif", "size": "72px", "weight": 400, "leading": "72px", "tracking": "-1.8px", "use": "Homepage hero H1" },
+      "detail-display": { "font": "serif", "size": "48px", "weight": 400, "leading": "48px", "use": "Detail/page H1" },
+      "page-h1":        { "font": "serif", "size": "36px", "weight": 400, "leading": "40px", "use": "Index page H1" },
+      "tagline-italic": { "font": "serif", "size": "30px", "weight": 400, "leading": "36px", "style": "italic", "color": "action (vein-dependent)", "use": "Tagline 'Accelerating Order.'" },
+      "heading-section":{ "font": "serif", "size": "24px", "weight": 400, "leading": "32px", "use": "Section H2" },
+      "heading-card":   { "font": "serif", "size": "20px", "weight": 400, "leading": "28px", "use": "Card titles" },
+      "prose-lead":     { "font": "body", "size": "18px", "weight": 400, "leading": "29px", "color": "text-secondary", "use": "Lead/dek" },
+      "body-md":        { "font": "body", "size": "16px", "weight": 400, "leading": "24px", "use": "Default body" },
+      "body-strong":    { "font": "body", "size": "16px", "weight": 700, "leading": "24px", "use": "Bold term in prose" },
+      "button":         { "font": "sans", "size": "16px", "weight": 500, "leading": "24px", "use": "Buttons" },
+      "nav-link":       { "font": "sans", "size": "14px", "weight": 400, "leading": "20px", "use": "Nav, footer links, meta" },
+      "caption":        { "font": "sans", "size": "12px", "weight": 500, "leading": "16px", "use": "Badges, chips, filter pills" }
+    },
+    "rules": [
+      "Headlines are weight 400 (regular). Never set display headings to 600/700.",
+      "The tagline is italic serif in the vein's action color.",
+      "Serif for anything 18px and up; sans only for UI <=16px."
+    ]
+  },
+  "space": { "xxs": "4px", "xs": "8px", "sm": "12px", "md": "16px", "lg": "20px", "xl": "24px", "xxl": "32px", "section": "64px", "section-lg": "112px" },
+  "radius": { "sm": "4px", "md": "8px", "lg": "12px", "pill": "9999px" },
+  "shadow": { "card-hover": "0 1px 2px 0 rgb(0 0 0 / 0.05)", "default": "0 1px 3px 0 rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10)" },
+  "components": {
+    "button-primary":   { "bg": "action-primary", "text": "on-action", "type": "button", "radius": "md", "padding": "12px 24px" },
+    "button-secondary": { "bg": "transparent", "text": "action-primary", "border": "1px solid action-primary", "type": "button", "radius": "md", "padding": "12px 24px" },
+    "button-link":      { "bg": "transparent", "text": "action-primary", "type": "nav-link", "suffix": "→" },
+    "badge-framework":  { "bg": "action-secondary-tint", "text": "action-secondary-deep", "type": "caption", "radius": "pill", "padding": "2px 10px" },
+    "badge-featured":   { "bg": "accent-tint", "text": "accent", "type": "caption", "radius": "pill", "padding": "2px 10px" },
+    "tag-chip":         { "bg": "background-muted", "text": "text-secondary", "type": "nav-link", "radius": "pill", "padding": "6px 12px" },
+    "card":             { "bg": "background-surface", "border": "1px solid border-hairline", "radius": "md", "padding": "20px", "shadow": "none; card-hover on hover" },
+    "swatch":           { "derived": "A color specimen: filled rounded-md chip + decision token name (mono) + hex, click-to-copy the token name. Derive from radius.md + border-hairline + text-secondary caption." },
+    "download-button":  { "derived": "A button-secondary with a leading download glyph; same tokens as button-secondary." }
+  },
+  "components_rules": [
+    "Pills/badges/chips use radius.pill. Cards/buttons/inputs use radius.md.",
+    "Cards have a 1px border-hairline and no resting shadow; shadow.card-hover appears only on hover.",
+    "Missing component? Compose it from decision tokens + these radius/hairline/type roles. Keep the closed token set."
+  ],
+  "imagery": {
+    "library": "assets/images/ (111 curated editorial artworks) + metadata.json (per-image aesthetic_category, description, W3C-named color palette).",
+    "groups": [
+      { "id": "painterly-illustration", "veins": ["protocolized"], "note": "Painted/illustrative scenes, interiors, narrative art. Magazine-forward." },
+      { "id": "retro-vintage",          "veins": ["protocolized"], "note": "Vintage/pulp sci-fi illustration. Magazine covers and features." },
+      { "id": "surreal-collage",        "veins": ["protocolized"], "note": "Dreamlike juxtapositions, symbolic montage. Magazine-forward." },
+      { "id": "abstract-geometric",     "veins": ["institute", "protocolized"], "note": "Generative/non-representational fields. Bridges both veins." },
+      { "id": "technical-schematic",    "veins": ["institute"], "note": "Stylized diagrams, line-art schematics, maps. Report/SIG-forward." },
+      { "id": "figure-portrait",        "veins": ["institute", "protocolized"], "note": "Illustrated characters (never real-person photos)." },
+      { "id": "photographic",           "veins": ["protocolized"], "note": "Artful/stylized photography only; no real-person headshots or event photos." }
+    ],
+    "rules": [
+      "Never use real-person photographs, headshots, event photos, screenshots, charts, or data-visualizations as brand imagery.",
+      "Pull a piece's palette from metadata.json to harmonize layout accents with the chosen artwork."
+    ]
+  },
+  "voice": {
+    "institute": {
+      "label": "Protocol Institute (research / reports / SIGs)",
+      "traits": ["Precise", "Grounded", "Structured", "Generative"],
+      "say": [
+        "Name the protocol and the coordination problem it solves.",
+        "Lead with the claim, then the evidence; cite sources.",
+        "Define terms once, plainly; reuse them consistently.",
+        "Frame outputs as working-group findings, not pronouncements."
+      ],
+      "dont_say": [
+        "Hype or absolutes ('revolutionary', 'the only way').",
+        "Undefined jargon or acronym soup.",
+        "Marketing voice; this is a research institution."
+      ]
+    },
+    "protocolized_nonfiction": {
+      "label": "Protocolized — Non-Fiction (Studies / Obliquities / Science)",
+      "scope_note": "Voice guidance applies to NON-FICTION. Protocolized Fiction varies creatively by author and is not constrained by this brand voice.",
+      "traits": ["Literary", "Curious", "Rigorous-but-playful", "World-building"],
+      "say": [
+        "Treat protocols as narrative and philosophical instruments, not just mechanisms.",
+        "Earn the idea: vivid framing carried by real analysis.",
+        "Let a strong title and concept lead; the magazine is 'New Nature'.",
+        "Be exploratory and oblique where it illuminates — then land the point."
+      ],
+      "dont_say": [
+        "Dry institutional report voice (that is the Institute vein).",
+        "Whimsy without substance.",
+        "Breaking character mid-piece into press-release tone."
+      ]
+    }
+  },
+  "assets": {
+    "logos": "assets/logos/ (Protocolized wordmark + P-mark, black/white, static + animated SVG; New Nature key art).",
+    "agent_files": ["brand.json", "brand.css", "llms.txt", "apply-protocol-institute-brand.md"],
+    "live_sites": ["https://protocol-institute.org/", "https://protocolized.summerofprotocols.com/"],
+    "source_of_truth": "DESIGN-protocolized.md (full sampled spec)."
+  }
+}

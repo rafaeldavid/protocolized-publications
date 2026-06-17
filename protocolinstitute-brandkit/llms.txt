@@ -1,0 +1,50 @@
+# Protocol Institute — Brand Kit (llms.txt)
+
+> Machine-readable entry point for agents applying the Protocol Institute brand.
+> Read this first, then load brand.json (tokens) and brand.css (variables + components).
+
+## What this is
+The brand system for the Protocol Institute — "a research, education, media, and
+scene-making organization dedicated to advancing protocols and protocolization worldwide."
+It governs two veins that share ONE token system:
+
+1. **Protocol Institute** — research / reports / SIGs / challenges. Formal, precise.
+2. **Protocolized** — "The Magazine of New Nature". Editorial; Non-Fiction (Studies /
+   Obliquities / Science) and Fiction. Voice guidance below covers NON-FICTION only;
+   Fiction varies creatively and is not constrained.
+
+## LLM-safe rules (do not violate)
+- **Decisions over values.** Use decision tokens (`--pi-action-primary`, `--pi-text-secondary`,
+  …), never raw hex or arbitrary pixels. The token menus in brand.json / brand.css are CLOSED.
+- **No invented values.** If something is missing, extend brand.json/brand.css first, then use it.
+- **No dark mode in v1.** One light, paper-toned surface family.
+- **Compose missing components** from existing decision tokens + the radius/hairline/type roles.
+- **Imagery:** never use real-person photos, headshots, event photos, screenshots, charts, or
+  data-viz. Use only the curated artwork in assets/images/ (see metadata.json).
+
+## Choose a vein, then apply
+| Need | Vein | Color emphasis | Type emphasis | Imagery |
+|------|------|----------------|---------------|---------|
+| Report / SIG / challenge / institutional | institute | action-primary (cobalt) | serif display + Lora | technical-schematic, abstract-geometric |
+| Magazine piece / editorial | protocolized | action-secondary (forest green, live) + accent rust for Featured | Instrument Serif 400 + Lora | painterly-illustration, retro-vintage, surreal-collage |
+
+Note: cobalt `#0064ff` is the aspirational brand primary; the live protocolized.io still serves
+forest green `#0f6e56`. Use cobalt for new artifacts, green to match the production site.
+
+## Files
+- `brand.json` — tokens (primitives + decisions), typography scale, components, veins, imagery, voice.
+- `brand.css` — `--pi-*` CSS variables + closed component classes (`.pi-btn`, `.pi-badge`, `.pi-card`, …).
+- `apply-protocol-institute-brand.md` — step-by-step instructions for applying the brand.
+- `DESIGN-protocolized.md` — full sampled spec (source of truth, prose).
+- `assets/logos/` — wordmark + P-mark (black/white, static + animated), New Nature key art.
+- `assets/images/` + `metadata.json` — 111 curated artworks with per-image palette (W3C named colors).
+
+## Typefaces
+serif: "Computer Modern Serif" → CMU Serif → Latin Modern Roman → Instrument Serif → Georgia (display, headings, italic tagline).
+body: same Computer-Modern-first stack → Lora (prose).
+sans: Outfit (UI, buttons, badges, nav, meta).
+Headlines are weight 400 — never bold. Serif at ≥18px; sans only for UI ≤16px.
+
+## Live references
+- https://protocol-institute.org/
+- https://protocolized.summerofprotocols.com/
