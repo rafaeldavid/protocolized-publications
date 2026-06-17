@@ -33,14 +33,19 @@
   /* topbar */
   #top{position:fixed;inset:0 0 auto 0;height:var(--topbar);background:rgba(249,248,245,.9);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--hairline);z-index:100}
   .top-in{max-width:1180px;margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--ink);white-space:nowrap}
+  .top-left{display:flex;align-items:center;gap:18px;min-width:0}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--ink);white-space:nowrap;text-decoration:none}
   .brand img{height:22px;width:auto;display:block}
   .brand b{font-weight:700}.brand span{color:var(--ink-2);font-weight:500}
+  .pi-wordmark{display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap;flex:none}
+  .pi-wordmark img{height:22px;width:auto;display:block}
+  .pi-wordmark span{font-family:var(--serif);font-size:17px;line-height:1;color:var(--ink)}
+  .pi-wordmark:hover span{color:var(--action)}
   .topnav{display:none;gap:2px;align-items:center}
   @media(min-width:1080px){.topnav{display:flex}}
-  .topnav a{font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink-2);padding:7px 10px;border-radius:6px}
+  .topnav a{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);padding:7px 8px;border-radius:6px}
   .topnav a:hover{color:var(--ink);background:var(--action-tint);text-decoration:none}
-  .topnav a.gh{color:var(--ink);border:1px solid var(--hairline)}
+  .topnav a.gh{color:var(--ink);border:1px solid var(--hairline);text-transform:none;letter-spacing:0}
 
   /* gutter nav */
   .gutter{position:fixed;top:50%;left:max(16px,calc((100vw - var(--max))/2 - 188px));transform:translateY(-50%);z-index:5;display:none;flex-direction:column;gap:2px;opacity:0;transition:opacity .3s;pointer-events:none}
@@ -212,18 +217,23 @@
 
 <header id="top">
   <div class="top-in">
-    <a class="brand" href="#hero"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span><b>Protocol Institute</b> · Brand Kit</span></a>
-    <nav class="topnav">
-      <a href="#architecture">Architecture</a>
-      <a href="#color">Color</a>
-      <a href="#type">Type</a>
-      <a href="#logo">Logo</a>
-      <a href="#imagery">Imagery</a>
-      <a href="#voice">Voice</a>
-      <a href="#components">Components</a>
-      <a href="#agents">For Agents</a>
-      <a class="gh" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">GitHub ↗</a>
-    </nav>
+    <div class="top-left">
+      <a class="brand" href="#hero">Brand Kit</a>
+      <nav class="topnav">
+        <a href="#architecture">Architecture</a>
+        <a href="#color">Color</a>
+        <a href="#type">Type</a>
+        <a href="#logo">Logo</a>
+        <a href="#imagery">Imagery</a>
+        <a href="#voice">Voice</a>
+        <a href="#components">Components</a>
+        <a href="#agents">For Agents</a>
+        <a class="gh" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+    <a class="pi-wordmark" href="https://protocol-institute.org/" target="_blank" rel="noopener" aria-label="The Protocol Institute">
+      <img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span>The Protocol Institute</span>
+    </a>
   </div>
 </header>
 
@@ -457,6 +467,7 @@
       <div class="p"><b>Radius</b><span>Pills/badges/chips → <code>pill</code>. Cards/buttons → <code>md</code> (8px).</span></div>
       <div class="p"><b>Borders</b><span>1px <code>--pi-border-hairline</code>; no resting shadow, hover only.</span></div>
       <div class="p"><b>Derivation</b><span>New component = existing tokens + roles. No new colors, radii, or shadows.</span></div>
+      <div class="p"><b>Header</b><span>Brand + <b>UPPERCASE</b> nav on the left; the “The Protocol Institute” wordmark anchored top-right (see this page’s header). Classes: <code>.pi-topnav</code>, <code>.pi-wordmark</code>.</span></div>
     </div>
   </section>
 

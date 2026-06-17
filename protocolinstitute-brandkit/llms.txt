@@ -22,6 +22,12 @@ It governs two veins that share ONE token system:
 - **Imagery:** never use real-person photos, headshots, event photos, screenshots, charts, or
   data-viz. Use only the curated artwork in assets/images/ (see metadata.json).
 
+## Page header (every page)
+- Put the page/local brand + nav on the LEFT; anchor the **"The Protocol Institute" wordmark**
+  (P-mark + serif text) on the **top RIGHT**, linking to https://protocol-institute.org/.
+- **Menu/nav links are UPPERCASE** (Outfit), matching protocol-institute.org.
+- Use `.pi-wordmark` and `.pi-topnav` from brand.css.
+
 ## Choose a vein, then apply
 | Need | Vein | Color emphasis | Type emphasis | Imagery |
 |------|------|----------------|---------------|---------|

@@ -39,6 +39,11 @@ correct behavior is the easy path, and the token menus are closed.
   hairline border, and a type role. Example: a download button = `.pi-btn--secondary` + `.pi-btn--download`.
   Do not introduce new colors, radii, or shadows.
 
+## 4b. Page header
+- Page/local brand + nav on the **left**; the **"The Protocol Institute" wordmark** (P-mark +
+  serif text, `.pi-wordmark`) anchored **top-right**, linking to `https://protocol-institute.org/`.
+- **Menu/nav links are UPPERCASE** (`.pi-topnav`, Outfit). Matches protocol-institute.org.
+
 ## 5. Voice (copy)
 - **Institute (research):** Precise · Grounded · Structured · Generative. Lead with the claim,
   then evidence; define terms once; frame as working-group findings. Avoid hype and jargon soup.

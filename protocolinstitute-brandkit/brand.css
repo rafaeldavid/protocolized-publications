@@ -77,3 +77,13 @@
 
 /* — Derived: download button = secondary button + leading glyph (compose, don't invent) — */
 .pi-btn--download::before{content:"↓";font-weight:700;}
+
+/* — Site header — page/local brand + UPPERCASE nav on the LEFT; the "The Protocol
+   Institute" wordmark anchored TOP-RIGHT, linking to https://protocol-institute.org/.
+   Mirrors protocol-institute.org's serif wordmark and capitalized menu. — */
+.pi-topnav a{font-family:var(--pi-font-sans);font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--pi-text-secondary);text-decoration:none;}
+.pi-topnav a:hover{color:var(--pi-text-heading);}
+.pi-wordmark{display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap;}
+.pi-wordmark img{height:22px;width:auto;display:block;}        /* the P-mark */
+.pi-wordmark span{font-family:var(--pi-font-serif);font-size:17px;line-height:1;color:var(--pi-text-heading);} /* "The Protocol Institute" — serif display */
+.pi-wordmark:hover span{color:var(--pi-action-primary);}
