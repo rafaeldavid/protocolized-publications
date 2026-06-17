@@ -65,6 +65,7 @@
     "accessibility": "on-action white meets WCAG AA on action-primary, action-secondary, and accent fills. text-secondary on background-canvas meets AA for body sizes. Do not place text-secondary on action fills."
   },
   "typography": {
+    "load": "REQUIRED: link brand.css (it @imports Instrument Serif, Lora, Outfit) or add the Google Fonts <link>. Declaring the stacks without loading the webfonts yields system fallbacks. Headings must render in Instrument Serif at weight 400 — verify after applying.",
     "fonts": {
       "serif":  { "stack": "\"Computer Modern Serif\", \"CMU Serif\", \"Latin Modern Roman\", \"Instrument Serif\", Georgia, serif", "role": "Display + all headings; the italic tagline. Brand-kit prefers Computer Modern; the live site serves Instrument Serif." },
       "body":   { "stack": "\"Computer Modern Serif\", \"CMU Serif\", \"Latin Modern Roman\", Lora, Georgia, serif", "role": "Long-form prose, default body, dek." },

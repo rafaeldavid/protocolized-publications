@@ -24,6 +24,9 @@ correct behavior is the easy path, and the token menus are closed.
 - Never put `--pi-text-secondary` on an action fill; use `--pi-on-action`.
 
 ## 3. Type
+- **Load the fonts first.** Linking `brand.css` is enough — it `@import`s Instrument Serif, Lora,
+  and Outfit. Without loading them, headings fall back to a system serif/sans. After applying,
+  verify a heading actually renders in Instrument Serif (not Georgia/Times or a sans).
 - Headings/display: serif, **weight 400 only** (never bold display). Use `.pi-display`, `.pi-h2`.
 - Body: `.pi-prose` (16px) / `.pi-lead` (18px secondary). UI/meta: `.pi-meta`, sans.
 - Tagline "Accelerating Order.": `.pi-tagline` (italic serif, in the vein's action color).
@@ -50,6 +53,7 @@ correct behavior is the easy path, and the token menus are closed.
 - Forbidden as brand imagery: real-person photos, headshots, event photos, screenshots, charts, data-viz.
 
 ## 7. Self-check before shipping
+- [ ] Brand fonts loaded — headings render in **Instrument Serif** (weight 400), body in Lora, UI in Outfit.
 - [ ] Only `--pi-*` tokens / `.pi-*` classes used (no raw hex/px).
 - [ ] Correct vein's color + type + imagery emphasis.
 - [ ] Display headings are weight 400.

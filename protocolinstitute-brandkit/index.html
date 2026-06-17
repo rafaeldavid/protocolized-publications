@@ -315,6 +315,9 @@
     <p class="body">Display and body text are serif. The brand prefers Computer Modern and falls back
       to Instrument Serif and Lora. UI text is Outfit. Headlines use weight 400. Do not set display
       headings bold.</p>
+    <div class="note"><b>Load the fonts.</b> Link <code>brand.css</code> — it <code>@import</code>s
+      Instrument Serif, Lora, and Outfit. Declaring the stacks without loading the webfonts gives
+      system fallbacks. Quick check: a heading must render in Instrument Serif, not a generic serif or sans.</div>
     <div class="spec"><div class="label">Serif — display &amp; headings (Instrument Serif 400)</div>
       <div class="big" style="font-family:var(--serif)">Accelerating Order — protocols as new nature</div>
       <div class="stack">"Computer Modern Serif", "CMU Serif", "Latin Modern Roman", "Instrument Serif", Georgia, serif</div></div>
@@ -352,6 +355,7 @@
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_mark_white_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_white_v4.png'"></div><div class="cap">Full mark — white</div></div>
       <div class="logo"><div class="frame"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""></div><div class="cap">P-mark — black</div></div>
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_Pmark_white_72ppi.png" alt=""></div><div class="cap">P-mark — white</div></div>
+      <div class="logo"><div class="frame"><img src="favicon.svg" alt="" style="width:46px;height:46px;max-width:none;border-radius:10px"></div><div class="cap">Favicon</div></div>
       <div class="logo wide"><div class="frame"><img src="assets/logos/protocolized_wordmark.png" alt=""></div><div class="cap">Wordmark</div></div>
     </div>
     <p class="never-label">Do not:</p>

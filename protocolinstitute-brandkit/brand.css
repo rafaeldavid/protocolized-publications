@@ -6,6 +6,11 @@
    One light, paper-toned surface family. No dark mode in v1.
    ============================================================================ */
 
+/* Load the brand typefaces. Linking brand.css is enough — the fonts come with it.
+   serif headings = Instrument Serif (weight 400) · body = Lora · UI = Outfit.
+   (Computer Modern is the brand-kit preference; self-host it to override the stack.) */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap');
+
 :root {
   /* — Primitives (do not reference directly in product code) — */
   --pi--cobalt-600:#004fcc; --pi--cobalt-500:#0064ff; --pi--cobalt-050:#e6efff;

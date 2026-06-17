@@ -39,11 +39,16 @@ forest green `#0f6e56`. Use cobalt for new artifacts, green to match the product
 - `assets/logos/` — wordmark + P-mark (black/white, static + animated), New Nature key art.
 - `assets/images/` + `metadata.json` — 111 curated artworks with per-image palette (W3C named colors).
 
-## Typefaces
-serif: "Computer Modern Serif" → CMU Serif → Latin Modern Roman → Instrument Serif → Georgia (display, headings, italic tagline).
-body: same Computer-Modern-first stack → Lora (prose).
-sans: Outfit (UI, buttons, badges, nav, meta).
-Headlines are weight 400 — never bold. Serif at ≥18px; sans only for UI ≤16px.
+## Typefaces — LOAD THEM, don't just name them
+Declaring the stacks without loading the webfonts gives you system fallbacks (a common mistake).
+**Link `brand.css`** — it `@import`s Instrument Serif, Lora, and Outfit. (Or add the Google Fonts
+`<link>` yourself.) Then use the role tokens:
+- **Display + ALL headings** → serif (`--pi-font-serif` → Instrument Serif), **weight 400 — never bold.**
+- **Body / prose** → `--pi-font-body` → Lora.
+- **UI** (buttons, badges, nav, meta, labels) → `--pi-font-sans` → Outfit.
+Serif at ≥18px; sans only for UI ≤16px. ("Computer Modern Serif" is the brand-kit preference at the
+front of the serif/body stacks; self-host it to override — otherwise the loaded Instrument Serif / Lora apply.)
+Check: if a heading renders in a sans or a generic serif, the fonts did not load — link brand.css.
 
 ## Live references
 - https://protocol-institute.org/
