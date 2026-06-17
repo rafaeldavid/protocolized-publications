@@ -40,8 +40,8 @@ correct behavior is the easy path, and the token menus are closed.
   Do not introduce new colors, radii, or shadows.
 
 ## 4b. Page header
-- Page/local brand + nav on the **left**; the **"The Protocol Institute" wordmark** (P-mark +
-  serif text, `.pi-wordmark`) anchored **top-right**, linking to `https://protocol-institute.org/`.
+- The **"The Protocol Institute" wordmark** (P-mark + serif text, `.pi-wordmark`) anchored
+  **top-left**, linking to `https://protocol-institute.org/`; page/local brand + nav on the **right**.
 - **Menu/nav links are UPPERCASE** (`.pi-topnav`, Outfit). Matches protocol-institute.org.
 
 ## 5. Voice (copy)

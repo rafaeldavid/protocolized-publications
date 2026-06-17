@@ -105,14 +105,14 @@
     "card":             { "bg": "background-surface", "border": "1px solid border-hairline", "radius": "md", "padding": "20px", "shadow": "none; card-hover on hover" },
     "swatch":           { "derived": "A color specimen: filled rounded-md chip + decision token name (mono) + hex, click-to-copy the token name. Derive from radius.md + border-hairline + text-secondary caption." },
     "download-button":  { "derived": "A button-secondary with a leading download glyph; same tokens as button-secondary." },
-    "site-header":      { "layout": "Page/local brand + nav on the LEFT; the Protocol Institute wordmark anchored TOP-RIGHT.", "nav": "Menu/nav links are UPPERCASE, sans (Outfit), letter-spacing ~0.05em — matching protocol-institute.org.", "classes": ".pi-topnav (uppercase links), .pi-wordmark (right anchor)." },
-    "wordmark":         { "lockup": "P-mark + 'The Protocol Institute' set in the serif display face (Instrument Serif). Place as the TOP-RIGHT anchor of every page header.", "link": "https://protocol-institute.org/", "class": ".pi-wordmark" }
+    "site-header":      { "layout": "The Protocol Institute wordmark anchored TOP-LEFT; page/local brand + nav on the RIGHT.", "nav": "Menu/nav links are UPPERCASE, sans (Outfit), letter-spacing ~0.05em — matching protocol-institute.org.", "classes": ".pi-topnav (uppercase links), .pi-wordmark (left anchor)." },
+    "wordmark":         { "lockup": "P-mark + 'The Protocol Institute' set in the serif display face (Instrument Serif). Place as the TOP-LEFT anchor of every page header.", "link": "https://protocol-institute.org/", "class": ".pi-wordmark" }
   },
   "components_rules": [
     "Pills/badges/chips use radius.pill. Cards/buttons/inputs use radius.md.",
     "Cards have a 1px border-hairline and no resting shadow; shadow.card-hover appears only on hover.",
     "Missing component? Compose it from decision tokens + these radius/hairline/type roles. Keep the closed token set.",
-    "Page header: nav/menu links are UPPERCASE; the 'The Protocol Institute' wordmark (serif) is anchored top-right and links to protocol-institute.org."
+    "Page header: nav/menu links are UPPERCASE; the 'The Protocol Institute' wordmark (serif) is anchored top-left and links to protocol-institute.org."
   ],
   "imagery": {
     "library": "assets/images/ (111 curated editorial artworks) + metadata.json (per-image aesthetic_category, description, W3C-named color palette).",

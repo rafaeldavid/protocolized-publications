@@ -33,7 +33,7 @@
   /* topbar */
   #top{position:fixed;inset:0 0 auto 0;height:var(--topbar);background:rgba(249,248,245,.9);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--hairline);z-index:100}
   .top-in{max-width:1180px;margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .top-left{display:flex;align-items:center;gap:18px;min-width:0}
+  .top-right{display:flex;align-items:center;gap:18px;min-width:0}
   .brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--ink);white-space:nowrap;text-decoration:none}
   .brand img{height:22px;width:auto;display:block}
   .brand b{font-weight:700}.brand span{color:var(--ink-2);font-weight:500}
@@ -217,7 +217,10 @@
 
 <header id="top">
   <div class="top-in">
-    <div class="top-left">
+    <a class="pi-wordmark" href="https://protocol-institute.org/" target="_blank" rel="noopener" aria-label="The Protocol Institute">
+      <img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span>The Protocol Institute</span>
+    </a>
+    <div class="top-right">
       <a class="brand" href="#hero">Brand Kit</a>
       <nav class="topnav">
         <a href="#architecture">Architecture</a>
@@ -231,9 +234,6 @@
         <a class="gh" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">GitHub ↗</a>
       </nav>
     </div>
-    <a class="pi-wordmark" href="https://protocol-institute.org/" target="_blank" rel="noopener" aria-label="The Protocol Institute">
-      <img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span>The Protocol Institute</span>
-    </a>
   </div>
 </header>
 
@@ -467,7 +467,7 @@
       <div class="p"><b>Radius</b><span>Pills/badges/chips → <code>pill</code>. Cards/buttons → <code>md</code> (8px).</span></div>
       <div class="p"><b>Borders</b><span>1px <code>--pi-border-hairline</code>; no resting shadow, hover only.</span></div>
       <div class="p"><b>Derivation</b><span>New component = existing tokens + roles. No new colors, radii, or shadows.</span></div>
-      <div class="p"><b>Header</b><span>Brand + <b>UPPERCASE</b> nav on the left; the “The Protocol Institute” wordmark anchored top-right (see this page’s header). Classes: <code>.pi-topnav</code>, <code>.pi-wordmark</code>.</span></div>
+      <div class="p"><b>Header</b><span>The “The Protocol Institute” wordmark anchored top-left; brand + <b>UPPERCASE</b> nav on the right (see this page’s header). Classes: <code>.pi-topnav</code>, <code>.pi-wordmark</code>.</span></div>
     </div>
   </section>
 

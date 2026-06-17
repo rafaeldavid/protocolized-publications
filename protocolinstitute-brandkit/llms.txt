@@ -23,8 +23,8 @@ It governs two veins that share ONE token system:
   data-viz. Use only the curated artwork in assets/images/ (see metadata.json).
 
 ## Page header (every page)
-- Put the page/local brand + nav on the LEFT; anchor the **"The Protocol Institute" wordmark**
-  (P-mark + serif text) on the **top RIGHT**, linking to https://protocol-institute.org/.
+- Anchor the **"The Protocol Institute" wordmark** (P-mark + serif text) on the **top LEFT**,
+  linking to https://protocol-institute.org/; put the page/local brand + nav on the RIGHT.
 - **Menu/nav links are UPPERCASE** (Outfit), matching protocol-institute.org.
 - Use `.pi-wordmark` and `.pi-topnav` from brand.css.
 
