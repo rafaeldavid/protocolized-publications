@@ -21,7 +21,7 @@
     --serif:"Computer Modern Serif","CMU Serif","Latin Modern Roman","Instrument Serif",Georgia,serif;
     --body:"Computer Modern Serif","CMU Serif","Latin Modern Roman",Lora,Georgia,serif;
     --sans:Outfit,system-ui,sans-serif;--mono:"JetBrains Mono","Courier New",monospace;
-    --topbar:60px;--max:1080px;
+    --topbar:60px;--max:820px;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{font-size:16px;scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar) + 20px)}
@@ -57,8 +57,8 @@
   h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:18px}
   h2{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.2;margin-bottom:10px}
   h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin-bottom:6px}
-  .lead{font-family:var(--body);font-size:1.18rem;line-height:1.6;color:var(--ink-2);max-width:64ch}
-  p.body{font-size:1rem;line-height:1.7;color:var(--ink-2);max-width:68ch;margin-bottom:14px}
+  .lead{font-family:var(--body);font-size:1.12rem;line-height:1.6;color:var(--ink-2);max-width:720px}
+  p.body{font-size:1rem;line-height:1.7;color:var(--ink-2);max-width:720px;margin-bottom:14px}
   .tagline{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--action);margin:6px 0 22px}
 
   /* hero */
@@ -95,7 +95,15 @@
   .sw .tok{font-family:var(--mono);font-size:11.5px;color:var(--ink);font-weight:600;display:block;word-break:break-all}
   .sw .hex{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
   .sw .use{font-family:var(--sans);font-size:11px;color:var(--ink-2);margin-top:5px;line-height:1.35;display:block}
-  .copytag{font-family:var(--sans);font-size:10px;color:var(--action);opacity:0;transition:opacity .12s}
+  .copytag{font-family:var(--sans);font-size:10px;color:var(--ink-2);opacity:0;transition:opacity .12s}
+  .copyvar{color:var(--action);text-decoration:underline;cursor:pointer}
+  @media(max-width:600px){
+    #swatches{grid-template-columns:1fr!important}
+    .sw{display:flex;align-items:stretch}
+    .sw .chip{height:auto;width:68px;flex:none}
+    .sw .meta{flex:1}
+    .copytag{opacity:1}
+  }
   .sw:hover .copytag{opacity:1}
 
   .note{background:var(--action-tint);border:1px solid #d7e4ff;border-radius:10px;padding:14px 18px;font-size:14px;line-height:1.6;color:var(--ink-2);margin-top:18px}
@@ -117,10 +125,14 @@
   .logo .frame{height:120px;display:flex;align-items:center;justify-content:center;padding:18px}
   .logo .frame.dark{background:var(--ink-900)}
   .logo img{max-height:64px;max-width:80%;width:auto}
+  .logo.wide{grid-column:1/-1}
+  .logo.wide .frame{height:112px}
+  .logo.wide img{max-height:50px;max-width:46%}
   .logo .cap{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);padding:8px 12px;border-top:1px solid var(--hairline)}
-  .never{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
-  .never li{list-style:none;font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:10px 14px;background:var(--surface);border:1px solid var(--hairline);border-radius:8px}
-  .never li::before{content:"✕ ";color:var(--rust-500);font-weight:700}
+  .never-label{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);margin:22px 0 8px}
+  .never{margin:0;max-width:720px}
+  .never li{list-style:none;font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.75;padding-left:20px;position:relative}
+  .never li::before{content:"✕";position:absolute;left:0;color:var(--rust-500);font-weight:700}
 
   /* imagery */
   .igroups{display:flex;flex-direction:column;gap:14px;margin-top:8px}
@@ -131,7 +143,7 @@
   .veintag.inst{background:var(--cobalt-050);color:var(--cobalt-600)}
   .veintag.mag{background:var(--forest-050);color:var(--forest-700)}
   .ig .desc{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-bottom:12px}
-  .strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+  .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
   .strip a{display:block;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--muted)}
   .strip img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -174,11 +186,22 @@
   .princ .p span{font-size:13px;color:var(--ink-2);line-height:1.5}
   .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:8px}
   .file{display:flex;align-items:center;gap:12px;border:1px solid var(--hairline);border-radius:10px;padding:12px 14px;background:var(--surface);color:var(--ink)}
+  .ficon{flex:none;width:30px;height:30px;border-radius:7px;background:var(--muted);color:var(--action);font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center}
   .file:hover{background:var(--muted);text-decoration:none}
   .file .fn{font-family:var(--mono);font-size:13px;font-weight:600}
   .file .fd{font-family:var(--sans);font-size:11.5px;color:var(--ink-2)}
 
-  footer{border-top:1px solid var(--hairline);padding:32px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.7}
+  .site-footer{border-top:1px solid var(--hairline);margin-top:48px;padding:44px 0 24px;font-family:var(--sans);color:var(--ink-2)}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:680px){.foot-grid{grid-template-columns:1fr 1fr}}
+  .foot-brand .fb-mark{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .foot-brand img{height:20px;width:auto}
+  .foot-brand .fb-name{font-weight:600;color:var(--ink);font-size:13px}
+  .foot-brand p{font-size:12.5px;line-height:1.6;color:var(--ink-2);max-width:32ch;margin-top:2px}
+  .foot-col h5{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+  .foot-col a{display:block;color:var(--ink-2);font-size:13px;padding:3px 0;text-decoration:none}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:28px;padding-top:16px;border-top:1px solid var(--hairline);font-size:12px;color:#9a9aa3}
   .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink-900);color:#fff;font-family:var(--sans);font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;transition:.2s;z-index:200}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   :focus-visible{outline:2px solid var(--action);outline-offset:2px;border-radius:3px}
@@ -224,11 +247,11 @@
       <img src="assets/logos/protocolized_mark_black_v8.svg" alt="Protocolized mark" onerror="this.src='assets/logos/protocolized_mark_black_v6.png'">
     </div>
     <div class="eyebrow">Protocol Institute · Brand Kit v1.0</div>
-    <h1>Everything you need to design in the Protocol&nbsp;Institute brand, in one place.</h1>
+    <h1>Protocol Institute brand kit.</h1>
     <div class="tagline">Accelerating Order.</div>
-    <p class="lead">Tokens, type, logo, imagery, voice, and components — for the two veins of the
-      Institute (research &amp; SIGs) and its magazine, <em>Protocolized</em>. Built to be applied
-      by a person <em>or</em> an agent, with a single closed source of truth.</p>
+    <p class="lead">This kit defines the brand for the Protocol Institute and its magazine,
+      Protocolized. It covers color, type, logo, imagery, voice, and components. It is one token
+      system, used in two veins. Apply it by hand or with an agent.</p>
     <div class="cta-row">
       <a class="btn primary" href="#get">Get the kit</a>
       <a class="btn secondary" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">View on GitHub ↗</a>
@@ -239,10 +262,9 @@
   <section id="architecture">
     <div class="eyebrow">Brand Architecture</div>
     <h2>One token system, two veins.</h2>
-    <p class="body">The Protocol Institute is “a research, education, media, and scene-making
-      organization dedicated to advancing protocols and protocolization worldwide.” Its work
-      lives in two registers. Decide which you’re in <em>first</em> — it sets your color, type,
-      and imagery emphasis.</p>
+    <p class="body">The Protocol Institute is a research, education, media, and scene-making
+      organization for protocols. Its work appears in two veins. Choose the vein first. The vein
+      sets the color, type, and imagery to use.</p>
     <div class="veins">
       <div class="vein inst">
         <h3>Protocol Institute</h3>
@@ -270,29 +292,29 @@
   <!-- COLOR -->
   <section id="color">
     <div class="eyebrow">Color</div>
-    <h2>Decision tokens, not raw values.</h2>
-    <p class="body">Pick a token by <em>intent</em>. Click any swatch to copy its token name.
-      The set is closed — if you need something it doesn’t cover, extend <code>brand.json</code> first.</p>
+    <h2>Decision tokens.</h2>
+    <p class="body">Each token is named for its purpose, not its value. Pick a token by purpose.
+      Click a swatch to copy its hex value for use in CSS or design tools, or copy the CSS variable.
+      The set is closed. If a need is not covered, extend <code>brand.json</code> first.</p>
     <div class="tabs" role="tablist" id="colorTabs">
       <button class="tab" role="tab" data-g="action" aria-selected="true">Action</button>
       <button class="tab" role="tab" data-g="surface" aria-selected="false">Surface &amp; Border</button>
       <button class="tab" role="tab" data-g="text" aria-selected="false">Text</button>
     </div>
     <div class="swatches" id="swatches"></div>
-    <div class="note"><b>Cobalt vs. green.</b> The brand-kit primary is electric cobalt
-      <code>#0064ff</code> (aspirational). The live <code>protocolized.io</code> still serves
-      forest green <code>#0f6e56</code> as <code>action-secondary</code>. Use cobalt for new
-      artifacts; use green to match the production site. White on cobalt, green, and rust meets
-      WCAG&nbsp;AA; never place <code>text-secondary</code> on an action fill.</div>
+    <div class="note"><b>Cobalt and green.</b> The brand-kit primary is cobalt <code>#0064ff</code>.
+      The live <code>protocolized.io</code> still uses forest green <code>#0f6e56</code> as the action
+      color. Use cobalt for new work. Use green to match the live site. White text on cobalt, green, and
+      rust passes WCAG AA. Do not put <code>text-secondary</code> on an action fill.</div>
   </section>
 
   <!-- TYPE -->
   <section id="type">
     <div class="eyebrow">Typography</div>
-    <h2>Serif to think in; sans to operate.</h2>
-    <p class="body">Display and body are serif — the brand prefers <b>Computer Modern</b>, falling
-      back to the live <b>Instrument Serif</b> / <b>Lora</b>. UI is <b>Outfit</b>. Headlines are
-      weight <b>400</b> — never bold display.</p>
+    <h2>Typography.</h2>
+    <p class="body">Display and body text are serif. The brand prefers Computer Modern and falls back
+      to Instrument Serif and Lora. UI text is Outfit. Headlines use weight 400. Do not set display
+      headings bold.</p>
     <div class="spec"><div class="label">Serif — display &amp; headings (Instrument Serif 400)</div>
       <div class="big" style="font-family:var(--serif)">Accelerating Order — protocols as new nature</div>
       <div class="stack">"Computer Modern Serif", "CMU Serif", "Latin Modern Roman", "Instrument Serif", Georgia, serif</div></div>
@@ -321,18 +343,18 @@
   <!-- LOGO -->
   <section id="logo">
     <div class="eyebrow">Logo &amp; Marks</div>
-    <h2>The Protocolized mark and P-mark.</h2>
-    <p class="body">Use the supplied vector marks. Keep clear-space of at least the height of the
-      “P” on all sides. Place the black mark on light surfaces, the white mark on
-      <code>--pi-text-heading</code> or imagery.</p>
+    <h2>Logo and marks.</h2>
+    <p class="body">Use the supplied vector marks. Keep clear-space of at least the height of the “P”
+      on all sides. Use the black mark on light surfaces. Use the white mark on dark surfaces or
+      imagery.</p>
     <div class="logos">
       <div class="logo"><div class="frame"><img src="assets/logos/protocolized_mark_black_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_black_v6.png'"></div><div class="cap">Full mark — black</div></div>
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_mark_white_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_white_v4.png'"></div><div class="cap">Full mark — white</div></div>
       <div class="logo"><div class="frame"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""></div><div class="cap">P-mark — black</div></div>
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_Pmark_white_72ppi.png" alt=""></div><div class="cap">P-mark — white</div></div>
-      <div class="logo"><div class="frame"><img src="assets/logos/protocolized_wordmark.png" alt=""></div><div class="cap">Wordmark</div></div>
-      <div class="logo"><div class="frame"><img src="assets/logos/pi_newnature_1000x1000.png" alt=""></div><div class="cap">“New Nature” key art</div></div>
+      <div class="logo wide"><div class="frame"><img src="assets/logos/protocolized_wordmark.png" alt=""></div><div class="cap">Wordmark</div></div>
     </div>
+    <p class="never-label">Do not:</p>
     <ul class="never">
       <li>Stretch, squash, or rotate the mark</li>
       <li>Recolor outside the brand palette</li>
@@ -346,22 +368,22 @@
   <!-- IMAGERY -->
   <section id="imagery">
     <div class="eyebrow">Imagery</div>
-    <h2>Seven aesthetic groups, two veins.</h2>
-    <p class="body">Brand imagery is the curated editorial artwork of <em>Protocolized</em> —
-      <b id="imgCount">111</b> pieces in <code>assets/images/</code>, each catalogued in
+    <h2>Imagery.</h2>
+    <p class="body">Brand imagery is the curated artwork of <em>Protocolized</em>:
+      <b id="imgCount">111</b> pieces in <code>assets/images/</code>. Each is catalogued in
       <a href="assets/images/metadata.json" target="_blank" rel="noopener">metadata.json</a> with a
-      description and a W3C-named color palette. Choose a group by vein; pull a piece’s palette to
-      tint layout accents. <b>Never</b> use real-person photos, headshots, event photos,
-      screenshots, charts, or data-visualizations.</p>
+      description and a color palette. The artwork falls into seven aesthetic groups. Choose a group by
+      vein. Use a piece's palette to set layout accents. Do not use real-person photos, headshots,
+      event photos, screenshots, charts, or data-visualizations.</p>
     <div class="igroups" id="igroups"><p class="ctext">Loading the library…</p></div>
   </section>
 
   <!-- VOICE -->
   <section id="voice">
     <div class="eyebrow">Voice &amp; Tone</div>
-    <h2>Two registers, one institution.</h2>
-    <p class="body">Match the vein. The Institute writes like a research body; Protocolized
-      Non-Fiction writes like a magazine of ideas.</p>
+    <h2>Voice and tone.</h2>
+    <p class="body">Match the vein. The Institute writes like a research body. Protocolized
+      Non-Fiction writes like a magazine of ideas. Use simple, direct sentences in both.</p>
     <div class="voice">
       <div class="vcol">
         <h3>Protocol Institute — research</h3>
@@ -402,10 +424,10 @@
   <!-- COMPONENTS -->
   <section id="components">
     <div class="eyebrow">Components</div>
-    <h2>A closed set — compose, don’t invent.</h2>
-    <p class="body">Buttons, badges, chips, and cards built from the tokens. Missing a component?
-      Derive it from decision tokens + the radius / hairline / type roles — as the download
-      button below is just a secondary button with a glyph.</p>
+    <h2>Components.</h2>
+    <p class="body">Buttons, badges, chips, and cards are built from the tokens. The set is closed.
+      To add a component, derive it from the tokens and the radius, hairline, and type roles. The
+      download button below is a secondary button with a glyph.</p>
     <div class="demo">
       <div class="row">
         <a class="btn primary">Primary action</a>
@@ -436,10 +458,11 @@
   <!-- AGENTS -->
   <section id="agents">
     <div class="eyebrow">For Agents · LLM-safe</div>
-    <h2>Correct is the only expressible option.</h2>
-    <p class="body">This kit is built so an LLM can apply it without drifting off-brand —
-      following the “decisions over values” principle from
-      <a href="https://polar.sh/blog/orbit-llm-safe-design-system" target="_blank" rel="noopener">Polar’s Orbit</a>.</p>
+    <h2>For agents.</h2>
+    <p class="body">The kit is built so an agent can apply it without drifting off-brand. It follows
+      the "decisions over values" principle from
+      <a href="https://polar.sh/blog/orbit-llm-safe-design-system" target="_blank" rel="noopener">Polar's Orbit</a>.
+      Read <code>llms.txt</code>, then load <code>brand.json</code> and <code>brand.css</code>.</p>
     <div class="princ">
       <div class="p"><b>Decisions over values</b><span>Reference <code>--pi-action-primary</code>, never a raw hex.</span></div>
       <div class="p"><b>Closed sets</b><span>The token &amp; component menus are exhaustive. Extend the source, don’t improvise.</span></div>
@@ -460,14 +483,14 @@ style="color:var(--pi-text-secondary); background:var(--pi-background-surface)"<
   <!-- GET -->
   <section id="get">
     <div class="eyebrow">Get the kit</div>
-    <h2>Files for humans and agents.</h2>
+    <h2>Files.</h2>
     <div class="files">
-      <a class="file" href="brand.json" download><span>🎟️</span><span><span class="fn">brand.json</span><br><span class="fd">Tokens, type, components, veins, voice</span></span></a>
-      <a class="file" href="brand.css" download><span>🎨</span><span><span class="fn">brand.css</span><br><span class="fd">--pi-* variables + .pi-* classes</span></span></a>
-      <a class="file" href="llms.txt" download><span>🤖</span><span><span class="fn">llms.txt</span><br><span class="fd">Agent entry point</span></span></a>
-      <a class="file" href="apply-protocol-institute-brand.md" download><span>📋</span><span><span class="fn">apply-…-brand.md</span><br><span class="fd">Step-by-step application</span></span></a>
-      <a class="file" href="DESIGN-protocolized.md" download><span>📐</span><span><span class="fn">DESIGN-protocolized.md</span><br><span class="fd">Full sampled spec</span></span></a>
-      <a class="file" href="assets/images/metadata.json" target="_blank" rel="noopener"><span>🖼️</span><span><span class="fn">image library</span><br><span class="fd">111 artworks + palettes</span></span></a>
+      <a class="file" href="brand.json" download><span class="ficon">{ }</span><span><span class="fn">brand.json</span><br><span class="fd">Tokens, type, components, voice</span></span></a>
+      <a class="file" href="brand.css" download><span class="ficon">#</span><span><span class="fn">brand.css</span><br><span class="fd">--pi-* variables + .pi-* classes</span></span></a>
+      <a class="file" href="llms.txt" download><span class="ficon">&gt;_</span><span><span class="fn">llms.txt</span><br><span class="fd">Agent entry point</span></span></a>
+      <a class="file" href="apply-protocol-institute-brand.md" download><span class="ficon">&equiv;</span><span><span class="fn">apply-…-brand.md</span><br><span class="fd">Step-by-step application</span></span></a>
+      <a class="file" href="DESIGN-protocolized.md" download><span class="ficon">&#9636;</span><span><span class="fn">DESIGN-protocolized.md</span><br><span class="fd">Full sampled spec</span></span></a>
+      <a class="file" href="assets/images/metadata.json" target="_blank" rel="noopener"><span class="ficon">&#9638;</span><span><span class="fn">image library</span><br><span class="fd">111 artworks + palettes</span></span></a>
     </div>
     <div class="cta-row" style="margin-top:18px">
       <a class="btn secondary" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">View on GitHub ↗</a>
@@ -476,10 +499,42 @@ style="color:var(--pi-text-secondary); background:var(--pi-background-surface)"<
     </div>
   </section>
 
-  <footer>
-    Protocol Institute — Brand Kit v1.0 · Built from <code>DESIGN-protocolized.md</code> and the
-    live sites. Tokens encode decisions; the menu is closed. Imagery is the curated Protocolized
-    artwork — no real-person photos.
+  <footer class="site-footer">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-mark"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""><span class="fb-name">Protocol Institute · Brand Kit</span></div>
+        <p>The brand system for the Protocol Institute and its magazine, Protocolized. One token set, two veins.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Kit</h5>
+        <a href="#architecture">Architecture</a>
+        <a href="#color">Color</a>
+        <a href="#type">Type</a>
+        <a href="#logo">Logo</a>
+        <a href="#imagery">Imagery</a>
+        <a href="#voice">Voice</a>
+        <a href="#components">Components</a>
+      </div>
+      <div class="foot-col">
+        <h5>Files</h5>
+        <a href="brand.json" download>brand.json</a>
+        <a href="brand.css" download>brand.css</a>
+        <a href="llms.txt" download>llms.txt</a>
+        <a href="apply-protocol-institute-brand.md" download>apply-…-brand.md</a>
+        <a href="assets/images/metadata.json" target="_blank" rel="noopener">image metadata</a>
+      </div>
+      <div class="foot-col">
+        <h5>Elsewhere</h5>
+        <a href="https://protocol-institute.org/" target="_blank" rel="noopener">protocol-institute.org ↗</a>
+        <a href="https://protocolized.summerofprotocols.com/" target="_blank" rel="noopener">Protocolized ↗</a>
+        <a href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://discord.gg/Aj5FbGsNYV" target="_blank" rel="noopener">Discord ↗</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Protocol Institute. Brand Kit v1.0.</span>
+      <span style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-2)">Enter a World of New Nature</span>
+    </div>
   </footer>
 </main>
 
@@ -514,13 +569,17 @@ const COLORS={
 function light(hex){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return (0.299*r+0.587*g+0.114*b)>150;}
 function renderSwatches(g){
   const el=document.getElementById('swatches');el.innerHTML='';
+  el.style.gridTemplateColumns='repeat('+({action:3,surface:2,text:3}[g]||3)+',minmax(0,1fr))';
   COLORS[g].forEach(([tok,hex,use])=>{
     const d=document.createElement('div');d.className='sw';d.tabIndex=0;
     d.innerHTML=`<div class="chip" style="background:${hex};${light(hex)?'box-shadow:inset 0 0 0 1px #e5e7eb':''}"></div>
       <div class="meta"><span class="tok">${tok}</span><span class="hex">${hex}</span>
-      <span class="use">${use}</span><span class="copytag">click to copy token →</span></div>`;
-    d.addEventListener('click',()=>copy(tok));
-    d.addEventListener('keydown',e=>{if(e.key==='Enter')copy(tok)});
+      <span class="use">${use}</span><span class="copytag">click to copy ${hex} · <a class="copyvar" data-var="var(${tok})">copy var()</a></span></div>`;
+    d.addEventListener('click',e=>{
+      const v=e.target.closest('.copyvar');
+      if(v){e.stopPropagation();copy(v.dataset.var);}else{copy(hex);}
+    });
+    d.addEventListener('keydown',e=>{if(e.key==='Enter')copy(hex)});
     el.appendChild(d);
   });
 }
@@ -553,7 +612,7 @@ fetch('assets/images/metadata.json').then(r=>r.json()).then(meta=>{
   const byCat={};items.forEach(([fn,v])=>{(byCat[v.aesthetic_category]=byCat[v.aesthetic_category]||[]).push(fn);});
   const host=document.getElementById('igroups');host.innerHTML='';
   GROUPS.forEach(([cat,desc,vein])=>{
-    const files=(byCat[cat]||[]).slice(0,6);if(!files.length)return;
+    const files=(byCat[cat]||[]).slice(0,5);if(!files.length)return;
     const tags=vein==='both'
       ? `<span class="veintag inst">Institute</span><span class="veintag mag">Protocolized</span>`
       : `<span class="veintag ${vein}">${VEINLABEL[vein][1]}</span>`;
@@ -574,8 +633,8 @@ const gutter=document.getElementById('gutter'),hero=document.getElementById('her
 const links=[...gutter.querySelectorAll('a')];
 const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 if('IntersectionObserver'in window){
-  new IntersectionObserver(es=>es.forEach(e=>gutter.classList.toggle('on',!e.isIntersecting)),{rootMargin:'-70px 0 0 0'}).observe(hero);
-  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));}}),{rootMargin:'-45% 0 -50% 0'});
+  new IntersectionObserver(es=>es.forEach(e=>gutter.classList.toggle('on',!e.isIntersecting)),{rootMargin:'-70px 0px 0px 0px'}).observe(hero);
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));}}),{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s=>spy.observe(s));
 }
 </script>

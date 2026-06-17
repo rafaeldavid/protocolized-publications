@@ -1,928 +1,4 @@
 {
-  "abstract-geometric__2026-protocol-symposium-new-nature.png": {
-    "slug": "2026-protocol-symposium-new-nature",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1200,
-    "height": 630,
-    "description": "A white star or snowflake-like burst speckled with black dots sits centered over a dark, mottled green-and-purple organic field. The composition is non-representational with a glowing neon-edged central form against a textured background.",
-    "palette": [
-      {
-        "token": "#182219",
-        "rgb": [
-          24,
-          34,
-          25
-        ],
-        "proportion": 0.4436,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#215628",
-        "rgb": [
-          33,
-          86,
-          40
-        ],
-        "proportion": 0.1434,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#556459",
-        "rgb": [
-          85,
-          100,
-          89
-        ],
-        "proportion": 0.1359,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#2c6351",
-        "rgb": [
-          44,
-          99,
-          81
-        ],
-        "proportion": 0.1306,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#f5f6f5",
-        "rgb": [
-          245,
-          246,
-          245
-        ],
-        "proportion": 0.0776,
-        "css3_name": "whitesmoke",
-        "css3_hex": "#f5f5f5"
-      },
-      {
-        "token": "#588e66",
-        "rgb": [
-          88,
-          142,
-          102
-        ],
-        "proportion": 0.0689,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature"
-  },
-  "abstract-geometric__a-government-guide-to-open-protocols__05.png": {
-    "slug": "a-government-guide-to-open-protocols",
-    "aesthetic_category": "abstract-geometric",
-    "order": "05",
-    "width": 1200,
-    "height": 1200,
-    "description": "Generative abstract render of glowing orange and black organic veins forming a loose framed lattice over a blue-to-orange gradient background.",
-    "palette": [
-      {
-        "token": "#a9dae3",
-        "rgb": [
-          169,
-          218,
-          227
-        ],
-        "proportion": 0.5204,
-        "css3_name": "lightblue",
-        "css3_hex": "#add8e6"
-      },
-      {
-        "token": "#0ba1dc",
-        "rgb": [
-          11,
-          161,
-          220
-        ],
-        "proportion": 0.1613,
-        "css3_name": "dodgerblue",
-        "css3_hex": "#1e90ff"
-      },
-      {
-        "token": "#5994cd",
-        "rgb": [
-          89,
-          148,
-          205
-        ],
-        "proportion": 0.1513,
-        "css3_name": "cornflowerblue",
-        "css3_hex": "#6495ed"
-      },
-      {
-        "token": "#504e59",
-        "rgb": [
-          80,
-          78,
-          89
-        ],
-        "proportion": 0.0601,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#6d74ae",
-        "rgb": [
-          109,
-          116,
-          174
-        ],
-        "proportion": 0.0599,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#635433",
-        "rgb": [
-          99,
-          84,
-          51
-        ],
-        "proportion": 0.0471,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/a-government-guide-to-open-protocols"
-  },
-  "abstract-geometric__a-primordial-computing-soup__00.png": {
-    "slug": "a-primordial-computing-soup",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1129,
-    "height": 1129,
-    "description": "Abstract generative texture of blue and grey mottled fluid behind a white notched ring or gear outline.",
-    "palette": [
-      {
-        "token": "#6b6b9b",
-        "rgb": [
-          107,
-          107,
-          155
-        ],
-        "proportion": 0.3491,
-        "css3_name": "slategray",
-        "css3_hex": "#708090"
-      },
-      {
-        "token": "#93939f",
-        "rgb": [
-          147,
-          147,
-          159
-        ],
-        "proportion": 0.1973,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#665e63",
-        "rgb": [
-          102,
-          94,
-          99
-        ],
-        "proportion": 0.1514,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#6060d8",
-        "rgb": [
-          96,
-          96,
-          216
-        ],
-        "proportion": 0.131,
-        "css3_name": "slateblue",
-        "css3_hex": "#6a5acd"
-      },
-      {
-        "token": "#fcfcfc",
-        "rgb": [
-          252,
-          252,
-          252
-        ],
-        "proportion": 0.1202,
-        "css3_name": "snow",
-        "css3_hex": "#fffafa"
-      },
-      {
-        "token": "#0c0c0d",
-        "rgb": [
-          12,
-          12,
-          13
-        ],
-        "proportion": 0.0509,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/a-primordial-computing-soup"
-  },
-  "abstract-geometric__all-you-can-do-here-is-leave.png": {
-    "slug": "all-you-can-do-here-is-leave",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1024,
-    "height": 1024,
-    "description": "An abstracted horizontal landscape of pale reeds or grasses above a dark stratified field of soil with blue and yellow streaks. Muted, melancholic digital painting.",
-    "palette": [
-      {
-        "token": "#090909",
-        "rgb": [
-          9,
-          9,
-          9
-        ],
-        "proportion": 0.3113,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#453525",
-        "rgb": [
-          69,
-          53,
-          37
-        ],
-        "proportion": 0.1836,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#a3b0b3",
-        "rgb": [
-          163,
-          176,
-          179
-        ],
-        "proportion": 0.1753,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#969961",
-        "rgb": [
-          150,
-          153,
-          97
-        ],
-        "proportion": 0.1464,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#555934",
-        "rgb": [
-          85,
-          89,
-          52
-        ],
-        "proportion": 0.1003,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#6c6e4d",
-        "rgb": [
-          108,
-          110,
-          77
-        ],
-        "proportion": 0.0832,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/all-you-can-do-here-is-leave"
-  },
-  "abstract-geometric__american-skyway.png": {
-    "slug": "american-skyway",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1024,
-    "height": 1024,
-    "description": "A tall, glitchy spire of fractured imagery rises against a red-and-black gradient sky over a low landscape of mounds and faint structures. The distressed, layered montage style gives a degraded, dreamlike mood.",
-    "palette": [
-      {
-        "token": "#26261d",
-        "rgb": [
-          38,
-          38,
-          29
-        ],
-        "proportion": 0.6669,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#5c5f16",
-        "rgb": [
-          92,
-          95,
-          22
-        ],
-        "proportion": 0.1377,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#592e2c",
-        "rgb": [
-          89,
-          46,
-          44
-        ],
-        "proportion": 0.0766,
-        "css3_name": "saddlebrown",
-        "css3_hex": "#8b4513"
-      },
-      {
-        "token": "#a02830",
-        "rgb": [
-          160,
-          40,
-          48
-        ],
-        "proportion": 0.0507,
-        "css3_name": "brown",
-        "css3_hex": "#a52a2a"
-      },
-      {
-        "token": "#5c5c57",
-        "rgb": [
-          92,
-          92,
-          87
-        ],
-        "proportion": 0.0349,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#9e4d54",
-        "rgb": [
-          158,
-          77,
-          84
-        ],
-        "proportion": 0.0333,
-        "css3_name": "sienna",
-        "css3_hex": "#a0522d"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/american-skyway"
-  },
-  "abstract-geometric__brackish-strategy__00.png": {
-    "slug": "brackish-strategy",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Mid-century-styled abstract collage in muted teal and orange with organic curves, a dotted spherical burst, and a vertical seismograph-like waveform.",
-    "palette": [
-      {
-        "token": "#afd0c3",
-        "rgb": [
-          175,
-          208,
-          195
-        ],
-        "proportion": 0.5727,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#dcdfb9",
-        "rgb": [
-          220,
-          223,
-          185
-        ],
-        "proportion": 0.1429,
-        "css3_name": "palegoldenrod",
-        "css3_hex": "#eee8aa"
-      },
-      {
-        "token": "#e1e4c8",
-        "rgb": [
-          225,
-          228,
-          200
-        ],
-        "proportion": 0.1413,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      },
-      {
-        "token": "#9dac9d",
-        "rgb": [
-          157,
-          172,
-          157
-        ],
-        "proportion": 0.0519,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#ea6829",
-        "rgb": [
-          234,
-          104,
-          41
-        ],
-        "proportion": 0.0498,
-        "css3_name": "chocolate",
-        "css3_hex": "#d2691e"
-      },
-      {
-        "token": "#1b1c1b",
-        "rgb": [
-          27,
-          28,
-          27
-        ],
-        "proportion": 0.0414,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/brackish-strategy"
-  },
-  "abstract-geometric__bridge-atlas-episode-2-paradigms.png": {
-    "slug": "bridge-atlas-episode-2-paradigms",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1384,
-    "height": 1384,
-    "description": "An arch or bridge form rendered as a textured band of cellular orange, cream, and green patterns on a flat olive-brown background. Non-representational and ornamental in style.",
-    "palette": [
-      {
-        "token": "#463605",
-        "rgb": [
-          70,
-          54,
-          5
-        ],
-        "proportion": 0.7956,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#665a1e",
-        "rgb": [
-          102,
-          90,
-          30
-        ],
-        "proportion": 0.0909,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#aba551",
-        "rgb": [
-          171,
-          165,
-          81
-        ],
-        "proportion": 0.0469,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
-      },
-      {
-        "token": "#e4e39f",
-        "rgb": [
-          228,
-          227,
-          159
-        ],
-        "proportion": 0.0324,
-        "css3_name": "palegoldenrod",
-        "css3_hex": "#eee8aa"
-      },
-      {
-        "token": "#8f651d",
-        "rgb": [
-          143,
-          101,
-          29
-        ],
-        "proportion": 0.0197,
-        "css3_name": "sienna",
-        "css3_hex": "#a0522d"
-      },
-      {
-        "token": "#989137",
-        "rgb": [
-          152,
-          145,
-          55
-        ],
-        "proportion": 0.0145,
-        "css3_name": "olivedrab",
-        "css3_hex": "#6b8e23"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/bridge-atlas-episode-2-paradigms"
-  },
-  "abstract-geometric__caduceus-city.png": {
-    "slug": "caduceus-city",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 896,
-    "height": 1120,
-    "description": "A chaotic glitch-like composition of melting purple, yellow, pink, and gray organic forms with faint mechanical and architectural fragments. Distorted, dreamlike, and disorienting.",
-    "palette": [
-      {
-        "token": "#19171a",
-        "rgb": [
-          25,
-          23,
-          26
-        ],
-        "proportion": 0.5666,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#575358",
-        "rgb": [
-          87,
-          83,
-          88
-        ],
-        "proportion": 0.1926,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#6b61a9",
-        "rgb": [
-          107,
-          97,
-          169
-        ],
-        "proportion": 0.0779,
-        "css3_name": "slateblue",
-        "css3_hex": "#6a5acd"
-      },
-      {
-        "token": "#705dd8",
-        "rgb": [
-          112,
-          93,
-          216
-        ],
-        "proportion": 0.0683,
-        "css3_name": "slateblue",
-        "css3_hex": "#6a5acd"
-      },
-      {
-        "token": "#8a76d1",
-        "rgb": [
-          138,
-          118,
-          209
-        ],
-        "proportion": 0.051,
-        "css3_name": "mediumpurple",
-        "css3_hex": "#9370db"
-      },
-      {
-        "token": "#eacadd",
-        "rgb": [
-          234,
-          202,
-          221
-        ],
-        "proportion": 0.0436,
-        "css3_name": "thistle",
-        "css3_hex": "#d8bfd8"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/caduceus-city"
-  },
-  "abstract-geometric__consensus-nightmares.jpeg": {
-    "slug": "consensus-nightmares",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1024,
-    "height": 1024,
-    "description": "Close-up of a square translucent slab resembling a circuit-board maze, swirled with green, pink, and white iridescent tones and punctured by several black holes, on a black backdrop. Tactile, abstract.",
-    "palette": [
-      {
-        "token": "#111411",
-        "rgb": [
-          17,
-          20,
-          17
-        ],
-        "proportion": 0.4492,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#93a4a6",
-        "rgb": [
-          147,
-          164,
-          166
-        ],
-        "proportion": 0.1673,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#50685b",
-        "rgb": [
-          80,
-          104,
-          91
-        ],
-        "proportion": 0.1282,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#619263",
-        "rgb": [
-          97,
-          146,
-          99
-        ],
-        "proportion": 0.1015,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#759291",
-        "rgb": [
-          117,
-          146,
-          145
-        ],
-        "proportion": 0.0784,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#345436",
-        "rgb": [
-          52,
-          84,
-          54
-        ],
-        "proportion": 0.0753,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/consensus-nightmares"
-  },
-  "abstract-geometric__generative-ai-in-cultural-projects__00.png": {
-    "slug": "generative-ai-in-cultural-projects",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1024,
-    "height": 1024,
-    "description": "Abstract generative composition of tangled wireframe loops and dotted mesh shapes with blue and lime circles on a cream ground.",
-    "palette": [
-      {
-        "token": "#e6e3d7",
-        "rgb": [
-          230,
-          227,
-          215
-        ],
-        "proportion": 0.7011,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      },
-      {
-        "token": "#a6a49b",
-        "rgb": [
-          166,
-          164,
-          155
-        ],
-        "proportion": 0.0778,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#67655c",
-        "rgb": [
-          103,
-          101,
-          92
-        ],
-        "proportion": 0.0606,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#cfcdb4",
-        "rgb": [
-          207,
-          205,
-          180
-        ],
-        "proportion": 0.0577,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#cdd905",
-        "rgb": [
-          205,
-          217,
-          5
-        ],
-        "proportion": 0.0549,
-        "css3_name": "gold",
-        "css3_hex": "#ffd700"
-      },
-      {
-        "token": "#0255ce",
-        "rgb": [
-          2,
-          85,
-          206
-        ],
-        "proportion": 0.0479,
-        "css3_name": "royalblue",
-        "css3_hex": "#4169e1"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/generative-ai-in-cultural-projects"
-  },
-  "abstract-geometric__genius-in-the-bottle__00.jpeg": {
-    "slug": "genius-in-the-bottle",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Surreal airbrushed painting of glowing lime-green dome shapes against a starry purple sky, one pair sprouting cartoonish eyes.",
-    "palette": [
-      {
-        "token": "#272456",
-        "rgb": [
-          39,
-          36,
-          86
-        ],
-        "proportion": 0.5118,
-        "css3_name": "midnightblue",
-        "css3_hex": "#191970"
-      },
-      {
-        "token": "#a1ad5b",
-        "rgb": [
-          161,
-          173,
-          91
-        ],
-        "proportion": 0.316,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
-      },
-      {
-        "token": "#cdd29c",
-        "rgb": [
-          205,
-          210,
-          156
-        ],
-        "proportion": 0.062,
-        "css3_name": "tan",
-        "css3_hex": "#d2b48c"
-      },
-      {
-        "token": "#60616d",
-        "rgb": [
-          96,
-          97,
-          109
-        ],
-        "proportion": 0.0475,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#bac272",
-        "rgb": [
-          186,
-          194,
-          114
-        ],
-        "proportion": 0.0326,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
-      },
-      {
-        "token": "#1b1a3b",
-        "rgb": [
-          27,
-          26,
-          59
-        ],
-        "proportion": 0.0301,
-        "css3_name": "midnightblue",
-        "css3_hex": "#191970"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/genius-in-the-bottle"
-  },
-  "abstract-geometric__introducing-the-protocol-institute__12.png": {
-    "slug": "introducing-the-protocol-institute",
-    "aesthetic_category": "abstract-geometric",
-    "order": "12",
-    "width": 1024,
-    "height": 1024,
-    "description": "An embossed steel-blue dharma-wheel emblem set against a rippled marbled blue-and-white background.",
-    "palette": [
-      {
-        "token": "#5d646a",
-        "rgb": [
-          93,
-          100,
-          106
-        ],
-        "proportion": 0.4581,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#939ca0",
-        "rgb": [
-          147,
-          156,
-          160
-        ],
-        "proportion": 0.1834,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#758694",
-        "rgb": [
-          117,
-          134,
-          148
-        ],
-        "proportion": 0.1145,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#637788",
-        "rgb": [
-          99,
-          119,
-          136
-        ],
-        "proportion": 0.1091,
-        "css3_name": "slategray",
-        "css3_hex": "#708090"
-      },
-      {
-        "token": "#2d6097",
-        "rgb": [
-          45,
-          96,
-          151
-        ],
-        "proportion": 0.0864,
-        "css3_name": "darkslateblue",
-        "css3_hex": "#483d8b"
-      },
-      {
-        "token": "#dbdeda",
-        "rgb": [
-          219,
-          222,
-          218
-        ],
-        "proportion": 0.0485,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/introducing-the-protocol-institute"
-  },
   "abstract-geometric__jamverse-jam.png": {
     "slug": "jamverse-jam",
     "aesthetic_category": "abstract-geometric",
@@ -1154,544 +230,82 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/jamverse-jam"
   },
-  "abstract-geometric__latency__05.png": {
-    "slug": "latency",
-    "aesthetic_category": "abstract-geometric",
-    "order": "05",
-    "width": 1000,
-    "height": 1000,
-    "description": "Cropped variant of glassy water droplets dripping from reeds over a mottled teal-and-gold painterly backdrop.",
-    "palette": [
-      {
-        "token": "#266058",
-        "rgb": [
-          38,
-          96,
-          88
-        ],
-        "proportion": 0.4792,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#15271e",
-        "rgb": [
-          21,
-          39,
-          30
-        ],
-        "proportion": 0.2008,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#5c9c94",
-        "rgb": [
-          92,
-          156,
-          148
-        ],
-        "proportion": 0.1387,
-        "css3_name": "cadetblue",
-        "css3_hex": "#5f9ea0"
-      },
-      {
-        "token": "#51715d",
-        "rgb": [
-          81,
-          113,
-          93
-        ],
-        "proportion": 0.0751,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#979263",
-        "rgb": [
-          151,
-          146,
-          99
-        ],
-        "proportion": 0.054,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#568874",
-        "rgb": [
-          86,
-          136,
-          116
-        ],
-        "proportion": 0.0523,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/latency"
-  },
-  "abstract-geometric__mechanical-currents__05.png": {
-    "slug": "mechanical-currents",
-    "aesthetic_category": "abstract-geometric",
-    "order": "05",
-    "width": 1000,
-    "height": 1000,
-    "description": "Cropped variant of stippled clouds over a wireframe stepped lattice structure on a pale blue background.",
-    "palette": [
-      {
-        "token": "#b6d8ee",
-        "rgb": [
-          182,
-          216,
-          238
-        ],
-        "proportion": 0.8063,
-        "css3_name": "lightblue",
-        "css3_hex": "#add8e6"
-      },
-      {
-        "token": "#ecebe3",
-        "rgb": [
-          236,
-          235,
-          227
-        ],
-        "proportion": 0.0716,
-        "css3_name": "beige",
-        "css3_hex": "#f5f5dc"
-      },
-      {
-        "token": "#969f9f",
-        "rgb": [
-          150,
-          159,
-          159
-        ],
-        "proportion": 0.0447,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#626864",
-        "rgb": [
-          98,
-          104,
-          100
-        ],
-        "proportion": 0.0305,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#0c4970",
-        "rgb": [
-          12,
-          73,
-          112
-        ],
-        "proportion": 0.0251,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#6d8e9c",
-        "rgb": [
-          109,
-          142,
-          156
-        ],
-        "proportion": 0.0218,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/mechanical-currents"
-  },
-  "abstract-geometric__mismatch.png": {
-    "slug": "mismatch",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1000,
-    "height": 1000,
-    "description": "A close-up of a pale blue-grey appliance or machine panel with a keypad, a coin slot, and a recessed digital display, set against a green background. The clean photographic crop emphasizes industrial product detail.",
-    "palette": [
-      {
-        "token": "#d9e1e3",
-        "rgb": [
-          217,
-          225,
-          227
-        ],
-        "proportion": 0.5363,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      },
-      {
-        "token": "#c1cc8a",
-        "rgb": [
-          193,
-          204,
-          138
-        ],
-        "proportion": 0.1801,
-        "css3_name": "tan",
-        "css3_hex": "#d2b48c"
-      },
-      {
-        "token": "#9daca6",
-        "rgb": [
-          157,
-          172,
-          166
-        ],
-        "proportion": 0.1094,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#181b0c",
-        "rgb": [
-          24,
-          27,
-          12
-        ],
-        "proportion": 0.0867,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#576058",
-        "rgb": [
-          87,
-          96,
-          88
-        ],
-        "proportion": 0.0544,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#b6c5cb",
-        "rgb": [
-          182,
-          197,
-          203
-        ],
-        "proportion": 0.033,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/mismatch"
-  },
-  "abstract-geometric__phantom-in-eden__00.png": {
-    "slug": "phantom-in-eden",
+  "abstract-geometric__sop-fall-forecast__00.jpeg": {
+    "slug": "sop-fall-forecast",
     "aesthetic_category": "abstract-geometric",
     "order": "00",
     "width": 1000,
     "height": 714,
-    "description": "Small surreal render of a pale ovoid pod opening into a tunnel of nested arches with green foliage, in muted mint and cream tones.",
+    "description": "Abstract painterly network of glowing white and gold light trails arcing across a deep purple field suggesting a luminous nighttime cityscape or data-flow map.",
     "palette": [
       {
-        "token": "#d0d7ad",
+        "token": "#635f8e",
         "rgb": [
-          208,
-          215,
-          173
-        ],
-        "proportion": 0.4495,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#dde2cb",
-        "rgb": [
-          221,
-          226,
-          203
-        ],
-        "proportion": 0.18,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      },
-      {
-        "token": "#9b9a68",
-        "rgb": [
-          155,
-          154,
-          104
-        ],
-        "proportion": 0.1752,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#b2cda1",
-        "rgb": [
-          178,
-          205,
-          161
-        ],
-        "proportion": 0.0804,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#94a988",
-        "rgb": [
-          148,
-          169,
-          136
-        ],
-        "proportion": 0.0724,
-        "css3_name": "darkseagreen",
-        "css3_hex": "#8fbc8f"
-      },
-      {
-        "token": "#ceb164",
-        "rgb": [
-          206,
-          177,
-          100
-        ],
-        "proportion": 0.0425,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/phantom-in-eden"
-  },
-  "abstract-geometric__protocols-for-the-long-now__06.png": {
-    "slug": "protocols-for-the-long-now",
-    "aesthetic_category": "abstract-geometric",
-    "order": "06",
-    "width": 1100,
-    "height": 1100,
-    "description": "Vertical crop of the dark abstract piece: glowing blue arcs over a starfield sphere atop a red etched mandala form.",
-    "palette": [
-      {
-        "token": "#050003",
-        "rgb": [
-          5,
-          0,
-          3
-        ],
-        "proportion": 0.8128,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#5a0004",
-        "rgb": [
-          90,
-          0,
-          4
-        ],
-        "proportion": 0.0594,
-        "css3_name": "maroon",
-        "css3_hex": "#800000"
-      },
-      {
-        "token": "#0000ed",
-        "rgb": [
-          0,
-          0,
-          237
-        ],
-        "proportion": 0.0407,
-        "css3_name": "blue",
-        "css3_hex": "#0000ff"
-      },
-      {
-        "token": "#ea0000",
-        "rgb": [
-          234,
-          0,
-          0
-        ],
-        "proportion": 0.0331,
-        "css3_name": "red",
-        "css3_hex": "#ff0000"
-      },
-      {
-        "token": "#9c0002",
-        "rgb": [
-          156,
-          0,
-          2
-        ],
-        "proportion": 0.0299,
-        "css3_name": "darkred",
-        "css3_hex": "#8b0000"
-      },
-      {
-        "token": "#03005e",
-        "rgb": [
-          3,
-          0,
-          94
-        ],
-        "proportion": 0.0241,
-        "css3_name": "navy",
-        "css3_hex": "#000080"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/protocols-for-the-long-now"
-  },
-  "abstract-geometric__reflections-from-memoria__00.jpeg": {
-    "slug": "reflections-from-memoria",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Bold abstract composition of golden textured shapes (spirals, blobs, and triangles) arranged like an exploded diagram on a saturated blue field.",
-    "palette": [
-      {
-        "token": "#001fc3",
-        "rgb": [
-          0,
-          31,
-          195
-        ],
-        "proportion": 0.8618,
-        "css3_name": "mediumblue",
-        "css3_hex": "#0000cd"
-      },
-      {
-        "token": "#0f20a5",
-        "rgb": [
-          15,
-          32,
-          165
-        ],
-        "proportion": 0.0327,
-        "css3_name": "darkblue",
-        "css3_hex": "#00008b"
-      },
-      {
-        "token": "#ac921c",
-        "rgb": [
-          172,
-          146,
-          28
-        ],
-        "proportion": 0.0302,
-        "css3_name": "darkgoldenrod",
-        "css3_hex": "#b8860b"
-      },
-      {
-        "token": "#675618",
-        "rgb": [
-          103,
-          86,
-          24
-        ],
-        "proportion": 0.0269,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#1f1b0e",
-        "rgb": [
-          31,
-          27,
-          14
-        ],
-        "proportion": 0.0243,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#cdb11d",
-        "rgb": [
-          205,
-          177,
-          29
-        ],
-        "proportion": 0.0241,
-        "css3_name": "goldenrod",
-        "css3_hex": "#daa520"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/reflections-from-memoria"
-  },
-  "abstract-geometric__the-fabric-and-the-brain.png": {
-    "slug": "the-fabric-and-the-brain",
-    "aesthetic_category": "abstract-geometric",
-    "order": "",
-    "width": 1129,
-    "height": 1129,
-    "description": "A square composition of a white circular ring with notched edges centered over an aerial-style field of dense green, yellow, and orange foliage on a near-black ground. Symmetrical, pattern-like, and non-representational in impression.",
-    "palette": [
-      {
-        "token": "#242422",
-        "rgb": [
-          36,
-          36,
-          34
-        ],
-        "proportion": 0.5808,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#5a5f50",
-        "rgb": [
-          90,
+          99,
           95,
-          80
+          142
         ],
-        "proportion": 0.1504,
+        "proportion": 0.3684,
+        "css3_name": "slategray",
+        "css3_hex": "#708090"
+      },
+      {
+        "token": "#56556d",
+        "rgb": [
+          86,
+          85,
+          109
+        ],
+        "proportion": 0.2458,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       },
       {
-        "token": "#fcfcfc",
+        "token": "#352f54",
         "rgb": [
-          252,
-          252,
-          252
+          53,
+          47,
+          84
         ],
-        "proportion": 0.1202,
-        "css3_name": "snow",
-        "css3_hex": "#fffafa"
+        "proportion": 0.1831,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#535533",
+        "token": "#232133",
         "rgb": [
-          83,
-          85,
+          35,
+          33,
           51
         ],
-        "proportion": 0.0887,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
+        "proportion": 0.0714,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#70905c",
+        "token": "#90989c",
         "rgb": [
-          112,
           144,
-          92
+          152,
+          156
         ],
-        "proportion": 0.0306,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
+        "proportion": 0.0699,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
       },
       {
-        "token": "#8e9761",
+        "token": "#43396e",
         "rgb": [
-          142,
-          151,
-          97
+          67,
+          57,
+          110
         ],
-        "proportion": 0.0293,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
+        "proportion": 0.0613,
+        "css3_name": "darkslateblue",
+        "css3_hex": "#483d8b"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-fabric-and-the-brain"
+    "source": "https://protocolized.summerofprotocols.com/p/sop-fall-forecast"
   },
   "abstract-geometric__the-overloaded-train__00.png": {
     "slug": "the-overloaded-train",
@@ -1769,391 +383,6 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/the-overloaded-train"
-  },
-  "abstract-geometric__the-partial__00.jpeg": {
-    "slug": "the-partial",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 896,
-    "height": 640,
-    "description": "A translucent ribbed glass starfish-like form with an iridescent central orb on a deep blue ground; a sculptural abstract render.",
-    "palette": [
-      {
-        "token": "#4763a2",
-        "rgb": [
-          71,
-          99,
-          162
-        ],
-        "proportion": 0.6435,
-        "css3_name": "steelblue",
-        "css3_hex": "#4682b4"
-      },
-      {
-        "token": "#3e5ba1",
-        "rgb": [
-          62,
-          91,
-          161
-        ],
-        "proportion": 0.206,
-        "css3_name": "darkslateblue",
-        "css3_hex": "#483d8b"
-      },
-      {
-        "token": "#273268",
-        "rgb": [
-          39,
-          50,
-          104
-        ],
-        "proportion": 0.0681,
-        "css3_name": "midnightblue",
-        "css3_hex": "#191970"
-      },
-      {
-        "token": "#7088a9",
-        "rgb": [
-          112,
-          136,
-          169
-        ],
-        "proportion": 0.0517,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#8ea0a8",
-        "rgb": [
-          142,
-          160,
-          168
-        ],
-        "proportion": 0.0241,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#9eacc7",
-        "rgb": [
-          158,
-          172,
-          199
-        ],
-        "proportion": 0.0066,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-partial"
-  },
-  "abstract-geometric__the-reverie-loop__06.gif": {
-    "slug": "the-reverie-loop",
-    "aesthetic_category": "abstract-geometric",
-    "order": "06",
-    "width": 472,
-    "height": 472,
-    "description": "A glowing luminous orb resting on a stepped surface in a dim pink-and-dark-green interior, rendered in soft posterized digital art.",
-    "palette": [
-      {
-        "token": "#061c14",
-        "rgb": [
-          6,
-          28,
-          20
-        ],
-        "proportion": 0.6813,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#decc68",
-        "rgb": [
-          222,
-          204,
-          104
-        ],
-        "proportion": 0.132,
-        "css3_name": "burlywood",
-        "css3_hex": "#deb887"
-      },
-      {
-        "token": "#9c6267",
-        "rgb": [
-          156,
-          98,
-          103
-        ],
-        "proportion": 0.0579,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#c75b72",
-        "rgb": [
-          199,
-          91,
-          114
-        ],
-        "proportion": 0.0567,
-        "css3_name": "indianred",
-        "css3_hex": "#cd5c5c"
-      },
-      {
-        "token": "#f7ee8d",
-        "rgb": [
-          247,
-          238,
-          141
-        ],
-        "proportion": 0.0491,
-        "css3_name": "khaki",
-        "css3_hex": "#f0e68c"
-      },
-      {
-        "token": "#b19c5f",
-        "rgb": [
-          177,
-          156,
-          95
-        ],
-        "proportion": 0.0231,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-reverie-loop"
-  },
-  "abstract-geometric__theorizing-protocolization-ii-atomic__00.png": {
-    "slug": "theorizing-protocolization-ii-atomic",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1200,
-    "height": 630,
-    "description": "An abstract pink, teal, and brown composition of a textured central disc surrounded by swirling tendril-like forms, resembling a manipulated micrograph.",
-    "palette": [
-      {
-        "token": "#656369",
-        "rgb": [
-          101,
-          99,
-          105
-        ],
-        "proportion": 0.3435,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#a88eb1",
-        "rgb": [
-          168,
-          142,
-          177
-        ],
-        "proportion": 0.1571,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#d2d5d9",
-        "rgb": [
-          210,
-          213,
-          217
-        ],
-        "proportion": 0.1379,
-        "css3_name": "lightgray",
-        "css3_hex": "#d3d3d3"
-      },
-      {
-        "token": "#b5a5c8",
-        "rgb": [
-          181,
-          165,
-          200
-        ],
-        "proportion": 0.134,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#956f9d",
-        "rgb": [
-          149,
-          111,
-          157
-        ],
-        "proportion": 0.1237,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#926665",
-        "rgb": [
-          146,
-          102,
-          101
-        ],
-        "proportion": 0.1037,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/theorizing-protocolization-ii-atomic"
-  },
-  "abstract-geometric__theorizing-protocolization-ii-atomic__06.png": {
-    "slug": "theorizing-protocolization-ii-atomic",
-    "aesthetic_category": "abstract-geometric",
-    "order": "06",
-    "width": 1024,
-    "height": 1024,
-    "description": "An abstract generative composition with a maze-textured central orb encircled by purple tendrils on a pale blue ground.",
-    "palette": [
-      {
-        "token": "#c9d3d5",
-        "rgb": [
-          201,
-          211,
-          213
-        ],
-        "proportion": 0.4908,
-        "css3_name": "lightgray",
-        "css3_hex": "#d3d3d3"
-      },
-      {
-        "token": "#a68fb0",
-        "rgb": [
-          166,
-          143,
-          176
-        ],
-        "proportion": 0.153,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#67626b",
-        "rgb": [
-          103,
-          98,
-          107
-        ],
-        "proportion": 0.1076,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#b3a8c6",
-        "rgb": [
-          179,
-          168,
-          198
-        ],
-        "proportion": 0.1017,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#967693",
-        "rgb": [
-          150,
-          118,
-          147
-        ],
-        "proportion": 0.0767,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#90656f",
-        "rgb": [
-          144,
-          101,
-          111
-        ],
-        "proportion": 0.0703,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/theorizing-protocolization-ii-atomic"
-  },
-  "abstract-geometric__what-is-formal-protocol-theory__00.png": {
-    "slug": "what-is-formal-protocol-theory",
-    "aesthetic_category": "abstract-geometric",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Minimal 3D render of floating geometric primitives (spheres, slabs, a speckled cube, an orange ball) suspended over a pale plane against a muted teal background.",
-    "palette": [
-      {
-        "token": "#85a4a3",
-        "rgb": [
-          133,
-          164,
-          163
-        ],
-        "proportion": 0.729,
-        "css3_name": "darkseagreen",
-        "css3_hex": "#8fbc8f"
-      },
-      {
-        "token": "#e3e5d0",
-        "rgb": [
-          227,
-          229,
-          208
-        ],
-        "proportion": 0.1836,
-        "css3_name": "gainsboro",
-        "css3_hex": "#dcdcdc"
-      },
-      {
-        "token": "#070a06",
-        "rgb": [
-          7,
-          10,
-          6
-        ],
-        "proportion": 0.0499,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#c7cab9",
-        "rgb": [
-          199,
-          202,
-          185
-        ],
-        "proportion": 0.0169,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      },
-      {
-        "token": "#7c9b9b",
-        "rgb": [
-          124,
-          155,
-          155
-        ],
-        "proportion": 0.0125,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#bac3b4",
-        "rgb": [
-          186,
-          195,
-          180
-        ],
-        "proportion": 0.0081,
-        "css3_name": "silver",
-        "css3_hex": "#c0c0c0"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/what-is-formal-protocol-theory"
   },
   "figure-portrait__dhcp.png": {
     "slug": "dhcp",
@@ -2617,83 +846,6 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/the-air-gap"
   },
-  "figure-portrait__the-entropic-gate-part-i.png": {
-    "slug": "the-entropic-gate-part-i",
-    "aesthetic_category": "figure-portrait",
-    "order": "",
-    "width": 2048,
-    "height": 2048,
-    "description": "Five translucent, bioluminescent humanoid figures ascend a steep rocky cliff under a large blue planet and starry night sky. Glowing, ethereal sci-fi render.",
-    "palette": [
-      {
-        "token": "#0f0d0f",
-        "rgb": [
-          15,
-          13,
-          15
-        ],
-        "proportion": 0.5184,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#6c5e58",
-        "rgb": [
-          108,
-          94,
-          88
-        ],
-        "proportion": 0.2058,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#8c715e",
-        "rgb": [
-          140,
-          113,
-          94
-        ],
-        "proportion": 0.1545,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#2c2e54",
-        "rgb": [
-          44,
-          46,
-          84
-        ],
-        "proportion": 0.0614,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#614939",
-        "rgb": [
-          97,
-          73,
-          57
-        ],
-        "proportion": 0.0357,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#4b3830",
-        "rgb": [
-          75,
-          56,
-          48
-        ],
-        "proportion": 0.0242,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-entropic-gate-part-i"
-  },
   "figure-portrait__the-last-archive__22.png": {
     "slug": "the-last-archive",
     "aesthetic_category": "figure-portrait",
@@ -2771,83 +923,6 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/the-last-archive"
   },
-  "painterly-illustration__3-protocols-for-articulating-civilizational__00.png": {
-    "slug": "3-protocols-for-articulating-civilizational",
-    "aesthetic_category": "painterly-illustration",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "A small surreal painting of a glowing molten-orange bulb or jellyfish form against a dark teal field, with tiny ringed planet motifs on thin wires.",
-    "palette": [
-      {
-        "token": "#38484c",
-        "rgb": [
-          56,
-          72,
-          76
-        ],
-        "proportion": 0.516,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#465e61",
-        "rgb": [
-          70,
-          94,
-          97
-        ],
-        "proportion": 0.1417,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#333d41",
-        "rgb": [
-          51,
-          61,
-          65
-        ],
-        "proportion": 0.1134,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#323b3e",
-        "rgb": [
-          50,
-          59,
-          62
-        ],
-        "proportion": 0.1063,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#f5efcd",
-        "rgb": [
-          245,
-          239,
-          205
-        ],
-        "proportion": 0.0795,
-        "css3_name": "blanchedalmond",
-        "css3_hex": "#ffebcd"
-      },
-      {
-        "token": "#ebe0a6",
-        "rgb": [
-          235,
-          224,
-          166
-        ],
-        "proportion": 0.0431,
-        "css3_name": "palegoldenrod",
-        "css3_hex": "#eee8aa"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/3-protocols-for-articulating-civilizational"
-  },
   "painterly-illustration__a-chronicle-of-lumina.png": {
     "slug": "a-chronicle-of-lumina",
     "aesthetic_category": "painterly-illustration",
@@ -2924,6 +999,160 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/a-chronicle-of-lumina"
+  },
+  "painterly-illustration__all-you-can-do-here-is-leave.png": {
+    "slug": "all-you-can-do-here-is-leave",
+    "aesthetic_category": "painterly-illustration",
+    "order": "",
+    "width": 1024,
+    "height": 1024,
+    "description": "An abstracted horizontal landscape of pale reeds or grasses above a dark stratified field of soil with blue and yellow streaks. Muted, melancholic digital painting.",
+    "palette": [
+      {
+        "token": "#090909",
+        "rgb": [
+          9,
+          9,
+          9
+        ],
+        "proportion": 0.3113,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#453525",
+        "rgb": [
+          69,
+          53,
+          37
+        ],
+        "proportion": 0.1836,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#a3b0b3",
+        "rgb": [
+          163,
+          176,
+          179
+        ],
+        "proportion": 0.1753,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#969961",
+        "rgb": [
+          150,
+          153,
+          97
+        ],
+        "proportion": 0.1464,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#555934",
+        "rgb": [
+          85,
+          89,
+          52
+        ],
+        "proportion": 0.1003,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#6c6e4d",
+        "rgb": [
+          108,
+          110,
+          77
+        ],
+        "proportion": 0.0832,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/all-you-can-do-here-is-leave"
+  },
+  "painterly-illustration__american-skyway.png": {
+    "slug": "american-skyway",
+    "aesthetic_category": "painterly-illustration",
+    "order": "",
+    "width": 1024,
+    "height": 1024,
+    "description": "A tall, glitchy spire of fractured imagery rises against a red-and-black gradient sky over a low landscape of mounds and faint structures. The distressed, layered montage style gives a degraded, dreamlike mood.",
+    "palette": [
+      {
+        "token": "#26261d",
+        "rgb": [
+          38,
+          38,
+          29
+        ],
+        "proportion": 0.6669,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#5c5f16",
+        "rgb": [
+          92,
+          95,
+          22
+        ],
+        "proportion": 0.1377,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#592e2c",
+        "rgb": [
+          89,
+          46,
+          44
+        ],
+        "proportion": 0.0766,
+        "css3_name": "saddlebrown",
+        "css3_hex": "#8b4513"
+      },
+      {
+        "token": "#a02830",
+        "rgb": [
+          160,
+          40,
+          48
+        ],
+        "proportion": 0.0507,
+        "css3_name": "brown",
+        "css3_hex": "#a52a2a"
+      },
+      {
+        "token": "#5c5c57",
+        "rgb": [
+          92,
+          92,
+          87
+        ],
+        "proportion": 0.0349,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#9e4d54",
+        "rgb": [
+          158,
+          77,
+          84
+        ],
+        "proportion": 0.0333,
+        "css3_name": "sienna",
+        "css3_hex": "#a0522d"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/american-skyway"
   },
   "painterly-illustration__archive.png": {
     "slug": "archive",
@@ -3541,6 +1770,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/fault-tolerance"
   },
+  "painterly-illustration__genius-in-the-bottle__00.jpeg": {
+    "slug": "genius-in-the-bottle",
+    "aesthetic_category": "painterly-illustration",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Surreal airbrushed painting of glowing lime-green dome shapes against a starry purple sky, one pair sprouting cartoonish eyes.",
+    "palette": [
+      {
+        "token": "#272456",
+        "rgb": [
+          39,
+          36,
+          86
+        ],
+        "proportion": 0.5118,
+        "css3_name": "midnightblue",
+        "css3_hex": "#191970"
+      },
+      {
+        "token": "#a1ad5b",
+        "rgb": [
+          161,
+          173,
+          91
+        ],
+        "proportion": 0.316,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      },
+      {
+        "token": "#cdd29c",
+        "rgb": [
+          205,
+          210,
+          156
+        ],
+        "proportion": 0.062,
+        "css3_name": "tan",
+        "css3_hex": "#d2b48c"
+      },
+      {
+        "token": "#60616d",
+        "rgb": [
+          96,
+          97,
+          109
+        ],
+        "proportion": 0.0475,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#bac272",
+        "rgb": [
+          186,
+          194,
+          114
+        ],
+        "proportion": 0.0326,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      },
+      {
+        "token": "#1b1a3b",
+        "rgb": [
+          27,
+          26,
+          59
+        ],
+        "proportion": 0.0301,
+        "css3_name": "midnightblue",
+        "css3_hex": "#191970"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/genius-in-the-bottle"
+  },
   "painterly-illustration__ghosts-in-machines-d0a.png": {
     "slug": "ghosts-in-machines-d0a",
     "aesthetic_category": "painterly-illustration",
@@ -4157,6 +2463,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/libraries-of-tomorrow"
   },
+  "painterly-illustration__mismatch.png": {
+    "slug": "mismatch",
+    "aesthetic_category": "painterly-illustration",
+    "order": "",
+    "width": 1000,
+    "height": 1000,
+    "description": "A close-up of a pale blue-grey appliance or machine panel with a keypad, a coin slot, and a recessed digital display, set against a green background. The clean photographic crop emphasizes industrial product detail.",
+    "palette": [
+      {
+        "token": "#d9e1e3",
+        "rgb": [
+          217,
+          225,
+          227
+        ],
+        "proportion": 0.5363,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
+      },
+      {
+        "token": "#c1cc8a",
+        "rgb": [
+          193,
+          204,
+          138
+        ],
+        "proportion": 0.1801,
+        "css3_name": "tan",
+        "css3_hex": "#d2b48c"
+      },
+      {
+        "token": "#9daca6",
+        "rgb": [
+          157,
+          172,
+          166
+        ],
+        "proportion": 0.1094,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#181b0c",
+        "rgb": [
+          24,
+          27,
+          12
+        ],
+        "proportion": 0.0867,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#576058",
+        "rgb": [
+          87,
+          96,
+          88
+        ],
+        "proportion": 0.0544,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#b6c5cb",
+        "rgb": [
+          182,
+          197,
+          203
+        ],
+        "proportion": 0.033,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/mismatch"
+  },
   "painterly-illustration__necrophoresis__07.png": {
     "slug": "necrophoresis",
     "aesthetic_category": "painterly-illustration",
@@ -4387,6 +2770,83 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/operationalizing"
+  },
+  "painterly-illustration__phantom-in-eden__00.png": {
+    "slug": "phantom-in-eden",
+    "aesthetic_category": "painterly-illustration",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Small surreal render of a pale ovoid pod opening into a tunnel of nested arches with green foliage, in muted mint and cream tones.",
+    "palette": [
+      {
+        "token": "#d0d7ad",
+        "rgb": [
+          208,
+          215,
+          173
+        ],
+        "proportion": 0.4495,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#dde2cb",
+        "rgb": [
+          221,
+          226,
+          203
+        ],
+        "proportion": 0.18,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
+      },
+      {
+        "token": "#9b9a68",
+        "rgb": [
+          155,
+          154,
+          104
+        ],
+        "proportion": 0.1752,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#b2cda1",
+        "rgb": [
+          178,
+          205,
+          161
+        ],
+        "proportion": 0.0804,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#94a988",
+        "rgb": [
+          148,
+          169,
+          136
+        ],
+        "proportion": 0.0724,
+        "css3_name": "darkseagreen",
+        "css3_hex": "#8fbc8f"
+      },
+      {
+        "token": "#ceb164",
+        "rgb": [
+          206,
+          177,
+          100
+        ],
+        "proportion": 0.0425,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/phantom-in-eden"
   },
   "painterly-illustration__signals-in-the-margins__00.jpeg": {
     "slug": "signals-in-the-margins",
@@ -4619,236 +3079,82 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/songs-of-hydropolia"
   },
-  "painterly-illustration__sop-fall-forecast__00.jpeg": {
-    "slug": "sop-fall-forecast",
+  "painterly-illustration__the-entropic-gate-part-i.png": {
+    "slug": "the-entropic-gate-part-i",
     "aesthetic_category": "painterly-illustration",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Abstract painterly network of glowing white and gold light trails arcing across a deep purple field suggesting a luminous nighttime cityscape or data-flow map.",
+    "order": "",
+    "width": 2048,
+    "height": 2048,
+    "description": "Five translucent, bioluminescent humanoid figures ascend a steep rocky cliff under a large blue planet and starry night sky. Glowing, ethereal sci-fi render.",
     "palette": [
       {
-        "token": "#635f8e",
+        "token": "#0f0d0f",
         "rgb": [
-          99,
-          95,
-          142
+          15,
+          13,
+          15
         ],
-        "proportion": 0.3684,
-        "css3_name": "slategray",
-        "css3_hex": "#708090"
+        "proportion": 0.5184,
+        "css3_name": "black",
+        "css3_hex": "#000000"
       },
       {
-        "token": "#56556d",
+        "token": "#6c5e58",
         "rgb": [
-          86,
-          85,
-          109
+          108,
+          94,
+          88
         ],
-        "proportion": 0.2458,
+        "proportion": 0.2058,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       },
       {
-        "token": "#352f54",
+        "token": "#8c715e",
         "rgb": [
-          53,
-          47,
+          140,
+          113,
+          94
+        ],
+        "proportion": 0.1545,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#2c2e54",
+        "rgb": [
+          44,
+          46,
           84
         ],
-        "proportion": 0.1831,
+        "proportion": 0.0614,
         "css3_name": "darkslategray",
         "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#232133",
+        "token": "#614939",
         "rgb": [
-          35,
-          33,
-          51
+          97,
+          73,
+          57
         ],
-        "proportion": 0.0714,
+        "proportion": 0.0357,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#4b3830",
+        "rgb": [
+          75,
+          56,
+          48
+        ],
+        "proportion": 0.0242,
         "css3_name": "darkslategray",
         "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#90989c",
-        "rgb": [
-          144,
-          152,
-          156
-        ],
-        "proportion": 0.0699,
-        "css3_name": "lightslategray",
-        "css3_hex": "#778899"
-      },
-      {
-        "token": "#43396e",
-        "rgb": [
-          67,
-          57,
-          110
-        ],
-        "proportion": 0.0613,
-        "css3_name": "darkslateblue",
-        "css3_hex": "#483d8b"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/sop-fall-forecast"
-  },
-  "painterly-illustration__the-big-man__05.png": {
-    "slug": "the-big-man",
-    "aesthetic_category": "painterly-illustration",
-    "order": "05",
-    "width": 1024,
-    "height": 1024,
-    "description": "Posterized, distressed-texture illustration of a full triangular pyramid built of pale rounded carved stones on a muted blue-grey background.",
-    "palette": [
-      {
-        "token": "#a9b3b1",
-        "rgb": [
-          169,
-          179,
-          177
-        ],
-        "proportion": 0.5437,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#f4f3c8",
-        "rgb": [
-          244,
-          243,
-          200
-        ],
-        "proportion": 0.2086,
-        "css3_name": "lightgoldenrodyellow",
-        "css3_hex": "#fafad2"
-      },
-      {
-        "token": "#443423",
-        "rgb": [
-          68,
-          52,
-          35
-        ],
-        "proportion": 0.0863,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#d7d5af",
-        "rgb": [
-          215,
-          213,
-          175
-        ],
-        "proportion": 0.0694,
-        "css3_name": "palegoldenrod",
-        "css3_hex": "#eee8aa"
-      },
-      {
-        "token": "#95926e",
-        "rgb": [
-          149,
-          146,
-          110
-        ],
-        "proportion": 0.0477,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#6b6657",
-        "rgb": [
-          107,
-          102,
-          87
-        ],
-        "proportion": 0.0444,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-big-man"
-  },
-  "painterly-illustration__the-double-key__00.png": {
-    "slug": "the-double-key",
-    "aesthetic_category": "painterly-illustration",
-    "order": "00",
-    "width": 1000,
-    "height": 714,
-    "description": "Painterly nocturnal cityscape glimpsed past a green wall bearing a glowing red lens or eye, with rain-lit skyscrapers in cool blue-green tones.",
-    "palette": [
-      {
-        "token": "#516f5f",
-        "rgb": [
-          81,
-          111,
-          95
-        ],
-        "proportion": 0.7856,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
-      },
-      {
-        "token": "#394f55",
-        "rgb": [
-          57,
-          79,
-          85
-        ],
-        "proportion": 0.0902,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#313531",
-        "rgb": [
-          49,
-          53,
-          49
-        ],
-        "proportion": 0.0679,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#98a18d",
-        "rgb": [
-          152,
-          161,
-          141
-        ],
-        "proportion": 0.0198,
-        "css3_name": "darkseagreen",
-        "css3_hex": "#8fbc8f"
-      },
-      {
-        "token": "#687283",
-        "rgb": [
-          104,
-          114,
-          131
-        ],
-        "proportion": 0.0194,
-        "css3_name": "slategray",
-        "css3_hex": "#708090"
-      },
-      {
-        "token": "#8f9772",
-        "rgb": [
-          143,
-          151,
-          114
-        ],
-        "proportion": 0.0171,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-double-key"
+    "source": "https://protocolized.summerofprotocols.com/p/the-entropic-gate-part-i"
   },
   "painterly-illustration__the-entropic-gate-part-ii.png": {
     "slug": "the-entropic-gate-part-ii",
@@ -5466,6 +3772,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/to-share-and-remember"
   },
+  "painterly-illustration__towel-uprising.png": {
+    "slug": "towel-uprising",
+    "aesthetic_category": "painterly-illustration",
+    "order": "",
+    "width": 1000,
+    "height": 1000,
+    "description": "A painted scene of a large floral-patterned cloth draped like a tent over a structure beside a pool, under a blue sky with cumulus clouds. Bright, crisp anime-influenced illustration with a calm, slightly surreal mood.",
+    "palette": [
+      {
+        "token": "#2e648d",
+        "rgb": [
+          46,
+          100,
+          141
+        ],
+        "proportion": 0.5657,
+        "css3_name": "darkslateblue",
+        "css3_hex": "#483d8b"
+      },
+      {
+        "token": "#9daa9d",
+        "rgb": [
+          157,
+          170,
+          157
+        ],
+        "proportion": 0.1266,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#2c5763",
+        "rgb": [
+          44,
+          87,
+          99
+        ],
+        "proportion": 0.1142,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#619298",
+        "rgb": [
+          97,
+          146,
+          152
+        ],
+        "proportion": 0.0801,
+        "css3_name": "cadetblue",
+        "css3_hex": "#5f9ea0"
+      },
+      {
+        "token": "#242a27",
+        "rgb": [
+          36,
+          42,
+          39
+        ],
+        "proportion": 0.0573,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#5c7160",
+        "rgb": [
+          92,
+          113,
+          96
+        ],
+        "proportion": 0.0561,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/towel-uprising"
+  },
   "painterly-illustration__we-shape-our-tools-and-thereafter__04.png": {
     "slug": "we-shape-our-tools-and-thereafter",
     "aesthetic_category": "painterly-illustration",
@@ -5542,6 +3925,160 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/we-shape-our-tools-and-thereafter"
+  },
+  "painterly-illustration__what-is-formal-protocol-theory__00.png": {
+    "slug": "what-is-formal-protocol-theory",
+    "aesthetic_category": "painterly-illustration",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Minimal 3D render of floating geometric primitives (spheres, slabs, a speckled cube, an orange ball) suspended over a pale plane against a muted teal background.",
+    "palette": [
+      {
+        "token": "#85a4a3",
+        "rgb": [
+          133,
+          164,
+          163
+        ],
+        "proportion": 0.729,
+        "css3_name": "darkseagreen",
+        "css3_hex": "#8fbc8f"
+      },
+      {
+        "token": "#e3e5d0",
+        "rgb": [
+          227,
+          229,
+          208
+        ],
+        "proportion": 0.1836,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
+      },
+      {
+        "token": "#070a06",
+        "rgb": [
+          7,
+          10,
+          6
+        ],
+        "proportion": 0.0499,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#c7cab9",
+        "rgb": [
+          199,
+          202,
+          185
+        ],
+        "proportion": 0.0169,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#7c9b9b",
+        "rgb": [
+          124,
+          155,
+          155
+        ],
+        "proportion": 0.0125,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#bac3b4",
+        "rgb": [
+          186,
+          195,
+          180
+        ],
+        "proportion": 0.0081,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/what-is-formal-protocol-theory"
+  },
+  "photographic__consensus-nightmares.jpeg": {
+    "slug": "consensus-nightmares",
+    "aesthetic_category": "photographic",
+    "order": "",
+    "width": 1024,
+    "height": 1024,
+    "description": "Close-up of a square translucent slab resembling a circuit-board maze, swirled with green, pink, and white iridescent tones and punctured by several black holes, on a black backdrop. Tactile, abstract.",
+    "palette": [
+      {
+        "token": "#111411",
+        "rgb": [
+          17,
+          20,
+          17
+        ],
+        "proportion": 0.4492,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#93a4a6",
+        "rgb": [
+          147,
+          164,
+          166
+        ],
+        "proportion": 0.1673,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#50685b",
+        "rgb": [
+          80,
+          104,
+          91
+        ],
+        "proportion": 0.1282,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#619263",
+        "rgb": [
+          97,
+          146,
+          99
+        ],
+        "proportion": 0.1015,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#759291",
+        "rgb": [
+          117,
+          146,
+          145
+        ],
+        "proportion": 0.0784,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#345436",
+        "rgb": [
+          52,
+          84,
+          54
+        ],
+        "proportion": 0.0753,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/consensus-nightmares"
   },
   "photographic__egregoretex.jpeg": {
     "slug": "egregoretex",
@@ -5773,6 +4310,83 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/introducing-the-protocol-institute"
+  },
+  "photographic__latency__05.png": {
+    "slug": "latency",
+    "aesthetic_category": "photographic",
+    "order": "05",
+    "width": 1000,
+    "height": 1000,
+    "description": "Cropped variant of glassy water droplets dripping from reeds over a mottled teal-and-gold painterly backdrop.",
+    "palette": [
+      {
+        "token": "#266058",
+        "rgb": [
+          38,
+          96,
+          88
+        ],
+        "proportion": 0.4792,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#15271e",
+        "rgb": [
+          21,
+          39,
+          30
+        ],
+        "proportion": 0.2008,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#5c9c94",
+        "rgb": [
+          92,
+          156,
+          148
+        ],
+        "proportion": 0.1387,
+        "css3_name": "cadetblue",
+        "css3_hex": "#5f9ea0"
+      },
+      {
+        "token": "#51715d",
+        "rgb": [
+          81,
+          113,
+          93
+        ],
+        "proportion": 0.0751,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#979263",
+        "rgb": [
+          151,
+          146,
+          99
+        ],
+        "proportion": 0.054,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#568874",
+        "rgb": [
+          86,
+          136,
+          116
+        ],
+        "proportion": 0.0523,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/latency"
   },
   "photographic__mr-cork-and-the-red-bus__00.jpeg": {
     "slug": "mr-cork-and-the-red-bus",
@@ -6159,6 +4773,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/a-sea-of-distributed-ai"
   },
+  "retro-vintage__brackish-strategy__00.png": {
+    "slug": "brackish-strategy",
+    "aesthetic_category": "retro-vintage",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Mid-century-styled abstract collage in muted teal and orange with organic curves, a dotted spherical burst, and a vertical seismograph-like waveform.",
+    "palette": [
+      {
+        "token": "#afd0c3",
+        "rgb": [
+          175,
+          208,
+          195
+        ],
+        "proportion": 0.5727,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#dcdfb9",
+        "rgb": [
+          220,
+          223,
+          185
+        ],
+        "proportion": 0.1429,
+        "css3_name": "palegoldenrod",
+        "css3_hex": "#eee8aa"
+      },
+      {
+        "token": "#e1e4c8",
+        "rgb": [
+          225,
+          228,
+          200
+        ],
+        "proportion": 0.1413,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
+      },
+      {
+        "token": "#9dac9d",
+        "rgb": [
+          157,
+          172,
+          157
+        ],
+        "proportion": 0.0519,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#ea6829",
+        "rgb": [
+          234,
+          104,
+          41
+        ],
+        "proportion": 0.0498,
+        "css3_name": "chocolate",
+        "css3_hex": "#d2691e"
+      },
+      {
+        "token": "#1b1c1b",
+        "rgb": [
+          27,
+          28,
+          27
+        ],
+        "proportion": 0.0414,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/brackish-strategy"
+  },
   "retro-vintage__fine-print__00.png": {
     "slug": "fine-print",
     "aesthetic_category": "retro-vintage",
@@ -6390,6 +5081,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/one-tension-to-rule-them-all"
   },
+  "retro-vintage__reflections-from-memoria__00.jpeg": {
+    "slug": "reflections-from-memoria",
+    "aesthetic_category": "retro-vintage",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Bold abstract composition of golden textured shapes (spirals, blobs, and triangles) arranged like an exploded diagram on a saturated blue field.",
+    "palette": [
+      {
+        "token": "#001fc3",
+        "rgb": [
+          0,
+          31,
+          195
+        ],
+        "proportion": 0.8618,
+        "css3_name": "mediumblue",
+        "css3_hex": "#0000cd"
+      },
+      {
+        "token": "#0f20a5",
+        "rgb": [
+          15,
+          32,
+          165
+        ],
+        "proportion": 0.0327,
+        "css3_name": "darkblue",
+        "css3_hex": "#00008b"
+      },
+      {
+        "token": "#ac921c",
+        "rgb": [
+          172,
+          146,
+          28
+        ],
+        "proportion": 0.0302,
+        "css3_name": "darkgoldenrod",
+        "css3_hex": "#b8860b"
+      },
+      {
+        "token": "#675618",
+        "rgb": [
+          103,
+          86,
+          24
+        ],
+        "proportion": 0.0269,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#1f1b0e",
+        "rgb": [
+          31,
+          27,
+          14
+        ],
+        "proportion": 0.0243,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#cdb11d",
+        "rgb": [
+          205,
+          177,
+          29
+        ],
+        "proportion": 0.0241,
+        "css3_name": "goldenrod",
+        "css3_hex": "#daa520"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/reflections-from-memoria"
+  },
   "retro-vintage__risky-autonomy-vs-walled-gardens__00.png": {
     "slug": "risky-autonomy-vs-walled-gardens",
     "aesthetic_category": "retro-vintage",
@@ -6543,6 +5311,83 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/songs-of-hydropolia"
+  },
+  "retro-vintage__sop-2025-accelerating-order.png": {
+    "slug": "sop-2025-accelerating-order",
+    "aesthetic_category": "retro-vintage",
+    "order": "",
+    "width": 2048,
+    "height": 2048,
+    "description": "Surreal painted balance scale with an organic, perforated bone-white and yellow armature, two hanging pans, set in a pastel landscape with trees and a teal sky. Retro sci-fi illustration mood.",
+    "palette": [
+      {
+        "token": "#20959b",
+        "rgb": [
+          32,
+          149,
+          155
+        ],
+        "proportion": 0.5633,
+        "css3_name": "lightseagreen",
+        "css3_hex": "#20b2aa"
+      },
+      {
+        "token": "#ded9a3",
+        "rgb": [
+          222,
+          217,
+          163
+        ],
+        "proportion": 0.1371,
+        "css3_name": "palegoldenrod",
+        "css3_hex": "#eee8aa"
+      },
+      {
+        "token": "#19778d",
+        "rgb": [
+          25,
+          119,
+          141
+        ],
+        "proportion": 0.1001,
+        "css3_name": "teal",
+        "css3_hex": "#008080"
+      },
+      {
+        "token": "#5bb2a4",
+        "rgb": [
+          91,
+          178,
+          164
+        ],
+        "proportion": 0.0719,
+        "css3_name": "cadetblue",
+        "css3_hex": "#5f9ea0"
+      },
+      {
+        "token": "#a0caa5",
+        "rgb": [
+          160,
+          202,
+          165
+        ],
+        "proportion": 0.0661,
+        "css3_name": "darkseagreen",
+        "css3_hex": "#8fbc8f"
+      },
+      {
+        "token": "#f4eacc",
+        "rgb": [
+          244,
+          234,
+          204
+        ],
+        "proportion": 0.0615,
+        "css3_name": "blanchedalmond",
+        "css3_hex": "#ffebcd"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/sop-2025-accelerating-order"
   },
   "retro-vintage__strange-new-rules.png": {
     "slug": "strange-new-rules",
@@ -6769,6 +5614,83 @@
           83
         ],
         "proportion": 0.0212,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/the-big-man"
+  },
+  "retro-vintage__the-big-man__05.png": {
+    "slug": "the-big-man",
+    "aesthetic_category": "retro-vintage",
+    "order": "05",
+    "width": 1024,
+    "height": 1024,
+    "description": "Posterized, distressed-texture illustration of a full triangular pyramid built of pale rounded carved stones on a muted blue-grey background.",
+    "palette": [
+      {
+        "token": "#a9b3b1",
+        "rgb": [
+          169,
+          179,
+          177
+        ],
+        "proportion": 0.5437,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#f4f3c8",
+        "rgb": [
+          244,
+          243,
+          200
+        ],
+        "proportion": 0.2086,
+        "css3_name": "lightgoldenrodyellow",
+        "css3_hex": "#fafad2"
+      },
+      {
+        "token": "#443423",
+        "rgb": [
+          68,
+          52,
+          35
+        ],
+        "proportion": 0.0863,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#d7d5af",
+        "rgb": [
+          215,
+          213,
+          175
+        ],
+        "proportion": 0.0694,
+        "css3_name": "palegoldenrod",
+        "css3_hex": "#eee8aa"
+      },
+      {
+        "token": "#95926e",
+        "rgb": [
+          149,
+          146,
+          110
+        ],
+        "proportion": 0.0477,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#6b6657",
+        "rgb": [
+          107,
+          102,
+          87
+        ],
+        "proportion": 0.0444,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       }
@@ -7160,6 +6082,314 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/woods"
   },
+  "surreal-collage__2026-protocol-symposium-new-nature.png": {
+    "slug": "2026-protocol-symposium-new-nature",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 1200,
+    "height": 630,
+    "description": "A white star or snowflake-like burst speckled with black dots sits centered over a dark, mottled green-and-purple organic field. The composition is non-representational with a glowing neon-edged central form against a textured background.",
+    "palette": [
+      {
+        "token": "#182219",
+        "rgb": [
+          24,
+          34,
+          25
+        ],
+        "proportion": 0.4436,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#215628",
+        "rgb": [
+          33,
+          86,
+          40
+        ],
+        "proportion": 0.1434,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#556459",
+        "rgb": [
+          85,
+          100,
+          89
+        ],
+        "proportion": 0.1359,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#2c6351",
+        "rgb": [
+          44,
+          99,
+          81
+        ],
+        "proportion": 0.1306,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#f5f6f5",
+        "rgb": [
+          245,
+          246,
+          245
+        ],
+        "proportion": 0.0776,
+        "css3_name": "whitesmoke",
+        "css3_hex": "#f5f5f5"
+      },
+      {
+        "token": "#588e66",
+        "rgb": [
+          88,
+          142,
+          102
+        ],
+        "proportion": 0.0689,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature"
+  },
+  "surreal-collage__3-protocols-for-articulating-civilizational__00.png": {
+    "slug": "3-protocols-for-articulating-civilizational",
+    "aesthetic_category": "surreal-collage",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "A small surreal painting of a glowing molten-orange bulb or jellyfish form against a dark teal field, with tiny ringed planet motifs on thin wires.",
+    "palette": [
+      {
+        "token": "#38484c",
+        "rgb": [
+          56,
+          72,
+          76
+        ],
+        "proportion": 0.516,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#465e61",
+        "rgb": [
+          70,
+          94,
+          97
+        ],
+        "proportion": 0.1417,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#333d41",
+        "rgb": [
+          51,
+          61,
+          65
+        ],
+        "proportion": 0.1134,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#323b3e",
+        "rgb": [
+          50,
+          59,
+          62
+        ],
+        "proportion": 0.1063,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#f5efcd",
+        "rgb": [
+          245,
+          239,
+          205
+        ],
+        "proportion": 0.0795,
+        "css3_name": "blanchedalmond",
+        "css3_hex": "#ffebcd"
+      },
+      {
+        "token": "#ebe0a6",
+        "rgb": [
+          235,
+          224,
+          166
+        ],
+        "proportion": 0.0431,
+        "css3_name": "palegoldenrod",
+        "css3_hex": "#eee8aa"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/3-protocols-for-articulating-civilizational"
+  },
+  "surreal-collage__a-primordial-computing-soup__00.png": {
+    "slug": "a-primordial-computing-soup",
+    "aesthetic_category": "surreal-collage",
+    "order": "00",
+    "width": 1129,
+    "height": 1129,
+    "description": "Abstract generative texture of blue and grey mottled fluid behind a white notched ring or gear outline.",
+    "palette": [
+      {
+        "token": "#6b6b9b",
+        "rgb": [
+          107,
+          107,
+          155
+        ],
+        "proportion": 0.3491,
+        "css3_name": "slategray",
+        "css3_hex": "#708090"
+      },
+      {
+        "token": "#93939f",
+        "rgb": [
+          147,
+          147,
+          159
+        ],
+        "proportion": 0.1973,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#665e63",
+        "rgb": [
+          102,
+          94,
+          99
+        ],
+        "proportion": 0.1514,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#6060d8",
+        "rgb": [
+          96,
+          96,
+          216
+        ],
+        "proportion": 0.131,
+        "css3_name": "slateblue",
+        "css3_hex": "#6a5acd"
+      },
+      {
+        "token": "#fcfcfc",
+        "rgb": [
+          252,
+          252,
+          252
+        ],
+        "proportion": 0.1202,
+        "css3_name": "snow",
+        "css3_hex": "#fffafa"
+      },
+      {
+        "token": "#0c0c0d",
+        "rgb": [
+          12,
+          12,
+          13
+        ],
+        "proportion": 0.0509,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/a-primordial-computing-soup"
+  },
+  "surreal-collage__caduceus-city.png": {
+    "slug": "caduceus-city",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 896,
+    "height": 1120,
+    "description": "A chaotic glitch-like composition of melting purple, yellow, pink, and gray organic forms with faint mechanical and architectural fragments. Distorted, dreamlike, and disorienting.",
+    "palette": [
+      {
+        "token": "#19171a",
+        "rgb": [
+          25,
+          23,
+          26
+        ],
+        "proportion": 0.5666,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#575358",
+        "rgb": [
+          87,
+          83,
+          88
+        ],
+        "proportion": 0.1926,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#6b61a9",
+        "rgb": [
+          107,
+          97,
+          169
+        ],
+        "proportion": 0.0779,
+        "css3_name": "slateblue",
+        "css3_hex": "#6a5acd"
+      },
+      {
+        "token": "#705dd8",
+        "rgb": [
+          112,
+          93,
+          216
+        ],
+        "proportion": 0.0683,
+        "css3_name": "slateblue",
+        "css3_hex": "#6a5acd"
+      },
+      {
+        "token": "#8a76d1",
+        "rgb": [
+          138,
+          118,
+          209
+        ],
+        "proportion": 0.051,
+        "css3_name": "mediumpurple",
+        "css3_hex": "#9370db"
+      },
+      {
+        "token": "#eacadd",
+        "rgb": [
+          234,
+          202,
+          221
+        ],
+        "proportion": 0.0436,
+        "css3_name": "thistle",
+        "css3_hex": "#d8bfd8"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/caduceus-city"
+  },
   "surreal-collage__have-your-factory-call-my-factory__00.png": {
     "slug": "have-your-factory-call-my-factory",
     "aesthetic_category": "surreal-collage",
@@ -7236,6 +6466,83 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/have-your-factory-call-my-factory"
+  },
+  "surreal-collage__introducing-the-protocol-institute__12.png": {
+    "slug": "introducing-the-protocol-institute",
+    "aesthetic_category": "surreal-collage",
+    "order": "12",
+    "width": 1024,
+    "height": 1024,
+    "description": "An embossed steel-blue dharma-wheel emblem set against a rippled marbled blue-and-white background.",
+    "palette": [
+      {
+        "token": "#5d646a",
+        "rgb": [
+          93,
+          100,
+          106
+        ],
+        "proportion": 0.4581,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#939ca0",
+        "rgb": [
+          147,
+          156,
+          160
+        ],
+        "proportion": 0.1834,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#758694",
+        "rgb": [
+          117,
+          134,
+          148
+        ],
+        "proportion": 0.1145,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#637788",
+        "rgb": [
+          99,
+          119,
+          136
+        ],
+        "proportion": 0.1091,
+        "css3_name": "slategray",
+        "css3_hex": "#708090"
+      },
+      {
+        "token": "#2d6097",
+        "rgb": [
+          45,
+          96,
+          151
+        ],
+        "proportion": 0.0864,
+        "css3_name": "darkslateblue",
+        "css3_hex": "#483d8b"
+      },
+      {
+        "token": "#dbdeda",
+        "rgb": [
+          219,
+          222,
+          218
+        ],
+        "proportion": 0.0485,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/introducing-the-protocol-institute"
   },
   "surreal-collage__inventing-new-nature__00.png": {
     "slug": "inventing-new-nature",
@@ -7314,6 +6621,160 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/inventing-new-nature"
   },
+  "surreal-collage__irrigation-by-protocol-when-vineyards.png": {
+    "slug": "irrigation-by-protocol-when-vineyards",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 1024,
+    "height": 1024,
+    "description": "An aerial agricultural landscape of fields and irrigation patterns rendered with a heavy embossed, ridged filter that turns it into raised relief-like texture. Green-toned and abstracted.",
+    "palette": [
+      {
+        "token": "#5d6b54",
+        "rgb": [
+          93,
+          107,
+          84
+        ],
+        "proportion": 0.4108,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#9da696",
+        "rgb": [
+          157,
+          166,
+          150
+        ],
+        "proportion": 0.1687,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#192b18",
+        "rgb": [
+          25,
+          43,
+          24
+        ],
+        "proportion": 0.1284,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#728b65",
+        "rgb": [
+          114,
+          139,
+          101
+        ],
+        "proportion": 0.1148,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#4e612f",
+        "rgb": [
+          78,
+          97,
+          47
+        ],
+        "proportion": 0.0927,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#334c26",
+        "rgb": [
+          51,
+          76,
+          38
+        ],
+        "proportion": 0.0847,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/irrigation-by-protocol-when-vineyards"
+  },
+  "surreal-collage__last-mile-optimism.png": {
+    "slug": "last-mile-optimism",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 1024,
+    "height": 1024,
+    "description": "A grey abstract composition resembling two stylized rock faces or torso forms with faint contour-line landscape sketches, split by a central green glowing band and pink haze. Muted monochrome with neon accents and an ambiguous, eerie mood.",
+    "palette": [
+      {
+        "token": "#a1a0a0",
+        "rgb": [
+          161,
+          160,
+          160
+        ],
+        "proportion": 0.4677,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#656464",
+        "rgb": [
+          101,
+          100,
+          100
+        ],
+        "proportion": 0.2197,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#0c0b0b",
+        "rgb": [
+          12,
+          11,
+          11
+        ],
+        "proportion": 0.1837,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#d2d1d1",
+        "rgb": [
+          210,
+          209,
+          209
+        ],
+        "proportion": 0.0622,
+        "css3_name": "lightgray",
+        "css3_hex": "#d3d3d3"
+      },
+      {
+        "token": "#cda8a6",
+        "rgb": [
+          205,
+          168,
+          166
+        ],
+        "proportion": 0.0507,
+        "css3_name": "tan",
+        "css3_hex": "#d2b48c"
+      },
+      {
+        "token": "#90d16b",
+        "rgb": [
+          144,
+          209,
+          107
+        ],
+        "proportion": 0.016,
+        "css3_name": "darkseagreen",
+        "css3_hex": "#8fbc8f"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/last-mile-optimism"
+  },
   "surreal-collage__last-mile-optimism__00.png": {
     "slug": "last-mile-optimism",
     "aesthetic_category": "surreal-collage",
@@ -7390,6 +6851,83 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/last-mile-optimism"
+  },
+  "surreal-collage__maintaining-everything-that-matters.png": {
+    "slug": "maintaining-everything-that-matters",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 1536,
+    "height": 1536,
+    "description": "Digitally distorted composition over an embossed gray texture, combining a navy drilling-tower outline, a grid of symbolic glyphs, and a bright cyan disc. Splattered magenta and pastel noise gives a glitched, map-like mood.",
+    "palette": [
+      {
+        "token": "#a5a2a5",
+        "rgb": [
+          165,
+          162,
+          165
+        ],
+        "proportion": 0.7207,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#05dadc",
+        "rgb": [
+          5,
+          218,
+          220
+        ],
+        "proportion": 0.113,
+        "css3_name": "darkturquoise",
+        "css3_hex": "#00ced1"
+      },
+      {
+        "token": "#5a6a92",
+        "rgb": [
+          90,
+          106,
+          146
+        ],
+        "proportion": 0.0468,
+        "css3_name": "slategray",
+        "css3_hex": "#708090"
+      },
+      {
+        "token": "#6da1a7",
+        "rgb": [
+          109,
+          161,
+          167
+        ],
+        "proportion": 0.0462,
+        "css3_name": "cadetblue",
+        "css3_hex": "#5f9ea0"
+      },
+      {
+        "token": "#24588e",
+        "rgb": [
+          36,
+          88,
+          142
+        ],
+        "proportion": 0.0377,
+        "css3_name": "darkslateblue",
+        "css3_hex": "#483d8b"
+      },
+      {
+        "token": "#a49c6a",
+        "rgb": [
+          164,
+          156,
+          106
+        ],
+        "proportion": 0.0356,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/maintaining-everything-that-matters"
   },
   "surreal-collage__mr-cork-and-the-red-bus.png": {
     "slug": "mr-cork-and-the-red-bus",
@@ -7545,83 +7083,6 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/necrophoresis"
   },
-  "surreal-collage__sop-2025-accelerating-order.png": {
-    "slug": "sop-2025-accelerating-order",
-    "aesthetic_category": "surreal-collage",
-    "order": "",
-    "width": 2048,
-    "height": 2048,
-    "description": "Surreal painted balance scale with an organic, perforated bone-white and yellow armature, two hanging pans, set in a pastel landscape with trees and a teal sky. Retro sci-fi illustration mood.",
-    "palette": [
-      {
-        "token": "#20959b",
-        "rgb": [
-          32,
-          149,
-          155
-        ],
-        "proportion": 0.5633,
-        "css3_name": "lightseagreen",
-        "css3_hex": "#20b2aa"
-      },
-      {
-        "token": "#ded9a3",
-        "rgb": [
-          222,
-          217,
-          163
-        ],
-        "proportion": 0.1371,
-        "css3_name": "palegoldenrod",
-        "css3_hex": "#eee8aa"
-      },
-      {
-        "token": "#19778d",
-        "rgb": [
-          25,
-          119,
-          141
-        ],
-        "proportion": 0.1001,
-        "css3_name": "teal",
-        "css3_hex": "#008080"
-      },
-      {
-        "token": "#5bb2a4",
-        "rgb": [
-          91,
-          178,
-          164
-        ],
-        "proportion": 0.0719,
-        "css3_name": "cadetblue",
-        "css3_hex": "#5f9ea0"
-      },
-      {
-        "token": "#a0caa5",
-        "rgb": [
-          160,
-          202,
-          165
-        ],
-        "proportion": 0.0661,
-        "css3_name": "darkseagreen",
-        "css3_hex": "#8fbc8f"
-      },
-      {
-        "token": "#f4eacc",
-        "rgb": [
-          244,
-          234,
-          204
-        ],
-        "proportion": 0.0615,
-        "css3_name": "blanchedalmond",
-        "css3_hex": "#ffebcd"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/sop-2025-accelerating-order"
-  },
   "surreal-collage__tension-landscapes__00.png": {
     "slug": "tension-landscapes",
     "aesthetic_category": "surreal-collage",
@@ -7699,82 +7160,159 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/tension-landscapes"
   },
-  "surreal-collage__the-faithful-channel__05.png": {
-    "slug": "the-faithful-channel",
+  "surreal-collage__the-double-key__00.png": {
+    "slug": "the-double-key",
     "aesthetic_category": "surreal-collage",
-    "order": "05",
-    "width": 1024,
-    "height": 1024,
-    "description": "Vertical abstract generative artwork of an ornate detailed organic form surrounded by branching dark green tendrils on a pale ground.",
+    "order": "00",
+    "width": 1000,
+    "height": 714,
+    "description": "Painterly nocturnal cityscape glimpsed past a green wall bearing a glowing red lens or eye, with rain-lit skyscrapers in cool blue-green tones.",
     "palette": [
       {
-        "token": "#eee2ce",
+        "token": "#516f5f",
         "rgb": [
-          238,
-          226,
-          206
+          81,
+          111,
+          95
         ],
-        "proportion": 0.5071,
-        "css3_name": "antiquewhite",
-        "css3_hex": "#faebd7"
-      },
-      {
-        "token": "#12252d",
-        "rgb": [
-          18,
-          37,
-          45
-        ],
-        "proportion": 0.3117,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#5a5a57",
-        "rgb": [
-          90,
-          90,
-          87
-        ],
-        "proportion": 0.0664,
+        "proportion": 0.7856,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       },
       {
-        "token": "#27532e",
+        "token": "#394f55",
         "rgb": [
-          39,
-          83,
-          46
+          57,
+          79,
+          85
         ],
-        "proportion": 0.0627,
+        "proportion": 0.0902,
         "css3_name": "darkslategray",
         "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#a6a09a",
+        "token": "#313531",
         "rgb": [
-          166,
-          160,
-          154
+          49,
+          53,
+          49
         ],
-        "proportion": 0.0359,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
+        "proportion": 0.0679,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#ceada5",
+        "token": "#98a18d",
         "rgb": [
-          206,
-          173,
-          165
+          152,
+          161,
+          141
         ],
-        "proportion": 0.0162,
-        "css3_name": "tan",
-        "css3_hex": "#d2b48c"
+        "proportion": 0.0198,
+        "css3_name": "darkseagreen",
+        "css3_hex": "#8fbc8f"
+      },
+      {
+        "token": "#687283",
+        "rgb": [
+          104,
+          114,
+          131
+        ],
+        "proportion": 0.0194,
+        "css3_name": "slategray",
+        "css3_hex": "#708090"
+      },
+      {
+        "token": "#8f9772",
+        "rgb": [
+          143,
+          151,
+          114
+        ],
+        "proportion": 0.0171,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/the-faithful-channel"
+    "source": "https://protocolized.summerofprotocols.com/p/the-double-key"
+  },
+  "surreal-collage__the-fabric-and-the-brain.png": {
+    "slug": "the-fabric-and-the-brain",
+    "aesthetic_category": "surreal-collage",
+    "order": "",
+    "width": 1129,
+    "height": 1129,
+    "description": "A square composition of a white circular ring with notched edges centered over an aerial-style field of dense green, yellow, and orange foliage on a near-black ground. Symmetrical, pattern-like, and non-representational in impression.",
+    "palette": [
+      {
+        "token": "#242422",
+        "rgb": [
+          36,
+          36,
+          34
+        ],
+        "proportion": 0.5808,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#5a5f50",
+        "rgb": [
+          90,
+          95,
+          80
+        ],
+        "proportion": 0.1504,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#fcfcfc",
+        "rgb": [
+          252,
+          252,
+          252
+        ],
+        "proportion": 0.1202,
+        "css3_name": "snow",
+        "css3_hex": "#fffafa"
+      },
+      {
+        "token": "#535533",
+        "rgb": [
+          83,
+          85,
+          51
+        ],
+        "proportion": 0.0887,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#70905c",
+        "rgb": [
+          112,
+          144,
+          92
+        ],
+        "proportion": 0.0306,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#8e9761",
+        "rgb": [
+          142,
+          151,
+          97
+        ],
+        "proportion": 0.0293,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/the-fabric-and-the-brain"
   },
   "surreal-collage__the-headless-empire__06.png": {
     "slug": "the-headless-empire",
@@ -7853,82 +7391,390 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/the-headless-empire"
   },
-  "surreal-collage__towel-uprising.png": {
-    "slug": "towel-uprising",
+  "surreal-collage__the-partial__00.jpeg": {
+    "slug": "the-partial",
     "aesthetic_category": "surreal-collage",
-    "order": "",
-    "width": 1000,
-    "height": 1000,
-    "description": "A painted scene of a large floral-patterned cloth draped like a tent over a structure beside a pool, under a blue sky with cumulus clouds. Bright, crisp anime-influenced illustration with a calm, slightly surreal mood.",
+    "order": "00",
+    "width": 896,
+    "height": 640,
+    "description": "A translucent ribbed glass starfish-like form with an iridescent central orb on a deep blue ground; a sculptural abstract render.",
     "palette": [
       {
-        "token": "#2e648d",
+        "token": "#4763a2",
         "rgb": [
-          46,
-          100,
-          141
+          71,
+          99,
+          162
         ],
-        "proportion": 0.5657,
+        "proportion": 0.6435,
+        "css3_name": "steelblue",
+        "css3_hex": "#4682b4"
+      },
+      {
+        "token": "#3e5ba1",
+        "rgb": [
+          62,
+          91,
+          161
+        ],
+        "proportion": 0.206,
         "css3_name": "darkslateblue",
         "css3_hex": "#483d8b"
       },
       {
-        "token": "#9daa9d",
+        "token": "#273268",
         "rgb": [
-          157,
-          170,
-          157
+          39,
+          50,
+          104
         ],
-        "proportion": 0.1266,
+        "proportion": 0.0681,
+        "css3_name": "midnightblue",
+        "css3_hex": "#191970"
+      },
+      {
+        "token": "#7088a9",
+        "rgb": [
+          112,
+          136,
+          169
+        ],
+        "proportion": 0.0517,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#8ea0a8",
+        "rgb": [
+          142,
+          160,
+          168
+        ],
+        "proportion": 0.0241,
         "css3_name": "darkgray",
         "css3_hex": "#a9a9a9"
       },
       {
-        "token": "#2c5763",
+        "token": "#9eacc7",
         "rgb": [
-          44,
-          87,
-          99
+          158,
+          172,
+          199
         ],
-        "proportion": 0.1142,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
+        "proportion": 0.0066,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/the-partial"
+  },
+  "surreal-collage__the-reverie-loop__06.gif": {
+    "slug": "the-reverie-loop",
+    "aesthetic_category": "surreal-collage",
+    "order": "06",
+    "width": 472,
+    "height": 472,
+    "description": "A glowing luminous orb resting on a stepped surface in a dim pink-and-dark-green interior, rendered in soft posterized digital art.",
+    "palette": [
+      {
+        "token": "#061c14",
+        "rgb": [
+          6,
+          28,
+          20
+        ],
+        "proportion": 0.6813,
+        "css3_name": "black",
+        "css3_hex": "#000000"
       },
       {
-        "token": "#619298",
+        "token": "#decc68",
         "rgb": [
-          97,
+          222,
+          204,
+          104
+        ],
+        "proportion": 0.132,
+        "css3_name": "burlywood",
+        "css3_hex": "#deb887"
+      },
+      {
+        "token": "#9c6267",
+        "rgb": [
+          156,
+          98,
+          103
+        ],
+        "proportion": 0.0579,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#c75b72",
+        "rgb": [
+          199,
+          91,
+          114
+        ],
+        "proportion": 0.0567,
+        "css3_name": "indianred",
+        "css3_hex": "#cd5c5c"
+      },
+      {
+        "token": "#f7ee8d",
+        "rgb": [
+          247,
+          238,
+          141
+        ],
+        "proportion": 0.0491,
+        "css3_name": "khaki",
+        "css3_hex": "#f0e68c"
+      },
+      {
+        "token": "#b19c5f",
+        "rgb": [
+          177,
+          156,
+          95
+        ],
+        "proportion": 0.0231,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/the-reverie-loop"
+  },
+  "surreal-collage__theorizing-protocolization-ii-atomic__00.png": {
+    "slug": "theorizing-protocolization-ii-atomic",
+    "aesthetic_category": "surreal-collage",
+    "order": "00",
+    "width": 1200,
+    "height": 630,
+    "description": "An abstract pink, teal, and brown composition of a textured central disc surrounded by swirling tendril-like forms, resembling a manipulated micrograph.",
+    "palette": [
+      {
+        "token": "#656369",
+        "rgb": [
+          101,
+          99,
+          105
+        ],
+        "proportion": 0.3435,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#a88eb1",
+        "rgb": [
+          168,
+          142,
+          177
+        ],
+        "proportion": 0.1571,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#d2d5d9",
+        "rgb": [
+          210,
+          213,
+          217
+        ],
+        "proportion": 0.1379,
+        "css3_name": "lightgray",
+        "css3_hex": "#d3d3d3"
+      },
+      {
+        "token": "#b5a5c8",
+        "rgb": [
+          181,
+          165,
+          200
+        ],
+        "proportion": 0.134,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#956f9d",
+        "rgb": [
+          149,
+          111,
+          157
+        ],
+        "proportion": 0.1237,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#926665",
+        "rgb": [
           146,
-          152
+          102,
+          101
         ],
-        "proportion": 0.0801,
-        "css3_name": "cadetblue",
-        "css3_hex": "#5f9ea0"
-      },
-      {
-        "token": "#242a27",
-        "rgb": [
-          36,
-          42,
-          39
-        ],
-        "proportion": 0.0573,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      },
-      {
-        "token": "#5c7160",
-        "rgb": [
-          92,
-          113,
-          96
-        ],
-        "proportion": 0.0561,
+        "proportion": 0.1037,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/towel-uprising"
+    "source": "https://protocolized.summerofprotocols.com/p/theorizing-protocolization-ii-atomic"
+  },
+  "surreal-collage__theorizing-protocolization-ii-atomic__06.png": {
+    "slug": "theorizing-protocolization-ii-atomic",
+    "aesthetic_category": "surreal-collage",
+    "order": "06",
+    "width": 1024,
+    "height": 1024,
+    "description": "An abstract generative composition with a maze-textured central orb encircled by purple tendrils on a pale blue ground.",
+    "palette": [
+      {
+        "token": "#c9d3d5",
+        "rgb": [
+          201,
+          211,
+          213
+        ],
+        "proportion": 0.4908,
+        "css3_name": "lightgray",
+        "css3_hex": "#d3d3d3"
+      },
+      {
+        "token": "#a68fb0",
+        "rgb": [
+          166,
+          143,
+          176
+        ],
+        "proportion": 0.153,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#67626b",
+        "rgb": [
+          103,
+          98,
+          107
+        ],
+        "proportion": 0.1076,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#b3a8c6",
+        "rgb": [
+          179,
+          168,
+          198
+        ],
+        "proportion": 0.1017,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
+      },
+      {
+        "token": "#967693",
+        "rgb": [
+          150,
+          118,
+          147
+        ],
+        "proportion": 0.0767,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      },
+      {
+        "token": "#90656f",
+        "rgb": [
+          144,
+          101,
+          111
+        ],
+        "proportion": 0.0703,
+        "css3_name": "gray",
+        "css3_hex": "#808080"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/theorizing-protocolization-ii-atomic"
+  },
+  "technical-schematic__a-government-guide-to-open-protocols__05.png": {
+    "slug": "a-government-guide-to-open-protocols",
+    "aesthetic_category": "technical-schematic",
+    "order": "05",
+    "width": 1200,
+    "height": 1200,
+    "description": "Generative abstract render of glowing orange and black organic veins forming a loose framed lattice over a blue-to-orange gradient background.",
+    "palette": [
+      {
+        "token": "#a9dae3",
+        "rgb": [
+          169,
+          218,
+          227
+        ],
+        "proportion": 0.5204,
+        "css3_name": "lightblue",
+        "css3_hex": "#add8e6"
+      },
+      {
+        "token": "#0ba1dc",
+        "rgb": [
+          11,
+          161,
+          220
+        ],
+        "proportion": 0.1613,
+        "css3_name": "dodgerblue",
+        "css3_hex": "#1e90ff"
+      },
+      {
+        "token": "#5994cd",
+        "rgb": [
+          89,
+          148,
+          205
+        ],
+        "proportion": 0.1513,
+        "css3_name": "cornflowerblue",
+        "css3_hex": "#6495ed"
+      },
+      {
+        "token": "#504e59",
+        "rgb": [
+          80,
+          78,
+          89
+        ],
+        "proportion": 0.0601,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#6d74ae",
+        "rgb": [
+          109,
+          116,
+          174
+        ],
+        "proportion": 0.0599,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
+      },
+      {
+        "token": "#635433",
+        "rgb": [
+          99,
+          84,
+          51
+        ],
+        "proportion": 0.0471,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/a-government-guide-to-open-protocols"
   },
   "technical-schematic__a-very-short-introduction-to-memory__00.png": {
     "slug": "a-very-short-introduction-to-memory",
@@ -8161,6 +8007,83 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/bridge-atlas-ep-1-entry-points"
   },
+  "technical-schematic__bridge-atlas-episode-2-paradigms.png": {
+    "slug": "bridge-atlas-episode-2-paradigms",
+    "aesthetic_category": "technical-schematic",
+    "order": "",
+    "width": 1384,
+    "height": 1384,
+    "description": "An arch or bridge form rendered as a textured band of cellular orange, cream, and green patterns on a flat olive-brown background. Non-representational and ornamental in style.",
+    "palette": [
+      {
+        "token": "#463605",
+        "rgb": [
+          70,
+          54,
+          5
+        ],
+        "proportion": 0.7956,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#665a1e",
+        "rgb": [
+          102,
+          90,
+          30
+        ],
+        "proportion": 0.0909,
+        "css3_name": "darkolivegreen",
+        "css3_hex": "#556b2f"
+      },
+      {
+        "token": "#aba551",
+        "rgb": [
+          171,
+          165,
+          81
+        ],
+        "proportion": 0.0469,
+        "css3_name": "darkkhaki",
+        "css3_hex": "#bdb76b"
+      },
+      {
+        "token": "#e4e39f",
+        "rgb": [
+          228,
+          227,
+          159
+        ],
+        "proportion": 0.0324,
+        "css3_name": "palegoldenrod",
+        "css3_hex": "#eee8aa"
+      },
+      {
+        "token": "#8f651d",
+        "rgb": [
+          143,
+          101,
+          29
+        ],
+        "proportion": 0.0197,
+        "css3_name": "sienna",
+        "css3_hex": "#a0522d"
+      },
+      {
+        "token": "#989137",
+        "rgb": [
+          152,
+          145,
+          55
+        ],
+        "proportion": 0.0145,
+        "css3_name": "olivedrab",
+        "css3_hex": "#6b8e23"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/bridge-atlas-episode-2-paradigms"
+  },
   "technical-schematic__bridge-atlas-episode-3-commons__00.png": {
     "slug": "bridge-atlas-episode-3-commons",
     "aesthetic_category": "technical-schematic",
@@ -8238,236 +8161,236 @@
     ],
     "source": "https://protocolized.summerofprotocols.com/p/bridge-atlas-episode-3-commons"
   },
-  "technical-schematic__irrigation-by-protocol-when-vineyards.png": {
-    "slug": "irrigation-by-protocol-when-vineyards",
+  "technical-schematic__generative-ai-in-cultural-projects__00.png": {
+    "slug": "generative-ai-in-cultural-projects",
     "aesthetic_category": "technical-schematic",
-    "order": "",
+    "order": "00",
     "width": 1024,
     "height": 1024,
-    "description": "An aerial agricultural landscape of fields and irrigation patterns rendered with a heavy embossed, ridged filter that turns it into raised relief-like texture. Green-toned and abstracted.",
+    "description": "Abstract generative composition of tangled wireframe loops and dotted mesh shapes with blue and lime circles on a cream ground.",
     "palette": [
       {
-        "token": "#5d6b54",
+        "token": "#e6e3d7",
         "rgb": [
-          93,
-          107,
-          84
+          230,
+          227,
+          215
         ],
-        "proportion": 0.4108,
-        "css3_name": "dimgray",
-        "css3_hex": "#696969"
+        "proportion": 0.7011,
+        "css3_name": "gainsboro",
+        "css3_hex": "#dcdcdc"
       },
       {
-        "token": "#9da696",
+        "token": "#a6a49b",
         "rgb": [
-          157,
           166,
-          150
+          164,
+          155
         ],
-        "proportion": 0.1687,
+        "proportion": 0.0778,
         "css3_name": "darkgray",
         "css3_hex": "#a9a9a9"
       },
       {
-        "token": "#192b18",
+        "token": "#67655c",
         "rgb": [
-          25,
-          43,
-          24
-        ],
-        "proportion": 0.1284,
-        "css3_name": "black",
-        "css3_hex": "#000000"
-      },
-      {
-        "token": "#728b65",
-        "rgb": [
-          114,
-          139,
-          101
-        ],
-        "proportion": 0.1148,
-        "css3_name": "gray",
-        "css3_hex": "#808080"
-      },
-      {
-        "token": "#4e612f",
-        "rgb": [
-          78,
-          97,
-          47
-        ],
-        "proportion": 0.0927,
-        "css3_name": "darkolivegreen",
-        "css3_hex": "#556b2f"
-      },
-      {
-        "token": "#334c26",
-        "rgb": [
-          51,
-          76,
-          38
-        ],
-        "proportion": 0.0847,
-        "css3_name": "darkslategray",
-        "css3_hex": "#2f4f4f"
-      }
-    ],
-    "source": "https://protocolized.summerofprotocols.com/p/irrigation-by-protocol-when-vineyards"
-  },
-  "technical-schematic__last-mile-optimism.png": {
-    "slug": "last-mile-optimism",
-    "aesthetic_category": "technical-schematic",
-    "order": "",
-    "width": 1024,
-    "height": 1024,
-    "description": "A grey abstract composition resembling two stylized rock faces or torso forms with faint contour-line landscape sketches, split by a central green glowing band and pink haze. Muted monochrome with neon accents and an ambiguous, eerie mood.",
-    "palette": [
-      {
-        "token": "#a1a0a0",
-        "rgb": [
-          161,
-          160,
-          160
-        ],
-        "proportion": 0.4677,
-        "css3_name": "darkgray",
-        "css3_hex": "#a9a9a9"
-      },
-      {
-        "token": "#656464",
-        "rgb": [
+          103,
           101,
-          100,
-          100
+          92
         ],
-        "proportion": 0.2197,
+        "proportion": 0.0606,
         "css3_name": "dimgray",
         "css3_hex": "#696969"
       },
       {
-        "token": "#0c0b0b",
+        "token": "#cfcdb4",
         "rgb": [
-          12,
-          11,
-          11
+          207,
+          205,
+          180
         ],
-        "proportion": 0.1837,
-        "css3_name": "black",
-        "css3_hex": "#000000"
+        "proportion": 0.0577,
+        "css3_name": "silver",
+        "css3_hex": "#c0c0c0"
       },
       {
-        "token": "#d2d1d1",
-        "rgb": [
-          210,
-          209,
-          209
-        ],
-        "proportion": 0.0622,
-        "css3_name": "lightgray",
-        "css3_hex": "#d3d3d3"
-      },
-      {
-        "token": "#cda8a6",
+        "token": "#cdd905",
         "rgb": [
           205,
-          168,
-          166
+          217,
+          5
         ],
-        "proportion": 0.0507,
-        "css3_name": "tan",
-        "css3_hex": "#d2b48c"
+        "proportion": 0.0549,
+        "css3_name": "gold",
+        "css3_hex": "#ffd700"
       },
       {
-        "token": "#90d16b",
+        "token": "#0255ce",
         "rgb": [
-          144,
-          209,
-          107
+          2,
+          85,
+          206
         ],
-        "proportion": 0.016,
-        "css3_name": "darkseagreen",
-        "css3_hex": "#8fbc8f"
+        "proportion": 0.0479,
+        "css3_name": "royalblue",
+        "css3_hex": "#4169e1"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/last-mile-optimism"
+    "source": "https://protocolized.summerofprotocols.com/p/generative-ai-in-cultural-projects"
   },
-  "technical-schematic__maintaining-everything-that-matters.png": {
-    "slug": "maintaining-everything-that-matters",
+  "technical-schematic__mechanical-currents__05.png": {
+    "slug": "mechanical-currents",
     "aesthetic_category": "technical-schematic",
-    "order": "",
-    "width": 1536,
-    "height": 1536,
-    "description": "Digitally distorted composition over an embossed gray texture, combining a navy drilling-tower outline, a grid of symbolic glyphs, and a bright cyan disc. Splattered magenta and pastel noise gives a glitched, map-like mood.",
+    "order": "05",
+    "width": 1000,
+    "height": 1000,
+    "description": "Cropped variant of stippled clouds over a wireframe stepped lattice structure on a pale blue background.",
     "palette": [
       {
-        "token": "#a5a2a5",
+        "token": "#b6d8ee",
         "rgb": [
-          165,
-          162,
-          165
+          182,
+          216,
+          238
         ],
-        "proportion": 0.7207,
+        "proportion": 0.8063,
+        "css3_name": "lightblue",
+        "css3_hex": "#add8e6"
+      },
+      {
+        "token": "#ecebe3",
+        "rgb": [
+          236,
+          235,
+          227
+        ],
+        "proportion": 0.0716,
+        "css3_name": "beige",
+        "css3_hex": "#f5f5dc"
+      },
+      {
+        "token": "#969f9f",
+        "rgb": [
+          150,
+          159,
+          159
+        ],
+        "proportion": 0.0447,
         "css3_name": "darkgray",
         "css3_hex": "#a9a9a9"
       },
       {
-        "token": "#05dadc",
+        "token": "#626864",
         "rgb": [
-          5,
-          218,
-          220
+          98,
+          104,
+          100
         ],
-        "proportion": 0.113,
-        "css3_name": "darkturquoise",
-        "css3_hex": "#00ced1"
+        "proportion": 0.0305,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
       },
       {
-        "token": "#5a6a92",
+        "token": "#0c4970",
         "rgb": [
-          90,
-          106,
-          146
+          12,
+          73,
+          112
         ],
-        "proportion": 0.0468,
-        "css3_name": "slategray",
-        "css3_hex": "#708090"
+        "proportion": 0.0251,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
       },
       {
-        "token": "#6da1a7",
+        "token": "#6d8e9c",
         "rgb": [
           109,
-          161,
-          167
+          142,
+          156
         ],
-        "proportion": 0.0462,
-        "css3_name": "cadetblue",
-        "css3_hex": "#5f9ea0"
-      },
-      {
-        "token": "#24588e",
-        "rgb": [
-          36,
-          88,
-          142
-        ],
-        "proportion": 0.0377,
-        "css3_name": "darkslateblue",
-        "css3_hex": "#483d8b"
-      },
-      {
-        "token": "#a49c6a",
-        "rgb": [
-          164,
-          156,
-          106
-        ],
-        "proportion": 0.0356,
-        "css3_name": "darkkhaki",
-        "css3_hex": "#bdb76b"
+        "proportion": 0.0218,
+        "css3_name": "lightslategray",
+        "css3_hex": "#778899"
       }
     ],
-    "source": "https://protocolized.summerofprotocols.com/p/maintaining-everything-that-matters"
+    "source": "https://protocolized.summerofprotocols.com/p/mechanical-currents"
+  },
+  "technical-schematic__protocols-for-the-long-now__06.png": {
+    "slug": "protocols-for-the-long-now",
+    "aesthetic_category": "technical-schematic",
+    "order": "06",
+    "width": 1100,
+    "height": 1100,
+    "description": "Vertical crop of the dark abstract piece: glowing blue arcs over a starfield sphere atop a red etched mandala form.",
+    "palette": [
+      {
+        "token": "#050003",
+        "rgb": [
+          5,
+          0,
+          3
+        ],
+        "proportion": 0.8128,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#5a0004",
+        "rgb": [
+          90,
+          0,
+          4
+        ],
+        "proportion": 0.0594,
+        "css3_name": "maroon",
+        "css3_hex": "#800000"
+      },
+      {
+        "token": "#0000ed",
+        "rgb": [
+          0,
+          0,
+          237
+        ],
+        "proportion": 0.0407,
+        "css3_name": "blue",
+        "css3_hex": "#0000ff"
+      },
+      {
+        "token": "#ea0000",
+        "rgb": [
+          234,
+          0,
+          0
+        ],
+        "proportion": 0.0331,
+        "css3_name": "red",
+        "css3_hex": "#ff0000"
+      },
+      {
+        "token": "#9c0002",
+        "rgb": [
+          156,
+          0,
+          2
+        ],
+        "proportion": 0.0299,
+        "css3_name": "darkred",
+        "css3_hex": "#8b0000"
+      },
+      {
+        "token": "#03005e",
+        "rgb": [
+          3,
+          0,
+          94
+        ],
+        "proportion": 0.0241,
+        "css3_name": "navy",
+        "css3_hex": "#000080"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/protocols-for-the-long-now"
   },
   "technical-schematic__sigp4b-update-4-drift-stacking__00.jpeg": {
     "slug": "sigp4b-update-4-drift-stacking",
@@ -8545,5 +8468,82 @@
       }
     ],
     "source": "https://protocolized.summerofprotocols.com/p/sigp4b-update-4-drift-stacking"
+  },
+  "technical-schematic__the-faithful-channel__05.png": {
+    "slug": "the-faithful-channel",
+    "aesthetic_category": "technical-schematic",
+    "order": "05",
+    "width": 1024,
+    "height": 1024,
+    "description": "Vertical abstract generative artwork of an ornate detailed organic form surrounded by branching dark green tendrils on a pale ground.",
+    "palette": [
+      {
+        "token": "#eee2ce",
+        "rgb": [
+          238,
+          226,
+          206
+        ],
+        "proportion": 0.5071,
+        "css3_name": "antiquewhite",
+        "css3_hex": "#faebd7"
+      },
+      {
+        "token": "#12252d",
+        "rgb": [
+          18,
+          37,
+          45
+        ],
+        "proportion": 0.3117,
+        "css3_name": "black",
+        "css3_hex": "#000000"
+      },
+      {
+        "token": "#5a5a57",
+        "rgb": [
+          90,
+          90,
+          87
+        ],
+        "proportion": 0.0664,
+        "css3_name": "dimgray",
+        "css3_hex": "#696969"
+      },
+      {
+        "token": "#27532e",
+        "rgb": [
+          39,
+          83,
+          46
+        ],
+        "proportion": 0.0627,
+        "css3_name": "darkslategray",
+        "css3_hex": "#2f4f4f"
+      },
+      {
+        "token": "#a6a09a",
+        "rgb": [
+          166,
+          160,
+          154
+        ],
+        "proportion": 0.0359,
+        "css3_name": "darkgray",
+        "css3_hex": "#a9a9a9"
+      },
+      {
+        "token": "#ceada5",
+        "rgb": [
+          206,
+          173,
+          165
+        ],
+        "proportion": 0.0162,
+        "css3_name": "tan",
+        "css3_hex": "#d2b48c"
+      }
+    ],
+    "source": "https://protocolized.summerofprotocols.com/p/the-faithful-channel"
   }
 }
