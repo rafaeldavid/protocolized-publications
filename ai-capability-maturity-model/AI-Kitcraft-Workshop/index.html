@@ -165,9 +165,14 @@ section.tight{ padding:60px 0; }
 .figure-cap{ font-family:var(--pi-sans); font-size:12.5px; color:var(--pi-text-secondary); margin-top:10px; line-height:1.5; }
 
 /* — Pull statement (centered) — */
-.pull{ font-family:var(--pi-serif); font-size:clamp(26px,3.4vw,40px); line-height:1.18; text-align:center;
-  color:var(--pi-text-heading); max-width:24ch; margin:0 auto; }
+.pull{ font-family:var(--pi-serif); font-size:clamp(26px,3.4vw,38px); line-height:1.22; text-align:center;
+  color:var(--pi-text-heading); max-width:880px; margin:0 auto; text-wrap:balance; }
 .pull .hl{ color:var(--pi-action-secondary); }
+
+/* Desktop-only line-break controls (mobile wraps naturally). */
+@media(min-width:761px){ .oneline{ white-space:nowrap; } }
+.dbr{ display:none; }
+@media(min-width:940px){ .dbr{ display:inline; } }
 
 /* — Tick lists — */
 ul.ticks{ list-style:none; margin:0; padding:0; }
@@ -309,17 +314,18 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
 <!-- ===== THESIS ===== -->
 <section id="thesis">
   <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">You are in the Kit phase</span>
+      <h2 class="oneline">The missing productivity is the signal</h2>
+    </div>
     <div class="split">
       <div>
-        <span class="eyebrow">You are in the Kit phase</span>
-        <h2>The missing productivity is the signal</h2>
         <p>Most teams "adopt AI" by buying new, mostly untested software, then wait for a productivity jump that never shows up in the numbers. That missing productivity is the signature of the stage we are actually in: the <strong>Kit phase</strong>.</p>
         <p>Every general-purpose technology passes through it — the steam engine, the Model&nbsp;T, the PC. Loose components people tinker with, repurpose, and master by doing, long before anyone builds the firm-scale machinery that turns tinkering into measured output. Farmers ran corn shellers off jacked-up Model&nbsp;Ts for years before Ford watched them and built the tractor.</p>
         <p>The work that matters happens in undocumented local experiments. The organizations that pull ahead recognize the stage they are in and build a map to climb out of it. <strong>AI Kitcraft is the hands-on answer.</strong></p>
       </div>
       <div>
         <img src="assets/kitphase.png" alt="Retro illustration — a technician working hands-on with equipment">
-        <p class="figure-cap">The work that matters happens at the workbench — in undocumented local experiments, long before any institution takes notice.</p>
       </div>
     </div>
   </div>
@@ -329,7 +335,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
 <section class="sec-surface sec-secondary tight">
   <div class="wrap">
     <p class="eyebrow" style="text-align:center;">Play · Kit · Practice</p>
-    <p class="pull">Every level is touched by hand. Participants <span class="hl">Play</span>, build a <span class="hl">Kit</span>, and prepare to turn it into a <span class="hl">Practice</span>.</p>
+    <p class="pull">Every level is touched by hand. Participants <span class="hl">Play</span>,<br class="dbr"> build a <span class="hl">Kit</span>, and prepare to turn it into a <span class="hl">Practice</span>.</p>
   </div>
 </section>
 
@@ -383,7 +389,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Format</span>
-      <h2>One presentation, four working sessions</h2>
+      <h2 class="oneline">Sessions cover theory and practice</h2>
       <p class="lead">Across the symposium's two workshop days, plus asynchronous co-working on Discord. Each session runs about 60 to 90 minutes.</p>
     </div>
     <div style="max-width:840px;margin:0 auto;">
@@ -430,10 +436,12 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
 <!-- ===== WHO IT'S FOR / PREREQS ===== -->
 <section id="who" class="sec-surface">
   <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Who it's for</span>
+      <h2 class="oneline">AI-curious, non-technical, ready to tinker</h2>
+    </div>
     <div class="split">
       <div>
-        <span class="eyebrow">Who it's for</span>
-        <h2>AI-curious, non-technical, ready to tinker</h2>
         <p>Analysts and managers from all backgrounds — project managers, operations and deployment leads, and AI-curious newcomers. No AI-engineering background is required, only regular chatbot use and a willingness to tinker.</p>
         <div class="divider-note">If oversubscribed, priority goes to applicants who arrive with a concrete recurring task and a working tooling setup.</div>
       </div>
@@ -455,7 +463,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Organizers</span>
-      <h2>Facilitated by the Protocols for Business SIG</h2>
+      <h2 class="oneline">Facilitated by the Protocols for Business SIG</h2>
     </div>
     <div class="grid g2">
       <div class="card org">
