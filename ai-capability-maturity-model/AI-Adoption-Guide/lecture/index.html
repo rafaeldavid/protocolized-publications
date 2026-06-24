@@ -194,6 +194,16 @@
 .reveal a.btn{ color:#fff; text-decoration:none; }
 .reveal a.btn--ghost{ color:var(--pi-action-primary); }
 .reveal a.btn--mint{ color:#0a1f17; }
+/* ghost button placed over an image: light border + text for legibility */
+.reveal a.btn--onimg{ background:rgba(255,255,255,.16); color:#fff; border-color:rgba(255,255,255,.65); }
+.reveal a.btn--onimg:hover{ background:rgba(255,255,255,.28); }
+
+/* — CTA feature image with the button(s) overlaid on it — */
+.cta-figure{ position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--pi-border-hairline); }
+.cta-figure > img{ width:100%; height:100%; object-fit:cover; display:block; }
+.cta-figure .scrim{ position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(8,16,22,.78) 0%, rgba(8,16,22,.34) 40%, rgba(8,16,22,.04) 72%); }
+.cta-figure .cta-on{ position:absolute; left:18px; right:18px; bottom:18px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
 
 /* — Phase cards — */
 .phase h3{ font-size:1.02em; margin:.4em 0 .3em; }
@@ -467,35 +477,47 @@
 
 <!-- 13 — Diagnose / CTA -->
 <section>
-  <div class="title-wrap">
-    <span class="eyebrow">Where is your organization?</span>
-    <h2 style="font-size:2.1em;">Place yourself, plan the next level up</h2>
-    <p class="lead" style="max-width:24em;">A two-minute web assessment returns your placement across the five levels, the patterns that fit it, and a recommended next move — on both tracks.</p>
-    <div style="display:flex; gap:14px; align-items:center; margin-top:1.1em; flex-wrap:wrap;">
-      <a class="btn" href="https://protocolized.dev/assessment/" target="_blank" rel="noopener">Take the 2-minute assessment →</a>
-      <a class="btn btn--ghost" href="https://ai.protocolized.dev/" target="_blank" rel="noopener">Read the full guide</a>
+  <div class="grid grid-2" style="align-items:center; gap:44px;">
+    <div class="title-wrap">
+      <span class="eyebrow">Where is your organization?</span>
+      <h2 style="font-size:2.0em;">Place yourself, plan the next level up</h2>
+      <p class="lead" style="max-width:26em;">A two-minute web assessment returns your placement across the five levels, the patterns that fit it, and a recommended next move — on both tracks.</p>
+      <p class="meta" style="margin-top:1.4em;">The Protocol Institute · Protocols for Business SIG &nbsp;·&nbsp; team@protocol-institute.org</p>
     </div>
-    <p class="meta" style="margin-top:1.6em;">The Protocol Institute · Protocols for Business SIG &nbsp;·&nbsp; team@protocol-institute.org</p>
+    <div class="cta-figure" style="height:402px;">
+      <img src="assets/diagnose-bridge.png" alt="">
+      <div class="scrim"></div>
+      <div class="cta-on">
+        <a class="btn" href="https://protocolized.dev/assessment/" target="_blank" rel="noopener">Take the 2-minute assessment →</a>
+        <a class="btn btn--onimg" href="https://ai.protocolized.dev/" target="_blank" rel="noopener">Read the full guide</a>
+      </div>
+    </div>
   </div>
   <div class="foot"><span>Durable AI Adoption</span><span>Chapter 6</span></div>
 </section>
 
 <!-- 14 — Workshop announcement -->
 <section data-background-color="#0a1f17">
-  <div class="title-wrap" style="color:#fff;">
-    <span class="eyebrow" style="color:#bff0dd;">Go further · 2026 Protocol Symposium · New Nature</span>
-    <h2 style="color:#fff; font-size:2.4em;">Build your first Kit with us</h2>
-    <p class="tagline" style="font-family:var(--pi-font-serif); font-style:italic; color:#bff0dd; font-size:1.15em; margin:.1em 0 .7em;">AI Kitcraft — a hands-on AI tooling workshop.</p>
-    <p class="lead" style="color:rgba(255,255,255,.9); max-width:24em;">Move from ad-hoc AI use to a reusable <strong style="color:#fff;">Kit</strong> your team can re-run, then map a path to scale it. Climb both tracks — Play, Kit, Practice — by hand.</p>
-    <div style="display:flex; gap:10px; align-items:center; margin-top:1.1em; flex-wrap:wrap;">
-      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">Online · two workshop days</span>
-      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">1 talk + 4 working sessions</span>
-      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">10–15 seats</span>
+  <div class="grid grid-2" style="align-items:center; gap:40px;">
+    <div class="title-wrap" style="color:#fff;">
+      <span class="eyebrow" style="color:#bff0dd;">Go further · 2026 Protocol Symposium · New Nature</span>
+      <h2 style="color:#fff; font-size:2.0em;">Build your first Kit with us</h2>
+      <p class="tagline" style="font-family:var(--pi-font-serif); font-style:italic; color:#bff0dd; font-size:1.1em; margin:.1em 0 .6em;">AI Kitcraft — a hands-on AI tooling workshop.</p>
+      <p class="lead" style="color:rgba(255,255,255,.9); max-width:26em;">Move from ad-hoc AI use to a reusable <strong style="color:#fff;">Kit</strong> your team can re-run, then map a path to scale it. Climb both tracks — Play, Kit, Practice — by hand.</p>
+      <div style="display:flex; gap:8px; align-items:center; margin-top:1em; flex-wrap:wrap;">
+        <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">Online · two workshop days</span>
+        <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">1 talk + 4 working sessions</span>
+        <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">10–15 seats</span>
+      </div>
+      <p class="meta" style="margin-top:1.1em; color:rgba(255,255,255,.75);">Sep 21–25, 2026 · Protocols for Business SIG</p>
     </div>
-    <div style="margin-top:1.3em;">
-      <a class="btn btn--mint" href="https://ai.protocolized.dev/kitcraft/" target="_blank" rel="noopener">Express interest in AI Kitcraft →</a>
+    <div class="cta-figure" style="height:430px; border-color:rgba(255,255,255,.18);">
+      <img src="assets/kitcraft-hero.png" alt="">
+      <div class="scrim"></div>
+      <div class="cta-on">
+        <a class="btn btn--mint" href="https://ai.protocolized.dev/kitcraft/" target="_blank" rel="noopener">Express interest in AI Kitcraft →</a>
+      </div>
     </div>
-    <p class="meta" style="margin-top:1.3em; color:rgba(255,255,255,.75);">Sep 21–25, 2026 · Protocols for Business SIG</p>
   </div>
 </section>
 
