@@ -205,6 +205,29 @@
   background:linear-gradient(to top, rgba(8,16,22,.78) 0%, rgba(8,16,22,.34) 40%, rgba(8,16,22,.04) 72%); }
 .cta-figure .cta-on{ position:absolute; left:18px; right:18px; bottom:18px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
 
+/* — Govern outputs vs access: an explicit bad/good contrast — */
+.gv{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:.45em; align-items:stretch; }
+.gvc{ border-radius:10px; padding:18px 22px; border:1px solid var(--pi-border-hairline); display:flex; flex-direction:column; }
+.gvc.bad{ background:var(--pi-accent-tint); border-color:#f0d6cb; }
+.gvc.good{ background:var(--pi-action-primary-tint); border:2px solid var(--pi-action-primary); }
+.gv-head{ display:flex; align-items:center; gap:12px; margin-bottom:.5em; }
+.gv-kicker{ font-family:var(--pi-font-sans); font-size:.44em; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+.gvc.bad .gv-kicker{ color:var(--pi-accent-deep); }
+.gvc.good .gv-kicker{ color:var(--pi-action-primary-pressed); }
+.gvc h3{ font-size:1.08em; margin:0 0 .2em; }
+.gvc > p{ font-size:.7em; color:var(--pi-text-secondary); margin:0; line-height:1.45; }
+.gv-result{ margin-top:auto; padding-top:.7em; font-family:var(--pi-font-body); font-size:.72em; line-height:1.4; }
+.gv-result.bad{ color:var(--pi-accent-deep); }
+.gv-result.good{ color:var(--pi-action-primary-pressed); font-weight:700; }
+/* traffic-light + no-entry motifs (CSS-drawn, no emoji) */
+.tl{ display:inline-flex; flex-direction:column; gap:3px; background:#2c2c2a; padding:4px; border-radius:5px; flex:none; }
+.tl i{ width:9px; height:9px; border-radius:50%; display:block; }
+.tl i:nth-child(1){ background:#e5544a; }
+.tl i:nth-child(2){ background:#f0b429; }
+.tl i:nth-child(3){ background:#2bb673; }
+.noentry{ width:27px; height:27px; border-radius:50%; background:var(--pi-accent); position:relative; flex:none; }
+.noentry::after{ content:""; position:absolute; left:5px; right:5px; top:11.5px; height:4px; background:#fff; border-radius:2px; }
+
 /* — Phase cards — */
 .phase h3{ font-size:1.02em; margin:.4em 0 .3em; }
 .phase p{ font-size:.64em; color:var(--pi-text-secondary); line-height:1.42; margin:0; }
@@ -346,16 +369,26 @@
   <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
 </section>
 
-<!-- 5 — Governance enables cultivation -->
+<!-- 6 — Governance: govern outputs, not access (contrast) -->
 <section>
   <span class="eyebrow">A different kind of governance</span>
-  <h2>Govern the outputs, so people can explore</h2>
-  <p style="max-width:30em;">Shift from governing what people may <em>do</em> with AI to governing what its outputs must do where they become consequential — verified, escalated, and owned at the handoff.</p>
-  <div class="grid grid-2" style="margin-top:.5em; align-items:stretch;">
-    <div class="card"><h3 style="font-size:1.05em;">A traffic light is a protocol</h3><p style="font-size:.78em; color:var(--pi-text-secondary); margin:.3em 0 0;">It governs coordination at the crossing and keeps the system moving.</p></div>
-    <div class="card"><h3 style="font-size:1.05em;">A blockade is not</h3><p style="font-size:.78em; color:var(--pi-text-secondary); margin:.3em 0 0;">It restricts activity at the access point. Both are rules; only one keeps traffic flowing.</p></div>
+  <h2 style="font-size:2em;">Govern the outputs, not the access</h2>
+  <p class="lead" style="max-width:34em; margin:0;">Two ways to govern AI — only one keeps people moving.</p>
+  <div class="gv">
+    <div class="gvc bad">
+      <div class="gv-head"><span class="noentry"></span><span class="gv-kicker">Govern access · the blockade</span></div>
+      <h3>Restrict what people may do</h3>
+      <p>Ban tools and gate access at the door, before anyone acts.</p>
+      <div class="gv-result bad">Stops the flow — people route around it, and the failures happen anyway.</div>
+    </div>
+    <div class="gvc good">
+      <div class="gv-head"><span class="tl"><i></i><i></i><i></i></span><span class="gv-kicker">Govern outputs · the traffic light</span></div>
+      <h3>Verify outputs at the handoff</h3>
+      <p>Check, escalate, and own each output where it becomes consequential.</p>
+      <div class="gv-result good">Keeps the system moving — and frees people to keep exploring.</div>
+    </div>
   </div>
-  <p style="max-width:30em; margin-top:.55em;">Good protocols produce <strong>non-events</strong> — the leak that did not happen, the brief not filed unverified — and free the cultivated track to keep finding what works.</p>
+  <p style="font-size:.72em; color:var(--pi-text-secondary); margin-top:.85em; max-width:44em;">Good protocols produce <strong style="color:var(--pi-text-heading)">non-events</strong> — the leak that did not happen, the brief not filed unverified. Maturity measures that precision.</p>
   <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
 </section>
 
