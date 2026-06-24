@@ -3,8 +3,7 @@
 ## What this is
 A single-page **registration / express-interest landing page** for the **AI Kitcraft** hands-on workshop at the **2026 Protocol Symposium** (*New Nature*, online, **Sep 21–25 2026**). Self-contained `index.html` + `assets/` + `announcement.md` (reusable blurbs). Facilitated by the Protocols for Business SIG; organizers Rafael Fernández & Sachin Benny.
 
-- **Live:** https://bold-steeple-73wb.here.now/
-- **Intended custom mount:** `ai.protocolized.dev/kitcraft` — NOT configured yet (returns 404). Path-based custom-domain mounting is a here.now dashboard step the user does.
+- **Live (custom domain):** https://ai.protocolized.dev/kitcraft/ — also at `https://bold-steeple-73wb.here.now/`. The mount is a here.now **link**: `POST https://here.now/api/v1/links` `{"location":"kitcraft","slug":"bold-steeple-73wb","domain":"ai.protocolized.dev"}`. Re-publishing to the slug updates the path automatically.
 - Symposium registration opens **July 2026**; until then the page is pre-registration (express interest), so the CTA captures interest rather than "register".
 
 ## Deploy
@@ -35,5 +34,5 @@ python3 -m http.server 8766
 Check hero text legibility over the collage (a left-anchored dark gradient keeps it readable), the nav "Register Now" button, responsive single-column on mobile, and that the form's worker endpoint + honeypot are intact.
 
 ## Open threads
-- Custom-domain mount (`ai.protocolized.dev/kitcraft`) pending the user's here.now dashboard config; once live, update `announcement.md` and any external links to the clean URL.
+- Custom-domain mount (`ai.protocolized.dev/kitcraft`) is LIVE; `announcement.md` and the deck's slide-14 button use the clean URL. The form works there (origin allow-listed).
 - No keynote/facilitator confirmations beyond the two organizers.

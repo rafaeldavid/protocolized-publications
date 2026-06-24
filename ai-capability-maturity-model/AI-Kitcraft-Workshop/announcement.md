@@ -2,19 +2,19 @@
 
 Reusable blurbs for the **AI Kitcraft** workshop at the 2026 Protocol Symposium (*New Nature*, Sep 21–25, online). Paste as needed.
 
-**Live page:** https://bold-steeple-73wb.here.now/ — swap to the custom domain (e.g. `ai.protocolized.dev/kitcraft`) once it's mapped in the here.now dashboard. `LINK` below points to the live here.now URL.
+**Live page:** https://ai.protocolized.dev/kitcraft/ (custom-domain mount; also reachable at `bold-steeple-73wb.here.now`).
 
 ---
 
 ## One-liner
 
-AI Kitcraft: a hands-on workshop where AI-curious analysts and managers build their first reusable **Kit** — then map a path to scale it. 2026 Protocol Symposium, New Nature. → https://bold-steeple-73wb.here.now/
+AI Kitcraft: a hands-on workshop where AI-curious analysts and managers build their first reusable **Kit** — then map a path to scale it. 2026 Protocol Symposium, New Nature. → https://ai.protocolized.dev/kitcraft/
 
 ---
 
 ## Short (social / one paragraph)
 
-Most teams "adopt AI" by buying software and waiting for a productivity jump that never shows up. That missing productivity is the signature of the stage we're actually in: the **Kit phase** — the tinkerer-driven stage every general-purpose technology passes through before firm-scale machinery turns play into output. **AI Kitcraft** is the hands-on answer. Across two workshop days at the 2026 Protocol Symposium, you'll move from ad-hoc AI use to building a reusable Kit your team can re-run, and leave with a working grasp of the five-level AI Capability Maturity Model. No AI-engineering background required. Seats are limited to 10–15. → https://bold-steeple-73wb.here.now/
+Most teams "adopt AI" by buying software and waiting for a productivity jump that never shows up. That missing productivity is the signature of the stage we're actually in: the **Kit phase** — the tinkerer-driven stage every general-purpose technology passes through before firm-scale machinery turns play into output. **AI Kitcraft** is the hands-on answer. Across two workshop days at the 2026 Protocol Symposium, you'll move from ad-hoc AI use to building a reusable Kit your team can re-run, and leave with a working grasp of the five-level AI Capability Maturity Model. No AI-engineering background required. Seats are limited to 10–15. → https://ai.protocolized.dev/kitcraft/
 
 ---
 
@@ -35,7 +35,7 @@ You leave with **at least one working Kit** and a working grasp of the **five-le
 **Bring:** Claude Code (Pro+) or Codex installed, a GitHub account, and one recurring task to build around.
 **When:** 2026 Protocol Symposium · New Nature · Sep 21–25 · online. Seats limited to 10–15.
 
-Facilitated by the Protocols for Business SIG (Protocol Institute). Express interest → https://bold-steeple-73wb.here.now/
+Facilitated by the Protocols for Business SIG (Protocol Institute). Express interest → https://ai.protocolized.dev/kitcraft/
 
 ---
 
@@ -57,7 +57,7 @@ It's built for AI-curious, non-technical analysts and managers. No AI-engineerin
 
 Seats are limited to 10–15. Symposium registration opens in July; express your interest now and we'll be in touch with the details:
 
-→ https://bold-steeple-73wb.here.now/
+→ https://ai.protocolized.dev/kitcraft/
 
 Facilitated by the Protocols for Business SIG, the Protocol Institute.
 

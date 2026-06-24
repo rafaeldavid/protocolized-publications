@@ -3,8 +3,8 @@
 ## What this is
 A standalone **reveal.js** lecture deck, *Durable AI Adoption* — a ~20–30 min talk (15 slides) derived from the AI Adoption Guide. Single self-contained `index.html` + `assets/`. It is a **separate artifact** from the live guide deck (`../html/slides.html`, slug `plush-muse-q9bz`, ai.protocolized.dev) — do not touch that one when editing this.
 
-- **Live:** https://deep-harbor-qm8w.here.now/
-- **Intended custom mount:** `ai.protocolized.dev/townhallslidesjune2026` — NOT configured yet (returns 404). Path-based custom-domain mounting is a here.now dashboard step the user does; it cannot be done from the CLI.
+- **Live (custom domain):** https://ai.protocolized.dev/townhallslidesjune2026/ — also at `https://deep-harbor-qm8w.here.now/`.
+- The custom mount is a here.now **link** (slug → path on a custom domain): `POST https://here.now/api/v1/links` with `{"location":"townhallslidesjune2026","slug":"deep-harbor-qm8w","domain":"ai.protocolized.dev"}` and the account API key. The domain `ai.protocolized.dev` is active on the account (root serves the guide, slug `plush-muse-q9bz`). Re-publishing to the slug updates what the path serves automatically — no need to re-create the link.
 
 ## Deploy
 ```bash
@@ -41,6 +41,5 @@ Walk each slide; check for overlap with the wordmark/footer, content overflow, a
 `assets/` holds the favicon, per-level ladder thumbnails (`lvl1-play`…`lvl5-fluency`, sourced from `../html/images/`), the title hero (`primordial-soup.webp`), and the divider balance image (`duality-balance.png`, brand kit `retro-vintage__sop-2025-accelerating-order`). ~2MB total; convert PNGs→WebP if leaner is needed. Remove an asset from `assets/` only after confirming `index.html` no longer references it.
 
 ## Open threads
-- Custom-domain mount (`ai.protocolized.dev/townhallslidesjune2026`) pending the user's here.now dashboard config.
-- Slide 14's Kitcraft button currently points to the working here.now URL (`https://bold-steeple-73wb.here.now/`); swap to `ai.protocolized.dev/kitcraft` once that mount is live.
+- Both custom mounts are LIVE (`ai.protocolized.dev/townhallslidesjune2026` and `.../kitcraft`); slide 14's Kitcraft button points to `https://ai.protocolized.dev/kitcraft/`. Assessment button → `https://protocolized.dev/assessment/` (there is no `ai.protocolized.dev/assessment`).
 - Possible reorder: the timeline (4) and the two-tracks thesis (5) are adjacent and slightly overlap — could merge/reorder if desired.
