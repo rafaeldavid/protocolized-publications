@@ -15,7 +15,7 @@
   /* — Primitives (do not reference directly in product code) — */
   --pi--cobalt-600:#004fcc; --pi--cobalt-500:#0064ff; --pi--cobalt-050:#e6efff;
   --pi--forest-700:#085041; --pi--forest-600:#0f6e56; --pi--forest-050:#e1f5ee;
-  --pi--rust-500:#d85a30;   --pi--rust-050:#faece7;
+  --pi--rust-700:#9e3d18;   --pi--rust-500:#d85a30;   --pi--rust-050:#faece7;
   --pi--paper:#f9f8f5; --pi--white:#ffffff; --pi--gray-100:#f3f4f6; --pi--gray-200:#e5e7eb;
   --pi--ink-900:#2c2c2a; --pi--ink-600:#5f5e5a;
 
@@ -26,7 +26,8 @@
   --pi-action-secondary:        var(--pi--forest-600); /* live-site CTA / tagline / framework badge */
   --pi-action-secondary-deep:   var(--pi--forest-700);
   --pi-action-secondary-tint:   var(--pi--forest-050);
-  --pi-accent:      var(--pi--rust-500);   /* 'Featured' + rare emphasis only */
+  --pi-accent:      var(--pi--rust-500);   /* 'Featured' fill + rare emphasis only */
+  --pi-accent-deep: var(--pi--rust-700);   /* accent as TEXT on accent-tint (AA-safe) */
   --pi-accent-tint: var(--pi--rust-050);
   --pi-background-canvas:  var(--pi--paper);
   --pi-background-surface: var(--pi--white);
@@ -68,7 +69,7 @@
 /* — Badges / chips (radius-pill) — */
 .pi-badge{font-family:var(--pi-font-sans);font-size:12px;font-weight:500;padding:2px 10px;border-radius:var(--pi-radius-pill);display:inline-block;}
 .pi-badge--framework{background:var(--pi-action-secondary-tint);color:var(--pi-action-secondary-deep);}
-.pi-badge--featured{background:var(--pi-accent-tint);color:var(--pi-accent);}
+.pi-badge--featured{background:var(--pi-accent-tint);color:var(--pi-accent-deep);}
 .pi-chip{font-family:var(--pi-font-sans);font-size:14px;padding:6px 12px;border-radius:var(--pi-radius-pill);background:var(--pi-background-muted);color:var(--pi-text-secondary);display:inline-block;}
 
 /* — Card — */

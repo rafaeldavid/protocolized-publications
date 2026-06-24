@@ -34,6 +34,7 @@
       "forest-700": "#085041",
       "forest-600": "#0f6e56",
       "forest-050": "#e1f5ee",
+      "rust-700": "#9e3d18",
       "rust-500": "#d85a30",
       "rust-050": "#faece7",
       "paper": "#f9f8f5",
@@ -50,7 +51,8 @@
       "action-secondary":      { "value": "#0f6e56", "ref": "forest-600", "usage": "What protocolized.io renders today for CTAs, the italic tagline, secondary CTA border, Framework badge, focus ring. Use to match the live site." },
       "action-secondary-deep": { "value": "#085041", "ref": "forest-700", "usage": "Text on the Framework badge tint." },
       "action-secondary-tint": { "value": "#e1f5ee", "ref": "forest-050", "usage": "Framework badge background; soft mint fill." },
-      "accent":                { "value": "#d85a30", "ref": "rust-500",  "usage": "Reserved emphasis: the 'Featured' badge and very limited inline accents only." },
+      "accent":                { "value": "#d85a30", "ref": "rust-500",  "usage": "Reserved emphasis fill/glyph: the 'Featured' badge background-adjacent accent and very limited inline accents. As TEXT, only on white/paper at large sizes — see accent-deep for small text on accent-tint." },
+      "accent-deep":           { "value": "#9e3d18", "ref": "rust-700",  "usage": "Accent as TEXT where small/normal-size: the 'Featured' badge label on accent-tint. Meets WCAG AA (4.5:1) where bare accent (#d85a30) does not (3.36:1)." },
       "accent-tint":           { "value": "#faece7", "ref": "rust-050",  "usage": "Featured badge background." },
       "background-canvas":     { "value": "#f9f8f5", "ref": "paper",     "usage": "Page background — warm paper." },
       "background-surface":    { "value": "#ffffff", "ref": "white",     "usage": "Cards, section bands, top nav, footer." },
@@ -62,7 +64,31 @@
       "on-action":             { "value": "#ffffff", "ref": "white",     "usage": "Text on action-primary / action-secondary / accent fills." }
     },
     "note": "The brand-kit PRIMARY is electric cobalt (#0064ff), aspirational and sourced from the Substack surface. The live protocolized.io still serves forest green (#0f6e56) as action-secondary. Use cobalt for new artifacts; use green to match the current production site.",
-    "accessibility": "on-action white meets WCAG AA on action-primary, action-secondary, and accent fills. text-secondary on background-canvas meets AA for body sizes. Do not place text-secondary on action fills."
+    "accessibility": {
+      "note": "Verified by scripts/contrast-check.mjs (WCAG 2.1). White on-action meets AA for normal text on action-primary, action-primary-pressed, and action-secondary. White on accent (#d85a30) is 3.87:1 — large-text / non-text ONLY, never small body text. The 'Featured' badge label uses accent-deep (#9e3d18), not bare accent, to meet AA on accent-tint (bare accent is 3.36:1). Cobalt link on paper is 4.63:1 — passes AA with little headroom; avoid sub-16px cobalt links on paper. Do not place text-secondary on action fills.",
+      "thresholds": { "text": 4.5, "large": 3.0, "ui": 3.0, "_unit": "WCAG 2.1 minimum contrast ratio; text=normal (<24px / <18.66px bold), large=larger, ui=graphical/border (1.4.11)" },
+      "test": "node scripts/contrast-check.mjs",
+      "pairings": [
+        { "fg": "text-body",            "bg": "background-canvas",     "kind": "text",  "label": "Body text on paper" },
+        { "fg": "text-body",            "bg": "background-surface",    "kind": "text",  "label": "Body text on white" },
+        { "fg": "text-body",            "bg": "background-muted",      "kind": "text",  "label": "Body text on muted" },
+        { "fg": "text-secondary",       "bg": "background-canvas",     "kind": "text",  "label": "Secondary text on paper" },
+        { "fg": "text-secondary",       "bg": "background-surface",    "kind": "text",  "label": "Secondary text on white" },
+        { "fg": "text-secondary",       "bg": "background-muted",      "kind": "text",  "label": "Secondary text on muted" },
+        { "fg": "action-primary",       "bg": "background-canvas",     "kind": "text",  "label": "Cobalt link on paper" },
+        { "fg": "action-primary",       "bg": "background-surface",    "kind": "text",  "label": "Cobalt link on white" },
+        { "fg": "action-secondary",     "bg": "background-canvas",     "kind": "text",  "label": "Green link on paper" },
+        { "fg": "action-secondary",     "bg": "background-surface",    "kind": "text",  "label": "Green link on white" },
+        { "fg": "on-action",            "bg": "action-primary",        "kind": "text",  "label": "White on cobalt button" },
+        { "fg": "on-action",            "bg": "action-primary-pressed","kind": "text",  "label": "White on cobalt (pressed)" },
+        { "fg": "on-action",            "bg": "action-secondary",      "kind": "text",  "label": "White on green button" },
+        { "fg": "on-action",            "bg": "accent",                "kind": "large", "label": "White on rust (large / UI only)" },
+        { "fg": "action-secondary-deep","bg": "action-secondary-tint", "kind": "text",  "label": "Framework badge text" },
+        { "fg": "accent-deep",          "bg": "accent-tint",           "kind": "text",  "label": "Featured badge text" },
+        { "fg": "action-primary-pressed","bg": "action-primary-tint",  "kind": "text",  "label": "Secondary-button hover text" },
+        { "fg": "border-hairline",      "bg": "background-surface",    "kind": "ui",    "label": "Hairline border on white", "note": "decorative" }
+      ]
+    }
   },
   "typography": {
     "load": "REQUIRED: link brand.css (it @imports Instrument Serif, Lora, Outfit) or add the Google Fonts <link>. Declaring the stacks without loading the webfonts yields system fallbacks. Headings must render in Instrument Serif at weight 400 — verify after applying.",
@@ -100,7 +126,7 @@
     "button-secondary": { "bg": "transparent", "text": "action-primary", "border": "1px solid action-primary", "type": "button", "radius": "md", "padding": "12px 24px" },
     "button-link":      { "bg": "transparent", "text": "action-primary", "type": "nav-link", "suffix": "→" },
     "badge-framework":  { "bg": "action-secondary-tint", "text": "action-secondary-deep", "type": "caption", "radius": "pill", "padding": "2px 10px" },
-    "badge-featured":   { "bg": "accent-tint", "text": "accent", "type": "caption", "radius": "pill", "padding": "2px 10px" },
+    "badge-featured":   { "bg": "accent-tint", "text": "accent-deep", "type": "caption", "radius": "pill", "padding": "2px 10px" },
     "tag-chip":         { "bg": "background-muted", "text": "text-secondary", "type": "nav-link", "radius": "pill", "padding": "6px 12px" },
     "card":             { "bg": "background-surface", "border": "1px solid border-hairline", "radius": "md", "padding": "20px", "shadow": "none; card-hover on hover" },
     "swatch":           { "derived": "A color specimen: filled rounded-md chip + decision token name (mono) + hex, click-to-copy the token name. Derive from radius.md + border-hairline + text-secondary caption." },

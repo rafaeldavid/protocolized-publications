@@ -37,8 +37,16 @@ It governs two veins that share ONE token system:
 Note: cobalt `#0064ff` is the aspirational brand primary; the live protocolized.io still serves
 forest green `#0f6e56`. Use cobalt for new artifacts, green to match the production site.
 
+## Accessibility (contrast is tested, not assumed)
+Run `node scripts/contrast-check.mjs` (no deps) to verify every token pairing against
+WCAG 2.1. The required pairings are the contract in `brand.json → color.accessibility.pairings`;
+add new combinations there, then re-run. Known constraints the test enforces: white on
+**accent** (#d85a30) is large-text/non-text ONLY (3.87:1); accent-as-text on accent-tint
+uses **accent-deep** (#9e3d18), never bare accent. Exit code is non-zero on any failure.
+
 ## Files
-- `brand.json` — tokens (primitives + decisions), typography scale, components, veins, imagery, voice.
+- `brand.json` — tokens (primitives + decisions), typography scale, components, veins, imagery, voice. `color.accessibility.pairings` is the contrast contract.
+- `scripts/contrast-check.mjs` — WCAG contrast/readability test (`cd scripts && npm test`).
 - `brand.css` — `--pi-*` CSS variables + closed component classes (`.pi-btn`, `.pi-badge`, `.pi-card`, …).
 - `apply-protocol-institute-brand.md` — step-by-step instructions for applying the brand.
 - `DESIGN-protocolized.md` — full sampled spec (source of truth, prose).

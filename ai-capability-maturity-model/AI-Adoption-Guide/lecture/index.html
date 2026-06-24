@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durable AI Adoption — Lecture</title>
+<meta name="description" content="A lecture on durable AI adoption: two parallel tracks, five maturity levels, and the playbook that turns a workforce's discoveries into durable capability. The Protocol Institute.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- Brand typefaces: serif display (Instrument Serif), body (Lora), UI (Outfit) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+<style>
+/* ============================================================================
+   Protocol Institute — Institute vein (cobalt). Decision tokens only.
+   ============================================================================ */
+:root{
+  --pi-action-primary:#0064ff; --pi-action-primary-pressed:#004fcc; --pi-action-primary-tint:#e6efff;
+  --pi-action-secondary:#0f6e56; --pi-action-secondary-deep:#085041; --pi-action-secondary-tint:#e1f5ee;
+  --pi-accent:#d85a30; --pi-accent-deep:#9e3d18; --pi-accent-tint:#faece7;
+  --pi-background-canvas:#f9f8f5; --pi-background-surface:#ffffff; --pi-background-muted:#f3f4f6;
+  --pi-border-hairline:#e5e7eb;
+  --pi-text-heading:#2c2c2a; --pi-text-body:#2c2c2a; --pi-text-secondary:#5f5e5a;
+  --pi-on-action:#ffffff;
+  --pi-font-serif:"Instrument Serif",Georgia,serif;
+  --pi-font-body:"Lora",Georgia,serif;
+  --pi-font-sans:"Outfit",system-ui,sans-serif;
+}
+
+/* — Reveal surface — */
+.reveal{ font-family:var(--pi-font-body); font-size:26px; color:var(--pi-text-body); font-weight:400; }
+.reveal-viewport{ background:var(--pi-background-canvas); }
+.reveal .slides{ text-align:left; }
+/* reveal center:true does the vertical centering. Side padding only; the
+   wordmark (top) and footer (bottom) are fixed chrome OUTSIDE the slides. */
+.reveal .slides section{ padding:0 6px; }
+
+/* — Headings: serif, weight 400, never bold — */
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{
+  font-family:var(--pi-font-serif); font-weight:400; color:var(--pi-text-heading);
+  text-transform:none; letter-spacing:-.01em; margin:0 0 .35em; line-height:1.08;
+}
+.reveal h1{ font-size:2.5em; }
+.reveal h2{ font-size:1.7em; line-height:1.12; }
+.reveal h3{ font-size:1.2em; }
+.reveal p{ line-height:1.5; margin:0 0 .6em; }
+.reveal strong{ font-weight:700; color:var(--pi-text-heading); }
+.reveal em{ font-style:italic; }
+.reveal a{ color:var(--pi-action-primary); text-decoration:none; }
+
+/* — UI labels / eyebrows / meta — */
+.eyebrow{ font-family:var(--pi-font-sans); font-size:.5em; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pi-action-primary); margin:0 0 .9em; display:block; }
+.meta{ font-family:var(--pi-font-sans); font-size:.5em; color:var(--pi-text-secondary); letter-spacing:.02em; }
+.lead{ font-family:var(--pi-font-body); font-size:1.06em; color:var(--pi-text-secondary); line-height:1.55; }
+
+/* — Wordmark, anchored top-left — */
+.pi-wordmark{ position:fixed; top:26px; left:34px; z-index:40;
+  font-family:var(--pi-font-serif); font-size:19px; color:var(--pi-text-heading);
+  display:flex; align-items:center; gap:9px; pointer-events:none; }
+.pi-wordmark .mark{ width:17px; height:17px; border-radius:4px; background:var(--pi-action-primary); display:inline-block; }
+.pi-wordmark .vein{ font-family:var(--pi-font-sans); font-size:11px; font-weight:600; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--pi-text-secondary); }
+.pi-wordmark.on-dark{ color:#fff; }
+.pi-wordmark.on-dark .mark{ background:#bff0dd; }
+.pi-wordmark.on-dark .vein{ color:rgba(255,255,255,.72); }
+
+/* — Cards / grids — */
+.card{ background:var(--pi-background-surface); border:1px solid var(--pi-border-hairline);
+  border-radius:8px; padding:20px 22px; }
+.grid{ display:grid; gap:18px; }
+.grid-2{ grid-template-columns:1fr 1fr; }
+.grid-3{ grid-template-columns:1fr 1fr 1fr; }
+.chip{ font-family:var(--pi-font-sans); font-size:.5em; padding:5px 13px; border-radius:9999px;
+  background:var(--pi-background-muted); color:var(--pi-text-secondary); display:inline-block; }
+.badge{ font-family:var(--pi-font-sans); font-size:.44em; font-weight:600; letter-spacing:.05em;
+  padding:3px 11px; border-radius:9999px; display:inline-block;
+  background:var(--pi-action-primary-tint); color:var(--pi-action-primary-pressed); text-transform:uppercase; }
+
+/* — Highlight card (positive pull) — */
+.pull-card{ background:var(--pi-action-primary-tint); border:1px solid #cfe0ff; border-radius:10px; padding:22px 24px; }
+.pull-card .lead{ color:var(--pi-action-primary-pressed); }
+
+/* — Definition pair (deployment vs adoption) — */
+.defs{ display:flex; flex-direction:column; gap:14px; }
+.def{ border-left:3px solid var(--pi-border-hairline); padding:2px 0 2px 16px; font-size:.86em; line-height:1.45;
+  color:var(--pi-text-secondary); }
+.def .dl{ display:block; font-family:var(--pi-font-sans); font-size:.66em; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--pi-action-primary); margin-bottom:3px; }
+.def--strong{ border-left-color:var(--pi-action-primary); }
+
+/* — Two-track thesis — */
+.tracks{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:.4em; }
+.track{ background:var(--pi-background-surface); border:1px solid var(--pi-border-hairline);
+  border-radius:8px; padding:22px 24px; }
+.track h3{ margin-bottom:.15em; }
+.track .tag{ font-family:var(--pi-font-sans); font-size:.46em; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; display:block; margin-bottom:9px; }
+.track p{ font-size:.82em; color:var(--pi-text-secondary); line-height:1.45; margin:.4em 0 0; }
+.track--governed{ border-top:3px solid var(--pi-text-secondary); }
+.track--governed .tag{ color:var(--pi-text-secondary); }
+.track--cultivated{ border-top:3px solid var(--pi-action-primary); }
+.track--cultivated .tag{ color:var(--pi-action-primary); }
+
+/* — Dual-track maturity ladder — */
+.dladder{ display:flex; flex-direction:column; gap:7px; margin-top:.3em; }
+.LADCOLS{}  /* columns: thumb | level | cultivated | governed */
+.dhead{ display:grid; grid-template-columns:56px 40px 1fr 1fr; gap:0; margin:16px 0 9px; }
+.dhead span{ font-family:var(--pi-font-sans); font-size:.46em; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; padding:0 16px; }
+.dhead .ch-c{ grid-column:3; color:var(--pi-action-primary); }
+.dhead .ch-g{ grid-column:4; color:var(--pi-text-secondary); }
+.drung{ display:grid; grid-template-columns:56px 40px 1fr 1fr; align-items:stretch;
+  background:var(--pi-background-surface); border:1px solid var(--pi-border-hairline);
+  border-radius:8px; overflow:hidden; }
+.drung .thumb{ width:56px; align-self:stretch; object-fit:cover; display:block; background:var(--pi-background-muted); }
+.drung .lv{ display:flex; align-items:center; justify-content:center; font-family:var(--pi-font-serif);
+  font-size:1.3em; color:#fff; background:var(--pi-action-primary); }
+.drung .cell{ padding:8px 16px; border-left:1px solid var(--pi-border-hairline); }
+.drung .cell.cult{ background:var(--pi-action-primary-tint); }
+.drung .nm{ font-family:var(--pi-font-serif); font-size:1.0em; color:var(--pi-text-heading); line-height:1.1; display:block; }
+.drung .ds{ font-family:var(--pi-font-sans); font-size:.46em; color:var(--pi-text-secondary); line-height:1.32; margin-top:5px; }
+.drung .kitline{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.drung .here{ flex:none; font-family:var(--pi-font-sans); font-size:.42em;
+  font-weight:600; letter-spacing:.04em; text-transform:uppercase; background:var(--pi-accent-tint);
+  color:var(--pi-accent-deep); padding:2px 9px; border-radius:9999px; white-space:nowrap; }
+/* Level 1 — Shadow/Play: largely behind us, muted grey */
+.drung.l1{ opacity:.62; }
+.drung.l1 .lv{ background:#9aa0a6; }
+.drung.l1 .cell.cult{ background:var(--pi-background-muted); }
+/* Level 2 — Kit/Sanctioned: where the market is now, highlighted */
+.drung.l2{ border:2px solid var(--pi-action-primary); box-shadow:0 2px 10px -2px rgba(0,100,255,.30); }
+.drung.l2 .lv{ background:var(--pi-action-primary); }
+/* Levels 3–5 — the road ahead, deepening cobalt */
+.drung.l3 .lv{ background:#3b73e6; }
+.drung.l4 .lv{ background:#0a57e0; }
+.drung.l5 .lv{ background:#004fcc; }
+
+/* — Two-track timeline (the path so far) — */
+.eras{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:.5em; }
+.era{ display:flex; flex-direction:column; gap:8px; }
+.era-h{ display:flex; align-items:baseline; gap:8px; padding-bottom:5px; border-bottom:2px solid var(--pi-action-primary); }
+.era-h .enum{ font-family:var(--pi-font-serif); font-size:1.05em; color:var(--pi-action-primary); line-height:1; }
+.era-h .ename{ font-family:var(--pi-font-serif); font-size:1.0em; color:var(--pi-text-heading); line-height:1; }
+.era-h .eyr{ font-family:var(--pi-font-sans); font-size:.42em; color:var(--pi-text-secondary); margin-left:auto; }
+.etrack{ border-radius:6px; padding:9px 11px; }
+.etrack.cult{ background:var(--pi-action-primary-tint); }
+.etrack.gov{ background:var(--pi-background-muted); }
+.etrack .elabel{ display:block; font-family:var(--pi-font-sans); font-size:.4em; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+.etrack.cult .elabel{ color:var(--pi-action-primary-pressed); }
+.etrack.gov .elabel{ color:var(--pi-text-secondary); }
+.etrack ul{ list-style:none; margin:0; padding:0; }
+.etrack li{ font-family:var(--pi-font-body); font-size:.5em; color:var(--pi-text-body); line-height:1.3;
+  margin:0 0 5px; padding-left:11px; position:relative; }
+.etrack li:last-child{ margin-bottom:0; }
+.etrack li::before{ content:""; position:absolute; left:0; top:.46em; width:4px; height:4px; border-radius:50%;
+  background:var(--pi-action-primary); opacity:.55; }
+.etrack.gov li::before{ background:var(--pi-text-secondary); }
+
+/* — Sprinkled editorial imagery — */
+.slide-img{ width:100%; border-radius:10px; border:1px solid var(--pi-border-hairline); display:block;
+  object-fit:cover; }
+.figcap{ font-family:var(--pi-font-sans); font-size:.42em; color:var(--pi-text-secondary); margin-top:8px; letter-spacing:.01em; }
+
+/* — Case cards (examples) — */
+.case .badge{ margin-bottom:9px; }
+.case h4{ font-size:1.0em; margin:0 0 .35em; }
+.case p{ font-size:.62em; color:var(--pi-text-secondary); line-height:1.42; margin:0; }
+
+/* — Success-pattern cards: the pattern (blue) leads; the failure it prevents (grey) recedes — */
+.pat{ display:flex; flex-direction:column; background:var(--pi-action-primary-tint); border:1px solid #cdddff; }
+.pat h4{ font-size:1.02em; margin:0 0 .3em; color:var(--pi-action-primary-pressed); }
+.pat p{ font-size:.6em; color:var(--pi-text-body); line-height:1.4; margin:0 0 .55em; }
+.pat .prevents{ margin-top:auto; padding:9px 11px; background:var(--pi-background-muted); border-radius:6px; }
+.pat .prevents .fm{ display:block; font-family:var(--pi-font-sans); font-size:.44em; font-weight:600;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--pi-text-secondary); margin-bottom:3px; }
+.pat .prevents .fd{ font-family:var(--pi-font-body); font-size:.56em; color:var(--pi-text-secondary); line-height:1.35; }
+
+/* — Buttons (CTA links) — */
+.btn{ display:inline-flex; align-items:center; gap:8px; font-family:var(--pi-font-sans); font-size:.56em;
+  font-weight:500; padding:12px 22px; border-radius:8px; background:var(--pi-action-primary); color:#fff;
+  text-decoration:none; border:1px solid var(--pi-action-primary); transition:background .14s; }
+.btn:hover{ background:var(--pi-action-primary-pressed); }
+.btn--ghost{ background:transparent; color:var(--pi-action-primary); }
+.btn--ghost:hover{ background:var(--pi-action-primary-tint); }
+.btn--mint{ background:#bff0dd; color:#0a1f17; border-color:#bff0dd; }
+.btn--mint:hover{ background:#a6e8cd; }
+/* outrank the global `.reveal a` link color so button text shows */
+.reveal a.btn{ color:#fff; text-decoration:none; }
+.reveal a.btn--ghost{ color:var(--pi-action-primary); }
+.reveal a.btn--mint{ color:#0a1f17; }
+
+/* — Phase cards — */
+.phase h3{ font-size:1.02em; margin:.4em 0 .3em; }
+.phase p{ font-size:.64em; color:var(--pi-text-secondary); line-height:1.42; margin:0; }
+
+/* — Big thesis — */
+.thesis{ font-family:var(--pi-font-serif); font-size:1.85em; line-height:1.18; color:var(--pi-text-heading); max-width:18em; }
+.thesis .hl{ color:var(--pi-action-primary); }
+.src{ font-family:var(--pi-font-sans); font-size:.42em; color:var(--pi-text-secondary); margin-top:1em; }
+
+/* — Divider — */
+.divider{ display:flex; flex-direction:column; justify-content:center; }
+.divider .num{ font-family:var(--pi-font-sans); font-size:.55em; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--pi-action-primary); }
+.divider h2{ font-size:2.5em; margin-top:.18em; }
+
+/* — Footer: per-slide .foot is data only; mirrored into #deckfoot — */
+.foot{ display:none; }
+#deckfoot{ position:fixed; bottom:20px; left:34px; right:96px; display:flex; justify-content:space-between;
+  align-items:center; font-family:var(--pi-font-sans); font-size:12px; letter-spacing:.04em;
+  color:var(--pi-text-secondary); pointer-events:none; z-index:30;
+  border-top:1px solid var(--pi-border-hairline); padding-top:8px; }
+#deckfoot.hide{ display:none; }
+
+/* — Reveal chrome — */
+.reveal .progress{ color:var(--pi-action-primary); height:4px; }
+.reveal .controls{ color:var(--pi-action-primary); }
+
+/* — Title slide — */
+.title-wrap{ display:flex; flex-direction:column; justify-content:center; }
+.title-wrap h1{ font-size:2.9em; line-height:1.02; margin-bottom:.2em; }
+.title-wrap .tagline{ font-family:var(--pi-font-serif); font-style:italic; font-size:1.15em;
+  color:var(--pi-action-primary); margin:.1em 0 .7em; }
+.rule{ width:64px; height:3px; background:var(--pi-action-primary); margin:.2em 0 1em; border-radius:2px; }
+</style>
+</head>
+<body>
+
+<div class="pi-wordmark"><span class="mark"></span>The Protocol Institute<span class="vein">· Protocols for Business</span></div>
+<div id="deckfoot" class="hide"><span class="l">Durable AI Adoption</span><span class="r"></span></div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- 1 — Title -->
+<section>
+  <div class="grid grid-2" style="align-items:center; gap:44px;">
+    <div class="title-wrap">
+      <span class="eyebrow">A lecture · AI Capability Maturity Model</span>
+      <h1>Durable AI Adoption</h1>
+      <div class="tagline">What happens when governance enables cultivation.</div>
+      <div class="rule"></div>
+      <p class="lead" style="max-width:26em;">Two parallel tracks, five maturity levels, and the playbook that turns a workforce's discoveries into durable capability.</p>
+      <p class="meta" style="margin-top:1.4em;">The Protocol Institute · Protocols for Business SIG · 2026 &nbsp;·&nbsp; ai.protocolized.dev</p>
+    </div>
+    <img class="slide-img" src="assets/primordial-soup.webp" alt="" style="height:430px;">
+  </div>
+</section>
+
+<!-- 2 — The opportunity (positive) -->
+<section>
+  <span class="eyebrow">The starting point</span>
+  <h2>Your people are already adopting AI</h2>
+  <div class="grid grid-2" style="align-items:center; margin-top:.5em;">
+    <div>
+      <p>Tools and workflows arrive through individual curiosity, long before any policy. Production cycles collapse from months to hours as people discover what AI can do on their own time.</p>
+      <p style="margin:0;">Adoption is already underway. The only question is whether the organization can see it, learn from it, and build on it.</p>
+    </div>
+    <div class="pull-card">
+      <p class="lead" style="font-size:.95em; margin:0;">That shadow use is not a problem to stamp out. It is the <strong style="color:var(--pi-action-primary-pressed)">raw material of durable adoption</strong> — the discoveries your program exists to surface, support, and scale.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Foreword</span></div>
+</section>
+
+<!-- 3 — More than a tool -->
+<section>
+  <span class="eyebrow">More than a tool</span>
+  <h2>AI is a paradigm, not an app subscription</h2>
+  <div class="grid grid-2" style="margin-top:.5em; align-items:center;">
+    <div>
+      <p>Treated as a product, AI gets a procurement plan and an acceptable-use policy. But it is a general-purpose paradigm — like steam, electricity, or the personal computer — that an organization integrates into how it works.</p>
+      <p style="margin:0;">That reframe changes the goal: not a finished rollout, but a capability you keep getting better at.</p>
+    </div>
+    <div class="defs">
+      <div class="def"><span class="dl">Deployment</span>Standing up one tool, policy, or workflow.</div>
+      <div class="def def--strong"><span class="dl">Adoption</span>The long arc of integrating with the paradigm itself — something you get better at over time.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
+</section>
+
+<!-- 3b — The path so far: two parallel tracks across four eras -->
+<section>
+  <span class="eyebrow">Chapter 1 · The path so far</span>
+  <h2 style="font-size:1.5em; margin-bottom:.15em;">The AI paradigm unfolds in two parallel tracks</h2>
+  <p class="meta" style="font-size:.52em; max-width:58em; color:var(--pi-text-secondary);">Each milestone needed both an individual practice and an organizational response. The <strong style="color:var(--pi-action-primary-pressed)">cultivated</strong> track is what people invent; the <strong style="color:var(--pi-text-heading)">governed</strong> track is what organizations approve.</p>
+  <div class="eras">
+    <div class="era">
+      <div class="era-h"><span class="enum">01</span><span class="ename">Chat</span><span class="eyr">2022–23</span></div>
+      <div class="etrack cult"><span class="elabel">Cultivated</span><ul><li>Everyday use of ChatGPT</li><li>Personal-account exploration</li><li>Prompt experimentation</li></ul></div>
+      <div class="etrack gov"><span class="elabel">Governed</span><ul><li>Acceptable-use policies</li><li>Blanket bans (Samsung)</li><li>First enterprise licenses</li></ul></div>
+    </div>
+    <div class="era">
+      <div class="era-h"><span class="enum">02</span><span class="ename">Tools</span><span class="eyr">2023–24</span></div>
+      <div class="etrack cult"><span class="elabel">Cultivated</span><ul><li>Custom GPTs and skills</li><li>Prompt libraries and kits</li><li>Team-authored workflows</li></ul></div>
+      <div class="etrack gov"><span class="elabel">Governed</span><ul><li>Sanctioned tool lists</li><li>Enterprise vendor deals</li><li>Verification checkpoints</li></ul></div>
+    </div>
+    <div class="era">
+      <div class="era-h"><span class="enum">03</span><span class="ename">Agents</span><span class="eyr">2024–26</span></div>
+      <div class="etrack cult"><span class="elabel">Cultivated</span><ul><li>Vibe-coding, agentic IDEs</li><li>Agents with wallets</li><li>AI-native function workflows</li></ul></div>
+      <div class="etrack gov"><span class="elabel">Governed</span><ul><li>Forward Deployed Engineers</li><li>Agent governance protocols</li><li>Model risk frameworks</li></ul></div>
+    </div>
+    <div class="era">
+      <div class="era-h"><span class="enum">04</span><span class="ename">Factories</span><span class="eyr">2026–28</span></div>
+      <div class="etrack cult"><span class="elabel">Cultivated</span><ul><li>One-person agent fleets</li><li>Always-on personal pipelines</li><li>Second brains</li></ul></div>
+      <div class="etrack gov"><span class="elabel">Governed</span><ul><li>Compute and token budgets</li><li>Fleet-level observability</li><li>Output-quality contracts</li></ul></div>
+    </div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
+</section>
+
+<!-- 4 — Two parallel tracks -->
+<section>
+  <span class="eyebrow">The thesis</span>
+  <h2>Adoption runs on two parallel tracks</h2>
+  <div class="tracks">
+    <div class="track track--cultivated">
+      <span class="tag">Cultivated</span>
+      <h3>What people invent as they use it</h3>
+      <p>Bottom-up exploration, individual play, vernacular practice. Where the working patterns are actually discovered.</p>
+    </div>
+    <div class="track track--governed">
+      <span class="tag">Governed</span>
+      <h3>What the organization approves</h3>
+      <p>Policy, procurement, rollout. The formal apparatus that makes good practice safe to scale.</p>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:.7em; text-align:center;">Durable adoption is what happens when governance <strong style="color:var(--pi-action-primary)">enables</strong> cultivation — both tracks moving together, not one or the other.</p>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
+</section>
+
+<!-- 5 — Governance enables cultivation -->
+<section>
+  <span class="eyebrow">A different kind of governance</span>
+  <h2>Govern the outputs, so people can explore</h2>
+  <p style="max-width:30em;">Shift from governing what people may <em>do</em> with AI to governing what its outputs must do where they become consequential — verified, escalated, and owned at the handoff.</p>
+  <div class="grid grid-2" style="margin-top:.5em; align-items:stretch;">
+    <div class="card"><h3 style="font-size:1.05em;">A traffic light is a protocol</h3><p style="font-size:.78em; color:var(--pi-text-secondary); margin:.3em 0 0;">It governs coordination at the crossing and keeps the system moving.</p></div>
+    <div class="card"><h3 style="font-size:1.05em;">A blockade is not</h3><p style="font-size:.78em; color:var(--pi-text-secondary); margin:.3em 0 0;">It restricts activity at the access point. Both are rules; only one keeps traffic flowing.</p></div>
+  </div>
+  <p style="max-width:30em; margin-top:.55em;">Good protocols produce <strong>non-events</strong> — the leak that did not happen, the brief not filed unverified — and free the cultivated track to keep finding what works.</p>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 1</span></div>
+</section>
+
+<!-- 6 — Divider: the path -->
+<section data-background-color="#ffffff">
+  <div class="grid grid-2" style="align-items:center; gap:44px;">
+    <div class="divider">
+      <span class="num">The model</span>
+      <h2>Five levels, two tracks</h2>
+      <p class="lead" style="max-width:24em; margin-top:.4em;">A path other general-purpose technologies have already travelled. Each level pairs a way of working that people cultivate with the protocol that governs it.</p>
+    </div>
+    <img class="slide-img" src="assets/duality-balance.png" alt="" style="height:360px;">
+  </div>
+</section>
+
+<!-- 7 — Dual-track maturity ladder -->
+<section>
+  <span class="eyebrow">The dual nature of adoption</span>
+  <h2 style="font-size:1.4em; margin-bottom:.2em;">The maturity ladder</h2>
+  <div class="dhead"><span class="ch-c">Cultivated — what people do</span><span class="ch-g">Governed — the protocol that holds it</span></div>
+  <div class="dladder">
+    <div class="drung l1"><img class="thumb" src="assets/lvl1-play.png" alt=""><span class="lv">1</span>
+      <div class="cell cult"><span class="nm">Play</span><div class="ds">Curiosity-driven exploration; AI as a medium for discovery.</div></div>
+      <div class="cell"><span class="nm">Shadow</span><div class="ds">Personal accounts; no monitoring or policy yet.</div></div></div>
+    <div class="drung l2"><img class="thumb" src="assets/lvl2-kit.png" alt=""><span class="lv">2</span>
+      <div class="cell cult"><div class="kitline"><span class="nm">Kit</span><span class="here">Where the market is now</span></div><div class="ds">Encoding workflows into reusable, shareable kits.</div></div>
+      <div class="cell"><span class="nm">Sanctioned</span><div class="ds">Access approved, tools tracked, risk contained.</div></div></div>
+    <div class="drung l3"><img class="thumb" src="assets/lvl3-practice.png" alt=""><span class="lv">3</span>
+      <div class="cell cult"><span class="nm">Practice</span><div class="ds">New forms of work emerge; roles are redefined.</div></div>
+      <div class="cell"><span class="nm">Engine</span><div class="ds">Workflows with named owners and quality metrics.</div></div></div>
+    <div class="drung l4"><img class="thumb" src="assets/lvl4-vernacular.webp" alt=""><span class="lv">4</span>
+      <div class="cell cult"><span class="nm">Vernacular</span><div class="ds">Practices absorbed into culture, spread without mandates.</div></div>
+      <div class="cell"><span class="nm">Infrastructure</span><div class="ds">AI a sector baseline; coordination crosses boundaries.</div></div></div>
+    <div class="drung l5"><img class="thumb" src="assets/lvl5-fluency.webp" alt=""><span class="lv">5</span>
+      <div class="cell cult"><span class="nm">Fluency</span><div class="ds">Second nature; AI no longer separately named.</div></div>
+      <div class="cell"><span class="nm">Planetary</span><div class="ds">Civilization-scale; legibility is the challenge.</div></div></div>
+  </div>
+  <p class="meta" style="margin-top:.7em;">Most of the market has moved past <strong style="color:var(--pi-text-heading)">Shadow</strong> into the <strong style="color:var(--pi-action-primary-pressed)">Kit</strong> phase. Durable adopters climb both tracks together — cultivation finds what works, governance makes it safe to scale.</p>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 2</span></div>
+</section>
+
+<!-- 8 — Examples across both paths -->
+<section>
+  <span class="eyebrow">Examples across both paths</span>
+  <h2 style="font-size:1.45em;">The levels are drawn from real cases</h2>
+  <div class="grid grid-2" style="align-items:stretch; margin-top:.3em;">
+    <div class="card case"><span class="badge">Play → Sanctioned</span>
+      <h4>Samsung surfaced its shadow use</h4>
+      <p>Engineers were already pasting code into ChatGPT. Samsung paused, then re-admitted AI under protocol — turning invisible use into governed practice.</p></div>
+    <div class="card case"><span class="badge">Kit</span>
+      <h4>Klarna &amp; Anthropic Legal built kits</h4>
+      <p>Teams encoded their own memos, frameworks, and workflows into reusable kits — the unit of productivity at this level.</p></div>
+    <div class="card case"><span class="badge">Practice → Engine</span>
+      <h4>Uber made AI core to engineering</h4>
+      <p>With most code AI-assisted, the work shifted to review — so Uber built new protocols (Code Inbox, U Review) to keep the workflow flowing.</p></div>
+    <div class="card case"><span class="badge">Infrastructure → Planetary</span>
+      <h4>EDI, then the internet itself</h4>
+      <p>Walmart's EDI made AI-era coordination a sector baseline; TCP/IP shows the planetary horizon — coordination no single actor controls.</p></div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 2</span></div>
+</section>
+
+<!-- 9 — Historical analogue -->
+<section data-background-color="#ffffff">
+  <span class="eyebrow">A pattern we have seen before</span>
+  <h2>People turn play into infrastructure</h2>
+  <div class="grid grid-2" style="margin-top:.5em; align-items:center;">
+    <div>
+      <p>From 1903 to 1950, rural users jacked up the rear wheel of the family automobile and ran corn shellers, washing machines, and water pumps off it. The car was never sold as a power source. People made it one.</p>
+      <p style="margin:0;">That improvisation is what eventually told Ford to ship trucks in 1916, and the industry to build the tractor.</p>
+    </div>
+    <div class="pull-card">
+      <p class="lead" style="font-size:1em; margin:0;">The vernacular use comes first. The machinery that scales it is designed <em>from</em> what people already proved by hand.</p>
+      <p class="src">Kline &amp; Pinch (SCOT); Sachin Benny, 2026.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>The kit phase</span></div>
+</section>
+
+<!-- 10 — The playbook -->
+<section>
+  <span class="eyebrow">The playbook</span>
+  <h2>Bottom-up discovery, top-down scale</h2>
+  <p style="max-width:30em;">The use case that matters already exists somewhere in operations. The job is to surface it, prove it, then pave the path so the next person inherits it.</p>
+  <div class="grid grid-3" style="margin-top:.5em; align-items:stretch;">
+    <div class="card phase"><span class="chip">Month 1</span><h3>Forage</h3><p>Find the 2–3 people already running real workflows on their own time. Connect their data sources.</p></div>
+    <div class="card phase"><span class="chip">Months 2–6</span><h3>Seed</h3><p>Champions show their teams a four-hour review compress to forty-five minutes. Count the kits they build.</p></div>
+    <div class="card phase"><span class="chip">Months 6+</span><h3>Harvest</h3><p>Promote the best kits company-wide with named owners, so new hires inherit them on day one.</p></div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapters 3–4</span></div>
+</section>
+
+<!-- 11 — Success patterns (positive-led) -->
+<section>
+  <span class="eyebrow">Success patterns</span>
+  <h2 style="font-size:1.45em;">Four patterns that hold the tension</h2>
+  <div class="grid grid-2" style="align-items:stretch; margin-top:.3em;">
+    <div class="card pat"><h4>Kit harvesting</h4><p>Wait for variation to express itself, then formalize what domain experts have already proved by daily use.</p>
+      <div class="prevents"><span class="fm">Prevents · Premature optimization</span><span class="fd">Standardizing before the kit phase has done its work — the official workflow is rejected or outdated on arrival.</span></div></div>
+    <div class="card pat"><h4>Plan after play</h4><p>Let exploration run at its native speed, then plan continuously from what actually surfaced.</p>
+      <div class="prevents"><span class="fm">Prevents · Disorientation</span><span class="fd">Commitments outpace shared understanding; exposure accumulates invisibly until it suddenly binds.</span></div></div>
+    <div class="card pat"><h4>Differential gear trains</h4><p>Buffer mismatched tempos — queues, async handoffs, routing — so each side runs at its own pace.</p>
+      <div class="prevents"><span class="fm">Prevents · Tempo misalignment</span><span class="fd">AI speeds some steps but not others, so output stacks up at the slowest process or partner.</span></div></div>
+    <div class="card pat"><h4>Constitutional software</h4><p>Compile governance limits into code: sandboxes, planning-only modes, rollback paths the agent cannot cross.</p>
+      <div class="prevents"><span class="fm">Prevents · Extended blast radius</span><span class="fd">Permissions outrun judgment, and a failure becomes consequential before anyone can intervene.</span></div></div>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 7</span></div>
+</section>
+
+<!-- 12 — New nature of work -->
+<section data-background-color="#ffffff">
+  <div class="title-wrap">
+    <span class="eyebrow">The new nature of work</span>
+    <p class="thesis">AI-mediated work is now closer to <span class="hl">weather and terrain</span> than to a thermostat you set once.</p>
+    <p class="lead" style="max-width:24em; margin-top:.9em;">Because the terrain keeps moving, durable adoption depends on governance <strong>enabling</strong> cultivation rather than displacing it. The scarce skill is applied curiosity — the people who find their way through unfamiliar ground.</p>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 8</span></div>
+</section>
+
+<!-- 13 — Diagnose / CTA -->
+<section>
+  <div class="title-wrap">
+    <span class="eyebrow">Where is your organization?</span>
+    <h2 style="font-size:2.1em;">Place yourself, plan the next level up</h2>
+    <p class="lead" style="max-width:24em;">A two-minute web assessment returns your placement across the five levels, the patterns that fit it, and a recommended next move — on both tracks.</p>
+    <div style="display:flex; gap:14px; align-items:center; margin-top:1.1em; flex-wrap:wrap;">
+      <a class="btn" href="https://protocolized.dev/assessment/" target="_blank" rel="noopener">Take the 2-minute assessment →</a>
+      <a class="btn btn--ghost" href="https://ai.protocolized.dev/" target="_blank" rel="noopener">Read the full guide</a>
+    </div>
+    <p class="meta" style="margin-top:1.6em;">The Protocol Institute · Protocols for Business SIG &nbsp;·&nbsp; team@protocol-institute.org</p>
+  </div>
+  <div class="foot"><span>Durable AI Adoption</span><span>Chapter 6</span></div>
+</section>
+
+<!-- 14 — Workshop announcement -->
+<section data-background-color="#0a1f17">
+  <div class="title-wrap" style="color:#fff;">
+    <span class="eyebrow" style="color:#bff0dd;">Go further · 2026 Protocol Symposium · New Nature</span>
+    <h2 style="color:#fff; font-size:2.4em;">Build your first Kit with us</h2>
+    <p class="tagline" style="font-family:var(--pi-font-serif); font-style:italic; color:#bff0dd; font-size:1.15em; margin:.1em 0 .7em;">AI Kitcraft — a hands-on AI tooling workshop.</p>
+    <p class="lead" style="color:rgba(255,255,255,.9); max-width:24em;">Move from ad-hoc AI use to a reusable <strong style="color:#fff;">Kit</strong> your team can re-run, then map a path to scale it. Climb both tracks — Play, Kit, Practice — by hand.</p>
+    <div style="display:flex; gap:10px; align-items:center; margin-top:1.1em; flex-wrap:wrap;">
+      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">Online · two workshop days</span>
+      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">1 talk + 4 working sessions</span>
+      <span class="chip" style="background:rgba(255,255,255,.12); color:#eafff6;">10–15 seats</span>
+    </div>
+    <div style="margin-top:1.3em;">
+      <a class="btn btn--mint" href="https://bold-steeple-73wb.here.now/" target="_blank" rel="noopener">Express interest in AI Kitcraft →</a>
+    </div>
+    <p class="meta" style="margin-top:1.3em; color:rgba(255,255,255,.75);">Sep 21–25, 2026 · Protocols for Business SIG</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  width: 1280, height: 720, margin: 0.06,
+  minScale: 0.2, maxScale: 1.6,
+  hash: true, controls: true, progress: true,
+  slideNumber: false,                 // position shown in the footer instead
+  controlsLayout: 'edges',            // arrows on the slide edges, clear of footer/number
+  transition: 'fade', transitionSpeed: 'default',
+  center: true,
+});
+
+// Keep the fixed wordmark legible on dark slides; mirror per-slide chapter +
+// slide position into the single fixed footer (so nothing overlaps the controls).
+(function(){
+  var wm = document.querySelector('.pi-wordmark');
+  var foot = document.getElementById('deckfoot');
+  var footR = foot && foot.querySelector('.r');
+  function isDark(hex){
+    if(!hex) return false;
+    var h = hex.replace('#',''); if(h.length===3) h=h.split('').map(function(c){return c+c;}).join('');
+    var r=parseInt(h.slice(0,2),16), g=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
+    return (0.2126*r + 0.7152*g + 0.0722*b) < 110;
+  }
+  function sync(){
+    var cur = Reveal.getCurrentSlide();
+    var dark = isDark(cur && cur.getAttribute('data-background-color'));
+    if(wm) wm.classList.toggle('on-dark', dark);
+    if(!foot) return;
+    if(dark){ foot.classList.add('hide'); return; }
+    var pos = (Reveal.getIndices().h + 1) + ' / ' + Reveal.getTotalSlides();
+    var src = cur && cur.querySelector('.foot');
+    var label = '';
+    if(src){ var s = src.querySelectorAll('span'); if(s.length>1) label = s[s.length-1].textContent; }
+    if(footR) footR.textContent = label ? (label + '  ·  ' + pos) : pos;
+    foot.classList.remove('hide');
+  }
+  Reveal.on('ready', sync);
+  Reveal.on('slidechanged', sync);
+})();
+</script>
+</body>
+</html>

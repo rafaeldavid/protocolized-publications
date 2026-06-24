@@ -1,0 +1,12 @@
+{
+  "name": "protocolinstitute-brandkit-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tests and tooling for the Protocol Institute brand kit.",
+  "type": "module",
+  "scripts": {
+    "test": "node contrast-check.mjs",
+    "contrast": "node contrast-check.mjs",
+    "contrast:quiet": "node contrast-check.mjs --quiet"
+  }
+}

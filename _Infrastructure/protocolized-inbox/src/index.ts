@@ -55,6 +55,7 @@ const ALLOWED_ORIGINS = [
   "https://arctic-ribbon-7nvb.here.now",
   "https://witty-garnet-6k4f.here.now",
   "https://plush-muse-q9bz.here.now",
+  "https://bold-steeple-73wb.here.now", // AI Kitcraft workshop (here.now)
   // local dev:
   "http://localhost:8000",
   "http://localhost:3000",

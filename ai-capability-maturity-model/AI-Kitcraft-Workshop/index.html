@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Kitcraft — A Hands-On AI Tooling Workshop · 2026 Protocol Symposium</title>
+<meta name="description" content="A hands-on workshop where AI-curious analysts and managers move from ad-hoc AI use to building their first reusable Kit. Two workshop days at the 2026 Protocol Symposium (New Nature). Facilitated by the Protocols for Business SIG, Protocol Institute.">
+
+<meta property="og:title" content="AI Kitcraft — A Hands-On AI Tooling Workshop">
+<meta property="og:description" content="Move from ad-hoc AI use to building your first reusable Kit. 2026 Protocol Symposium · New Nature · Sep 21–25 (online).">
+<meta property="og:image" content="assets/hero-new-nature.png">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/svg+xml" href="assets/pi-mark.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================================
+   Protocol Institute brand — Institute vein (cobalt) + New Nature accent
+   (forest green live accent · rust for rare emphasis). Decision tokens only.
+   ============================================================================ */
+:root{
+  --pi-action-primary:#0064ff; --pi-action-primary-pressed:#004fcc; --pi-action-primary-tint:#e6efff;
+  --pi-action-secondary:#0f6e56; --pi-action-secondary-deep:#085041; --pi-action-secondary-tint:#e1f5ee;
+  --pi-accent:#d85a30; --pi-accent-tint:#faece7;
+  --pi-bg-canvas:#f9f8f5; --pi-bg-surface:#ffffff; --pi-bg-muted:#f3f4f6;
+  --pi-hairline:#e5e7eb;
+  --pi-text-heading:#2c2c2a; --pi-text-body:#2c2c2a; --pi-text-secondary:#5f5e5a;
+  --pi-on-action:#ffffff;
+  --pi-serif:"Instrument Serif",Georgia,serif;
+  --pi-body:"Lora",Georgia,serif;
+  --pi-sans:"Outfit",system-ui,sans-serif;
+  --pi-mono:"JetBrains Mono","Courier New",monospace;
+  --pi-radius-md:8px; --pi-radius-lg:12px; --pi-radius-pill:9999px;
+  --pi-shadow-hover:0 1px 3px 0 rgb(0 0 0 / .10), 0 1px 2px -1px rgb(0 0 0 / .10);
+  --maxw:1080px;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; background:var(--pi-bg-canvas); color:var(--pi-text-body);
+  font-family:var(--pi-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+h1,h2,h3,h4{ font-family:var(--pi-serif); font-weight:400; color:var(--pi-text-heading);
+  letter-spacing:-.01em; line-height:1.08; margin:0 0 .4em; }
+h1{ font-size:clamp(44px,7vw,82px); }
+h2{ font-size:clamp(30px,4vw,44px); }
+h3{ font-size:24px; }
+h4{ font-size:19px; }
+p{ margin:0 0 1em; }
+strong{ font-weight:700; color:var(--pi-text-heading); }
+em{ font-style:italic; }
+a{ color:var(--pi-action-primary); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+.eyebrow{ font-family:var(--pi-sans); font-size:13px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--pi-action-primary); margin:0 0 14px; display:block; }
+.lead{ font-family:var(--pi-body); font-size:20px; line-height:1.55; color:var(--pi-text-secondary); }
+.sec-secondary .eyebrow{ color:var(--pi-action-secondary); }
+
+/* — Top nav — */
+header.nav{ position:sticky; top:0; z-index:50; background:rgba(249,248,245,.86);
+  backdrop-filter:saturate(150%) blur(10px); border-bottom:1px solid var(--pi-hairline); }
+.nav-inner{ max-width:var(--maxw); margin:0 auto; padding:13px 28px; display:flex; align-items:center;
+  justify-content:space-between; gap:18px; }
+.wordmark{ display:inline-flex; align-items:center; gap:9px; }
+.wordmark img{ height:22px; width:auto; display:block; }
+.wordmark .wm{ font-family:var(--pi-serif); font-size:18px; color:var(--pi-text-heading); white-space:nowrap; }
+.topnav{ display:flex; gap:22px; align-items:center; }
+.topnav a{ font-family:var(--pi-sans); font-size:12px; font-weight:600; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--pi-text-secondary); }
+.topnav a:hover{ color:var(--pi-text-heading); text-decoration:none; }
+.topnav a.cta{ color:var(--pi-on-action); background:var(--pi-action-primary);
+  padding:9px 16px; border-radius:var(--pi-radius-md); }
+.topnav a.cta:hover{ background:var(--pi-action-primary-pressed); }
+@media(max-width:760px){ .topnav a:not(.cta){ display:none; } }
+
+/* — Buttons — */
+.btn{ font-family:var(--pi-sans); font-size:16px; font-weight:500; line-height:1.4; padding:13px 26px;
+  border-radius:var(--pi-radius-md); border:1px solid transparent; cursor:pointer; display:inline-flex;
+  align-items:center; gap:8px; text-decoration:none; transition:background .14s,border-color .14s,color .14s; }
+.btn--primary{ background:var(--pi-action-primary); color:var(--pi-on-action); }
+.btn--primary:hover{ background:var(--pi-action-primary-pressed); text-decoration:none; }
+.btn--ghost{ background:transparent; color:var(--pi-on-action); border-color:rgba(255,255,255,.55); }
+.btn--ghost:hover{ background:rgba(255,255,255,.14); text-decoration:none; }
+.btn--secondary{ background:transparent; color:var(--pi-action-primary); border-color:var(--pi-action-primary); }
+.btn--secondary:hover{ background:var(--pi-action-primary-tint); text-decoration:none; }
+
+/* — Badges / chips — */
+.badge{ font-family:var(--pi-sans); font-size:12px; font-weight:600; letter-spacing:.04em;
+  padding:3px 11px; border-radius:var(--pi-radius-pill); display:inline-block; }
+.badge--green{ background:var(--pi-action-secondary-tint); color:var(--pi-action-secondary-deep); }
+.badge--blue{ background:var(--pi-action-primary-tint); color:var(--pi-action-primary-pressed); }
+.badge--rust{ background:var(--pi-accent-tint); color:var(--pi-accent); }
+.chip{ font-family:var(--pi-sans); font-size:13px; padding:6px 13px; border-radius:var(--pi-radius-pill);
+  background:var(--pi-bg-muted); color:var(--pi-text-secondary); display:inline-flex; align-items:center; gap:7px; }
+.chip b{ color:var(--pi-text-heading); font-weight:600; }
+
+/* — HERO (doubles as the announcement) — */
+.hero{ position:relative; overflow:hidden; border-bottom:1px solid var(--pi-hairline); }
+.hero-bg{ position:absolute; inset:0; background:#0a1f17 center/cover no-repeat; opacity:.92; }
+.hero-bg::after{ content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, rgba(8,24,18,.93) 0%, rgba(8,24,18,.74) 42%, rgba(9,16,13,.30) 100%),
+    linear-gradient(180deg, rgba(8,24,18,.30) 0%, rgba(8,24,18,.20) 38%, rgba(9,16,13,.78) 100%); }
+@media(max-width:760px){ .hero-bg::after{ background:linear-gradient(180deg, rgba(8,24,18,.74) 0%, rgba(8,24,18,.66) 40%, rgba(9,16,13,.88) 100%); } }
+.hero-inner{ position:relative; max-width:var(--maxw); margin:0 auto; padding:84px 28px 76px; color:#fff; }
+.hero .eyebrow{ color:#bff0dd; }
+.hero h1{ color:#fff; max-width:13ch; }
+.hero .tagline{ font-family:var(--pi-serif); font-style:italic; font-size:clamp(22px,3vw,32px);
+  color:#bff0dd; margin:.1em 0 .55em; }
+.hero .lead{ color:rgba(255,255,255,.92); max-width:34ch; }
+.hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+.hero-meta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:34px; }
+.hero-meta .chip{ background:rgba(255,255,255,.12); color:#eafff6; border:1px solid rgba(255,255,255,.18); }
+.hero-meta .chip b{ color:#fff; }
+
+/* — Sections — */
+section{ padding:74px 0; border-bottom:1px solid var(--pi-hairline); }
+section.tight{ padding:56px 0; }
+.sec-surface{ background:var(--pi-bg-surface); }
+.section-head{ max-width:42ch; margin-bottom:34px; }
+
+/* — Grids / cards — */
+.grid{ display:grid; gap:20px; }
+.g2{ grid-template-columns:repeat(2,1fr); }
+.g3{ grid-template-columns:repeat(3,1fr); }
+.g4{ grid-template-columns:repeat(4,1fr); }
+@media(max-width:860px){ .g3,.g4{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:620px){ .g2,.g3,.g4{ grid-template-columns:1fr; } }
+.card{ background:var(--pi-bg-surface); border:1px solid var(--pi-hairline); border-radius:var(--pi-radius-md);
+  padding:24px; transition:box-shadow .14s,border-color .14s; }
+.sec-surface .card{ background:var(--pi-bg-canvas); }
+.card:hover{ box-shadow:var(--pi-shadow-hover); }
+.card .num{ font-family:var(--pi-serif); font-size:30px; color:var(--pi-action-primary); line-height:1; }
+.card h4{ margin:.5em 0 .35em; }
+.card p{ font-size:15px; color:var(--pi-text-secondary); margin:0; line-height:1.5; }
+
+/* — Thesis split — */
+.split{ display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center; }
+@media(max-width:860px){ .split{ grid-template-columns:1fr; gap:28px; } }
+.split img{ width:100%; border-radius:var(--pi-radius-lg); border:1px solid var(--pi-hairline); display:block; }
+.figure-cap{ font-family:var(--pi-sans); font-size:12.5px; color:var(--pi-text-secondary); margin-top:10px; letter-spacing:.01em; }
+
+/* — Pull statement — */
+.pull{ font-family:var(--pi-serif); font-size:clamp(26px,3.4vw,38px); line-height:1.18;
+  color:var(--pi-text-heading); max-width:20ch; }
+.pull .hl{ color:var(--pi-action-secondary); }
+
+/* — Lists — */
+ul.ticks{ list-style:none; margin:0; padding:0; }
+ul.ticks li{ position:relative; padding-left:30px; margin-bottom:14px; line-height:1.5; }
+ul.ticks li::before{ content:""; position:absolute; left:0; top:9px; width:14px; height:14px; border-radius:var(--pi-radius-pill);
+  background:var(--pi-action-secondary-tint); box-shadow:inset 0 0 0 2px var(--pi-action-secondary); }
+ul.ticks li b{ color:var(--pi-text-heading); }
+
+/* — Sessions timeline — */
+.session{ display:grid; grid-template-columns:148px 1fr; gap:24px; padding:22px 0; border-top:1px solid var(--pi-hairline); }
+.session:first-of-type{ border-top:0; }
+@media(max-width:620px){ .session{ grid-template-columns:1fr; gap:8px; } }
+.session .when{ font-family:var(--pi-sans); font-size:13px; font-weight:600; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--pi-action-primary); }
+.session .when .sub{ display:block; font-weight:400; text-transform:none; letter-spacing:0;
+  color:var(--pi-text-secondary); font-size:13px; margin-top:4px; }
+.session h4{ margin:0 0 .3em; }
+.session p{ font-size:15px; color:var(--pi-text-secondary); margin:0; }
+
+/* — Organizers — */
+.org{ display:flex; gap:20px; align-items:flex-start; }
+.org .avatar{ flex:0 0 56px; width:56px; height:56px; border-radius:var(--pi-radius-pill);
+  background:var(--pi-action-primary-tint); color:var(--pi-action-primary-pressed); font-family:var(--pi-serif);
+  font-size:24px; display:flex; align-items:center; justify-content:center; }
+.org .role{ font-family:var(--pi-sans); font-size:12.5px; font-weight:600; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--pi-action-secondary); margin:.15em 0 .5em; }
+.org p{ font-size:15px; color:var(--pi-text-secondary); }
+
+/* — Apply / form — */
+.apply{ background:linear-gradient(180deg,#0a1f17,#0c130f); color:#fff; }
+.apply .eyebrow{ color:#bff0dd; }
+.apply h2{ color:#fff; }
+.apply .lead{ color:rgba(255,255,255,.86); }
+.formcard{ background:var(--pi-bg-surface); color:var(--pi-text-body); border-radius:var(--pi-radius-lg);
+  padding:30px; border:1px solid var(--pi-hairline); }
+.field{ margin-bottom:16px; }
+.field label{ display:block; font-family:var(--pi-sans); font-size:13px; font-weight:600; letter-spacing:.03em;
+  color:var(--pi-text-heading); margin-bottom:6px; }
+.field .req{ color:var(--pi-accent); }
+.field input[type=text], .field input[type=email], .field textarea{ width:100%; font-family:var(--pi-body);
+  font-size:15px; color:var(--pi-text-body); background:var(--pi-bg-canvas); border:1px solid var(--pi-hairline);
+  border-radius:var(--pi-radius-md); padding:11px 13px; }
+.field textarea{ min-height:84px; resize:vertical; }
+.field input:focus, .field textarea:focus{ outline:none; border-color:var(--pi-action-secondary);
+  box-shadow:0 0 0 3px var(--pi-action-secondary-tint); }
+.checks{ display:grid; gap:9px; }
+.checks label{ font-family:var(--pi-body); font-size:14.5px; font-weight:400; color:var(--pi-text-body);
+  display:flex; gap:9px; align-items:flex-start; cursor:pointer; letter-spacing:0; text-transform:none; }
+.checks input{ margin-top:4px; accent-color:var(--pi-action-secondary); }
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.form-status{ font-family:var(--pi-sans); font-size:14px; margin-top:6px; min-height:20px; }
+.form-status.success{ color:var(--pi-action-secondary); }
+.form-status.error{ color:var(--pi-accent); }
+.form-note{ font-family:var(--pi-sans); font-size:12.5px; color:var(--pi-text-secondary); margin-top:12px; line-height:1.5; }
+
+/* — Footer — */
+footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
+.foot-inner{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; }
+.foot-inner .meta{ font-family:var(--pi-sans); font-size:13px; color:var(--pi-text-secondary); }
+.foot-links{ display:flex; gap:18px; flex-wrap:wrap; }
+.foot-links a{ font-family:var(--pi-sans); font-size:13px; color:var(--pi-text-secondary); }
+
+.kicker{ font-family:var(--pi-sans); font-size:12.5px; font-weight:600; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--pi-text-secondary); }
+.divider-note{ font-family:var(--pi-sans); font-size:13px; color:var(--pi-text-secondary);
+  background:var(--pi-accent-tint); border-radius:var(--pi-radius-md); padding:11px 15px; display:inline-block; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="https://protocol-institute.org/" aria-label="The Protocol Institute">
+      <img src="assets/pi-mark.svg" alt="">
+      <span class="wm">The Protocol Institute</span>
+    </a>
+    <nav class="topnav">
+      <a href="#thesis">The Kit phase</a>
+      <a href="#format">Format</a>
+      <a href="#who">Who it's for</a>
+      <a href="#organizers">Organizers</a>
+      <a class="cta" href="#apply">Register Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO / ANNOUNCEMENT ===== -->
+<section class="hero" style="padding:0;border-bottom:0;">
+  <div class="hero-bg" style="background-image:url('assets/hero-new-nature.png');"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">2026 Protocol Symposium · New Nature · Sep 21–25 · Online</span>
+    <h1>AI Kitcraft</h1>
+    <div class="tagline">A hands-on AI tooling workshop.</div>
+    <p class="lead">Move from ad-hoc AI use to building your first <strong style="color:#fff">Kit</strong> — a reusable bundle of workflows, disposable apps, and contexts your team can run repeatedly and reliably. Then map a path to scale it.</p>
+    <div class="hero-cta">
+      <a class="btn btn--primary" href="#apply">Express interest →</a>
+      <a class="btn btn--ghost" href="#thesis">What is Kitcraft?</a>
+    </div>
+    <div class="hero-meta">
+      <span class="chip">📍 <b>Online</b>, two workshop days</span>
+      <span class="chip">🧩 1 talk + <b>4 working sessions</b></span>
+      <span class="chip">👥 <b>10–15</b> participants</span>
+      <span class="chip">🛠 No AI-engineering background</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THESIS ===== -->
+<section id="thesis">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">You are in the Kit phase</span>
+        <h2>The missing productivity is the signal</h2>
+        <p>Most teams "adopt AI" by buying new, mostly untested software, then wait for a productivity jump that never shows up in the numbers. That missing productivity is the signature of the stage we are actually in: the <strong>Kit phase</strong>.</p>
+        <p>Every general-purpose technology passes through it — the steam engine, the Model&nbsp;T, the PC. Loose components people tinker with, repurpose, and master by doing, long before anyone builds the firm-scale machinery that turns tinkering into measured output. Farmers ran corn shellers and water pumps off jacked-up Model&nbsp;Ts for years before Ford watched them and built the tractor.</p>
+        <p>The work that matters happens in undocumented local experiments. The organizations that pull ahead recognize the stage they are in and build a map to climb out of it. <strong>AI Kitcraft is the hands-on answer.</strong></p>
+      </div>
+      <div>
+        <img src="assets/accent-tools.png" alt="Painterly illustration — windows lit at night, a city of workshops">
+        <p class="figure-cap">“We shape our tools, and thereafter our tools shape us.” Tacit knowledge accumulates in workshops and club meetings long before any institution takes notice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PULL / PLAY-KIT-PRACTICE ===== -->
+<section class="sec-surface sec-secondary tight">
+  <div class="wrap">
+    <span class="eyebrow">Play · Kit · Practice</span>
+    <p class="pull">Every level is touched by hand. Participants <span class="hl">Play</span>, build a <span class="hl">Kit</span>, and prepare to turn it into a <span class="hl">Practice</span>.</p>
+  </div>
+</section>
+
+<!-- ===== TAKEAWAYS ===== -->
+<section id="takeaways">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What you take away</span>
+      <h2>Leave with a working Kit and a map</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="num">01</div>
+        <h4>At least one working Kit</h4>
+        <p>A reusable workflow you built and can re-run, with its context, prompts, and steps documented.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h4>The five-level model</h4>
+        <p>A working grasp of the AI Capability Maturity Model — enough to locate your organization and plan the next level up.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h4>A path to capability</h4>
+        <p>The language and design principles of Kitcraft, plus a one-page sketch for turning your Kit into an organizational capability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT YOU'LL DO ===== -->
+<section class="sec-surface">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What you'll do</span>
+      <h2>Build, trade, and demo</h2>
+    </div>
+    <ul class="ticks" style="columns:2; column-gap:44px;">
+      <li>Set up an environment and assemble a <b>context hub</b> — the goals, references, and conventions your AI works from.</li>
+      <li>Deploy a first <b>disposable application</b> or wireframe.</li>
+      <li>Convert it into a reusable <b>Kit</b> that encodes the context, prompts, and steps for repeated use.</li>
+      <li>Join a <b>Kit trade</b>, where a paired team builds a small improvement on your Kit.</li>
+      <li>Present in a closing <b>show-and-tell</b>.</li>
+      <li>Share works-in-progress, debug, and trade kits <b>async on Discord</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FORMAT / SESSIONS ===== -->
+<section id="format">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Format</span>
+      <h2>One presentation, four working sessions</h2>
+      <p class="lead">Across the symposium's two workshop days, plus asynchronous co-working on Discord. Each session runs ~60–90 minutes.</p>
+    </div>
+
+    <div class="session">
+      <div class="when">Presentation<span class="sub">Opening talk</span></div>
+      <div>
+        <h4>Fog of War Kit Building</h4>
+        <p>A history of amateur kit-making cultures — from amateur radio operators carving out regulatory space to the phone phreaks who set the stage for the desktop era — and what today's AI tinkerers can borrow from a century of amateurs who turned play into infrastructure.</p>
+      </div>
+    </div>
+    <div class="session">
+      <div class="when">Session 1<span class="sub">Context Play</span></div>
+      <div>
+        <h4>Set up and assemble your context hub</h4>
+        <p>Stand up your environment, assemble a basic context hub for your Kit — the bundle of goals, references, and conventions the AI works from — and deploy your first disposable application or wireframe.</p>
+      </div>
+    </div>
+    <div class="session">
+      <div class="when">Session 2<span class="sub">Kitcraft I</span></div>
+      <div>
+        <h4>Convert the app into a reusable Kit</h4>
+        <p>Turn your disposable application into a Kit you or a teammate can run repeatedly and reliably. Opens with a short clinic on the success patterns and failure modes of AI adoption; closes with a Kit trade.</p>
+      </div>
+    </div>
+    <div class="session">
+      <div class="when">Session 3<span class="sub">Kitcraft II</span></div>
+      <div>
+        <h4>Harden the Kit</h4>
+        <p>Continue hardening your Kit. As with Session 2, opens with a clinic on AI-adoption patterns and failure modes and closes with a Kit trade.</p>
+      </div>
+    </div>
+    <div class="session">
+      <div class="when">Session 4<span class="sub">Show and Tell</span></div>
+      <div>
+        <h4>Kit demo day</h4>
+        <p>Each participant shows the Kit they built and shares how they might convert it into an organizational capability.</p>
+      </div>
+    </div>
+    <p style="margin-top:26px;"><span class="kicker">Before session 1</span> &nbsp;Participants receive a <strong>“Kitcraft Kit”</strong> — the language and design principles that guide Kit development through the working sessions. Pairs co-create a Kit around their common interests.</p>
+  </div>
+</section>
+
+<!-- ===== WHO IT'S FOR / PREREQS ===== -->
+<section id="who" class="sec-surface">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Who it's for</span>
+        <h2>AI-curious, non-technical, ready to tinker</h2>
+        <p>Analysts and managers from all backgrounds — project managers, operations and deployment leads, and AI-curious newcomers. No AI-engineering background is required, only regular chatbot use and a willingness to tinker.</p>
+        <div class="divider-note">If oversubscribed, priority goes to applicants who arrive with a concrete recurring task and a working tooling setup.</div>
+      </div>
+      <div>
+        <h4 style="font-family:var(--pi-sans);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pi-action-secondary);">Before you arrive</h4>
+        <ul class="ticks">
+          <li>Have used <b>AI chatbots regularly</b> (e.g. ChatGPT).</li>
+          <li>Have installed <b>Claude Code (Pro+)</b> or OpenAI's <b>Codex</b>.</li>
+          <li>Have an available <b>GitHub account</b>.</li>
+          <li>Bring <b>one recurring task</b> you want to build a Kit around.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ORGANIZERS ===== -->
+<section id="organizers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Organizers</span>
+      <h2>Facilitated by the Protocols for Business SIG</h2>
+    </div>
+    <div class="grid g2">
+      <div class="card org">
+        <div class="avatar">RF</div>
+        <div>
+          <h3 style="font-size:21px;margin-bottom:.1em;">Rafael Fernández</h3>
+          <div class="role">Lead, Protocols for Business SIG</div>
+          <p>Rafa researches how protocols influence organizational design, performance, and technology adoption, and co-authored the <a href="https://ai.protocolized.dev/">AI Capability Maturity Model</a> — the five-level framework this workshop teaches participants to climb. He runs the SIG's study group and builds the kind of hands-on Kits the workshop asks participants to make. He works as a general manager for blockchain governance functions and as an AI adoption consultant.</p>
+        </div>
+      </div>
+      <div class="card org">
+        <div class="avatar">SB</div>
+        <div>
+          <h3 style="font-size:21px;margin-bottom:.1em;">Sachin Benny</h3>
+          <div class="role">Co-lead, Protocol Fiction SIG</div>
+          <p>Sachin is a thinker on infrastructure ethnography and the social history of technology, and author of <a href="https://read.technically.dev/p/the-ai-productivity-paradox"><em>AI, Tractors, and the Productivity Paradox</em></a> — the essay that supplies this workshop's core thesis: that AI is in its Kit phase. He works as an AI adoption consultant and previously as a product manager across software organizations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOUNDATIONS ===== -->
+<section class="sec-surface tight">
+  <div class="wrap">
+    <span class="eyebrow">Foundations</span>
+    <div class="grid g4" style="margin-top:18px;">
+      <div class="card">
+        <h4 style="font-size:17px;">AI Capability Maturity Model</h4>
+        <p>The five-level framework the workshop teaches. <a href="https://ai.protocolized.dev/">ai.protocolized.dev →</a></p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:17px;">The kit thesis</h4>
+        <p>Sachin Benny, <em>AI, Tractors, and the Productivity Paradox</em>. <a href="https://read.technically.dev/p/the-ai-productivity-paradox">Read →</a></p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:17px;">2026 Protocol Symposium</h4>
+        <p>New Nature, Sep 21–25, online. <a href="https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature">Details →</a></p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:17px;">Example Kit outcome</h4>
+        <p>Agent-Accessible Brand Kit. <a href="https://npc.here.now/zknationbrand/">See it →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPLY ===== -->
+<section id="apply" class="apply">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Express interest</span>
+        <h2>Save your seat</h2>
+        <p class="lead">Symposium registration opens in July, once the schedule is finalized. Tell us you're interested and we'll reach out with the details when it does. Workshop seats are limited to 10–15.</p>
+        <p style="color:rgba(255,255,255,.7);font-size:14.5px;margin-top:18px;">Bringing a concrete recurring task and a working tooling setup moves you up the priority list.</p>
+      </div>
+      <div>
+        <form class="formcard" id="interest-form" novalidate>
+          <div class="field">
+            <label for="f-name">Name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-org">Organization &amp; role</label>
+            <input type="text" id="f-org" name="org" placeholder="e.g. Ops lead, Acme Co.">
+          </div>
+          <div class="field">
+            <label for="f-task">One recurring task you'd build a Kit around <span class="req">*</span></label>
+            <textarea id="f-task" name="task" required placeholder="A weekly or more-often task where no one has written the steps down."></textarea>
+          </div>
+          <div class="field">
+            <label>Tooling readiness</label>
+            <div class="checks">
+              <label><input type="checkbox" name="ready" value="Uses AI chatbots regularly"> I use AI chatbots regularly (e.g. ChatGPT)</label>
+              <label><input type="checkbox" name="ready" value="Claude Code / Codex installed"> I've installed Claude Code (Pro+) or Codex</label>
+              <label><input type="checkbox" name="ready" value="Has GitHub account"> I have a GitHub account</label>
+            </div>
+          </div>
+          <!-- honeypot -->
+          <div class="hp" aria-hidden="true"><label>Leave blank<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;background:var(--pi-action-secondary);">Express interest</button>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          <p class="form-note">We'll only use this to contact you about the AI Kitcraft workshop and symposium registration. Prefer email? Write to <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="meta">
+      <strong style="font-family:var(--pi-serif);font-weight:400;font-size:17px;">The Protocol Institute</strong><br>
+      Protocols for Business SIG · 2026 Protocol Symposium, New Nature
+    </div>
+    <div class="foot-links">
+      <a href="https://ai.protocolized.dev/">AI Adoption Guide</a>
+      <a href="https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature">Symposium</a>
+      <a href="https://protocol-institute.org/">Protocol Institute</a>
+      <a href="mailto:team@protocol-institute.org">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('interest-form');
+  var status = document.getElementById('form-status');
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var org = form.org.value.trim();
+    var task = form.task.value.trim();
+    var hp = form._hp.value;
+    var ready = Array.prototype.slice.call(form.querySelectorAll('input[name="ready"]:checked')).map(function(c){return c.value;});
+
+    // Honeypot: pretend success for bots.
+    if(hp){ status.textContent='Thanks — we’ll be in touch.'; status.className='form-status success'; form.reset(); return; }
+    if(!name || !email || !task){
+      status.textContent='Name, email, and a recurring task are required.';
+      status.className='form-status error'; return;
+    }
+    btn.disabled = true;
+    status.textContent='Sending…'; status.className='form-status';
+
+    var message =
+      'AI Kitcraft Workshop — interest\n' +
+      '----------------------------------\n' +
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Org/role: ' + (org || '—') + '\n' +
+      'Recurring task: ' + task + '\n' +
+      'Tooling ready: ' + (ready.length ? ready.join(', ') : 'none checked') + '\n' +
+      'Source: ' + location.href;
+
+    // Graceful fallback: if the relay can't be reached (e.g. CORS/network),
+    // hand the user a prefilled email so their interest is never lost.
+    function emailFallback(){
+      var mailto = 'mailto:team@protocol-institute.org'
+        + '?subject=' + encodeURIComponent('AI Kitcraft Workshop — Interest')
+        + '&body=' + encodeURIComponent(message);
+      status.innerHTML = 'Could not reach the form. <a href="' + mailto + '" style="color:#bff0dd;text-decoration:underline;">Send it as an email instead →</a>';
+      status.className = 'form-status error';
+    }
+
+    try{
+      var res = await fetch('https://protocolized-inbox.rafaeldf2.workers.dev/contact', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ name:name, email:email, message:message, subject:'AI Kitcraft Workshop — Interest', _hp:hp })
+      });
+      if(res.ok){
+        status.textContent='Thanks — your interest is in. We’ll email you when registration opens.';
+        status.className='form-status success';
+        form.reset();
+      } else {
+        emailFallback();
+      }
+    } catch(_err){
+      emailFallback();
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
