@@ -35,11 +35,11 @@ python3 -m http.server 8765   # then use Playwright MCP at 1280x720, cache-bust 
 Walk each slide; check for overlap with the wordmark/footer, content overflow, and contrast.
 
 ## Slide map (15)
-1 Title · 2 Already adopting (positive) · 3 Paradigm not app · **4 The path so far (4-era two-track timeline)** · 5 Two-tracks thesis · 6 Govern the outputs · 7 Divider "Five levels, two tracks" (balance image) · 8 Dual maturity ladder (Shadow greyed=passed, **Kit highlighted="market is now"**, per-level thumbnails) · 9 Examples across both paths · 10 Historical analogue (tractor/kit) · 11 Success patterns (blue cards; grey "PREVENTS·" failure block) · 12 New nature of work · 13 Diagnose (assessment button → protocolized.dev/assessment/) · 14 Workshop announcement (mint button → AI Kitcraft page) · (workshop is the dark slide).
+1 Title · 2 Already adopting (positive) · 3 Paradigm not app · **4 The path so far (4-era two-track timeline)** · 5 Two-tracks thesis · 6 Govern the outputs · 7 Divider "Five levels, two tracks" (balance image) · 8 Dual maturity ladder (Shadow greyed=passed, **Kit highlighted="market is now"**, per-level thumbnails) · 9 Examples across both paths · 10 Historical analogue (tractor/kit) · 11 Success patterns (blue cards; grey "PREVENTS·" failure block) · 12 New nature of work · 13 Diagnose (assessment button → ai.protocolized.dev/#assessment) · 14 Workshop announcement (mint button → AI Kitcraft page) · (workshop is the dark slide).
 
 ## Assets
 `assets/` holds the favicon, per-level ladder thumbnails (`lvl1-play`…`lvl5-fluency`, sourced from `../html/images/`), the title hero (`primordial-soup.webp`), and the divider balance image (`duality-balance.png`, brand kit `retro-vintage__sop-2025-accelerating-order`). ~2MB total; convert PNGs→WebP if leaner is needed. Remove an asset from `assets/` only after confirming `index.html` no longer references it.
 
 ## Open threads
-- Both custom mounts are LIVE (`ai.protocolized.dev/townhallslidesjune2026` and `.../kitcraft`); slide 14's Kitcraft button points to `https://ai.protocolized.dev/kitcraft/`. Assessment button → `https://protocolized.dev/assessment/` (there is no `ai.protocolized.dev/assessment`).
+- Both custom mounts are LIVE (`ai.protocolized.dev/townhallslidesjune2026` and `.../kitcraft`); slide 14's Kitcraft button points to `https://ai.protocolized.dev/kitcraft/`. Assessment button → `https://ai.protocolized.dev/#assessment` (an anchor in the live guide deck).
 - Possible reorder: the timeline (4) and the two-tracks thesis (5) are adjacent and slightly overlap — could merge/reorder if desired.
