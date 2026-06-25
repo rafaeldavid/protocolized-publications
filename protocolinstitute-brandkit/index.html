@@ -186,10 +186,24 @@
   pre{background:var(--ink-900);color:#e8e8ea;border-radius:10px;padding:16px 18px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.6;position:relative}
   pre .cp{position:absolute;top:8px;right:8px}
   .copybtn{font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--hairline);border-radius:6px;padding:4px 9px;cursor:pointer}
-  .princ{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:8px 0 18px}
-  .princ .p{border:1px solid var(--hairline);border-radius:10px;padding:14px 16px;background:var(--surface)}
-  .princ .p b{font-family:var(--sans);font-size:13px;display:block;margin-bottom:5px}
-  .princ .p span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  /* 4 equal notes → balanced 2×2 (never orphan a 4th in an auto-fill row) */
+  .princ{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 18px}
+  /* 3 short composition rules → a clean 3-up row */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 12px}
+  @media(max-width:760px){.rules{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.rules,.princ{grid-template-columns:1fr}}
+  .princ .p,.rules .p{border:1px solid var(--hairline);border-radius:10px;padding:14px 16px;background:var(--surface)}
+  .princ .p b,.rules .p b{font-family:var(--sans);font-size:13px;display:block;margin-bottom:5px}
+  .princ .p span,.rules .p span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  /* the page-header pattern is longer + a different kind than the rules — give it
+     its own full-width callout instead of orphaning it in the grid */
+  .pattern-note{display:flex;gap:18px;align-items:flex-start;border:1px solid var(--hairline);
+    border-left:3px solid var(--action);border-radius:10px;padding:16px 18px;background:var(--surface);margin:0 0 18px}
+  .pattern-note .pn-k{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--action);white-space:nowrap;padding-top:2px;flex:none}
+  .pattern-note .pn-b{font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.55}
+  .pattern-note .pn-b b{color:var(--ink)}
+  @media(max-width:560px){.pattern-note{flex-direction:column;gap:8px}}
   .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:8px}
   .file{display:flex;align-items:center;gap:12px;border:1px solid var(--hairline);border-radius:10px;padding:12px 14px;background:var(--surface);color:var(--ink)}
   .ficon{flex:none;width:30px;height:30px;border-radius:7px;background:var(--muted);color:var(--action);font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center}
@@ -463,11 +477,14 @@
         <div class="d">A card: 1px hairline border, 8px radius, hover shadow only. Badge → serif title → dek → meta.</div>
       </div>
     </div>
-    <div class="princ">
+    <div class="rules">
       <div class="p"><b>Radius</b><span>Pills/badges/chips → <code>pill</code>. Cards/buttons → <code>md</code> (8px).</span></div>
       <div class="p"><b>Borders</b><span>1px <code>--pi-border-hairline</code>; no resting shadow, hover only.</span></div>
       <div class="p"><b>Derivation</b><span>New component = existing tokens + roles. No new colors, radii, or shadows.</span></div>
-      <div class="p"><b>Header</b><span>The “The Protocol Institute” wordmark anchored top-left; brand + <b>UPPERCASE</b> nav on the right (see this page’s header). Classes: <code>.pi-topnav</code>, <code>.pi-wordmark</code>.</span></div>
+    </div>
+    <div class="pattern-note">
+      <span class="pn-k">Pattern · Page header</span>
+      <span class="pn-b">The “The Protocol Institute” wordmark anchored top-left; brand + <b>UPPERCASE</b> nav on the right (see this page’s header). Classes: <code>.pi-topnav</code>, <code>.pi-wordmark</code> — add <code>.pi-on-dark</code> over a dark band.</span>
     </div>
   </section>
 
