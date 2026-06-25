@@ -205,8 +205,9 @@ ul.ticks li b{ color:var(--pi-text-heading); }
 .org p{ font-size:15px; color:var(--pi-text-secondary); margin:0; }
 
 /* — Foundations cards with imagery — */
-.fnd .thumb{ width:calc(100% + 48px); height:118px; margin:-24px -24px 16px; object-fit:cover; display:block;
-  border-bottom:1px solid var(--pi-hairline); border-radius:var(--pi-radius-md) var(--pi-radius-md) 0 0; }
+.fnd{ overflow:hidden; }
+.fnd .thumb{ width:calc(100% + 48px); max-width:none; height:128px; margin:-24px -24px 16px; object-fit:cover; display:block;
+  border-bottom:1px solid var(--pi-hairline); }
 .fnd h4{ font-size:17px; margin:0 0 .3em; }
 
 /* — Apply / form — */
