@@ -92,10 +92,15 @@ header.nav{ position:fixed; inset:0 0 auto 0; height:var(--topbar); z-index:100;
 .gutter{ position:fixed; top:50%; left:max(16px, calc((100vw - var(--maxw))/2 - 176px)); transform:translateY(-50%);
   z-index:40; display:none; flex-direction:column; gap:1px; }
 @media(min-width:1240px){ .gutter{ display:flex; } }
-.gutter a{ font-family:var(--pi-sans); font-size:12px; font-weight:500; color:#a3a3ab; padding:5px 12px;
-  border-left:2px solid transparent; white-space:nowrap; line-height:1.3; }
-.gutter a:hover{ color:var(--pi-text-secondary); text-decoration:none; }
+.gutter a{ font-family:var(--pi-sans); font-size:12px; font-weight:500; color:var(--pi-text-secondary); padding:5px 12px;
+  border-left:2px solid transparent; white-space:nowrap; line-height:1.3; transition:color .2s; }
+.gutter a:hover{ color:var(--pi-text-heading); text-decoration:none; }
 .gutter a.active{ color:var(--pi-text-heading); border-left-color:var(--pi-action-primary); }
+/* over the dark hero / apply sections, flip text to light so contrast holds (the
+   blue line stays the active marker) */
+.gutter.on-dark a{ color:rgba(255,255,255,.72); }
+.gutter.on-dark a:hover{ color:#fff; }
+.gutter.on-dark a.active{ color:#fff; border-left-color:#bff0dd; }
 
 /* — Buttons — */
 .btn{ font-family:var(--pi-sans); font-size:16px; font-weight:500; line-height:1.4; padding:13px 26px;
@@ -612,6 +617,21 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     });
   }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
   Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+
+  /* Flip gutter text to light when it overlaps a dark-green section (hero / apply),
+     so the active link and the rest keep AA contrast at the top and bottom. */
+  var gutter = document.getElementById('gutter');
+  var darkSecs = [document.querySelector('.hero'), document.getElementById('apply')].filter(Boolean);
+  function syncDark(){
+    if(!gutter) return;
+    var gr = gutter.getBoundingClientRect();
+    var cy = (gr.top + gr.bottom) / 2;        // gutter's vertical midpoint
+    var overDark = darkSecs.some(function(s){ var r = s.getBoundingClientRect(); return r.top <= cy && r.bottom >= cy; });
+    gutter.classList.toggle('on-dark', overDark);
+  }
+  window.addEventListener('scroll', syncDark, { passive:true });
+  window.addEventListener('resize', syncDark);
+  syncDark();
 })();
 
 /* ---- application form ----
