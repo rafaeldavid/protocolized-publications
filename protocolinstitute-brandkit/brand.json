@@ -1,12 +1,13 @@
 {
   "name": "Protocol Institute Brand Kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "summary": "Single source of truth for the Protocol Institute brand. Tokens encode DECISIONS (intent), not raw values — choose a decision token by context, never a bare hex or pixel. Two veins (institute, protocolized) share one token system and differ by typeface emphasis, color emphasis, and imagery.",
   "principles": [
     "Decisions over values: reference `color.decision.*`, not `color.primitive.*`, in product code.",
     "Closed sets: the menus below are exhaustive. If a need is not covered, extend the system in this file first, then use it — do not invent ad-hoc values.",
-    "One surface family is light, paper-toned. Dark mode is not part of v1; do not invent dark variants.",
-    "When a component is missing, derive it from `components.rules` + existing decision tokens; keep radius, hairline, and type roles consistent."
+    "Light is the default surface, but DARK SURFACES are first-class: heroes, CTA bands, and footers use `surface-dark` + the `on-dark*` tokens. (This is not a dark MODE / user toggle — there is still no light/dark switch.) Any text or chrome that can overlap a dark surface needs an on-dark color.",
+    "Build with the component + behavior layer (brand.css `.pi-*` classes + brand.js), not raw tokens alone — the components have spacing, contrast, and responsive behavior baked in. Only compose a new component (from `components.rules` + decision tokens) when one is genuinely missing.",
+    "Quality is verified, not assumed: run `scripts/contrast-check.mjs` and `scripts/preflight.mjs`, and the Playwright `scripts/qc.md` definition-of-done, before shipping an artifact."
   ],
   "veins": {
     "institute": {
@@ -42,7 +43,10 @@
       "gray-100": "#f3f4f6",
       "gray-200": "#e5e7eb",
       "ink-900": "#2c2c2a",
-      "ink-600": "#5f5e5a"
+      "ink-600": "#5f5e5a",
+      "forest-950": "#0a1f17",
+      "mint-200": "#bff0dd",
+      "on-dark-muted": "#bac0bd"
     },
     "decision": {
       "action-primary":        { "value": "#0064ff", "ref": "cobalt-500", "usage": "Primary CTA fill, link emphasis, brand-forward highlight. Brand-kit primary (aspirational; see note). Pair with on-action text." },
@@ -60,12 +64,16 @@
       "border-hairline":       { "value": "#e5e7eb", "ref": "gray-200",  "usage": "1px borders on cards, inputs, nav underline, footer top border." },
       "text-heading":          { "value": "#2c2c2a", "ref": "ink-900",   "usage": "Headlines and body emphasis." },
       "text-body":             { "value": "#2c2c2a", "ref": "ink-900",   "usage": "Default body text." },
-      "text-secondary":        { "value": "#5f5e5a", "ref": "ink-600",   "usage": "Dek, breadcrumb, meta, captions, chips, footer links." },
-      "on-action":             { "value": "#ffffff", "ref": "white",     "usage": "Text on action-primary / action-secondary / accent fills." }
+      "text-secondary":        { "value": "#5f5e5a", "ref": "ink-600",   "usage": "Dek, breadcrumb, meta, captions, chips, footer links. The lightest text color that still passes AA on paper (6.11:1) — do NOT use a lighter grey for text (a #a3a3ab muted nav grey is only 2.36:1 and fails)." },
+      "on-action":             { "value": "#ffffff", "ref": "white",     "usage": "Text on action-primary / action-secondary / accent fills." },
+      "surface-dark":          { "value": "#0a1f17", "ref": "forest-950","usage": "Dark New-Nature green band: hero backgrounds, CTA sections, dark slides, footers. Put on-dark* text/chrome on it." },
+      "on-dark":               { "value": "#ffffff", "ref": "white",     "usage": "Primary text / chrome on surface-dark (≈16:1)." },
+      "on-dark-muted":         { "value": "#bac0bd", "ref": "on-dark-muted","usage": "Secondary text on surface-dark (AA-safe ≈8.3:1). Use instead of dark text-secondary, which fails on dark." },
+      "on-dark-line":          { "value": "#bff0dd", "ref": "mint-200",  "usage": "Active marker / accent / mint button on surface-dark." }
     },
     "note": "The brand-kit PRIMARY is electric cobalt (#0064ff), aspirational and sourced from the Substack surface. The live protocolized.io still serves forest green (#0f6e56) as action-secondary. Use cobalt for new artifacts; use green to match the current production site.",
     "accessibility": {
-      "note": "Verified by scripts/contrast-check.mjs (WCAG 2.1). White on-action meets AA for normal text on action-primary, action-primary-pressed, and action-secondary. White on accent (#d85a30) is 3.87:1 — large-text / non-text ONLY, never small body text. The 'Featured' badge label uses accent-deep (#9e3d18), not bare accent, to meet AA on accent-tint (bare accent is 3.36:1). Cobalt link on paper is 4.63:1 — passes AA with little headroom; avoid sub-16px cobalt links on paper. Do not place text-secondary on action fills.",
+      "note": "Verified by scripts/contrast-check.mjs (WCAG 2.1) — claims here are TESTED, not asserted. White on-action meets AA for normal text on action-primary, action-primary-pressed, and action-secondary. White on accent (#d85a30) is 3.87:1 — large-text / non-text ONLY, never small body text. The 'Featured' badge label uses accent-deep (#9e3d18), not bare accent, to meet AA on accent-tint (bare accent is 3.36:1). Cobalt link on paper is 4.63:1 — passes AA with little headroom; avoid sub-16px cobalt links on paper. text-secondary (#5f5e5a) is the lightest AA-safe text on paper (6.11:1) — a lighter muted grey (#a3a3ab) fails (2.36:1). On DARK surfaces, dark text fails (e.g. text-heading on surface-dark is 1.23:1): use on-dark / on-dark-muted, which is why chrome over a dark hero/CTA must flip (brand.js does this automatically via .pi-on-dark). Do not place text-secondary on action fills.",
       "thresholds": { "text": 4.5, "large": 3.0, "ui": 3.0, "_unit": "WCAG 2.1 minimum contrast ratio; text=normal (<24px / <18.66px bold), large=larger, ui=graphical/border (1.4.11)" },
       "test": "node scripts/contrast-check.mjs",
       "pairings": [
@@ -86,6 +94,10 @@
         { "fg": "action-secondary-deep","bg": "action-secondary-tint", "kind": "text",  "label": "Framework badge text" },
         { "fg": "accent-deep",          "bg": "accent-tint",           "kind": "text",  "label": "Featured badge text" },
         { "fg": "action-primary-pressed","bg": "action-primary-tint",  "kind": "text",  "label": "Secondary-button hover text" },
+        { "fg": "on-dark",              "bg": "surface-dark",          "kind": "text",  "label": "Text/chrome on dark surface" },
+        { "fg": "on-dark-muted",        "bg": "surface-dark",          "kind": "text",  "label": "Secondary text on dark surface" },
+        { "fg": "surface-dark",         "bg": "on-dark-line",          "kind": "text",  "label": "Mint button label (on-dark)" },
+        { "fg": "on-dark-line",         "bg": "surface-dark",          "kind": "ui",    "label": "Active marker / accent on dark" },
         { "fg": "border-hairline",      "bg": "background-surface",    "kind": "ui",    "label": "Hairline border on white", "note": "decorative" }
       ]
     }
@@ -132,14 +144,44 @@
     "swatch":           { "derived": "A color specimen: filled rounded-md chip + decision token name (mono) + hex, click-to-copy the token name. Derive from radius.md + border-hairline + text-secondary caption." },
     "download-button":  { "derived": "A button-secondary with a leading download glyph; same tokens as button-secondary." },
     "site-header":      { "layout": "The Protocol Institute wordmark anchored TOP-LEFT; page/local brand + nav on the RIGHT.", "nav": "Menu/nav links are UPPERCASE, sans (Outfit), letter-spacing ~0.05em — matching protocol-institute.org.", "classes": ".pi-topnav (uppercase links), .pi-wordmark (left anchor)." },
-    "wordmark":         { "lockup": "P-mark + 'The Protocol Institute' set in the serif display face (Instrument Serif). Place as the TOP-LEFT anchor of every page header.", "link": "https://protocol-institute.org/", "class": ".pi-wordmark" }
+    "wordmark":         { "lockup": "P-mark + 'The Protocol Institute' set in the serif display face (Instrument Serif). Place as the TOP-LEFT anchor of every page header. On a dark surface add .pi-on-dark.", "link": "https://protocol-institute.org/", "class": ".pi-wordmark / .pi-wordmark.pi-on-dark" },
+    "section-head":     { "class": ".pi-section-head", "use": "Centered eyebrow + title (+ optional lead) intro above a grid. Prevents left-scrunched single-column text. Contains a .pi-eyebrow." },
+    "eyebrow":          { "class": ".pi-eyebrow", "use": "Uppercase kicker above a title; carries the label→title gap so it never collides with the heading." },
+    "card-media":       { "class": ".pi-card .pi-card--media", "structure": "<a class='pi-card pi-card--media'><img class='pi-card__media' src='OG_IMAGE'><div class='pi-card__body'>…</div></a>", "use": "Link-preview / image card. Drop in the target page's og:image. Image is full-bleed via max-width:none + overflow:hidden (avoids the img{max-width:100%} footgun)." },
+    "figure-cta":       { "class": ".pi-figure-cta", "structure": "<div class='pi-figure-cta'><img><div class='pi-scrim'></div><div class='pi-cta-on'>…buttons…</div></div>", "use": "A feature image with CTA button(s) overlaid on a bottom scrim. Use .pi-btn--on-image for ghost buttons over imagery." },
+    "gutter-nav":       { "class": ".pi-gutter (links href='#section')", "behavior": "brand.js adds .is-active via scroll-spy and flips .pi-on-dark over dark surfaces. Active state is the cobalt LINE, not a hard color, so it survives the on-dark flip.", "desktop_only": "shows ≥1240px; pair with .pi-hamburger + .pi-mobile-menu below it." },
+    "mobile-menu":      { "classes": ".pi-hamburger (button, data-pi-menu='#id') + .pi-mobile-menu#id", "behavior": "brand.js toggles .is-open; links close it. Hamburger shows <760px. Required because the gutter is desktop-only." },
+    "button-on-image":  { "class": ".pi-btn.pi-btn--on-image", "use": "Ghost button with light border/text for placement over imagery (on a scrim)." }
   },
   "components_rules": [
     "Pills/badges/chips use radius.pill. Cards/buttons/inputs use radius.md.",
     "Cards have a 1px border-hairline and no resting shadow; shadow.card-hover appears only on hover.",
     "Missing component? Compose it from decision tokens + these radius/hairline/type roles. Keep the closed token set.",
-    "Page header: nav/menu links are UPPERCASE; the 'The Protocol Institute' wordmark (serif) is anchored top-left and links to protocol-institute.org."
+    "Page header: nav/menu links are UPPERCASE; the 'The Protocol Institute' wordmark (serif) is anchored top-left and links to protocol-institute.org.",
+    "Vertical rhythm: a label/eyebrow needs the gap-label-title space above its title, title→body uses gap-title-body, groups gap-group — inside-group gaps must be smaller than between-group. Never let a kicker sit ~0px above its title.",
+    "Full-bleed images inside a card: a global img{max-width:100%} will silently cap them — use .pi-card--media (max-width:none + overflow:hidden) instead of a negative-margin hack.",
+    "Buttons set their own text color; if your page has a global a{color:…} reset, it can override .pi-btn — keep the a.pi-btn rules from brand.css (they outrank it).",
+    "No emoji in product UI; draw glyphs with CSS (e.g. the .pi-hamburger bars) or use brand marks."
   ],
+  "build": {
+    "summary": "Build WITH the component + behavior layer, not raw tokens. Link both files once.",
+    "head": "<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\"><link rel=\"stylesheet\" href=\"brand.css\"><script src=\"brand.js\" defer></script>",
+    "files": { "css": "brand.css (tokens + .pi-* components)", "js": "brand.js (mobile menu, gutter scroll-spy, on-dark auto-flip)", "favicon": "favicon.svg (the cobalt P-mark)" },
+    "behavior_hooks": [
+      "Mark dark bands with data-pi-surface=\"dark\" so dark-aware chrome flips automatically.",
+      "Mark chrome that overlaps dark bands with data-pi-dark-aware (the .pi-gutter is handled for you).",
+      "Hamburger: <button class=\"pi-hamburger\" data-pi-menu=\"#menu\">; menu: <nav class=\"pi-mobile-menu\" id=\"menu\">.",
+      "Slide decks: call PIBrand.onDark(wordmarkEl, isDarkSlide) on slide change."
+    ]
+  },
+  "quality": {
+    "summary": "Definition of done — a build is not shippable until these pass.",
+    "checks": [
+      "node scripts/contrast-check.mjs  — every token pairing meets WCAG AA (exit non-zero on fail).",
+      "node scripts/preflight.mjs <file.html>  — static lint: favicon present, brand.css/js linked, no emoji, no raw hex in markup, headings get text-wrap, no img{max-width:100%} conflict with full-bleed.",
+      "scripts/qc.md  — the Playwright pass: render at 1280x720 and 390px; measure label→title / title→body gaps (>=8px); check horizontal overflow; verify nav legibility over dark sections; confirm document.fonts loaded; screenshot every view."
+    ]
+  },
   "imagery": {
     "library": "assets/images/ (111 curated editorial artworks) + metadata.json (per-image aesthetic_category, description, W3C-named color palette).",
     "groups": [
@@ -191,7 +233,7 @@
   },
   "assets": {
     "logos": "assets/logos/ (Protocolized wordmark + P-mark, black/white, static + animated SVG; New Nature key art).",
-    "agent_files": ["brand.json", "brand.css", "llms.txt", "apply-protocol-institute-brand.md"],
+    "agent_files": ["brand.json", "brand.css", "brand.js", "llms.txt", "apply-protocol-institute-brand.md", "BACKLOG.md", "scripts/qc.md"],
     "live_sites": ["https://protocol-institute.org/", "https://protocolized.summerofprotocols.com/"],
     "source_of_truth": "DESIGN-protocolized.md (full sampled spec)."
   }

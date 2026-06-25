@@ -1,9 +1,12 @@
 /* ============================================================================
-   Protocol Institute — brand.css  (v1.0.0)
+   Protocol Institute — brand.css  (v1.1.0)
    LLM-SAFE USAGE: reference the DECISION variables (--pi-*), never raw hex.
    The variables and component classes below are a CLOSED menu. If something is
    missing, extend this file first, then use it — do not invent ad-hoc values.
-   One light, paper-toned surface family. No dark mode in v1.
+   Light is the default surface; DARK SURFACES (heroes/CTAs/footers) are first-class
+   via surface-dark + on-dark* tokens. No dark MODE (no light/dark toggle).
+   Build with the .pi-* components below (+ brand.js) — they bake in the spacing,
+   contrast, and responsive behavior. Verify with scripts/ (contrast + preflight + qc.md).
    ============================================================================ */
 
 /* Load the brand typefaces. Linking brand.css is enough — the fonts come with it.
@@ -18,6 +21,7 @@
   --pi--rust-700:#9e3d18;   --pi--rust-500:#d85a30;   --pi--rust-050:#faece7;
   --pi--paper:#f9f8f5; --pi--white:#ffffff; --pi--gray-100:#f3f4f6; --pi--gray-200:#e5e7eb;
   --pi--ink-900:#2c2c2a; --pi--ink-600:#5f5e5a;
+  --pi--forest-950:#0a1f17; --pi--mint-200:#bff0dd; --pi--on-dark-muted:#bac0bd; /* dark-surface family */
 
   /* — Decision tokens (USE THESE) — */
   --pi-action-primary:        var(--pi--cobalt-500);  /* primary CTA / emphasis (brand-kit primary) */
@@ -38,6 +42,12 @@
   --pi-text-secondary: var(--pi--ink-600);
   --pi-on-action:      var(--pi--white);
 
+  /* — Dark-surface contract (heroes / CTAs / footers — NOT a dark mode) — */
+  --pi-surface-dark:   var(--pi--forest-950); /* deep New-Nature green bg for hero / CTA bands */
+  --pi-on-dark:        var(--pi--white);       /* text/chrome on a dark surface */
+  --pi-on-dark-muted:  var(--pi--on-dark-muted);/* secondary text on a dark surface (AA-safe) */
+  --pi-on-dark-line:   var(--pi--mint-200);    /* active marker / accent on a dark surface */
+
   /* — Type — */
   --pi-font-serif:"Computer Modern Serif","CMU Serif","Latin Modern Roman","Instrument Serif",Georgia,serif;
   --pi-font-body:"Computer Modern Serif","CMU Serif","Latin Modern Roman",Lora,Georgia,serif;
@@ -48,6 +58,11 @@
   --pi-space-xs:8px; --pi-space-sm:12px; --pi-space-md:16px; --pi-space-lg:20px; --pi-space-xl:24px; --pi-space-xxl:32px;
   --pi-radius-md:8px; --pi-radius-lg:12px; --pi-radius-pill:9999px;
   --pi-shadow-hover:0 1px 2px 0 rgb(0 0 0 / .05);
+
+  /* — Vertical-rhythm gaps (proximity = relatedness; inside-group < between-group) — */
+  --pi-gap-label-title:9px;  /* eyebrow / kicker → its title */
+  --pi-gap-title-body:10px;  /* title → body / dek */
+  --pi-gap-group:20px;       /* between cards / sections */
 }
 
 /* — Type roles — */
@@ -88,3 +103,85 @@
 .pi-wordmark img{height:22px;width:auto;display:block;}        /* the P-mark */
 .pi-wordmark span{font-family:var(--pi-font-serif);font-size:17px;line-height:1;color:var(--pi-text-heading);} /* "The Protocol Institute" — serif display */
 .pi-wordmark:hover span{color:var(--pi-action-primary);}
+
+/* ============================================================================
+   v1.1 — component & behavior layer.  Link brand.css + brand.js and BUILD WITH
+   THESE — they have the spacing, contrast, and responsive behavior baked in, so
+   you don't re-derive (and re-bug) them per artifact.  See gotchas in llms.txt.
+   ============================================================================ */
+
+/* — Global typographic safety: kill orphan/widow words everywhere (opt-in by
+   linking brand.css; does not set fonts/sizes, so it won't clobber your styles). */
+h1,h2,h3,h4{ text-wrap:balance; }
+p,li{ text-wrap:pretty; }
+
+/* — Eyebrow / kicker → title rhythm (label never collides with its title) — */
+.pi-eyebrow{ font-family:var(--pi-font-sans); font-size:13px; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pi-action-primary); display:block; margin:0 0 var(--pi-gap-label-title); }
+.pi-section-head{ max-width:48ch; margin:0 auto var(--pi-space-xxl); text-align:center; } /* centered intro — avoids "scrunched left" */
+.pi-section-head .pi-lead{ margin-inline:auto; }
+
+/* — Button: robust against a global `a{color}` reset (a frequent footgun) — */
+.pi-btn,a.pi-btn{ color:var(--pi-on-action); }                 /* primary text wins over `a` */
+a.pi-btn--secondary{ color:var(--pi-action-primary); }
+.pi-btn--ghost{ background:transparent; color:var(--pi-on-action); border-color:rgba(255,255,255,.55); }
+.pi-btn--ghost:hover{ background:rgba(255,255,255,.14); }
+a.pi-btn--ghost{ color:var(--pi-on-action); }
+.pi-btn--mint{ background:var(--pi-on-dark-line); color:var(--pi-surface-dark); border-color:var(--pi-on-dark-line); }
+a.pi-btn--mint{ color:var(--pi-surface-dark); }
+.pi-btn--mint:hover{ filter:brightness(.94); }
+/* ghost button sitting on an image: light border + text, use over a scrim */
+.pi-btn--on-image,a.pi-btn--on-image{ background:rgba(255,255,255,.16); color:#fff; border-color:rgba(255,255,255,.65); }
+.pi-btn--on-image:hover{ background:rgba(255,255,255,.28); }
+
+/* — Media card: full-bleed preview image WITHOUT the `img{max-width:100%}`
+   footgun. Use for link-preview cards (drop in the target's og:image). — */
+.pi-card--media{ overflow:hidden; padding:0; }
+.pi-card--media .pi-card__media{ display:block; width:100%; max-width:none; height:128px;
+  object-fit:cover; border-bottom:1px solid var(--pi-border-hairline); }
+.pi-card--media .pi-card__body{ padding:var(--pi-space-lg); }
+.pi-card--media .pi-card__body h4{ margin:0 0 var(--pi-gap-title-body); }
+
+/* — CTA feature image with the button(s) overlaid (scrim keeps them legible) — */
+.pi-figure-cta{ position:relative; border-radius:var(--pi-radius-lg); overflow:hidden; border:1px solid var(--pi-border-hairline); }
+.pi-figure-cta img{ display:block; width:100%; height:100%; object-fit:cover; }
+.pi-figure-cta .pi-scrim{ position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(8,16,22,.78) 0%, rgba(8,16,22,.34) 40%, rgba(8,16,22,.04) 72%); }
+.pi-figure-cta .pi-cta-on{ position:absolute; left:18px; right:18px; bottom:18px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+/* — Left-gutter scroll-spy nav (desktop) — active = the line, not a hard color.
+   brand.js adds .is-active on the current link and toggles .pi-on-dark when the
+   gutter overlaps a dark surface (so contrast holds at the top/bottom). — */
+.pi-gutter{ position:fixed; top:50%; transform:translateY(-50%); z-index:40; display:none; flex-direction:column; gap:1px; }
+.pi-gutter[data-max] { left:max(16px, calc((100vw - var(--pi-gutter-max, 1040px))/2 - 176px)); }
+@media(min-width:1240px){ .pi-gutter{ display:flex; } }
+.pi-gutter a{ font-family:var(--pi-font-sans); font-size:12px; font-weight:500; color:var(--pi-text-secondary);
+  padding:5px 12px; border-left:2px solid transparent; white-space:nowrap; line-height:1.3; text-decoration:none; transition:color .2s; }
+.pi-gutter a:hover{ color:var(--pi-text-heading); }
+.pi-gutter a.is-active{ color:var(--pi-text-heading); border-left-color:var(--pi-action-primary); }
+.pi-gutter.pi-on-dark a{ color:var(--pi-on-dark-muted); }
+.pi-gutter.pi-on-dark a:hover{ color:var(--pi-on-dark); }
+.pi-gutter.pi-on-dark a.is-active{ color:var(--pi-on-dark); border-left-color:var(--pi-on-dark-line); }
+
+/* — Wordmark over a dark surface (deck slides, dark hero) — */
+.pi-wordmark.pi-on-dark span{ color:var(--pi-on-dark); }
+.pi-wordmark.pi-on-dark img{ filter:brightness(0) invert(1); }
+
+/* — Mobile menu (the gutter is desktop-only; provide a working hamburger <1240px) — */
+.pi-hamburger{ display:none; width:38px; height:34px; border:1px solid var(--pi-border-hairline); border-radius:8px;
+  background:transparent; cursor:pointer; padding:0; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+.pi-hamburger span{ display:block; width:18px; height:2px; background:var(--pi-text-heading); transition:.2s; }
+.pi-hamburger[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+.pi-hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.pi-hamburger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+.pi-mobile-menu{ display:none; flex-direction:column; background:var(--pi-background-surface); border-bottom:1px solid var(--pi-border-hairline); }
+.pi-mobile-menu.is-open{ display:flex; }
+.pi-mobile-menu a{ font-family:var(--pi-font-sans); font-size:15px; font-weight:500; color:var(--pi-text-heading);
+  padding:14px 28px; border-top:1px solid var(--pi-border-hairline); text-decoration:none; }
+.pi-mobile-menu a:hover{ background:var(--pi-background-muted); }
+@media(max-width:760px){ .pi-hamburger{ display:inline-flex; } }
+
+/* — Responsive list: two columns on wide screens, ONE on mobile (never a
+   cramped multi-column list on a phone) — */
+.pi-cols-2{ columns:2; column-gap:44px; }
+@media(max-width:680px){ .pi-cols-2{ columns:1; } }

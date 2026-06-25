@@ -1,7 +1,21 @@
 # Protocol Institute — Brand Kit (llms.txt)
 
 > Machine-readable entry point for agents applying the Protocol Institute brand.
-> Read this first, then load brand.json (tokens) and brand.css (variables + components).
+> Read this first, then load brand.json (tokens + components + build + quality),
+> brand.css (variables + `.pi-*` components), and brand.js (interactive behavior).
+> BUILD WITH THE COMPONENTS, not raw tokens alone — the `.pi-*` classes have the
+> spacing, contrast, and responsive behavior baked in, so you don't re-derive (and
+> re-bug) them. Then VERIFY (contrast + preflight + the Playwright qc.md) before shipping.
+
+## Drop-in (head)
+```html
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="brand.css">
+<script src="brand.js" defer></script>
+```
+brand.js auto-wires by markup: `.pi-hamburger[data-pi-menu="#m"]` toggles `.pi-mobile-menu#m`;
+`.pi-gutter` links get scroll-spy `.is-active`; anything with `data-pi-dark-aware` (and the
+gutter) flips to `.pi-on-dark` while it overlaps a `data-pi-surface="dark"` band.
 
 ## What this is
 The brand system for the Protocol Institute — "a research, education, media, and
@@ -17,7 +31,10 @@ It governs two veins that share ONE token system:
 - **Decisions over values.** Use decision tokens (`--pi-action-primary`, `--pi-text-secondary`,
   …), never raw hex or arbitrary pixels. The token menus in brand.json / brand.css are CLOSED.
 - **No invented values.** If something is missing, extend brand.json/brand.css first, then use it.
-- **No dark mode in v1.** One light, paper-toned surface family.
+- **No dark MODE (no light/dark toggle) — but DARK SURFACES are first-class.** Heroes, CTA bands,
+  footers, and dark slides use `surface-dark` + `on-dark` / `on-dark-muted` / `on-dark-line`. Any
+  text/chrome that can overlap a dark band MUST flip to on-dark (mark the band `data-pi-surface="dark"`
+  and the chrome `data-pi-dark-aware`; brand.js does the rest). Dark text on dark = 1.23:1 = invisible.
 - **Compose missing components** from existing decision tokens + the radius/hairline/type roles.
 - **Imagery:** never use real-person photos, headshots, event photos, screenshots, charts, or
   data-viz. Use only the curated artwork in assets/images/ (see metadata.json).
@@ -44,10 +61,25 @@ add new combinations there, then re-run. Known constraints the test enforces: wh
 **accent** (#d85a30) is large-text/non-text ONLY (3.87:1); accent-as-text on accent-tint
 uses **accent-deep** (#9e3d18), never bare accent. Exit code is non-zero on any failure.
 
+## Verify before shipping (definition of done)
+1. `node scripts/contrast-check.mjs` — every token pairing meets WCAG AA (incl. on-dark). Exit non-zero on fail.
+2. `node scripts/preflight.mjs <built.html>` — static lint: favicon, viewport, fonts linked, no emoji, text-wrap present, no `img{max-width:100%}` vs full-bleed conflict, button/`a{color}` footgun, raw-hex nudge.
+3. `scripts/qc.md` — the **Playwright pass**: render at 1280×720 and 390px; measure contrast (esp. chrome over dark bands), label→title / title→body gaps (≥8px), image-fills-card, no horizontal overflow, fonts loaded (`document.fonts.check`), mobile menu works. Every issue this kit has paid for is a check here.
+
+## Gotchas (these bit real builds — the components above prevent them)
+- A global `img{ max-width:100% }` silently caps a full-bleed card image — use `.pi-card--media` (`max-width:none`).
+- A global `a{ color }` reset can override `.pi-btn` text (white-on-cobalt → invisible) — keep brand.css's `a.pi-btn` rules.
+- A muted nav grey (`#a3a3ab`) fails AA on paper (2.36:1) — `text-secondary` (#5f5e5a, 6.11:1) is the lightest text color.
+- Dark text over a dark hero/CTA fails (1.23:1) — flip to on-dark (see the dark-surface rule).
+- A kicker/eyebrow with ~0px below it collides with its title — `.pi-eyebrow` carries the gap.
+- `.lead` (grey/larger) used as a peer paragraph next to body (dark) reads as "a different font" — use lead only as the dek under a heading.
+
 ## Files
-- `brand.json` — tokens (primitives + decisions), typography scale, components, veins, imagery, voice. `color.accessibility.pairings` is the contrast contract.
-- `scripts/contrast-check.mjs` — WCAG contrast/readability test (`cd scripts && npm test`).
-- `brand.css` — `--pi-*` CSS variables + closed component classes (`.pi-btn`, `.pi-badge`, `.pi-card`, …).
+- `brand.json` — tokens (primitives + decisions, incl. dark-surface), typography, components, `build`, `quality`, veins, imagery, voice. `color.accessibility.pairings` is the contrast contract.
+- `brand.css` — `--pi-*` variables + the component & behavior layer (`.pi-btn`, `.pi-card`/`.pi-card--media`, `.pi-section-head`, `.pi-gutter`, `.pi-hamburger`/`.pi-mobile-menu`, `.pi-figure-cta`, on-dark utilities, orphan control).
+- `brand.js` — interactive substrate (mobile menu, gutter scroll-spy, on-dark auto-flip). Drop in once.
+- `scripts/contrast-check.mjs` — WCAG contrast test (`cd scripts && npm test`). `scripts/preflight.mjs` — static linter (`npm run preflight -- <file>`). `scripts/qc.md` — Playwright definition-of-done.
+- `BACKLOG.md` — traceable log of issues found while building + their resolutions (and what's deferred).
 - `apply-protocol-institute-brand.md` — step-by-step instructions for applying the brand.
 - `DESIGN-protocolized.md` — full sampled spec (source of truth, prose).
 - `assets/logos/` — wordmark + P-mark (black/white, static + animated), New Nature key art.
