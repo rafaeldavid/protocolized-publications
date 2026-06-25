@@ -145,6 +145,20 @@ async function handleContact(req: Request, env: Env, cors: Record<string, string
     return json({ error: "Missing required fields" }, 400, cors);
   }
 
+  // Persist each submission so it is QUERYABLE later (GET /contact/export.csv),
+  // not just forwarded to Discord and forgotten. Stored in the EDITS KV under an
+  // `app:` prefix (kept separate from `edit:` comment rows). Best-effort: a KV
+  // write failure must not drop the submission — Discord still notifies.
+  if (env.EDITS) {
+    try {
+      const ts = new Date().toISOString();
+      const row: ContactRow = { ts, subject, name, email, message, ip };
+      await env.EDITS.put(`app:${ts}:${randomId(8)}`, JSON.stringify(row));
+    } catch {
+      /* fall through to Discord — do not fail the submission on a storage hiccup */
+    }
+  }
+
   const lines = [
     `📬 **${subject}**`,
     `**From:** ${name}${email ? ` · ${email}` : ""}`,
@@ -157,6 +171,15 @@ async function handleContact(req: Request, env: Env, cors: Record<string, string
   return ok
     ? json({ ok: true }, 200, cors)
     : json({ error: "Could not deliver. Please email team@protocol-institute.org." }, 502, cors);
+}
+
+interface ContactRow {
+  ts: string;
+  subject: string;
+  name: string;
+  email: string;
+  message: string;
+  ip: string;
 }
 
 // ─── Route: POST /comment ─────────────────────────────────────────────────
@@ -275,6 +298,58 @@ async function handleCommentExport(req: Request, env: Env): Promise<Response> {
   });
 }
 
+// ─── Route: GET /contact/export.csv ───────────────────────────────────────
+// Streams every stored application/contact submission as a single CSV.
+// Gated by EXPORT_SECRET (header X-Export-Secret or ?secret=). Reads the
+// `app:` entries written by handleContact.
+async function handleContactExport(req: Request, env: Env): Promise<Response> {
+  const corsHeaders = { "Access-Control-Allow-Origin": "*" };
+  if (!env.EXPORT_SECRET || !env.EDITS) {
+    return new Response("Export not configured", { status: 503, headers: corsHeaders });
+  }
+  const url = new URL(req.url);
+  const provided = req.headers.get("X-Export-Secret") || url.searchParams.get("secret") || "";
+  if (provided !== env.EXPORT_SECRET) {
+    return new Response("Unauthorized", { status: 401, headers: corsHeaders });
+  }
+
+  type Row = ContactRow & { id: string };
+  const rows: Row[] = [];
+  let cursor: string | undefined = undefined;
+  while (true) {
+    const list: KVNamespaceListResult<unknown> = await env.EDITS.list({ prefix: "app:", cursor });
+    for (const k of list.keys) {
+      const raw = await env.EDITS.get(k.name);
+      if (!raw) continue;
+      try {
+        rows.push({ id: k.name, ...(JSON.parse(raw) as ContactRow) });
+      } catch {
+        /* skip corrupted entries */
+      }
+    }
+    if (list.list_complete) break;
+    cursor = list.cursor;
+  }
+  rows.sort((a, b) => a.ts.localeCompare(b.ts));
+
+  const header = ["id", "timestamp", "subject", "name", "email", "message", "ip"];
+  const csvLines: string[] = [header.join(",")];
+  for (const r of rows) {
+    csvLines.push([r.id, r.ts, r.subject, r.name, r.email, r.message, r.ip].map(csvEscape).join(","));
+  }
+  const csv = csvLines.join("\n") + "\n";
+
+  return new Response(csv, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Content-Disposition": `attachment; filename="kitcraft-applications-${new Date().toISOString().slice(0, 10)}.csv"`,
+      "Cache-Control": "no-store",
+      ...corsHeaders,
+    },
+  });
+}
+
 function csvEscape(value: string): string {
   const v = value == null ? "" : String(value);
   // RFC 4180: wrap in quotes if value contains comma, quote, CR, or LF.
@@ -324,6 +399,9 @@ export default {
     }
     if (req.method === "GET" && url.pathname === "/comment/export.csv") {
       return handleCommentExport(req, env);
+    }
+    if (req.method === "GET" && url.pathname === "/contact/export.csv") {
+      return handleContactExport(req, env);
     }
     if (req.method === "GET" && url.pathname === "/comment-mode.js") {
       return handleCommentModeBundle(req);
