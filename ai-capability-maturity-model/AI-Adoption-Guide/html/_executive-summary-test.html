@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive summary (test) — Durable AI Adoption</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #fafafa;
+      --surface:        #f5f5f7;
+      --border:         #e5e5e7;
+      --border-soft:    #ececef;
+      --text:           #1a1a2e;
+      --text-secondary: #6b6b7b;
+      --text-tertiary:  #9b9ba8;
+      --accent:         #a888bf;
+      --accent-light:   #f3eef7;
+      --accent-dark:    #7d5a96;
+      --font-mono:      'Roboto Mono', monospace;
+      --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+      --tint-ch1:       #e9e1f2;
+
+      --fs-display-2: 30pt;
+      --fs-display-3: 20pt;
+      --fs-heading-1: 16pt;
+      --fs-heading-2: 13pt;
+      --fs-body:      11pt;
+      --fs-body-sm:   10pt;
+      --fs-caption:   8pt;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0 48px;
+    }
+
+    .slide {
+      width: 11in;
+      height: 8.5in;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(26,26,46,0.10);
+      flex-shrink: 0;
+    }
+
+    .slide-page {
+      position: absolute;
+      bottom: 0.4in;
+      right: 0.7in;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    .slide-content {
+      padding: 0.55in 0.7in 0.55in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-header {
+      margin-bottom: 0.18in;
+      padding-bottom: 6pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .slide-header-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+    }
+    .slide-header-pill::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translateY(-1px);
+    }
+
+    .slide-h1 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-display-3);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin: 0.05in 0 0.08in;
+      text-wrap: balance;
+    }
+
+    .slide-subtitle {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading-2);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin: 0 0 14pt;
+      max-width: 9.5in;
+      text-wrap: balance;
+      padding-bottom: 10pt;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .slide-body {
+      flex: 1;
+      overflow: hidden;
+      padding-bottom: 0.4in;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      column-gap: 30pt;
+      height: 100%;
+    }
+
+    .summary-col-left {
+      padding-right: 4pt;
+      border-right: 1px solid var(--border-soft);
+    }
+    .summary-col-right {
+      padding-left: 22pt;
+      display: flex;
+      flex-direction: column;
+      gap: 12pt;
+    }
+
+    .col-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8pt;
+    }
+
+    .summary-list {
+      list-style: none;
+      counter-reset: bullets;
+      padding: 0;
+    }
+    .summary-list li {
+      counter-increment: bullets;
+      position: relative;
+      padding-left: 24pt;
+      margin-bottom: 10pt;
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .summary-list li::before {
+      content: counter(bullets, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 1pt;
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+    }
+    .summary-list strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .summary-list li:last-child { margin-bottom: 0; }
+
+    .why-block p {
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .why-block p + p { margin-top: 6pt; }
+    .why-block .accent { color: var(--accent-dark); font-weight: 600; }
+
+    .cta-callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent-dark);
+      border-radius: 0 6px 6px 0;
+      padding: 11pt 14pt 12pt;
+      margin-top: auto;
+    }
+    .cta-callout .cta-header {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 6pt;
+    }
+    .cta-callout p,
+    .cta-callout ol {
+      font-size: var(--fs-body-sm);
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .cta-callout p { margin-bottom: 5pt; }
+    .cta-callout ol {
+      padding-left: 16pt;
+      margin: 4pt 0;
+    }
+    .cta-callout ol li { margin-bottom: 2pt; }
+    .cta-callout p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 1200px) {
+      .slide { transform: scale(0.85); transform-origin: top center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide slide-content" id="executive-summary">
+      <header class="slide-header">
+        <span class="slide-header-pill">Executive summary · For operations leaders</span>
+      </header>
+      <h2 class="slide-h1">Durable AI adoption: what your program needs from you</h2>
+      <p class="slide-subtitle">Your organization is mid-deployment. Adoption is a different track: what your teams discover once the tools are in their hands. That is where competitive position is now being set.</p>
+
+      <main class="slide-body">
+        <div class="summary-grid">
+
+          <div class="summary-col-left">
+            <div class="col-title">Five claims to act on</div>
+            <ol class="summary-list">
+              <li><strong>Deployment is half the job.</strong> Tools, policy, and approved access produce a record of activity. Adoption is what your teams build on top of that: markdown skills, prompt templates, shared notebooks. Most of it is invisible to your dashboards today.</li>
+
+              <li><strong>Count protocol precision, not users.</strong> Maturity is how tightly AI behavior is governed across your work, at growing scope. The weakest function sets the organization's level. Klarna reports 90% staff use of AI, paired with generic output and unmanaged exposure.</li>
+
+              <li><strong>Cultivation feeds governance.</strong> The protocols worth formalizing are the ones domain experts have already proved by running them. Policy without that stream calcifies into theater, and you get the adoption-rate-up, value-flat trap.</li>
+
+              <li><strong>The same four failure modes recur.</strong> Standardizing before kits prove value. Commitments outpacing comprehension. AI accelerating one step faster than the next. Agent permissions outpacing agent judgment. Each has a known mitigation. None of them are tool choices.</li>
+
+              <li><strong>Six work categories need named owners now.</strong> Kit Harvesting, Evals, Forward Deployment, Platform Operations, Risk Stewardship, Context Stabilization. If you cannot name an owner for each today, you are running a tools program, not yet an adoption program.</li>
+            </ol>
+          </div>
+
+          <div class="summary-col-right">
+            <div class="why-block">
+              <div class="col-title">Why this matters</div>
+              <p>We have been here before. Electricity in 1908. Containers in 1956. EDI in 1988. The firms that won were not first to install. They were first to redraw work around the new unit.</p>
+              <p><span class="accent">Tool access has converged. Protocol precision has not.</span> That is the gap your team is working in, and it needs your visible backing to close.</p>
+            </div>
+
+            <div class="cta-callout">
+              <div class="cta-header">Send your team this note</div>
+              <p><strong>To my AI adoption lead and team:</strong></p>
+              <p>This program has my backing. Three things I want us to do before quarter-end:</p>
+              <ol>
+                <li>Find what already works in practice before standardizing it.</li>
+                <li>Name an owner for each of the six work categories above. Send me the list.</li>
+                <li>Flag where commitments are accumulating faster than we can comprehend them. I want to see the risks early.</li>
+              </ol>
+              <p>Tell me what you need to make this real.</p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+      <span class="slide-page">ES</span>
+    </section>
+  </div>
+</body>
+</html>
