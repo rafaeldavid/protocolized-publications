@@ -226,6 +226,7 @@ ul.ticks li b{ color:var(--pi-text-heading); }
 .field label{ display:block; font-family:var(--pi-sans); font-size:13px; font-weight:600; letter-spacing:.03em;
   color:var(--pi-text-heading); margin-bottom:6px; }
 .field .req{ color:var(--pi-accent-deep); }
+.field .opt{ color:var(--pi-text-secondary); font-weight:400; letter-spacing:0; }
 .field input[type=text], .field input[type=email], .field textarea{ width:100%; font-family:var(--pi-body);
   font-size:15px; color:var(--pi-text-body); background:var(--pi-bg-canvas); border:1px solid var(--pi-hairline);
   border-radius:var(--pi-radius-md); padding:11px 13px; }
@@ -256,7 +257,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
 
 @media(max-width:760px){
   .hamburger{ display:inline-flex; }
-  .nav-cta{ display:none; }   /* Apply lives in the dropdown on mobile */
+  .nav-cta{ display:none; }   /* the CTA lives in the dropdown on mobile */
 }
 </style>
 </head>
@@ -270,7 +271,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
       <span class="wm">The Protocol Institute</span>
     </a>
     <div class="nav-right">
-      <a class="nav-cta" href="#apply">Apply now</a>
+      <a class="nav-cta" href="#apply">Get notified</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -282,7 +283,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <a href="#format">Format</a>
     <a href="#who">Who it's for</a>
     <a href="#organizers">Organizers</a>
-    <a class="cta" href="#apply">Apply now</a>
+    <a class="cta" href="#apply">Get notified</a>
   </nav>
 </header>
 
@@ -293,7 +294,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <a href="#format">Format</a>
   <a href="#who">Who it's for</a>
   <a href="#organizers">Organizers</a>
-  <a href="#apply">Apply</a>
+  <a href="#apply">Get notified</a>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -305,7 +306,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <div class="tagline">A hands-on AI tooling workshop.</div>
     <p class="lead">Move from ad-hoc AI use to building your first <strong style="color:#fff">Kit</strong> — a reusable bundle of workflows, disposable apps, and contexts your team can run repeatedly and reliably. Then map a path to scale it.</p>
     <div class="hero-cta">
-      <a class="btn btn--primary" href="#apply">Apply now →</a>
+      <a class="btn btn--primary" href="#apply">Get notified →</a>
       <a class="btn btn--ghost" href="#thesis">What is Kitcraft?</a>
     </div>
     <div class="hero-meta">
@@ -529,16 +530,16 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <div class="wrap">
     <div class="split">
       <div>
-        <span class="eyebrow">Apply now</span>
-        <h2>Save your seat</h2>
-        <p class="lead">Symposium registration opens in July, once the schedule is finalized. Tell us you're interested and we'll reach out with the details when it does. Workshop seats are limited to 10–15.</p>
-        <p style="color:rgba(255,255,255,.7);font-size:14.5px;margin-top:18px;">Arriving with a concrete recurring task and a working tooling setup moves you up the priority list.</p>
+        <span class="eyebrow">Get notified</span>
+        <h2>Be first to register</h2>
+        <p class="lead">Registration runs through the Symposium's central registration, opening in July. Leave your email and we'll send you the link — plus a workshop heads-up — the moment it's live. Workshop seats are limited to 10–15, so it pays to be early.</p>
+        <p style="color:rgba(255,255,255,.7);font-size:14.5px;margin-top:18px;">The task and tooling fields below are optional — they help us tailor the pre-work, and arriving prepared makes the most of the sessions.</p>
       </div>
       <div>
         <form class="formcard" id="apply-form" novalidate>
           <div class="field">
-            <label for="f-name">Name <span class="req">*</span></label>
-            <input type="text" id="f-name" name="name" autocomplete="name" required>
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" name="name" autocomplete="name">
           </div>
           <div class="field">
             <label for="f-email">Email <span class="req">*</span></label>
@@ -549,8 +550,8 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
             <input type="text" id="f-org" name="org" placeholder="e.g. Ops lead, Acme Co.">
           </div>
           <div class="field">
-            <label for="f-task">One recurring task you'd build a Kit around <span class="req">*</span></label>
-            <textarea id="f-task" name="task" required placeholder="A weekly or more-often task where no one has written the steps down."></textarea>
+            <label for="f-task">A recurring task you'd build a Kit around <span class="opt">(optional)</span></label>
+            <textarea id="f-task" name="task" placeholder="A weekly or more-often task where no one has written the steps down."></textarea>
           </div>
           <div class="field">
             <label>Tooling readiness</label>
@@ -561,9 +562,9 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
             </div>
           </div>
           <div class="hp" aria-hidden="true"><label>Leave blank<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;background:var(--pi-action-secondary);border-color:var(--pi-action-secondary);">Apply now</button>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;background:var(--pi-action-secondary);border-color:var(--pi-action-secondary);">Email me the link</button>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-          <p class="form-note">We'll only use this to contact you about the AI Kitcraft workshop and symposium registration. Prefer email? Write to <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</p>
+          <p class="form-note">We'll only use this to send you the registration link and AI Kitcraft updates. Prefer email? Write to <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</p>
         </form>
       </div>
     </div>
@@ -653,18 +654,18 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     var hp = form._hp.value;
     var ready = Array.prototype.slice.call(form.querySelectorAll('input[name="ready"]:checked')).map(function(c){return c.value;});
 
-    if(hp){ status.textContent='Thanks — we’ll be in touch.'; status.className='form-status success'; form.reset(); return; }
-    if(!name || !email || !task){
-      status.textContent='Name, email, and a recurring task are required.';
+    if(hp){ status.textContent='You’re on the list.'; status.className='form-status success'; form.reset(); return; }
+    if(!email){
+      status.textContent='An email is required so we can send you the link.';
       status.className='form-status error'; return;
     }
     btn.disabled = true;
     status.textContent='Sending…'; status.className='form-status';
 
     var message =
-      'AI Kitcraft Workshop — application\n' +
-      '----------------------------------\n' +
-      'Name: ' + name + '\n' +
+      'AI Kitcraft Workshop — notify signup\n' +
+      '------------------------------------\n' +
+      'Name: ' + (name || '—') + '\n' +
       'Email: ' + email + '\n' +
       'Org/role: ' + (org || '—') + '\n' +
       'Recurring task: ' + task + '\n' +
@@ -673,7 +674,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
 
     function emailFallback(){
       var mailto = 'mailto:team@protocol-institute.org'
-        + '?subject=' + encodeURIComponent('AI Kitcraft Workshop — Application')
+        + '?subject=' + encodeURIComponent('AI Kitcraft — notify signup')
         + '&body=' + encodeURIComponent(message);
       status.innerHTML = 'Could not send automatically. <a href="' + mailto + '" style="color:#bff0dd;text-decoration:underline;">Send it as an email instead →</a>';
       status.className = 'form-status error';
@@ -685,9 +686,9 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
         method:'POST',
         mode:'no-cors',
         headers:{ 'Content-Type':'text/plain;charset=UTF-8' },
-        body: JSON.stringify({ name:name, email:email, message:message, subject:'AI Kitcraft Workshop — Application', _hp:hp })
+        body: JSON.stringify({ name:name, email:email, message:message, subject:'AI Kitcraft — notify signup', _hp:hp })
       });
-      status.textContent='Thanks — your application is in. We’ll email you when registration opens.';
+      status.textContent='You’re on the list — we’ll email you the registration link the moment it opens.';
       status.className='form-status success';
       form.reset();
       btn.disabled = false;

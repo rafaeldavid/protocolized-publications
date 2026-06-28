@@ -1,10 +1,10 @@
 # CLAUDE.md — AI Kitcraft (workshop landing page)
 
 ## What this is
-A single-page **registration / express-interest landing page** for the **AI Kitcraft** hands-on workshop at the **2026 Protocol Symposium** (*New Nature*, online, **Sep 21–25 2026**). Self-contained `index.html` + `assets/` + `announcement.md` (reusable blurbs). Facilitated by the Protocols for Business SIG; organizers Rafael Fernández & Sachin Benny.
+A single-page **notify-list landing page** (pre-registration) for the **AI Kitcraft** hands-on workshop at the **2026 Protocol Symposium** (*New Nature*, online, **Sep 21–25 2026**). Self-contained `index.html` + `assets/` + `announcement.md` (reusable blurbs). Facilitated by the Protocols for Business SIG; organizers Rafael Fernández & Sachin Benny.
 
 - **Live (custom domain):** https://ai.protocolized.dev/kitcraft/ — also at `https://bold-steeple-73wb.here.now/`. The mount is a here.now **link**: `POST https://here.now/api/v1/links` `{"location":"kitcraft","slug":"bold-steeple-73wb","domain":"ai.protocolized.dev"}`. Re-publishing to the slug updates the path automatically.
-- Symposium registration opens **July 2026**; until then the page is pre-registration (express interest), so the CTA captures interest rather than "register".
+- Registration is **central to the Symposium** (organizers run it; opens ~**July 2026**). This page is therefore a **notify list, not an application**: the CTA ("Get notified" / "Email me the link") captures an email so we can send the central registration link when it opens — we do NOT select participants here. **Phase-2 swap:** once the central registration URL exists, change the CTAs to a direct outbound "Register at the Symposium →" link (the `#apply` section can keep the email form as a fallback or be retired).
 
 ## Deploy
 ```bash
@@ -16,10 +16,11 @@ Verify with `curl`, not the publisher's "unchanged/skipped" line.
 ## Brand
 Institute cobalt `#0064ff` base **+ New Nature green accent** (forest `#0f6e56`, deep `#085041`, tint `#e1f5ee`), rust `#d85a30` rarely. Warm paper `#f9f8f5`. Fonts: Instrument Serif (headings, 400), Lora (body), Outfit (UI). Tokens live in `../../protocolinstitute-brandkit/` (brand.json / brand.css); run `cd ../../protocolinstitute-brandkit/scripts && npm test` to check contrast if you touch colors. Favicon = `assets/pi-mark.svg`. Imagery rule: **only the brand's curated editorial artwork**, never real-person photos/screenshots/charts. Hero = green "New Nature" collage (`assets/hero-new-nature.png`).
 
-## The express-interest form (important)
-Posts JSON to the existing **Cloudflare/Discord worker** — same inbox as ai.protocolized.dev:
+## The notify-signup form (important)
+Posts JSON to the existing **Cloudflare/Discord worker** — same inbox as ai.protocolized.dev (now also persisted to KV + exportable, see `_Infrastructure/protocolized-inbox`):
 - Endpoint: `POST https://protocolized-inbox.rafaeldf2.workers.dev/contact`
-- Body: `{ name, email, message, subject:"AI Kitcraft Workshop — Interest", _hp }` (`_hp` = honeypot; the structured fields — org, recurring task, tooling-ready — are packed into `message`).
+- Body: `{ name, email, message, subject:"AI Kitcraft — notify signup", _hp }` (`_hp` = honeypot; org / recurring task / tooling-ready are packed into `message`).
+- **Only `email` is required** (name is optional; the task + tooling fields are optional pre-work context, not screening — this is a notify list, not an application).
 - The worker has an **origin allowlist** in `../../../_Infrastructure/protocolized-inbox/src/index.ts` (`ALLOWED_ORIGINS`). This page's here.now slug AND `https://ai.protocolized.dev` are both allow-listed, so the form works on the slug now and will work at `ai.protocolized.dev/kitcraft` with no redeploy. To change the allowlist you must `cd` there and `npx wrangler deploy` (needs interactive `wrangler login` — the user runs it).
 - Graceful fallback: if the relay can't be reached (CORS/network), the form offers a prefilled `mailto:team@protocol-institute.org` so interest is never lost.
 
@@ -31,7 +32,7 @@ Serve locally and screenshot desktop (1440) + mobile (390) with Playwright MCP:
 ```bash
 python3 -m http.server 8766
 ```
-Check hero text legibility over the collage (a left-anchored dark gradient keeps it readable), the nav "Register Now" button, responsive single-column on mobile, and that the form's worker endpoint + honeypot are intact.
+Check hero text legibility over the collage (a left-anchored dark gradient keeps it readable), the nav "Get notified" button, responsive single-column on mobile, and that the form's worker endpoint + honeypot are intact.
 
 ## Open threads
 - Custom-domain mount (`ai.protocolized.dev/kitcraft`) is LIVE; `announcement.md` and the deck's slide-14 button use the clean URL. The form works there (origin allow-listed).
