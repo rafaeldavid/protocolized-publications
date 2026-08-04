@@ -7,6 +7,7 @@ Three self-contained reports published under `npc.here.now`:
 | `template-site/` | [npc.here.now/template](https://npc.here.now/template/) | A self-documenting report template. Meta-documentation for the surface itself. |
 | `ai-org-site/` | [npc.here.now/ai-org](https://npc.here.now/ai-org/) | *Org Design After Code Commoditisation* — P4BSIG working paper with a companion drag-drop [org-chart exercise](https://npc.here.now/ai-org/exercise/). |
 | `wthapi-site/` | [npc.here.now/wthapi](https://npc.here.now/wthapi/) | *APIs: What They Are, What They Solve, What They Cost* — ten questions for protocol-literate operators, with an interactive four-door comparison. |
+| `protocolinstitute-brandkit/` | [npc.here.now/protocolintstitutebrandkit](https://npc.here.now/protocolintstitutebrandkit/) | The Protocol Institute brand kit — tokens, type, logo, house art set, voice, and components, for humans and agents. |
 | `ai-capability-maturity-model/` | (research project) | AI Capability Maturity Model — desk research, litepaper, blog post, and model development under P4BSIG. Migrated from `rafathebuilder-ZK/protocols-AI-capability-maturity-model`. |
 
 ## Shape
@@ -72,8 +73,11 @@ The `--slug` pins the here.now subdomain across publishes. Canonical slugs (for 
 | `template-site` | `opaque-valley-9h5q` |
 | `ai-org-site` | `jolly-wreath-zszb` |
 | `wthapi-site` | `queued-willow-fg66` |
+| `protocolinstitute-brandkit` | `evoked-huckle-4gyn` |
 
 Each handle is linked to `npc.here.now/<name>/` via the here.now handle-link API.
+The brand kit is reachable at both `protocolintstitutebrandkit` (original, misspelled) and
+`protocolinstitutebrandkit` — both locations link to the same slug, so either URL stays live.
 
 ## Forking for your own report
 

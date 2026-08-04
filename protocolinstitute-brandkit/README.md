@@ -18,8 +18,9 @@ Institute brand, and is built to be applied by a person **or** an LLM agent.
 | `DESIGN-protocolized.md` | reference | Full sampled brand spec (prose source of truth) |
 | `BUILD-BRIEF.md` | reference | The structured prompt this kit was built from |
 | `assets/logos/` | — | Wordmark, P-mark (black/white, static + animated), New Nature art |
-| `assets/images/` + `metadata.json` | — | 111 curated artworks with per-image W3C-named palettes |
-| `assets/thumbs/` | — | Web thumbnails used by the site gallery |
+| `assets/images/` + `metadata.json` | — | The 8-piece house art set, with per-image W3C-named palettes |
+| `assets/thumbs/` | — | 520px web thumbnails used by the site gallery |
+| `favicon.svg` / `favicon.png` | — | Cobalt P-mark; SVG is an outlined path, PNG is the 254px raster |
 
 ## The system in one screen
 
@@ -32,8 +33,9 @@ Institute brand, and is built to be applied by a person **or** an LLM agent.
   green `#0f6e56`. Accent rust `#d85a30` is "Featured"-only. Warm paper canvas `#f9f8f5`.
 - **Type:** serif display + Lora body (Computer Modern preferred → Instrument Serif / Lora);
   Outfit for UI. Headlines weight **400** — never bold display.
-- **Imagery:** seven aesthetic groups mapped to the veins; only curated artwork — never
-  real-person photos, screenshots, charts, or data-viz.
+- **Imagery:** one house set of 8 generative pieces — layered planes, contour linework, and node
+  networks in cobalt. Both veins draw from it; pick by density, not category. Never real-person
+  photos, screenshots, charts, or data-viz.
 
 ## Apply it (agents)
 Read `llms.txt` → load `brand.json` + `brand.css` → follow `apply-protocol-institute-brand.md`.

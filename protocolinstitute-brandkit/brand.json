@@ -15,7 +15,7 @@
       "use_when": "Working-group outputs, SIG write-ups, research reports, challenges, formal institutional pages.",
       "color_emphasis": "color.decision.action-primary (cobalt) for CTAs and emphasis; restrained accent use.",
       "type_emphasis": "Serif display (Computer Modern preferred, Instrument Serif fallback) + Lora body; precise, structured.",
-      "imagery_emphasis": ["technical-schematic", "abstract-geometric", "figure-portrait"],
+      "imagery_emphasis": "House art set (imagery.set); favour the flat, schematic cuts — _4, _6, and the _2b/_3b line-art variants.",
       "voice": "voice.institute"
     },
     "protocolized": {
@@ -23,7 +23,7 @@
       "use_when": "Magazine pieces: Non-Fiction (Studies / Obliquities / Science) and Fiction. Editorial, cover-art-led layouts.",
       "color_emphasis": "color.decision.action-secondary (forest green) is the site-current live accent; accent rust for 'Featured'.",
       "type_emphasis": "Instrument Serif display at weight 400 (never bold) + Lora body; literary, exploratory.",
-      "imagery_emphasis": ["painterly-illustration", "retro-vintage", "surreal-collage", "photographic"],
+      "imagery_emphasis": "House art set (imagery.set); favour the dense, atmospheric cuts — _2, _3, _5.",
       "voice": "voice.protocolized_nonfiction"
     }
   },
@@ -166,7 +166,7 @@
   "build": {
     "summary": "Build WITH the component + behavior layer, not raw tokens. Link both files once.",
     "head": "<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\"><link rel=\"stylesheet\" href=\"brand.css\"><script src=\"brand.js\" defer></script>",
-    "files": { "css": "brand.css (tokens + .pi-* components)", "js": "brand.js (mobile menu, gutter scroll-spy, on-dark auto-flip)", "favicon": "favicon.svg (the cobalt P-mark)" },
+    "files": { "css": "brand.css (tokens + .pi-* components)", "js": "brand.js (mobile menu, gutter scroll-spy, on-dark auto-flip)", "favicon": "favicon.svg (the cobalt P-mark, outlined path — not live text). favicon.png (254x254) ships alongside for contexts that need a raster." },
     "behavior_hooks": [
       "Mark dark bands with data-pi-surface=\"dark\" so dark-aware chrome flips automatically.",
       "Mark chrome that overlaps dark bands with data-pi-dark-aware (the .pi-gutter is handled for you).",
@@ -183,19 +183,23 @@
     ]
   },
   "imagery": {
-    "library": "assets/images/ (111 curated editorial artworks) + metadata.json (per-image aesthetic_category, description, W3C-named color palette).",
-    "groups": [
-      { "id": "painterly-illustration", "veins": ["protocolized"], "note": "Painted/illustrative scenes, interiors, narrative art. Magazine-forward." },
-      { "id": "retro-vintage",          "veins": ["protocolized"], "note": "Vintage/pulp sci-fi illustration. Magazine covers and features." },
-      { "id": "surreal-collage",        "veins": ["protocolized"], "note": "Dreamlike juxtapositions, symbolic montage. Magazine-forward." },
-      { "id": "abstract-geometric",     "veins": ["institute", "protocolized"], "note": "Generative/non-representational fields. Bridges both veins." },
-      { "id": "technical-schematic",    "veins": ["institute"], "note": "Stylized diagrams, line-art schematics, maps. Report/SIG-forward." },
-      { "id": "figure-portrait",        "veins": ["institute", "protocolized"], "note": "Illustrated characters (never real-person photos)." },
-      { "id": "photographic",           "veins": ["protocolized"], "note": "Artful/stylized photography only; no real-person headshots or event photos." }
+    "library": "assets/images/ (8 generative house artworks, protocolized_generic_art_*.png) + metadata.json (per-image slug, description, sampled W3C-named color palette).",
+    "motif": "One house set, not a taxonomy. Layered planes, contour-map linework, and node networks in brand cobalt. Both veins draw from the same 8 pieces; any two read as siblings.",
+    "set": [
+      { "id": "protocolized_generic_art_1.png",  "note": "Six stacked horizontal planes on cobalt. Strata / a stack seen edge-on.", "use": "hero, full-bleed" },
+      { "id": "protocolized_generic_art_2.png",  "note": "Compass rosette with amber core on a dark noise field. Coordination hub.", "use": "hero, editorial" },
+      { "id": "protocolized_generic_art_2b.png", "note": "The rosette as black-and-white line art. High-contrast cut of _2.", "use": "on cobalt UI" },
+      { "id": "protocolized_generic_art_3.png",  "note": "Three exploded diamond planes over a magenta/green field.", "use": "hero, editorial" },
+      { "id": "protocolized_generic_art_3b.png", "note": "The exploded diamonds as black-and-white line art. High-contrast cut of _3.", "use": "on cobalt UI" },
+      { "id": "protocolized_generic_art_4.png",  "note": "Three diamond planes, flat cobalt on cobalt. Quietest piece in the set.", "use": "behind text" },
+      { "id": "protocolized_generic_art_5.png",  "note": "Nine engraved medallions linked by branching paths. Network / node graph.", "use": "hero, full-bleed" },
+      { "id": "protocolized_generic_art_6.png",  "note": "Three planes as an open isometric cube. Most minimal, most reproducible.", "use": "behind text, large fills" }
     ],
     "rules": [
       "Never use real-person photographs, headshots, event photos, screenshots, charts, or data-visualizations as brand imagery.",
-      "Pull a piece's palette from metadata.json to harmonize layout accents with the chosen artwork."
+      "Pull a piece's palette from metadata.json to harmonize layout accents with the chosen artwork.",
+      "Behind text, use _4 or _6 (flattest) over a scrim; the dense cuts fight body copy.",
+      "Against cobalt UI, use the _2b / _3b black-and-white cuts so the art does not compete with the interface."
     ]
   },
   "voice": {
@@ -233,6 +237,7 @@
   },
   "assets": {
     "logos": "assets/logos/ (Protocolized wordmark + P-mark, black/white, static + animated SVG; New Nature key art).",
+    "images": "assets/images/ (8 generative house artworks) + assets/thumbs/ (520px JPG previews) + metadata.json.",
     "agent_files": ["brand.json", "brand.css", "brand.js", "llms.txt", "apply-protocol-institute-brand.md", "BACKLOG.md", "scripts/qc.md"],
     "live_sites": ["https://protocol-institute.org/", "https://protocolized.summerofprotocols.com/"],
     "source_of_truth": "DESIGN-protocolized.md (full sampled spec)."

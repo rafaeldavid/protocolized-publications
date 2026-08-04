@@ -28,20 +28,21 @@ here.now and mount at `npc.here.now/protocolintstitutebrandkit`; commit under
 - **LLM-safe design (Orbit / Polar):** decisions over values; closed token sets; single source
   of truth; constraints over suggestions; compose missing components from tokens.
 - **Assets:** `assets/logos/` (wordmark, P-mark b/w + animated, New Nature art),
-  `assets/images/` (111 curated artworks) + `metadata.json` (per-image palette), `assets/thumbs/`.
+  `assets/images/` (the 8-piece house art set) + `metadata.json` (per-image palette), `assets/thumbs/`.
 
 ## Instructions (ordered)
 1. Use only the brand tokens; render the actual fonts (Instrument Serif / Lora / Outfit via
    Google Fonts) with the Computer-Modern-first preference documented.
 2. Implement real affordances: gutter section-nav + top nav, tabbed color groups, click-to-copy
-   on every color token and code block, lazy-loaded imagery grouped by aesthetic category, and
+   on every color token and code block, the lazy-loaded house art set with per-piece palettes, and
    download links to the machine files.
 3. Teach the reader (human or agent) HOW to choose a vein, with a side-by-side decision panel.
 4. Voice section: two columns (Institute; Protocolized Non-Fiction) with trait cards + SAY /
    DON'T-SAY lists. State the Fiction caveat explicitly.
 5. Components gallery: live buttons, badges, chips, cards; derive download-button and any missing
    primitive from tokens, and say so.
-6. Imagery: show a representative selection per group (not all 111) and link to the full library.
+6. Imagery: show the full house set with each piece's description and sampled palette, and say
+   which cuts suit text backdrops, heroes, and cobalt UI.
 
 ## Constraints
 - Single self-contained `index.html` (embedded CSS/JS); external refs limited to Google Fonts
@@ -51,10 +52,10 @@ here.now and mount at `npc.here.now/protocolintstitutebrandkit`; commit under
 ## Output contract
 `protocolinstitute-brandkit/` containing: `index.html`, `brand.json`, `brand.css`, `llms.txt`,
 `apply-protocol-institute-brand.md`, `DESIGN-protocolized.md`, `README.md`, this brief,
-`favicon.svg`, and `assets/{logos,images,thumbs}/`. Deployed + mounted; committed to the repo.
+`favicon.svg`, `favicon.png`, and `assets/{logos,images,thumbs}/`. Deployed + mounted; committed to the repo.
 
 ## Success criteria
 - A non-designer can ship an on-brand page; an agent can apply the brand from the files alone.
 - Every affordance in the zkNation model has a Protocol Institute equivalent.
-- The two veins and the seven imagery groups are unambiguous.
+- The two veins are unambiguous, and it is clear which house-art cut to reach for and when.
 - Tokens are decisions, closed, and consistent across `brand.json`, `brand.css`, and the site.

@@ -37,7 +37,11 @@ It governs two veins that share ONE token system:
   and the chrome `data-pi-dark-aware`; brand.js does the rest). Dark text on dark = 1.23:1 = invisible.
 - **Compose missing components** from existing decision tokens + the radius/hairline/type roles.
 - **Imagery:** never use real-person photos, headshots, event photos, screenshots, charts, or
-  data-viz. Use only the curated artwork in assets/images/ (see metadata.json).
+  data-viz. Use only the house art set in assets/images/ — 8 generative pieces
+  (`protocolized_generic_art_*.png`) sharing one motif: layered planes, contour linework, and node
+  networks in brand cobalt. Both veins draw from the same set; see metadata.json for per-piece
+  palettes. Behind text use `_4` / `_6` (flattest, over a scrim); against cobalt UI use the
+  black-and-white `_2b` / `_3b` cuts.
 
 ## Page header (every page)
 - Anchor the **"The Protocol Institute" wordmark** (P-mark + serif text) on the **top LEFT**,
@@ -48,8 +52,8 @@ It governs two veins that share ONE token system:
 ## Choose a vein, then apply
 | Need | Vein | Color emphasis | Type emphasis | Imagery |
 |------|------|----------------|---------------|---------|
-| Report / SIG / challenge / institutional | institute | action-primary (cobalt) | serif display + Lora | technical-schematic, abstract-geometric |
-| Magazine piece / editorial | protocolized | action-secondary (forest green, live) + accent rust for Featured | Instrument Serif 400 + Lora | painterly-illustration, retro-vintage, surreal-collage |
+| Report / SIG / challenge / institutional | institute | action-primary (cobalt) | serif display + Lora | house set — flat/schematic cuts (`_4`, `_6`, `_2b`, `_3b`) |
+| Magazine piece / editorial | protocolized | action-secondary (forest green, live) + accent rust for Featured | Instrument Serif 400 + Lora | house set — dense/atmospheric cuts (`_2`, `_3`, `_5`) |
 
 Note: cobalt `#0064ff` is the aspirational brand primary; the live protocolized.io still serves
 forest green `#0f6e56`. Use cobalt for new artifacts, green to match the production site.
@@ -83,7 +87,8 @@ uses **accent-deep** (#9e3d18), never bare accent. Exit code is non-zero on any 
 - `apply-protocol-institute-brand.md` — step-by-step instructions for applying the brand.
 - `DESIGN-protocolized.md` — full sampled spec (source of truth, prose).
 - `assets/logos/` — wordmark + P-mark (black/white, static + animated), New Nature key art.
-- `assets/images/` + `metadata.json` — 111 curated artworks with per-image palette (W3C named colors).
+- `assets/images/` + `metadata.json` — the 8-piece house art set with per-image palette (W3C named colors).
+- `favicon.svg` — the cobalt P-mark as an outlined path (renders identically everywhere); `favicon.png` is the 254px raster.
 
 ## Typefaces — LOAD THEM, don't just name them
 Declaring the stacks without loading the webfonts gives you system fallbacks (a common mistake).

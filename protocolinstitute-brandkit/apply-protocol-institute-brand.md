@@ -10,11 +10,12 @@ correct behavior is the easy path, and the token menus are closed.
 ## 1. Pick the vein
 - **Protocol Institute** (research, reports, SIGs, challenges, institutional pages):
   formal and precise. Primary color = `--pi-action-primary` (cobalt). Serif display
-  (Computer Modern preferred) + Lora body. Imagery: `technical-schematic`, `abstract-geometric`.
+  (Computer Modern preferred) + Lora body. Imagery: the house set's flat, schematic cuts
+  (`_4`, `_6`, and the `_2b` / `_3b` line-art variants).
 - **Protocolized** (magazine — Non-Fiction *Studies / Obliquities / Science*, and Fiction):
   editorial, cover-art-led. Live accent = `--pi-action-secondary` (forest green);
   `--pi-accent` (rust) only for "Featured". Instrument Serif 400 + Lora.
-  Imagery: `painterly-illustration`, `retro-vintage`, `surreal-collage`.
+  Imagery: the house set's dense, atmospheric cuts (`_2`, `_3`, `_5`).
 
 ## 2. Color
 - Backgrounds: `--pi-background-canvas` (page), `--pi-background-surface` (cards/bands),
@@ -53,8 +54,12 @@ correct behavior is the easy path, and the token menus are closed.
   (Fiction is unconstrained — do not apply this voice to fiction.)
 
 ## 6. Imagery
-- Source from `assets/images/` using `metadata.json` (filter by `aesthetic_category` and the
-  vein table above). Pull a piece's palette from metadata to tint layout accents.
+- Source from `assets/images/` — one house set of 8 generative pieces
+  (`protocolized_generic_art_*.png`), all sharing a single motif: layered planes, contour linework,
+  and node networks in brand cobalt. Both veins draw from the same set; pick by density, not category.
+- Pull a piece's palette from `metadata.json` to tint layout accents.
+- Behind text, use `_4` or `_6` over a scrim — the dense cuts fight body copy. Against cobalt UI, use
+  the black-and-white `_2b` / `_3b` cuts so the art does not compete with the interface.
 - Forbidden as brand imagery: real-person photos, headshots, event photos, screenshots, charts, data-viz.
 
 ## 7. Self-check before shipping
@@ -62,5 +67,5 @@ correct behavior is the easy path, and the token menus are closed.
 - [ ] Only `--pi-*` tokens / `.pi-*` classes used (no raw hex/px).
 - [ ] Correct vein's color + type + imagery emphasis.
 - [ ] Display headings are weight 400.
-- [ ] No forbidden imagery; artwork pulled from the curated set.
+- [ ] No forbidden imagery; artwork pulled from the house set.
 - [ ] Any new component composed from existing tokens, not invented values.

@@ -141,17 +141,21 @@
   .never li::before{content:"✕";position:absolute;left:0;color:var(--rust-500);font-weight:700}
 
   /* imagery */
-  .igroups{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-  .ig{border:1px solid var(--hairline);border-radius:12px;background:var(--surface);padding:18px 20px}
-  .ig .head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
-  .ig .head h3{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink)}
-  .veintag{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:9999px}
-  .veintag.inst{background:var(--cobalt-050);color:var(--cobalt-600)}
-  .veintag.mag{background:var(--forest-050);color:var(--forest-700)}
-  .ig .desc{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-bottom:12px}
-  .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-  .strip a{display:block;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--muted)}
-  .strip img{width:100%;height:100%;object-fit:cover;display:block}
+  .artgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:8px}
+  @media(max-width:900px){.artgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(max-width:640px){.artgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .art{border:1px solid var(--hairline);border-radius:12px;overflow:hidden;background:var(--surface);display:block;text-decoration:none}
+  .art .shot{display:block;aspect-ratio:1/1;background:var(--muted)}
+  .art .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .art .meta{padding:10px 12px 12px}
+  .art .an{font-family:var(--mono);font-size:11px;color:var(--ink);display:block}
+  .art .ad{font-family:var(--sans);font-size:12px;color:var(--ink-2);line-height:1.5;margin-top:4px;display:block}
+  .art .pal{display:flex;gap:4px;margin-top:8px}
+  .art .pal i{width:14px;height:14px;border-radius:3px;border:1px solid var(--hairline);display:block}
+  .pick{margin:0;max-width:720px;list-style:none}
+  .pick li{font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.75;padding-left:16px;position:relative}
+  .pick li::before{content:"→";position:absolute;left:0;color:var(--action)}
+  .pick li b{color:var(--ink);font-weight:600}
 
   /* voice */
   .voice{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
@@ -298,7 +302,7 @@
           <dt>Use when</dt><dd>Working-group outputs, SIG write-ups, research reports, challenges, institutional pages.</dd>
           <dt>Color</dt><dd>Cobalt <code>--pi-action-primary</code>; restrained accent.</dd>
           <dt>Type</dt><dd>Serif display (Computer Modern → Instrument Serif) + Lora. Precise, structured.</dd>
-          <dt>Imagery</dt><dd>technical-schematic, abstract-geometric.</dd>
+          <dt>Imagery</dt><dd>House art set — favour the flat, schematic cuts (<code>_4</code>, <code>_6</code>).</dd>
         </dl>
       </div>
       <div class="vein mag">
@@ -308,7 +312,7 @@
           <dt>Use when</dt><dd>Magazine pieces — Non-Fiction (Studies / Obliquities / Science) and Fiction. Cover-art-led.</dd>
           <dt>Color</dt><dd>Forest green <code>--pi-action-secondary</code> (live); rust for “Featured”.</dd>
           <dt>Type</dt><dd>Instrument Serif 400 + Lora. Literary, exploratory.</dd>
-          <dt>Imagery</dt><dd>painterly-illustration, retro-vintage, surreal-collage.</dd>
+          <dt>Imagery</dt><dd>House art set — favour the dense, atmospheric cuts (<code>_2</code>, <code>_3</code>, <code>_5</code>).</dd>
         </dl>
       </div>
     </div>
@@ -380,7 +384,7 @@
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_mark_white_v8.svg" alt="" onerror="this.src='assets/logos/protocolized_mark_white_v4.png'"></div><div class="cap">Full mark — white</div></div>
       <div class="logo"><div class="frame"><img src="assets/logos/protocolized_Pmark_black_72ppi.png" alt=""></div><div class="cap">P-mark — black</div></div>
       <div class="logo"><div class="frame dark"><img src="assets/logos/protocolized_Pmark_white_72ppi.png" alt=""></div><div class="cap">P-mark — white</div></div>
-      <div class="logo"><div class="frame"><img src="favicon.svg" alt="" style="width:46px;height:46px;max-width:none;border-radius:10px"></div><div class="cap">Favicon</div></div>
+      <div class="logo"><div class="frame"><img src="favicon.svg" alt="" style="width:46px;height:46px;max-width:none"></div><div class="cap">Favicon</div></div>
       <div class="logo wide"><div class="frame"><img src="assets/logos/protocolized_wordmark.png" alt=""></div><div class="cap">Wordmark</div></div>
     </div>
     <p class="never-label">Do not:</p>
@@ -398,13 +402,23 @@
   <section id="imagery">
     <div class="eyebrow">Imagery</div>
     <h2>Imagery.</h2>
-    <p class="body">Brand imagery is the curated artwork of <em>Protocolized</em>:
-      <b id="imgCount">111</b> pieces in <code>assets/images/</code>. Each is catalogued in
+    <p class="body">Brand imagery is one house set: <b id="imgCount">8</b> generative pieces in
+      <code>assets/images/</code>, catalogued in
       <a href="assets/images/metadata.json" target="_blank" rel="noopener">metadata.json</a> with a
-      description and a color palette. The artwork falls into seven aesthetic groups. Choose a group by
-      vein. Use a piece's palette to set layout accents. Do not use real-person photos, headshots,
+      description and a sampled color palette. They share a single motif — layered planes, contour
+      maps, and node networks in brand cobalt — so any two read as siblings. Both veins draw from the
+      same set. Use a piece's palette to set layout accents. Do not use real-person photos, headshots,
       event photos, screenshots, charts, or data-visualizations.</p>
-    <div class="igroups" id="igroups"><p class="ctext">Loading the library…</p></div>
+    <div class="artgrid" id="artgrid"><p class="ctext">Loading the set…</p></div>
+    <p class="never-label">Picking a piece:</p>
+    <ul class="pick">
+      <li><b>Behind text</b> — use <code>_4</code> or <code>_6</code>; they are flattest and hold a
+        scrim best.</li>
+      <li><b>Full-bleed hero</b> — <code>_1</code>, <code>_3</code>, or <code>_5</code> carry detail
+        at scale.</li>
+      <li><b>Against cobalt UI</b> — use the <code>_2b</code> / <code>_3b</code> black-and-white cuts
+        so the art does not compete with the interface.</li>
+    </ul>
   </section>
 
   <!-- VOICE -->
@@ -523,7 +537,7 @@ style="color:var(--pi-text-secondary); background:var(--pi-background-surface)"<
       <a class="file" href="llms.txt" download><span class="ficon">&gt;_</span><span><span class="fn">llms.txt</span><br><span class="fd">Agent entry point</span></span></a>
       <a class="file" href="apply-protocol-institute-brand.md" download><span class="ficon">&equiv;</span><span><span class="fn">apply-…-brand.md</span><br><span class="fd">Step-by-step application</span></span></a>
       <a class="file" href="DESIGN-protocolized.md" download><span class="ficon">&#9636;</span><span><span class="fn">DESIGN-protocolized.md</span><br><span class="fd">Full sampled spec</span></span></a>
-      <a class="file" href="assets/images/metadata.json" target="_blank" rel="noopener"><span class="ficon">&#9638;</span><span><span class="fn">image library</span><br><span class="fd">111 artworks + palettes</span></span></a>
+      <a class="file" href="assets/images/metadata.json" target="_blank" rel="noopener"><span class="ficon">&#9638;</span><span><span class="fn">image library</span><br><span class="fd">8 house artworks + palettes</span></span></a>
     </div>
     <div class="cta-row" style="margin-top:18px">
       <a class="btn secondary" href="https://github.com/rafaeldavid/protocolized-publications/tree/main/protocolinstitute-brandkit" target="_blank" rel="noopener">View on GitHub ↗</a>
@@ -628,38 +642,24 @@ function toast(m){const t=document.getElementById('toast');t.textContent=m;t.cla
 function copy(text){navigator.clipboard.writeText(text).then(()=>toast('Copied  '+text)).catch(()=>toast('Copy failed'));}
 document.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy)));
 
-/* ---- imagery groups from metadata.json ---- */
-const GROUPS=[
-  ["painterly-illustration","Painted/illustrative scenes, interiors, narrative art.","mag"],
-  ["retro-vintage","Vintage & pulp sci-fi illustration; magazine covers and features.","mag"],
-  ["surreal-collage","Dreamlike juxtapositions and symbolic montage.","mag"],
-  ["abstract-geometric","Generative, non-representational fields. Bridges both veins.","both"],
-  ["technical-schematic","Stylized diagrams, line-art schematics, maps. Report/SIG-forward.","inst"],
-  ["figure-portrait","Illustrated characters — never real-person photos.","both"],
-  ["photographic","Artful, stylized photography only; no headshots or events.","mag"]
-];
-const VEINLABEL={mag:["mag","Protocolized"],inst:["inst","Institute"],both:["both","Both"]};
+/* ---- house art set from metadata.json ---- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 fetch('assets/images/metadata.json').then(r=>r.json()).then(meta=>{
-  const items=Object.entries(meta);
+  const items=Object.entries(meta).sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}));
   document.getElementById('imgCount').textContent=items.length;
-  const byCat={};items.forEach(([fn,v])=>{(byCat[v.aesthetic_category]=byCat[v.aesthetic_category]||[]).push(fn);});
-  const host=document.getElementById('igroups');host.innerHTML='';
-  GROUPS.forEach(([cat,desc,vein])=>{
-    const files=(byCat[cat]||[]).slice(0,5);if(!files.length)return;
-    const tags=vein==='both'
-      ? `<span class="veintag inst">Institute</span><span class="veintag mag">Protocolized</span>`
-      : `<span class="veintag ${vein}">${VEINLABEL[vein][1]}</span>`;
-    const strip=files.map(fn=>{
-      const stem=fn.replace(/\.[^.]+$/,'');
-      return `<a href="assets/images/${fn}" target="_blank" rel="noopener" title="${cat}"><img loading="lazy" src="assets/thumbs/${stem}.jpg" alt=""></a>`;
-    }).join('');
-    const count=(byCat[cat]||[]).length;
-    const card=document.createElement('div');card.className='ig';
-    card.innerHTML=`<div class="head"><h3>${cat}</h3>${tags}<span class="ctext" style="margin:0">${count} in set</span></div>
-      <div class="desc">${desc}</div><div class="strip">${strip}</div>`;
-    host.appendChild(card);
+  const host=document.getElementById('artgrid');host.innerHTML='';
+  items.forEach(([fn,v])=>{
+    const stem=fn.replace(/\.[^.]+$/,'');
+    const sw=(v.palette||[]).slice(0,5)
+      .map(p=>`<i style="background:${esc(p.token)}" title="${esc(p.token)} · ${esc(p.css3_name)}"></i>`).join('');
+    const a=document.createElement('a');
+    a.className='art';a.href='assets/images/'+fn;a.target='_blank';a.rel='noopener';
+    a.innerHTML=`<span class="shot"><img loading="lazy" src="assets/thumbs/${stem}.jpg" alt="${esc(v.description||'')}"></span>
+      <span class="meta"><span class="an">${esc(v.slug||stem)}</span>
+      <span class="ad">${esc(v.description||'')}</span><span class="pal">${sw}</span></span>`;
+    host.appendChild(a);
   });
-}).catch(()=>{document.getElementById('igroups').innerHTML='<p class="ctext">Image library loads on the deployed site (assets/images/metadata.json).</p>';});
+}).catch(()=>{document.getElementById('artgrid').innerHTML='<p class="ctext">The art set loads on the deployed site (assets/images/metadata.json).</p>';});
 
 /* ---- gutter scrollspy ---- */
 const gutter=document.getElementById('gutter'),hero=document.getElementById('hero');
