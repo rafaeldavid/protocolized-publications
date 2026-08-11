@@ -20,7 +20,26 @@ type = "Text"
 globs = ["**/*.bundle.js"]
 fallthrough = false
 
+# Email notification for /contact submissions (Cloudflare Email Sending).
+# PREREQUISITE, run once before this works — the `from` domain must be onboarded:
+#   npx wrangler email sending enable protocolized.dev
+#   npx wrangler email sending list            # confirm it is listed
+# Until then env.EMAIL.send() throws E_SENDER_NOT_VERIFIED, which is caught and
+# logged; Discord still delivers, so nothing is lost while DNS propagates.
+[[send_email]]
+name = "EMAIL"
+
+[vars]
+# Sender address. Must be on a domain onboarded above. Not a secret.
+NOTIFY_FROM = "notifications@protocolized.dev"
+
+# Only /contact submissions whose `subject` contains this string are emailed.
+# Everything else (AI Kitcraft signups, the protocolized.dev contact form) keeps
+# going to Discord only, unchanged. Set to "" to email on every submission.
+NOTIFY_SUBJECT_MATCH = "Distributed Robotics"
+
 # Secrets to set after first deploy (do NOT put real values in this file):
 #   wrangler secret put DISCORD_WEBHOOK     # contact form Discord webhook URL
 #   wrangler secret put COMMENT_PASSCODE    # passcode for editors entering comment mode
 #   wrangler secret put EXPORT_SECRET       # admin secret for downloading the edit-suggestions CSV
+#   wrangler secret put NOTIFY_EMAILS       # comma-separated organizer recipients

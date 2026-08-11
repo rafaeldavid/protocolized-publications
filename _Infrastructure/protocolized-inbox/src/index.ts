@@ -31,6 +31,12 @@ interface Env {
   EXPORT_SECRET?: string;
   RATE_LIMIT?: KVNamespace;
   EDITS?: KVNamespace;
+  // Email notification (Cloudflare Email Sending). All optional: if the binding
+  // or the recipient list is absent, /contact still works and just skips email.
+  EMAIL?: { send(msg: Record<string, unknown>): Promise<unknown> };
+  NOTIFY_EMAILS?: string;        // secret — comma-separated recipients
+  NOTIFY_FROM?: string;          // var — must be on a domain onboarded to Email Sending
+  NOTIFY_SUBJECT_MATCH?: string; // var — only these submissions are emailed
 }
 
 interface EditRow {
@@ -56,6 +62,9 @@ const ALLOWED_ORIGINS = [
   "https://witty-garnet-6k4f.here.now",
   "https://plush-muse-q9bz.here.now",
   "https://bold-steeple-73wb.here.now", // AI Kitcraft workshop (here.now)
+  // Distributed Robotics workshop (published 2026-08-11):
+  "https://npc.here.now",                 // live mount: npc.here.now/robotworkshop/
+  "https://hollow-willow-kgrt.here.now",  // its own slug
   // local dev:
   "http://localhost:8000",
   "http://localhost:3000",
@@ -115,6 +124,75 @@ async function postToDiscord(webhook: string, content: string): Promise<boolean>
   return res.ok;
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c] as string));
+}
+
+/**
+ * Email the organizers a copy of a /contact submission.
+ *
+ * Best-effort by design: a send failure must never fail the submission, because
+ * Discord + KV have already captured it. Returns true only on a real send.
+ *
+ * `replyTo` is set to the submitter so hitting reply in Gmail goes straight to
+ * them rather than to the no-reply sender.
+ */
+async function emailOrganizers(
+  env: Env,
+  row: { subject: string; name: string; email: string; message: string; ip: string },
+): Promise<boolean> {
+  if (!env.EMAIL || !env.NOTIFY_EMAILS) return false;
+
+  // SCOPED ON PURPOSE. This worker is shared by protocolized.dev, the AI Kitcraft
+  // page and the robotics workshop, and only the last one has organizers who want
+  // email. Anything whose subject does not match keeps its existing behaviour —
+  // Discord only — so adding email here cannot start mailing Kitcraft signups to
+  // the robotics organizers. Set NOTIFY_SUBJECT_MATCH="" to email everything.
+  const match = env.NOTIFY_SUBJECT_MATCH ?? "Distributed Robotics";
+  if (match && !row.subject.includes(match)) return false;
+
+  const to = env.NOTIFY_EMAILS.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 50);
+  if (!to.length) return false;
+
+  const from = env.NOTIFY_FROM || "notifications@protocolized.dev";
+  const who = row.name || row.email || "anonymous";
+  const text =
+    `${row.subject}\n\n` +
+    `From:    ${row.name || "—"}\n` +
+    `Email:   ${row.email || "—"}\n` +
+    `IP:      ${row.ip}\n\n` +
+    `${row.message}\n`;
+  const html =
+    `<h2 style="font:600 18px system-ui,sans-serif;margin:0 0 12px">${escapeHtml(row.subject)}</h2>` +
+    `<table style="font:14px system-ui,sans-serif;border-collapse:collapse;margin-bottom:16px">` +
+    `<tr><td style="padding:2px 12px 2px 0;color:#666">From</td><td>${escapeHtml(row.name || "—")}</td></tr>` +
+    `<tr><td style="padding:2px 12px 2px 0;color:#666">Email</td><td>` +
+    (row.email ? `<a href="mailto:${escapeHtml(row.email)}">${escapeHtml(row.email)}</a>` : "—") +
+    `</td></tr>` +
+    `<tr><td style="padding:2px 12px 2px 0;color:#666">IP</td><td>${escapeHtml(row.ip)}</td></tr>` +
+    `</table>` +
+    `<pre style="font:13px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;background:#f6f7f9;` +
+    `padding:14px;border-radius:8px;margin:0">${escapeHtml(row.message)}</pre>`;
+
+  try {
+    await env.EMAIL.send({
+      to,
+      from: { email: from, name: "Protocolized Inbox" },
+      ...(row.email ? { replyTo: row.email } : {}),
+      subject: `${row.subject} — ${who}`,
+      text,
+      html,
+    });
+    return true;
+  } catch (err) {
+    // E_SENDER_NOT_VERIFIED here means the NOTIFY_FROM domain has not been
+    // onboarded yet: `npx wrangler email sending enable <domain>`.
+    console.error("email notify failed:", (err as { code?: string }).code, (err as Error).message);
+    return false;
+  }
+}
+
 // ─── Route: POST /contact ─────────────────────────────────────────────────
 async function handleContact(req: Request, env: Env, cors: Record<string, string>): Promise<Response> {
   if (!env.DISCORD_WEBHOOK) {
@@ -141,7 +219,11 @@ async function handleContact(req: Request, env: Env, cors: Record<string, string
   const message = clip(body.message || "", 2000);
   const subject = clip(body.subject || "Contact form", 100);
 
-  if (!name || !message) {
+  // A message plus SOME way to reach the sender. Name used to be required, which
+  // silently 400'd every submission from a form where name is optional (the
+  // workshop pages post with `mode:"no-cors"`, so the page reported success and
+  // the signup was lost). Email alone is enough.
+  if (!message || (!name && !email)) {
     return json({ error: "Missing required fields" }, 400, cors);
   }
 
@@ -161,14 +243,21 @@ async function handleContact(req: Request, env: Env, cors: Record<string, string
 
   const lines = [
     `📬 **${subject}**`,
-    `**From:** ${name}${email ? ` · ${email}` : ""}`,
+    `**From:** ${name || "—"}${email ? ` · ${email}` : ""}`,
     `**IP:** ${ip}`,
     "",
     message,
   ];
 
-  const ok = await postToDiscord(env.DISCORD_WEBHOOK, lines.join("\n"));
-  return ok
+  // Notify both channels. Neither is allowed to veto the other: a submission is
+  // delivered if Discord OR email got it, and it is already persisted to KV
+  // regardless, so only a total failure of both is reported back to the page.
+  const [discordOk, emailOk] = await Promise.all([
+    postToDiscord(env.DISCORD_WEBHOOK, lines.join("\n")),
+    emailOrganizers(env, { subject, name, email, message, ip }),
+  ]);
+
+  return discordOk || emailOk
     ? json({ ok: true }, 200, cors)
     : json({ error: "Could not deliver. Please email team@protocol-institute.org." }, 502, cors);
 }
