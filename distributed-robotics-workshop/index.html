@@ -281,10 +281,12 @@ ul.ticks li b{ color:var(--pi-text-heading); }
   color:var(--pi-text-secondary); line-height:1.55; margin-top:2px; }
 
 /* — Warning callout — */
-.warn{ font-family:var(--pi-sans); font-size:14px; line-height:1.6; color:var(--pi-text-body);
-  background:var(--pi-accent-tint); border-left:3px solid var(--pi-accent);
+/* Informational note, deliberately not an alarm — these are things worth
+   knowing before you order or build, not hazards. */
+.warn{ font-family:var(--pi-sans); font-size:14px; line-height:1.6; color:var(--pi-text-secondary);
+  background:var(--pi-action-primary-tint); border-left:3px solid var(--pi-action-primary);
   border-radius:var(--pi-radius-md); padding:14px 17px; margin:6px 0 14px; }
-.warn strong{ color:var(--pi-accent-deep); }
+.warn strong{ color:var(--pi-text-heading); }
 .warn--sm{ font-size:13px; padding:11px 14px; margin:0 0 10px; }
 
 /* — Build videos: click-to-load, nothing hits YouTube until you press play — */
@@ -640,7 +642,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
           <h4>18650 batteries <em style="font-style:normal;font-size:13px;color:var(--pi-accent-deep);">+ a charger</em></h4>
           <p>The part most people get wrong. You need <strong>button-top, unprotected</strong> cells rated <strong>10A or more</strong> discharge. Protected cells are physically longer and will not seat; low-current cells will not drive the motors.</p>
           <p><strong>A charger is required.</strong> The car's board does not charge the cells over USB, so they come out of the robot to charge. Freenove: <em>"almost any charger suitable for 18650 batteries can be used."</em></p>
-          <p class="warn warn--sm"><strong>Judge the cell, not the shop.</strong> Counterfeit 18650s turn up through every channel, so check the spec rather than the storefront. Freenove's test: genuine cells top out around <strong>3600&nbsp;mAh</strong>, so anything advertising far more is fake. Prefer a named cell — Samsung, Panasonic, LG, Sony — over an unbranded one.</p>
+          <p class="warn warn--sm"><strong>Judge the cell, not the shop.</strong> Genuine 18650s top out around <strong>3600&nbsp;mAh</strong>, so a listing advertising far more is not a real cell. A named manufacturer — Samsung, Panasonic, LG, Sony — is the easiest way to be sure.</p>
           <div class="links">
             <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Button-Top_Unprotected.md" target="_blank" rel="noopener">Freenove's vetted list, by region →</a>
             <a href="https://imrbatteries.com/products/samsung-30q-18650-3000mah-15a-battery-button-top" target="_blank" rel="noopener">US: Samsung 30Q, 15A →</a>
@@ -654,7 +656,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
         <span class="l">Approximate total</span>
         <span class="v">$150–250</span>
       </div>
-      <p class="warn"><strong>Charge the batteries fully before you start assembling.</strong> Freenove's own note is blunt about this: assembling the robot without the right, charged batteries causes installation errors and <strong>damages the servos</strong>.</p>
+      <p class="warn"><strong>Charge the batteries before you start assembling.</strong> Freenove note that assembling with the wrong or uncharged cells can cause installation errors and damage the servos, so it is worth doing in that order.</p>
       <p class="figure-cap" style="margin-top:0;">Prices are indicative and move around; check current listings before ordering. Exact part numbers are confirmed by email before anyone is asked to buy anything.</p>
     </div>
 
