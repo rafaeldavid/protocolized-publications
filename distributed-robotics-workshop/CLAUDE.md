@@ -9,7 +9,7 @@ Forked from `../ai-capability-maturity-model/AI-Kitcraft-Workshop/` — same chr
 - The page is **workshop-primary**: the SIG is context, not the headline. Its dedicated section was removed (2026-08-11) and reduced to a two-sentence blurb in `#organizers` plus an outbound link to <https://protocol-institute.org/sigs/drg/about/> (also in the footer). The topics list, the two-modes/two-venues cards, and the "protocols are engineered arguments" framing now live only in `announcement.md` — pull from there if the SIG ever needs its own page.
 
 ## The commitment model (the thing that makes this page different)
-Kitcraft was a **notify list**. This is an **express-interest + kit-commitment** page: participants buy and keep their own robot (~$150–200), so the page carries a real **bill of materials** (`#robot`) and a five-step **pre-workshop checklist** (order → build → test on Freenove's stock software → clone repo → point a coding agent at it). The form's key field is the `commit` checkbox.
+Kitcraft was a **notify list**. This is an **express-interest + kit-commitment** page: participants buy and keep their own robot (~$150–250), so the page carries a real **bill of materials** (`#robot`) and a five-step **pre-workshop checklist** (order → build → test on Freenove's stock software → clone repo → point a coding agent at it). The form's key field is the `commit` checkbox.
 
 Rationale: the workshop proposal's alternative was organizers buying 10–25 shared robots (~€1500–5000 budget). That was **not** taken — if the budget is later approved, the BOM section and the commit checkbox both need rewriting.
 

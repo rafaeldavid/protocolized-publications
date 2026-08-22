@@ -285,6 +285,7 @@ ul.ticks li b{ color:var(--pi-text-heading); }
   background:var(--pi-accent-tint); border-left:3px solid var(--pi-accent);
   border-radius:var(--pi-radius-md); padding:14px 17px; margin:6px 0 14px; }
 .warn strong{ color:var(--pi-accent-deep); }
+.warn--sm{ font-size:13px; padding:11px 14px; margin:0 0 10px; }
 
 /* — Build videos: click-to-load, nothing hits YouTube until you press play — */
 .vids{ max-width:840px; margin:0 auto; display:grid; gap:10px; }
@@ -637,20 +638,21 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
         <div class="n">4</div>
         <div>
           <h4>18650 batteries <em style="font-style:normal;font-size:13px;color:var(--pi-accent-deep);">+ a charger</em></h4>
-          <p>Bought separately and easy to get wrong. Use <strong>unprotected</strong> cells from Freenove's compatibility lists — <strong>button-top or flat-top</strong> both work. The wrong cells will not seat, or will not deliver enough current.</p>
-          <p><strong>You also need a charger.</strong> The car's board does not charge the cells over USB, so they come out of the robot to charge. Freenove: <em>"almost any charger suitable for 18650 batteries can be used."</em></p>
+          <p>The part most people get wrong. You need <strong>button-top, unprotected</strong> cells rated <strong>10A or more</strong> discharge. Protected cells are physically longer and will not seat; low-current cells will not drive the motors.</p>
+          <p><strong>A charger is required.</strong> The car's board does not charge the cells over USB, so they come out of the robot to charge. Freenove: <em>"almost any charger suitable for 18650 batteries can be used."</em></p>
+          <p class="warn warn--sm"><strong>Buy from a specialist, not a marketplace.</strong> Amazon bans 18650 cell sales, so what does appear there is often counterfeit. Freenove's rule of thumb: real 18650s top out around <strong>3600&nbsp;mAh</strong> — anything claiming far more is fake.</p>
           <div class="links">
-            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Button-Top_Unprotected.md" target="_blank" rel="noopener">Button-top list →</a>
-            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Flat-Top_Unprotected.md" target="_blank" rel="noopener">Flat-top list →</a>
-            <a href="https://github.com/Freenove/Freenove_18650_Battery_and_Charger_Kit" target="_blank" rel="noopener">Freenove battery + charger kit →</a>
+            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Button-Top_Unprotected.md" target="_blank" rel="noopener">Freenove's vetted list, by region →</a>
+            <a href="https://imrbatteries.com/products/samsung-30q-18650-3000mah-15a-battery-button-top" target="_blank" rel="noopener">US: Samsung 30Q, 15A →</a>
+            <a href="https://www.amazon.de/-/en/dp/B0DLGL1ZBG" target="_blank" rel="noopener">EU: cells + charger →</a>
           </div>
         </div>
-        <div class="price">$15–25<span class="u">+ ~$10–20 charger</span></div>
+        <div class="price">$20–35<span class="u">cells + charger</span></div>
       </div>
 
       <div class="bom-total">
         <span class="l">Approximate total</span>
-        <span class="v">$150–200</span>
+        <span class="v">$150–250</span>
       </div>
       <p class="warn"><strong>Charge the batteries fully before you start assembling.</strong> Freenove's own note is blunt about this: assembling the robot without the right, charged batteries causes installation errors and <strong>damages the servos</strong>.</p>
       <p class="figure-cap" style="margin-top:0;">Prices are indicative and move around; check current listings before ordering. Exact part numbers are confirmed by email before anyone is asked to buy anything.</p>
@@ -837,7 +839,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
             </div>
           </div>
           <div class="commit">
-            <label><input type="checkbox" name="commit" value="yes"> <span>I'm ready to <b>buy and assemble the robot kit</b> (roughly $150–200) ahead of the workshop.</span></label>
+            <label><input type="checkbox" name="commit" value="yes"> <span>I'm ready to <b>buy and assemble the robot kit</b> (roughly $150–250) ahead of the workshop.</span></label>
           </div>
           <div class="field">
             <label for="f-note">What would you want a robot on an open stack to do? <span class="opt">(optional)</span></label>

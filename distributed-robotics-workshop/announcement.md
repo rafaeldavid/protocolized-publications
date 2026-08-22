@@ -14,7 +14,7 @@ A hands-on workshop where you go from a box of parts to a robot with its own on-
 
 Today, controlling a robot means the manufacturer's app, on the manufacturer's cloud, over a closed protocol. Over four sessions across two days, you assemble a robot and wire it into an open stack: on-chain identity, marketplace discovery, payments, and MCP control. Every layer touched by hand.
 
-You buy and keep the robot (~$150–200). Express interest → LINK
+You buy and keep the robot (~$150–250). Express interest → LINK
 
 ## Discord
 
@@ -28,7 +28,7 @@ Two sessions a day over two days, plus async co-working here:
 
 Deliberately interdisciplinary: protocol people who've never driven a robot, roboticists who've never touched on-chain identity. Programming background helps; prior robotics or blockchain experience does not.
 
-Participants buy and keep their own kit (Freenove car + Raspberry Pi, roughly $150–200). Order early — shipping is the long pole.
+Participants buy and keep their own kit (Freenove car + Raspberry Pi, roughly $150–250). Order early — shipping is the long pole.
 
 Express interest: LINK
 
@@ -40,7 +40,7 @@ Most robots answer to a manufacturer's cloud over a closed protocol. This worksh
 
 Four sessions across two days, plus async co-working on Discord. It runs at the 2026 Protocol Symposium (*New Nature*), Sep 21–25, online.
 
-The one thing to know up front: you buy and keep the robot. The kit runs roughly $150–200 (Freenove car kit, Raspberry Pi, SD card, batteries), and shipping is the long pole, so we need to know who's committing early. The full part list is on the page, and we confirm exact parts by email before anyone orders anything.
+The one thing to know up front: you buy and keep the robot. The kit runs roughly $150–250 (Freenove car kit, Raspberry Pi, SD card, batteries), and shipping is the long pole, so we need to know who's committing early. The full part list is on the page, and we confirm exact parts by email before anyone orders anything.
 
 Express interest: LINK
 
