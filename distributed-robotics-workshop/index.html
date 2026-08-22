@@ -269,6 +269,46 @@ ul.ticks li b{ color:var(--pi-text-heading); }
 .bom-total .l{ font-family:var(--pi-sans); font-size:14px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
 .bom-total .v{ font-family:var(--pi-serif); font-size:30px; color:var(--pi-text-heading); }
 
+/* — Product shots (Freenove, CC BY-NC-SA) — */
+.shots{ margin:0 0 44px; }
+.shots .shot{ background:var(--pi-bg-surface); border:1px solid var(--pi-hairline);
+  border-radius:var(--pi-radius-lg); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.shots .shot img{ display:block; width:100%; height:100%; object-fit:contain; max-height:340px; }
+.shots .shot--dark{ background:#0b0b0d; border-color:#26262b; }
+.shots{ display:grid; grid-template-columns:1.35fr 1fr; gap:18px; align-items:stretch; }
+@media(max-width:720px){ .shots{ grid-template-columns:1fr; } }
+.shots figcaption{ grid-column:1/-1; font-family:var(--pi-sans); font-size:12.5px;
+  color:var(--pi-text-secondary); line-height:1.55; margin-top:2px; }
+
+/* — Warning callout — */
+.warn{ font-family:var(--pi-sans); font-size:14px; line-height:1.6; color:var(--pi-text-body);
+  background:var(--pi-accent-tint); border-left:3px solid var(--pi-accent);
+  border-radius:var(--pi-radius-md); padding:14px 17px; margin:6px 0 14px; }
+.warn strong{ color:var(--pi-accent-deep); }
+
+/* — Build videos: click-to-load, nothing hits YouTube until you press play — */
+.vids{ max-width:840px; margin:0 auto; display:grid; gap:10px; }
+.vid{ border:1px solid var(--pi-hairline); border-radius:var(--pi-radius-md);
+  background:var(--pi-bg-surface); overflow:hidden; }
+.vid summary{ display:flex; align-items:center; gap:16px; padding:16px 20px; cursor:pointer;
+  list-style:none; transition:background .14s; }
+.vid summary::-webkit-details-marker{ display:none; }
+.vid summary:hover{ background:var(--pi-bg-muted); }
+.vid .vn{ font-family:var(--pi-serif); font-size:19px; color:var(--pi-indigo); line-height:1; flex:0 0 auto; }
+.vid .vt{ font-family:var(--pi-body); font-size:16px; color:var(--pi-text-heading); line-height:1.35; flex:1 1 auto; }
+.vid .vgo{ font-family:var(--pi-sans); font-size:12.5px; font-weight:600; letter-spacing:.04em;
+  color:var(--pi-accent-deep); flex:0 0 auto; display:inline-flex; align-items:center; gap:7px; }
+/* CSS-drawn play triangle — no emoji, no icon font */
+.vid .vgo::before{ content:""; width:0; height:0; border-style:solid;
+  border-width:5px 0 5px 8px; border-color:transparent transparent transparent var(--pi-accent-strong); }
+.vid[open] .vgo::before{ border-width:0 0 0 3px; height:10px;
+  border-color:var(--pi-accent-strong); box-shadow:5px 0 0 0 var(--pi-accent-strong); }
+.vid[open] summary{ background:var(--pi-bg-muted); border-bottom:1px solid var(--pi-hairline); }
+.vwrap{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
+.vwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+.vfoot{ max-width:840px; margin:22px auto 0; font-family:var(--pi-sans); font-size:13px;
+  color:var(--pi-text-secondary); line-height:1.6; text-align:center; }
+
 /* — Numbered steps — */
 .steps{ counter-reset:step; display:grid; gap:0; max-width:820px; margin:0 auto; }
 .steps li{ counter-increment:step; list-style:none; position:relative; padding:18px 0 18px 62px;
@@ -372,6 +412,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <a href="#do">What you'll build</a>
     <a href="#format">Schedule</a>
     <a href="#robot">Equipment</a>
+    <a href="#videos">Build videos</a>
     <a href="#who">Prerequisites</a>
     <a href="#organizers">Instructors</a>
     <a class="cta" href="#interest">Express interest</a>
@@ -385,6 +426,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <a href="#do">What you'll build</a>
   <a href="#format">Schedule</a>
   <a href="#robot">Equipment</a>
+  <a href="#videos">Build videos</a>
   <a href="#who">Prerequisites</a>
   <a href="#organizers">Instructors</a>
   <a href="#interest">Express interest</a>
@@ -546,6 +588,12 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
       <p class="lead">This is a build workshop, so the hardware is yours. Order the parts once interest is confirmed, assemble ahead of the sessions, and arrive with a robot that already drives.</p>
     </div>
 
+    <figure class="shots">
+      <div class="shot"><img src="assets/robot-3q.jpg" alt="The assembled Freenove 4WD smart car: black chassis, four yellow-rimmed wheels, a Raspberry Pi board on top and an ultrasonic sensor module at the front." loading="lazy" width="720" height="605"></div>
+      <div class="shot shot--dark"><img src="assets/robot-top.jpg" alt="Top-down view of the same robot, showing the Raspberry Pi, the servo, the wiring loom and the four motors." loading="lazy" width="599" height="760"></div>
+      <figcaption>What you are building: the 4WD Smart Car with a Raspberry&nbsp;Pi mounted on the control board. Images by <a href="https://github.com/Freenove/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi" target="_blank" rel="noopener">Freenove</a>, used under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC&nbsp;BY-NC-SA&nbsp;3.0</a>.</figcaption>
+    </figure>
+
     <div class="bom">
       <div class="bom-row">
         <div class="n">1</div>
@@ -588,20 +636,23 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
       <div class="bom-row">
         <div class="n">4</div>
         <div>
-          <h4>18650 batteries</h4>
-          <p>Bought separately and easy to get wrong. Use <strong>button-top, unprotected</strong> cells from Freenove's compatibility list. The wrong cells will not seat, or will not deliver enough current.</p>
+          <h4>18650 batteries <em style="font-style:normal;font-size:13px;color:var(--pi-accent-deep);">+ a charger</em></h4>
+          <p>Bought separately and easy to get wrong. Use <strong>unprotected</strong> cells from Freenove's compatibility lists — <strong>button-top or flat-top</strong> both work. The wrong cells will not seat, or will not deliver enough current.</p>
+          <p><strong>You also need a charger.</strong> The car's board does not charge the cells over USB, so they come out of the robot to charge. Freenove: <em>"almost any charger suitable for 18650 batteries can be used."</em></p>
           <div class="links">
-            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Button-Top_Unprotected.md" target="_blank" rel="noopener">Freenove's compatible list →</a>
-            <a href="https://amzn.eu/d/0gPTLdTo" target="_blank" rel="noopener">Example (EU) →</a>
+            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Button-Top_Unprotected.md" target="_blank" rel="noopener">Button-top list →</a>
+            <a href="https://github.com/Freenove/Freenove_Battery_List/blob/main/18650_Flat-Top_Unprotected.md" target="_blank" rel="noopener">Flat-top list →</a>
+            <a href="https://github.com/Freenove/Freenove_18650_Battery_and_Charger_Kit" target="_blank" rel="noopener">Freenove battery + charger kit →</a>
           </div>
         </div>
-        <div class="price">$15–25<span class="u">plus a charger</span></div>
+        <div class="price">$15–25<span class="u">+ ~$10–20 charger</span></div>
       </div>
 
       <div class="bom-total">
         <span class="l">Approximate total</span>
         <span class="v">$150–200</span>
       </div>
+      <p class="warn"><strong>Charge the batteries fully before you start assembling.</strong> Freenove's own note is blunt about this: assembling the robot without the right, charged batteries causes installation errors and <strong>damages the servos</strong>.</p>
       <p class="figure-cap" style="margin-top:0;">Prices are indicative and move around; check current listings before ordering. Exact part numbers are confirmed by email before anyone is asked to buy anything.</p>
     </div>
 
@@ -623,7 +674,9 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
           <h4>Build the robot</h4>
           <p>Follow Freenove's step-by-step assembly guide. Budget an unhurried afternoon; the Discord channel is open the whole time.</p>
           <div class="links" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
-            <a href="https://docs.freenove.com/projects/fnk0043/en/latest/index.html" target="_blank" rel="noopener" style="font-family:var(--pi-sans);font-size:13px;font-weight:500;">Freenove build tutorial →</a>
+            <a href="https://docs.freenove.com/projects/fnk0043/en/latest/index.html" target="_blank" rel="noopener" style="font-family:var(--pi-sans);font-size:13px;font-weight:500;">Read online →</a>
+            <a href="https://github.com/Freenove/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/raw/master/Tutorial%28ordinary_wheels%29.pdf" style="font-family:var(--pi-sans);font-size:13px;font-weight:500;">Download PDF — ordinary wheels (9&nbsp;MB) ↓</a>
+            <a href="https://github.com/Freenove/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/raw/master/Tutorial%28mecanum_wheels%29.pdf" style="font-family:var(--pi-sans);font-size:13px;font-weight:500;">Download PDF — mecanum wheels (9&nbsp;MB) ↓</a>
           </div>
         </li>
         <li>
@@ -642,8 +695,31 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   </div>
 </section>
 
+<!-- ===== BUILD VIDEOS ===== -->
+<section id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Build videos</span>
+      <h2>Watch the build before you start</h2>
+      <p class="lead">Freenove's own seven-part walkthrough, in build order. Expand any one to play it here.</p>
+    </div>
+
+    <div class="vids" id="vids">
+      <details class="vid"><summary><span class="vn">01</span><span class="vt">Headless Raspberry&nbsp;Pi OS install — Mac</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="I1zRHp3Deeg"></div></details>
+      <details class="vid"><summary><span class="vn">02</span><span class="vt">Headless Raspberry&nbsp;Pi OS install — Windows</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="XpiT_ezb_7c"></div></details>
+      <details class="vid"><summary><span class="vn">03</span><span class="vt">Use the Pi without a screen: Wi-Fi and remote login</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="7vA5utwzY0E"></div></details>
+      <details class="vid"><summary><span class="vn">04</span><span class="vt">Chapter 1 — library installation</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="3VexTFHZUSY"></div></details>
+      <details class="vid"><summary><span class="vn">05</span><span class="vt">Chapters 2–3 — assembly and first test</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="G3Q8xNatXgM"></div></details>
+      <details class="vid"><summary><span class="vn">06</span><span class="vt">Chapters 4–6 — light tracing, ultrasonic avoidance, line tracking</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="kMzOUqFoK0E"></div></details>
+      <details class="vid"><summary><span class="vn">07</span><span class="vt">Chapter 7 — drive the car from a client or app</span><span class="vgo">Play</span></summary><div class="vwrap" data-yt="3WH4QYPWN-I"></div></details>
+    </div>
+
+    <p class="vfoot">Videos by <a href="https://www.youtube.com/@Freenove" target="_blank" rel="noopener">Freenove</a> · <a href="https://www.youtube.com/playlist?list=PLOkhax8xuWu3mZHYE502-aws1rnxhhdvO" target="_blank" rel="noopener">open the full playlist on YouTube →</a><br>Nothing loads from YouTube until you press play.</p>
+  </div>
+</section>
+
 <!-- ===== WHO IT'S FOR ===== -->
-<section id="who">
+<section id="who" class="sec-surface">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Prerequisites</span>
@@ -840,6 +916,39 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   window.addEventListener('scroll', syncDark, { passive:true });
   window.addEventListener('resize', syncDark);
   syncDark();
+})();
+
+/* ---- build videos ----
+   The iframe is created on first open, so the page makes ZERO requests to
+   YouTube until the visitor actually presses play. youtube-nocookie keeps the
+   privacy-preserving host. Closing tears the iframe back down — a hidden
+   <details> would otherwise keep playing audio. */
+(function(){
+  var vids = document.querySelectorAll('#vids .vid');
+  function close(d){
+    var w = d.querySelector('.vwrap');
+    if(w) w.innerHTML = '';
+    var g = d.querySelector('.vgo');
+    if(g) g.textContent = 'Play';
+    d.open = false;
+  }
+  Array.prototype.forEach.call(vids, function(d){
+    d.addEventListener('toggle', function(){
+      var wrap = d.querySelector('.vwrap');
+      var go = d.querySelector('.vgo');
+      if(!d.open){ if(wrap) wrap.innerHTML=''; if(go) go.textContent='Play'; return; }
+      /* one at a time */
+      Array.prototype.forEach.call(vids, function(o){ if(o !== d && o.open) close(o); });
+      if(go) go.textContent = 'Close';
+      if(!wrap || wrap.firstChild) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + wrap.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.title = d.querySelector('.vt').textContent;
+      f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.setAttribute('allowfullscreen','');
+      wrap.appendChild(f);
+    });
+  });
 })();
 
 /* ---- express-interest form ----

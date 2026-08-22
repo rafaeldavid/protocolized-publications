@@ -30,6 +30,18 @@ To later move it to `ai.protocolized.dev/robots/`, add `"domain":"ai.protocolize
 
 **Form origins:** the contact worker allow-lists `https://npc.here.now`, `https://hollow-willow-kgrt.here.now` and `https://ai.protocolized.dev` (`ALLOWED_ORIGINS` in `../_Infrastructure/protocolized-inbox/src/index.ts`). Those edits are committed but **need a deploy to take effect**: `cd ../_Infrastructure/protocolized-inbox && npx wrangler deploy` (interactive `wrangler login` required, so the user runs it).
 
+## Build videos, tutorials, hardware facts
+Sourced from Freenove and **verified**, not assumed — re-check before changing:
+- **The docs code is `fnk0043`**, not `fnk0041`. fnk0043 is the *4WD Smart Car Kit for Raspberry Pi* (and covers the mecanum variant); **fnk0041 is Freenove's Arduino 4WD kit** and is the wrong product. Confirmed via store.freenove.com/products/{fnk0041,fnk0043}.
+- Direct tutorial PDFs (~9 MB each) live in the kit repo and are linked from pre-workshop step 3: `Tutorial%28ordinary_wheels%29.pdf` and `Tutorial%28mecanum_wheels%29.pdf` under `.../raw/master/`. Parens must stay percent-encoded.
+- **A charger is required.** From Freenove's `About_Battery.pdf`: *"The control board connected to the USB cable will not charge the batteries. So you also need a charger,"* and *"almost any charger suitable for 18650 batteries can be used."* So the page names no specific charger.
+- **Button-top AND flat-top unprotected cells both work** — the page originally said button-top only, which was an over-restriction; Freenove publishes both lists.
+- The `.warn` callout ("charge before assembling, or you damage the servos") is Freenove's own warning, not editorialising.
+
+`#videos` holds Freenove's 7-part playlist (`PLOkhax8xuWu3mZHYE502-aws1rnxhhdvO`), reordered into build order rather than playlist order. **The player is click-to-load**: no request reaches YouTube until a visitor opens one, and closing a `<details>` *removes* the iframe (a hidden `<details>` keeps playing audio otherwise). Host is `youtube-nocookie.com`. Only one plays at a time. Verified: 0 iframes at load, exactly 1 while open, 0 after close.
+
+Robot images (`assets/robot-3q.jpg`, `assets/robot-top.jpg`) are Freenove renders extracted from the CC BY-NC-SA 3.0 tutorial PDF, with the app-UI overlay masked out of the 3/4 view. **Attribution + licence link are in the figcaption and must stay** — the licence is non-commercial and share-alike.
+
 ## Social card
 `assets/og-card.png` (1200×630) is rendered from `_og-card.html`, which carries its own regeneration command in a comment. Edit the HTML, re-render, re-publish. `_og-card.html` ships with the site (here.now publishes the directory as-is) but is `noindex` and unlinked.
 
