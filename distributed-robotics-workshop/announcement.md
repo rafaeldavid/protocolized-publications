@@ -14,7 +14,7 @@ A hands-on workshop where you go from a box of parts to a robot with its own on-
 
 Today, controlling a robot means the manufacturer's app, on the manufacturer's cloud, over a closed protocol. Over four sessions across two days, you assemble a robot and wire it into an open stack: on-chain identity, marketplace discovery, payments, and MCP control. Every layer touched by hand.
 
-You buy and keep the robot (~$150–250). Express interest → LINK
+You buy and keep the robot (~$150–250). Register → LINK
 
 ## Discord
 
@@ -30,7 +30,7 @@ Deliberately interdisciplinary: protocol people who've never driven a robot, rob
 
 Participants buy and keep their own kit (Freenove car + Raspberry Pi, roughly $150–250). Order early — shipping is the long pole.
 
-Express interest: LINK
+Register: LINK
 
 ## Email
 
@@ -42,7 +42,7 @@ Four sessions across two days, plus async co-working on Discord. It runs at the 
 
 The one thing to know up front: you buy and keep the robot. The kit runs roughly $150–250 (Freenove car kit, Raspberry Pi, SD card, batteries), and shipping is the long pole, so we need to know who's committing early. The full part list is on the page, and we confirm exact parts by email before anyone orders anything.
 
-Express interest: LINK
+Register: LINK
 
 — Anuraj and Rafa
 
@@ -71,6 +71,8 @@ At launch, Yak Robotics Garage (active since 2021 in the Yak Collective) brings 
 **First session:** [DATE TBD]
 
 **About the group:** https://protocol-institute.org/sigs/drg/about/
+
+**The Symposium:** register at https://luma.com/96c7epvr · programme at https://protocol-institute.org/events/protocol-symposium-2026/ · announcement at https://protocolized.summerofprotocols.com/p/protocol-symposium-2026-registration
 
 If you're working on any part of this stack — even loosely — drop in and say hi. Pitches for *Protocolized* magazine on related topics are also welcome.
 

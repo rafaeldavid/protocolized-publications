@@ -351,6 +351,10 @@ ul.ticks li b{ color:var(--pi-text-heading); }
 /* the card is a LIGHT island inside a .dark band: reset headings, or the
    .dark h2/h3/h4 rule paints them white-on-white and they disappear. */
 .formcard h2, .formcard h3, .formcard h4{ color:var(--pi-text-heading); }
+.sym-note{ font-family:var(--pi-sans); font-size:14px; margin:22px 0 10px; }
+.sym-links{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.sym-links li{ font-family:var(--pi-sans); font-size:14.5px; color:rgba(255,255,255,.72); }
+.sym-links a{ color:var(--pi-on-dark-accent); font-weight:500; }
 .formcard--cta{ text-align:center; padding:34px 30px; }
 .formcard--cta h3{ font-size:23px; margin:0 0 .35em; }
 .formcard--cta p{ font-size:15px; line-height:1.6; margin:0 0 22px; }
@@ -385,7 +389,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
       <span class="wm">The Protocol Institute</span>
     </a>
     <div class="nav-right">
-      <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Express interest</a>
+      <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Register</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -400,7 +404,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <a href="#videos">Build videos</a>
     <a href="#who">Prerequisites</a>
     <a href="#organizers">Instructors</a>
-    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Express interest</a>
+    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Register</a>
   </nav>
 </header>
 
@@ -414,7 +418,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <a href="#videos">Build videos</a>
   <a href="#who">Prerequisites</a>
   <a href="#organizers">Instructors</a>
-  <a href="#interest">Express interest</a>
+  <a href="#interest">Register</a>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -426,7 +430,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <div class="tagline">A distributed robotics workshop.</div>
     <p class="lead">Go from a box of parts to a working robot with its own <strong>on-chain identity</strong>, discoverable on a public marketplace, and drivable from anywhere over MCP — the same open rails an AI agent would use.</p>
     <div class="hero-cta">
-      <a class="btn btn--cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Express interest →</a>
+      <a class="btn btn--cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener">Register →</a>
       <a class="btn btn--ghost" href="#robot">See the robot kit</a>
     </div>
     <div class="hero-meta">
@@ -784,7 +788,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
         <h4>Freenove build guide</h4>
         <p>Step-by-step assembly for the car kit. Docs →</p>
       </a>
-      <a class="card fnd" href="https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature" target="_blank" rel="noopener" style="color:inherit;">
+      <a class="card fnd" href="https://protocol-institute.org/events/protocol-symposium-2026/" target="_blank" rel="noopener" style="color:inherit;">
         <img class="thumb" src="assets/fnd-symposium.jpg" alt="">
         <h4>2026 Protocol Symposium</h4>
         <p>New Nature · Sep 21–25 · online. Details →</p>
@@ -798,15 +802,19 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
   <div class="wrap">
     <div class="split">
       <div>
-        <span class="eyebrow">Express interest</span>
-        <h2>Tell us you're in</h2>
-        <p class="lead">Registration for the Symposium itself runs centrally through the organizers. This form is how we size the workshop and get the hardware list to you early enough that you can order and build your own kit in time.</p>
-        <p style="color:rgba(255,255,255,.7);font-size:14.5px;margin-top:18px;">Nothing here is a payment or a binding commitment; it is a signal that you intend to buy the kit yourself.</p>
+        <span class="eyebrow">Registration</span>
+        <h2>Register for the workshop</h2>
+        <p class="lead">This registers you for the workshop and gets the hardware list to you early enough to order and build your kit in time.</p>
+        <p class="sym-note">The Symposium itself has its own registration, separate from this form:</p>
+        <ul class="sym-links">
+          <li><a href="https://luma.com/96c7epvr" target="_blank" rel="noopener">Register for the Symposium</a> — Luma</li>
+          <li><a href="https://protocol-institute.org/events/protocol-symposium-2026/" target="_blank" rel="noopener">Full programme and schedule</a> — Protocol Institute</li>
+          <li><a href="https://protocolized.summerofprotocols.com/p/protocol-symposium-2026-registration" target="_blank" rel="noopener">Read the announcement</a> — Protocolized</li>
+        </ul>
       </div>
       <div>
         <div class="formcard formcard--cta">
-          <p>Two minutes. Tells us who's committing, what you're bringing, and where to send the kit list.</p>
-          <a class="btn btn--cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener" style="width:100%;justify-content:center;">Open the interest form →</a>
+          <a class="btn btn--cta" href="https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform" target="_blank" rel="noopener" style="width:100%;justify-content:center;">Open the registration form →</a>
           <p class="form-note">Opens in a new tab. Prefer email? Write to <a href="mailto:team@protocol-institute.org">team@protocol-institute.org</a>.</p>
         </div>
       </div>
@@ -824,7 +832,7 @@ footer{ background:var(--pi-bg-surface); padding:40px 0; border:0; }
     <div class="foot-links">
       <a href="https://protocol-institute.org/sigs/drg/about/">Distributed Robotics SIG</a>
       <a href="https://github.com/YakRoboticsGarage">Yak Robotics Garage</a>
-      <a href="https://protocolized.summerofprotocols.com/p/2026-protocol-symposium-new-nature">Symposium</a>
+      <a href="https://protocol-institute.org/events/protocol-symposium-2026/">Symposium</a>
       <a href="https://protocol-institute.org/">Protocol Institute</a>
       <a href="mailto:team@protocol-institute.org">Contact</a>
     </div>

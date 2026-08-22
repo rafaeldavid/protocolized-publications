@@ -87,7 +87,14 @@ Three footguns already handled, don't reintroduce:
 
 Nav labels use standard workshop vocabulary (Overview / What you'll learn / What you'll build / Schedule / Equipment / Prerequisites / Instructors / Express interest) and the section eyebrows are kept identical to them — change both together or the scroll-spy stops making sense.
 
-## The express-interest form
+## Registration (Google Form)
+All CTAs — nav, mobile menu, hero, and the `#interest` card — open the **Google Form** responder URL in a new tab:
+`https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform`
+**Never use the `/forms/d/<id>/edit` URL** — it redirects to the editor preview, so visitors without edit rights hit a permission wall, and those with rights could modify the form. The gutter link keeps its `#interest` anchor because that nav is a scroll-spy.
+
+The `#interest` section also carries the three **Symposium-wide** links (Luma registration, the Protocol Institute programme page, the Protocolized announcement) — the workshop form and the Symposium's own registration are separate things and the page says so.
+
+## The old express-interest form (REMOVED, still in git)
 Posts to the same Cloudflare/Discord worker as Kitcraft and ai.protocolized.dev:
 - `POST https://protocolized-inbox.rafaeldf2.workers.dev/contact`
 - Body `{ name, email, message, subject:"Distributed Robotics Workshop — express interest", _hp }` (`_hp` = honeypot; background, kit commitment, and the free-text note are packed into `message`).
