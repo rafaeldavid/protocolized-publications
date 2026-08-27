@@ -1,113 +1,111 @@
 # CLAUDE.md — Robots as Protocol Citizens (workshop landing page)
 
 ## What this is
-A single-page **express-interest landing page** for the **Robots as Protocol Citizens** hands-on workshop at the **2026 Protocol Symposium** (*New Nature*, online, **Sep 21–25 2026**). Self-contained `index.html` + `assets/` + `announcement.md`. Hosted by the **Distributed Robotics Research Group** (new SIG); organizers Anuraj R & Rafael Fernández.
+A single-page landing site for the **Robots as Protocol Citizens** hands-on workshop at the **2026 Protocol Symposium** (*New Nature*, online, **Sep 21–25 2026**), run by the **Distributed Robotics Research Group**. Organizers Anuraj R & Rafael Fernández.
 
-Forked from `../ai-capability-maturity-model/AI-Kitcraft-Workshop/` — same chrome (fixed top bar, gutter scroll-spy, section rhythm, worker-backed form), different vein and content.
+Self-contained: `index.html` + `assets/` + `announcement.md` (reusable blurbs) + `_og-card.html` (social-card source). No build step, no dependencies, no framework. Open `index.html` and it works.
 
-- **Live at <https://npc.here.now/robotworkshop/>** (slug `hollow-willow-kgrt`, published 2026-08-11). This is the interim home; `ai.protocolized.dev/robots/` is still the intended final mount.
-- The page is **workshop-primary**: the SIG is context, not the headline. Its dedicated section was removed (2026-08-11) and reduced to a two-sentence blurb in `#organizers` plus an outbound link to <https://protocol-institute.org/sigs/drg/about/> (also in the footer). The topics list, the two-modes/two-venues cards, and the "protocols are engineered arguments" framing now live only in `announcement.md` — pull from there if the SIG ever needs its own page.
+**Live:** <https://npc.here.now/robotworkshop/> — here.now slug `hollow-willow-kgrt`.
+**Planned move:** into `pi-drg/yakrobot.com` under a new domain. See *Moving this package*.
 
-## The commitment model (the thing that makes this page different)
-Kitcraft was a **notify list**. This is an **express-interest + kit-commitment** page: participants buy and keep their own robot (~$150–250), so the page carries a real **bill of materials** (`#robot`) and a five-step **pre-workshop checklist** (order → build → test on Freenove's stock software → clone repo → point a coding agent at it). The form's key field is the `commit` checkbox.
+Forked from `ai-capability-maturity-model/AI-Kitcraft-Workshop/` in the same repo — same chrome (fixed top bar, gutter scroll-spy, section rhythm), different vein and content.
 
-Rationale: the workshop proposal's alternative was organizers buying 10–25 shared robots (~€1500–5000 budget). That was **not** taken — if the budget is later approved, the BOM section and the commit checkbox both need rewriting.
+## The thing that shapes the whole page
+Participants **buy and keep their own robot** (~$150–250). That single decision is why this page has a real bill of materials, a five-step pre-workshop checklist, and a registration CTA that asks for a hardware commitment — where the Kitcraft page it was forked from was just a notify list.
+
+The rejected alternative was organizers funding 10–25 shared robots (~€1500–5000). If that budget is ever approved, `#robot` and the registration framing both need rewriting.
+
+## Registration
+Every CTA — nav, mobile menu, hero, and the `#interest` card — opens the **Google Form** responder URL in a new tab:
+
+```
+https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform
+```
+
+**Never use the `/forms/d/<id>/edit` URL.** It redirects to the editor preview: visitors without edit rights hit a permission wall, and visitors with them could modify the form. The gutter link keeps its `#interest` anchor because that nav is a scroll-spy over on-page sections.
+
+`#interest` also carries the three **Symposium-wide** links — Luma registration, the Protocol Institute programme page, the Protocolized announcement. Workshop registration and Symposium registration are separate, and the page says so explicitly. Don't collapse them.
+
+An earlier version posted to a Cloudflare Worker (`_Infrastructure/protocolized-inbox`) which relayed to Discord and persisted to KV. That form was removed when the Google Form replaced it — the worker still exists and still serves other pages, but **this page no longer touches it**, so its origin allowlist and deploy state are irrelevant here. History: `git log -- distributed-robotics-workshop`.
+
+## Brand
+Protocol Institute Institute vein, tuned to the hero artwork. Three roles, kept strictly separate:
+
+| Role | Token | Used for |
+|---|---|---|
+| cobalt | `--pi-action-primary` `#0064ff` | links, eyebrows, numerals, focus, informational notes |
+| indigo | `--pi-indigo` `#092cba` | labels and metadata: `.spec`, `.daylabel`, `.org .role`, avatars |
+| rust | `--pi-accent-strong` `#c04b22` | every conversion CTA, `.steps` circles |
+
+Indigo is sampled from art_1's palette in the brand kit's `metadata.json` — the kit's documented way to harmonize a layout with its artwork. Rule of thumb: **if it converts it's rust, if it's a label it's indigo, everything else is cobalt.**
+
+`--pi-accent-strong` `#c04b22` is a **derived step, not a kit token**. Bare rust `#d85a30` is only 3.87:1 under white so it cannot fill a 16px button; `#c04b22` gives 4.92:1 text *and* 3.72:1 against the navy ground. Same move the kit already made for `accent-deep`. Worth pushing back into the brand kit.
+
+Dark surfaces use `#02113c` (deep cobalt from the hero art) rather than Kitcraft's dark green — the main visual differentiator. On-dark accent `#9dc4ff`.
+
+Fonts: Instrument Serif (headings), Lora (body), Outfit (UI). Paper `#f9f8f5`.
+
+## Imagery
+- `hero-stack.jpg` — art_1, stacked planes, reads as a protocol stack
+- `art-cube.jpg` — art_6, flattest piece, sits behind text
+- `fnd-*.jpg` — art_2/2b/3b/4 at 440px, foundations thumbnails
+- `og-card.png` — 1200×630 social card, rendered from `_og-card.html` (regeneration command is in a comment in that file)
+- `robot-3q.jpg`, `robot-top.jpg` — **Freenove renders, CC BY-NC-SA 3.0**, extracted from their tutorial PDF with the app-UI overlay masked out. **The attribution and licence link in the figcaption must stay** — the licence is non-commercial and share-alike.
+
+House art comes from `protocolinstitute-brandkit/assets/images/`. Never real-person photos, screenshots or charts.
+
+## Verify before shipping
+```bash
+node ../protocolinstitute-brandkit/scripts/preflight.mjs index.html   # expect 0 fail
+cd ../protocolinstitute-brandkit/scripts && npm test                  # 21/21 pairings
+python3 -m http.server 8771                                           # screenshot 1440 + 390
+```
+
+**Four things the automated checks do not cover.** All were caught by eye or by hand, and all have bitten once:
+
+1. **Contrast.** The kit's contract covers neither this page's dark-cobalt ground nor its indigo/rust roles. All pairings were verified by hand; the tightest are the CTA (4.92:1 text, 3.72:1 boundary on navy). The CTA's *hover* fill is only 2.73:1 on navy, so on dark surfaces hover adds a white ring to carry the boundary — don't remove it.
+2. **Preflight's `a.btn{color}` warning is a known false positive.** The fix is `color` on the `.btn` base class, which wins on specificity over the global `a{color}`. Verified in-browser: every button computes white text. Do **not** "fix" it by adding an `a.btn` rule — that out-specifies the modifiers and breaks them.
+3. **Light islands inside `.dark` bands.** `.dark h2/h3/h4` paints headings white; a `.formcard` sitting in a dark band inherits that and renders white-on-white. There's a defensive reset in `.formcard` now. Preflight cannot see this — only a screenshot can.
+4. **`.chip` is a flex row**, so a `<b>` mid-sentence gets `gap` space on both sides. Lead with the bold instead. And `text-wrap:pretty` rags badly in the narrow `#stack` cards, which are set back to `text-wrap:wrap`.
+
+## Hardware facts — verified, do not "correct" from memory
+- **Docs code is `fnk0043`**, not `fnk0041`. fnk0043 is the *4WD Smart Car Kit for Raspberry Pi* and covers the mecanum variant; **fnk0041 is Freenove's Arduino kit**, a different product.
+- Tutorial PDFs (~9 MB) live in the kit repo at `.../raw/master/Tutorial%28ordinary_wheels%29.pdf` and `...%28mecanum_wheels%29.pdf`. Parens must stay percent-encoded.
+- **A charger is required.** From Freenove's `About_Battery.pdf`: *"The control board connected to the USB cable will not charge the batteries. So you also need a charger,"* and *"almost any charger suitable for 18650 batteries can be used."* The page therefore names no specific charger.
+- Cells must be **button-top, unprotected, 10A+ discharge**. Freenove publish a flat-top list too, but the page deliberately keeps the messaging to button-top only.
+- **Do not claim Amazon bans 18650 sales.** An earlier version did; it conflated two separate lines of Freenove's text into a causal claim they don't make, and it's false for amazon.de — which is where the cells+charger link on this very page points. What holds up independently: genuine 18650s top out around 3600 mAh, so a listing claiming far more is not a real cell.
+- The two callouts are **informational, not warnings**. They were red once; that overstated them. Nothing on this page is a safety hazard.
+
+## Build videos
+`#videos` holds Freenove's 7-part playlist (`PLOkhax8xuWu3mZHYE502-aws1rnxhhdvO`), reordered into build order rather than playlist order. The player is **click-to-load**: no request reaches YouTube until a visitor opens one, the host is `youtube-nocookie.com`, and **closing a `<details>` removes the iframe** — a hidden `<details>` otherwise keeps playing audio. One plays at a time. Verified: 0 iframes at load, exactly 1 while open, 0 after close.
 
 ## Deploy
 ```bash
-# from this directory — the slug is pinned, don't mint a new one
 bash ~/.claude/skills/here-now/scripts/publish.sh . --slug hollow-willow-kgrt --client claude-code \
   --title "Robots as Protocol Citizens — 2026 Protocol Symposium"
 ```
-Re-publishing to the slug updates the mounted path automatically. Verify with `curl`, not the publisher's "unchanged/skipped" line.
+The slug is pinned; don't mint a new one. Verify with `curl`, not the publisher's "unchanged/skipped" line.
 
 The mount is a here.now **handle link** (`npc` is the account handle) — note there is **no** `domain` field for handle links, unlike the custom-domain form:
 ```bash
 curl -sS https://here.now/api/v1/links -H "Authorization: Bearer $(cat ~/.herenow/credentials)" \
   -H "Content-Type: application/json" -d '{"location":"robotworkshop","slug":"hollow-willow-kgrt"}'
 ```
-To later move it to `ai.protocolized.dev/robots/`, add `"domain":"ai.protocolized.dev"` and `"location":"robots"`. Propagates in <60s. **If you move it, update the four absolute social-card URLs and the `<link rel="canonical">` in the `<head>`** — scrapers do not resolve relative `og:image` paths.
 
-**Form origins:** the contact worker allow-lists `https://npc.here.now`, `https://hollow-willow-kgrt.here.now` and `https://ai.protocolized.dev` (`ALLOWED_ORIGINS` in `../_Infrastructure/protocolized-inbox/src/index.ts`). Those edits are committed but **need a deploy to take effect**: `cd ../_Infrastructure/protocolized-inbox && npx wrangler deploy` (interactive `wrangler login` required, so the user runs it).
+**here.now publishes the directory as-is.** There is no exclude mechanism. Anything you drop in here goes live — a vendored copy of the Freenove repo once shipped 195 MB to the public site and into git history before it was caught. Keep downloads in `../_local-downloads/` (gitignored).
 
-## Build videos, tutorials, hardware facts
-Sourced from Freenove and **verified**, not assumed — re-check before changing:
-- **The docs code is `fnk0043`**, not `fnk0041`. fnk0043 is the *4WD Smart Car Kit for Raspberry Pi* (and covers the mecanum variant); **fnk0041 is Freenove's Arduino 4WD kit** and is the wrong product. Confirmed via store.freenove.com/products/{fnk0041,fnk0043}.
-- Direct tutorial PDFs (~9 MB each) live in the kit repo and are linked from pre-workshop step 3: `Tutorial%28ordinary_wheels%29.pdf` and `Tutorial%28mecanum_wheels%29.pdf` under `.../raw/master/`. Parens must stay percent-encoded.
-- **A charger is required.** From Freenove's `About_Battery.pdf`: *"The control board connected to the USB cable will not charge the batteries. So you also need a charger,"* and *"almost any charger suitable for 18650 batteries can be used."* So the page names no specific charger.
-- **Button-top AND flat-top unprotected cells both work** — the page originally said button-top only, which was an over-restriction; Freenove publishes both lists.
-- The `.warn` callout ("charge before assembling, or you damage the servos") is Freenove's own warning, not editorialising.
+## Moving this package
+Destination: `pi-drg/yakrobot.com`, new domain. Three things must change on the move:
 
-`#videos` holds Freenove's 7-part playlist (`PLOkhax8xuWu3mZHYE502-aws1rnxhhdvO`), reordered into build order rather than playlist order. **The player is click-to-load**: no request reaches YouTube until a visitor opens one, and closing a `<details>` *removes* the iframe (a hidden `<details>` keeps playing audio otherwise). Host is `youtube-nocookie.com`. Only one plays at a time. Verified: 0 iframes at load, exactly 1 while open, 0 after close.
+1. **The four absolute URLs in `<head>`** — `og:url`, `og:image`, `twitter:image`, and `<link rel="canonical">`. Scrapers do not resolve relative `og:image` paths, so these must be absolute and correct for the new host, or link previews break.
+2. **Path.** That repo already has an `index.html` at root, so this page needs a subdirectory.
+3. **The brand-kit relative paths** in *Verify before shipping* point at `../protocolinstitute-brandkit/`, which won't exist there. Either vendor the two scripts or drop the instructions.
 
-Robot images (`assets/robot-3q.jpg`, `assets/robot-top.jpg`) are Freenove renders extracted from the CC BY-NC-SA 3.0 tutorial PDF, with the app-UI overlay masked out of the 3/4 view. **Attribution + licence link are in the figcaption and must stay** — the licence is non-commercial and share-alike.
-
-## Social card
-`assets/og-card.png` (1200×630) is rendered from `_og-card.html`, which carries its own regeneration command in a comment. Edit the HTML, re-render, re-publish. `_og-card.html` ships with the site (here.now publishes the directory as-is) but is `noindex` and unlinked.
-
-## Brand
-Protocol Institute **Institute vein**, tuned to the hero artwork. The New Nature green was removed (2026-08-11) — it read as borrowed from Kitcraft rather than belonging to this page. Three roles, kept strictly separate:
-
-| Role | Token | Used for |
-|---|---|---|
-| cobalt | `--pi-action-primary` `#0064ff` | links, eyebrows, numerals, focus rings, gutter marker |
-| indigo | `--pi-indigo` `#092cba` | labels and metadata: `.spec`, `.daylabel`, `.org .role`, avatars, success status |
-| rust | `--pi-accent-strong` `#c04b22` | every conversion CTA, `.steps` circles, `.commit` box, tick rings |
-
-Indigo is sampled from **art_1's palette in the brand kit's `metadata.json`** (`#092cba` mediumblue), which is the kit's documented way to harmonize a layout with its artwork. The rule of thumb: if it converts, it's rust; if it's a label, it's indigo; everything else is cobalt.
-
-`--pi-accent-strong` `#c04b22` is a **derived step, not a kit token**. Bare rust `#d85a30` carries only 3.87:1 under white so it cannot fill a 16px button; `#c04b22` gives 4.92:1 white text *and* 3.72:1 against the navy ground. This is the same move the kit already made when it added `accent-deep` for rust-as-text — worth pushing back into the brand kit's `BACKLOG.md`.
-
-Warm paper `#f9f8f5`. Fonts: Instrument Serif (headings), Lora (body), Outfit (UI).
-
-**Dark surfaces use `#02113c`** (deep cobalt, sampled from the hero artwork) rather than Kitcraft's dark green — this is the main visual differentiator. On-dark accent is `#9dc4ff`. Both dark bands (`.dark`) and the hero flip the gutter nav to light automatically.
-
-Imagery is the brand kit's **house art set** (`../protocolinstitute-brandkit/assets/images/protocolized_generic_art_*.png`), re-encoded as sized JPEGs in `assets/`:
-- `hero-stack.jpg` (art_1 — stacked planes, reads as a protocol stack)
-- `art-cube.jpg` (art_6 — flattest piece, sits behind text)
-- `fnd-*.jpg` (art_2/2b/3b/4 at 440px for the foundations thumbnails)
-
-**Never** real-person photos, screenshots, or charts. (`art-network.jpg`/art_5 was dropped with the SIG section; re-add from the brand kit if a coordination illustration is ever needed.)
-
-## Verify before shipping (definition of done)
-```bash
-node ../protocolinstitute-brandkit/scripts/preflight.mjs index.html   # 0 fail expected
-cd ../protocolinstitute-brandkit/scripts && npm test                  # 21/21 pairings
-python3 -m http.server 8771                                           # then screenshot 1440 + 390
-```
-Two things the standard checks do **not** cover, so re-check by hand if you touch colors:
-1. The kit's contrast contract covers neither this page's **dark-cobalt** ground nor its indigo/rust roles. All 39 pairings were verified by hand — the tightest are the CTA (4.92:1 text, 3.72:1 boundary on navy) and the tick/commit rust rings (3.36:1, UI minimum 3:1). Re-check by hand if you shift any of the three role colors.
-   The CTA's **hover** fill (`accent-deep`) is only 2.73:1 on navy, so on dark surfaces hover adds a white ring (`box-shadow`) to carry the boundary instead. Don't remove it.
-2. Preflight's `a.btn{color}` warning is a **known false positive** here: the fix is `color` on the `.btn` base class, which wins on specificity over the global `a{color}`. Verified in-browser: every button computes white text. Do not "fix" it by adding an `a.btn` rule — that out-specifies the `--primary`/`--cta` modifiers and breaks them.
-
-Three footguns already handled, don't reintroduce:
-- `.chip` is a flex row, so a `<b>` mid-sentence gets `gap` space on **both** sides. Lead with the bold instead.
-- `text-wrap:pretty` rags badly in the narrow `#stack` cards; those paragraphs are set back to `text-wrap:wrap`.
-- An `h2.oneline` longer than the 50ch `.section-head` **looks left-shifted**: a nowrap line that overflows its box spills right rather than staying centred. Use `.section-head--wide` (70ch) for those — `#organizers` needs it. Check with: text centre vs `clientWidth/2`.
-
-Nav labels use standard workshop vocabulary (Overview / What you'll learn / What you'll build / Schedule / Equipment / Prerequisites / Instructors / Express interest) and the section eyebrows are kept identical to them — change both together or the scroll-spy stops making sense.
-
-## Registration (Google Form)
-All CTAs — nav, mobile menu, hero, and the `#interest` card — open the **Google Form** responder URL in a new tab:
-`https://docs.google.com/forms/d/e/1FAIpQLScfT_Ia2h7-1Vs0fdPNtOMBv912DG3EGXhCUSgk2kspDLyuzw/viewform`
-**Never use the `/forms/d/<id>/edit` URL** — it redirects to the editor preview, so visitors without edit rights hit a permission wall, and those with rights could modify the form. The gutter link keeps its `#interest` anchor because that nav is a scroll-spy.
-
-The `#interest` section also carries the three **Symposium-wide** links (Luma registration, the Protocol Institute programme page, the Protocolized announcement) — the workshop form and the Symposium's own registration are separate things and the page says so.
-
-## The old express-interest form (REMOVED, still in git)
-Posts to the same Cloudflare/Discord worker as Kitcraft and ai.protocolized.dev:
-- `POST https://protocolized-inbox.rafaeldf2.workers.dev/contact`
-- Body `{ name, email, message, subject:"Distributed Robotics Workshop — express interest", _hp }` (`_hp` = honeypot; background, kit commitment, and the free-text note are packed into `message`).
-- Only `email` is required. Submissions are persisted to KV; pull them with
-  `curl "https://protocolized-inbox.rafaeldf2.workers.dev/contact/export.csv?secret=$EXPORT_SECRET"`.
-- `no-cors` + `text/plain` body avoids a preflight; the response is opaque so success is confirmed optimistically, with a prefilled `mailto:` fallback on network failure.
-- **Notifications are Discord + KV only.** Email-to-organizers was built and then deliberately reverted (2026-08-11): Cloudflare Email Sending needs a sender domain that is a zone in the account, and **`protocolized.dev` is on Porkbun nameservers, not Cloudflare**, so `wrangler email sending enable protocolized.dev` fails with "Could not find a zone". `protocol-institute.org` *is* on Cloudflare and would work — but its apex runs live Google Workspace mail with an existing SPF record, so any future attempt should onboard a **subdomain** (`send.protocol-institute.org`); a second SPF record on the apex is a permerror that breaks authentication for all of the org's mail. Submissions are still captured: Discord relay + KV, exportable via `/contact/export.csv`.
-- A latent worker bug was fixed and **kept**: `/contact` used to require `name`, so any submission from a form where name is optional was rejected with a 400 — and because the page posts `no-cors`, the visitor saw a success message and the signup was lost. It now requires a message plus *either* name or email. This affected AI Kitcraft too.
+Everything else is self-contained and moves as-is.
 
 ## Open threads
-- **Date/venue**: the workshop is placed at the Symposium (Sep 21–25, online), but no session times are set.
-- **Session mapping**: the brief listed seven slash-separated phrases for "2 sessions each day", so the 4-session split (intro+stack / code set-up // build+fix / identity+MCP+marketplace) is an interpretation. Splitting session 4 into two is a small edit if 5 sessions were meant.
-- **YakRover vs. YakRobot**: the two source proposals disagree. This page uses **YakRover** throughout, matching `yakrover-protocols`, `#yak-rover`, and the YakRoboticsGarage org. Confirm before announcing.
-- **Robot hardware**: the SIG's `yakrover-protocols` sub-project runs on a ~$150 ESP32-S3 rover, but this workshop's BOM is the **Freenove car kit + Raspberry Pi**. The `#sig` section deliberately omits the ESP32 board detail so the page doesn't contradict itself. If the workshop switches to the ESP32 rover, the whole `#robot` section changes.
-- **Prices** in the BOM are indicative ranges, marked as such on the page. Nobody should be asked to buy before the exact part list is confirmed by email.
-- No participant cap is stated (Kitcraft said 10–15); the proposal never set one.
+- **Session mapping** — the brief listed seven slash-separated phrases for "2 sessions each day", so the 4-session split (intro+stack / code set-up // build+fix / identity+MCP+marketplace) is an interpretation. Splitting session 4 in two is a small edit if 5 were meant.
+- **YakRover vs YakRobot** — the source proposals disagree. This page uses **YakRover** throughout, matching `yakrover-protocols`, `#yak-rover` and the YakRoboticsGarage org. The destination repo is `yakrobot.com`. Worth settling before announcing.
+- **Hardware mismatch** — the SIG's `yakrover-protocols` runs on a ~$150 ESP32-S3 rover; this workshop's BOM is the Freenove/RPi car. The page omits the ESP32 detail so it doesn't contradict itself.
+- **Schedule** — the page states Sep 21–25 and four sessions from the original brief, not from the published Symposium programme. Cross-check against <https://protocol-institute.org/events/protocol-symposium-2026/>.
+- No participant cap is stated; the proposal never set one.

@@ -16,3 +16,7 @@ Thumbs.db
 # Third-party reference assets — kept locally for design grounding,
 # not redistributed via this public repo.
 ai-capability-maturity-model/_Product/Diagram-Design/artifacts/substack-references-2026/*.png
+
+# Local vendor downloads (Freenove kit etc.) — never publish or commit
+_local-downloads/
+**/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi*/
